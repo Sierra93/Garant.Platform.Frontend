@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<div class="d-flex garant">
+  <!-- Блок с каруселью. -->
+<div class="col-lg-8">
+  <p-carousel [value]="products" [numVisible]="2" [numScroll]="2" [circular]="false" [responsiveOptions]="responsiveOptions">
+    <ng-template pTemplate="header">
+      <h5>Недавно приобрели</h5>
+    </ng-template>
+    <ng-template let-product pTemplate="item">
+        <div class="product-item">
+            <div class="product-item-content">
+                <div class="p-mb-3">
+                    <!-- <img src="" class="product-image" /> -->
+                    <img src="../../../assets/images/Rectangle 20.png" class="product-image">
+                </div>
+                <div>
+                    <!-- <h4 class="p-mb-1">{{product.name}}</h4>
+                    <h6 class="p-mt-0 p-mb-3">${{product.price}}</h6>
+                    <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+                    <div class="car-buttons p-mt-5">
+                        <p-button type="button" styleClass="p-button p-button-rounded p-mr-2" icon="pi pi-search"></p-button>
+                        <p-button type="button" styleClass="p-button-success p-button-rounded p-mr-2" icon="pi pi-star"></p-button>
+                        <p-button type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-cog"></p-button>
+                    </div> -->
+                    <p-card header="Название готового бизнеса" subheader="Готовый бизнес 24 дня на портале" [style]="{width: '360px'}" styleClass="p-card-shadow">
+                      <ng-template pTemplate="header">
+                          <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+                      </ng-template>
+                      <strong>Сумма сделки: 12 500 000 ₽</strong>
+                      <ng-template pTemplate="footer">
+                          <!-- <p-button label="Save" icon="pi pi-check"></p-button>
+                          <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
+                      </ng-template>
+                  </p-card>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+</div>
+
+<div class="col-lg-4">
+  <h5>Покупка бизнеса с гарантиями</h5> 
+  <p-card header="Покупка бизнеса любого размера онлайн с гарантиями" subheader="" [style]="{width: '360px'}" styleClass="card">
+    <ng-template pTemplate="header">
+      <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+      <!-- <h5>Покупка бизнеса любого размера онлайн с гарантиями</h5> -->
+    </ng-template>
+    <p>Первый в мире сервис с функцией приобретитения франшизы или готового бизнеса онлайн и без опасений
+    </p>
+    <ng-template pTemplate="footer">
+      <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
+      <button class="btn btn-dark">Подробнее</button>
+      <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+      </p-button> -->
+    </ng-template>
+  </p-card>
+</div>
+</div>
+
+<!-- Область с 3 карточками. -->
+<div class="d-flex three-cards">
+  <div class="col-lg-4 card-business">
+    <p-card header="Подберите подходящий бизнес" subheader="Получите подборку подходящих бизнесов" [style]="{width: '360px'}" styleClass="card">
+      <ng-template pTemplate="header">
+        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+      </ng-template>
+      <p>Пройдите краткий опрос, на основе вашего опыта, навыков и знаний мы предложим вам подходящий бизнес в форме готового бизнеса или франшиз.
+      </p>
+      <ng-template pTemplate="footer">
+        <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+        <button class="btn btn-dark">Начать</button>
+        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+        </p-button> -->
+      </ng-template>
+    </p-card>
+  </div>
+
+  <div class="col-lg-4 card-business">
+    <p-card header="Продайте свой бизнес" subheader="Вы можете продать свой бизнес" [style]="{width: '360px'}" styleClass="card">
+      <ng-template pTemplate="header">
+        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+      </ng-template>
+      <p>Все что вам нужно - выложить объявление в нашем каталоге, после проверки модераторами мы выложим его в общий доступ.
+      </p>
+      <ng-template pTemplate="footer">
+        <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+        <button class="btn btn-dark">Продать</button>
+        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+        </p-button> -->
+      </ng-template>
+    </p-card>
+  </div>
+
+  <div class="col-lg-4 card-business">
+    <p-card header="Создайте свою франшизу" subheader="Закажите упаковку франшизы у нас" [style]="{width: '360px'}" styleClass="card">
+      <ng-template pTemplate="header">
+        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+      </ng-template>
+      <p>Если ваш готовый бизнес уже имеет открытые филиалы или вы собираетесь заводить таковые, то вы с уверенностью можете оставлять заявку.
+      </p>
+      <ng-template pTemplate="footer">
+        <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+        <button class="btn btn-dark">Упаковать</button>
+        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+        </p-button> -->
+      </ng-template>
+    </p-card>
+  </div>
+</div>
+
+<div class="col-lg-12 col-xs-12 garant card-line">
+  <p-card class="">
+    <ng-template pTemplate="header">
+        <strong>Вы можете приобрести бизнес с гарантиями</strong>
+    </ng-template>
+    <p>
+      Воспользовавшись нашим сервисом вы сможете провести безопасную сделку через интернет, провести все средства онлайн и стать полноправным владельцем бизнеса уже сегодня.
+    </p>
+    <ng-template pTemplate="footer">
+      <div class="d-flex">
+        <div>
+          <button class="btn btn-secondary">Не интересно</button>
+        </div>
+        
+        <div class="ml-1">
+          <button class="btn btn-dark">Подробнее</button>
+        </div>
+      </div>
+    </ng-template>
+</p-card>
+</div>
+</body>
+
+</html>

@@ -1,114 +1,3 @@
-@import "../../app.component.scss";  
-@import "/src/app/shared/styles/image-space.scss";
-@import "/src/app/shared/styles/media-quaries.scss";
-
-.garant {
-    margin-top: 128px;
-}
-
-// Карусель.
-.product-item {
-    .product-item-content {
-        border: 1px solid var(--surface-d);
-        border-radius: 3px;
-        margin: .3rem;
-        text-align: center;
-        // padding: 2rem 0;
-        padding: 0;
-    }
-
-    .product-image {
-        // width: 50%;
-        width: 100%;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
-    }
-}
-
-.three-cards {
-    margin-top: 128px;
-}
-
-.cards-popup {
-    margin: 0 10px;
-}
-
-::ng-deep .card-business .p-card-body {
-    background: #F1F1F1;
-}
-
-::ng-deep .card-line .p-card-body {
-    background: #F1F6FF;
-}
-
-.control-quick-search {
-    margin-left: 70px;
-}
-
-.card-demo-list {
-    margin-top: 24px;
-}
-
-.gray {
-    background: #F1F1F1;
-}
-
-.btn-show-more {
-    border: 1px solid;
-    border-radius: 12px;
-}
-
-.baner {
-    width: 670px;
-    height: 272px;
-}
-
-.block-baner {
-    justify-content: space-between;
-}
-
-.popular-list {
-    justify-content: space-between;
-}
-
-.title-news {
-    font-size: 18px;
-    font-family: Roboto;
-}
-
-.ellipse {
-    margin-left: 8px;
-    margin-right: 8px;
-}
-
-.space-left-item {
-    margin-left: 24px;
-}
-
-.news-item {
-    border-bottom: 1px solid;
-    border-bottom-color: #C4C4C4;        
-}
-
-.space-top {
-    margin-top: 28px;
-}
-
-.bottom-line {
-    margin-bottom: 25px;
-}
-
-.category-item {
-    margin-bottom: 8px;
-} 
-
-.category-block-first {
-    height: 700px;
-}
-
-.category-block-second {
-    height: 700px;
-}
-
 // Медиа-запросы.
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen 
@@ -155,13 +44,19 @@ and (orientation : portrait) {
 /* Desktops and laptops ----------- */
 @media only screen 
 and (min-width : 1224px) {
-    
+    body {
+        margin-left: 24px;
+        margin-right: 24px;
+    }
 }
 
 /* Large screens ----------- */
 @media only screen 
 and (min-width : 1824px) {
-  /* Styles */
+    body {
+        margin-left: 240px;
+        margin-right: 240px;
+    }
 }
 
 /* iPhone 4 - 5s ----------- */

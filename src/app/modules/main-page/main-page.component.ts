@@ -6,12 +6,15 @@ import { ProductService } from 'src/app/services/productservice';
 
 @Component({
     selector: 'main-page',
-    templateUrl: './main-page.html',
-    styleUrls: ['./main-page.scss']
+    templateUrl: './main-page.component.html',
+    styleUrls: ['./main-page.component.scss']
 })
 export class MainPageModule implements OnInit {
     products: any[] = [];
 	responsiveOptions: any[] = [];
+    isGarant: boolean = false;
+    // rangeNumber: number = 0;
+    rangeValues: number[] = [];
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,

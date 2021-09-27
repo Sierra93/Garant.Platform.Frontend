@@ -20,20 +20,24 @@ import { RadioButtonModule } from "primeng/radiobutton";
 import { PaginatorModule } from "primeng/paginator";
 import { CommonDataService } from "./services/common-data.service";
 import { ParamInterceptor } from "./api-interceptor";
-import { HeaderModule } from "./modules/header/header";
+import { HeaderModule } from "./modules/header/header.component";
 import { InputTextModule } from "primeng/inputtext";
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { CarouselModule } from "primeng/carousel";
-import { MainPageModule } from "./modules/main-page/main-page";
+import { MainPageModule } from "./modules/main-page/main-page.component";
 import { ProductService } from "./services/productservice";
 import { CardModule } from "primeng/card";
+import { InputSwitchModule } from "primeng/inputswitch";
+import { SliderModule } from "primeng/slider";
+import { FooterModule } from "./modules/footer/footer.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderModule,
-    MainPageModule
+    MainPageModule,
+    FooterModule
   ],
 
   entryComponents: [],
@@ -56,7 +60,9 @@ import { CardModule } from "primeng/card";
     InputTextModule,
     AutoCompleteModule,
     CarouselModule,
-    CardModule
+    CardModule,
+    InputSwitchModule,
+    SliderModule  
   ],
 
   providers: [

@@ -5,8 +5,8 @@ import { Title } from "@angular/platform-browser";
 
 @Component({
     selector: 'header',
-    templateUrl: './header.html',
-    styleUrls: ['./header.scss']
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
 export class HeaderModule implements OnInit {
     aHeader: any[] = [];

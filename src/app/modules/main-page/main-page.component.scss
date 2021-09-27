@@ -1,5 +1,5 @@
 @import "../../app.component.scss";  
-@import "/src/app/shared/styles/body-margins.scss";
+@import "/src/app/shared/styles/image-space.scss";
 
 .garant {
     margin-top: 128px;
@@ -31,6 +31,75 @@
 
 ::ng-deep .card-line .p-card-body {
     background: #F1F6FF;
+}
+
+.control-quick-search {
+    margin-left: 70px;
+}
+
+.card-demo-list {
+    margin-top: 24px;
+}
+
+.gray {
+    background: #F1F1F1;
+}
+
+.btn-show-more {
+    border: 1px solid;
+    border-radius: 12px;
+}
+
+.baner {
+    width: 670px;
+    height: 272px;
+}
+
+.block-baner {
+    justify-content: space-between;
+}
+
+.popular-list {
+    justify-content: space-between;
+}
+
+.title-news {
+    font-size: 18px;
+    font-family: Roboto;
+}
+
+.ellipse {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.space-left-item {
+    margin-left: 24px;
+}
+
+.news-item {
+    border-bottom: 1px solid;
+    border-bottom-color: #C4C4C4;        
+}
+
+.space-top {
+    margin-top: 28px;
+}
+
+.bottom-line {
+    margin-bottom: 25px;
+}
+
+.category-item {
+    margin-bottom: 8px;
+} 
+
+.category-block-first {
+    height: 700px;
+}
+
+.category-block-second {
+    height: 700px;
 }
 
 // Медиа-запросы.

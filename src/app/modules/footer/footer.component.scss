@@ -1,0 +1,67 @@
+@import "/src/app/shared/styles/image-space.scss";
+
+$roboto: Roboto;
+
+.footer {
+  background: #F9F9F9;
+  color: #98AAB7;
+  padding-top: 50px;
+  padding-bottom: 50px;  
+  margin-top: 130px;
+
+  span {
+    font-family: $roboto;
+    font-size: 14px;
+  }
+
+  div {
+    line-height: 26px;
+  }
+
+  .big-title {
+    color: #2C2C2C;
+    font-family: $roboto;
+    font-size: 24px;
+  }
+
+  .email {
+    color: #00BDD6;
+  }
+
+  .btn-app {
+    background: #131E27;
+    color: white;
+    border: 1px solid #00BDD6;
+  }
+
+  .small-text {
+    font-family: $roboto;
+    font-size: 10px;
+  }
+
+  .big-text {
+    font-family: $roboto;
+    font-size: 12px;
+  }
+
+  .bold-text {
+    color: #98AAB7;
+    font-family: $roboto;
+    //font-size: 10px;
+  }
+}
+
+.before-footer {
+  background: #F3F1F9;
+  color: #0D1D4A;
+//   height: 57px;
+  align-items: center;
+}
+
+.block-payment {
+    align-items: center;
+}
+
+.before {
+    margin-bottom: 67px;
+}

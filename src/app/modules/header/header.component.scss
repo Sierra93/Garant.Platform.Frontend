@@ -194,6 +194,10 @@
 
     .search-logo {
         margin-right: 81px;
+
+        :hover {
+          cursor: pointer;
+        }
     }
     
     .input-search {

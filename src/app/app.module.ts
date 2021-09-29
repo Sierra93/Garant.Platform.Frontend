@@ -30,6 +30,7 @@ import { CardModule } from "primeng/card";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { SliderModule } from "primeng/slider";
 import { FooterModule } from "./modules/footer/footer.component";
+import { LoginModule } from "./modules/login/login.component";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { FooterModule } from "./modules/footer/footer.component";
     AppComponent,
     HeaderModule,
     MainPageModule,
-    FooterModule
+    FooterModule,
+    LoginModule
   ],
 
   entryComponents: [],

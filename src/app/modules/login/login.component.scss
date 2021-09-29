@@ -1,0 +1,36 @@
+@import "/src/app/shared/styles/image-space.scss";
+@import "/src/app/shared/styles/common.scss";
+
+.form-auth {
+    display: flex;
+    justify-content: center;
+}
+
+.input-auth {
+    height: 69px;
+}
+
+.block-form-auth {
+    width: 464px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+    padding: 10px 10px 10px 10px;
+}
+
+.text-lbl {
+    font-family: Roboto;
+    font-size: 12px;
+    // line-height: 14;
+    color: #7A7A7A;
+}
+
+.btn-code {
+    background: #DADADA;
+    width: 100%;
+    color: #FFFFFF;
+}
+
+.btn-code-active {
+    background-color: #1F75FE;
+    width: 100%;
+    color: #FFFFFF;
+}

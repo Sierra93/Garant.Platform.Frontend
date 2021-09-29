@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>    
+    <!-- Форма входа по коду. -->
+    <div class="space-top-auth-form form-auth" *ngIf="isCode">
+        <form class="block-form-auth" #getCodeForm="ngForm" novalidate>
+            <h5>Войдите или зарегистрируйтесь,<br> чтобы продолжить</h5>
+            <div class="mb-3">
+              <label class="form-label text-lbl">Email или телефон</label>
+              
+              <input type="text" class="form-control input-auth" placeholder="Введите номер или почту" 
+              name="data" [(ngModel)]="data" *ngIf="!isGetCode">
+              <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите код" name="code" [(ngModel)]="code" *ngIf="isGetCode">
+            </div>
+
+            <button class="btn btn-default btn-code-active" (click)="onGetCodeAsync(getCodeForm)" *ngIf="!isHideBtnGetCode">Получить код</button>
+            <button class="btn btn-default btn-code-active" (click)="onCheckCodeAsync(getCodeForm)" *ngIf="isHideBtnGetCode">Проверить код</button>
+            <div class="text-center">
+                или
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-link" (click)="onLoginByAccount()">Уже есть аккаунт</button>
+            </div>
+          </form>
+    </div>
+
+    <!-- Форма наличия аккаунта. -->
+    <div class="space-top-auth-form form-auth" *ngIf="isAuth">
+      <form class="block-form-auth" #getCodeForm1="ngForm" novalidate>
+          <h5>Войдите чтобы продолжить</h5>
+          <div class="mb-3">
+            <label class="form-label text-lbl">Email или телефон</label>
+            
+            <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите номер или почту" *ngIf="!isGetCode">
+            <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите код" *ngIf="isGetCode">
+          </div>
+
+          <button class="btn btn-default btn-code-active" (click)="onGetCodeAsync(getCodeForm1)" *ngIf="!isHideBtnGetCode">Получить код</button>
+            <button class="btn btn-default btn-code-active" (click)="onCheckCodeAsync(getCodeForm1)" *ngIf="isHideBtnGetCode">Проверить код</button>
+          <div class="text-center">
+              или
+          </div>
+
+          <div class="text-center">
+              <button class="btn btn-link" (click)="onLoginByPass()">Войти с паролем</button>
+          </div>
+        </form>
+  </div>
+
+   <!-- Форма по паролю. -->
+   <div class="space-top-auth-form form-auth" *ngIf="isPass">
+    <form class="block-form-auth" #getByPassForm="ngForm" novalidate>
+        <h5>Войдите чтобы продолжить</h5>
+        <div class="mb-3">
+          <label class="form-label text-lbl">Email или телефон</label>
+          
+          <input type="text" class="form-control input-auth" placeholder="Введите номер или почту" name="numOrEmail" [(ngModel)]="numOrEmail">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label text-lbl" name="pass" [(ngModel)]="pass">Пароль</label>
+          
+          <input type="email" class="form-control input-auth" placeholder="Введите пароль">
+        </div>    
+
+        <div class="text-center">
+            <button class="btn btn-link" (click)="onLoginAsync(getByPassForm)">Войти</button>
+        </div>
+
+        <div class="text-center">
+          <button class="btn btn-link">Не помню пароль</button>
+        </div>
+      </form>
+</div>
+</body>
+
+</html>

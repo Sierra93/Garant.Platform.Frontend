@@ -67,11 +67,11 @@
         <div class="mb-3">
           <label class="form-label text-lbl" name="pass" [(ngModel)]="pass">Пароль</label>
           
-          <input type="email" class="form-control input-auth" placeholder="Введите пароль">
+          <input type="text" class="form-control input-auth" name="pass" [(ngModel)]="pass" placeholder="Введите пароль">
         </div>    
 
         <div class="text-center">
-            <button class="btn btn-link" (click)="onLoginAsync(getByPassForm)">Войти</button>
+          <button class="btn btn-default btn-code-active" (click)="onLoginAsync(getByPassForm)">Войти</button>
         </div>
 
         <div class="text-center">

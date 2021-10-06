@@ -31,7 +31,9 @@ import { InputSwitchModule } from "primeng/inputswitch";
 import { SliderModule } from "primeng/slider";
 import { FooterModule } from "./modules/footer/footer.component";
 import { LoginModule } from "./modules/login/login.component";
-
+import { ProfileDataModule } from "./modules/profile-data/profile-data.component";
+import { CheckboxModule } from "primeng/checkbox";
+import { ConfirmationService, MessageService } from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { LoginModule } from "./modules/login/login.component";
     HeaderModule,
     MainPageModule,
     FooterModule,
-    LoginModule
+    LoginModule,
+    ProfileDataModule
   ],
 
   entryComponents: [],
@@ -64,7 +67,10 @@ import { LoginModule } from "./modules/login/login.component";
     CarouselModule,
     CardModule,
     InputSwitchModule,
-    SliderModule  
+    SliderModule,
+    CheckboxModule,
+    ConfirmationService,
+    MessageService
   ],
 
   providers: [

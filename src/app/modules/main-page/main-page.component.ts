@@ -37,11 +37,11 @@ export class MainPageModule implements OnInit {
                     numScroll: 1
                 }
             ];
-    }
+    };
 
     public async ngOnInit() {
          // TODO: переделать на получение заголовка с бэка.
-         this.titleService.setTitle("Gobizy - сервис покупки и продажи франшиз");
+         this.titleService.setTitle("Gobizy: Сервис покупки и продажи франшиз");
 
          this.productService.getProductsSmall().then(products => {
 			this.products = products;

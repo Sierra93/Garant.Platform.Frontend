@@ -23,6 +23,7 @@ export class LoginModule implements OnInit {
     pass: string = "";
     isHideBtnGetCode: boolean = false;
     code: string = "";
+    type: string = "";
 
     constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
         this.routeParam = this.route.snapshot.queryParams.loginType;
@@ -47,7 +48,7 @@ export class LoginModule implements OnInit {
             this.isCode = false;
             this.isPass = true;
         }
-    }
+    };
 
     public ngOnInit() {
 
@@ -112,9 +113,13 @@ export class LoginModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/mailing/send-confirm-code"), inputData)
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Код подтверждения:", response);
-                        this.isGetCode = true;
-                        this.isHideBtnGetCode = true;
+                        console.log("Код подтверждения:", response);                       
+
+                        if (response.isSuccessMailing) {
+                            this.isGetCode = true;
+                            this.isHideBtnGetCode = true;
+                            this.type = response.typeMailing;
+                        }  
                     },
 
                     error: (err) => {
@@ -140,7 +145,11 @@ export class LoginModule implements OnInit {
                 .subscribe({
                     next: (response: any) => {
                         console.log("Проверка кода подтверждения:", response);
-                        this.isGetCode = true;
+                        this.isGetCode = true;       
+                        
+                        if (response) {
+                            this.router.navigate(["/profile-data"]);
+                        }
                     },
 
                     error: (err) => {

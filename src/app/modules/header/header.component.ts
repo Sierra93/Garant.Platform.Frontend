@@ -16,7 +16,7 @@ export class HeaderModule implements OnInit {
         private commonService: CommonDataService,
         private titleService: Title,
         private router: Router) {
-    }
+    };
 
     public async ngOnInit() {       
        await this.initHeaderAsync();

@@ -75,4 +75,30 @@ export class CommonDataService {
             throw new Error(e);
         }
     };
+
+    /**
+     * Функция получит список категорий.
+     * @returns Список категорий.
+     */
+    public async loadCategoriesListAsync() {
+        try {
+            return new Promise<string>(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/main/categories-list"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("Список категорий:", response);
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 };

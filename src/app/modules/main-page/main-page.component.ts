@@ -19,6 +19,10 @@ export class MainPageModule implements OnInit {
     // rangeNumber: number = 0;
     rangeValues: number[] = [];
     routeParam: any;
+    categoryList1: any[] = [];
+    categoryList2: any[] = [];
+    categoryList3: any[] = [];
+    categoryList4: any[] = [];
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -59,6 +63,8 @@ export class MainPageModule implements OnInit {
         if (this.routeParam.code !== "" && this.routeParam.code !== undefined && this.routeParam.code !== null) {
             await this.confirmEmailAsync();
         }
+
+        await this.loadCategoriesListAsync();
     };    
 
     /**
@@ -83,6 +89,39 @@ export class MainPageModule implements OnInit {
                         throw new Error(err);
                     }
                 });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+     /**
+     * Функция получит список категорий.
+     * @returns Список категорий.
+     */
+    private async loadCategoriesListAsync() {
+        try {
+            await this.commonService.loadCategoriesListAsync().then((data: any) => {
+                // Распределит категории в каждый стобец.
+                data.forEach((item: any) => {
+                    if (item.column == 1) {                                 
+                        this.categoryList1.push(item);
+                    }
+
+                    else if (item.column == 2) {
+                        this.categoryList2.push(item);
+                    }
+
+                    else if (item.column == 3) {
+                        this.categoryList3.push(item);
+                    }
+
+                    else if (item.column == 4) {
+                        this.categoryList4.push(item);
+                    }                    
+                });
+            });
         }
 
         catch (e: any) {

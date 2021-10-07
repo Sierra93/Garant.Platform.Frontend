@@ -488,78 +488,13 @@
 <!-- Категории готового бизнеса. -->
 <div>
   <div class="d-flex">
+    <!-- 1 столбец. -->
     <div class="col-lg-3 col-xs-12">
       <h5 class="garant">Новости делового мира</h5>
      <div class="category-block-first">
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/search-engine 1.png">
-        <span>Биржа сайтов и доменов</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
+      <div class="category-item" *ngFor="let item of categoryList1">
+        <img class="space-right-image-category" [src]="item.url">
+        <span>{{item.name}}</span>
         <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
       </div>     
      </div>
@@ -568,127 +503,37 @@
     <!-- 2 столбец -->
     <div class="col-lg-3">
       <div class="garant">&nbsp;</div>
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
+      <div class="category-item" *ngFor="let item of categoryList2">
+        <img class="space-right-image-category" [src]="item.url">
+        <span>{{item.name}}</span>
         <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
+      </div> 
     </div>
 
-    <!-- 3 cnjk,tw -->
+    <!-- 3 столбец. -->
     <div class="col-lg-3 col-xs-12">
       <h5 class="garant">Категории франшиз</h5>
      <div class="category-block-second">
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/car 1.png">
-        <span>Авто</span>
+      <div class="category-item" *ngFor="let item of categoryList3">
+        <img class="space-right-image-category" [src]="item.url">
+        <span>{{item.name}}</span>
         <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/search-engine 1.png">
-        <span>Биржа сайтов и доменов</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
+      </div> 
      </div>
     </div>
 
     <!-- 4 столбец -->
     <div class="col-lg-3">
       <div class="garant">&nbsp;</div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
+      <div class="category-item" *ngFor="let item of categoryList4">
+        <img class="space-right-image-category" [src]="item.url">
+        <span>{{item.name}}</span>
         <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-
-      <div class="category-item">
-        <img class="space-right-image-category" src="../../../assets/images/medical-insurance 1.png">
-        <span>Здоровье и красота</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
+      </div> 
     </div>
   </div>
 </div>
+
 </body>
 
 </html>

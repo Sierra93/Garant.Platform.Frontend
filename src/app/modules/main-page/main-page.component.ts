@@ -3,6 +3,9 @@ import { HttpClient } from "@angular/common/http";
 import { CommonDataService } from 'src/app/services/common-data.service';
 import { Title } from "@angular/platform-browser";
 import { ProductService } from 'src/app/services/productservice';
+import { ActivatedRoute, Router } from '@angular/router';
+import { API_URL } from 'src/app/core/core-urls/api-url';
+import { ConfirmEmailInput } from 'src/app/models/register/input/confirm-email-input';
 
 @Component({
     selector: 'main-page',
@@ -15,11 +18,14 @@ export class MainPageModule implements OnInit {
     isGarant: boolean = false;
     // rangeNumber: number = 0;
     rangeValues: number[] = [];
+    routeParam: any;
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
         private titleService: Title,
-        private productService: ProductService) {
+        private productService: ProductService,
+        private route: ActivatedRoute,
+        private router: Router) {
             this.responsiveOptions = [
                 {
                     breakpoint: '1024px',
@@ -36,7 +42,7 @@ export class MainPageModule implements OnInit {
                     numVisible: 1,
                     numScroll: 1
                 }
-            ];
+            ];            
     };
 
     public async ngOnInit() {
@@ -46,5 +52,41 @@ export class MainPageModule implements OnInit {
          this.productService.getProductsSmall().then(products => {
 			this.products = products;
 		});
+
+        this.routeParam = this.route.snapshot.queryParams;
+        console.log("routeParam", this.routeParam);
+
+        if (this.routeParam.code !== "" && this.routeParam.code !== undefined && this.routeParam.code !== null) {
+            await this.confirmEmailAsync();
+        }
     };    
+
+    /**
+     * Функция проверит подтверждение почты.
+     */
+    private async confirmEmailAsync() {    
+        try {
+            let confirmInput = new ConfirmEmailInput();
+            confirmInput.code = this.routeParam.code;
+
+            await this.http.post(API_URL.apiUrl.concat("/user/confirm-email"), confirmInput)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Подтверждение почты:", response);
+
+                        if (response) {
+                            this.router.navigate(["/"]);                            
+                        }
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 }

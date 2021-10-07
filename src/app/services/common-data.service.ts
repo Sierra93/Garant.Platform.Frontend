@@ -22,16 +22,19 @@ export class CommonDataService {
         mainPage.Type = type;
 
         try {
-            await this.http.post(API_URL.apiUrl.concat("/user/init-header"), mainPage)
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Данные хидера:", response);
-                    },
+            return new Promise<string>(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/user/init-header"), mainPage)
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("Данные хидера:", response);
+                            resolve(response);
+                        },
 
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            })
         }
 
         catch (e: any) {
@@ -45,6 +48,31 @@ export class CommonDataService {
             sessionStorage["role"] = "G";
 
             this.router.navigate(["/login"]);
+        }
+    };
+
+    /**
+     * Функция получит поля футера.
+     */
+    public async initFooterAsync() {
+        try {
+            return new Promise<string>(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/user/init-footer"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("Данные футера:", response);
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
         }
     };
 };

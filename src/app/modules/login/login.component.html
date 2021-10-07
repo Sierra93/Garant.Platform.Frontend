@@ -19,6 +19,12 @@
               <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите код" name="code" [(ngModel)]="code" *ngIf="isGetCode">
             </div>
 
+           <div class="send-code">
+             <small class="form-label text-lbl" *ngIf="play">Получить новый код можно через 00:{{time}}</small>
+             <br>
+             <button class="btn btn-link btn-sm" *ngIf="play">Отправить код повторно</button>
+           </div>
+
             <button class="btn btn-default btn-code-active" (click)="onGetCodeAsync(getCodeForm)" *ngIf="!isHideBtnGetCode">Получить код</button>
             <button class="btn btn-default btn-code-active" (click)="onCheckCodeAsync(getCodeForm)" *ngIf="isHideBtnGetCode">Проверить код</button>
             <div class="text-center">
@@ -40,6 +46,12 @@
             
             <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите номер или почту" *ngIf="!isGetCode">
             <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите код" *ngIf="isGetCode">
+          </div>
+
+          <div class="send-code">
+            <small class="form-label text-lbl" *ngIf="play">Получить новый код можно через 00:{{time}}</small>
+            <br>
+            <button class="btn btn-link btn-sm" *ngIf="play">Отправить код повторно</button>
           </div>
 
           <button class="btn btn-default btn-code-active" (click)="onGetCodeAsync(getCodeForm1)" *ngIf="!isHideBtnGetCode">Получить код</button>

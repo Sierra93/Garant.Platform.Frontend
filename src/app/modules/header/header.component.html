@@ -36,52 +36,10 @@
                 <ul class="navbar-nav flex-grow">
                   <li class="nav-item">
                     <div class="div-link">
-                      <!-- <li *ngFor="let el of aHeader">
-                        <div (click)="onGetMenu(el.headerField)">{{el.headerField}}</div>
-                      </li> -->
-   
-                      <li>
-                       <div>Новости</div>
-                     </li>
-
-                     <li>
-                       <div>Блог</div>
-                     </li>
-
-                     <li>
-                       <div>Прайс-лист</div>
-                     </li>
-
-                     <li>
-                       <div>Зарабатывай вместе с gobizy</div>
-                     </li>
-
-                     <li>
-                      <div>Ответственность сервиса</div>
-                    </li>
-
-                    <li>
-                      <div>Реферальная программа</div>
-                    </li>
-
-                    <li>
-                      <div>Помощь</div>
-                    </li>
-
-                    <li>
-                      <div>О нас</div>
-                    </li>
-
-                    <li (click)="onRouteLogin()">
-                      <div>Вход или регистрация</div>
-                    </li>
-    
-                        <!-- <li>
-                          <button class="nav-link btn btn-link link-add-task" 
-                                  (click)="onRouteCreateTask()">
-                            Создать задание
-                          </button>
-                        </li>                     -->
+                      <!-- Пункты хидера. -->
+                      <li *ngFor="let el of aHeader">
+                        <div (click)="onGetMenuHeader(el.name)">{{el.name}}</div>
+                      </li>
                     </div>
                   </li>              
                 </ul>           

@@ -24,6 +24,9 @@ export class LoginModule implements OnInit {
     isHideBtnGetCode: boolean = false;
     code: string = "";
     type: string = "";
+    time: number = 60;
+    interval: any;
+    play: boolean = false;
 
     constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
         this.routeParam = this.route.snapshot.queryParams.loginType;
@@ -63,9 +66,9 @@ export class LoginModule implements OnInit {
         this.router.navigate(["/login"], { queryParams: { loginType: "auth" } });
     };
 
-     /**
-     * Функция входа по паролю.
-     */
+    /**
+    * Функция входа по паролю.
+    */
     public onLoginByPass() {
         this.isAuth = false;
         this.isCode = false;
@@ -105,6 +108,7 @@ export class LoginModule implements OnInit {
      */
     public async onGetCodeAsync(form: NgForm) {
         console.log("data", form.value.data);
+        this.startTimer();
 
         try {
             let inputData = new CheckCodeInput();
@@ -113,13 +117,13 @@ export class LoginModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/mailing/send-confirm-code"), inputData)
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Код подтверждения:", response);                       
+                        console.log("Код подтверждения:", response);
 
                         if (response.isSuccessMailing) {
                             this.isGetCode = true;
                             this.isHideBtnGetCode = true;
                             this.type = response.typeMailing;
-                        }  
+                        }
                     },
 
                     error: (err) => {
@@ -145,9 +149,10 @@ export class LoginModule implements OnInit {
                 .subscribe({
                     next: (response: any) => {
                         console.log("Проверка кода подтверждения:", response);
-                        this.isGetCode = true;       
-                        
+                        this.isGetCode = true;
+
                         if (response) {
+                            this.pauseTimer();
                             this.router.navigate(["/profile-data"]);
                         }
                     },
@@ -161,5 +166,22 @@ export class LoginModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
+    };
+
+    public startTimer() {
+        this.play = true;
+        this.interval = setInterval(() => {
+            if (this.time == 0) {
+                this.pauseTimer();
+                return;
+            }
+
+            this.time--;
+        }, 1000)
+    };
+
+    public pauseTimer() {
+        this.play = false;
+        clearInterval(this.interval);
     };
 }

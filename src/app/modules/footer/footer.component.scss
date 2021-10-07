@@ -65,3 +65,8 @@ $roboto: Roboto;
 .before {
     margin-bottom: 67px;
 }
+
+.block-col-footer {
+  display: flex;
+  flex-direction: column;
+}

@@ -27,7 +27,7 @@ export class HeaderModule implements OnInit {
      /**
      * Функция получит поля хидера.
      */
-    public async initHeaderAsync() {
+    private async initHeaderAsync() {
         try {
             await this.commonService.initHeaderAsync("Main").then((data: any) => {
                 this.aHeader = data;
@@ -39,14 +39,19 @@ export class HeaderModule implements OnInit {
         }
     };
 
-    /**
-     * Функция перехода на страницу авторизации.
-     */
-    public onRouteLogin() {        
-        this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
-    };
-
     public onRouteStart() {
         this.router.navigate(["/"]);
+    };
+
+    /**
+     * Функция распределит роуты по пунктам хидера.
+     * @param name - параметр роута с названием пункта.
+     */
+    public onGetMenuHeader(name: string) {
+        switch (name) {
+            case "Вход или регистрация":
+                this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
+                break;
+        }
     };
 }

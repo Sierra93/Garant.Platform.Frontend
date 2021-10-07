@@ -21,185 +21,45 @@
         </div>      
     </div>
 
-    <div class="container d-flex justify-content-between">          
-      <!-- Разделы. -->
-      <div>
-        <span>
-          <strong class="big-title">Разделы</strong>
-        </span>
-
-        <br />
-
-        <span>
-            Главная
-        </span>
-
-        <br />
-
-        <span>
-            Каталог франшиз
-        </span>
-
-        <br />
-
-        <span>
-            Каталог готового бизнеса
-        </span>
-
-        <br />
-
-        <span>
-            Покупка онлайн гарант
-        </span>
-
-        <br />
-
-        <span>
-            Сопровождение сделки
-        </span>
-
-        <br />
-
-        <span>
-            Упаковка франшиз
-        </span>
-
-        <br />
-
-        <a href="#">
-            <span>
-                Разместить объявление
-            </span>
-        </a>       
+    <!-- Пункты футера. -->
+    <div class="container d-flex justify-content-between">                  
+      <div>        
+        <div class="block-col-footer">
+          <span *ngFor="let el of aFooterColumn1">
+            <strong class="big-title">{{el.title}}</strong>
+            <span>{{el.name}}</span>
+          </span>
+        </div>
       </div>
 
       <!-- Проекты. -->
-      <div>
-        <span>
-          <strong class="big-title">Проекты</strong>
-        </span>
-
-        <br />
-
-        <span>
-            Новости
-        </span>
-
-        <br />
-
-        <span>
-            Блог
-        </span>
-
-        <br />
-
-        <span>
-            Прайс-лист
-        </span>
-
-        <br />
-
-        <span>
-            Сервис гарант
-        </span>        
-
-        <br>
-
-        <span>
-            Консалтинг
-        </span>
-
-        <br>
-
-        <span>
-            Подбор бизнеса
-        </span>
+      <div>        
+        <div class="block-col-footer">
+          <span *ngFor="let el of aFooterColumn2">
+            <strong class="big-title">{{el.title}}</strong>
+            <span>{{el.name}}</span>
+          </span>
+        </div>
       </div>
 
       <!-- GoBizy. -->
-      <div>
-        <span>
-          <strong class="big-title">GoBizy</strong>          
-        </span>
-
-        <br />
-
-        <span>
-            Реферальная программа
-        </span>
-
-        <br />
-
-        <span>
-            Вакансии
-        </span>
-
-        <br />
-
-        <span>
-            О сервисе
-        </span>
-
-        <br />
-
-        <span>
-            Ответственность сервиса
-        </span>
-
-        <br />
-
-        <span>
-            Помощь
-        </span>
-
-        <br />
-
-        <span>
-            Служба поддержки
-        </span>
+      <div>        
+        <div class="block-col-footer">
+          <span *ngFor="let el of aFooterColumn3">
+            <strong class="big-title">{{el.title}}</strong>
+            <span>{{el.name}}</span>
+          </span>
+        </div>
       </div>
 
       <!-- Политика. -->
-      <div>
-        <span>
-          <strong class="big-title">Политика</strong>          
-        </span>
-
-        <br />
-
-        <span>
-            Политика конфиденциальности
-        </span>
-
-        <br />
-
-        <span>
-            Условия использования
-        </span>
-
-        <br />
-
-        <span>
-            Пользовательское соглашение
-        </span>
-
-        <br />
-
-        <span>
-            DMCA уведомление
-        </span>
-
-        <br />
-
-        <span>
-            Помощь
-        </span>
-
-        <br />
-
-        <span>
-            Служба поддержки
-        </span>
+      <div>        
+        <div class="block-col-footer">
+          <span *ngFor="let el of aFooterColumn4">
+            <strong class="big-title">{{el.title}}</strong>
+            <span>{{el.name}}</span>
+          </span>
+        </div>
       </div>
     </div>
   </div>

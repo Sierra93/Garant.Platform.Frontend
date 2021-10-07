@@ -33,7 +33,6 @@ import { FooterModule } from "./modules/footer/footer.component";
 import { LoginModule } from "./modules/login/login.component";
 import { ProfileDataModule } from "./modules/profile-data/profile-data.component";
 import { CheckboxModule } from "primeng/checkbox";
-import { ConfirmationService, MessageService } from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -68,9 +67,7 @@ import { ConfirmationService, MessageService } from "primeng/api";
     CardModule,
     InputSwitchModule,
     SliderModule,
-    CheckboxModule,
-    ConfirmationService,
-    MessageService
+    CheckboxModule
   ],
 
   providers: [

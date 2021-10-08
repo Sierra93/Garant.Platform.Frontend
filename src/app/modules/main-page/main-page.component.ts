@@ -23,6 +23,7 @@ export class MainPageModule implements OnInit {
     categoryList2: any[] = [];
     categoryList3: any[] = [];
     categoryList4: any[] = [];
+    aSlider: any[] = [];
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -65,6 +66,7 @@ export class MainPageModule implements OnInit {
         }
 
         await this.loadCategoriesListAsync();
+        await this.loadSliderLastBuyAsync();
     };    
 
     /**
@@ -108,6 +110,29 @@ export class MainPageModule implements OnInit {
                 this.categoryList3 = data.resultCol3;
                 this.categoryList4 = data.resultCol4;
             });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит данные слайдера.
+     */
+    private async loadSliderLastBuyAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/main/slider-last-buy"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Слайдер:", response);
+                        this.aSlider = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
         }
 
         catch (e: any) {

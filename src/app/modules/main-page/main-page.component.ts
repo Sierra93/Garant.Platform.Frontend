@@ -103,24 +103,10 @@ export class MainPageModule implements OnInit {
     private async loadCategoriesListAsync() {
         try {
             await this.commonService.loadCategoriesListAsync().then((data: any) => {
-                // Распределит категории в каждый стобец.
-                data.forEach((item: any) => {
-                    if (item.column == 1) {                                 
-                        this.categoryList1.push(item);
-                    }
-
-                    else if (item.column == 2) {
-                        this.categoryList2.push(item);
-                    }
-
-                    else if (item.column == 3) {
-                        this.categoryList3.push(item);
-                    }
-
-                    else if (item.column == 4) {
-                        this.categoryList4.push(item);
-                    }                    
-                });
+                this.categoryList1 = data.resultCol1;
+                this.categoryList2 = data.resultCol2;
+                this.categoryList3 = data.resultCol3;
+                this.categoryList4 = data.resultCol4;
             });
         }
 

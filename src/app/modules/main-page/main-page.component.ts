@@ -25,6 +25,8 @@ export class MainPageModule implements OnInit {
     categoryList4: any[] = [];
     aSlider: any[] = [];
     aDataActions: any[] = [];    
+    aSuggestions: any[] = [];    
+    oSuggestion: any = {};
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -64,6 +66,7 @@ export class MainPageModule implements OnInit {
         await this.loadCategoriesListAsync();
         await this.loadSliderLastBuyAsync();
         await this.GetActionsAsync();
+        await this.loadSingleSuggestionAsync();
     };    
 
     /**
@@ -153,6 +156,22 @@ export class MainPageModule implements OnInit {
                         throw new Error(err);
                     }
                 });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит одно предложение с флагом IsSingle.
+     * @returns данные предложения.
+     */
+    private async loadSingleSuggestionAsync() {
+        try {
+            await this.commonService.loadSingleSuggestionAsync().then((data: any) => {
+                this.oSuggestion = data;            
+            });
         }
 
         catch (e: any) {

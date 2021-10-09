@@ -82,17 +82,15 @@
     <ng-template pTemplate="header">
         <strong>Вы можете приобрести бизнес с гарантиями</strong>
     </ng-template>
-    <p>
-      Воспользовавшись нашим сервисом вы сможете провести безопасную сделку через интернет, провести все средства онлайн и стать полноправным владельцем бизнеса уже сегодня.
-    </p>
+    <p>{{oSuggestion.text}}</p>
     <ng-template pTemplate="footer">
       <div class="d-flex">
         <div>
-          <button class="btn btn-default btn-show-more">Не интересно</button>
+          <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button>
         </div>
         
         <div class="ml-1">
-          <button class="btn btn-dark">Подробнее</button>
+          <button class="btn btn-dark">{{oSuggestion.button2Text}}</button>
         </div>
       </div>
     </ng-template>

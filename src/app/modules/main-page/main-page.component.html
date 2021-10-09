@@ -61,48 +61,15 @@
 
 <!-- Область с 3 карточками. -->
 <div class="d-flex three-cards">
-  <div class="col-lg-4 card-business">
-    <p-card header="Подберите подходящий бизнес" subheader="Получите подборку подходящих бизнесов" [style]="{width: '100%'}" styleClass="card">
+  <div class="col-lg-4 card-business" *ngFor="let item of aDataActions">
+    <p-card header="{{item.title}}" subheader="{{item.subTitle}}" [style]="{width: '100%'}" styleClass="card">
       <ng-template pTemplate="header">
         <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
       </ng-template>
-      <p>Пройдите краткий опрос, на основе вашего опыта, навыков и знаний мы предложим вам подходящий бизнес в форме готового бизнеса или франшиз.
-      </p>
+      <p>{{item.text}}</p>
       <ng-template pTemplate="footer">
         <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-        <button class="btn btn-dark">Начать</button>
-        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button> -->
-      </ng-template>
-    </p-card>
-  </div>
-
-  <div class="col-lg-4 card-business">
-    <p-card header="Продайте свой бизнес" subheader="Вы можете продать свой бизнес" [style]="{width: '100%'}" styleClass="card">
-      <ng-template pTemplate="header">
-        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-      </ng-template>
-      <p>Все что вам нужно - выложить объявление в нашем каталоге, после проверки модераторами мы выложим его в общий доступ.
-      </p>
-      <ng-template pTemplate="footer">
-        <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-        <button class="btn btn-dark">Продать</button>
-        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button> -->
-      </ng-template>
-    </p-card>
-  </div>
-
-  <div class="col-lg-4 card-business">
-    <p-card header="Создайте свою франшизу" subheader="Закажите упаковку франшизы у нас" [style]="{width: '100%'}" styleClass="card">
-      <ng-template pTemplate="header">
-        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-      </ng-template>
-      <p>Если ваш готовый бизнес уже имеет открытые филиалы или вы собираетесь заводить таковые, то вы с уверенностью можете оставлять заявку.
-      </p>
-      <ng-template pTemplate="footer">
-        <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-        <button class="btn btn-dark">Упаковать</button>
+        <button class="btn btn-dark">{{item.buttonText}}</button>
         <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
         </p-button> -->
       </ng-template>

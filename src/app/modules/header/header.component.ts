@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
+
 export class HeaderModule implements OnInit {
     aHeader: any[] = [];
 

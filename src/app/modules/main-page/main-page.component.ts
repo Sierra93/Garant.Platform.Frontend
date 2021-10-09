@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CommonDataService } from 'src/app/services/common-data.service';
 import { Title } from "@angular/platform-browser";
-import { ProductService } from 'src/app/services/productservice';
 import { ActivatedRoute, Router } from '@angular/router';
 import { API_URL } from 'src/app/core/core-urls/api-url';
 import { ConfirmEmailInput } from 'src/app/models/register/input/confirm-email-input';
@@ -12,6 +11,7 @@ import { ConfirmEmailInput } from 'src/app/models/register/input/confirm-email-i
     templateUrl: './main-page.component.html',
     styleUrls: ['./main-page.component.scss']
 })
+
 export class MainPageModule implements OnInit {
     products: any[] = [];
 	responsiveOptions: any[] = [];
@@ -24,39 +24,35 @@ export class MainPageModule implements OnInit {
     categoryList3: any[] = [];
     categoryList4: any[] = [];
     aSlider: any[] = [];
+    aDataActions: any[] = [];    
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
         private titleService: Title,
-        private productService: ProductService,
         private route: ActivatedRoute,
         private router: Router) {
-            this.responsiveOptions = [
-                {
-                    breakpoint: '1024px',
-                    numVisible: 3,
-                    numScroll: 3
-                },
-                {
-                    breakpoint: '768px',
-                    numVisible: 2,
-                    numScroll: 2
-                },
-                {
-                    breakpoint: '560px',
-                    numVisible: 1,
-                    numScroll: 1
-                }
-            ];            
+        this.responsiveOptions = [
+            {
+                breakpoint: '1024px',
+                numVisible: 3,
+                numScroll: 3
+            },
+            {
+                breakpoint: '768px',
+                numVisible: 2,
+                numScroll: 2
+            },
+            {
+                breakpoint: '560px',
+                numVisible: 1,
+                numScroll: 1
+            }
+        ];
     };
 
     public async ngOnInit() {
          // TODO: переделать на получение заголовка с бэка.
          this.titleService.setTitle("Gobizy: Сервис покупки и продажи франшиз");
-
-         this.productService.getProductsSmall().then(products => {
-			this.products = products;
-		});
 
         this.routeParam = this.route.snapshot.queryParams;
         console.log("routeParam", this.routeParam);
@@ -67,6 +63,7 @@ export class MainPageModule implements OnInit {
 
         await this.loadCategoriesListAsync();
         await this.loadSliderLastBuyAsync();
+        await this.GetActionsAsync();
     };    
 
     /**
@@ -127,6 +124,29 @@ export class MainPageModule implements OnInit {
                     next: (response: any) => {
                         console.log("Слайдер:", response);
                         this.aSlider = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит данные для блока событий.
+     */
+    private async GetActionsAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/main/actions"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Блок событий:", response);
+                        this.aDataActions = response;
                     },
 
                     error: (err) => {

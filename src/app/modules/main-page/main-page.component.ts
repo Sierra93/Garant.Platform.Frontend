@@ -29,6 +29,8 @@ export class MainPageModule implements OnInit {
     oSuggestion: any = {};
     aPopularFranchises: any[] = [];
     aAds: any[] = [];
+    aBlogs: any[] = [];
+    aNews: any[] = [];
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -70,7 +72,9 @@ export class MainPageModule implements OnInit {
         await this.GetActionsAsync();
         await this.loadSingleSuggestionAsync();
         await this.GetPopularAsync();
-        await this.GetNewsAdAsync();
+        await this.GetAdsAsync();
+        await this.GetBlogsAsync();
+        await this.GetNewsTopAsync();
     };    
 
     /**
@@ -211,13 +215,61 @@ export class MainPageModule implements OnInit {
      * Функция получит список последних объявлений.
      * @returns Список объявлений.
      */
-     private async GetNewsAdAsync() {
+     private async GetAdsAsync() {
         try {
             await this.http.post(API_URL.apiUrl.concat("/ad/new"), {})
                 .subscribe({
                     next: (response: any) => {
                         console.log("Последние объявления:", response);
                         this.aAds = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список блогов.
+     * @returns Список блогов.
+     */
+    private async GetBlogsAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/blog/main-blogs"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Список блогов:", response);
+                        this.aBlogs = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список проплаченных новостей.
+     * @returns Список новостей.
+     */
+    private async GetNewsTopAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/blog/main-news"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Список новостей:", response);
+                        this.aNews = response;
                     },
 
                     error: (err) => {

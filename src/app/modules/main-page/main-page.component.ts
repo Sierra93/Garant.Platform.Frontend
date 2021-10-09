@@ -27,6 +27,8 @@ export class MainPageModule implements OnInit {
     aDataActions: any[] = [];    
     aSuggestions: any[] = [];    
     oSuggestion: any = {};
+    aPopularFranchises: any[] = [];
+    aAds: any[] = [];
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -67,6 +69,8 @@ export class MainPageModule implements OnInit {
         await this.loadSliderLastBuyAsync();
         await this.GetActionsAsync();
         await this.loadSingleSuggestionAsync();
+        await this.GetPopularAsync();
+        await this.GetNewsAdAsync();
     };    
 
     /**
@@ -172,6 +176,54 @@ export class MainPageModule implements OnInit {
             await this.commonService.loadSingleSuggestionAsync().then((data: any) => {
                 this.oSuggestion = data;            
             });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список популярныз франшиз.
+     * @returns Список франшиз.
+     */
+    private async GetPopularAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/franchise/main-popular"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Популярные франшизы:", response);
+                        this.aPopularFranchises = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список последних объявлений.
+     * @returns Список объявлений.
+     */
+     private async GetNewsAdAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/ad/new"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Последние объявления:", response);
+                        this.aAds = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
         }
 
         catch (e: any) {

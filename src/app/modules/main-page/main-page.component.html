@@ -245,52 +245,13 @@
 <!-- Популярные франшизы. -->
 <h5 class="garant">Популярные франшизы</h5>
 <div class="d-flex popular-list">
-  <div class="col-lg-3">
-    <p-card header="Название готового бизнеса" subheader="Готовый бизнес 24 дня на портале"
+  <div class="col-lg-3" *ngFor="let item of aPopularFranchises">
+    <p-card header="{{item.title}}" subheader="{{item.text}}"
     [style]="{width: '100%'}" styleClass="p-card-shadow">
     <ng-template pTemplate="header">
-      <img src="../../../assets/images/Rectangle 20.png">
+      <img [src]="item.url">
     </ng-template>
-    <strong>Сумма сделки: 12 500 000 ₽</strong>
-    <ng-template pTemplate="footer">
-      
-    </ng-template>
-  </p-card>
-  </div>
-
-  <div class="col-lg-3">
-    <p-card header="Название готового бизнеса" subheader="Готовый бизнес 24 дня на портале"
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img src="../../../assets/images/Rectangle 20.png">
-    </ng-template>
-    <strong>Сумма сделки: 12 500 000 ₽</strong>
-    <ng-template pTemplate="footer">
-      
-    </ng-template>
-  </p-card>
-  </div>
-
-  <div class="col-lg-3">
-    <p-card header="Название готового бизнеса" subheader="Готовый бизнес 24 дня на портале"
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img src="../../../assets/images/Rectangle 20.png">
-    </ng-template>
-    <strong>Сумма сделки: 12 500 000 ₽</strong>
-    <ng-template pTemplate="footer">
-      
-    </ng-template>
-  </p-card>
-  </div>
-
-  <div class="col-lg-3">
-    <p-card header="Название готового бизнеса" subheader="Готовый бизнес 24 дня на портале"
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img src="../../../assets/images/Rectangle 20.png">
-    </ng-template>
-    <strong>Сумма сделки: 12 500 000 ₽</strong>
+    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
     <ng-template pTemplate="footer">
       
     </ng-template>
@@ -301,52 +262,13 @@
 <!-- Новые объявления готового бизнеса. -->
 <h5 class="garant">Новые объявления готового бизнеса</h5>
 <div class="d-flex popular-list">
-  <div class="col-lg-3">
-    <p-card header="Название готового бизнеса" subheader="Готовый бизнес 24 дня на портале"
+  <div class="col-lg-3" *ngFor="let item of aAds">
+    <p-card header="{{item.title}}" subheader="{{item.text}}"
     [style]="{width: '100%'}" styleClass="p-card-shadow">
     <ng-template pTemplate="header">
-      <img src="../../../assets/images/Rectangle 20.png">
+      <img [src]="item.url">
     </ng-template>
-    <strong>Сумма сделки: 12 500 000 ₽</strong>
-    <ng-template pTemplate="footer">
-      
-    </ng-template>
-  </p-card>
-  </div>
-
-  <div class="col-lg-3">
-    <p-card header="Название готового бизнеса" subheader="Готовый бизнес 24 дня на портале"
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img src="../../../assets/images/Rectangle 20.png">
-    </ng-template>
-    <strong>Сумма сделки: 12 500 000 ₽</strong>
-    <ng-template pTemplate="footer">
-      
-    </ng-template>
-  </p-card>
-  </div>
-
-  <div class="col-lg-3">
-    <p-card header="Название готового бизнеса" subheader="Готовый бизнес 24 дня на портале"
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img src="../../../assets/images/Rectangle 20.png">
-    </ng-template>
-    <strong>Сумма сделки: 12 500 000 ₽</strong>
-    <ng-template pTemplate="footer">
-      
-    </ng-template>
-  </p-card>
-  </div>
-
-  <div class="col-lg-3">
-    <p-card header="Название готового бизнеса" subheader="Готовый бизнес 24 дня на портале"
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img src="../../../assets/images/Rectangle 20.png">
-    </ng-template>
-    <strong>Сумма сделки: 12 500 000 ₽</strong>
+    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
     <ng-template pTemplate="footer">
       
     </ng-template>

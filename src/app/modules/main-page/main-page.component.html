@@ -11,9 +11,9 @@
 <div class="d-flex garant">
   <!-- Блок с каруселью. -->
 <div class="col-lg-8">
-  <p-carousel [value]="aSlider" [numVisible]="2" [numScroll]="2" [circular]="false" [responsiveOptions]="responsiveOptions">
+  <p-carousel [value]="aSlider" [numVisible]="2" [numScroll]="2" [circular]="false" [responsiveOptions]="responsiveOptions" [showNavigators]="false">
     <ng-template pTemplate="header">
-      <h5>Недавно приобрели</h5>
+      <h5 class="title-franchise">Недавно приобрели</h5>
     </ng-template>
     <ng-template let-item pTemplate="item">
         <div class="product-item">
@@ -41,14 +41,13 @@
 </div>
 
 <div class="col-lg-4">
-  <h5>Покупка бизнеса с гарантиями</h5> 
-  <p-card header="Покупка бизнеса любого размера онлайн с гарантиями" subheader="" [style]="{width: '100%'}" styleClass="card">
+  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5> 
+  <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" styleClass="card">
     <ng-template pTemplate="header">
       <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
       <!-- <h5>Покупка бизнеса любого размера онлайн с гарантиями</h5> -->
     </ng-template>
-    <p>Первый в мире сервис с функцией приобретитения франшизы или готового бизнеса онлайн и без опасений
-    </p>
+    <p>{{oTopAction.text}}</p>
     <ng-template pTemplate="footer">
       <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
       <button class="btn btn-dark">Подробнее</button>
@@ -81,6 +80,9 @@
   <p-card class="">
     <ng-template pTemplate="header">
         <strong>Вы можете приобрести бизнес с гарантиями</strong>
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
     </ng-template>
     <p>{{oSuggestion.text}}</p>
     <ng-template pTemplate="footer">
@@ -100,7 +102,7 @@
 <!-- Секция быстрого поиска. -->
 <div class="gray">
   <div class="col-lg-12 col-xs-12 garant">
-    <h5>Быстрый поиск</h5>
+    <h5 class="title-franchise">Быстрый поиск</h5>
     <p-card class="">
       <ng-template pTemplate="header">
           
@@ -148,84 +150,19 @@
       </ng-template>
   </p-card>
 
-  <div class="col-lg-12 col-xs-12 d-flex">
-    <div class="col-lg-3">
-      <div class="card-demo-list">
-        <p-card class="">
-          <ng-template pTemplate="header">
-              <strong>Вы можете приобрести бизнес с гарантиями</strong>
-          </ng-template>
-          <p>
-            Воспользовавшись нашим сервисом вы сможете провести безопасную сделку через интернет, провести все средства онлайн и стать полноправным владельцем бизнеса уже сегодня.
-          </p>
-          <ng-template pTemplate="footer">
-            <div class="d-flex">                 
-              <div class="ml-1">
-                <button class="btn btn-dark">Подробнее</button>
-              </div>
-            </div>
-          </ng-template>
-      </p-card>
-      </div>
-    </div>
-  
-    <div class="col-lg-3">
-      <div class="card-demo-list">
-        <p-card class="">
-          <ng-template pTemplate="header">
-              <strong>Вы можете приобрести бизнес с гарантиями</strong>
-          </ng-template>
-          <p>
-            Воспользовавшись нашим сервисом вы сможете провести безопасную сделку через интернет, провести все средства онлайн и стать полноправным владельцем бизнеса уже сегодня.
-          </p>
-          <ng-template pTemplate="footer">
-            <div class="d-flex">                 
-              <div class="ml-1">
-                <button class="btn btn-dark">Подробнее</button>
-              </div>
-            </div>
-          </ng-template>
-      </p-card>
-      </div>
-    </div>
-  
-    <div class="col-lg-3">
-      <div class="card-demo-list">
-        <p-card class="">
-          <ng-template pTemplate="header">
-              <strong>Вы можете приобрести бизнес с гарантиями</strong>
-          </ng-template>
-          <p>
-            Воспользовавшись нашим сервисом вы сможете провести безопасную сделку через интернет, провести все средства онлайн и стать полноправным владельцем бизнеса уже сегодня.
-          </p>
-          <ng-template pTemplate="footer">
-            <div class="d-flex">                 
-              <div class="ml-1">
-                <button class="btn btn-dark">Подробнее</button>
-              </div>
-            </div>
-          </ng-template>
-      </p-card>
-      </div>
-    </div>
-  
-    <div class="col-lg-3">
-      <div class="card-demo-list">
-        <p-card class="">
-          <ng-template pTemplate="header">
-              <strong>Вы можете приобрести бизнес с гарантиями</strong>
-          </ng-template>
-          <p>
-            Воспользовавшись нашим сервисом вы сможете провести безопасную сделку через интернет, провести все средства онлайн и стать полноправным владельцем бизнеса уже сегодня.
-          </p>
-          <ng-template pTemplate="footer">
-            <div class="d-flex">                 
-              <div class="ml-1">
-                <button class="btn btn-dark">Подробнее</button>
-              </div>
-            </div>
-          </ng-template>
-      </p-card>
+  <div class="col-lg-12 col-xs-12 d-flex block-cards-franchises">
+    <div class="card-franchise" *ngFor="let item of aFranchises">
+      <div class="block-card-item">
+        <p-card header="{{item.title}}" subheader="{{item.text}}"
+        styleClass="p-card-shadow" class="card-item">
+      <ng-template pTemplate="header">
+        <img [src]="item.url">
+      </ng-template>
+      <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+      <ng-template pTemplate="footer">
+        <button class="btn btn-dark">Подробнее</button>
+      </ng-template>
+    </p-card>
       </div>
     </div>
   </div>
@@ -243,9 +180,9 @@
 </div>
 
 <!-- Популярные франшизы. -->
-<h5 class="garant">Популярные франшизы</h5>
+<h5 class="garant title-franchise">Популярные франшизы</h5>
 <div class="d-flex popular-list">
-  <div class="col-lg-3" *ngFor="let item of aPopularFranchises">
+  <div class="popular-item" *ngFor="let item of aPopularFranchises">
     <p-card header="{{item.title}}" subheader="{{item.text}}"
     [style]="{width: '100%'}" styleClass="p-card-shadow">
     <ng-template pTemplate="header">
@@ -262,7 +199,7 @@
 <!-- Новые объявления готового бизнеса. -->
 <h5 class="garant">Новые объявления готового бизнеса</h5>
 <div class="d-flex popular-list">
-  <div class="col-lg-3" *ngFor="let item of aAds">
+  <div class="popular-item" *ngFor="let item of aAds">
     <p-card header="{{item.title}}" subheader="{{item.text}}"
     [style]="{width: '100%'}" styleClass="p-card-shadow">
     <ng-template pTemplate="header">
@@ -277,9 +214,9 @@
 </div>
 
 <!-- Бизнес блог. -->
-<h5 class="garant">Бизнес блог</h5>
+<h5 class="garant title-franchise">Бизнес блог</h5>
 <div class="d-flex popular-list">
-  <div class="col-lg-3" *ngFor="let item of aBlogs">
+  <div class="popular-item" *ngFor="let item of aBlogs">
     <p-card header="{{item.title}}" subheader=""
     [style]="{width: '100%'}" styleClass="p-card-shadow">
     <ng-template pTemplate="header">
@@ -292,7 +229,7 @@
   </p-card>
   </div>
 
-  <div class="col-lg-3">
+  <div class="popular-item">
     <p-card header="Больше статей" subheader=""
     [style]="{width: '100%'}" styleClass="p-card-shadow">
     <ng-template pTemplate="header">
@@ -312,7 +249,7 @@
 </div>
 
 <!-- Новости делового мира. -->
-<h5 class="garant">Новости делового мира</h5>
+<h5 class="garant title-franchise">Новости делового мира</h5>
 <div class="d-flex">
   <div>
     <img src="../../../assets/images/Frame 31.png">
@@ -338,7 +275,7 @@
   <div class="d-flex">
     <!-- 1 столбец. -->
     <div class="col-lg-3 col-xs-12">
-      <h5 class="garant">Новости делового мира</h5>
+      <h5 class="garant title-franchise">Новости делового мира</h5>
      <div class="category-block-first">
       <div class="category-item" *ngFor="let item of categoryList1">
         <img class="space-right-image-category" [src]="item.url">
@@ -360,7 +297,7 @@
 
     <!-- 3 столбец. -->
     <div class="col-lg-3 col-xs-12">
-      <h5 class="garant">Категории франшиз</h5>
+      <h5 class="garant title-franchise">Категории франшиз</h5>
      <div class="category-block-second">
       <div class="category-item" *ngFor="let item of categoryList3">
         <img class="space-right-image-category" [src]="item.url">

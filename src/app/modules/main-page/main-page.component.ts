@@ -31,6 +31,8 @@ export class MainPageModule implements OnInit {
     aAds: any[] = [];
     aBlogs: any[] = [];
     aNews: any[] = [];
+    aFranchises: any[] = [];
+    oTopAction: any = {};
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -75,6 +77,7 @@ export class MainPageModule implements OnInit {
         await this.GetAdsAsync();
         await this.GetBlogsAsync();
         await this.GetNewsTopAsync();
+        await this.GetQuickFranchisesAsync();
     };    
 
     /**
@@ -158,6 +161,9 @@ export class MainPageModule implements OnInit {
                     next: (response: any) => {
                         console.log("Блок событий:", response);
                         this.aDataActions = response;
+
+                        this.oTopAction = this.aDataActions.filter(el => el.isTop == true)[0];
+                        console.log("oTopAction",this.oTopAction);
                     },
 
                     error: (err) => {
@@ -270,6 +276,30 @@ export class MainPageModule implements OnInit {
                     next: (response: any) => {
                         console.log("Список новостей:", response);
                         this.aNews = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список франшиз для области быстрого поиска.
+     * @returns Список франшиз.
+     */
+     private async GetQuickFranchisesAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/franchise/quick-franchises"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Франшизы для быстрого поиска:", response);
+                        this.aFranchises = response;
                     },
 
                     error: (err) => {

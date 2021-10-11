@@ -5,6 +5,8 @@ import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from '@angular/router';
 import { API_URL } from 'src/app/core/core-urls/api-url';
 import { ConfirmEmailInput } from 'src/app/models/register/input/confirm-email-input';
+import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
+import { NgForm } from "@angular/forms";
 
 @Component({
     selector: 'main-page',
@@ -33,6 +35,18 @@ export class MainPageModule implements OnInit {
     aNews: any[] = [];
     aFranchises: any[] = [];
     oTopAction: any = {};
+    selectedCity: string = "";
+    selectedCategory: string = "";
+    selectedViewBusiness: string = "";
+    cities: any[] = [];
+    aCities: any[] = [];
+    aBusinessCategories: any[] = [];
+    aViewBusiness: any[] = [];
+    minPrice: number = 0;
+    maxPrice: number = 0;
+    view: string = "";
+    city: string = "";
+    category: string = "";
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -78,6 +92,9 @@ export class MainPageModule implements OnInit {
         await this.GetBlogsAsync();
         await this.GetNewsTopAsync();
         await this.GetQuickFranchisesAsync();
+        await this.loadCitiesFranchisesListAsync();
+        await this.loadCategoriesFranchisesListAsync();
+        await this.loadViewBusinessFranchisesListAsync();
     };    
 
     /**
@@ -312,4 +329,110 @@ export class MainPageModule implements OnInit {
             throw new Error(e);
         }
     };
+
+    /**
+     * Функция получит список городов франшиз.
+     */
+    private async loadCitiesFranchisesListAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/main/cities-list"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Список городов:", response);
+                        this.aCities = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+     /**
+     * Функция получит список категорий бизнеса.
+     */
+    private async loadCategoriesFranchisesListAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/main/business-categories-list"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Список категорий бизнеса:", response);
+                        this.aBusinessCategories = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список видов бизнеса.
+     */
+    private async loadViewBusinessFranchisesListAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/main/business-list"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Список видов бизнеса:", response);
+                        this.aViewBusiness = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция отфильтрует список франшиз по фильтрам.
+     * @param viewCode - Код вида бизнеса.
+     * @param categoryCode - Код категории бизнеса.
+     * @param cityCode - Город бизнеса. 
+     * @param minPrice - Цена от.
+     * @param maxPrice - Цена до.
+     */
+    public async onFilterFranchisesAsync(form: NgForm) {
+        console.log("onFilterFranchisesAsync", form);
+        
+        try {
+            let filterInput = new FranchiseInput();
+            filterInput.viewCode = form.value.view.viewCode;
+            filterInput.cityCode = form.value.city.cityCode;
+            filterInput.categoryCode = form.value.category.categoryCode;
+            filterInput.minPrice = form.value.minPrice;
+            filterInput.maxPrice = form.value.maxPrice;
+
+            await this.http.post(API_URL.apiUrl.concat("/main/filter"), filterInput)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Отфильтрованный список франшиз:", response);
+                        this.aFranchises = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };    
 }

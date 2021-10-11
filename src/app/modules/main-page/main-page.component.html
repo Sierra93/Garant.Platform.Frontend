@@ -108,31 +108,31 @@
           
       </ng-template>
   
-      <div class="d-flex">
+      <form class="d-flex" #filterForm="ngForm" novalidate>
         <div>
           <strong>Вид бизнеса</strong><br>
-          <p-dropdown placeholder="Готовый бизнес" [showClear]="true"></p-dropdown>
+          <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
         </div>
     
         <div class="control-quick-search">
           <strong>Категория</strong><br>
-          <p-dropdown placeholder="Медицинский центр" [showClear]="true"></p-dropdown>
+          <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
         </div>
     
         <div class="control-quick-search">
           <strong>Город</strong><br>
-          <p-dropdown placeholder="Москва" [showClear]="true"></p-dropdown>
+          <p-dropdown [options]="aCities" optionLabel="cityName" name="city" [(ngModel)]="selectedCity" placeholder="Город" [showClear]="true"></p-dropdown>
         </div>
     
        <div class="d-flex">
         <div class="control-quick-search">
-          <strong>Стоимость</strong><br>
-          <input type="text" pInputText placeholder="от 100 000 ₽" />
+          <strong>Стоимость от</strong><br>
+          <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
         </div>
   
         <div class="">      
-          <strong></strong><br>
-          <input type="text" pInputText placeholder="до 100 000 000 ₽" />
+          <strong>Стоимость до</strong><br>
+          <input type="text" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice" name="maxPrice" />
         </div>
   
         <!-- <p-slider [(ngModel)]="rangeNumber"></p-slider> -->
@@ -143,10 +143,12 @@
           <strong>Покупка через гарант</strong><br>
           <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
         </div>
-      </div>
+
+        
+      </form>
   
       <ng-template pTemplate="footer">
-        
+        <button class="btn btn-dark" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
       </ng-template>
   </p-card>
 

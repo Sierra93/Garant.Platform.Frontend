@@ -25,7 +25,6 @@ import { InputTextModule } from "primeng/inputtext";
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { CarouselModule } from "primeng/carousel";
 import { MainPageModule } from "./modules/main-page/main-page.component";
-import { ProductService } from "./services/productservice";
 import { CardModule } from "primeng/card";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { SliderModule } from "primeng/slider";
@@ -77,8 +76,7 @@ import { CheckboxModule } from "primeng/checkbox";
       multi: true
     },
     CommonDataService,
-    Title,
-    ProductService
+    Title
   ],
 
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { API_URL } from "../core/core-urls/api-url";
 import { MainHeader } from "../models/header/main-header";
+import { SuggestionInput } from "../models/suggestion/input/suggestion-input";
 
 /**
  * Сервис общих функций.
@@ -87,6 +88,36 @@ export class CommonDataService {
                     .subscribe({
                         next: (response: any) => {
                             console.log("Список категорий:", response);
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+     /**
+     * Функция получит одно предложение с флагом IsSingle.
+     * @returns данные предложения.
+     */
+    public async loadSingleSuggestionAsync() {
+        try {
+            let suggestionInput = new SuggestionInput();
+            suggestionInput.isSingle = true;
+            suggestionInput.isAll = false;
+
+            return new Promise<string>(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/user/single-suggestion"), suggestionInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("Предложения:", response);
                             resolve(response);
                         },
 

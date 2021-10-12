@@ -1,0 +1,24 @@
+@import "/src/app/shared/styles/franchuse-styles.scss";
+@import "../../app.component.scss";  
+@import "/src/app/shared/styles/image-space.scss";
+@import "/src/app/shared/styles/media-quaries.scss";
+
+.franchise-list {
+    flex-wrap: wrap;    
+}
+
+.block-catalog {
+    padding-top: 64px;
+}
+
+.catalog-item {
+    padding-top: 24px;
+}
+
+.control-filter-franchise {
+    width: 340px;
+}
+
+.switch-garant {
+    padding-top: 50px;
+}

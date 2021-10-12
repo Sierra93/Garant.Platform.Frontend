@@ -32,6 +32,7 @@ import { FooterModule } from "./modules/footer/footer.component";
 import { LoginModule } from "./modules/login/login.component";
 import { ProfileDataModule } from "./modules/profile-data/profile-data.component";
 import { CheckboxModule } from "primeng/checkbox";
+import { CatalogFranchiseModule } from "./modules/catalog-franchise/catalog-franchise.component";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CheckboxModule } from "primeng/checkbox";
     MainPageModule,
     FooterModule,
     LoginModule,
-    ProfileDataModule
+    ProfileDataModule,
+    CatalogFranchiseModule
   ],
 
   entryComponents: [],

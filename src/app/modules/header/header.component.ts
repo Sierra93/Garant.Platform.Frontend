@@ -14,15 +14,12 @@ export class HeaderModule implements OnInit {
     aHeader: any[] = [];
 
     constructor(private http: HttpClient, 
-        private commonService: CommonDataService,
-        private titleService: Title,
+        private commonService: CommonDataService,        
         private router: Router) {
     };
 
     public async ngOnInit() {       
-       await this.initHeaderAsync();
-
-       this.titleService.setTitle("Gobizy: Войти");
+       await this.initHeaderAsync();       
     };
 
      /**

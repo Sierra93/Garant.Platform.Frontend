@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<!-- Популярные франшизы. -->
+<h5 class="garant title-franchise">Популярные франшизы</h5>
+<div class="d-flex popular-list">
+  <div class="popular-item" *ngFor="let item of aPopularFranchises">
+    <p-card header="{{item.title}}" subheader="{{item.text}}"
+    [style]="{width: '100%'}" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+      <img [src]="item.url">
+    </ng-template>
+    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+    <ng-template pTemplate="footer">
+      
+    </ng-template>
+  </p-card>
+  </div>
+</div>
+
+<div class="garant">
+  <h5 class="title-franchise">Каталог франшиз</h5><br>
+</div>
+
+<form class="d-flex" #filterForm="ngForm" novalidate>  
+  <div>
+    <strong>Вид бизнеса</strong><br>
+    <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
+  </div>
+
+  <div class="control-quick-search">
+    <strong>Категория</strong><br>
+    <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
+  </div>
+
+  <div class="control-quick-search">
+    <strong>Город</strong><br>
+    <p-dropdown [options]="aCities" optionLabel="cityName" name="city" [(ngModel)]="selectedCity" placeholder="Город" [showClear]="true"></p-dropdown>
+  </div>
+
+ <div class="d-flex">
+  <div class="control-quick-search">
+    <strong>Стоимость от</strong><br>
+    <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
+  </div>
+
+  <div class="">      
+    <strong>Стоимость до</strong><br>
+    <input type="text" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice" name="maxPrice" />
+  </div>
+ </div>
+</form>
+
+<button class="btn btn-dark mt-3" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
+<button class="btn btn-secondary mt-3 ml-1">Очистить фильтры</button>
+
+<div class="block-catalog d-flex">
+  <div class="">
+    <div class="control-filter-franchise">
+      <strong>Сортировать по</strong><br>
+      <p-dropdown [options]="aSortPrices" optionLabel="key" name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true"></p-dropdown>
+    </div>
+
+    <div class="switch-garant">      
+      <strong>Покупка через гарант</strong><br>
+      <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
+    </div>        
+  </div>
+
+<!-- Список франшиз. -->
+<!-- <h5 class="garant title-franchise">Популярные франшизы</h5> -->
+<div class="d-flex popular-list franchise-list">
+  <div class="popular-item catalog-item col-lg-4" *ngFor="let item of aFranchises">
+    <p-card header="{{item.title}}" subheader="{{item.fullText}}"
+    [style]="{width: '100%'}" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+      <img [src]="item.url">
+    </ng-template>
+    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+    <ng-template pTemplate="footer">
+      <button class="btn btn-dark">Подробнее</button>
+    </ng-template>
+  </p-card>
+  </div>
+</div>
+</div>
+
+</body>
+
+</html>

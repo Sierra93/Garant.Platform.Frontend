@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CheckCodeInput } from "src/app/models/login/input/check-code-input";
@@ -28,7 +29,7 @@ export class LoginModule implements OnInit {
     interval: any;
     play: boolean = false;
 
-    constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
+    constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, private titleService: Title) {
         this.routeParam = this.route.snapshot.queryParams.loginType;
 
         // Если вход по коду.
@@ -54,7 +55,7 @@ export class LoginModule implements OnInit {
     };
 
     public ngOnInit() {
-
+        this.titleService.setTitle("Gobizy: Войти");
     };
 
     /**

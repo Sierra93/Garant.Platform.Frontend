@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CatalogFranchiseModule } from './modules/catalog-franchise/catalog-franchise.component';
 import { LoginModule } from './modules/login/login.component';
 import { MainPageModule } from './modules/main-page/main-page.component';
 import { ProfileDataModule } from "./modules/profile-data/profile-data.component";
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: "profile-data",
     component: ProfileDataModule
+  },
+
+  {
+    path: "catalog-franchise",
+    component: CatalogFranchiseModule
   }
 ];
 

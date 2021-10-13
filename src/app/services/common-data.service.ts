@@ -132,4 +132,29 @@ export class CommonDataService {
             throw new Error(e);
         }
     };
+
+    /**
+     * Функция получит список популярныз франшиз.
+     * @returns Список франшиз.
+     */
+    public async GetPopularAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/franchise/main-popular"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 };

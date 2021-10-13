@@ -1,10 +1,7 @@
 @import "../../app.component.scss";  
 @import "/src/app/shared/styles/image-space.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
-
-.garant {
-    margin-top: 128px;
-}
+@import "/src/app/shared/styles/franchuse-styles.scss";
 
 // Карусель.
 .product-item {
@@ -56,14 +53,6 @@
     width: 300px;
 }
 
-.control-quick-search {
-    margin-left: 70px;
-}
-
-.popular-item {
-    width: 300px;
-}
-
 .card-demo-list {
     margin-top: 24px;
 }
@@ -83,10 +72,6 @@
 }
 
 .block-baner {
-    justify-content: space-between;
-}
-
-.popular-list {
     justify-content: space-between;
 }
 
@@ -219,10 +204,6 @@ and (min-resolution: 192dpi)and (max-width:640px) {
   .card-franchise {
     padding: 0;
   }
-}
-
-.title-franchise {
-    margin-bottom: 32px;
 }
 
 .card-left-centered {

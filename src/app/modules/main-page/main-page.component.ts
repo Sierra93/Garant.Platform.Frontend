@@ -15,7 +15,6 @@ import { NgForm } from "@angular/forms";
 })
 
 export class MainPageModule implements OnInit {
-    products: any[] = [];
 	responsiveOptions: any[] = [];
     isGarant: boolean = false;
     // rangeNumber: number = 0;
@@ -214,19 +213,12 @@ export class MainPageModule implements OnInit {
      * Функция получит список популярныз франшиз.
      * @returns Список франшиз.
      */
-    private async GetPopularAsync() {
+    private async GetPopularAsync() {        
         try {
-            await this.http.post(API_URL.apiUrl.concat("/franchise/main-popular"), {})
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Популярные франшизы:", response);
-                        this.aPopularFranchises = response;
-                    },
-
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
+            await this.commonService.GetPopularAsync().then((data: any) => {
+                console.log("Популярные франшизы:", data);
+                this.aPopularFranchises = data;
+            });
         }
 
         catch (e: any) {
@@ -331,6 +323,7 @@ export class MainPageModule implements OnInit {
     };
 
     /**
+     * TODO: Вынести в общий сервис.
      * Функция получит список городов франшиз.
      */
     private async loadCitiesFranchisesListAsync() {
@@ -354,6 +347,7 @@ export class MainPageModule implements OnInit {
     };
 
      /**
+      * TODO: Вынести в общий сервис.
      * Функция получит список категорий бизнеса.
      */
     private async loadCategoriesFranchisesListAsync() {
@@ -377,6 +371,7 @@ export class MainPageModule implements OnInit {
     };
 
     /**
+     * TODO: Вынести в общий сервис.
      * Функция получит список видов бизнеса.
      */
     private async loadViewBusinessFranchisesListAsync() {

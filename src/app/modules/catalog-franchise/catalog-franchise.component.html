@@ -25,57 +25,69 @@
   </div>
 </div>
 
-<div class="garant">
-  <h5 class="title-franchise">Каталог франшиз</h5><br>
+<div class="garant block-title-franchise">
+  <h5 class="title-franchise">Каталог франшиз</h5>
+  <span class="count-franchise">Всего {{countFranchises}} франшиз</span>
 </div>
 
 <form class="d-flex" #filterForm="ngForm" novalidate>  
   <div>
-    <strong>Вид бизнеса</strong><br>
+    <strong>Сфера франшиз</strong><br>
     <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
   </div>
 
   <div class="control-quick-search">
-    <strong>Категория</strong><br>
+    <strong>Выбор категории</strong><br>
     <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
   </div>
 
-  <div class="control-quick-search">
+  <!-- <div class="control-quick-search">
     <strong>Город</strong><br>
     <p-dropdown [options]="aCities" optionLabel="cityName" name="city" [(ngModel)]="selectedCity" placeholder="Город" [showClear]="true"></p-dropdown>
-  </div>
+  </div> -->
 
  <div class="d-flex">
-  <div class="control-quick-search">
-    <strong>Стоимость от</strong><br>
-    <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
+  <div class="control-quick-search block-price-min">
+    <strong>Инвестиции</strong><br>
+    <input type="text" class="control-input-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
   </div>
 
-  <div class="">      
-    <strong>Стоимость до</strong><br>
-    <input type="text" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice" name="maxPrice" />
+  <div class="block-price-max">      
+    <strong></strong><br>
+    <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice" name="maxPrice" />
   </div>
  </div>
 </form>
 
-<button class="btn btn-dark mt-3" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
-<button class="btn btn-secondary mt-3 ml-1">Очистить фильтры</button>
+<button class="btn btn-default mt-3 btn-sm btn-filter" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
+<button class="btn btn-default btn-sm mt-3 ml-1 btn-filter" (click)="onClearFilters()">Очистить фильтры</button>
 
 <div class="block-catalog d-flex">
   <div class="">
-    <div class="control-filter-franchise">
+    <div>
       <strong>Сортировать по</strong><br>
-      <p-dropdown [options]="aSortPrices" optionLabel="key" name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true"></p-dropdown>
+      <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
     </div>
 
     <div class="switch-garant">      
       <strong>Покупка через гарант</strong><br>
       <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
     </div>        
+
+    <div class="switch-garant">      
+      <strong>Прибыль в месяц</strong><br>
+      <div class="d-flex">
+        <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="filterMinPrice" name="filterMinPrice" />
+        <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="filterMaxPrice"
+          name="filterMaxPrice" />
+      </div>
+    </div>   
+
+    <button class="btn btn-default btn-sm mt-3 btn-filter" (click)="FilterFranchisesAsync()">Применить фильтры</button>
+    <button class="btn btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">Очистить фильтры</button>
   </div>
 
 <!-- Список франшиз. -->
-<!-- <h5 class="garant title-franchise">Популярные франшизы</h5> -->
 <div class="d-flex popular-list franchise-list">
   <div class="popular-item catalog-item col-lg-4" *ngFor="let item of aFranchises">
     <p-card header="{{item.title}}" subheader="{{item.fullText}}"
@@ -85,11 +97,22 @@
     </ng-template>
     <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
     <ng-template pTemplate="footer">
-      <button class="btn btn-dark">Подробнее</button>
+      <button class="btn btn-default btn-filter">Подробнее</button>
     </ng-template>
   </p-card>
   </div>
 </div>
+</div>
+
+<!-- Пагинация. -->
+<div class="mt-5">
+  <p-paginator 
+            [rows]="10" 
+            [totalRecords]="countTotalPage" 
+            [rowsPerPageOptions]="[10,20,30]"
+            [showCurrentPageReport]="true"
+            (onPageChange)="onPaginationChangeAsync($event)">
+</p-paginator>
 </div>
 
 </body>

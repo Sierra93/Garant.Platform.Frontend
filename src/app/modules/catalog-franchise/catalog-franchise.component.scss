@@ -16,9 +16,28 @@
 }
 
 .control-filter-franchise {
-    width: 340px;
+    width: 160px;
 }
 
 .switch-garant {
     padding-top: 50px;
+}
+
+.control-input-filter-price {
+    width: 160px;
+    margin: 0px 10px 0 0;
+}
+
+.control-input-price {
+    width: 340px;    
+    margin: 0 24px 0 0;
+}
+
+::ng-deep .block-sort-by .p-dropdown {
+    width: 340px;    
+}
+
+.block-title-franchise {
+    display: flex;
+    justify-content: space-between;
 }

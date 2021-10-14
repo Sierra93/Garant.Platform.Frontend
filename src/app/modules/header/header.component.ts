@@ -52,4 +52,8 @@ export class HeaderModule implements OnInit {
                 break;
         }
     };
+
+    public onRouteCatalogFranchise() {
+        this.router.navigate(["/catalog-franchise"]);
+    };
 }

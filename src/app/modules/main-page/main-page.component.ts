@@ -26,7 +26,6 @@ export class MainPageModule implements OnInit {
     categoryList4: any[] = [];
     aSlider: any[] = [];
     aDataActions: any[] = [];    
-    aSuggestions: any[] = [];    
     oSuggestion: any = {};
     aPopularFranchises: any[] = [];
     aAds: any[] = [];

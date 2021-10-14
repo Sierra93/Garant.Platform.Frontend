@@ -35,6 +35,18 @@ export class CatalogFranchiseModule implements OnInit {
     filterMaxPrice!: number;
     countTotalPage!: number;
     countFranchises!: number;
+    aBlogs: any[] = [];
+    aNews: any[] = [];
+    categoryList1: any[] = [];
+    categoryList2: any[] = [];
+    categoryList3: any[] = [];
+    categoryList4: any[] = [];
+    aDataActions: any[] = [];    
+    oTopAction: any = {};
+    oSuggestion: any = {};
+    aNewFranchises: any[] = [];
+    responsiveOptions: any[] = [];
+    aReviewsFranchises: any[] = [];
 
     constructor(private http: HttpClient, private commonService: CommonDataService, private titleService: Title) {
         // TODO: Переделать на хранение на бэке.
@@ -48,6 +60,24 @@ export class CatalogFranchiseModule implements OnInit {
                 value: "Asc"
             }
         ];
+
+        this.responsiveOptions = [
+            {
+                breakpoint: '1024px',
+                numVisible: 3,
+                numScroll: 3
+            },
+            {
+                breakpoint: '768px',
+                numVisible: 2,
+                numScroll: 2
+            },
+            {
+                breakpoint: '560px',
+                numVisible: 1,
+                numScroll: 1
+            }
+        ];
     };
 
     public async ngOnInit() {
@@ -59,6 +89,13 @@ export class CatalogFranchiseModule implements OnInit {
         await this.loadCategoriesFranchisesListAsync();
         await this.loadViewBusinessFranchisesListAsync();
         await this.loadPaginationInitAsync();
+        await this.GetActionsAsync();
+        await this.GetBlogsAsync();
+        await this.GetNewsTopAsync();
+        await this.loadCategoriesListAsync();
+        await this.loadSingleSuggestionAsync();
+        await this.GetNewFranchisesListAsync();
+        await this.GetReviewsFranchisesAsync();
     };   
 
     /**
@@ -299,5 +336,158 @@ export class CatalogFranchiseModule implements OnInit {
 
     public async onClearFilters() {
         await this.GetFranchisesListAsync();
+    };
+
+    /**
+     * Функция получит данные для блока событий.
+     */
+     private async GetActionsAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/main/actions"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Блок событий:", response);
+                        this.aDataActions = response.filter((el: any) => el.isTop == false);
+
+                        // this.oTopAction = this.aDataActions.filter(el => el.isTop == true)[0];
+                        // console.log("oTopAction",this.oTopAction);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список блогов.
+     * @returns Список блогов.
+     */
+     private async GetBlogsAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/blog/main-blogs"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Список блогов:", response);
+                        this.aBlogs = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список проплаченных новостей.
+     * @returns Список новостей.
+     */
+     private async GetNewsTopAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/blog/main-news"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Список новостей:", response);
+                        this.aNews = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список категорий.
+     * @returns Список категорий.
+     */
+     private async loadCategoriesListAsync() {
+        try {
+            await this.commonService.loadCategoriesListAsync().then((data: any) => {
+                this.categoryList1 = data.resultCol1;
+                this.categoryList2 = data.resultCol2;
+                this.categoryList3 = data.resultCol3;
+                this.categoryList4 = data.resultCol4;
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит одно предложение с флагом IsSingle.
+     * @returns данные предложения.
+     */
+     private async loadSingleSuggestionAsync() {
+        try {
+            await this.commonService.loadSingleSuggestionAsync().then((data: any) => {
+                this.oSuggestion = data;            
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список новых франшиз.
+     * @returns Список франшиз.
+     */
+    private async GetNewFranchisesListAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/franchise/new-franchise"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Список новых франшиз:", response);
+                        this.aNewFranchises = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    private async GetReviewsFranchisesAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/franchise/review"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Отзывы:", response);
+                        this.aReviewsFranchises = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
     };
 }

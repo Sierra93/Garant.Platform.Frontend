@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CommonDataService } from 'src/app/services/common-data.service';
-import { Title } from "@angular/platform-browser";
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'header',
@@ -12,14 +11,19 @@ import { Router } from '@angular/router';
 
 export class HeaderModule implements OnInit {
     aHeader: any[] = [];
+    aBreadcrumbs: any[] = [];
+    routeParam: any;
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,        
-        private router: Router) {
+        private router: Router,
+        private route: ActivatedRoute) {
     };
 
-    public async ngOnInit() {       
-       await this.initHeaderAsync();       
+    public async ngOnInit() {
+        await this.initHeaderAsync();
+        await this.commonService.refreshToken();
+        await this.GetBreadcrumbsAsync();
     };
 
      /**
@@ -55,5 +59,18 @@ export class HeaderModule implements OnInit {
 
     public onRouteCatalogFranchise() {
         this.router.navigate(["/catalog-franchise"]);
+    };
+
+    private async GetBreadcrumbsAsync() {
+        try {
+            await this.commonService.GetBreadcrumbsAsync(this.router.url).then((data: any) => {
+                console.log("breadcrumbs", data);
+                this.aBreadcrumbs = data;
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
     };
 }

@@ -21,7 +21,7 @@
     "@angular/router": "~12.1.1",
     "axios": "^0.21.4",
     "primeicons": "^4.1.0",
-    "primeng": "^12.1.1",
+    "primeng": "^12.2.1",
     "primeng-extensions": "^1.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",

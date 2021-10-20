@@ -89,8 +89,16 @@ export class LoginModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/user/login"), loginInput)
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Авторизация:", response);
-                        this.isGetCode = true;
+                        console.log("Авторизация:", response);                        
+
+                        if (response.token && response.isSuccess) {
+                            sessionStorage["token"] = response.token;
+                            sessionStorage["user"] = response.user;
+                            sessionStorage["isSuccess"] = response.isSuccess;
+                            this.isGetCode = true;
+    
+                            this.router.navigate(["/"]);
+                        }
                     },
 
                     error: (err) => {
@@ -152,9 +160,14 @@ export class LoginModule implements OnInit {
                         console.log("Проверка кода подтверждения:", response);
                         this.isGetCode = true;
 
-                        if (response) {
+                        if (response.token && response.isSuccess) {
+                            sessionStorage["token"] = response.token;
+                            sessionStorage["user"] = response.user;
+                            sessionStorage["isSuccess"] = response.isSuccess;
+
                             this.pauseTimer();
-                            this.router.navigate(["/profile-data"]);
+                            // this.router.navigate(["/profile-data"]);
+                            this.router.navigate(["/"]);
                         }
                     },
 

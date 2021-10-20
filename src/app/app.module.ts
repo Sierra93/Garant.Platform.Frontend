@@ -33,6 +33,10 @@ import { LoginModule } from "./modules/login/login.component";
 import { ProfileDataModule } from "./modules/profile-data/profile-data.component";
 import { CheckboxModule } from "primeng/checkbox";
 import { CatalogFranchiseModule } from "./modules/catalog-franchise/catalog-franchise.component";
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { CreateFranchiseModule } from "./modules/create-franchise/create-franchise.component";
+import { ViewFranchiseModule } from "./modules/view-franchise/view-franchise.component";
+import { ChangeFranchiseModule } from "./modules/change-franchise/change-franchise.component";
 
 @NgModule({
   declarations: [
@@ -42,7 +46,10 @@ import { CatalogFranchiseModule } from "./modules/catalog-franchise/catalog-fran
     FooterModule,
     LoginModule,
     ProfileDataModule,
-    CatalogFranchiseModule
+    CatalogFranchiseModule,
+    CreateFranchiseModule,
+    ViewFranchiseModule,
+    ChangeFranchiseModule
   ],
 
   entryComponents: [],
@@ -68,7 +75,8 @@ import { CatalogFranchiseModule } from "./modules/catalog-franchise/catalog-fran
     CardModule,
     InputSwitchModule,
     SliderModule,
-    CheckboxModule
+    CheckboxModule,
+    BreadcrumbModule
   ],
 
   providers: [

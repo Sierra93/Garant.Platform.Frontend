@@ -1,0 +1,25 @@
+@import "../../app.component.scss";  
+@import "/src/app/shared/styles/body-margins.scss";
+@import "/src/app/shared/styles/media-quaries.scss";
+
+.title-name-logo {
+    margin-top: 80px;
+}
+
+.control-big-input {
+    width: 340px;    
+    height: 30px;
+}
+
+.block-two {
+    margin-left: 24px;
+}
+
+.hr {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+// ::ng-deep .p-galleria-thumbnail-container {
+//     display: none;
+// }

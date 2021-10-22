@@ -37,6 +37,8 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { CreateFranchiseModule } from "./modules/create-franchise/create-franchise.component";
 import { ViewFranchiseModule } from "./modules/view-franchise/view-franchise.component";
 import { ChangeFranchiseModule } from "./modules/change-franchise/change-franchise.component";
+import { FileUploadModule } from 'primeng/fileupload';
+import { GalleriaModule } from 'primeng/galleria';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import { ChangeFranchiseModule } from "./modules/change-franchise/change-franchi
     InputSwitchModule,
     SliderModule,
     CheckboxModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    FileUploadModule,
+    GalleriaModule
   ],
 
   providers: [

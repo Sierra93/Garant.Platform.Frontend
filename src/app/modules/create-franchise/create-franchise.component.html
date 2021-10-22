@@ -8,7 +8,37 @@
 </head>
 
 <body>  
-  <!-- <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx"> -->
+  <h5 class="title-name-logo">Название и логотип*</h5>
+
+  <!-- Блок с названием. -->
+  <div class="d-flex">
+    <div>
+      <label>Логотип</label>
+      <p-fileUpload mode="basic" (onSelect)="onBasicUpload($event)" [auto]="true"></p-fileUpload>
+    </div>
+
+    <div class="block-two">
+      <label>Название</label><br>
+      <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="name" name="name" />
+    </div>
+  </div>
+
+  <hr class="hr">
+  <h5>Фотографии*</h5>
+   <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>
+  
+  <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions" [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
+    <ng-template pTemplate="item" let-item>
+        <img src="{{item}}" style="width: 100%; display: block;" />
+    </ng-template>
+
+    <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
+        <div class="p-grid p-nogutter p-justify-center dopni">
+            <img src="{{item}}" />
+        </div>
+    </ng-template>
+</p-galleria>
+
 </body>
 
 </html>

@@ -23,7 +23,7 @@ export class HeaderModule implements OnInit {
     public async ngOnInit() {
         await this.initHeaderAsync();
         await this.commonService.refreshToken();
-        await this.GetBreadcrumbsAsync();
+        await this.getBreadcrumbsAsync();
     };
 
      /**
@@ -61,7 +61,11 @@ export class HeaderModule implements OnInit {
         this.router.navigate(["/catalog-franchise"]);
     };
 
-    private async GetBreadcrumbsAsync() {
+     /**
+     * Функция сформирует хлебные крошки страницы.
+     * @returns - Список пунктов цепочки хлебных крошек.
+     */
+    private async getBreadcrumbsAsync() {
         try {
             await this.commonService.GetBreadcrumbsAsync(this.router.url).then((data: any) => {
                 console.log("breadcrumbs", data);

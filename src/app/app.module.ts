@@ -39,6 +39,7 @@ import { ViewFranchiseModule } from "./modules/view-franchise/view-franchise.com
 import { ChangeFranchiseModule } from "./modules/change-franchise/change-franchise.component";
 import { FileUploadModule } from 'primeng/fileupload';
 import { GalleriaModule } from 'primeng/galleria';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { GalleriaModule } from 'primeng/galleria';
     CheckboxModule,
     BreadcrumbModule,
     FileUploadModule,
-    GalleriaModule
+    GalleriaModule,
+    InputTextareaModule
   ],
 
   providers: [

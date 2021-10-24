@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CommonDataService } from "src/app/services/common-data.service";
@@ -14,6 +14,25 @@ export class CreateFranchiseModule implements OnInit {
     responsiveOptions: any;
     aNamesFranchisePhotos: any = [];
     aFiles: any[] = [];
+    lead?: string;
+    generalInvest?: number;
+    lumpSumPayment?: number;
+    royalty?: number;
+    payback?: number;
+    profitMonth?: number;
+    launchDate?: number;
+    priceInvest?: number;
+    nameInvest?: string;
+    baseDate?: number;
+    yearStart?: number;
+    dotCount?: number;
+    businessCount?: number;
+    peculiarity?: string;
+    isHidePacks?: boolean;
+    packName?: string;
+    packDetails?: string;
+    packLumpSumPayment?: string;
+    isGarant?: boolean;
 
     constructor(private http: HttpClient, private commonService: CommonDataService) {        
         this.responsiveOptions = [

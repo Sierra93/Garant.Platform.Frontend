@@ -40,6 +40,7 @@ import { ChangeFranchiseModule } from "./modules/change-franchise/change-franchi
 import { FileUploadModule } from 'primeng/fileupload';
 import { GalleriaModule } from 'primeng/galleria';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { MessageService } from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
       multi: true
     },
     CommonDataService,
-    Title
+    Title,
+    MessageService 
   ],
 
   bootstrap: [AppComponent]

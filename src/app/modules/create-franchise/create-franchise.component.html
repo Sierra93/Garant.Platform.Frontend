@@ -8,18 +8,20 @@
 </head>
 
 <body>  
+  <p-toast [style]="{ marginTop: '80px' }"></p-toast>
+
   <h5 class="title-name-logo">Название и логотип*</h5>
 
   <!-- Блок с названием. -->
   <div class="d-flex">
     <div>
       <label>Логотип</label>
-      <p-fileUpload mode="basic" (onSelect)="onBasicUpload($event)" [auto]="true"></p-fileUpload>
+      <input type="file" (change)="uploadFranchiseLogoAsync($event)">  
     </div>
 
     <div class="block-two">
       <label>Название</label><br>
-      <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="name" name="name" />
+      <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="logoName" name="logoName" />
     </div>
   </div>
 
@@ -105,7 +107,7 @@
        <span class="title-strong">Основная информация о компании*</span><br>
        <span class="title-small">Описание деятельности</span><br>
        <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-         placeholder="Опишите деятельность"></textarea>
+         placeholder="Опишите деятельность" [(ngModel)]="activityDetail"></textarea>
      </div>
 
      <div class="invest-in">
@@ -163,12 +165,13 @@
    <!-- Описание особенности франшизы. -->
    <span class="title-strong">Описание особенности франшизы</span><br>
    <div class="block-details-franch">    
-    <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText [(ngModel)]="peculiarity" name="peculiarity" />
+    <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText [(ngModel)]="featureFranchise" name="featureFranchise" />
     <span class="text">Прикрепить финансовую модель .xlsx</span>
     <br>
 
    <div>
-    <button class="control-button-blue-small">Прикрепить файл</button>
+    <input type="file" (change)="uploadFinModelAsync($event)">  
+    <!-- <button class="control-button-blue-small">Прикрепить файл</button> -->
     <br>
     <small>
       Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать презентацию, просто пропустите данный этап. 
@@ -185,7 +188,7 @@
      <div>
       <span class="title-small">Описание франшизы</span><br>
       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-        placeholder="Опишите франшизу"></textarea>
+        placeholder="Опишите франшизу" [(ngModel)]="defailsFranchise" name="defailsFranchise"></textarea>
      </div>
     </div>
 
@@ -193,7 +196,8 @@
         <span class="title-strong">Добавить презентацию</span><br>
         <div class="block-details-franch">          
           <small>Прикрепить документ .pdf</small><br>
-          <button class="control-button-blue-small">Прикрепить файл</button><br>
+          <!-- <button class="control-button-blue-small">Прикрепить файл</button><br> -->
+          <input type="file" (change)="uploadPresentAsync($event)">  
         </div>
 
       <small>
@@ -213,7 +217,7 @@
       <span class="title-strong">Пример расчета прибыли*</span><br>
       <span class="title-small">Описание расчета</span><br>
       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-        placeholder="Опишите расчет"></textarea>
+        placeholder="Опишите расчет" [(ngModel)]="paymentDetails" name="paymentDetails"></textarea>
     </div>
    </div>
 
@@ -224,43 +228,43 @@
     <div class="block-details-franch">
       <span class="title-strong">Ключевые финансовые показатели</span><br>
       <label>Название</label><br>
-      <input type="text" class="franch-details" placeholder="Пример: расчет прибыль 1 кофейни" pInputText [(ngModel)]="peculiarity" name="peculiarity" />
+      <input type="text" class="franch-details" placeholder="Пример: расчет прибыль 1 кофейни" pInputText [(ngModel)]="namesIndicators" name="namesIndicators" />
 
       <div class="d-flex">
         <div class="fin-indicator-first">
           <small>Например: средний чек</small><br>
-          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="baseDate" name="baseDate" /><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator1" name="finIndicator1" /><br>
 
           <small>Процент или финансы</small><br>
           <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-            [(ngModel)]="baseDate" name="baseDate" />
+            [(ngModel)]="percentFinancial1" name="" />
         </div>
     
         <div class="fin-indicator">
           <small>Например: рентабельность</small><br>
-          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="baseDate" name="baseDate" /><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator2" name="finIndicator2" /><br>
 
           <small>Процент или финансы</small><br>
           <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-            [(ngModel)]="baseDate" name="baseDate" />
+            [(ngModel)]="percentFinancial2" name="percentFinancial2" />
         </div>
     
         <div class="fin-indicator">
           <small>Например: средняя выручка</small><br>
-          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="baseDate" name="baseDate" /><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator3" name="finIndicator3" /><br>
 
           <small>Процент или финансы</small><br>
           <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-            [(ngModel)]="baseDate" name="baseDate" />
+            [(ngModel)]="percentFinancial3" name="percentFinancial3" />
         </div>
     
         <div class="fin-indicator">
           <small>Например: товарная наценка</small><br>
-          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="baseDate" name="baseDate" /><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator4" name="finIndicator4" /><br>
 
           <small>Процент или финансы</small><br>
           <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-            [(ngModel)]="baseDate" name="baseDate" />
+            [(ngModel)]="percentFinancial4" name="percentFinancial4" />
         </div>
       </div>
     </div>
@@ -274,8 +278,8 @@
       <span class="title-strong">Обучение и поддержка*</span><br>
       <span class="title-small">Описание обучения</span><br>
       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-        placeholder="Опишите обучение"></textarea><br>
-        <input type="file" (change)="uploadFranchisePhotosAsync($event)">  
+        placeholder="Опишите обучение" [(ngModel)]="educationDetails" name="educationDetails"></textarea><br>
+        <input type="file" (change)="uploadEducationPhotosAsync($event)">  
     </div>
    </div>
 
@@ -316,14 +320,14 @@
 
         <div>
           <span class="title-small">Роялти:</span><br>
-          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
-            name="packLumpSumPayment" /> %
+          <input type="text" class="control-big-input" pInputText [(ngModel)]="royaltyPack"
+            name="royaltyPack" /> %
         </div>
 
         <div>
           <span class="title-small">Всего инвестиций:</span><br>
-          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
-            name="packLumpSumPayment" /> ₽
+          <input type="text" class="control-big-input" pInputText [(ngModel)]="totalInvest"
+            name="totalInvest" /> ₽
         </div>
       </div>
     </div>    
@@ -352,8 +356,8 @@
 
 <div>
   <span class="title-small">Ссылка на видео</span><br>
-  <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="packLumpSumPayment"
-    name="packLumpSumPayment" /> 
+  <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="videoLink"
+    name="videoLink" /> 
 </div>
 
 <hr class="hr">
@@ -422,7 +426,7 @@
   </div>
 
   <div class="block-two">
-    <button class="control-button-blue">Оплатить размещение и опубликовать</button>
+    <button class="control-button-blue" (click)="onCreateFranchiseAsync()">Оплатить размещение и опубликовать</button>
   </div>
 </div>
 

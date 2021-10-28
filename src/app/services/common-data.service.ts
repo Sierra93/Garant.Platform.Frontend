@@ -5,6 +5,7 @@ import { API_URL } from "../core/core-urls/api-url";
 import { BreadcrumbInput } from "../models/header/breadcrumb-input";
 import { MainHeader } from "../models/header/main-header";
 import { SuggestionInput } from "../models/suggestion/input/suggestion-input";
+import { TransitionInput } from "../models/transition/input/transition-input";
 
 /**
  * Сервис общих функций.
@@ -198,7 +199,7 @@ export class CommonDataService {
      * Функция получит список популярныз франшиз.
      * @returns Список франшиз.
      */
-    public async GetPopularAsync() {
+    public async getPopularAsync() {
         try {
             return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/franchise/main-popular"), {})
@@ -223,7 +224,7 @@ export class CommonDataService {
      * Функция сформирует хлебные крошки страницы.
      * @returns - Список пунктов цепочки хлебных крошек.
      */
-    public async GetBreadcrumbsAsync(selectorPage: string) {
+    public async getBreadcrumbsAsync(selectorPage: string) {
         try {
             let inputBreadcrumb = new BreadcrumbInput();
             let param = "";
@@ -252,4 +253,69 @@ export class CommonDataService {
             throw new Error(e);
         }
     };
+
+    /**
+     * Функция запишет переход.
+     * @param transitionType - тип перехода.
+     * @param referenceId - Id франшизы или перехода.
+     * @returns флаг успеха.
+     */
+    public async setTransitionAsync(referenceId: number, transitionType: string) {
+        try {
+            let transitionInput = new TransitionInput();
+            transitionInput.ReferenceId = referenceId;
+            transitionInput.TransitionType = transitionType;
+
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/user/set-transition"), transitionInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит переход.
+     * @returns Данные перехода.
+     */
+     public async getTransitionAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/user/get-transition"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит франшизу 
+     */
+    // public async getFranchiseAsync() {
+
+    // };
 };

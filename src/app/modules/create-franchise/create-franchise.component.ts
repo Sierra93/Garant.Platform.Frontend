@@ -86,25 +86,6 @@ export class CreateFranchiseModule implements OnInit {
         this.showMessageAfterSuccessCreateFranchise();        
     };
 
-    // public async fileChange(event: any) {
-    //     let fileList = event.target.files;
-    //     let file: File = fileList[0];
-    //     let formData: FormData = new FormData();
-    //     formData.append('files', file);
-
-    //     await this.http.post(API_URL.apiUrl.concat("/franchise/temp-file"), formData)
-    //         .subscribe({
-    //             next: (response: any) => {
-    //                 console.log("form file", response);
-    //             },
-
-    //             error: (err) => {
-    //                 this.commonService.routeToStart(err);
-    //                 throw new Error(err);
-    //             }
-    //         });
-    // };
-
     public async uploadFranchisePhotosAsync(event: any) {
         try {
             let fileList = event.target.files;

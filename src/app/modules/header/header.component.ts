@@ -67,7 +67,7 @@ export class HeaderModule implements OnInit {
      */
     private async getBreadcrumbsAsync() {
         try {
-            await this.commonService.GetBreadcrumbsAsync(this.router.url).then((data: any) => {
+            await this.commonService.getBreadcrumbsAsync(this.router.url).then((data: any) => {
                 console.log("breadcrumbs", data);
                 this.aBreadcrumbs = data;
             });

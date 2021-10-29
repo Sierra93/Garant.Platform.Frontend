@@ -36,7 +36,7 @@ import { CatalogFranchiseModule } from "./modules/catalog-franchise/catalog-fran
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { CreateFranchiseModule } from "./modules/create-franchise/create-franchise.component";
 import { ViewFranchiseModule } from "./modules/view-franchise/view-franchise.component";
-import { ChangeFranchiseModule } from "./modules/change-franchise/change-franchise.component";
+import { EditFranchiseModule } from "./modules/edit-franchise/edit-franchise.component";
 import { FileUploadModule } from 'primeng/fileupload';
 import { GalleriaModule } from 'primeng/galleria';
 import { InputTextareaModule } from 'primeng/inputtextarea';
@@ -53,7 +53,7 @@ import { MessageService } from "primeng/api";
     CatalogFranchiseModule,
     CreateFranchiseModule,
     ViewFranchiseModule,
-    ChangeFranchiseModule
+    EditFranchiseModule
   ],
 
   entryComponents: [],

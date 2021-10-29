@@ -1,18 +1,21 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franchise-create-update-input";
+import { GetFranchiseInput } from "src/app/models/franchise/input/get-franchise-input";
 import { CommonDataService } from "src/app/services/common-data.service";
-import { ConfirmationService, MessageService } from "primeng/api";
 
 @Component({
-    selector: "create-franchise",
-    templateUrl: "./create-franchise.component.html",
-    styleUrls: ["./create-franchise.component.scss"],
+    selector: "edit-franchise",
+    templateUrl: "./edit-franchise.component.html",
+    styleUrls: ["./edit-franchise.component.scss"],
     providers: [ConfirmationService, MessageService]
 })
 
-export class CreateFranchiseModule implements OnInit {
+export class EditFranchiseModule implements OnInit {
+    franchiseId: number = 0;
     logoName?: string;
     responsiveOptions: any;
     aNamesFranchisePhotos: any = [];
@@ -58,28 +61,136 @@ export class CreateFranchiseModule implements OnInit {
     videoLink?: string;
     modelFile: any;
     presentFile: any;
+    franchiseData: any[] = [];
+    routeParam: any;
+    aInvestInclude: any = [];
+    aFinIndicators: any[] = [];
+    aPacks: any[] = [];
+    aFranchisePhotos: any[] = [];
 
-    constructor(private http: HttpClient,
-        private commonService: CommonDataService, 
+    constructor(private http: HttpClient, 
+        private commonService: CommonDataService,
+        private route: ActivatedRoute,
         private messageService: MessageService) {
-        this.responsiveOptions = [
-            {
-                breakpoint: '1024px',
-                numVisible: 5
-            },
-            {
-                breakpoint: '768px',
-                numVisible: 3
-            },
-            {
-                breakpoint: '560px',
-                numVisible: 1
-            }
-        ];        
+            this.responsiveOptions = [
+                {
+                    breakpoint: '1024px',
+                    numVisible: 5
+                },
+                {
+                    breakpoint: '768px',
+                    numVisible: 3
+                },
+                {
+                    breakpoint: '560px',
+                    numVisible: 1
+                }
+            ]; 
     };
 
     public async ngOnInit() {
+        await this.getTransitionAsync();
+    };    
 
+    private async getTransitionAsync() {
+        try {
+            let franchiseId = 0;
+
+            if (this.franchiseId <= 0 || this.franchiseId == undefined) {
+                franchiseId = this.route.snapshot.queryParams.franchiseId;
+            }
+
+            else {
+                franchiseId = this.franchiseId;
+            }           
+
+            await this.commonService.getTransitionAsync().then((data: any) => {
+                console.log("Переход получен:", data);
+                this.getViewFranchiseAsync(franchiseId);
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит данные франшизы, которую просматривают.
+     * @returns - данные франшизы.
+     */
+     private async getViewFranchiseAsync(franchiseId: number) {
+        try {                     
+            console.log("getViewFranchiseAsync");        
+            let getFranchiseInput = new GetFranchiseInput();
+            getFranchiseInput.FranchiseId = franchiseId;
+            getFranchiseInput.Mode = "View";
+
+            await this.http.post(API_URL.apiUrl.concat("/franchise/get-franchise"), getFranchiseInput)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Полученная франшиза:", response);
+                        this.franchiseData.push(response);     
+                        console.log("franchiseData", this.franchiseData);     
+                        
+                        this.aInvestInclude = JSON.parse(response.investInclude);
+                        this.aFinIndicators = JSON.parse(response.finIndicators);
+                        this.aPacks = JSON.parse(response.franchisePacks);
+
+                        console.log("aInvestInclude", this.aInvestInclude);
+                        console.log("aFinIndicators", this.aFinIndicators);
+                        console.log("aPacks", this.aPacks);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция добавит файл лого франшизы.
+     */
+     public uploadFranchiseLogoAsync(event: any) {
+        console.log("uploadFranchiseLogoAsync");
+        this.fileLogoFormData = event.target.files[0];
+    };
+
+    /**
+     * Функция добавит файл обучения.
+     */
+    public uploadEducationPhotosAsync(event: any) {
+        console.log("uploadEducationPhotosAsync");
+        this.fileEducationFormData = event.target.files[0];
+    };
+    
+    /**
+     * Функция добавит фото франшизы.
+     */
+    public uploadFranchisePhotosBeforeSaveAsync(event: any) {
+        console.log("uploadFranchisePhotosBeforeSaveAsync");
+        this.franchisePhotos = event.target.files[0];
+    };
+
+     /**
+     * Функция добавит файл фин.модели.
+     */
+    public uploadFinModelAsync(event: any) {
+        console.log("uploadFinModelAsync");
+        this.modelFile = event.target.files[0];
+    };
+
+    /**
+     * Функция добавит файл презентации.
+     */
+    public uploadPresentAsync(event: any) {
+        console.log("uploadPresentAsync");
+        this.presentFile = event.target.files[0];
     };
 
     public async uploadFranchisePhotosAsync(event: any) {
@@ -107,12 +218,14 @@ export class CreateFranchiseModule implements OnInit {
         }
     };
 
-    /**
-     * Функция создаст новую франшизу.
+     /**
+     * Функция изменит франшизу.
      * @returns - Данные созданной франшизы.
      */
-    public async onCreateFranchiseAsync() {
-        console.log("onCreateFranchiseAsync");    
+      public async onEditFranchiseAsync() {
+        console.log("onEditFranchiseAsync");    
+        console.log("log franchiseData", this.franchiseData);
+        let newFranchiseData = this.franchiseData[0];
 
         try {
             let createUpdateFranchiseInput = new CreateUpdateFranchiseInput();            
@@ -199,33 +312,33 @@ export class CreateFranchiseModule implements OnInit {
             let namesIndicatorsJsonString = JSON.stringify(namesIndicatorsJson);
             let packetJsonString = JSON.stringify(packetJson);
 
-            // createUpdateFranchiseInput.fileLogo = logoFormData;
+            // createUpdateFranchiseInput.fileLogo = logoFormData;;
             // createUpdateFranchiseInput.franchisePhoto = franchiseFiles;
-            createUpdateFranchiseInput.Status = lead;
-            createUpdateFranchiseInput.GeneralInvest = generalInvest;
-            createUpdateFranchiseInput.LumpSumPayment = this.lumpSumPayment;
-            createUpdateFranchiseInput.Royalty = royalty;
-            createUpdateFranchiseInput.Payback = payback;
-            createUpdateFranchiseInput.ProfitMonth = profitMonth;
-            createUpdateFranchiseInput.LaunchDate = launchDate;
-            createUpdateFranchiseInput.ActivityDetail = activityDetail;            
-            createUpdateFranchiseInput.BaseDate = baseDate;
-            createUpdateFranchiseInput.YearStart = yearStart;
-            createUpdateFranchiseInput.DotCount = dotCount;
-            createUpdateFranchiseInput.BusinessCount = businessCount;
-            createUpdateFranchiseInput.Peculiarity = featureFranchise;
-            createUpdateFranchiseInput.Text = defailsFranchise;
-            createUpdateFranchiseInput.PaymentDetail = paymentDetails;
+            createUpdateFranchiseInput.Status = newFranchiseData.status;
+            createUpdateFranchiseInput.GeneralInvest = newFranchiseData.generalInvest;
+            createUpdateFranchiseInput.LumpSumPayment = newFranchiseData.lumpSumPayment;
+            createUpdateFranchiseInput.Royalty = newFranchiseData.royalty;
+            createUpdateFranchiseInput.Payback = newFranchiseData.payback;
+            createUpdateFranchiseInput.ProfitMonth = newFranchiseData.profitMonth;
+            createUpdateFranchiseInput.LaunchDate = newFranchiseData.launchDate;
+            createUpdateFranchiseInput.ActivityDetail = newFranchiseData.activityDetail;            
+            createUpdateFranchiseInput.BaseDate = newFranchiseData.baseDate;
+            createUpdateFranchiseInput.YearStart = newFranchiseData.yearStart;
+            createUpdateFranchiseInput.DotCount = newFranchiseData.dotCount;
+            createUpdateFranchiseInput.BusinessCount = newFranchiseData.businessCount;
+            createUpdateFranchiseInput.Peculiarity = newFranchiseData.peculiarity;
+            createUpdateFranchiseInput.Text = newFranchiseData.text;
+            createUpdateFranchiseInput.PaymentDetail = newFranchiseData.paymentDetail;
             // createUpdateFranchiseInput.trainingPhoto = fileEducationFormData;
-            createUpdateFranchiseInput.UrlVideo = videoLink;
-            createUpdateFranchiseInput.IsGarant = isGarant;
-            createUpdateFranchiseInput.InvestInclude = investInJsonString;
-            createUpdateFranchiseInput.FinIndicators = namesIndicatorsJsonString;
-            createUpdateFranchiseInput.NameFinIndicators = namesIndicators;
-            createUpdateFranchiseInput.FranchisePacks = packetJsonString;
-            createUpdateFranchiseInput.IsNew = true;
-            createUpdateFranchiseInput.Title = logoName;
-            createUpdateFranchiseInput.TrainingDetails = educationDetails;
+            createUpdateFranchiseInput.UrlVideo = newFranchiseData.urlVideo;
+            createUpdateFranchiseInput.IsGarant = newFranchiseData.isGarant ?? false;
+            createUpdateFranchiseInput.InvestInclude = JSON.stringify(this.aInvestInclude);;
+            createUpdateFranchiseInput.FinIndicators = JSON.stringify(this.aFinIndicators);
+            createUpdateFranchiseInput.NameFinIndicators = newFranchiseData.nameFinIndicators;
+            createUpdateFranchiseInput.FranchisePacks = JSON.stringify(this.aPacks);
+            createUpdateFranchiseInput.IsNew = false;
+            createUpdateFranchiseInput.Title = newFranchiseData.title;
+            createUpdateFranchiseInput.TrainingDetails = newFranchiseData.trainingDetails;            
 
             // TODO: заменить на динамическое определение категории франшизы.
             createUpdateFranchiseInput.Category = "Тестовая категория";
@@ -245,12 +358,12 @@ export class CreateFranchiseModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/franchise/create-update-franchise"), sendFormData)
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Франшиза успешно создана:", response);
-                        this.showMessageAfterSuccessCreateFranchise();
+                        console.log("Франшиза успешно изменена:", response);
+                        this.showMessageAfterSuccessEditFranchise();
                     },
 
                     error: (err) => {
-                        // this.commonService.routeToStart(err);
+                        this.commonService.routeToStart(err);
                         throw new Error(err);
                     }
                 });
@@ -262,53 +375,13 @@ export class CreateFranchiseModule implements OnInit {
     };
 
     /**
-     * Функция добавит файл лого франшизы.
+     * Функция покажет сообщение об успешном изменении франшизы.
      */
-    public uploadFranchiseLogoAsync(event: any) {
-        console.log("uploadFranchiseLogoAsync");
-        this.fileLogoFormData = event.target.files[0];
-    };
-
-    /**
-     * Функция добавит файл обучения.
-     */
-    public uploadEducationPhotosAsync(event: any) {
-        console.log("uploadEducationPhotosAsync");
-        this.fileEducationFormData = event.target.files[0];
-    };
-    
-    /**
-     * Функция добавит фото франшизы.
-     */
-    public uploadFranchisePhotosBeforeSaveAsync(event: any) {
-        console.log("uploadFranchisePhotosBeforeSaveAsync");
-        this.franchisePhotos = event.target.files[0];
-    };
-
-     /**
-     * Функция добавит файл фин.модели.
-     */
-    public uploadFinModelAsync(event: any) {
-        console.log("uploadFinModelAsync");
-        this.modelFile = event.target.files[0];
-    };
-
-    /**
-     * Функция добавит файл презентации.
-     */
-    public uploadPresentAsync(event: any) {
-        console.log("uploadPresentAsync");
-        this.presentFile = event.target.files[0];
-    };
-
-    /**
-     * Функция покажет сообщение об успешном создании франшизы.
-     */
-    private showMessageAfterSuccessCreateFranchise() {
+     private showMessageAfterSuccessEditFranchise() {
         this.messageService.add({
             severity: 'success',
             summary: 'Успешно!',
-            detail: 'Франшиза успешно создана'
+            detail: 'Франшиза успешно изменена'
         });
     };
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CatalogFranchiseModule } from './modules/catalog-franchise/catalog-franchise.component';
-import { ChangeFranchiseModule } from './modules/change-franchise/change-franchise.component';
+import { EditFranchiseModule } from './modules/edit-franchise/edit-franchise.component';
 import { CreateFranchiseModule } from './modules/create-franchise/create-franchise.component';
 import { LoginModule } from './modules/login/login.component';
 import { MainPageModule } from './modules/main-page/main-page.component';
@@ -41,7 +41,7 @@ const routes: Routes = [
 
   {
     path: "franchise/edit",
-    component: ChangeFranchiseModule
+    component: EditFranchiseModule
   }
 ];
 

@@ -309,3 +309,12 @@ and (min-resolution: 192dpi)and (max-width:640px) {
 .header-link {
   cursor: pointer;
 }
+
+// Стили разделителя хлебных крошек.
+::ng-deep .pi-chevron-right:before {
+  content: "/";
+}
+
+.breadcrumbs {
+  margin-top: 50px;
+}

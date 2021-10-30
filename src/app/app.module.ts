@@ -33,6 +33,14 @@ import { LoginModule } from "./modules/login/login.component";
 import { ProfileDataModule } from "./modules/profile-data/profile-data.component";
 import { CheckboxModule } from "primeng/checkbox";
 import { CatalogFranchiseModule } from "./modules/catalog-franchise/catalog-franchise.component";
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { CreateFranchiseModule } from "./modules/create-franchise/create-franchise.component";
+import { ViewFranchiseModule } from "./modules/view-franchise/view-franchise.component";
+import { EditFranchiseModule } from "./modules/edit-franchise/edit-franchise.component";
+import { FileUploadModule } from 'primeng/fileupload';
+import { GalleriaModule } from 'primeng/galleria';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { MessageService } from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -42,7 +50,10 @@ import { CatalogFranchiseModule } from "./modules/catalog-franchise/catalog-fran
     FooterModule,
     LoginModule,
     ProfileDataModule,
-    CatalogFranchiseModule
+    CatalogFranchiseModule,
+    CreateFranchiseModule,
+    ViewFranchiseModule,
+    EditFranchiseModule
   ],
 
   entryComponents: [],
@@ -68,7 +79,11 @@ import { CatalogFranchiseModule } from "./modules/catalog-franchise/catalog-fran
     CardModule,
     InputSwitchModule,
     SliderModule,
-    CheckboxModule
+    CheckboxModule,
+    BreadcrumbModule,
+    FileUploadModule,
+    GalleriaModule,
+    InputTextareaModule
   ],
 
   providers: [
@@ -78,7 +93,8 @@ import { CatalogFranchiseModule } from "./modules/catalog-franchise/catalog-fran
       multi: true
     },
     CommonDataService,
-    Title
+    Title,
+    MessageService 
   ],
 
   bootstrap: [AppComponent]

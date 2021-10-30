@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Title } from "@angular/platform-browser";
+import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { FilterInput } from "src/app/models/franchise/input/filter-franchise-input";
 import { FranchiseInput } from "src/app/models/franchise/input/franchise-input";
@@ -47,8 +48,14 @@ export class CatalogFranchiseModule implements OnInit {
     aNewFranchises: any[] = [];
     responsiveOptions: any[] = [];
     aReviewsFranchises: any[] = [];
+    franchiseId: number = 0;
+    routeParam: number;
 
-    constructor(private http: HttpClient, private commonService: CommonDataService, private titleService: Title) {
+    constructor(private http: HttpClient, 
+        private commonService: CommonDataService, 
+        private titleService: Title,
+        private router: Router,
+        private route: ActivatedRoute) {
         // TODO: Переделать на хранение на бэке.
         this.aSortPrices = [
             {
@@ -78,6 +85,8 @@ export class CatalogFranchiseModule implements OnInit {
                 numScroll: 1
             }
         ];
+
+        this.routeParam = this.route.snapshot.queryParams.franchiseId;
     };
 
     public async ngOnInit() {
@@ -104,7 +113,7 @@ export class CatalogFranchiseModule implements OnInit {
      */
      private async GetPopularAsync() {        
         try {
-            await this.commonService.GetPopularAsync().then((data: any) => {
+            await this.commonService.getPopularAsync().then((data: any) => {
                 console.log("Популярные франшизы:", data);
                 this.aPopularFranchises = data;
             });
@@ -489,5 +498,28 @@ export class CatalogFranchiseModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
+    };
+
+    /**
+     * Функция запишет переход.
+     */
+    private async setTransitionAsync(franchiseId: number) {
+        try {
+            await this.commonService.setTransitionAsync(franchiseId, "Franchise").then((data: any) => {
+                console.log("Переход записан:", data);
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция перейдет к просмотру карточки франшизы.
+     */
+    public async routeViewFranchiseCardAsync(franchiseId: number) {
+        await this.setTransitionAsync(franchiseId);    
+        this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: franchiseId } });
     };
 }

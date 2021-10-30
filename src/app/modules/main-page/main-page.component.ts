@@ -214,7 +214,7 @@ export class MainPageModule implements OnInit {
      */
     private async GetPopularAsync() {        
         try {
-            await this.commonService.GetPopularAsync().then((data: any) => {
+            await this.commonService.getPopularAsync().then((data: any) => {
                 console.log("Популярные франшизы:", data);
                 this.aPopularFranchises = data;
             });

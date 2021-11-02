@@ -145,7 +145,7 @@ export class CatalogFranchiseModule implements OnInit {
                 .subscribe({
                     next: (response: any) => {
                         console.log("Отфильтрованный список франшиз:", response);
-                        this.aFranchises = response;
+                        // this.aFranchises = response;
                     },
 
                     error: (err) => {
@@ -265,7 +265,7 @@ export class CatalogFranchiseModule implements OnInit {
                 next: (response: any) => {
                     console.log("get data pagination", response);
                     this.countFranchises = response.countAll;
-                    this.aFranchises = response.results;
+                    // this.aFranchises = response.results;
                     // this.router.navigate(['/auction'], {
                     //     queryParams: {
                     //         page: paginationData.PageNumber,
@@ -298,7 +298,7 @@ export class CatalogFranchiseModule implements OnInit {
                 next: (response: any) => {
                     console.log("pagination init", response);
                     this.countFranchises = response.countAll;
-                    this.aFranchises = response.results;
+                    // this.aFranchises = response.results;
                 },
 
                 error: (err) => {
@@ -328,7 +328,7 @@ export class CatalogFranchiseModule implements OnInit {
             .subscribe({
                 next: (response: any) => {
                     console.log("Франшизы после фильтрации:", response);                    
-                    this.aFranchises = response;
+                    // this.aFranchises = response;
                 },
 
                 error: (err) => {

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
@@ -20,12 +20,30 @@ export class ViewFranchiseModule implements OnInit {
     isHidePacks: boolean = false;
     aPacks: any[] = [];
     aFranchisePhotos: any[] = [];
+    responsiveOptions: any;
+    aNamesFranchisePhotos: any = [];
+    fio: string = "";
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
         private route: ActivatedRoute) {
             this.routeParam = this.route.snapshot.queryParams;
             this.franchiseId = this.route.snapshot.queryParams.franchiseId;
+
+            this.responsiveOptions = [
+                {
+                    breakpoint: '1024px',
+                    numVisible: 5
+                },
+                {
+                    breakpoint: '768px',
+                    numVisible: 3
+                },
+                {
+                    breakpoint: '560px',
+                    numVisible: 1
+                }
+            ]; 
     };
 
     public async ngOnInit() {
@@ -62,16 +80,18 @@ export class ViewFranchiseModule implements OnInit {
                 .subscribe({
                     next: (response: any) => {
                         console.log("Полученная франшиза:", response);
-                        this.franchiseData.push(response);     
-                        console.log("franchiseData", this.franchiseData);     
-                        
-                        this.aInvestInclude.push(JSON.parse(response.investInclude));
+                        this.franchiseData.push(response);                             
+                        this.aNamesFranchisePhotos = [this.franchiseData[0].url];                        
+                        this.aInvestInclude = JSON.parse(response.investInclude);
                         this.aFinIndicators = JSON.parse(response.finIndicators);
                         this.aPacks = JSON.parse(response.franchisePacks);
+                        this.fio = response.fullName;
 
+                        console.log("franchiseData", this.franchiseData);    
                         console.log("aInvestInclude", this.aInvestInclude);
                         console.log("aFinIndicators", this.aFinIndicators);
                         console.log("aPacks", this.aPacks);
+                        console.log("aNamesFranchisePhotos", this.aNamesFranchisePhotos);
                     },
 
                     error: (err) => {

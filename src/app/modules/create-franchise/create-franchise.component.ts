@@ -25,7 +25,7 @@ export class CreateFranchiseModule implements OnInit {
     payback?: number;
     profitMonth?: number;
     launchDate?: number;
-    priceInvest?: number;
+    priceInvest?: string;
     nameInvest?: string;
     baseDate?: number;
     yearStart?: number;
@@ -58,6 +58,11 @@ export class CreateFranchiseModule implements OnInit {
     videoLink?: string;
     modelFile: any;
     presentFile: any;
+    ainvestIn: any;
+    ind: number = 0;
+    aPacks: any;
+    pInd: number = 0;
+    fio: string = "";
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService, 
@@ -76,10 +81,34 @@ export class CreateFranchiseModule implements OnInit {
                 numVisible: 1
             }
         ];        
-    };
+
+        // Первоначальная инициализация инвестиций.
+        this.ainvestIn = [
+            {
+                Name: "",            
+                Price: "",
+                isHideInvest: false
+            }
+        ];
+
+        // Первоначальная инициализация пакетов.
+        this.aPacks = [
+            {
+                Name: "",
+                Text: "",
+                LumpSumPayment: "",
+                Royalty: "",
+                TotalInvest: "",
+                IsHidePack: false
+            }
+        ];
+
+        console.log("ainvestIn", this.ainvestIn);
+        console.log("aPacks", this.aPacks);        
+    };    
 
     public async ngOnInit() {
-
+        await this.getUserFio();
     };
 
     public async uploadFranchisePhotosAsync(event: any) {
@@ -118,7 +147,7 @@ export class CreateFranchiseModule implements OnInit {
             let createUpdateFranchiseInput = new CreateUpdateFranchiseInput();            
             let logoName = this.logoName;
             // let logoFormData = this.fileLogoFormData;
-            let franchiseFiles = this.franchisePhotos;
+            // let franchiseFiles = this.franchisePhotos;
             let lead = this.lead;
             let generalInvest = this.generalInvest;
             let royalty = this.royalty;
@@ -126,8 +155,8 @@ export class CreateFranchiseModule implements OnInit {
             let profitMonth = this.profitMonth;
             let launchDate = this.launchDate;
             let activityDetail = this.activityDetail;
-            let priceInvest = this.priceInvest;
-            let nameInvest = this.nameInvest;
+            // let priceInvest = this.priceInvest;
+            // let nameInvest = this.nameInvest;
             let baseDate = this.baseDate;
             let yearStart = this.yearStart;
             let dotCount = this.dotCount;
@@ -146,19 +175,12 @@ export class CreateFranchiseModule implements OnInit {
             let percentFinancial4 = this.percentFinancial4;
             let educationDetails = this.educationDetails;
             // let fileEducationFormData = this.fileEducationFormData;
-            let packName = this.packName;
-            let packDetails = this.packDetails;
-            let packLumpSumPayment = this.packLumpSumPayment;
-            let totalInvest = this.totalInvest;
+            // let packName = this.packName;
+            // let packDetails = this.packDetails;
+            // let packLumpSumPayment = this.packLumpSumPayment;
+            // let totalInvest = this.totalInvest;
             let videoLink = this.videoLink;
-            let isGarant = this.isGarant || false;
-
-            // Формирование json входит в инвестиции.
-             // TODO: переделать на динамическое кол-во блоков.
-            let investInJson = {
-                Name: nameInvest,
-                Price: priceInvest
-            };
+            let isGarant = this.isGarant || false;            
 
             // Формирование json фин.индикаторов.
             let namesIndicatorsJson = [
@@ -181,23 +203,28 @@ export class CreateFranchiseModule implements OnInit {
                     Name: finIndicator4,
                     Price: percentFinancial4
                 }
-            ];
+            ];          
 
-            // Формирование json пакетов.
-            // TODO: переделать на динамическое кол-во блоков с пакетами.
-            let packetJson = [
-                {
-                    Name: packName,
-                    Text: packDetails,
-                    LumpSumPayment: packLumpSumPayment,
-                    Royalty: this.royaltyPack,
-                    TotalInvest: totalInvest
-                }
-            ];
+            // Уберет ключи флагов.
+            let newainvestIn = this.ainvestIn.map((item: any) => ({
+                Name:  item.Name,
+                Price: item.Price
+            }));
 
-            let investInJsonString = JSON.stringify(investInJson);
+            let investInJsonString = JSON.stringify(newainvestIn);
+
             let namesIndicatorsJsonString = JSON.stringify(namesIndicatorsJson);
-            let packetJsonString = JSON.stringify(packetJson);
+        
+             // Уберет ключи флагов.
+            let newPacks = this.aPacks.map((item: any) => ({
+                Name: item.Name,
+                Text: item.Text,
+                LumpSumPayment: item.LumpSumPayment,
+                Royalty: item.Royalty,
+                TotalInvest: item.TotalInvest
+            }))
+
+            let packetJsonString = JSON.stringify(newPacks);
 
             // createUpdateFranchiseInput.fileLogo = logoFormData;
             // createUpdateFranchiseInput.franchisePhoto = franchiseFiles;
@@ -310,5 +337,127 @@ export class CreateFranchiseModule implements OnInit {
             summary: 'Успешно!',
             detail: 'Франшиза успешно создана'
         });
+    };
+
+    /**
+     * Функция нарастит блоки с данными входит в инвестиции.
+     * @param priceInvest - цена.
+     * @param nameInvest - название.
+     */
+     public onAddInveest(priceInvest: any, nameInvest: any) {     
+        if (this.ainvestIn.length == 1) {
+            this.ainvestIn[0] = {
+                Name: nameInvest,
+                Price: priceInvest
+            };           
+
+            this.ainvestIn.push(
+                {
+                    Name: "",
+                    Price: ""
+                }
+            );
+            
+            this.ainvestIn[this.ind].isHideInvest = true;
+            this.ind++;
+
+            return;
+        }
+
+        this.ainvestIn[this.ind].Name = nameInvest;
+        this.ainvestIn[this.ind].Price = priceInvest;
+
+        this.ainvestIn.push(
+            {
+                Name: "",
+                Price: ""
+            }
+        );
+
+        this.ainvestIn[this.ind].isHideInvest = true;
+        this.ind++;
+
+        console.log("investInJson", this.ainvestIn);
+    };
+
+    /**
+     * Функция нарастит блоки с пакетами.
+     * @param packName - название пакета.
+     * @param packDetails - детали пакета.
+     * @param packLumpSumPayment - паушальный взнос.
+     * @param royaltyPack - роялти.
+     * @param totalInvest - всего инвестиций.
+     */
+    public onAddPack(packName: any, packDetails: any, packLumpSumPayment: any, royaltyPack: any, totalInvest: any) {
+        if (this.aPacks.length == 1) {
+            this.aPacks[0] = {
+                Name: packName,
+                Text: packDetails,
+                LumpSumPayment: packLumpSumPayment,
+                Royalty: royaltyPack,
+                TotalInvest: totalInvest
+            };           
+
+            this.aPacks.push(
+                {
+                    Name: "",
+                    Text: "",
+                    LumpSumPayment: "",
+                    Royalty: "",
+                    TotalInvest: ""
+                }
+            );
+            
+            this.aPacks[this.pInd].IsHidePack = true;
+            this.pInd++;
+
+            return;
+        }
+
+        this.aPacks[this.pInd].Name = packName;
+        this.aPacks[this.pInd].Text = packDetails;
+        this.aPacks[this.pInd].LumpSumPayment = packLumpSumPayment;
+        this.aPacks[this.pInd].Royalty = royaltyPack;
+        this.aPacks[this.pInd].TotalInvest = totalInvest;
+
+        this.aPacks.push(
+            {
+                Name: "",
+                Text: "",
+                LumpSumPayment: "",
+                Royalty: "",
+                TotalInvest: ""
+            }
+        );
+
+        this.aPacks[this.ind].IsHidePack = true;
+        this.pInd++;
+
+        console.log("packs", this.aPacks);
+    };
+
+    public onCheckedGarant() {
+        console.log("isGarant", this.isGarant);
+    };
+
+    private async getUserFio() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/user/user-fio"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("fio data:", response);
+                        this.fio = response.fullName;
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
     };
 }

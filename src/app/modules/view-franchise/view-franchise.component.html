@@ -33,7 +33,7 @@
    <div class="block-gallery">
      <div>       
       <span *ngIf="!aFranchisePhotos.length">Фотографии не загружены</span>
-       <!-- <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
+       <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
          [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
          <ng-template pTemplate="item" let-item>
            <img src="{{item}}" style="width: 700px; display: block;" />           
@@ -44,12 +44,12 @@
              <img src="{{item}}" />
            </div>
          </ng-template>
-       </p-galleria> -->
+       </p-galleria>
      </div>
 
      <div>
       <span class="title-strong">Ваша карточка для связи</span><br>
-      <span class="title-small">Ваше Имя Фамилия Отчество</span><br>
+      <span class="title-small">{{fio}}</span><br>
      
       <div *ngFor="let item of franchiseData">
         <!-- <label>Пример: владелец</label><br> -->

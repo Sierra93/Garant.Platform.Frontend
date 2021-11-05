@@ -43,6 +43,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MessageService } from "primeng/api";
 import { CreateReadyBusinessModule } from "./modules/create-ready-business/create-ready-business.component";
 import { EditReadyBusinessModule } from "./modules/edit-ready-business/edit-ready-business.component";
+import { ViewReadyBusinessModule } from "./modules/view-ready-business/view-ready-business.component";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { EditReadyBusinessModule } from "./modules/edit-ready-business/edit-read
     ViewFranchiseModule,
     EditFranchiseModule,
     CreateReadyBusinessModule,
-    EditReadyBusinessModule
+    EditReadyBusinessModule,
+    ViewReadyBusinessModule
   ],
 
   entryComponents: [],

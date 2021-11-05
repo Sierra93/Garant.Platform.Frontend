@@ -211,7 +211,7 @@ export class EditReadyBusinessModule implements OnInit {
             let turnPrice = newBusinessData.turnPrice;
             let profitPrice = newBusinessData.profitPrice;
             let businessAge = newBusinessData.businessAge;
-            let employeeYearCount = newBusinessData.employeeYearCount;
+            let employeeYearCount = newBusinessData.employeeCountYear;
             let form = newBusinessData.form;
             let share = newBusinessData.share;
             let site = newBusinessData.site;

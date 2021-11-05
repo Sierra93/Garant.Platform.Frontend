@@ -41,6 +41,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { GalleriaModule } from 'primeng/galleria';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MessageService } from "primeng/api";
+import { CreateReadyBusinessModule } from "./modules/create-ready-business/create-ready-business.component";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MessageService } from "primeng/api";
     CatalogFranchiseModule,
     CreateFranchiseModule,
     ViewFranchiseModule,
-    EditFranchiseModule
+    EditFranchiseModule,
+    CreateReadyBusinessModule
   ],
 
   entryComponents: [],

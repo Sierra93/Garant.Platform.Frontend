@@ -146,8 +146,6 @@ export class CreateFranchiseModule implements OnInit {
         try {
             let createUpdateFranchiseInput = new CreateUpdateFranchiseInput();            
             let logoName = this.logoName;
-            // let logoFormData = this.fileLogoFormData;
-            // let franchiseFiles = this.franchisePhotos;
             let lead = this.lead;
             let generalInvest = this.generalInvest;
             let royalty = this.royalty;
@@ -155,8 +153,6 @@ export class CreateFranchiseModule implements OnInit {
             let profitMonth = this.profitMonth;
             let launchDate = this.launchDate;
             let activityDetail = this.activityDetail;
-            // let priceInvest = this.priceInvest;
-            // let nameInvest = this.nameInvest;
             let baseDate = this.baseDate;
             let yearStart = this.yearStart;
             let dotCount = this.dotCount;
@@ -174,11 +170,6 @@ export class CreateFranchiseModule implements OnInit {
             let percentFinancial3 = this.percentFinancial3;
             let percentFinancial4 = this.percentFinancial4;
             let educationDetails = this.educationDetails;
-            // let fileEducationFormData = this.fileEducationFormData;
-            // let packName = this.packName;
-            // let packDetails = this.packDetails;
-            // let packLumpSumPayment = this.packLumpSumPayment;
-            // let totalInvest = this.totalInvest;
             let videoLink = this.videoLink;
             let isGarant = this.isGarant || false;            
 
@@ -225,9 +216,6 @@ export class CreateFranchiseModule implements OnInit {
             }))
 
             let packetJsonString = JSON.stringify(newPacks);
-
-            // createUpdateFranchiseInput.fileLogo = logoFormData;
-            // createUpdateFranchiseInput.franchisePhoto = franchiseFiles;
             createUpdateFranchiseInput.Status = lead;
             createUpdateFranchiseInput.GeneralInvest = generalInvest;
             createUpdateFranchiseInput.LumpSumPayment = this.lumpSumPayment;
@@ -243,7 +231,6 @@ export class CreateFranchiseModule implements OnInit {
             createUpdateFranchiseInput.Peculiarity = featureFranchise;
             createUpdateFranchiseInput.Text = defailsFranchise;
             createUpdateFranchiseInput.PaymentDetail = paymentDetails;
-            // createUpdateFranchiseInput.trainingPhoto = fileEducationFormData;
             createUpdateFranchiseInput.UrlVideo = videoLink;
             createUpdateFranchiseInput.IsGarant = isGarant;
             createUpdateFranchiseInput.InvestInclude = investInJsonString;
@@ -277,7 +264,7 @@ export class CreateFranchiseModule implements OnInit {
                     },
 
                     error: (err) => {
-                        // this.commonService.routeToStart(err);
+                        this.commonService.routeToStart(err);
                         throw new Error(err);
                     }
                 });

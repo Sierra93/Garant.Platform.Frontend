@@ -41,7 +41,7 @@ export class CommonDataService {
                 sessionStorage.clear();
                 localStorage.clear();
                 // $(".right-panel").show();
-                this.router.navigate(["/login"]);
+                this.router.navigate(["/login?loginType=code"]);
             }
         }
     };
@@ -110,7 +110,7 @@ export class CommonDataService {
             sessionStorage.clear();
             sessionStorage["role"] = "G";
 
-            this.router.navigate(["/login"]);
+            this.router.navigate(["/login?loginType=code"]);
         }
     };
 

@@ -116,7 +116,7 @@ export class EditFranchiseModule implements OnInit {
     };
 
     /**
-     * Функция получит данные франшизы, которую просматривают.
+     * Функция получит данные франшизы, которую нужно изменить.
      * @returns - данные франшизы.
      */
      private async getViewFranchiseAsync(franchiseId: number) {

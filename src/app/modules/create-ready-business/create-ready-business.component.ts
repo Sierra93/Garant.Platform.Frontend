@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
-import { CreateUpdateBusinessInput } from "src/app/models/business/business-create-update-input";
+import { CreateUpdateBusinessInput } from "src/app/models/business/input/business-create-update-input";
 import { CommonDataService } from "src/app/services/common-data.service";
 
 @Component({
@@ -12,8 +12,7 @@ import { CommonDataService } from "src/app/services/common-data.service";
     providers: [ConfirmationService, MessageService]
 })
 
-export class CreateReadyBusinessModule implements OnInit {
-    
+export class CreateReadyBusinessModule implements OnInit {    
     responsiveOptions: any;
     aNamesBusinessPhotos: any = [];
     lead: string = "";

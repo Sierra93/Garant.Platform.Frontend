@@ -44,6 +44,7 @@ import { MessageService } from "primeng/api";
 import { CreateReadyBusinessModule } from "./modules/create-ready-business/create-ready-business.component";
 import { EditReadyBusinessModule } from "./modules/edit-ready-business/edit-ready-business.component";
 import { ViewReadyBusinessModule } from "./modules/view-ready-business/view-ready-business.component";
+import { CreateAdModule } from "./modules/create-ad/create-ad.component";
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ViewReadyBusinessModule } from "./modules/view-ready-business/view-read
     EditFranchiseModule,
     CreateReadyBusinessModule,
     EditReadyBusinessModule,
-    ViewReadyBusinessModule
+    ViewReadyBusinessModule,
+    CreateAdModule
   ],
 
   entryComponents: [],

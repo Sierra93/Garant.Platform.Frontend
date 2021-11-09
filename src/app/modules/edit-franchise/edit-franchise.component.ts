@@ -14,6 +14,9 @@ import { CommonDataService } from "src/app/services/common-data.service";
     providers: [ConfirmationService, MessageService]
 })
 
+/** 
+ * Класс модуля изменения франшизы.
+ */
 export class EditFranchiseModule implements OnInit {
     franchiseId: number = 0;
     logoName?: string;
@@ -61,7 +64,7 @@ export class EditFranchiseModule implements OnInit {
     videoLink?: string;
     modelFile: any;
     presentFile: any;
-    franchiseData: any[] = [];
+    franchiseData: any = [];
     routeParam: any;
     aInvestInclude: any = [];
     aFinIndicators: any[] = [];
@@ -130,12 +133,12 @@ export class EditFranchiseModule implements OnInit {
                 .subscribe({
                     next: (response: any) => {
                         console.log("Полученная франшиза:", response);
-                        this.franchiseData.push(response);     
+                        this.franchiseData = response;     
                         console.log("franchiseData", this.franchiseData);     
                         
-                        this.aInvestInclude = JSON.parse(response.investInclude);
-                        this.aFinIndicators = JSON.parse(response.finIndicators);
-                        this.aPacks = JSON.parse(response.franchisePacks);
+                        this.aInvestInclude = [JSON.parse(response.investInclude)];
+                        this.aFinIndicators = [JSON.parse(response.finIndicators)];
+                        this.aPacks = [JSON.parse(response.franchisePacks)];
 
                         console.log("aInvestInclude", this.aInvestInclude);
                         console.log("aFinIndicators", this.aFinIndicators);
@@ -225,7 +228,7 @@ export class EditFranchiseModule implements OnInit {
       public async onEditFranchiseAsync() {
         console.log("onEditFranchiseAsync");    
         console.log("log franchiseData", this.franchiseData);
-        let newFranchiseData = this.franchiseData[0];
+        let newFranchiseData = this.franchiseData;
 
         try {
             let createUpdateFranchiseInput = new CreateUpdateFranchiseInput();            
@@ -339,12 +342,8 @@ export class EditFranchiseModule implements OnInit {
             createUpdateFranchiseInput.IsNew = false;
             createUpdateFranchiseInput.Title = newFranchiseData.title;
             createUpdateFranchiseInput.TrainingDetails = newFranchiseData.trainingDetails;            
-
-            // TODO: заменить на динамическое определение категории франшизы.
-            createUpdateFranchiseInput.Category = "Тестовая категория";
-
-            // TODO: заменить на динамическое определение категории франшизы.
-            createUpdateFranchiseInput.SubCategory = "Тестовая подкатегория";
+            createUpdateFranchiseInput.Category = newFranchiseData.category;
+            createUpdateFranchiseInput.SubCategory = newFranchiseData.subCategory;
 
             let sendFormData = new FormData();
             sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));

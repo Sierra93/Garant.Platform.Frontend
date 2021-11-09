@@ -12,6 +12,9 @@ import { CommonDataService } from "src/app/services/common-data.service";
     styleUrls: ["./view-ready-business.component.scss"]
 })
 
+/** 
+ * Класс модуля просмотра бизнеса.
+ */
 export class ViewReadyBusinessModule implements OnInit {
     responsiveOptions: any;
     aNamesBusinessPhotos: any = [];

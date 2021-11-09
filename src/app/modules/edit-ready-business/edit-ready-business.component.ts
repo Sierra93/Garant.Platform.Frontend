@@ -14,6 +14,9 @@ import { CommonDataService } from "src/app/services/common-data.service";
     providers: [ConfirmationService, MessageService]
 })
 
+/** 
+ * Класс модуля изменения бизнеса.
+ */
 export class EditReadyBusinessModule implements OnInit {
     responsiveOptions: any;
     aNamesBusinessPhotos: any = [];
@@ -29,7 +32,7 @@ export class EditReadyBusinessModule implements OnInit {
     modelFile: any;
     ind: number = 0;
     fio: string = "";
-    aPriceIn: any;
+    aPriceIn: any = [];
     price: number = 0;
     turnPrice: number = 0;
     profitPrice: number = 0;
@@ -53,7 +56,7 @@ export class EditReadyBusinessModule implements OnInit {
     filesBusiness: any;
     routeParam: any;
     businessId: number = 0;
-    businessData: any[] = [];
+    businessData: any = [];
     aBusinessPhotos: any = [];
 
     constructor(private http: HttpClient,
@@ -134,13 +137,17 @@ export class EditReadyBusinessModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/business/get-business"), getFranchiseInput)
                 .subscribe({
                     next: (response: any) => {                        
-                        this.businessData.push(response);                                                    
+                        this.businessData = response;                                                    
                         this.aPriceIn = JSON.parse(response.investPrice);                                                
 
                         // Запишет пути изображений бизнеса.
-                        this.businessData.forEach((item: any) => {
-                            this.aNamesBusinessPhotos = item.urlsBusiness;
-                        });
+                        // this.businessData.forEach((item: any) => {
+                        //     this.aNamesBusinessPhotos = item.urlsBusiness;
+                        // });
+
+                        // this.businessData.urlsBusiness.forEach((item: any) => {
+                        //     this.aNamesBusinessPhotos = item.urlsBusiness;
+                        // });
 
                         console.log("Полученный бизнес:", response);
                         console.log("businessData", this.businessData);      
@@ -196,7 +203,7 @@ export class EditReadyBusinessModule implements OnInit {
 
         try {
             let createUpdateBusinessInput = new CreateUpdateBusinessInput();        
-            let newBusinessData = this.businessData[0];    
+            let newBusinessData = this.businessData;    
             let lead = newBusinessData.status;
             let payback = newBusinessData.payback;
             let profitability = newBusinessData.profitability;
@@ -253,13 +260,9 @@ export class EditReadyBusinessModule implements OnInit {
             createUpdateBusinessInput.ReasonsSale = reasonsSale;
             createUpdateBusinessInput.Address = address;
             createUpdateBusinessInput.InvestPrice = priceInJson;            
-            createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;         
-
-            // TODO: заменить на динамическое определение категории франшизы.
-            createUpdateBusinessInput.Category = "Тестовая категория";
-
-            // TODO: заменить на динамическое определение категории франшизы.
-            createUpdateBusinessInput.SubCategory = "Тестовая подкатегория";
+            createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;        
+            createUpdateBusinessInput.Category = newBusinessData.category;
+            createUpdateBusinessInput.SubCategory = newBusinessData.subCategory; 
 
             let sendFormData = new FormData();
             sendFormData.append("businessDataInput", JSON.stringify(createUpdateBusinessInput));

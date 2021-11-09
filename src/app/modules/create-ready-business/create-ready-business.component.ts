@@ -12,6 +12,9 @@ import { CommonDataService } from "src/app/services/common-data.service";
     providers: [ConfirmationService, MessageService]
 })
 
+/** 
+ * Класс модуля создания бизнеса.
+ */
 export class CreateReadyBusinessModule implements OnInit {    
     responsiveOptions: any;
     aNamesBusinessPhotos: any = [];

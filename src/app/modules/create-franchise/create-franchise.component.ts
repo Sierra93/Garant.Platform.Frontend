@@ -4,6 +4,7 @@ import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franchise-create-update-input";
 import { CommonDataService } from "src/app/services/common-data.service";
 import { ConfirmationService, MessageService } from "primeng/api";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: "create-franchise",
@@ -12,6 +13,9 @@ import { ConfirmationService, MessageService } from "primeng/api";
     providers: [ConfirmationService, MessageService]
 })
 
+/** 
+ * Класс модуля создания франшизы.
+ */
 export class CreateFranchiseModule implements OnInit {
     logoName?: string;
     responsiveOptions: any;
@@ -63,10 +67,18 @@ export class CreateFranchiseModule implements OnInit {
     aPacks: any;
     pInd: number = 0;
     fio: string = "";
+    routeParamCategory: any;
+    routeParamSubCategory: any;
+    routeParamSubCity: any;
 
     constructor(private http: HttpClient,
-        private commonService: CommonDataService, 
-        private messageService: MessageService) {
+        private commonService: CommonDataService,
+        private messageService: MessageService,
+        private route: ActivatedRoute) {
+        this.routeParamCategory = this.route.snapshot.queryParams.category;
+        this.routeParamSubCategory = this.route.snapshot.queryParams.subCategory;
+        this.routeParamSubCity = this.route.snapshot.queryParams.city;
+
         this.responsiveOptions = [
             {
                 breakpoint: '1024px',
@@ -80,12 +92,12 @@ export class CreateFranchiseModule implements OnInit {
                 breakpoint: '560px',
                 numVisible: 1
             }
-        ];        
+        ];
 
         // Первоначальная инициализация инвестиций.
         this.ainvestIn = [
             {
-                Name: "",            
+                Name: "",
                 Price: "",
                 isHideInvest: false
             }
@@ -104,8 +116,8 @@ export class CreateFranchiseModule implements OnInit {
         ];
 
         console.log("ainvestIn", this.ainvestIn);
-        console.log("aPacks", this.aPacks);        
-    };    
+        console.log("aPacks", this.aPacks);
+    };
 
     public async ngOnInit() {
         await this.getUserFio();
@@ -116,13 +128,13 @@ export class CreateFranchiseModule implements OnInit {
             let fileList = event.target.files;
             let file: File = fileList[0];
             let formData: FormData = new FormData();
-            formData.append('files', file);           
+            formData.append('files', file);
 
             await this.http.post(API_URL.apiUrl.concat("/franchise/temp-file"), formData)
                 .subscribe({
                     next: (response: any) => {
                         console.log("Загруженные файлы франшизы:", response);
-                        this.aNamesFranchisePhotos = response;                        
+                        this.aNamesFranchisePhotos = response;
                     },
 
                     error: (err) => {
@@ -141,10 +153,10 @@ export class CreateFranchiseModule implements OnInit {
      * @returns - Данные созданной франшизы.
      */
     public async onCreateFranchiseAsync() {
-        console.log("onCreateFranchiseAsync");    
+        console.log("onCreateFranchiseAsync");
 
         try {
-            let createUpdateFranchiseInput = new CreateUpdateFranchiseInput();            
+            let createUpdateFranchiseInput = new CreateUpdateFranchiseInput();
             let logoName = this.logoName;
             let lead = this.lead;
             let generalInvest = this.generalInvest;
@@ -171,7 +183,7 @@ export class CreateFranchiseModule implements OnInit {
             let percentFinancial4 = this.percentFinancial4;
             let educationDetails = this.educationDetails;
             let videoLink = this.videoLink;
-            let isGarant = this.isGarant || false;            
+            let isGarant = this.isGarant || false;
 
             // Формирование json фин.индикаторов.
             let namesIndicatorsJson = [
@@ -194,19 +206,19 @@ export class CreateFranchiseModule implements OnInit {
                     Name: finIndicator4,
                     Price: percentFinancial4
                 }
-            ];          
+            ];
 
             // Уберет ключи флагов.
             let newainvestIn = this.ainvestIn.map((item: any) => ({
-                Name:  item.Name,
+                Name: item.Name,
                 Price: item.Price
             }));
 
             let investInJsonString = JSON.stringify(newainvestIn);
 
             let namesIndicatorsJsonString = JSON.stringify(namesIndicatorsJson);
-        
-             // Уберет ключи флагов.
+
+            // Уберет ключи флагов.
             let newPacks = this.aPacks.map((item: any) => ({
                 Name: item.Name,
                 Text: item.Text,
@@ -223,7 +235,7 @@ export class CreateFranchiseModule implements OnInit {
             createUpdateFranchiseInput.Payback = payback;
             createUpdateFranchiseInput.ProfitMonth = profitMonth;
             createUpdateFranchiseInput.LaunchDate = launchDate;
-            createUpdateFranchiseInput.ActivityDetail = activityDetail;            
+            createUpdateFranchiseInput.ActivityDetail = activityDetail;
             createUpdateFranchiseInput.BaseDate = baseDate;
             createUpdateFranchiseInput.YearStart = yearStart;
             createUpdateFranchiseInput.DotCount = dotCount;
@@ -242,10 +254,10 @@ export class CreateFranchiseModule implements OnInit {
             createUpdateFranchiseInput.TrainingDetails = educationDetails;
 
             // TODO: заменить на динамическое определение категории франшизы.
-            createUpdateFranchiseInput.Category = "Тестовая категория";
+            createUpdateFranchiseInput.Category = this.routeParamCategory;
 
             // TODO: заменить на динамическое определение категории франшизы.
-            createUpdateFranchiseInput.SubCategory = "Тестовая подкатегория";
+            createUpdateFranchiseInput.SubCategory = this.routeParamSubCategory;
 
             let sendFormData = new FormData();
             sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));
@@ -270,7 +282,7 @@ export class CreateFranchiseModule implements OnInit {
                 });
         }
 
-        catch (e: any) {           
+        catch (e: any) {
             throw new Error(e);
         }
     };
@@ -290,7 +302,7 @@ export class CreateFranchiseModule implements OnInit {
         console.log("uploadEducationPhotosAsync");
         this.fileEducationFormData = event.target.files[0];
     };
-    
+
     /**
      * Функция добавит фото франшизы.
      */
@@ -299,9 +311,9 @@ export class CreateFranchiseModule implements OnInit {
         this.franchisePhotos = event.target.files[0];
     };
 
-     /**
-     * Функция добавит файл фин.модели.
-     */
+    /**
+    * Функция добавит файл фин.модели.
+    */
     public uploadFinModelAsync(event: any) {
         console.log("uploadFinModelAsync");
         this.modelFile = event.target.files[0];
@@ -331,12 +343,12 @@ export class CreateFranchiseModule implements OnInit {
      * @param priceInvest - цена.
      * @param nameInvest - название.
      */
-     public onAddInveest(priceInvest: any, nameInvest: any) {     
+    public onAddInveest(priceInvest: any, nameInvest: any) {
         if (this.ainvestIn.length == 1) {
             this.ainvestIn[0] = {
                 Name: nameInvest,
                 Price: priceInvest
-            };           
+            };
 
             this.ainvestIn.push(
                 {
@@ -344,7 +356,7 @@ export class CreateFranchiseModule implements OnInit {
                     Price: ""
                 }
             );
-            
+
             this.ainvestIn[this.ind].isHideInvest = true;
             this.ind++;
 
@@ -383,7 +395,7 @@ export class CreateFranchiseModule implements OnInit {
                 LumpSumPayment: packLumpSumPayment,
                 Royalty: royaltyPack,
                 TotalInvest: totalInvest
-            };           
+            };
 
             this.aPacks.push(
                 {
@@ -394,7 +406,7 @@ export class CreateFranchiseModule implements OnInit {
                     TotalInvest: ""
                 }
             );
-            
+
             this.aPacks[this.pInd].IsHidePack = true;
             this.pInd++;
 

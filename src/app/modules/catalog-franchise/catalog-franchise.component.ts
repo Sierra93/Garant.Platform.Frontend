@@ -15,6 +15,9 @@ import { CommonDataService } from "src/app/services/common-data.service";
     styleUrls: ["./catalog-franchise.component.scss"]
 })
 
+/** 
+ * Класс модуля каталога франшиз.
+ */
 export class CatalogFranchiseModule implements OnInit {
     aPopularFranchises: any[] = [];
     isGarant: boolean = false;

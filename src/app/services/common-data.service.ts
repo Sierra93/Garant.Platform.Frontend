@@ -41,7 +41,7 @@ export class CommonDataService {
                 sessionStorage.clear();
                 localStorage.clear();
                 // $(".right-panel").show();
-                this.router.navigate(["/login"]);
+                this.router.navigate(["/login?loginType=code"]);
             }
         }
     };
@@ -109,8 +109,15 @@ export class CommonDataService {
         if (err.status === 401) {
             sessionStorage.clear();
             sessionStorage["role"] = "G";
+            
+            this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
+        }
 
-            this.router.navigate(["/login"]);
+        if (typeof(err) === "string") {
+            sessionStorage.clear();
+            sessionStorage["role"] = "G";
+
+            this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
         }
     };
 
@@ -313,9 +320,132 @@ export class CommonDataService {
     };
 
     /**
-     * Функция получит франшизу 
+     * Функция получит список категорий франшиз.
+     * @returns Список категорий.
      */
-    // public async getFranchiseAsync() {
+    public async GetFranchiseCategoriesListAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/franchise/category-list"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
 
-    // };
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список подкатеорий франшиз.
+     * @returns Список подкатеорий.
+     */
+     public async GetFranchiseSubCategoriesListAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/franchise/subcategory-list"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+     /**
+     * Функция получит список категорий бизнеса.
+     * @returns Список категорий.
+     */
+      public async GetBusinessCategoriesListAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/business/category-list"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+     /**
+     * Функция получит список подкатегорий бизнеса.
+     * @returns Список подкатегорий.
+     */
+      public async GetBusinessSubCategoriesListAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/business/subcategory-list"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список городов бизнеса.
+     * @returns Список городов.
+     */
+     public async GetBusinessCitiesListAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/business/cities-list"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 };

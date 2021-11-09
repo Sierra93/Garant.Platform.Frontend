@@ -7,6 +7,10 @@ import { LoginModule } from './modules/login/login.component';
 import { MainPageModule } from './modules/main-page/main-page.component';
 import { ProfileDataModule } from "./modules/profile-data/profile-data.component";
 import { ViewFranchiseModule } from './modules/view-franchise/view-franchise.component';
+import { CreateReadyBusinessModule } from './modules/create-ready-business/create-ready-business.component';
+import { ViewReadyBusinessModule } from './modules/view-ready-business/view-ready-business.component';
+import { EditReadyBusinessModule } from './modules/edit-ready-business/edit-ready-business.component';
+import { CreateAdModule } from './modules/create-ad/create-ad.component';
 
 const routes: Routes = [
   {
@@ -42,6 +46,26 @@ const routes: Routes = [
   {
     path: "franchise/edit",
     component: EditFranchiseModule
+  },
+
+  {
+    path: "business/create",
+    component: CreateReadyBusinessModule
+  },
+
+  {
+    path: "business/view",
+    component: ViewReadyBusinessModule
+  },
+
+  {
+    path: "business/edit",
+    component: EditReadyBusinessModule
+  },
+
+  {
+    path: "ad/create",
+    component: CreateAdModule
   }
 ];
 

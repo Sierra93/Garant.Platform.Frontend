@@ -13,6 +13,9 @@ import { ConfirmationService, MessageService } from "primeng/api";
     providers: [ConfirmationService, MessageService]
 })
 
+/** 
+ * Класс модуля профиля пользователя.
+ */
 export class ProfileDataModule implements OnInit {
     firstName: string = "";
     city: string = "";

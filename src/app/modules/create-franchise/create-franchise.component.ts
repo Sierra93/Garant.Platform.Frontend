@@ -4,6 +4,7 @@ import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franchise-create-update-input";
 import { CommonDataService } from "src/app/services/common-data.service";
 import { ConfirmationService, MessageService } from "primeng/api";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: "create-franchise",
@@ -12,6 +13,9 @@ import { ConfirmationService, MessageService } from "primeng/api";
     providers: [ConfirmationService, MessageService]
 })
 
+/** 
+ * Класс модуля создания франшизы.
+ */
 export class CreateFranchiseModule implements OnInit {
     logoName?: string;
     responsiveOptions: any;
@@ -25,7 +29,7 @@ export class CreateFranchiseModule implements OnInit {
     payback?: number;
     profitMonth?: number;
     launchDate?: number;
-    priceInvest?: number;
+    priceInvest?: string;
     nameInvest?: string;
     baseDate?: number;
     yearStart?: number;
@@ -58,10 +62,23 @@ export class CreateFranchiseModule implements OnInit {
     videoLink?: string;
     modelFile: any;
     presentFile: any;
+    ainvestIn: any;
+    ind: number = 0;
+    aPacks: any;
+    pInd: number = 0;
+    fio: string = "";
+    routeParamCategory: any;
+    routeParamSubCategory: any;
+    routeParamSubCity: any;
 
     constructor(private http: HttpClient,
-        private commonService: CommonDataService, 
-        private messageService: MessageService) {
+        private commonService: CommonDataService,
+        private messageService: MessageService,
+        private route: ActivatedRoute) {
+        this.routeParamCategory = this.route.snapshot.queryParams.category;
+        this.routeParamSubCategory = this.route.snapshot.queryParams.subCategory;
+        this.routeParamSubCity = this.route.snapshot.queryParams.city;
+
         this.responsiveOptions = [
             {
                 breakpoint: '1024px',
@@ -75,11 +92,35 @@ export class CreateFranchiseModule implements OnInit {
                 breakpoint: '560px',
                 numVisible: 1
             }
-        ];        
+        ];
+
+        // Первоначальная инициализация инвестиций.
+        this.ainvestIn = [
+            {
+                Name: "",
+                Price: "",
+                isHideInvest: false
+            }
+        ];
+
+        // Первоначальная инициализация пакетов.
+        this.aPacks = [
+            {
+                Name: "",
+                Text: "",
+                LumpSumPayment: "",
+                Royalty: "",
+                TotalInvest: "",
+                IsHidePack: false
+            }
+        ];
+
+        console.log("ainvestIn", this.ainvestIn);
+        console.log("aPacks", this.aPacks);
     };
 
     public async ngOnInit() {
-
+        await this.getUserFio();
     };
 
     public async uploadFranchisePhotosAsync(event: any) {
@@ -87,13 +128,13 @@ export class CreateFranchiseModule implements OnInit {
             let fileList = event.target.files;
             let file: File = fileList[0];
             let formData: FormData = new FormData();
-            formData.append('files', file);           
+            formData.append('files', file);
 
             await this.http.post(API_URL.apiUrl.concat("/franchise/temp-file"), formData)
                 .subscribe({
                     next: (response: any) => {
                         console.log("Загруженные файлы франшизы:", response);
-                        this.aNamesFranchisePhotos = response;                        
+                        this.aNamesFranchisePhotos = response;
                     },
 
                     error: (err) => {
@@ -112,13 +153,11 @@ export class CreateFranchiseModule implements OnInit {
      * @returns - Данные созданной франшизы.
      */
     public async onCreateFranchiseAsync() {
-        console.log("onCreateFranchiseAsync");    
+        console.log("onCreateFranchiseAsync");
 
         try {
-            let createUpdateFranchiseInput = new CreateUpdateFranchiseInput();            
+            let createUpdateFranchiseInput = new CreateUpdateFranchiseInput();
             let logoName = this.logoName;
-            // let logoFormData = this.fileLogoFormData;
-            let franchiseFiles = this.franchisePhotos;
             let lead = this.lead;
             let generalInvest = this.generalInvest;
             let royalty = this.royalty;
@@ -126,8 +165,6 @@ export class CreateFranchiseModule implements OnInit {
             let profitMonth = this.profitMonth;
             let launchDate = this.launchDate;
             let activityDetail = this.activityDetail;
-            let priceInvest = this.priceInvest;
-            let nameInvest = this.nameInvest;
             let baseDate = this.baseDate;
             let yearStart = this.yearStart;
             let dotCount = this.dotCount;
@@ -145,20 +182,8 @@ export class CreateFranchiseModule implements OnInit {
             let percentFinancial3 = this.percentFinancial3;
             let percentFinancial4 = this.percentFinancial4;
             let educationDetails = this.educationDetails;
-            // let fileEducationFormData = this.fileEducationFormData;
-            let packName = this.packName;
-            let packDetails = this.packDetails;
-            let packLumpSumPayment = this.packLumpSumPayment;
-            let totalInvest = this.totalInvest;
             let videoLink = this.videoLink;
             let isGarant = this.isGarant || false;
-
-            // Формирование json входит в инвестиции.
-             // TODO: переделать на динамическое кол-во блоков.
-            let investInJson = {
-                Name: nameInvest,
-                Price: priceInvest
-            };
 
             // Формирование json фин.индикаторов.
             let namesIndicatorsJson = [
@@ -183,24 +208,26 @@ export class CreateFranchiseModule implements OnInit {
                 }
             ];
 
-            // Формирование json пакетов.
-            // TODO: переделать на динамическое кол-во блоков с пакетами.
-            let packetJson = [
-                {
-                    Name: packName,
-                    Text: packDetails,
-                    LumpSumPayment: packLumpSumPayment,
-                    Royalty: this.royaltyPack,
-                    TotalInvest: totalInvest
-                }
-            ];
+            // Уберет ключи флагов.
+            let newainvestIn = this.ainvestIn.map((item: any) => ({
+                Name: item.Name,
+                Price: item.Price
+            }));
 
-            let investInJsonString = JSON.stringify(investInJson);
+            let investInJsonString = JSON.stringify(newainvestIn);
+
             let namesIndicatorsJsonString = JSON.stringify(namesIndicatorsJson);
-            let packetJsonString = JSON.stringify(packetJson);
 
-            // createUpdateFranchiseInput.fileLogo = logoFormData;
-            // createUpdateFranchiseInput.franchisePhoto = franchiseFiles;
+            // Уберет ключи флагов.
+            let newPacks = this.aPacks.map((item: any) => ({
+                Name: item.Name,
+                Text: item.Text,
+                LumpSumPayment: item.LumpSumPayment,
+                Royalty: item.Royalty,
+                TotalInvest: item.TotalInvest
+            }))
+
+            let packetJsonString = JSON.stringify(newPacks);
             createUpdateFranchiseInput.Status = lead;
             createUpdateFranchiseInput.GeneralInvest = generalInvest;
             createUpdateFranchiseInput.LumpSumPayment = this.lumpSumPayment;
@@ -208,7 +235,7 @@ export class CreateFranchiseModule implements OnInit {
             createUpdateFranchiseInput.Payback = payback;
             createUpdateFranchiseInput.ProfitMonth = profitMonth;
             createUpdateFranchiseInput.LaunchDate = launchDate;
-            createUpdateFranchiseInput.ActivityDetail = activityDetail;            
+            createUpdateFranchiseInput.ActivityDetail = activityDetail;
             createUpdateFranchiseInput.BaseDate = baseDate;
             createUpdateFranchiseInput.YearStart = yearStart;
             createUpdateFranchiseInput.DotCount = dotCount;
@@ -216,7 +243,6 @@ export class CreateFranchiseModule implements OnInit {
             createUpdateFranchiseInput.Peculiarity = featureFranchise;
             createUpdateFranchiseInput.Text = defailsFranchise;
             createUpdateFranchiseInput.PaymentDetail = paymentDetails;
-            // createUpdateFranchiseInput.trainingPhoto = fileEducationFormData;
             createUpdateFranchiseInput.UrlVideo = videoLink;
             createUpdateFranchiseInput.IsGarant = isGarant;
             createUpdateFranchiseInput.InvestInclude = investInJsonString;
@@ -228,10 +254,10 @@ export class CreateFranchiseModule implements OnInit {
             createUpdateFranchiseInput.TrainingDetails = educationDetails;
 
             // TODO: заменить на динамическое определение категории франшизы.
-            createUpdateFranchiseInput.Category = "Тестовая категория";
+            createUpdateFranchiseInput.Category = this.routeParamCategory;
 
             // TODO: заменить на динамическое определение категории франшизы.
-            createUpdateFranchiseInput.SubCategory = "Тестовая подкатегория";
+            createUpdateFranchiseInput.SubCategory = this.routeParamSubCategory;
 
             let sendFormData = new FormData();
             sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));
@@ -250,13 +276,13 @@ export class CreateFranchiseModule implements OnInit {
                     },
 
                     error: (err) => {
-                        // this.commonService.routeToStart(err);
+                        this.commonService.routeToStart(err);
                         throw new Error(err);
                     }
                 });
         }
 
-        catch (e: any) {           
+        catch (e: any) {
             throw new Error(e);
         }
     };
@@ -276,7 +302,7 @@ export class CreateFranchiseModule implements OnInit {
         console.log("uploadEducationPhotosAsync");
         this.fileEducationFormData = event.target.files[0];
     };
-    
+
     /**
      * Функция добавит фото франшизы.
      */
@@ -285,9 +311,9 @@ export class CreateFranchiseModule implements OnInit {
         this.franchisePhotos = event.target.files[0];
     };
 
-     /**
-     * Функция добавит файл фин.модели.
-     */
+    /**
+    * Функция добавит файл фин.модели.
+    */
     public uploadFinModelAsync(event: any) {
         console.log("uploadFinModelAsync");
         this.modelFile = event.target.files[0];
@@ -310,5 +336,127 @@ export class CreateFranchiseModule implements OnInit {
             summary: 'Успешно!',
             detail: 'Франшиза успешно создана'
         });
+    };
+
+    /**
+     * Функция нарастит блоки с данными входит в инвестиции.
+     * @param priceInvest - цена.
+     * @param nameInvest - название.
+     */
+    public onAddInveest(priceInvest: any, nameInvest: any) {
+        if (this.ainvestIn.length == 1) {
+            this.ainvestIn[0] = {
+                Name: nameInvest,
+                Price: priceInvest
+            };
+
+            this.ainvestIn.push(
+                {
+                    Name: "",
+                    Price: ""
+                }
+            );
+
+            this.ainvestIn[this.ind].isHideInvest = true;
+            this.ind++;
+
+            return;
+        }
+
+        this.ainvestIn[this.ind].Name = nameInvest;
+        this.ainvestIn[this.ind].Price = priceInvest;
+
+        this.ainvestIn.push(
+            {
+                Name: "",
+                Price: ""
+            }
+        );
+
+        this.ainvestIn[this.ind].isHideInvest = true;
+        this.ind++;
+
+        console.log("investInJson", this.ainvestIn);
+    };
+
+    /**
+     * Функция нарастит блоки с пакетами.
+     * @param packName - название пакета.
+     * @param packDetails - детали пакета.
+     * @param packLumpSumPayment - паушальный взнос.
+     * @param royaltyPack - роялти.
+     * @param totalInvest - всего инвестиций.
+     */
+    public onAddPack(packName: any, packDetails: any, packLumpSumPayment: any, royaltyPack: any, totalInvest: any) {
+        if (this.aPacks.length == 1) {
+            this.aPacks[0] = {
+                Name: packName,
+                Text: packDetails,
+                LumpSumPayment: packLumpSumPayment,
+                Royalty: royaltyPack,
+                TotalInvest: totalInvest
+            };
+
+            this.aPacks.push(
+                {
+                    Name: "",
+                    Text: "",
+                    LumpSumPayment: "",
+                    Royalty: "",
+                    TotalInvest: ""
+                }
+            );
+
+            this.aPacks[this.pInd].IsHidePack = true;
+            this.pInd++;
+
+            return;
+        }
+
+        this.aPacks[this.pInd].Name = packName;
+        this.aPacks[this.pInd].Text = packDetails;
+        this.aPacks[this.pInd].LumpSumPayment = packLumpSumPayment;
+        this.aPacks[this.pInd].Royalty = royaltyPack;
+        this.aPacks[this.pInd].TotalInvest = totalInvest;
+
+        this.aPacks.push(
+            {
+                Name: "",
+                Text: "",
+                LumpSumPayment: "",
+                Royalty: "",
+                TotalInvest: ""
+            }
+        );
+
+        this.aPacks[this.ind].IsHidePack = true;
+        this.pInd++;
+
+        console.log("packs", this.aPacks);
+    };
+
+    public onCheckedGarant() {
+        console.log("isGarant", this.isGarant);
+    };
+
+    private async getUserFio() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/user/user-fio"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("fio data:", response);
+                        this.fio = response.fullName;
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
     };
 }

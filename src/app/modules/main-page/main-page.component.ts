@@ -14,6 +14,9 @@ import { NgForm } from "@angular/forms";
     styleUrls: ['./main-page.component.scss']
 })
 
+/** 
+ * Класс модуля главной страницы.
+ */
 export class MainPageModule implements OnInit {
 	responsiveOptions: any[] = [];
     isGarant: boolean = false;

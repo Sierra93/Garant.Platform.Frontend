@@ -38,7 +38,7 @@
          </ng-template>
 
          <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
-           <div class="p-grid p-nogutter p-justify-center dopni">
+           <div class="p-grid p-nogutter p-justify-center">
              <img src="{{item}}" />
            </div>
          </ng-template>
@@ -47,7 +47,7 @@
 
      <div>
       <span class="title-strong">Ваша карточка для связи</span><br>
-      <span class="title-small">Ваше Имя Фамилия Отчество</span><br>
+      <span class="title-small">{{fio}}</span><br>
      
       <div>
         <label>Пример: владелец</label><br>
@@ -112,16 +112,18 @@
 
      <div class="invest-in">
       <span class="title-strong">Входит в инвестиции*</span><br>
-      <div class="invest-item-last">
+      <div class="invest-item-last" *ngFor="let item of ainvestIn">
         <small class="">Стоимость</small><br>
-        <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="priceInvest" name="priceInvest" /> ₽
+        <input type="number" class="control-input-franch-price" pInputText *ngIf="item.isHideInvest" [value]="item.Price" name="priceInvest" /> 
+        <input type="number" class="control-input-franch-price" pInputText *ngIf="!item.isHideInvest" [(ngModel)]="priceInvest" name="priceInvest" /> 
         <br>
 
         <small class="">Название</small><br>
-        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText [(ngModel)]="nameInvest" name="nameInvest" /> 
-        <br>
-        <button class="control-button-blue-small">Добавить пункт</button>
+        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="item.isHideInvest" [value]="item.Name" name="nameInvest" />   
+        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="!item.isHideInvest" [(ngModel)]="nameInvest" name="nameInvest" />                 
       </div>
+      <button class="control-button-blue-small" (click)="onAddInveest(priceInvest, nameInvest)">Добавить пункт</button>
+      <br>
       <small>
         Данный раздел обязателен для заполнения.<br>
         Подойдите к заполнению данного раздела<br>
@@ -300,43 +302,54 @@
   </div>
 
   <!-- Блок с пакетами франшизы. -->
- <div class="d-flex">
-  <div class="">
-    <div class="block-pack">
+ <div class="">
+  <div class="d-flex">
+    <div class="block-pack" *ngFor="let item of aPacks">
       <div class="block-top-pack">
         <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
-          [(ngModel)]="packName" name="packName" />
+        [value]="item.Name" *ngIf="item.IsHidePack" name="packName" />
+        <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
+          *ngIf="!item.IsHidePack" [(ngModel)]="packName" name="packName" />
         <br>
+
+        <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [value]="item.Text"
+        *ngIf="item.IsHidePack" name="packDetails" />
         <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [(ngModel)]="packDetails"
-          name="packDetails" />
+        *ngIf="!item.IsHidePack" name="packDetails" />
       </div>
 
       <div class="block-bottom-pack">
         <div>
           <span class="title-small">Паушальный взнос:</span><br>
+          <input type="text" class="control-big-input" pInputText [value]="item.LumpSumPayment"
+          *ngIf="item.IsHidePack" name="packLumpSumPayment" placeholder="₽" /> 
           <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
-            name="packLumpSumPayment" /> ₽
+          *ngIf="!item.IsHidePack" name="packLumpSumPayment" placeholder="₽" /> 
         </div>
 
         <div>
           <span class="title-small">Роялти:</span><br>
+          <input type="text" class="control-big-input" pInputText [value]="item.Royalty"
+          *ngIf="item.IsHidePack" name="royaltyPack" placeholder="%" /> 
           <input type="text" class="control-big-input" pInputText [(ngModel)]="royaltyPack"
-            name="royaltyPack" /> %
+          *ngIf="!item.IsHidePack" name="royaltyPack" placeholder="%" /> 
         </div>
 
         <div>
           <span class="title-small">Всего инвестиций:</span><br>
+          <input type="text" class="control-big-input" pInputText [value]="item.Royalty"
+          *ngIf="item.IsHidePack" name="totalInvest" placeholder="₽" /> 
           <input type="text" class="control-big-input" pInputText [(ngModel)]="totalInvest"
-            name="totalInvest" /> ₽
+          *ngIf="!item.IsHidePack" name="totalInvest" placeholder="₽" /> 
         </div>
       </div>
     </div>    
   </div>  
 
-  <div class="block-button-pack">
-    <button class="control-button-blue">Добавить пакет</button>
-  </div>
  </div>
+ <div class="block-button-pack">
+  <button class="control-button-blue" (click)="onAddPack(packName, packDetails, packLumpSumPayment, royaltyPack, totalInvest)">Добавить пакет</button>
+</div>
 
  <hr class="hr">
 
@@ -417,7 +430,7 @@
 
  <div class="switch-garant block-garant">      
   <strong>Продажа через гарант</strong><br>
-  <p-inputSwitch [(ngModel)]="isGarant" class="flag-garant"></p-inputSwitch>
+  <p-inputSwitch [(ngModel)]="isGarant" class="flag-garant" (click)="onCheckedGarant()"></p-inputSwitch>
 </div>   
 
 <div class="d-flex">

@@ -59,7 +59,7 @@
  </div>
 </form>
 
-<button class="btn btn-default mt-3 btn-sm btn-filter" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
+<button class="btn btn-default mt-3 btn-sm btn-filter" (click)="onFilterBusinessesAsync(filterForm)">Найти</button>
 <button class="btn btn-default btn-sm mt-3 ml-1 btn-filter" (click)="onClearFilters()">Очистить фильтры</button>
 
 <div class="block-catalog d-flex">
@@ -121,7 +121,7 @@
 
 <!-- Новый бизнес. -->
 <div class="garant">
-  <p-carousel [value]="aNewFranchises" [numVisible]="4" [numScroll]="4" [circular]="false" [responsiveOptions]="responsiveOptions" [showNavigators]="false">
+  <p-carousel [value]="aNewBusiness" [numVisible]="4" [numScroll]="4" [circular]="false" [responsiveOptions]="responsiveOptions" [showNavigators]="false">
     <ng-template pTemplate="header">
       <h5 class="title-franchise">Новый бизнес</h5>
     </ng-template>

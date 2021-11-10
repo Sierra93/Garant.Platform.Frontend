@@ -69,6 +69,10 @@ export class HeaderModule implements OnInit {
         this.router.navigate(["/catalog-franchise"]);
     };
 
+    public onRouteCatalogBusiness() {
+        this.router.navigate(["/catalog-business"]);
+    };
+
      /**
      * Функция сформирует хлебные крошки страницы.
      * @returns - Список пунктов цепочки хлебных крошек.

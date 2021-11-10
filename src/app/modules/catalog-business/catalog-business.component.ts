@@ -48,7 +48,7 @@ export class CatalogBusinessModule implements OnInit {
     aDataActions: any[] = [];
     oTopAction: any = {};
     oSuggestion: any = {};
-    aNewFranchises: any[] = [];
+    aNewBusiness: any[] = [];
     responsiveOptions: any[] = [];
     aReviewsFranchises: any[] = [];
     businessId: number = 0;
@@ -103,7 +103,7 @@ export class CatalogBusinessModule implements OnInit {
         await this.GetNewsTopAsync();
         await this.loadCategoriesListAsync();
         await this.loadSingleSuggestionAsync();
-        // await this.GetNewFranchisesListAsync();
+        await this.GetNewBusinessListAsync();
         // await this.GetReviewsFranchisesAsync();
     };
 
@@ -132,7 +132,7 @@ export class CatalogBusinessModule implements OnInit {
      * @param minPrice - Цена от.
      * @param maxPrice - Цена до.
      */
-     public async onFilterFranchisesAsync(form: NgForm) {                
+     public async onFilterBusinessesAsync(form: NgForm) {                
         try {
             let filterInput = new FranchiseInput();
             filterInput.viewCode = form.value.view.viewCode;
@@ -141,11 +141,11 @@ export class CatalogBusinessModule implements OnInit {
             filterInput.minPrice = form.value.minPrice;
             filterInput.maxPrice = form.value.maxPrice;
 
-            await this.http.post(API_URL.apiUrl.concat("/main/filter"), filterInput)
+            await this.http.post(API_URL.apiUrl.concat("/business/filter"), filterInput)
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Отфильтрованный список франшиз:", response);
-                        // this.aFranchises = response;
+                        console.log("Отфильтрованный список бизнеса:", response);
+                        this.aBusinessList = response;
                     },
 
                     error: (err) => {
@@ -457,28 +457,28 @@ export class CatalogBusinessModule implements OnInit {
     };
 
     /**
-     * Функция получит список новых франшиз.
-     * @returns Список франшиз.
+     * Функция получит список нового бизнеса в текущем месяце.
+     * @returns Список бизнеса.
      */
-    // private async GetNewFranchisesListAsync() {
-    //     try {
-    //         await this.http.post(API_URL.apiUrl.concat("/franchise/new-franchise"), {})
-    //             .subscribe({
-    //                 next: (response: any) => {
-    //                     console.log("Список новых франшиз:", response);
-    //                     this.aNewFranchises = response;
-    //                 },
+    private async GetNewBusinessListAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/business/new-business"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Список нового бизнеса:", response);
+                        this.aNewBusiness = response;
+                    },
 
-    //                 error: (err) => {
-    //                     throw new Error(err);
-    //                 }
-    //             });
-    //     }
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
 
-    //     catch (e: any) {
-    //         throw new Error(e);
-    //     }
-    // };
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 
     // private async GetReviewsFranchisesAsync() {
     //     try {

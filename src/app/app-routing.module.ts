@@ -11,6 +11,7 @@ import { CreateReadyBusinessModule } from './modules/create-ready-business/creat
 import { ViewReadyBusinessModule } from './modules/view-ready-business/view-ready-business.component';
 import { EditReadyBusinessModule } from './modules/edit-ready-business/edit-ready-business.component';
 import { CreateAdModule } from './modules/create-ad/create-ad.component';
+import { CatalogBusinessModule } from './modules/catalog-business/catalog-business.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,11 @@ const routes: Routes = [
   {
     path: "ad/create",
     component: CreateAdModule
+  },
+
+  {
+    path: "catalog-business",
+    component: CatalogBusinessModule
   }
 ];
 

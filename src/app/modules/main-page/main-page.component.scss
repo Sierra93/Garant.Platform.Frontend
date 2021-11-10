@@ -1,43 +1,51 @@
-@import "../../app.component.scss";  
+@import "../../app.component.scss";
 @import "/src/app/shared/styles/image-space.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/franchuse-styles.scss";
 
 // Карусель.
 .product-item {
-    .product-item-content {
-        border: 1px solid var(--surface-d);
-        border-radius: 3px;
-        margin: .3rem;
-        text-align: center;
-        // padding: 2rem 0;
-        padding: 0;
-    }
+  .product-item-content {
+    border: 1px solid var(--surface-d);
+    border-radius: 3px;
+    margin: .3rem;
+    text-align: center;
+    // padding: 2rem 0;
+    padding: 0;
+  }
 
-    .product-image {
-        // width: 50%;
-        width: 100%;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
-    }
+  .product-image {
+    // width: 50%;
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+  }
+}
+
+.three-cards {
+  gap: 24px;
 }
 
 .cards-popup {
-    margin: 0 10px;
+  margin: 0 10px;
+}
+
+::ng-deep .card-business {
+  max-width: 464px;
 }
 
 ::ng-deep .card-business .p-card-body {
-    background: #F1F1F1;
-    padding: 24px 16px 24px 16px;
+  // background: #F1F1F1;
+  padding: 24px 16px 24px 16px;
 }
 
 ::ng-deep .card-line .p-card-body {
-    background: #F1F6FF;
-    padding: 24px 16px 24px 16px;
+  // background: #F1F6FF;
+  padding: 24px 16px 24px 16px;
 }
 
 ::ng-deep .card-line .p-card-header {
-    background: #F1F6FF;
-    padding: 24px 16px 24px 16px;
+  // background: #F1F6FF;
+  padding: 24px 16px 24px 16px;
 }
 
 // ::ng-deep .card-item .p-card {
@@ -45,148 +53,127 @@
 // }
 
 .block-card-item {
-    // background: white;
-    width: 300px;
+  // background: white;
+  width: 300px;
 }
 
 .card-demo-list {
-    margin-top: 24px;
+  margin-top: 24px;
 }
 
 .gray {
-    background: #F1F1F1;
+  background: #F1F1F1;
 }
 
 .btn-show-more {
-    border: 1px solid;
-    border-radius: 12px;
+  border: 1px solid;
+  border-radius: 12px;
 }
 
 .baner {
-    width: 670px;
-    height: 272px;
+  width: 670px;
+  height: 272px;
 }
 
 .block-baner {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .title-news {
-    font-size: 18px;
-    font-family: Roboto;
+  font-size: 18px;
+  font-family: Roboto;
 }
 
 .ellipse {
-    margin-left: 8px;
-    margin-right: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .space-top {
-    margin-top: 28px;
+  margin-top: 28px;
 }
 
 .bottom-line {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 .category-item {
-    margin-bottom: 8px;
-} 
+  margin-bottom: 8px;
+}
 
 .category-block-first {
-    height: 700px;
+  height: 700px;
 }
 
 .category-block-second {
-    height: 700px;
+  height: 700px;
 }
 
 // Медиа-запросы.
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   /* Styles */
 }
 
 /* Smartphones (landscape) ----------- */
-@media only screen 
-and (min-width : 321px) {
+@media only screen and (min-width : 321px) {
   /* Styles */
 }
 
 /* Smartphones (portrait) ----------- */
-@media only screen 
-and (max-width : 320px) {
+@media only screen and (max-width : 320px) {
   /* Styles */
 }
 
 /* iPads (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
   /* Styles */
 }
 
 /* iPads (landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
   /* Styles */
 }
 
 /* iPads (portrait) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : portrait) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
   /* Styles */
 }
 
 /* Desktops and laptops ----------- */
-@media only screen 
-and (min-width : 1224px) {
-    
-}
+@media only screen and (min-width : 1224px) {}
 
 /* Large screens ----------- */
-@media only screen 
-and (min-width : 1824px) {
+@media only screen and (min-width : 1824px) {
   /* Styles */
 }
 
 /* iPhone 4 - 5s ----------- */
-@media
-only screen and (-webkit-min-device-pixel-ratio : 1.5),
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5),
 only screen and (min-device-pixel-ratio : 1.5) {
   /* Styles */
 }
 
 /* iPhone 6 ----------- */
-@media
-only screen and (max-device-width: 667px), 
+@media only screen and (max-device-width: 667px),
 only screen and (-webkit-device-pixel-ratio: 2) {
   /* Styles */
 }
 
 /* iPhone 6+ ----------- */
-@media
-only screen and (min-device-width : 414px), 
+@media only screen and (min-device-width : 414px),
 only screen and (-webkit-device-pixel-ratio: 3) {
   /*** You've spent way too much on a phone ***/
 }
 
 /* Samsung Galaxy S7 Edge ----------- */
-@media only screen
-and (-webkit-min-device-pixel-ratio: 3)
-and (min-resolution: 192dpi)and (max-width:640px) {
- /* Styles */
+@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi)and (max-width:640px) {
+  /* Styles */
 }
 
 .block-cards-franchises {
-    padding: 24px 0px;
-    justify-content: space-between;
+  padding: 24px 0px;
+  justify-content: space-between;
 
   .card-franchise {
     padding: 0;
@@ -194,7 +181,7 @@ and (min-resolution: 192dpi)and (max-width:640px) {
 }
 
 .card-left-centered {
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 }

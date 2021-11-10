@@ -1,64 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
   <div class="footer">
     <div class="container d-flex justify-content-between before">
-        <div>
-            <img src="../../../assets/images/search_logo.jpg">
-        </div>
+      <div>
+        <img src="../../../assets/images/search_logo.svg">
+      </div>
 
-        <div>
-            <img src="../../../assets/images/telega.png">
-            <img class="space-intgr" src="../../../assets/images/face.png">
-            <img class="space-intgr" src="../../../assets/images/SocialMedia.png">
-            <img class="space-intgr" src="../../../assets/images/SocialMedia1.png">
-        </div>      
+      <div>
+        <img src="../../../assets/images/telega.svg">
+        <img class="space-intgr" src="../../../assets/images/facebook.svg">
+        <img class="space-intgr" src="../../../assets/images/SocialMedia.svg">
+        <img class="space-intgr" src="../../../assets/images/youtube.svg">
+      </div>
     </div>
 
     <!-- Пункты футера. -->
-    <div class="container d-flex justify-content-between">                  
-      <div>        
+    <div class="container d-flex justify-content-between">
+      <div>
         <div class="block-col-footer">
-          <span *ngFor="let el of aFooterColumn1">
-            <strong class="big-title">{{el.title}}</strong>
-            <span>{{el.name}}</span>
-          </span>
+          <div *ngFor="let el of aFooterColumn1">
+            <h4 class="big-title">{{el.title}}</h4>
+            <a href="#" class="footer-link">{{el.name}}</a>
+          </div>
         </div>
       </div>
 
       <!-- Проекты. -->
-      <div>        
+      <div>
         <div class="block-col-footer">
-          <span *ngFor="let el of aFooterColumn2">
-            <strong class="big-title">{{el.title}}</strong>
-            <span>{{el.name}}</span>
-          </span>
+          <div *ngFor="let el of aFooterColumn2">
+            <h4 class="big-title">{{el.title}}</h4>
+            <a href="#" class="footer-link">{{el.name}}</a>
+          </div>
         </div>
       </div>
 
       <!-- GoBizy. -->
-      <div>        
+      <div>
         <div class="block-col-footer">
-          <span *ngFor="let el of aFooterColumn3">
-            <strong class="big-title">{{el.title}}</strong>
-            <span>{{el.name}}</span>
-          </span>
+          <div *ngFor="let el of aFooterColumn3">
+            <h4 class="big-title">{{el.title}}</h4>
+            <a href="#" class="footer-link">{{el.name}}</a>
+          </div>
         </div>
       </div>
 
       <!-- Политика. -->
-      <div>        
+      <div>
         <div class="block-col-footer">
-          <span *ngFor="let el of aFooterColumn4">
-            <strong class="big-title">{{el.title}}</strong>
-            <span>{{el.name}}</span>
-          </span>
+          <div *ngFor="let el of aFooterColumn4">
+            <h4 class="big-title">{{el.title}}</h4>
+            <a href="#" class="footer-link">{{el.name}}</a>
+          </div>
         </div>
       </div>
     </div>

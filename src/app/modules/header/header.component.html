@@ -1,80 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow">  
-        <!-- <div class="d-flex"> 
+  <div class="wrapper">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow">
+      <!-- <div class="d-flex"> 
           <img src="../../../assets/images/search_logo.jpg" width="100" height="58">
         </div> -->
-        
-          <div class="container">
-            <button class="navbar-toggler btn-state-left-menu"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target=".navbar-collapse"
-                    aria-label="Toggle navigation">
-                    
-              <span class="navbar-toggler-icon"></span>
-            </button>
-    
-            <div class="navbar-collapse collapse d-sm-inline-flex d-flex flex-row-reverse header">
-              <!-- Бургер левой панели. role !== 'G' && !bShowGuestHeader-->
-              <!-- <div class="burger">
+
+      <div class="container">
+        <button class="navbar-toggler btn-state-left-menu" type="button" data-toggle="collapse"
+          data-target=".navbar-collapse" aria-label="Toggle navigation">
+
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse d-sm-inline-flex d-flex flex-row-reverse header">
+          <!-- Бургер левой панели. role !== 'G' && !bShowGuestHeader-->
+          <!-- <div class="burger">
                 <div class="block-left-line">
                   <div class="left-line"></div>
                   <div class="left-line"></div>
                   <div class="left-line"></div>
                 </div>
               </div> -->
-    
-              <div class="header">
-                <ul class="navbar-nav flex-grow">
-                  <li class="nav-item">
-                    <div class="div-link">
-                      <!-- Пункты хидера. -->
-                      <li *ngFor="let el of aHeader">
-                        <div (click)="onGetMenuHeader(el.name)">{{el.name}}</div>
-                      </li>
-                    </div>
-                  </li>              
-                </ul>           
-              </div>
-            </div>
-          </div>        
-    
-          <div class="right-head d-flex align-items-center">
-            <!-- <img src="../assets/images/pig1.png" 
+
+          <div class="header">
+            <ul class="navbar-nav flex-grow">
+              <li class="nav-item">
+                <div class="div-link">
+                  <!-- Пункты хидера. -->
+              <li *ngFor="let el of aHeader">
+                <div (click)="onGetMenuHeader(el.name)">{{el.name}}</div>
+              </li>
+          </div>
+          </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+
+  <div class="right-head d-flex align-items-center">
+    <!-- <img src="../assets/images/pig1.png" 
                   class="mr-1"
                    /> -->
-                   <!-- [hidden]="!bHideHeader" -->
-                  <!-- <span class="price mr-2 d-flex">
+    <!-- [hidden]="!bHideHeader" -->
+    <!-- <span class="price mr-2 d-flex">
                         {{balance || 0}}                    
                 </span> -->
-    
-                <!-- <span class="price mr-2 d-flex">руб.</span> -->
-   <!--              
+
+    <!-- <span class="price mr-2 d-flex">руб.</span> -->
+    <!--              
             <img src="../assets/images/get_money.png" 
                   class="ml-1"
                   />        -->
-                  <!-- [hidden]="!bHideHeader"  -->
-    
-            <div class="d-flex align-items-center">
-              <!-- Выпадающее меню. -->
-              <div class="drop-down" >
-                <button type="button" class="btn-item btn btn-default state" id="dropdownMenuButton" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-user-circle-o d-flex align-items-center" aria-hidden="true">
-                    <!-- <img src="../assets/images/user1.png" class="" /> -->
-                  </i>
-                </button>
-                <div class="drop-menu">
-                  <!-- <span class="mb-1" ><strong>{{userName}}</strong></span> -->
-                  <!-- <ul>
+    <!-- [hidden]="!bHideHeader"  -->
+
+    <div class="d-flex align-items-center">
+      <!-- Выпадающее меню. -->
+      <div class="drop-down">
+        <button type="button" class="btn-item btn btn-default state" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user-circle-o d-flex align-items-center" aria-hidden="true">
+            <!-- <img src="../assets/images/user1.png" class="" /> -->
+          </i>
+        </button>
+        <div class="drop-menu">
+          <!-- <span class="mb-1" ><strong>{{userName}}</strong></span> -->
+          <!-- <ul>
                     <li (click)="onGoProfile()">
                       <span>Профиль</span>
                     </li>
@@ -97,110 +96,112 @@
                       <span>Выход</span>
                     </li>
                   </ul> -->
-                </div>
-              </div>
-            </div>
-          </div>
-    
-          <div class="d-flex align-items-center">
-            <div class="d-flex align-items-center ml-2">
-              <!-- <img src="../assets/images/add_task.jpg" class="link" /> -->
-              <!-- <button class="nav-link btn btn-link link-add-task">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center ml-2">
+      <!-- <img src="../assets/images/add_task.jpg" class="link" /> -->
+      <!-- <button class="nav-link btn btn-link link-add-task">
                 Создать задание
               </button> -->
-            </div>
-    
-            <div class="d-flex align-items-center ml-2">
-              <!-- <img src="../assets/images/add_task.jpg" class="link" /> -->
-              <!-- <button class="nav-link btn btn-link link-add-task">
+    </div>
+
+    <div class="d-flex align-items-center ml-2">
+      <!-- <img src="../assets/images/add_task.jpg" class="link" /> -->
+      <!-- <button class="nav-link btn btn-link link-add-task">
                 Регистрация
               </button> -->
-            </div>
-    
-            <!-- <div class="d-flex align-items-center ml-2">
+    </div>
+
+    <!-- <div class="d-flex align-items-center ml-2">
               <img src="../assets/images/add_task.jpg" class="link" />
               <button class="nav-link btn btn-link link-add-task">
                 Войти
               </button>
             </div> -->
-          </div>
-        </nav>  
-        
-        <!-- Область с поиском. -->
-        <div class="col-lg-12 col-xs-12 block-after-header d-flex align-items-center">
-          <div class="search-logo" (click)="onRouteStart()">
-            <img src="../../../assets/images/search_logo.jpg" width="100" height="58">
-          </div>
+  </div>
+  </nav>
 
-          <div class="">
-            <span class="p-input-icon-right">
-              <i class="pi pi-search"></i>
-              <input type="text" class="input-search" pInputText placeholder="Search">
-            </span>
-          </div>
+  <!-- Область с поиском. -->
+  <div class="col-lg-12 col-xs-12 block-after-header d-flex align-items-center justify-content-between">
+    <div class="search-logo" (click)="onRouteStart()">
+      <img class="search-logo__image" src="../../assets/images/search_logo.jpg" width="100" height="58">
+    </div>
 
-          <div class="sell text-center">
-            <img src="../../../assets/images/Vector.png" width="34" height="32"><br>
-            <span class="">Продать</span>
-          </div>
+    <div class="">
+      <span class="p-input-icon-right">
+        <i class="pi pi-search"></i>
+        <input type="text" class="input-search" pInputText placeholder="Search">
+      </span>
+    </div>
 
-          <div class="sell text-center">
-            <img src="../../../assets/images/Vector1.png" width="34" height="32"><br>
-            <span class="">Мои сделки</span>
-          </div>
+    <div class="sell text-center">
+      <img src="../../../assets/images/Vector.png" width="34" height="32"><br>
+      <span class="">Продать</span>
+    </div>
 
-          <div class="sell text-center">
-            <img src="../../../assets/images/favourite 1.png" width="34" height="32"><br>
-            <span class="">Избранное</span>
-          </div>
+    <div class="sell text-center">
+      <img src="../../../assets/images/Vector1.png" width="34" height="32"><br>
+      <span class="">Мои сделки</span>
+    </div>
 
-          <div class="sell text-center">
-            <img src="../../../assets/images/Vector4.png" width="34" height="32"><br>
-            <span class="">Уведомления</span>
-          </div>
+    <div class="sell text-center">
+      <img src="../../../assets/images/favourite 1.png" width="34" height="32"><br>
+      <span class="">Избранное</span>
+    </div>
 
-          <div class="sell text-center">
-            <img src="../../../assets/images/avatar 1.png" width="34" height="32"><br>
-            <span class="">Аккаунт</span>
-          </div>
-        </div>
+    <div class="sell text-center">
+      <img src="../../../assets/images/Vector4.png" width="34" height="32"><br>
+      <span class="">Уведомления</span>
+    </div>
 
-        <!-- Область под поиском. -->
-        <div class="after-search d-flex">
-          <div>
-            <img src="../../../assets/images/franchise 1.png" class="after-search-img" width="76" height="74">
-            <span class="">Главная</span>
-          </div>
+    <div class="sell text-center">
+      <img src="../../../assets/images/avatar 1.png" width="34" height="32"><br>
+      <span class="">Аккаунт</span>
+    </div>
+  </div>
 
-          <div class="header-link" (click)="onRouteCatalogFranchise()">
-            <img src="../../../assets/images/franchise 2.png" class="after-search-img" width="76" height="74">
-            <span class="">Франшизы</span>
-          </div>
+  <!-- Область под поиском. -->
+  <div class="after-search d-flex justify-content-between">
+    <div class="after-search-menu">
+      <img src="../../../assets/images/franchise 1.png" class="after-search-img" width="76" height="74">
+      <span class="">Главная</span>
+    </div>
 
-          <div>
-            <img src="../../../assets/images/franchise 3.png" class="after-search-img" width="76" height="74">
-            <span class="">Готовый бизнес</span>
-          </div>
+    <div class="header-link" (click)="onRouteCatalogFranchise()">
+      <img src="../../../assets/images/franchise 2.png" class="after-search-img" width="76" height="74">
+      <span class="">Франшизы</span>
+    </div>
 
-          <div>
-            <img src="../../../assets/images/franchise 4.png" class="after-search-img" width="76" height="74">
-            <span class="">Покупка через гарант</span>
-          </div>
+    <div class="after-search-menu">
+      <img src="../../../assets/images/franchise 3.png" class="after-search-img" width="76" height="74">
+      <span class="">Готовый бизнес</span>
+    </div>
 
-          <div>
-            <img src="../../../assets/images/franchise 5.png" class="after-search-img" width="76" height="74">
-            <span class="">Консалтинг</span>
-          </div>
+    <div class="after-search-menu">
+      <img src="../../../assets/images/franchise 4.png" class="after-search-img" width="76" height="74">
+      <span class="">Покупка через гарант</span>
+    </div>
 
-          <div>
-            <img src="../../../assets/images/franchise 6.png" class="after-search-img" width="76" height="74">
-            <span class="">Упаковка франшиз</span>
-          </div>
-        </div>        
+    <div class="after-search-menu">
+      <img src="../../../assets/images/franchise 5.png" class="after-search-img" width="76" height="74">
+      <span class="">Консалтинг</span>
+    </div>
 
-        <div class="breadcrumbs">
-          <p-breadcrumb [model]="aBreadcrumbs"></p-breadcrumb>
-        </div>
+    <div class="after-search-menu">
+      <img src="../../../assets/images/franchise 6.png" class="after-search-img" width="76" height="74">
+      <span class="">Упаковка франшиз</span>
+    </div>
+  </div>
+
+  <!-- <div class="breadcrumbs">
+    <p-breadcrumb [model]="aBreadcrumbs"></p-breadcrumb>
+  </div> -->
+  </div>
 </body>
+
 
 </html>

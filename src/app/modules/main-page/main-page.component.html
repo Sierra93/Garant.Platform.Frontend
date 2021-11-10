@@ -8,22 +8,24 @@
 </head>
 
 <body>
-<div class="d-flex garant">
-  <!-- Блок с каруселью. -->
-<div class="col-lg-8">
-  <p-carousel [value]="aSlider" [numVisible]="2" [numScroll]="2" [circular]="false" [responsiveOptions]="responsiveOptions" [showNavigators]="false">
-    <ng-template pTemplate="header">
-      <h5 class="title-franchise">Недавно приобрели</h5>
-    </ng-template>
-    <ng-template let-item pTemplate="item">
-        <div class="product-item">
-            <div class="product-item-content">
+  <div class="wrapper">
+    <div class="d-flex garant">
+      <!-- Блок с каруселью. -->
+      <div class="col-lg-8">
+        <p-carousel [value]="aSlider" [numVisible]="2" [numScroll]="2" [circular]="false"
+          [responsiveOptions]="responsiveOptions" [showNavigators]="false">
+          <ng-template pTemplate="header">
+            <h5 class="title-franchise">Недавно приобрели</h5>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <div class="product-item">
+              <div class="product-item-content">
                 <div class="p-mb-3">
-                    <img [src]="item.url" class="product-image">
+                  <img [src]="item.url" class="product-image">
                 </div>
                 <div>
-                  <p-card header="Название готового бизнеса" subheader="{{item.text}}"
-                    [style]="{width: '100%'}" styleClass="p-card-shadow">
+                  <p-card header="Название готового бизнеса" subheader="{{item.text}}" [style]="{width: '100%'}"
+                    styleClass="p-card-shadow">
                     <ng-template pTemplate="header">
                       <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
                     </ng-template>
@@ -34,287 +36,289 @@
                     </ng-template>
                   </p-card>
                 </div>
+              </div>
             </div>
-        </div>
-    </ng-template>
-</p-carousel>
-</div>
+          </ng-template>
+        </p-carousel>
+      </div>
 
-<div class="col-lg-4">
-  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5> 
-  <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" styleClass="card">
-    <ng-template pTemplate="header">
-      <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-      <!-- <h5>Покупка бизнеса любого размера онлайн с гарантиями</h5> -->
-    </ng-template>
-    <p>{{oTopAction.text}}</p>
-    <ng-template pTemplate="footer">
-      <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
-      <button class="btn btn-dark">Подробнее</button>
-      <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+      <div class="col-lg-4">
+        <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
+        <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" styleClass="card">
+          <ng-template pTemplate="header">
+            <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+            <!-- <h5>Покупка бизнеса любого размера онлайн с гарантиями</h5> -->
+          </ng-template>
+          <p>{{oTopAction.text}}</p>
+          <ng-template pTemplate="footer">
+            <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
+            <button class="btn btn-dark">Подробнее</button>
+            <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
       </p-button> -->
-    </ng-template>
-  </p-card>
-</div>
-</div>
+          </ng-template>
+        </p-card>
+      </div>
+    </div>
 
-<!-- Область с 3 карточками. -->
-<div class="d-flex three-cards">
-  <div class="col-lg-4 card-business" *ngFor="let item of aDataActions">
-    <p-card header="{{item.title}}" subheader="{{item.subTitle}}" [style]="{width: '100%'}" styleClass="card">
-      <ng-template pTemplate="header">
-        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-      </ng-template>
-      <p>{{item.text}}</p>
-      <ng-template pTemplate="footer">
-        <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-        <button class="btn btn-dark">{{item.buttonText}}</button>
-        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+    <!-- Область с 3 карточками. -->
+    <div class="d-flex three-cards">
+      <div class="col-lg-4 card-business" *ngFor="let item of aDataActions">
+        <p-card header="{{item.title}}" [style]="{width: '100%'}" styleClass="card">
+          <div class="card-business-content">
+            <h5>{{item.subTitle}}</h5>
+            <ng-template pTemplate="header">
+              <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+            </ng-template>
+            <p>{{item.text}}</p>
+            <ng-template pTemplate="footer">
+              <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+              <button class="btn btn-dark">{{item.buttonText}}</button>
+              <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
         </p-button> -->
-      </ng-template>
-    </p-card>
-  </div>
-</div>
-
-<div class="col-lg-12 col-xs-12 garant card-line">
-  <p-card class="">
-    <ng-template pTemplate="header">
-        <strong>Вы можете приобрести бизнес с гарантиями</strong>
-        <button type="button" class="close" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </ng-template>
-    <p>{{oSuggestion.text}}</p>
-    <ng-template pTemplate="footer">
-      <div class="d-flex">
-        <div>
-          <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button>
-        </div>
-        
-        <div class="ml-1">
-          <button class="btn btn-dark">{{oSuggestion.button2Text}}</button>
-        </div>
-      </div>
-    </ng-template>
-</p-card>
-</div>
-
-<!-- Секция быстрого поиска. -->
-<div class="gray">
-  <div class="col-lg-12 col-xs-12 garant">
-    <h5 class="title-franchise">Быстрый поиск</h5>
-    <p-card class="">
-      <ng-template pTemplate="header">
-          
-      </ng-template>
-  
-      <form class="d-flex" #filterForm="ngForm" novalidate>
-        <div>
-          <strong>Вид бизнеса</strong><br>
-          <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
-        </div>
-    
-        <div class="control-quick-search">
-          <strong>Категория</strong><br>
-          <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
-        </div>
-    
-        <div class="control-quick-search">
-          <strong>Город</strong><br>
-          <p-dropdown [options]="aCities" optionLabel="cityName" name="city" [(ngModel)]="selectedCity" placeholder="Город" [showClear]="true"></p-dropdown>
-        </div>
-    
-       <div class="d-flex">
-        <div class="control-quick-search">
-          <strong>Стоимость от</strong><br>
-          <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
-        </div>
-  
-        <div class="">      
-          <strong>Стоимость до</strong><br>
-          <input type="text" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice" name="maxPrice" />
-        </div>
-       </div>
-  
-        <div class="control-quick-search">      
-          <strong>Покупка через гарант</strong><br>
-          <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
-        </div>        
-      </form>
-  
-      <ng-template pTemplate="footer">
-        <button class="btn btn-dark" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
-      </ng-template>
-  </p-card>
-
-  <div class="col-lg-12 col-xs-12 d-flex block-cards-franchises">
-    <div class="card-franchise" *ngFor="let item of aFranchises">
-      <div class="block-card-item">
-        <p-card header="{{item.title}}" subheader="{{item.text}}"
-        styleClass="p-card-shadow" class="card-item">
-      <ng-template pTemplate="header">
-        <img [src]="item.url">
-      </ng-template>
-      <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-      <ng-template pTemplate="footer">
-        <button class="btn btn-dark">Подробнее</button>
-      </ng-template>
-    </p-card>
+            </ng-template>
+          </div>
+        </p-card>
       </div>
     </div>
-  </div>
-  </div>
 
-  <div class="col-lg-12 col-xs-12 d-flex justify-content-center card-demo-list">
-    <button class="btn btn-default text-center btn-show-more">Показать ещё</button>
-  </div>
-</div>
+    <div class="col-lg-12 col-xs-12 garant card-line">
+      <p-card class="">
+        <ng-template pTemplate="header">
+          <strong>Вы можете приобрести бизнес с гарантиями</strong>
+          <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </ng-template>
+        <p>{{oSuggestion.text}}</p>
+        <ng-template pTemplate="footer">
+          <div class="d-flex">
+            <div>
+              <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button>
+            </div>
 
-<!-- Область с банерами (2 картинки). -->
-<div class="d-flex block-baner garant">
-  <img class="baner" src="../../../assets/images/Rectangle 13.png">
-  <img class="baner" src="../../../assets/images/Rectangle 14.png">
-</div>
+            <div class="ml-1">
+              <button class="btn btn-dark">{{oSuggestion.button2Text}}</button>
+            </div>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
 
-<!-- Популярные франшизы. -->
-<h5 class="garant title-franchise">Популярные франшизы</h5>
-<div class="d-flex popular-list">
-  <div class="popular-item" *ngFor="let item of aPopularFranchises">
-    <p-card header="{{item.title}}" subheader="{{item.text}}"
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img [src]="item.url">
-    </ng-template>
-    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-    <ng-template pTemplate="footer">
-      
-    </ng-template>
-  </p-card>
-  </div>
-</div>
+    <!-- Секция быстрого поиска. -->
+    <div class="gray">
+      <div class="col-lg-12 col-xs-12 garant">
+        <h5 class="title-franchise">Быстрый поиск</h5>
+        <p-card class="">
+          <ng-template pTemplate="header">
 
-<!-- Новые объявления готового бизнеса. -->
-<h5 class="garant">Новые объявления готового бизнеса</h5>
-<div class="d-flex popular-list">
-  <div class="popular-item" *ngFor="let item of aAds">
-    <p-card header="{{item.title}}" subheader="{{item.text}}"
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img [src]="item.url">
-    </ng-template>
-    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-    <ng-template pTemplate="footer">
-      
-    </ng-template>
-  </p-card>
-  </div>
-</div>
+          </ng-template>
 
-<!-- Бизнес блог. -->
-<h5 class="garant title-franchise">Бизнес блог</h5>
-<div class="d-flex popular-list">
-  <div class="popular-item" *ngFor="let item of aBlogs">
-    <p-card header="{{item.title}}" subheader=""
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img [src]="item.url">
-    </ng-template>
-    <!-- <strong>Сумма сделки: 12 500 000 ₽</strong> -->
-    <ng-template pTemplate="footer">
-      
-    </ng-template>
-  </p-card>
-  </div>
+          <form class="d-flex" #filterForm="ngForm" novalidate>
+            <div>
+              <strong>Вид бизнеса</strong><br>
+              <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness"
+                placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
+            </div>
 
-  <div class="popular-item">
-    <p-card header="Больше статей" subheader=""
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <!-- <img src="../../../assets/images/Rectangle 20.png"> -->
-    </ng-template>
-    <!-- <strong>Сумма сделки: 12 500 000 ₽</strong> -->
+            <div class="control-quick-search">
+              <strong>Категория</strong><br>
+              <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory"
+                placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
+            </div>
+
+            <div class="control-quick-search">
+              <strong>Город</strong><br>
+              <p-dropdown [options]="aCities" optionLabel="cityName" name="city" [(ngModel)]="selectedCity"
+                placeholder="Город" [showClear]="true"></p-dropdown>
+            </div>
+
+            <div class="d-flex">
+              <div class="control-quick-search">
+                <strong>Стоимость от</strong><br>
+                <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
+              </div>
+
+              <div class="">
+                <strong>Стоимость до</strong><br>
+                <input type="text" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice" name="maxPrice" />
+              </div>
+            </div>
+
+            <div class="control-quick-search">
+              <strong>Покупка через гарант</strong><br>
+              <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
+            </div>
+          </form>
+
+          <ng-template pTemplate="footer">
+            <button class="btn btn-dark" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
+          </ng-template>
+        </p-card>
+
+        <div class="col-lg-12 col-xs-12 d-flex block-cards-franchises">
+          <div class="card-franchise" *ngFor="let item of aFranchises">
+            <div class="block-card-item">
+              <p-card header="{{item.title}}" subheader="{{item.text}}" styleClass="p-card-shadow" class="card-item">
+                <ng-template pTemplate="header">
+                  <img [src]="item.url">
+                </ng-template>
+                <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+                <ng-template pTemplate="footer">
+                  <button class="btn btn-dark">Подробнее</button>
+                </ng-template>
+              </p-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-xs-12 d-flex justify-content-center card-demo-list">
+        <button class="btn btn-default text-center btn-show-more">Показать ещё</button>
+      </div>
+    </div>
+
+    <!-- Область с банерами (2 картинки). -->
+    <div class="d-flex block-baner garant">
+      <img class="baner" src="../../../assets/images/Rectangle 13.png">
+      <img class="baner" src="../../../assets/images/Rectangle 14.png">
+    </div>
+
+    <!-- Популярные франшизы. -->
+    <h5 class="garant title-franchise">Популярные франшизы</h5>
+    <div class="d-flex popular-list">
+      <div class="popular-item" *ngFor="let item of aPopularFranchises">
+        <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
+          <ng-template pTemplate="header">
+            <img [src]="item.url">
+          </ng-template>
+          <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+          <ng-template pTemplate="footer">
+
+          </ng-template>
+        </p-card>
+      </div>
+    </div>
+
+    <!-- Новые объявления готового бизнеса. -->
+    <h5 class="garant">Новые объявления готового бизнеса</h5>
+    <div class="d-flex popular-list">
+      <div class="popular-item" *ngFor="let item of aAds">
+        <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
+          <ng-template pTemplate="header">
+            <img [src]="item.url">
+          </ng-template>
+          <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+          <ng-template pTemplate="footer">
+
+          </ng-template>
+        </p-card>
+      </div>
+    </div>
+
+    <!-- Бизнес блог. -->
+    <h5 class="garant title-franchise">Бизнес блог</h5>
+    <div class="d-flex popular-list">
+      <div class="popular-item" *ngFor="let item of aBlogs">
+        <p-card header="{{item.title}}" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
+          <ng-template pTemplate="header">
+            <img [src]="item.url">
+          </ng-template>
+          <!-- <strong>Сумма сделки: 12 500 000 ₽</strong> -->
+          <ng-template pTemplate="footer">
+
+          </ng-template>
+        </p-card>
+      </div>
+
+      <div class="popular-item">
+        <p-card header="Больше статей" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
+          <ng-template pTemplate="header">
+            <!-- <img src="../../../assets/images/Rectangle 20.png"> -->
+          </ng-template>
+          <!-- <strong>Сумма сделки: 12 500 000 ₽</strong> -->
+          <div class="d-flex">
+            <p>Перейдите в наш блог и найдите
+              там массу полезной информации.</p>
+            <img src="../../../assets/images/Frame 66.png" height="32">
+          </div>
+          <ng-template pTemplate="footer">
+
+          </ng-template>
+        </p-card>
+      </div>
+    </div>
+
+    <!-- Новости делового мира. -->
+    <h5 class="garant title-franchise">Новости делового мира</h5>
     <div class="d-flex">
-      <p>Перейдите в наш блог и найдите
-        там массу полезной информации.</p>
-        <img src="../../../assets/images/Frame 66.png" height="32">
+      <div>
+        <img src="../../../assets/images/Frame 31.png">
+      </div>
+
+      <div>
+        <div class="news-item space-left-item" *ngFor="let item of aNews">
+          <img [src]="item.url">
+          <strong class="title-news">{{item.name}}</strong>
+          <div class="bottom-line">
+            <small>{{item.time}}</small>
+            <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
+            <small>{{item.date}}</small>
+            <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
+            <small>{{item.type}}</small>
+          </div>
+        </div>
+      </div>
     </div>
-    <ng-template pTemplate="footer">
-      
-    </ng-template>
-  </p-card>
-  </div>
-</div>
 
-<!-- Новости делового мира. -->
-<h5 class="garant title-franchise">Новости делового мира</h5>
-<div class="d-flex">
-  <div>
-    <img src="../../../assets/images/Frame 31.png">
-  </div>
+    <!-- Категории готового бизнеса. -->
+    <div>
+      <div class="d-flex">
+        <!-- 1 столбец. -->
+        <div class="col-lg-3 col-xs-12">
+          <h5 class="garant title-franchise">Новости делового мира</h5>
+          <div class="category-block-first">
+            <div class="category-item" *ngFor="let item of categoryList1">
+              <img class="space-right-image-category" [src]="item.url">
+              <span>{{item.name}}</span>
+              <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+            </div>
+          </div>
+        </div>
 
-  <div>
-    <div class="news-item space-left-item" *ngFor="let item of aNews">
-      <img [src]="item.url">
-      <strong class="title-news">{{item.name}}</strong>
-      <div class="bottom-line">
-        <small>{{item.time}}</small>
-        <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
-        <small>{{item.date}}</small>
-        <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
-        <small>{{item.type}}</small>
+        <!-- 2 столбец -->
+        <div class="col-lg-3">
+          <div class="garant">&nbsp;</div>
+          <div class="category-item" *ngFor="let item of categoryList2">
+            <img class="space-right-image-category" [src]="item.url">
+            <span>{{item.name}}</span>
+            <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+          </div>
+        </div>
+
+        <!-- 3 столбец. -->
+        <div class="col-lg-3 col-xs-12">
+          <h5 class="garant title-franchise">Категории франшиз</h5>
+          <div class="category-block-second">
+            <div class="category-item" *ngFor="let item of categoryList3">
+              <img class="space-right-image-category" [src]="item.url">
+              <span>{{item.name}}</span>
+              <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 столбец -->
+        <div class="col-lg-3">
+          <div class="garant">&nbsp;</div>
+          <div class="category-item" *ngFor="let item of categoryList4">
+            <img class="space-right-image-category" [src]="item.url">
+            <span>{{item.name}}</span>
+            <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- Категории готового бизнеса. -->
-<div>
-  <div class="d-flex">
-    <!-- 1 столбец. -->
-    <div class="col-lg-3 col-xs-12">
-      <h5 class="garant title-franchise">Новости делового мира</h5>
-     <div class="category-block-first">
-      <div class="category-item" *ngFor="let item of categoryList1">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>     
-     </div>
-    </div>
-
-    <!-- 2 столбец -->
-    <div class="col-lg-3">
-      <div class="garant">&nbsp;</div>
-      <div class="category-item" *ngFor="let item of categoryList2">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div> 
-    </div>
-
-    <!-- 3 столбец. -->
-    <div class="col-lg-3 col-xs-12">
-      <h5 class="garant title-franchise">Категории франшиз</h5>
-     <div class="category-block-second">
-      <div class="category-item" *ngFor="let item of categoryList3">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div> 
-     </div>
-    </div>
-
-    <!-- 4 столбец -->
-    <div class="col-lg-3">
-      <div class="garant">&nbsp;</div>
-      <div class="category-item" *ngFor="let item of categoryList4">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div> 
-    </div>
-  </div>
-</div>
 
 </body>
 

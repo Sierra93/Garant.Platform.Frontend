@@ -207,6 +207,7 @@ export class LoginModule implements OnInit {
     private IsWriteProfileData(flag: boolean) {
         if (flag) {
             this.router.navigate(["/"]);
+            return;
         }
 
         this.router.navigate(["/profile-data"]);

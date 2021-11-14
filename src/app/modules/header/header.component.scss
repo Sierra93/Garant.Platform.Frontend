@@ -187,6 +187,23 @@
   }
 }
 
+.search-btn,
+.input-search {
+  display: block;
+  height: 100%;
+}
+
+.p-input-icon-right {
+  height: 60px;
+}
+
+.search-btn {
+  width: 80px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background: #1F75FE;
+}
+
 // В том числе для логина выпадающего меню.
 // hr {
 //   margin-top: 0rem;
@@ -212,7 +229,7 @@
   }
 
   .input-search {
-    width: 656px;
+    width: 564px;
     height: 60px;
   }
 
@@ -229,8 +246,21 @@
     margin-right: 10px;
   }
 
+  .after-search-icon-container {
+    padding: 16px;
+    box-sizing: border-box;
+    width: 72px;
+    margin-right: 10px;
+
+    &:hover {
+      background: #F1F6FF;
+    }
+  }
+
   .after-search-menu {
     cursor: pointer;
+    height: 74px;
+
   }
 }
 

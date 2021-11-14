@@ -6,9 +6,9 @@
 // Карусель.
 .product-item {
   .product-item-content {
-    border: 1px solid var(--surface-d);
+    // border: 1px solid var(--surface-d);
     border-radius: 3px;
-    margin: .3rem;
+    margin-right: 20px;
     text-align: center;
     // padding: 2rem 0;
     padding: 0;
@@ -16,10 +16,21 @@
 
   .product-image {
     // width: 50%;
-    width: 100%;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+    width: 342px;
+    height: 162px;
+    // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
   }
 }
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+// .btn-dark {
+//   margin-top: 68px;
+//   padding: 16px;
+// }
 
 .three-cards {
   gap: 24px;
@@ -33,10 +44,67 @@
   max-width: 464px;
 }
 
+.p-carousel-container {
+  gap: 20px;
+}
+
+.more-info-btn {
+  margin-right: 16px;
+}
+
+::ng-deep .business-garanteese .p-card {
+  background: #F1F6FF;
+}
+
+::ng-deep .business-garanteese .p-card-content {
+  padding: 0;
+}
+
+::ng-deep .p-card .p-card-body {
+  margin: 0 auto;
+}
+
+.bg {
+  padding-top: 20px;
+  background: #F1F1F1;
+  width: 1392px;
+  margin: 20px auto;
+}
+
+::ng-deep .business-garanteese .p-card .p-card-header {
+  padding-bottom: 0;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+::ng-deep .business-garanteese .p-card .p-card-footer {
+  padding-top: 0;
+  margin-top: 40px;
+}
+
+::ng-deep .business-garanteese .p-card .p-card-body {
+  padding-top: 0;
+}
+
 ::ng-deep .card-business .p-card-body {
   // background: #F1F1F1;
-  padding: 24px 16px 24px 16px;
+  padding: 16px 24px;
 }
+
+::bg-deep .p-card {
+  width: 1392px !important;
+}
+
+::ng-deep .card-business .btn-dark {
+  margin-top: 68px;
+  padding: 16px;
+}
+
+::ng-deep .right .btn-dark {
+  margin-top: 68px;
+  padding: 16px;
+}
+
 
 ::ng-deep .card-line .p-card-body {
   // background: #F1F6FF;
@@ -45,33 +113,46 @@
 
 ::ng-deep .card-line .p-card-header {
   // background: #F1F6FF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 24px 16px 24px 16px;
 }
 
-// ::ng-deep .card-item .p-card {
-//     margin: 24px 16px 24px 16px;    
-// }
+.close {
+  border: none;
+  background: none;
+}
+
+::ng-deep .p-card {
+  box-shadow: none;
+}
+
+::ng-deep .card {
+  border: none !important;
+  background-color: #F1F1F1;
+}
 
 .block-card-item {
   // background: white;
-  width: 300px;
+  width: 336px;
 }
 
 .card-demo-list {
   margin-top: 24px;
 }
 
-.gray {
-  background: #F1F1F1;
-}
+// .gray {
+//   background: #F1F1F1;
+// }
 
 .btn-show-more {
   border: 1px solid;
-  border-radius: 12px;
+  border-radius: 5px;
 }
 
 .baner {
-  width: 670px;
+  max-width: 708px;
   height: 272px;
 }
 
@@ -172,11 +253,17 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 }
 
 .block-cards-franchises {
-  padding: 24px 0px;
-  justify-content: space-between;
+  gap: 16px;
+  justify-content: center;
+  padding-bottom: 24px;
+  background: #F1F1F1;
 
   .card-franchise {
     padding: 0;
+  }
+
+  .block-cards-franchises-content {
+    background: #F1F1F1;
   }
 }
 
@@ -184,4 +271,35 @@ only screen and (-webkit-device-pixel-ratio: 3) {
   display: flex;
   flex-direction: column;
   align-items: baseline;
+}
+
+::ng-deep .p-carousel {
+  max-width: calc(100% - 24px);
+  // justify-content: space-between;
+}
+
+::ng-deep .p-dropdown {
+  background: #F1F6FF;
+}
+
+::ng-deep .p-inputtext {
+  background: #F1F6FF;
+  width: 149px;
+  margin-right: 16px;
+}
+
+::ng-deep .p-inputswitch .p-inputswitch-slider {
+  background: #C8DBFF;
+}
+
+.block-card-img {
+  display: block;
+  width: 312px;
+  padding-top: 12px;
+  margin: 0 auto;
+}
+
+::ng-deep .p-carousel-item {
+  max-width: 365px;
+  // grid-gap: 20px !important;
 }

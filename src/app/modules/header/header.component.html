@@ -128,33 +128,36 @@
   <!-- Область с поиском. -->
   <div class="col-lg-12 col-xs-12 block-after-header d-flex align-items-center justify-content-between">
     <div class="search-logo" (click)="onRouteStart()">
-      <img class="search-logo__image" src="../../assets/images/search_logo.jpg" width="100" height="58">
+      <img class="search-logo__image" src="../../assets/images/search_logo.svg" width="100" height="58">
     </div>
 
     <div class="">
-      <span class="p-input-icon-right">
-        <i class="pi pi-search"></i>
+      <div class="p-input-icon-right d-flex align-items-center">
         <input type="text" class="input-search" pInputText placeholder="Search">
-      </span>
+        <button class="search-btn">
+          <img src="../../../assets/images/search.svg" alt="">
+        </button>
+      </div>
     </div>
 
     <div class="sell text-center">
-      <img src="../../../assets/images/Vector.png" width="34" height="32"><br>
+      <img src="../../../assets/images/megaphone 1.svg" width="34" height="32"><br>
       <span class="">Продать</span>
     </div>
 
     <div class="sell text-center">
-      <img src="../../../assets/images/Vector1.png" width="34" height="32"><br>
+      <img src="../../../assets/images/deal 1.svg" width="34" height="32"><br>
       <span class="">Мои сделки</span>
     </div>
 
     <div class="sell text-center">
-      <img src="../../../assets/images/favourite 1.png" width="34" height="32"><br>
+      <img src="../../../assets/images/favourite 1 (1).svg" width="34" height="32"><br>
+      <!-- нужна другая картинка -->
       <span class="">Избранное</span>
     </div>
 
     <div class="sell text-center">
-      <img src="../../../assets/images/Vector4.png" width="34" height="32"><br>
+      <img src="../../../assets/images/avatar 2.svg" width="34" height="32"><br>
       <span class="">Уведомления</span>
     </div>
 
@@ -166,33 +169,49 @@
 
   <!-- Область под поиском. -->
   <div class="after-search d-flex justify-content-between">
-    <div class="after-search-menu">
-      <img src="../../../assets/images/franchise 1.png" class="after-search-img" width="76" height="74">
+    <div class="after-search-menu d-flex align-items-center">
+      <div class="after-search-icon-container">
+        <img src="../../../assets/images/Logo=Main, Stage=Passive.svg" class="after-search-img" width="44" height="42">
+      </div>
       <span class="">Главная</span>
     </div>
 
-    <div class="header-link" (click)="onRouteCatalogFranchise()">
-      <img src="../../../assets/images/franchise 2.png" class="after-search-img" width="76" height="74">
+    <div class="header-link d-flex align-items-center" (click)="onRouteCatalogFranchise()">
+      <div class="after-search-icon-container">
+        <img src="../../../assets/images/Logo=Franchise, Stage=Passive.svg" class="after-search-img" width="44"
+          height="42">
+      </div>
       <span class="">Франшизы</span>
     </div>
 
-    <div class="after-search-menu">
-      <img src="../../../assets/images/franchise 3.png" class="after-search-img" width="76" height="74">
+    <div class="after-search-menu d-flex align-items-center">
+      <div class="after-search-icon-container">
+        <img src="../../../assets/images/Logo=Business, Stage=Passive.svg" class="after-search-img" width="44"
+          height="42">
+      </div>
       <span class="">Готовый бизнес</span>
     </div>
 
-    <div class="after-search-menu">
-      <img src="../../../assets/images/franchise 4.png" class="after-search-img" width="76" height="74">
+    <div class="after-search-menu d-flex align-items-center">
+      <div class="after-search-icon-container">
+        <img src="../../../assets/images/Logo=Guarantee, Stage=Passive.svg" class="after-search-img" width="44"
+          height="42">
+      </div>
       <span class="">Покупка через гарант</span>
     </div>
 
-    <div class="after-search-menu">
-      <img src="../../../assets/images/franchise 5.png" class="after-search-img" width="76" height="74">
+    <div class="after-search-menu d-flex align-items-center">
+      <div class="after-search-icon-container">
+        <img src="../../../assets/images/Logo=Law, Stage=Passive.svg" class="after-search-img" width="44" height="42">
+      </div>
       <span class="">Консалтинг</span>
     </div>
 
-    <div class="after-search-menu">
-      <img src="../../../assets/images/franchise 6.png" class="after-search-img" width="76" height="74">
+    <div class="after-search-menu d-flex align-items-center">
+      <div class="after-search-icon-container">
+        <img src="../../../assets/images/Logo=Settings, Stage=Passive.svg" class="after-search-img" width="44"
+          height="42">
+      </div>
       <span class="">Упаковка франшиз</span>
     </div>
   </div>

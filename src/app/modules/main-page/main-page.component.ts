@@ -178,9 +178,10 @@ export class MainPageModule implements OnInit {
                 .subscribe({
                     next: (response: any) => {
                         console.log("Блок событий:", response);
-                        this.aDataActions = response;
+                        let actions = response.filter((el:any) => el.isTop == false);
+                        this.aDataActions = actions;
 
-                        this.oTopAction = this.aDataActions.filter(el => el.isTop == true)[0];
+                        this.oTopAction = response.filter((el: any) => el.isTop == true)[0];
                         console.log("oTopAction",this.oTopAction);
                     },
 

@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { ProfileInput } from "src/app/models/profile/input/profile-input";
+import { CommonDataService } from "src/app/services/common-data.service";
 
 @Component({
     selector: "profile",
@@ -21,7 +22,7 @@ export class ProfileModule implements OnInit {
     lastName: string = "";
     firstName: string = "";
     patr: string = "";
-    dateYearBirth: string = "";
+    dateYearBirth: Date = new Date();
     email: string = "";
     phone: string = "";
     inn: number = 0;
@@ -33,17 +34,20 @@ export class ProfileModule implements OnInit {
     code: string = "";
     registerAddress: string = "";
     documentFile: any;
+    profileData: any;
+    role: string = "";
 
     constructor(private route: ActivatedRoute, 
         private router: Router, 
         private http: HttpClient, 
         private titleService: Title,
-        private messageService: MessageService) {
+        private messageService: MessageService,
+        private commonService: CommonDataService) {
         
     };
 
-    public ngOnInit() {
-        
+    public async ngOnInit() {
+        await this.GetProfileInfoAsync();
     };  
 
     /**
@@ -98,6 +102,7 @@ export class ProfileModule implements OnInit {
                     },
 
                     error: (err) => {
+                        this.commonService.routeToStart(err);
                         throw new Error(err);
                     }
                 });
@@ -125,5 +130,49 @@ export class ProfileModule implements OnInit {
             summary: 'Успешно!',
             detail: 'Успешно сохранено'
         });
+    };
+
+    /**
+     * Функция получит данные профиля.
+     */
+    private async GetProfileInfoAsync() {
+        try {
+        await this.http.post(API_URL.apiUrl.concat("/user/get-profile-info"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Данные профиля", response);
+                        this.profileData = response;
+                        this.firstName = response.firstName ?? "";
+                        this.lastName = response.lastName ?? "";
+                        this.patr = response.patronymic ?? "";
+                        this.email = response.email ?? "";
+                        this.dateYearBirth = response.dateBirth ?? "";
+                        this.phone = response.phoneNumber ?? "";
+                        this.inn = response.inn ?? 0;
+                        this.pc = response.pc ?? 0;
+
+                        if (this.profileData.values.includes("buy") && this.profileData.values.includes("sell")) {
+                            this.role = "Продавца, покупателя";
+                        }
+
+                        else if (this.profileData.values == "buy") {
+                            this.role = "Продавца";
+                        }
+
+                        else if (this.profileData.values == "sell") {
+                            this.role = "Покупателя";
+                        }
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
     };
 }

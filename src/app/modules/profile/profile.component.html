@@ -21,9 +21,9 @@
 
                   <div class="block-fio">
                       <small class="title">ФИО</small><br>
-                      <strong>Имя Фамилия</strong><br>
+                      <strong>{{profileData.firstName}} {{profileData.lastName}}</strong><br>
                       <small class="title space-top-24">В качестве</small><br>
-                      <strong>Продавца</strong>
+                      <strong>{{role}}</strong>
                   </div>                  
                </div>
 
@@ -148,9 +148,9 @@
                         </div>
       
                         <div class="space-margin-left-24">
-                          <label for="" class="title-small">Номер телефона</label><br>
+                          <label for="" class="title-small">Номер</label><br>
                           <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="number"
-                            name="phone" />
+                            name="numberPassport" />
                         </div>         
                         
                         <div class="space-margin-left-24">

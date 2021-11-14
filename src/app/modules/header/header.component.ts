@@ -85,4 +85,8 @@ export class HeaderModule implements OnInit {
             throw new Error(e);
         }
     };
+
+    public onRouteProfile() {
+        this.router.navigate(["/profile"]);
+    };
 }

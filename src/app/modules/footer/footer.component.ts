@@ -8,6 +8,9 @@ import { CommonDataService } from "src/app/services/common-data.service";
     styleUrls: ["./footer.component.scss"]
 })
 
+/** 
+ * Класс модуля футера.
+ */
 export class FooterModule implements OnInit {
     aFooter: any[] = [];
     aFooterColumn1: any[] = [];

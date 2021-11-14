@@ -13,6 +13,9 @@ import { LoginInput } from "src/app/models/login/input/login-input";
     styleUrls: ["./login.component.scss"]
 })
 
+/** 
+ * Класс модуля авторизации.
+ */
 export class LoginModule implements OnInit {
     routeParam: number;
     isCode: boolean = false;

@@ -9,6 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['./header.component.scss']
 })
 
+/** 
+ * Класс модуля хидера.
+ */
 export class HeaderModule implements OnInit {
     aHeader: any[] = [];
     aBreadcrumbs: any[] = [];
@@ -53,6 +56,11 @@ export class HeaderModule implements OnInit {
         switch (name) {
             case "Вход или регистрация":
                 this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
+                break;
+
+            // Переход к созданию объявления.
+            case "Разместить объявление":
+                this.router.navigate(["/ad/create"]);
                 break;
         }
     };

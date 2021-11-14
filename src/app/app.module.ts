@@ -45,6 +45,9 @@ import { CreateReadyBusinessModule } from "./modules/create-ready-business/creat
 import { EditReadyBusinessModule } from "./modules/edit-ready-business/edit-ready-business.component";
 import { ViewReadyBusinessModule } from "./modules/view-ready-business/view-ready-business.component";
 import { CreateAdModule } from "./modules/create-ad/create-ad.component";
+import { ProfileModule } from "./modules/profile/profile.component";
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,8 @@ import { CreateAdModule } from "./modules/create-ad/create-ad.component";
     CreateReadyBusinessModule,
     EditReadyBusinessModule,
     ViewReadyBusinessModule,
-    CreateAdModule
+    CreateAdModule,
+    ProfileModule
   ],
 
   entryComponents: [],
@@ -91,7 +95,9 @@ import { CreateAdModule } from "./modules/create-ad/create-ad.component";
     BreadcrumbModule,
     FileUploadModule,
     GalleriaModule,
-    InputTextareaModule
+    InputTextareaModule,
+    AvatarModule,
+    AvatarGroupModule
   ],
 
   providers: [
@@ -102,7 +108,7 @@ import { CreateAdModule } from "./modules/create-ad/create-ad.component";
     },
     CommonDataService,
     Title,
-    MessageService 
+    MessageService
   ],
 
   bootstrap: [AppComponent]

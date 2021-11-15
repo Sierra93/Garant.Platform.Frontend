@@ -47,7 +47,7 @@ export class ProfileModule implements OnInit {
     };
 
     public async ngOnInit() {
-        await this.GetProfileInfoAsync();
+        await this.getProfileInfoAsync();
     };  
 
     /**
@@ -71,7 +71,7 @@ export class ProfileModule implements OnInit {
             let code = form.value.code;
             let dateGive = form.value.dateGive;
             let whoGive = form.value.whoGive;
-            let addressRegister = form.value.addressRegister;
+            let addressRegister = form.value.registerAddress;
 
             let profileInput = new ProfileInput();
             profileInput.DateBirth = dateYearBirth;
@@ -135,7 +135,7 @@ export class ProfileModule implements OnInit {
     /**
      * Функция получит данные профиля.
      */
-    private async GetProfileInfoAsync() {
+    private async getProfileInfoAsync() {
         try {
         await this.http.post(API_URL.apiUrl.concat("/user/get-profile-info"), {})
                 .subscribe({
@@ -150,6 +150,13 @@ export class ProfileModule implements OnInit {
                         this.phone = response.phoneNumber ?? "";
                         this.inn = response.inn ?? 0;
                         this.pc = response.pc ?? 0;
+                        this.dateGive = response.dateGive ?? "";
+                        this.code = response.code ?? "";
+                        this.whoGive = response.whoGive ?? "";
+                        this.registerAddress = response.registerAddress ?? "";
+                        this.serial = response.passportSerial ?? 0;
+                        this.number = response.passportNumber ?? 0;
+                        this.registerAddress = response.addressRegister ?? "";
 
                         if (this.profileData.values.includes("buy") && this.profileData.values.includes("sell")) {
                             this.role = "Продавца, покупателя";

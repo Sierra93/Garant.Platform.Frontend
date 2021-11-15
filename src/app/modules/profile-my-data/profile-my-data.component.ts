@@ -9,16 +9,16 @@ import { ProfileInput } from "src/app/models/profile/input/profile-input";
 import { CommonDataService } from "src/app/services/common-data.service";
 
 @Component({
-    selector: "profile",
-    templateUrl: "./profile.component.html",
-    styleUrls: ["./profile.component.scss"],
+    selector: "profile-my-data",
+    templateUrl: "./profile-my-data.component.html",
+    styleUrls: ["./profile-my-data.component.scss"],
     providers: [ConfirmationService, MessageService]
 })
 
 /** 
- * Класс модуля профиля пользователя.
+ * Класс модуля профиля пользователя (мои данные).
  */
-export class ProfileModule implements OnInit {    
+export class ProfileMyDataModule implements OnInit {    
     lastName: string = "";
     firstName: string = "";
     patr: string = "";
@@ -49,6 +49,7 @@ export class ProfileModule implements OnInit {
     };
 
     public async ngOnInit() {
+        this.titleService.setTitle("Gobizy: Профиль - мои данные");
         await this.getProfileInfoAsync();
     };  
 

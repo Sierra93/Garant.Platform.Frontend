@@ -45,7 +45,7 @@ import { CreateReadyBusinessModule } from "./modules/create-ready-business/creat
 import { EditReadyBusinessModule } from "./modules/edit-ready-business/edit-ready-business.component";
 import { ViewReadyBusinessModule } from "./modules/view-ready-business/view-ready-business.component";
 import { CreateAdModule } from "./modules/create-ad/create-ad.component";
-import { ProfileModule } from "./modules/profile/profile.component";
+import { ProfileMyDataModule } from "./modules/profile-my-data/profile-my-data.component";
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 
@@ -65,7 +65,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
     EditReadyBusinessModule,
     ViewReadyBusinessModule,
     CreateAdModule,
-    ProfileModule
+    ProfileMyDataModule
   ],
 
   entryComponents: [],

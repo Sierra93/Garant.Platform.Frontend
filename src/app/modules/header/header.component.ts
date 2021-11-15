@@ -87,6 +87,6 @@ export class HeaderModule implements OnInit {
     };
 
     public onRouteProfile() {
-        this.router.navigate(["/profile"]);
+        this.router.navigate(["/profile/my-data"]);
     };
 }

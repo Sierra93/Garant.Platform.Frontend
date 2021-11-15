@@ -11,7 +11,7 @@ import { CreateReadyBusinessModule } from './modules/create-ready-business/creat
 import { ViewReadyBusinessModule } from './modules/view-ready-business/view-ready-business.component';
 import { EditReadyBusinessModule } from './modules/edit-ready-business/edit-ready-business.component';
 import { CreateAdModule } from './modules/create-ad/create-ad.component';
-import { ProfileModule } from './modules/profile/profile.component';
+import { ProfileMyDataModule } from './modules/profile-my-data/profile-my-data.component';
 
 const routes: Routes = [
   {
@@ -70,8 +70,8 @@ const routes: Routes = [
   },
 
   {
-    path: "profile",
-    component: ProfileModule
+    path: "profile/my-data",
+    component: ProfileMyDataModule
   }
 ];
 

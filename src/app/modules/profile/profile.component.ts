@@ -36,6 +36,8 @@ export class ProfileModule implements OnInit {
     documentFile: any;
     profileData: any;
     role: string = "";
+    countTimeSite: string = "";
+    countAd: number = 0;
 
     constructor(private route: ActivatedRoute, 
         private router: Router, 
@@ -157,6 +159,8 @@ export class ProfileModule implements OnInit {
                         this.serial = response.passportSerial ?? 0;
                         this.number = response.passportNumber ?? 0;
                         this.registerAddress = response.addressRegister ?? "";
+                        this.countTimeSite = response.countTimeSite ?? "";
+                        this.countAd = response.countAd ?? 0;
 
                         if (this.profileData.values.includes("buy") && this.profileData.values.includes("sell")) {
                             this.role = "Продавца, покупателя";

@@ -44,7 +44,7 @@ import { MessageService } from "primeng/api";
 import { CreateReadyBusinessModule } from "./modules/business/create-ready-business/create-ready-business.component";
 import { EditReadyBusinessModule } from "./modules/business/edit-ready-business/edit-ready-business.component";
 import { ViewReadyBusinessModule } from "./modules/business/view-ready-business/view-ready-business.component";
-import { CreateAdModule } from "./modules/create-ad/create-ad.component";
+import { CreateAdModule } from "./modules/ad/create-ad/create-ad.component";
 import { ProfileMyDataModule } from "./modules/profile/profile-my-data/profile-my-data.component";
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';

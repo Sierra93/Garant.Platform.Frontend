@@ -448,4 +448,30 @@ export class CommonDataService {
             throw new Error(e);
         }
     };
+
+    /**
+     * Функция получит список меню для ЛК.
+     * @returns Список меню.
+     */
+    public async getProfileMenuAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/user/profile-menu"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 };

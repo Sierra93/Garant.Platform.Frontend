@@ -32,6 +32,7 @@ export class CreateAdModule implements OnInit {
     
     public async ngOnInit() {    
         await this.onSelectFracnhiseCheck();
+        await this.GetFranchiseCategoriesListAsync();
     };
 
     public onContinue(isSelectFranch: boolean, isSelectBus: boolean, isSelectGobizy: boolean, isSelectSell: boolean) {

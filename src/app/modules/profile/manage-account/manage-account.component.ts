@@ -9,16 +9,16 @@ import { ProfileInput } from "src/app/models/profile/input/profile-input";
 import { CommonDataService } from "src/app/services/common-data.service";
 
 @Component({
-    selector: "profile-my-data",
-    templateUrl: "./profile-my-data.component.html",
-    styleUrls: ["./profile-my-data.component.scss"],
+    selector: "manage-account",
+    templateUrl: "./manage-account.component.html",
+    styleUrls: ["./manage-account.component.scss"],
     providers: [ConfirmationService, MessageService]
 })
 
 /** 
  * Класс модуля профиля пользователя (мои данные).
  */
-export class ProfileMyDataModule implements OnInit {    
+export class ManageAccountModule implements OnInit {    
     lastName: string = "";
     firstName: string = "";
     patr: string = "";

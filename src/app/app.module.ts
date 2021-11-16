@@ -30,22 +30,22 @@ import { InputSwitchModule } from "primeng/inputswitch";
 import { SliderModule } from "primeng/slider";
 import { FooterModule } from "./modules/footer/footer.component";
 import { LoginModule } from "./modules/login/login.component";
-import { ProfileDataModule } from "./modules/profile-data/profile-data.component";
+import { ProfileDataModule } from "./modules/profile/profile-data/profile-data.component";
 import { CheckboxModule } from "primeng/checkbox";
-import { CatalogFranchiseModule } from "./modules/catalog-franchise/catalog-franchise.component";
+import { CatalogFranchiseModule } from "./modules/franchise/catalog-franchise/catalog-franchise.component";
 import { BreadcrumbModule } from 'primeng/breadcrumb';
-import { CreateFranchiseModule } from "./modules/create-franchise/create-franchise.component";
-import { ViewFranchiseModule } from "./modules/view-franchise/view-franchise.component";
-import { EditFranchiseModule } from "./modules/edit-franchise/edit-franchise.component";
+import { CreateFranchiseModule } from "./modules/franchise/create-franchise/create-franchise.component";
+import { ViewFranchiseModule } from "./modules/franchise/view-franchise/view-franchise.component";
+import { EditFranchiseModule } from "./modules/franchise/edit-franchise/edit-franchise.component";
 import { FileUploadModule } from 'primeng/fileupload';
 import { GalleriaModule } from 'primeng/galleria';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MessageService } from "primeng/api";
-import { CreateReadyBusinessModule } from "./modules/create-ready-business/create-ready-business.component";
-import { EditReadyBusinessModule } from "./modules/edit-ready-business/edit-ready-business.component";
-import { ViewReadyBusinessModule } from "./modules/view-ready-business/view-ready-business.component";
+import { CreateReadyBusinessModule } from "./modules/business/create-ready-business/create-ready-business.component";
+import { EditReadyBusinessModule } from "./modules/business/edit-ready-business/edit-ready-business.component";
+import { ViewReadyBusinessModule } from "./modules/business/view-ready-business/view-ready-business.component";
 import { CreateAdModule } from "./modules/create-ad/create-ad.component";
-import { ProfileModule } from "./modules/profile/profile.component";
+import { ProfileMyDataModule } from "./modules/profile/profile-my-data/profile-my-data.component";
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 
@@ -65,7 +65,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
     EditReadyBusinessModule,
     ViewReadyBusinessModule,
     CreateAdModule,
-    ProfileModule
+    ProfileMyDataModule
   ],
 
   entryComponents: [],

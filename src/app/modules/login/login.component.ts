@@ -98,6 +98,7 @@ export class LoginModule implements OnInit {
                             sessionStorage["token"] = response.token;
                             sessionStorage["user"] = response.user;
                             sessionStorage["isSuccess"] = response.isSuccess;
+                            document.cookie = "user=" + response.user; 
                             this.isGetCode = true;
                             this.IsWriteProfileData(response.isWriteProfileData);
                         }
@@ -207,6 +208,7 @@ export class LoginModule implements OnInit {
     private IsWriteProfileData(flag: boolean) {
         if (flag) {
             this.router.navigate(["/"]);
+            return;
         }
 
         this.router.navigate(["/profile-data"]);

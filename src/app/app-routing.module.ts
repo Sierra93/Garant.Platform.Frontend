@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CatalogFranchiseModule } from './modules/catalog-franchise/catalog-franchise.component';
-import { EditFranchiseModule } from './modules/edit-franchise/edit-franchise.component';
-import { CreateFranchiseModule } from './modules/create-franchise/create-franchise.component';
+import { CatalogFranchiseModule } from './modules/franchise/catalog-franchise/catalog-franchise.component';
+import { EditFranchiseModule } from './modules/franchise/edit-franchise/edit-franchise.component';
+import { CreateFranchiseModule } from './modules/franchise/create-franchise/create-franchise.component';
 import { LoginModule } from './modules/login/login.component';
 import { MainPageModule } from './modules/main-page/main-page.component';
-import { ProfileDataModule } from "./modules/profile-data/profile-data.component";
-import { ViewFranchiseModule } from './modules/view-franchise/view-franchise.component';
-import { CreateReadyBusinessModule } from './modules/create-ready-business/create-ready-business.component';
-import { ViewReadyBusinessModule } from './modules/view-ready-business/view-ready-business.component';
-import { EditReadyBusinessModule } from './modules/edit-ready-business/edit-ready-business.component';
+import { ProfileDataModule } from "./modules/profile/profile-data/profile-data.component";
+import { ViewFranchiseModule } from './modules/franchise/view-franchise/view-franchise.component';
+import { CreateReadyBusinessModule } from './modules/business/create-ready-business/create-ready-business.component';
+import { ViewReadyBusinessModule } from './modules/business/view-ready-business/view-ready-business.component';
+import { EditReadyBusinessModule } from './modules/business/edit-ready-business/edit-ready-business.component';
 import { CreateAdModule } from './modules/create-ad/create-ad.component';
-import { ProfileModule } from './modules/profile/profile.component';
+import { ProfileMyDataModule } from './modules/profile/profile-my-data/profile-my-data.component';
 
 const routes: Routes = [
   {
@@ -70,8 +70,8 @@ const routes: Routes = [
   },
 
   {
-    path: "profile",
-    component: ProfileModule
+    path: "profile/my-data",
+    component: ProfileMyDataModule
   }
 ];
 

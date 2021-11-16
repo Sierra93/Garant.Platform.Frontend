@@ -113,12 +113,12 @@ export class CommonDataService {
             this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
         }
 
-        if (typeof(err) === "string") {
-            sessionStorage.clear();
-            sessionStorage["role"] = "G";
+        // if (typeof(err) === "string") {
+        //     sessionStorage.clear();
+        //     sessionStorage["role"] = "G";
 
-            this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
-        }
+        //     this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
+        // }
     };
 
     /**

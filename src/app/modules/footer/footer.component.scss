@@ -9,6 +9,15 @@ $roboto: Roboto;
   padding-bottom: 50px;
   margin-top: 130px;
 
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    margin-bottom: 67px;
+  }
+
   span {
     font-family: $roboto;
     font-size: 14px;

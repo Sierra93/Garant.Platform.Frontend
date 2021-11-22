@@ -6,6 +6,7 @@
   font-family: Roboto;
   font-size: 24px;
   font-weight: 500;
+  line-height: 116%;  //добавил
   color: #2c2c2c;
 }
 
@@ -13,31 +14,46 @@
   color: #000;
   font-family: Roboto;
   font-size: 18px;
+  font-weight: 400;   //добавил
+  line-height: 116%;  //добавил
 }
 
 .control-button-blue {
+    cursor: pointer;
+    width: 416px;
+    height: 70px;
     background-color: #1f75fe;
     color: white;
     padding: 24px 16px;
     border: none;
     border-radius: 8px;
-    margin-top: 24px;
 }
-
+.control-button-blue:hover {  //добавил
+  background-color: #0d4db4;
+}
 .control-button-white {
+  cursor: pointer;
+  width: 416px;
+  height: 70px;
   background: #F1F6FF;
   color: #1F75FE;
   padding: 24px 16px;
   border: none;
   border-radius: 8px;
-  margin-top: 24px;
+}
+.control-button-white:hover{  //добавил
+  background-color: #c5c8cf;
 }
 
 .control-button-blue-small {
+    cursor: pointer;
     background-color: #1f75fe;
     color: white;
     padding: 16px;
     border: none;
     border-radius: 8px;
-    margin-top: 24px;
+    margin:16px 0 24px;
+}
+.control-button-blue-small:hover {  //добавил
+  background-color: #0d4db4;
 }

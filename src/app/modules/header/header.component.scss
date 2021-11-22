@@ -1,6 +1,6 @@
 @import "../../app.component.scss";
-@import "/src/app/shared/styles/body-margins.scss";
-@import "/src/app/shared/styles/media-quaries.scss";
+@import "../../shared/styles/body-margins.scss";
+@import "../../shared/styles/media-quaries.scss";
 
 @mixin headerTitle {
   font-family: Oswald;

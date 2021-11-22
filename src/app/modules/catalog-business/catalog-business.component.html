@@ -19,7 +19,7 @@
     </ng-template>
     <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
     <ng-template pTemplate="footer">
-      
+
     </ng-template>
   </p-card>
   </div>
@@ -30,7 +30,7 @@
   <span class="count-franchise">Всего {{countBusinesses}} бизнеса</span>
 </div>
 
-<form class="d-flex" #filterForm="ngForm" novalidate>  
+<form class="d-flex" #filterForm="ngForm" novalidate>
   <!-- <div>
     <strong>Сфера бизнеса</strong><br>
     <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
@@ -52,7 +52,7 @@
     <input type="text" class="control-input-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
   </div>
 
-  <div class="block-price-max">      
+  <div class="block-price-max">
     <strong></strong><br>
     <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice" name="maxPrice" />
   </div>
@@ -69,19 +69,19 @@
       <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
     </div>
 
-    <div class="switch-garant">      
+    <div class="switch-garant">
       <strong>Покупка через гарант</strong><br>
       <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
-    </div>        
+    </div>
 
-    <div class="switch-garant">      
+    <div class="switch-garant">
       <strong>Прибыль в месяц</strong><br>
       <div class="d-flex">
         <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="filterMinPrice" name="filterMinPrice" />
         <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="filterMaxPrice"
           name="filterMaxPrice" />
       </div>
-    </div>   
+    </div>
 
     <button class="btn btn-default btn-sm mt-3 btn-filter" (click)="FilterFranchisesAsync()">Применить фильтры</button>
     <button class="btn btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">Очистить фильтры</button>
@@ -167,7 +167,7 @@
                   <p-card header="Название готового бизнеса" subheader="{{item.fullText}}"
                     [style]="{width: '100%'}" styleClass="p-card-shadow">
                     <ng-template pTemplate="header">
-                      
+
                     </ng-template>
                     <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
                     <ng-template pTemplate="footer">
@@ -182,7 +182,7 @@
 </div>
 
 <div class="col-lg-4">
-  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5> 
+  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
   <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" styleClass="card">
     <ng-template pTemplate="header">
 
@@ -209,7 +209,7 @@
         <div>
           <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button>
         </div>
-        
+
         <div class="ml-1">
           <button class="btn btn-dark">{{oSuggestion.button2Text}}</button>
         </div>
@@ -253,7 +253,7 @@
     </ng-template>
 
     <ng-template pTemplate="footer">
-      
+
     </ng-template>
   </p-card>
   </div>
@@ -262,7 +262,7 @@
     <p-card header="Больше статей" subheader=""
     [style]="{width: '100%'}" styleClass="p-card-shadow">
     <ng-template pTemplate="header">
-      
+
     </ng-template>
 
     <div class="d-flex">
@@ -271,7 +271,7 @@
         <img src="../../../assets/images/Frame 66.png" height="32">
     </div>
     <ng-template pTemplate="footer">
-      
+
     </ng-template>
   </p-card>
   </div>
@@ -310,7 +310,7 @@
         <img class="space-right-image-category" [src]="item.url">
         <span>{{item.name}}</span>
         <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>     
+      </div>
      </div>
     </div>
 
@@ -321,7 +321,7 @@
         <img class="space-right-image-category" [src]="item.url">
         <span>{{item.name}}</span>
         <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div> 
+      </div>
     </div>
 
     <!-- 3 столбец. -->
@@ -332,7 +332,7 @@
         <img class="space-right-image-category" [src]="item.url">
         <span>{{item.name}}</span>
         <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div> 
+      </div>
      </div>
     </div>
 
@@ -343,16 +343,16 @@
         <img class="space-right-image-category" [src]="item.url">
         <span>{{item.name}}</span>
         <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div> 
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Пагинация. -->
 <div class="mt-5">
-  <p-paginator 
-            [rows]="10" 
-            [totalRecords]="countTotalPage" 
+  <p-paginator
+            [rows]="10"
+            [totalRecords]="countTotalPage"
             [rowsPerPageOptions]="[10,20,30]"
             [showCurrentPageReport]="true"
             (onPageChange)="onPaginationChangeAsync($event)">

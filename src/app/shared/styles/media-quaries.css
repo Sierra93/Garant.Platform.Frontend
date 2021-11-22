@@ -1,65 +1,42 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  /* Styles */
-}
-
+  /* Styles */ }
 /* Smartphones (landscape) ----------- */
 @media only screen and (min-width: 321px) {
-  /* Styles */
-}
-
+  /* Styles */ }
 /* Smartphones (portrait) ----------- */
 @media only screen and (max-width: 320px) {
-  /* Styles */
-}
-
+  /* Styles */ }
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  /* Styles */
-}
-
+  /* Styles */ }
 /* iPads (landscape) ----------- */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  /* Styles */
-}
-
+  /* Styles */ }
 /* iPads (portrait) ----------- */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  /* Styles */
-}
-
+  /* Styles */ }
 /* Desktops and laptops ----------- */
 @media only screen and (min-width: 1224px) {
   body {
     margin-left: 24px;
-    margin-right: 24px;
-  }
-}
-
+    margin-right: 24px; } }
 /* Large screens ----------- */
 @media only screen and (min-width: 1824px) {
   body {
     margin-left: 240px;
-    margin-right: 240px;
-  }
-}
-
+    margin-right: 240px; } }
 /* iPhone 4 - 5s ----------- */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  /* Styles */
-}
-
+  /* Styles */ }
 /* iPhone 6 ----------- */
 @media only screen and (max-device-width: 667px), only screen and (-webkit-device-pixel-ratio: 2) {
-  /* Styles */
-}
-
+  /* Styles */ }
 /* iPhone 6+ ----------- */
 @media only screen and (min-device-width: 414px), only screen and (-webkit-device-pixel-ratio: 3) {
-  /*** You've spent way too much on a phone ***/
-}
-
+  /*** You've spent way too much on a phone ***/ }
 /* Samsung Galaxy S7 Edge ----------- */
 @media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi) and (max-width: 640px) {
-  /* Styles */
-}
+  /* Styles */ }
+
+/*# sourceMappingURL=media-quaries.css.map */

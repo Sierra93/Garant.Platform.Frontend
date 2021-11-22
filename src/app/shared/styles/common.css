@@ -1,19 +1,16 @@
 .space-top-auth-form {
-  margin-top: 150px;
-}
+  margin-top: 150px; }
 
 .title-strong {
   font-family: Roboto;
   font-size: 24px;
   font-weight: 500;
-  color: #2c2c2c;
-}
+  color: #2c2c2c; }
 
 .title-small {
   color: #000;
   font-family: Roboto;
-  font-size: 18px;
-}
+  font-size: 18px; }
 
 .control-button-blue {
   background-color: #1f75fe;
@@ -21,8 +18,7 @@
   padding: 24px 16px;
   border: none;
   border-radius: 8px;
-  margin-top: 24px;
-}
+  margin-top: 24px; }
 
 .control-button-white {
   background: #F1F6FF;
@@ -30,8 +26,7 @@
   padding: 24px 16px;
   border: none;
   border-radius: 8px;
-  margin-top: 24px;
-}
+  margin-top: 24px; }
 
 .control-button-blue-small {
   background-color: #1f75fe;
@@ -39,5 +34,6 @@
   padding: 16px;
   border: none;
   border-radius: 8px;
-  margin-top: 24px;
-}
+  margin-top: 24px; }
+
+/*# sourceMappingURL=common.css.map */

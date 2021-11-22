@@ -1,36 +1,29 @@
 .title-franchise {
-  margin-bottom: 32px;
-}
+  margin-bottom: 32px; }
 
 .popular-list {
-  justify-content: space-between;
-}
+  justify-content: space-between; }
 
 .popular-item {
-  width: 300px;
-}
+  width: 300px; }
 
 .garant {
-  margin-top: 128px;
-}
+  margin-top: 128px; }
 
 .control-quick-search {
-  margin-left: 70px;
-}
+  margin-left: 70px; }
 
 .btn-filter {
-  border: 1px solid;
-}
+  border: 1px solid; }
 
 .three-cards {
-  margin-top: 128px;
-}
+  margin-top: 128px; }
 
 .news-item {
   border-bottom: 1px solid;
-  border-bottom-color: #C4C4C4;
-}
+  border-bottom-color: #C4C4C4; }
 
 .space-left-item {
-  margin-left: 24px;
-}
+  margin-left: 24px; }
+
+/*# sourceMappingURL=franchuse-styles.css.map */

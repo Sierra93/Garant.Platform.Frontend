@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,2BAA4B;EACxB,YAAY,EAAE,GAAG;;AAIrB,qBAAsB;EAClB,WAAW,EAAE,IAAI;;AAGrB,YAAa;EACT,WAAW,EAAE,IAAI",
+"sources": ["image-space.scss"],
+"names": [],
+"file": "image-space.css"
+}

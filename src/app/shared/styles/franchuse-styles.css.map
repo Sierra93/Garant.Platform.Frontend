@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,gBAAiB;EACb,aAAa,EAAE,IAAI;;AAGvB,aAAc;EACV,eAAe,EAAE,aAAa;;AAGlC,aAAc;EACV,KAAK,EAAE,KAAK;;AAGhB,OAAQ;EACJ,UAAU,EAAE,KAAK;;AAGrB,qBAAsB;EAClB,WAAW,EAAE,IAAI;;AAGrB,WAAY;EACR,MAAM,EAAE,SAAS;;AAGrB,YAAa;EACT,UAAU,EAAE,KAAK;;AAGrB,UAAW;EACP,aAAa,EAAE,SAAS;EACxB,mBAAmB,EAAE,OAAO;;AAGhC,gBAAiB;EACb,WAAW,EAAE,IAAI",
+"sources": ["franchuse-styles.scss"],
+"names": [],
+"file": "franchuse-styles.css"
+}

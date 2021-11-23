@@ -98,9 +98,9 @@ export class LoginModule implements OnInit {
                             sessionStorage["token"] = response.token;
                             sessionStorage["user"] = response.user;
                             sessionStorage["isSuccess"] = response.isSuccess;
+                            document.cookie = "user=" + response.user; 
                             this.isGetCode = true;
-    
-                            this.router.navigate(["/"]);
+                            this.IsWriteProfileData(response.isWriteProfileData);
                         }
                     },
 
@@ -169,8 +169,7 @@ export class LoginModule implements OnInit {
                             sessionStorage["isSuccess"] = response.isSuccess;
 
                             this.pauseTimer();
-                            // this.router.navigate(["/profile-data"]);
-                            this.router.navigate(["/"]);
+                            this.IsWriteProfileData(response.isWriteProfileData);
                         }
                     },
 
@@ -201,4 +200,17 @@ export class LoginModule implements OnInit {
         this.play = false;
         clearInterval(this.interval);
     };
+
+    /**
+     * Функция на основании проверки заполнял ли пользователь данные о себе редиректит либо на главную, либо на заполнение данных о себе.
+     * @param flag - флаг проверки.
+     */
+    private IsWriteProfileData(flag: boolean) {
+        if (flag) {
+            this.router.navigate(["/"]);
+            return;
+        }
+
+        this.router.navigate(["/profile-data"]);
+    }
 }

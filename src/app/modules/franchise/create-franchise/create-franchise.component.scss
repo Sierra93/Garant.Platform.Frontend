@@ -1,4 +1,4 @@
-@import "../../app.component.scss";  
+@import "/src/app/app.component.scss";  
 @import "/src/app/shared/styles/body-margins.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/common.scss";
@@ -14,11 +14,6 @@
 
 .block-two {
     margin-left: 24px;
-}
-
-.hr {
-    margin-top: 80px;
-    margin-bottom: 80px;
 }
 
 // ::ng-deep .p-galleria-thumbnail-container {

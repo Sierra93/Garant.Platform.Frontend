@@ -1,15 +1,10 @@
-@import "../../app.component.scss";  
+@import "/src/app/app.component.scss";  
 @import "/src/app/shared/styles/image-space.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/common.scss";
-@import "/src/app/modules/create-franchise/create-franchise.component.scss";
+@import "/src/app/modules/franchise/create-franchise/create-franchise.component.scss";
 @import "/src/app/modules/login/login.component.scss";
 
 .block-space-check {
     margin: 0 64px;
-}
-
-.space-top-bottom-32 {
-    margin-top: 32px;
-    margin-bottom: 32px;
 }

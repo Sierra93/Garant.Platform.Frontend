@@ -508,7 +508,7 @@ export class CatalogFranchiseModule implements OnInit {
      */
     private async setTransitionAsync(franchiseId: number) {
         try {
-            await this.commonService.setTransitionAsync(franchiseId, "Franchise").then((data: any) => {
+            await this.commonService.setTransitionAsync(franchiseId, "Franchise", "", "").then((data: any) => {
                 console.log("Переход записан:", data);
             });
         }

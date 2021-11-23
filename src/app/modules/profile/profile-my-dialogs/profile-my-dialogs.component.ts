@@ -9,9 +9,9 @@ import { ProfileInput } from "src/app/models/profile/input/profile-input";
 import { CommonDataService } from "src/app/services/common-data.service";
 
 @Component({
-    selector: "profile-my-messages",
-    templateUrl: "./profile-my-messages.component.html",
-    styleUrls: ["./profile-my-messages.component.scss"],
+    selector: "profile-my-dialogs",
+    templateUrl: "./profile-my-dialogs.component.html",
+    styleUrls: ["./profile-my-dialogs.component.scss"],
     providers: [ConfirmationService, MessageService]
 })
 
@@ -45,5 +45,19 @@ export class ProfileMyMessagesModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
+    };
+
+    /**
+     * Функция получит Id диалога, для которого нужно получить сообщения и перейдет на страницу сообщений диалога.
+     * @param dialogId Id диалога.
+     */
+    public async onGetDialogMessageAsync(dialogId: any) {
+        console.log("Выбранный диалог: ", dialogId);
+
+        await this.commonService.setTransitionAsync(dialogId, "Chat", "", "").then((data: any) => {
+            console.log("Переход записан:", data);
+        });
+
+        this.router.navigate(["/profile/chat/dialogs/dialog"], { queryParams: { dialogId: dialogId } });
     };
 }

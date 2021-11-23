@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="block-profile">
+    <!-- Левая часть. -->
+    <div class="col-lg-4">
+      <manage-account></manage-account>
+    </div>
+
+    <!-- Правая часть. -->
+    <div class="col-lg-8">
+      <h5>Чат с {{fio}}</h5>
+      <div class="block-right">
+
+        <div class="d-flex justify-content-between">
+          <div>
+            Предмет чата:
+          </div>
+
+          <div>
+            Начало чата: {{dateStartDialog}}
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="block-chat">
+          <div class="" *ngFor="let item of aMessages">
+            <div class="block-messages">
+              <div class="message" [ngClass]="{messageEnd:item.isMyMessage}">
+                {{item.message}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

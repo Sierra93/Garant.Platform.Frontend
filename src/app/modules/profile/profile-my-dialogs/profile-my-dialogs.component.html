@@ -19,7 +19,7 @@
       <h5>Мои сообщения</h5>
       <div class="block-right">
         <div class="block-chat d-flex" *ngFor="let item of aDialogs">
-            <div class="d-flex block-dialog-line">
+            <div class="d-flex block-dialog-line" (click)="onGetDialogMessageAsync(item.dialogId)">
                 <div class="dialog-photo">
                     Тут будет фото
                 </div>

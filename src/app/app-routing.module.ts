@@ -12,7 +12,9 @@ import { ViewReadyBusinessModule } from './modules/business/view-ready-business/
 import { EditReadyBusinessModule } from './modules/business/edit-ready-business/edit-ready-business.component';
 import { CreateAdModule } from './modules/ad/create-ad/create-ad.component';
 import { ProfileMyDataModule } from './modules/profile/profile-my-data/profile-my-data.component';
-import { ProfileMyMessagesModule } from './modules/profile/profile-my-messages/profile-my-messages.component';
+import { ProfileMyMessagesModule } from './modules/profile/profile-my-dialogs/profile-my-dialogs.component';
+import { ProfileDialogMessagesModule } from './modules/profile/profile-dialog-messages/profile-dialog-messages.component';
+import { ManageAccountModule } from './modules/profile/manage-account/manage-account.component';
 
 const routes: Routes = [
   {
@@ -76,8 +78,18 @@ const routes: Routes = [
   },
 
   {
-    path: "profile/chat/messages",
+    path: "profile/chat/dialogs",
     component: ProfileMyMessagesModule
+  },
+
+  {
+    path: "profile/chat/dialogs/dialog",
+    component: ProfileDialogMessagesModule
+  },
+
+  {
+    path: "manage-account",
+    component: ManageAccountModule
   }
 ];
 

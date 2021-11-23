@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { API_URL } from "../core/core-urls/api-url";
+import { DialogInput } from "../models/chat/input/dialog-input";
 import { BreadcrumbInput } from "../models/header/breadcrumb-input";
 import { MainHeader } from "../models/header/main-header";
 import { SuggestionInput } from "../models/suggestion/input/suggestion-input";
@@ -265,13 +266,17 @@ export class CommonDataService {
      * Функция запишет переход.
      * @param transitionType - тип перехода.
      * @param referenceId - Id франшизы или перехода.
+     * @param otherId - Id другого пользователя.
+     * @param typeItem - Тип предмета обсуждения.
      * @returns флаг успеха.
      */
-    public async setTransitionAsync(referenceId: number, transitionType: string) {
+    public async setTransitionAsync(referenceId: number, transitionType: string, otherId: string, typeItem: string) {
         try {
             let transitionInput = new TransitionInput();
             transitionInput.ReferenceId = referenceId;
             transitionInput.TransitionType = transitionType;
+            transitionInput.OtherId = otherId;
+            transitionInput.TypeItem = typeItem;
 
             return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/user/set-transition"), transitionInput)
@@ -483,6 +488,40 @@ export class CommonDataService {
         try {
             return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/chat/dialogs"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+     /**
+     * Функция получит список сообщений выбранного диалога.
+     * @param dialogId - Id диалога.
+     * @param typeItem - Тип предмета обсуждения.
+     * @param ownerId - Id владельца/представителя..
+     * @returns Список сообщений.
+     */
+      public async getDialogMessagesAsync(dialogId: number, typeItem: string, ownerId: string) {
+        try {
+            let dialogInput = new DialogInput();
+            dialogInput.DialogId = dialogId;
+            dialogInput.TypeItem = typeItem;
+            dialogInput.OwnerId = ownerId;
+
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/chat/get-dialog"), dialogInput)
                     .subscribe({
                         next: (response: any) => {
                             resolve(response);

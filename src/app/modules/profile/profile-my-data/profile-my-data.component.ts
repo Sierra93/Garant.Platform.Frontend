@@ -38,7 +38,8 @@ export class ProfileMyDataModule implements OnInit {
     role: string = "";
     countTimeSite: string = "";
     countAd: number = 0;
-    aProfileMenu: any = [];
+    // aProfileMenu: any = [];    
+    isMessageTab: boolean = false;
 
     constructor(private route: ActivatedRoute, 
         private router: Router, 
@@ -46,13 +47,11 @@ export class ProfileMyDataModule implements OnInit {
         private titleService: Title,
         private messageService: MessageService,
         private commonService: CommonDataService) {
-        
     };
 
     public async ngOnInit() {
         this.titleService.setTitle("Gobizy: Профиль - мои данные");
         await this.getProfileInfoAsync();
-        await this.getProfileMenuAsync();
     };  
 
     /**
@@ -188,18 +187,5 @@ export class ProfileMyDataModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    };
-
-    private async getProfileMenuAsync() {
-        try {
-            await this.commonService.getProfileMenuAsync().then((data: any) => {
-                console.log("Список меню лк:", data);                
-                this.aProfileMenu = data;
-            });
-        }
-
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };
+    };    
 }

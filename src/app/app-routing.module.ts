@@ -12,6 +12,7 @@ import { ViewReadyBusinessModule } from './modules/business/view-ready-business/
 import { EditReadyBusinessModule } from './modules/business/edit-ready-business/edit-ready-business.component';
 import { CreateAdModule } from './modules/ad/create-ad/create-ad.component';
 import { ProfileMyDataModule } from './modules/profile/profile-my-data/profile-my-data.component';
+import { ProfileMyMessagesModule } from './modules/profile/profile-my-messages/profile-my-messages.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,11 @@ const routes: Routes = [
   {
     path: "profile/my-data",
     component: ProfileMyDataModule
+  },
+
+  {
+    path: "profile/chat/messages",
+    component: ProfileMyMessagesModule
   }
 ];
 

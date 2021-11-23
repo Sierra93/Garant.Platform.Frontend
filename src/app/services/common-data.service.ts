@@ -474,4 +474,30 @@ export class CommonDataService {
             throw new Error(e);
         }
     };
+
+    /**
+     * Функция получит список диалогов для текущего пользователя.
+     * @returns Список диалогов.
+     */
+    public async getDialogsAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/chat/dialogs"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 };

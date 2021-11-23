@@ -62,6 +62,11 @@
                 <button class="control-button-blue-small" (click)="onSaveProfileFormAsync(form, 'MainData')">Сохранить</button>
               </form>
             </div>          
+
+            <!-- Таб сообщений. -->
+            <div class="block-right" *ngIf="isMessageTab">
+              <profile-my-messages></profile-my-messages>
+            </div>
             
             <!-- Вторая секция. -->
             <div class="col-lg-12 col-xs-12 garant card-line">

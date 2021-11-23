@@ -49,6 +49,7 @@ import { ProfileMyDataModule } from "./modules/profile/profile-my-data/profile-m
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ManageAccountModule } from "./modules/profile/manage-account/manage-account.component";
+import { ProfileMyMessagesModule } from "./modules/profile/profile-my-messages/profile-my-messages.component";
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { ManageAccountModule } from "./modules/profile/manage-account/manage-acc
     ViewReadyBusinessModule,
     CreateAdModule,
     ProfileMyDataModule,
-    ManageAccountModule
+    ManageAccountModule,
+    ProfileMyMessagesModule
   ],
 
   entryComponents: [],

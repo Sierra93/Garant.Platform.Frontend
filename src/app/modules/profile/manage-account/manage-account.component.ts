@@ -201,5 +201,5 @@ export class ManageAccountModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    };
+    };    
 }

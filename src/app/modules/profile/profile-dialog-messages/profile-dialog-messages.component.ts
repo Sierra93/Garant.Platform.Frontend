@@ -23,6 +23,8 @@ export class ProfileDialogMessagesModule implements OnInit {
     otherId: string = "";
     fio: string = "";
     dateStartDialog: string = "";
+    message: string = "";
+    referenceId: number = 0;
 
     constructor(private route: ActivatedRoute, 
         private router: Router, 
@@ -70,6 +72,7 @@ export class ProfileDialogMessagesModule implements OnInit {
                 this.transitionId = data.referenceId;
                 this.typeItem = data.transitionType;
                 this.otherId = data.otherId;
+                this.referenceId = data.referenceId;
             });
         }
 
@@ -77,4 +80,29 @@ export class ProfileDialogMessagesModule implements OnInit {
             throw new Error(e);
         }
     };
+
+    public async onSendMessageAsync() {
+        console.log("Сообщение", this.message);
+
+        try {                
+            await this.http.post(API_URL.apiUrl.concat("/chat/send-message"), {
+                Message: this.message,
+                DialogId: this.referenceId
+            })
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Сообщения: ", response.messages);
+                        this.aMessages = response.messages;                        
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    }
 }

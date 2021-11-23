@@ -40,6 +40,11 @@
             </div>
           </div>
         </div>
+
+        <div>
+          <textarea class="area-message" rows="2" cols="30" pInputTextarea [autoResize]="true"
+            placeholder="Введите сообщение" [(ngModel)]="message" (keydown.enter)="onSendMessageAsync()"></textarea>
+        </div>
       </div>
     </div>
   </div>

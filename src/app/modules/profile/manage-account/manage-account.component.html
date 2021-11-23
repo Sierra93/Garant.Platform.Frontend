@@ -34,7 +34,7 @@
 
     <div class="block-profile-menu">
         <ul *ngFor="let item of aProfileMenu">
-            <li><a href="{{item.navigationLink}}">{{item.navigationText}}</a></li>
+            <li><a href="{{item.navigationLink}}" *ngIf="!item.isHide">{{item.navigationText}}</a></li>
         </ul>
     </div>
   </div>

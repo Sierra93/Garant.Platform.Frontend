@@ -1,0 +1,364 @@
+@charset "UTF-8";
+[hidden] {
+  display: none !important; }
+
+/*
+text
+*/
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */ }
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width: 321px) {
+  /* Styles */ }
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 320px) {
+  /* Styles */ }
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Styles */ }
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  /* Styles */ }
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* Styles */ }
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1224px) {
+  body {
+    margin-left: 24px;
+    margin-right: 24px; } }
+/* Large screens ----------- */
+@media only screen and (min-width: 1824px) {
+  body {
+    margin-left: 240px;
+    margin-right: 240px; } }
+/* iPhone 4 - 5s ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  /* Styles */ }
+/* iPhone 6 ----------- */
+@media only screen and (max-device-width: 667px), only screen and (-webkit-device-pixel-ratio: 2) {
+  /* Styles */ }
+/* iPhone 6+ ----------- */
+@media only screen and (min-device-width: 414px), only screen and (-webkit-device-pixel-ratio: 3) {
+  /*** You've spent way too much on a phone ***/ }
+/* Samsung Galaxy S7 Edge ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi) and (max-width: 640px) {
+  /* Styles */ }
+.space-top-auth-form {
+  margin-top: 150px; }
+
+.title-strong {
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 116%;
+  color: #2c2c2c; }
+
+.title-small {
+  color: #000;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 116%; }
+
+.control-button-blue {
+  cursor: pointer;
+  width: 416px;
+  height: 70px;
+  background-color: #1f75fe;
+  color: white;
+  padding: 24px 16px;
+  border: none;
+  border-radius: 8px; }
+
+.control-button-blue:hover {
+  background-color: #0d4db4; }
+
+.control-button-white {
+  cursor: pointer;
+  width: 416px;
+  height: 70px;
+  background: #F1F6FF;
+  color: #1F75FE;
+  padding: 24px 16px;
+  border: none;
+  border-radius: 8px; }
+
+.control-button-white:hover {
+  background-color: #c5c8cf; }
+
+.control-button-blue-small {
+  cursor: pointer;
+  background-color: #1f75fe;
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  margin: 16px 0 24px; }
+
+.control-button-blue-small:hover {
+  background-color: #0d4db4; }
+
+body {
+  width: 1440px;
+  font-family: "Roboto";
+  background: #FFFFFF;
+  margin: 0 auto; }
+
+textarea {
+  resize: none; }
+
+.title-name-logo {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 116%;
+  color: #2C2C2C; }
+
+.block-two label input {
+  color: #7a7a7a;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 120%;
+  margin-top: 24px; }
+
+.control-big-input {
+  width: 950px;
+  height: 50px;
+  background: #F1F1F1;
+  border: 1.5px solid #DADADA;
+  border-radius: 6px;
+  background: #F1F1F1;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 116%; }
+
+.hr {
+  border: 0.9px solid #E2E2E2;
+  margin: 80px 0; }
+
+.block-gallery {
+  display: flex;
+  justify-content: space-between; }
+
+.ownercard {
+  border: 2px solid #F1F1F1;
+  padding: 24px; }
+
+span.title-small {
+  margin-top: 16px;
+  margin-bottom: 24px; }
+
+.btn {
+  margin-top: 24px; }
+
+.btn-link {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 116%; }
+
+.control-input-gallery {
+  padding: 24px 16px;
+  width: 416px; }
+
+/*---------------Ключевые финансовые данные----------------*/
+.block-invest {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px; }
+
+.invest-item {
+  background-color: #f1f1f1;
+  width: 220px;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; }
+
+.invest-item span {
+  margin: 24px 0 0 24px; }
+
+.invest-item-first,
+.invest-item-last {
+  margin: 0; }
+
+.invest-text {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 117%;
+  color: #646464;
+  margin-left: 24px; }
+
+.control-input-business-price {
+  padding: 16px 25px;
+  text-align: center;
+  margin: 16px 62px 24px 24px; }
+
+/*---------------Основная информация о компании----------------*/
+.info-company {
+  display: flex; }
+
+.control-textarea-franch {
+  width: 952px;
+  height: 210px;
+  padding: 24px 16px; }
+
+.invest-in {
+  padding: 24px; }
+
+.price {
+  background-color: #F1F1F1;
+  padding: 24px; }
+
+.business-price {
+  width: 416px;
+  padding: 16px;
+  margin: 16px 24px 16px 0; }
+
+.control-input-name {
+  width: 416px;
+  padding: 16px;
+  margin: 16px 24px 24px 0; }
+
+/*---------------Дополнительные факты----------------*/
+.add-fact {
+  display: flex; }
+
+.iteam-fact {
+  margin-top: 36px;
+  margin-right: 24px; }
+
+.fin-indicator {
+  padding: 10px;
+  margin: 10px;
+  background-color: white; }
+
+.fin-indicator-first {
+  padding: 10px;
+  margin: 10px 0 10px 0;
+  background-color: white; }
+
+.btn-small {
+  padding: 19px 30px; }
+
+.small-price {
+  color: #7A7A7A;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 116%; }
+
+/*---------------Описание особенности бизнеса----------------*/
+.block-details-franch {
+  background-color: #f1f6ff;
+  padding: 24px;
+  border-radius: 4px;
+  margin-top: 24px;
+  margin-bottom: 16px; }
+
+.business-details {
+  width: 1355px;
+  padding: 20px 16px;
+  margin-bottom: 24px; }
+
+.small-buxiness {
+  padding: 23px 100px; }
+
+/*---------------Деятельность бизнеса----------------*/
+.business-activ {
+  display: flex; }
+
+/*-----------------Причины продажи------------------*/
+.text {
+  margin-top: 24px; }
+
+/*----------------------Адрес-----------------------*/
+.control-big-input {
+  padding: 1px 16px;
+  margin-bottom: 24px; }
+
+/*------------------Видео о бизнесе-------------------*/
+.control-label-checkbox {
+  margin: 0;
+  margin-left: 16px; }
+
+/*---------------Продажа через гарант----------------*/
+.sale-business {
+  display: flex;
+  margin: 60px 0 80px; }
+
+.block-blue {
+  margin-left: 24px; }
+
+.block-pack {
+  margin-top: 56px;
+  box-shadow: 0 0 10px rgb 0 0 0/50%;
+  padding: 16px; }
+
+.block-button-pack {
+  margin-top: 32px;
+  margin-left: 24px; }
+
+.block-bottom-pack {
+  margin-top: 320px; }
+
+.pack-detail {
+  margin-top: 16px; }
+
+.flag-garant {
+  margin-left: 380px; }
+
+.block-garant {
+  align-items: center;
+  display: flex; }
+
+input:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px #cecdcd; }
+
+/*-----------КНОПКА-------------*/
+.onoffswitch {
+  position: relative;
+  width: 60px;
+  margin-left: 160px; }
+
+.onoffswitch-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none; }
+
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  height: 36px;
+  padding: 0;
+  line-height: 36px;
+  border: 2px solid #E3E3E3;
+  border-radius: 36px;
+  background-color: #FFFFFF;
+  transition: background-color 0.3s ease-in; }
+
+.onoffswitch-label:before {
+  content: "";
+  display: block;
+  width: 36px;
+  margin: 0px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 22px;
+  border: 2px solid #E3E3E3;
+  border-radius: 36px;
+  transition: all 0.3s ease-in 0s; }
+
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+  background-color: #1F75FE; }
+
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+  border-color: #1F75FE; }
+
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+  right: 0px; }
+
+/*# sourceMappingURL=create-ready-business.component.css.map */

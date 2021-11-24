@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { RegisterInput } from "src/app/models/register/input/register-input";
 import { ConfirmationService, MessageService } from "primeng/api";
+import { CommonDataService } from "src/app/services/common-data.service";
 
 @Component({
     selector: "profile-data",
@@ -23,16 +24,20 @@ export class ProfileDataModule implements OnInit {
     email: string = "";
     pass: string = "";
     selectedValues: any[] = [];
+    aProfileMenu: any = [];
 
     constructor(private titleService: Title,
         private http: HttpClient,
-        private messageService: MessageService) {
+        private messageService: MessageService,
+        private commonService: CommonDataService) {
 
     };
 
-    public ngOnInit() {
+    public async ngOnInit() {
         // TODO: переделать на получение заголовка с бэка.
         this.titleService.setTitle("Gobizy: Заполнение информации о себе");
+
+        await this.getProfileMenuAsync();
     };
 
     public onChangeDataValue() {
@@ -74,6 +79,19 @@ export class ProfileDataModule implements OnInit {
                         throw new Error(err);
                     }
                 });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    private async getProfileMenuAsync() {
+        try {
+            await this.commonService.getProfileMenuAsync().then((data: any) => {
+                console.log("Список меню лк:", data);                
+                this.aProfileMenu = data;
+            });
         }
 
         catch (e: any) {

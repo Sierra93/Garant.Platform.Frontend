@@ -9,16 +9,16 @@ import { ProfileInput } from "src/app/models/profile/input/profile-input";
 import { CommonDataService } from "src/app/services/common-data.service";
 
 @Component({
-    selector: "profile-my-data",
-    templateUrl: "./profile-my-data.component.html",
-    styleUrls: ["./profile-my-data.component.scss"],
+    selector: "manage-account",
+    templateUrl: "./manage-account.component.html",
+    styleUrls: ["./manage-account.component.scss"],
     providers: [ConfirmationService, MessageService]
 })
 
 /** 
  * Класс модуля профиля пользователя (мои данные).
  */
-export class ProfileMyDataModule implements OnInit {    
+export class ManageAccountModule implements OnInit {    
     lastName: string = "";
     firstName: string = "";
     patr: string = "";
@@ -38,8 +38,7 @@ export class ProfileMyDataModule implements OnInit {
     role: string = "";
     countTimeSite: string = "";
     countAd: number = 0;
-    // aProfileMenu: any = [];    
-    isMessageTab: boolean = false;
+    aProfileMenu: any = [];
 
     constructor(private route: ActivatedRoute, 
         private router: Router, 
@@ -47,11 +46,13 @@ export class ProfileMyDataModule implements OnInit {
         private titleService: Title,
         private messageService: MessageService,
         private commonService: CommonDataService) {
+        
     };
 
     public async ngOnInit() {
         this.titleService.setTitle("Gobizy: Профиль - мои данные");
         await this.getProfileInfoAsync();
+        await this.getProfileMenuAsync();
     };  
 
     /**
@@ -182,6 +183,19 @@ export class ProfileMyDataModule implements OnInit {
                         throw new Error(err);
                     }
                 });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    private async getProfileMenuAsync() {
+        try {
+            await this.commonService.getProfileMenuAsync().then((data: any) => {
+                console.log("Список меню лк:", data);                
+                this.aProfileMenu = data;
+            });
         }
 
         catch (e: any) {

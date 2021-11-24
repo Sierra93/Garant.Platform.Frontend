@@ -109,4 +109,12 @@ export class ViewFranchiseModule implements OnInit {
             throw new Error(e);
         }
     };
+
+    public async onRouteFranchiseChatAsync(franchiseId: number, type: string, userId: string) {
+        await this.commonService.setTransitionAsync(franchiseId, type, userId, type).then((data: any) => {
+            console.log("Переход записан:", data);
+        });
+
+        // this.router.navigate(["/profile/chat/dialogs/dialog"], { queryParams: { dialogId: dialogId } });
+    };
 }

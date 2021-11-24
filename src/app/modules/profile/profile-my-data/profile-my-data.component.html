@@ -11,30 +11,7 @@
     <div class="block-profile">
         <!-- Левая часть. -->
         <div class="col-lg-4">
-            <h5>Управление аккаунтом</h5>
-
-            <div class="block-left">
-               <div class="d-flex">
-                <div>
-                  <p-avatar image="../../../assets/images/nophoto.jpg" styleClass="" shape="circle"></p-avatar>
-                </div>
-
-                  <div class="block-fio">
-                      <small class="title">ФИО</small><br>
-                      <strong>{{profileData.firstName}} {{profileData.lastName}}</strong><br>
-                      <small class="title space-top-24">В качестве</small><br>
-                      <strong>{{role}}</strong>
-                  </div>                  
-               </div>
-
-               <hr class="hr-margin-top-30">
-
-               <span>Количество объявлений {{countAd}}</span><br>
-               <!-- <span>Количество сделок через гарант</span><br> -->
-               <span>На сайте {{countTimeSite}}</span>
-
-               <hr class="hr-margin-top-30">
-            </div>
+            <manage-account></manage-account>
         </div>
 
         <!-- Правая часть. -->
@@ -85,6 +62,11 @@
                 <button class="control-button-blue-small" (click)="onSaveProfileFormAsync(form, 'MainData')">Сохранить</button>
               </form>
             </div>          
+
+            <!-- Таб сообщений. -->
+            <div class="block-right" *ngIf="isMessageTab">
+              <profile-my-dialogs></profile-my-dialogs>
+            </div>
             
             <!-- Вторая секция. -->
             <div class="col-lg-12 col-xs-12 garant card-line">

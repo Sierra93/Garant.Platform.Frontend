@@ -15,6 +15,7 @@ import { ProfileMyDataModule } from './modules/profile/profile-my-data/profile-m
 import { ProfileMyMessagesModule } from './modules/profile/profile-my-dialogs/profile-my-dialogs.component';
 import { ProfileDialogMessagesModule } from './modules/profile/profile-dialog-messages/profile-dialog-messages.component';
 import { ManageAccountModule } from './modules/profile/manage-account/manage-account.component';
+import { CatalogBusinessModule } from './modules/catalog-business/catalog-business.component';
 
 const routes: Routes = [
   {
@@ -90,6 +91,11 @@ const routes: Routes = [
   {
     path: "manage-account",
     component: ManageAccountModule
+  },
+
+  {
+    path: "catalog-business",
+    component: CatalogBusinessModule
   }
 ];
 

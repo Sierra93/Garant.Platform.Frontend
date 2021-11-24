@@ -92,7 +92,7 @@ export class CatalogBusinessModule implements OnInit {
     };
 
     public async ngOnInit() {
-        await this.getPopularBusinessAsync();
+        // await this.getPopularBusinessAsync();
         await this.GetBusinessListAsync();
         await this.loadCitiesFranchisesListAsync();
         await this.loadCategoriesFranchisesListAsync();
@@ -111,18 +111,18 @@ export class CatalogBusinessModule implements OnInit {
      * Функция получит список популярного бизнеса.
      * @returns Список бизнеса.
      */
-     private async getPopularBusinessAsync() {        
-        try {
-            await this.commonService.getPopularBusinessAsync().then((data: any) => {
-                console.log("Популярный бизнес:", data);
-                this.aPopularBusiness = data;
-            });
-        }
+    //  private async getPopularBusinessAsync() {        
+    //     try {
+    //         await this.commonService.getPopularBusinessAsync().then((data: any) => {
+    //             console.log("Популярный бизнес:", data);
+    //             this.aPopularBusiness = data;
+    //         });
+    //     }
 
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };
+    //     catch (e: any) {
+    //         throw new Error(e);
+    //     }
+    // };
 
     /**
      * Функция отфильтрует список бизнеса по фильтрам.
@@ -505,7 +505,7 @@ export class CatalogBusinessModule implements OnInit {
      */
     private async setTransitionAsync(businessId: number) {
         try {
-            await this.commonService.setTransitionAsync(businessId, "Business").then((data: any) => {
+            await this.commonService.setTransitionAsync(businessId, "Business", "", "").then((data: any) => {
                 console.log("Переход записан:", data);
             });
         }

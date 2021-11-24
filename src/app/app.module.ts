@@ -51,6 +51,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ManageAccountModule } from "./modules/profile/manage-account/manage-account.component";
 import { ProfileDialogMessagesModule } from "./modules/profile/profile-dialog-messages/profile-dialog-messages.component";
 import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/profile-my-dialogs.component";
+import { CatalogBusinessModule } from "./modules/catalog-business/catalog-business.component";
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/pr
     ProfileMyDataModule,
     ManageAccountModule,
     ProfileDialogMessagesModule,
-    ProfileMyMessagesModule
+    ProfileMyMessagesModule,
+    CatalogBusinessModule
   ],
 
   entryComponents: [],

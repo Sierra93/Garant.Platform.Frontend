@@ -51,6 +51,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ManageAccountModule } from "./modules/profile/manage-account/manage-account.component";
 import { ProfileDialogMessagesModule } from "./modules/profile/profile-dialog-messages/profile-dialog-messages.component";
 import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/profile-my-dialogs.component";
+import { DataService } from "./services/data-service";
 
 @NgModule({
   declarations: [
@@ -113,6 +114,7 @@ import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/pr
       multi: true
     },
     CommonDataService,
+    DataService,
     Title,
     MessageService
   ],

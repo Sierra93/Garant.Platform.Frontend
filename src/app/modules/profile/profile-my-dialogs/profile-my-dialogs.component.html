@@ -21,7 +21,7 @@
         <div class="block-chat d-flex" *ngFor="let item of aDialogs">
             <div class="d-flex block-dialog-line" (click)="onGetDialogMessageAsync(item.dialogId)">
                 <div class="dialog-photo">
-                    Тут будет фото
+                  <img class="space-intgr mr-16" src="{{item.url}}">
                 </div>
     
                 <div class="d-flex">

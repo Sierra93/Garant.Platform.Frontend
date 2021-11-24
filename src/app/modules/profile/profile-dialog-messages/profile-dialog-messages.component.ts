@@ -1,10 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CommonDataService } from "src/app/services/common-data.service";
+import { DataService } from "src/app/services/data-service";
 
 @Component({
     selector: "profile-dialog-messages",
@@ -25,13 +25,15 @@ export class ProfileDialogMessagesModule implements OnInit {
     dateStartDialog: string = "";
     message: string = "";
     referenceId: number = 0;
+    chatItemName: string = "";
+    dialogId: number = 0;
+    chatItemUrl: string = "";
 
     constructor(private route: ActivatedRoute, 
         private router: Router, 
-        private http: HttpClient, 
-        private titleService: Title,
-        private messageService: MessageService,
-        private commonService: CommonDataService) {
+        private http: HttpClient,
+        private commonService: CommonDataService,
+        private dataService: DataService) {
         
     };
 
@@ -49,7 +51,7 @@ export class ProfileDialogMessagesModule implements OnInit {
             }
 
             else {
-                dialogId = this.transitionId;
+                dialogId = this.dataService.dialogId;
             }
 
             await this.commonService.getDialogMessagesAsync(dialogId, this.typeItem ?? "", this.otherId ?? "").then((data: any) => {
@@ -57,6 +59,9 @@ export class ProfileDialogMessagesModule implements OnInit {
                 this.aMessages = data.messages;
                 this.fio = data.fullName;
                 this.dateStartDialog = data.dateStartDialog;
+                this.chatItemName = data.chatItemName;
+                this.dialogId = data.dialogId;
+                this.chatItemUrl = data.url;
             });
         }
 
@@ -87,12 +92,14 @@ export class ProfileDialogMessagesModule implements OnInit {
         try {                
             await this.http.post(API_URL.apiUrl.concat("/chat/send-message"), {
                 Message: this.message,
-                DialogId: this.referenceId
+                DialogId: this.dialogId
             })
                 .subscribe({
                     next: (response: any) => {
                         console.log("Сообщения: ", response.messages);
-                        this.aMessages = response.messages;                        
+                        this.aMessages = response.messages; 
+                        this.dataService.dialogId = response.dialogId;      
+                        this.message = "";                 
                     },
 
                     error: (err) => {
@@ -104,5 +111,5 @@ export class ProfileDialogMessagesModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    }
+    };
 }

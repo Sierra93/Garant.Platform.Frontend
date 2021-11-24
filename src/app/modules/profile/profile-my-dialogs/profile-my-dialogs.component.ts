@@ -1,11 +1,6 @@
-import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { Title } from "@angular/platform-browser";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { API_URL } from "src/app/core/core-urls/api-url";
-import { ProfileInput } from "src/app/models/profile/input/profile-input";
 import { CommonDataService } from "src/app/services/common-data.service";
 
 @Component({
@@ -21,11 +16,7 @@ import { CommonDataService } from "src/app/services/common-data.service";
 export class ProfileMyMessagesModule implements OnInit {        
     aDialogs: any = [];
 
-    constructor(private route: ActivatedRoute, 
-        private router: Router, 
-        private http: HttpClient, 
-        private titleService: Title,
-        private messageService: MessageService,
+    constructor(private router: Router, 
         private commonService: CommonDataService) {
         
     };

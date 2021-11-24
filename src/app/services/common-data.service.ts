@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "../core/core-urls/api-url";
 import { DialogInput } from "../models/chat/input/dialog-input";
 import { BreadcrumbInput } from "../models/header/breadcrumb-input";
@@ -13,7 +13,9 @@ import { TransitionInput } from "../models/transition/input/transition-input";
  */
 @Injectable()
 export class CommonDataService {
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(private http: HttpClient, 
+        private router: Router,
+        private route: ActivatedRoute) {
 
     }
 
@@ -516,6 +518,11 @@ export class CommonDataService {
       public async getDialogMessagesAsync(dialogId: number, typeItem: string, ownerId: string) {
         try {
             let dialogInput = new DialogInput();
+
+            if (dialogId <= 0) {
+                dialogId = this.route.snapshot.queryParams.dialogId;
+            }
+
             dialogInput.DialogId = dialogId;
             dialogInput.TypeItem = typeItem;
             dialogInput.OwnerId = ownerId;

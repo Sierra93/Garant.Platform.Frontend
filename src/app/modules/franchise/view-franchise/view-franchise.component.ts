@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { GetFranchiseInput } from "src/app/models/franchise/input/get-franchise-input";
 import { FranchiseOutput } from "src/app/models/franchise/output/franchise-output";
@@ -31,7 +31,8 @@ export class ViewFranchiseModule implements OnInit {
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
-        private route: ActivatedRoute) {
+        private route: ActivatedRoute,
+        private router: Router) {
             this.routeParam = this.route.snapshot.queryParams;
             this.franchiseId = this.route.snapshot.queryParams.franchiseId;
 
@@ -116,5 +117,6 @@ export class ViewFranchiseModule implements OnInit {
         });
 
         // this.router.navigate(["/profile/chat/dialogs/dialog"], { queryParams: { dialogId: dialogId } });
+        this.router.navigate(["/profile/chat/dialogs/dialog"]);
     };
 }

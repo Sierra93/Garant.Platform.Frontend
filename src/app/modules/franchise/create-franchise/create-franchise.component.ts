@@ -126,9 +126,11 @@ export class CreateFranchiseModule implements OnInit {
     public async uploadFranchisePhotosAsync(event: any) {
         try {
             let fileList = event.target.files;
-            let file: File = fileList[0];
             let formData: FormData = new FormData();
-            formData.append('files', file);
+
+            for (let i = 0; i < fileList.length; i++) {
+                formData.append('files', fileList[i]); 
+            }        
 
             await this.http.post(API_URL.apiUrl.concat("/franchise/temp-file"), formData)
                 .subscribe({
@@ -252,12 +254,9 @@ export class CreateFranchiseModule implements OnInit {
             createUpdateFranchiseInput.IsNew = true;
             createUpdateFranchiseInput.Title = logoName;
             createUpdateFranchiseInput.TrainingDetails = educationDetails;
-
-            // TODO: заменить на динамическое определение категории франшизы.
             createUpdateFranchiseInput.Category = this.routeParamCategory;
-
-            // TODO: заменить на динамическое определение категории франшизы.
             createUpdateFranchiseInput.SubCategory = this.routeParamSubCategory;
+            createUpdateFranchiseInput.UrlsFranchise = this.aNamesFranchisePhotos;
 
             let sendFormData = new FormData();
             sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));

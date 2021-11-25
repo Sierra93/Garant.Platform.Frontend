@@ -3,7 +3,6 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { GetFranchiseInput } from "src/app/models/franchise/input/get-franchise-input";
-import { FranchiseOutput } from "src/app/models/franchise/output/franchise-output";
 import { CommonDataService } from "src/app/services/common-data.service";
 
 @Component({
@@ -87,7 +86,7 @@ export class ViewFranchiseModule implements OnInit {
                     next: (response: any) => {
                         console.log("Полученная франшиза:", response);
                         this.franchiseData = response;                          
-                        this.aNamesFranchisePhotos = [this.franchiseData.url];                        
+                        this.aNamesFranchisePhotos = this.franchiseData.url.split(",");                        
                         this.aInvestInclude = [JSON.parse(response.investInclude)];
                         this.aFinIndicators = [JSON.parse(response.finIndicators)];
                         this.aPacks = [JSON.parse(response.franchisePacks)];

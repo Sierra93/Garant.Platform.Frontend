@@ -37,7 +37,7 @@ export class CatalogFranchiseModule implements OnInit {
     aSortPrices: any[] = [];
     filterMinPrice!: number;
     filterMaxPrice!: number;
-    countTotalPage!: number;
+    countTotalPage: number = 0;
     countFranchises!: number;
     aBlogs: any[] = [];
     aNews: any[] = [];
@@ -169,9 +169,11 @@ export class CatalogFranchiseModule implements OnInit {
         try {
             await this.http.post(API_URL.apiUrl.concat("/franchise/catalog-franchise"), {})
                 .subscribe({
-                    next: (response: any) => {
-                        console.log("Список франшиз:", response);
+                    next: (response: any) => {                        
                         this.aFranchises = response;
+                        this.countTotalPage = response.length;
+                        console.log("Список франшиз:", response);
+                        console.log("Кол-во франшиз:", this.countTotalPage);
                     },
 
                     error: (err) => {

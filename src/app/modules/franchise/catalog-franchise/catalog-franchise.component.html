@@ -128,7 +128,13 @@
           </p-card>
         </div>
         <div class="col-lg-12 col-xs-12 d-flex justify-content-center card-demo-list">
-          <button class="btn btn-default text-center circle-bordered-btn btn-show-more">Показать ещё</button>
+          <!-- <button class="btn btn-default text-center circle-bordered-btn btn-show-more">Показать ещё</button> -->
+          <!-- Пагинация. -->
+          <div class="mt-5">
+            <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
+              [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
+            </p-paginator>
+          </div>
         </div>
       </div>
     </div>
@@ -363,14 +369,7 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Пагинация. -->
-    <div class="mt-5">
-      <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
-        [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
-      </p-paginator>
-    </div>
+    </div>   
   </div>
 
 </body>

@@ -138,9 +138,10 @@ export class ViewReadyBusinessModule implements OnInit {
                         this.aPriceIn = JSON.parse(response.investPrice);                                                
 
                         // Запишет пути изображений бизнеса.
-                        this.businessData.forEach((item: any) => {
-                            this.aNamesBusinessPhotos = item.urlsBusiness;
-                        });
+                        // this.businessData.forEach((item: any) => {
+                        //     this.aNamesBusinessPhotos = item.urlsBusiness;
+                        // });
+                        this.aNamesBusinessPhotos = response.urlsBusiness.split(",");
 
                         console.log("Полученный бизнес:", response);
                         console.log("businessData", this.businessData);      

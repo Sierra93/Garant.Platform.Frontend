@@ -16,6 +16,9 @@ export class HeaderModule implements OnInit {
     aHeader: any[] = [];
     aBreadcrumbs: any[] = [];
     routeParam: any;
+    selectedValueFranchise: string = "";
+    selectedValueBusiness: string = "";
+    searchText: string = "";
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,        
@@ -88,5 +91,27 @@ export class HeaderModule implements OnInit {
 
     public onRouteProfile() {
         this.router.navigate(["/profile/my-data"]);
+    };
+
+    public onChangeSearchValue(selectedValueFranchise: string, selectedValueBusiness: string, searchText: string) {
+        console.log("selectedValueFranchise", selectedValueFranchise);
+        console.log("selectedValueBusiness", selectedValueBusiness);
+        console.log("searchText", searchText);
+
+        if (selectedValueFranchise) {
+            this.selectedValueFranchise = selectedValueFranchise;
+        }
+
+        if (selectedValueBusiness) {
+            this.selectedValueBusiness = selectedValueBusiness;
+        }
+
+        if (searchText !== null && searchText !== "") {
+            this.searchText = searchText;
+        }
+    };
+
+    public async onSearchAsync(searchText: string) {
+        console.log("searchText", searchText);
     };
 }

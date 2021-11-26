@@ -52,6 +52,7 @@ import { ManageAccountModule } from "./modules/profile/manage-account/manage-acc
 import { ProfileDialogMessagesModule } from "./modules/profile/profile-dialog-messages/profile-dialog-messages.component";
 import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/profile-my-dialogs.component";
 import { DataService } from "./services/data-service";
+import { MainSearchModule } from "./modules/search/main-search/main-search.component";
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { DataService } from "./services/data-service";
     ProfileMyDataModule,
     ManageAccountModule,
     ProfileDialogMessagesModule,
-    ProfileMyMessagesModule
+    ProfileMyMessagesModule,
+    MainSearchModule
   ],
 
   entryComponents: [],

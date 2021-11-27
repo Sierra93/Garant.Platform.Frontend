@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>  
+    <div class="block-catalog d-flex">
+        <div class="">
+          <div>
+            <p><strong>Сортировать по</strong></p>
+            <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
+              [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()">
+            </p-dropdown>
+          </div>
+  
+          <div class="switch-garant">
+            <p><strong>Покупка через гарант</strong></p>
+            <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
+          </div>
+  
+          <div class="switch-garant">
+            <p><strong>Прибыль в месяц</strong></p>
+            <div class="d-flex justify-content-between filter-btns-profit">
+              <input type="text" class="control-input-filter-price no-margin" pInputText placeholder="от 100 000 ₽"
+                [(ngModel)]="filterMinPrice" name="filterMinPrice" />
+              <input type="text" class="control-input-filter-price no-margin" pInputText placeholder="до 100 000 000 ₽"
+                [(ngModel)]="filterMaxPrice" name="filterMaxPrice" />
+            </div>
+          </div>
+  
+          <div class="filter-btns d-flex justify-content-between">
+            <button class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control"
+              (click)="FilterFranchisesAsync()">Применить
+              фильтры</button>
+            <button class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control ml-1"
+              (click)="onClearFilters()">Очистить
+              фильтры</button>
+          </div>
+        </div>
+  
+        <!-- Список франшиз. -->
+       <!-- <div>
+        <h5>Результаты поиска</h5>
+        <span>По запросу {{searchText}} в категории франшизы найдено результатов: {{aFranchises.length}}</span>
+       </div> -->
+        <br>
+        <div class="d-flex popular-list franchise-list" *ngIf="isFranchise">        
+          <div class="ad-card">
+            <img src="../../../../assets/images/once-card.png" alt="">
+            <div class="ad-card-content">
+              <h3>Название готового бизнеса</h3>
+              <p>Готовый бизнес 40 дня</p>
+              <p><strong>Стоимость: 12 500 000 ₽</strong></p>
+              <button class="btn btn-default btn-filter">Подробнее</button>
+            </div>
+          </div>
+          <div class="popular-item catalog-item col-lg-4" *ngFor="let item of aFranchises">
+            <p-card header="{{item.title}}" subheader="{{item.fullText}}" [style]="{width: '100%'}"
+              styleClass="p-card-shadow">
+              <ng-template pTemplate="header">
+                <img [src]="item.url">
+              </ng-template>
+              <strong>{{item.textDoPrice}} {{item.totalInvest}} ₽</strong>
+              <ng-template pTemplate="footer">
+                <!-- <button class="btn btn-default btn-filter"
+                  (click)="routeViewFranchiseCardAsync(item.franchiseId)">Подробнее</button> -->
+              </ng-template>
+            </p-card>
+          </div>
+          <div class="col-lg-12 col-xs-12 d-flex justify-content-center card-demo-list">
+            <!-- <button class="btn btn-default text-center circle-bordered-btn btn-show-more">Показать ещё</button> -->
+            <!-- Пагинация. -->
+            <div class="mt-5">
+              <!-- <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
+                [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
+              </p-paginator> -->
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+
+</html>

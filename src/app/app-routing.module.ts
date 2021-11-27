@@ -16,6 +16,7 @@ import { ProfileMyMessagesModule } from './modules/profile/profile-my-dialogs/pr
 import { ProfileDialogMessagesModule } from './modules/profile/profile-dialog-messages/profile-dialog-messages.component';
 import { ManageAccountModule } from './modules/profile/manage-account/manage-account.component';
 import { MainSearchModule } from './modules/search/main-search/main-search.component';
+import { CatalogBusinessModule } from './modules/business/catalog-business/catalog-business.component';
 
 const routes: Routes = [
   {
@@ -96,6 +97,10 @@ const routes: Routes = [
   {
     path: "search",
     component: MainSearchModule
+  },
+  {
+    path: "catalog-business",
+    component: CatalogBusinessModule
   }
 ];
 

@@ -1,14 +1,17 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { GetFranchiseInput } from "src/app/models/franchise/input/get-franchise-input";
+import { RequestFranchiseInput } from "src/app/models/request/input/request-franchise-input";
 import { CommonDataService } from "src/app/services/common-data.service";
 
 @Component({
     selector: "view-franchise",
     templateUrl: "./view-franchise.component.html",
-    styleUrls: ["./view-franchise.component.scss"]
+    styleUrls: ["./view-franchise.component.scss"],
+    providers: [ConfirmationService, MessageService]
 })
 
 /** 
@@ -27,11 +30,15 @@ export class ViewFranchiseModule implements OnInit {
     aNamesFranchisePhotos: any = [];
     fio: string = "";
     trainingDetails: string = "";
+    userName: string = "";
+    number: string = "";
+    city: string = "";
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
         private route: ActivatedRoute,
-        private router: Router) {
+        private router: Router,
+        private messageService: MessageService) {
             this.routeParam = this.route.snapshot.queryParams;
             this.franchiseId = this.route.snapshot.queryParams.franchiseId;
 
@@ -117,5 +124,52 @@ export class ViewFranchiseModule implements OnInit {
 
         // this.router.navigate(["/profile/chat/dialogs/dialog"], { queryParams: { dialogId: dialogId } });
         this.router.navigate(["/profile/chat/dialogs/dialog"]);
+    };
+
+    /**
+     * Функция создаст заявку франшизы.
+     * @param userName Имя.
+     * @param number Телефон.
+     * @param city Город.
+     * @param franchiseId Id франшизы.
+     * @returns Данные заявки.
+     */
+    public async onCreateRequestFranchiseAsync(userName: string, number: string, city: string, franchiseId: number) {
+        try {                     
+            console.log("getViewFranchiseAsync");        
+            let requestFranchiseInput = new RequestFranchiseInput();   
+
+            if (userName == "" || number == "" || city == "" || franchiseId <= 0) {
+                return;
+            }
+
+            requestFranchiseInput.UserName = userName;
+            requestFranchiseInput.Phone = number;
+            requestFranchiseInput.City = city;
+            requestFranchiseInput.FranchiseId = franchiseId;
+
+            await this.http.post(API_URL.apiUrl.concat("/request/create-request-franchise"), requestFranchiseInput)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Заявка успешно создана", response); 
+                        
+                        if (response.isSuccessCreatedRequest) {
+                            this.messageService.add({
+                                severity: 'success',
+                                summary: 'Успешно!',
+                                detail: response.statusText
+                            });    
+                        }                                       
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
     };
 }

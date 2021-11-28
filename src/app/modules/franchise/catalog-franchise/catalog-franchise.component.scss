@@ -1,6 +1,7 @@
 @import "/src/app/shared/styles/franchuse-styles.scss";
 @import "/src/app/app.component.scss";
 @import "/src/app/shared/styles/image-space.scss";
+@import "/src/app/shared/styles/common.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/modules/main-page/main-page.component.scss";
 
@@ -76,10 +77,6 @@
 .control-input-price {
   width: 340px;
   //   margin: 0 24px 0 0;
-}
-
-::ng-deep .block-sort-by .p-dropdown {
-  width: 340px;
 }
 
 .block-title-franchise {

@@ -28,12 +28,34 @@ export class MainSearchModule implements OnInit {
     isGarant: boolean = false;
     aSortPrices: any[] = [];
     isFranchise: boolean = false;
+    isBusiness: boolean = false;
+    aBusinessList: any = [];
+    minPrice: number = 0;
+    maxPrice: number = 0;
+    selectedCity: string = "";
+    aCities: any[] = [];
+    selectedCategory: string = "";
+    selectedViewBusiness: string = "";
+    aBusinessCategories: any = [];
+    aBlogs: any[] = [];
+    aNews: any[] = [];
+    categoryList1: any[] = [];
+    categoryList2: any[] = [];
+    categoryList3: any[] = [];
+    categoryList4: any[] = [];
+    aDataActions: any[] = [];
+    oTopAction: any = {};
+    oSuggestion: any = {};
+    aNewFranchises: any[] = [];
+    responsiveOptions: any[] = [];
+    aReviewsFranchises: any[] = [];
+    aResultSearch: any = [];
 
     constructor(private route: ActivatedRoute,
         private router: Router,
         private http: HttpClient,
         private titleService: Title,
-        private commonService: CommonDataService, ) {
+        private commonService: CommonDataService) {
         this.searchType = this.route.snapshot.queryParams.searchType;
         this.searchText = this.route.snapshot.queryParams.searchText;
 
@@ -44,7 +66,19 @@ export class MainSearchModule implements OnInit {
         
         if (this.searchType == "business") {
             this.titleService.setTitle("Gobizy: Страница поиска по бизнесу");
+            this.isBusiness = true;
         }   
+
+        this.aSortPrices = [
+            {
+                name: "По убыванию цены",
+                value: "Desc"
+            },
+            {
+                name: "По возрастанию цены",
+                value: "Asc"
+            }
+        ];
 
         console.log("searchType", this.searchType);
         console.log("searchText", this.searchText);
@@ -53,6 +87,8 @@ export class MainSearchModule implements OnInit {
     public async ngOnInit() {
         await this.onSearchAsync();
         await this.GetFranchisesListAsync();
+        await this.loadCategoriesListAsync();
+        await this.loadSingleSuggestionAsync();
     };
 
     /**
@@ -67,13 +103,27 @@ export class MainSearchModule implements OnInit {
 
             await this.http.post(API_URL.apiUrl.concat("/search/search-data"), searchInput)
                 .subscribe({
-                    next: (response: any) => {                        
+                    next: (response: any) => {                                       
                         if (this.searchType == "franchise") {
-                            this.aFranchises = response;
+                            this.aResultSearch = response;
+
+                            // Возьмет 1 изображение.
+                            this.aFranchises.forEach((item: any) => {
+                                if (item.url != null && item.url.includes(",")) {
+                                    item.url = item.url.split(",")[0];
+                                }                            
+                            });
                         }        
                         
                         if (this.searchType == "business") {
-                            this.aBusinesses = response;
+                            this.aResultSearch = response;
+
+                            // Возьмет 1 изображение.
+                            this.aBusinesses.forEach((item: any) => {
+                                if (item.url != null && item.url.includes(",")) {
+                                    item.url = item.url.split(",")[0];
+                                }                                      
+                            });
                         }   
 
                         console.log("search data: ", response);
@@ -147,5 +197,72 @@ export class MainSearchModule implements OnInit {
 
     public async onChangeSortPrice() {
         console.log("onChangeSortPrice", this.selectedSort);
+    };
+
+    /**
+     * Функция перейдет к просмотру карточки франшизы.
+     */
+     public async routeViewFranchiseCardAsync(franchiseId: number) {
+        await this.setTransitionAsync(franchiseId);    
+        this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: franchiseId } });
+    };
+
+    /**
+     * Функция запишет переход.
+     */
+     private async setTransitionAsync(franchiseId: number) {
+        try {
+            await this.commonService.setTransitionAsync(franchiseId, "Franchise", "", "").then((data: any) => {
+                console.log("Переход записан:", data);
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onRouteFranchiseChatAsync(franchiseId: number, type: string, userId: string) {
+        await this.commonService.setTransitionAsync(franchiseId, type, userId, type).then((data: any) => {
+            console.log("Переход записан:", data);
+        });
+
+        // this.router.navigate(["/profile/chat/dialogs/dialog"], { queryParams: { dialogId: dialogId } });
+        this.router.navigate(["/profile/chat/dialogs/dialog"]);
+    };
+
+    /**
+     * Функция получит список категорий.
+     * @returns Список категорий.
+     */
+     private async loadCategoriesListAsync() {
+        try {
+            await this.commonService.loadCategoriesListAsync().then((data: any) => {
+                this.categoryList1 = data.resultCol1;
+                this.categoryList2 = data.resultCol2;
+                this.categoryList3 = data.resultCol3;
+                this.categoryList4 = data.resultCol4;
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит одно предложение с флагом IsSingle.
+     * @returns данные предложения.
+     */
+     private async loadSingleSuggestionAsync() {
+        try {
+            await this.commonService.loadSingleSuggestionAsync().then((data: any) => {
+                this.oSuggestion = data;            
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
     };
 }

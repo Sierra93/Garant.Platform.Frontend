@@ -381,10 +381,38 @@
 
  <!-- Видео о франшизе. -->
  <div class="p-field-checkbox control-checkbox">
-  <div>
+  <div class="col-lg-6">
    <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
    <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
+   <div>
+    <span class="title-small">Ссылка на видео</span><br>
+    <!-- <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="videoLink"
+      name="videoLink" />  -->
+      <span>{{franchiseData.urlVideo}}</span>
+  </div>
   </div>        
+
+  <!-- Форма заявки. -->
+  <div class="col-lg-6">
+    <div>      
+      <h5>Оставьте заявку</h5>
+
+     <div>
+      <label for="name" class="">Имя</label><br>
+      <input type="text" class="control-input-filter-price" pInputText placeholder="Имя" name="name" />
+     </div>
+
+     <label for="number" class="">Телефон</label><br>
+     <input type="text" class="control-input-filter-price" pInputText placeholder="Телефон" name="number" />
+    </div>
+
+    <label for="city" class="">Город</label><br>
+    <input type="text" class="control-input-filter-price" pInputText placeholder="Город" name="city" />
+
+    <div>
+      <button class="control-button-blue-small">Оставить заявку</button> 
+    </div>
+  </div>  
 </div>
 
 <!-- <div>
@@ -392,13 +420,6 @@
   Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет видео вы можете отключить данный раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.
  </small>
 </div> -->
-
-<div>
-  <span class="title-small">Ссылка на видео</span><br>
-  <!-- <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="videoLink"
-    name="videoLink" />  -->
-    <span>{{franchiseData.urlVideo}}</span>
-</div>
 
 <hr class="hr">
 

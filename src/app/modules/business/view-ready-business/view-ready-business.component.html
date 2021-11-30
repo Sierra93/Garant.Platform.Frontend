@@ -273,6 +273,25 @@
     <span>{{item.urlVideo}}</span>
 </div>
 
+<!-- Форма заявки. -->
+<div class="col-lg-6">
+  <div>      
+    <h5>Оставьте заявку</h5>
+
+   <div>
+    <label for="name" class="">Имя</label><br>
+    <input type="text" class="control-input-filter-price" pInputText placeholder="Имя" name="name" [(ngModel)]="userName" />
+   </div>
+
+   <label for="number" class="">Телефон</label><br>
+   <input type="text" class="control-input-filter-price" pInputText placeholder="Телефон" name="number" [(ngModel)]="number" />
+  </div>
+
+  <div>
+    <button class="control-button-blue-small" (click)="onCreateRequestBusinessAsync(userName, number, businessData[0].businessId)">Оставить заявку</button> 
+  </div>
+</div>  
+
 <hr class="hr">
 
  <div class="switch-garant block-garant" *ngFor="let item of businessData">      

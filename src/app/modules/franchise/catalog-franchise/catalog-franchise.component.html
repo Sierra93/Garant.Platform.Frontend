@@ -65,17 +65,17 @@
 <div class="block-catalog d-flex">
   <div class="">
     <div>
-      <strong>Сортировать по</strong><br>
+      <strong class="d-block">Сортировать по</strong><br>
       <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
     </div>
 
     <div class="switch-garant">      
-      <strong>Покупка через гарант</strong><br>
+      <strong class="d-block">Покупка через гарант</strong><br>
       <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
     </div>        
 
     <div class="switch-garant">      
-      <strong>Прибыль в месяц</strong><br>
+      <strong class="d-block">Прибыль в месяц</strong><br>
       <div class="d-flex">
         <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="filterMinPrice" name="filterMinPrice" />
         <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="filterMaxPrice"
@@ -83,8 +83,8 @@
       </div>
     </div>   
 
-    <button class="btn btn-default btn-sm mt-3 btn-filter" (click)="FilterFranchisesAsync()">Применить фильтры</button>
-    <button class="btn btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">Очистить фильтры</button>
+    <button class="btn d-block w-100 btn-default btn-sm mt-3 btn-filter" (click)="FilterFranchisesAsync()">Применить фильтры</button>
+    <button class="btn d-block w-100 btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">Очистить фильтры</button>
   </div>
 
 <!-- Список франшиз. -->

@@ -12,6 +12,11 @@ import { ViewReadyBusinessModule } from './modules/business/view-ready-business/
 import { EditReadyBusinessModule } from './modules/business/edit-ready-business/edit-ready-business.component';
 import { CreateAdModule } from './modules/ad/create-ad/create-ad.component';
 import { ProfileMyDataModule } from './modules/profile/profile-my-data/profile-my-data.component';
+import { ProfileMyMessagesModule } from './modules/profile/profile-my-dialogs/profile-my-dialogs.component';
+import { ProfileDialogMessagesModule } from './modules/profile/profile-dialog-messages/profile-dialog-messages.component';
+import { ManageAccountModule } from './modules/profile/manage-account/manage-account.component';
+import { MainSearchModule } from './modules/search/main-search/main-search.component';
+import { CatalogBusinessModule } from './modules/business/catalog-business/catalog-business.component';
 
 const routes: Routes = [
   {
@@ -72,6 +77,30 @@ const routes: Routes = [
   {
     path: "profile/my-data",
     component: ProfileMyDataModule
+  },
+
+  {
+    path: "profile/chat/dialogs",
+    component: ProfileMyMessagesModule
+  },
+
+  {
+    path: "profile/chat/dialogs/dialog",
+    component: ProfileDialogMessagesModule
+  },
+
+  {
+    path: "manage-account",
+    component: ManageAccountModule
+  },
+
+  {
+    path: "search",
+    component: MainSearchModule
+  },
+  {
+    path: "catalog-business",
+    component: CatalogBusinessModule
   }
 ];
 

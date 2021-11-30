@@ -48,6 +48,12 @@ import { CreateAdModule } from "./modules/ad/create-ad/create-ad.component";
 import { ProfileMyDataModule } from "./modules/profile/profile-my-data/profile-my-data.component";
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { ManageAccountModule } from "./modules/profile/manage-account/manage-account.component";
+import { ProfileDialogMessagesModule } from "./modules/profile/profile-dialog-messages/profile-dialog-messages.component";
+import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/profile-my-dialogs.component";
+import { MainSearchModule } from "./modules/search/main-search/main-search.component";
+import { CatalogBusinessModule } from "./modules/business/catalog-business/catalog-business.component";
+import { DataService } from "./services/data-service";
 
 @NgModule({
   declarations: [
@@ -65,7 +71,12 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
     EditReadyBusinessModule,
     ViewReadyBusinessModule,
     CreateAdModule,
-    ProfileMyDataModule
+    ProfileMyDataModule,
+    ManageAccountModule,
+    ProfileDialogMessagesModule,
+    ProfileMyMessagesModule,
+    MainSearchModule,
+    CatalogBusinessModule
   ],
 
   entryComponents: [],
@@ -107,6 +118,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
       multi: true
     },
     CommonDataService,
+    DataService,
     Title,
     MessageService
   ],

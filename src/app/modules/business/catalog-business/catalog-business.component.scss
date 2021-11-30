@@ -1,12 +1,12 @@
 @import "/src/app/shared/styles/franchuse-styles.scss";
-@import "../../app.component.scss";  
+@import "/src/app/app.component.scss";  
 @import "/src/app/shared/styles/image-space.scss";
+@import "/src/app/shared/styles/common.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/modules/main-page/main-page.component.scss";
 
 .franchise-list {
     flex-wrap: wrap;
-    margin-left: 30px;
 }
 
 .block-catalog {
@@ -31,12 +31,8 @@
 }
 
 .control-input-price {
-    width: 340px;    
+    width: 340px;
     margin: 0 24px 0 0;
-}
-
-::ng-deep .block-sort-by .p-dropdown {
-    width: 340px;    
 }
 
 .block-title-franchise {

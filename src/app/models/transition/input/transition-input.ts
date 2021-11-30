@@ -7,4 +7,10 @@ export class TransitionInput {
 
     // Id франшизы или готового бизнеса.
     ReferenceId: number = 0;
+
+    // Id другого пользователя.
+    OtherId: string = "";
+
+    // Тип обсуждения.
+    TypeItem: string = "";
 }

@@ -6,12 +6,8 @@
 // импорт стилей компоненты header
 @import "./modules/header/header.component.scss";
 
-// общие стили
-.app-container {
-  width: 80%;
-  margin: 0 auto;
-}
-// общие стили
+// импорт стилей компоненты footer
+@import "./modules/footer/footer.component.scss";
 
 
 [hidden] { display: none !important;}

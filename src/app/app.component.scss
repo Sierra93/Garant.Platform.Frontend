@@ -1,1 +1,17 @@
+// импорт стилей сброса
+@import "./shared/styles/base/reset.scss";
+// импорт стилей фонтов
+@import "./shared/styles/base/typography.scss";
+
+// импорт стилей компоненты header
+@import "./modules/header/header.component.scss";
+
+// общие стили
+.app-container {
+  width: 80%;
+  margin: 0 auto;
+}
+// общие стили
+
+
 [hidden] { display: none !important;}

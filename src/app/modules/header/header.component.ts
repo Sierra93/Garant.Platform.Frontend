@@ -74,10 +74,6 @@ export class HeaderModule implements OnInit {
         }
     };
 
-    public onRouteCatalogFranchise() {
-        this.router.navigate(["/catalog-franchise"]);
-    };
-
     /**
     * Функция сформирует хлебные крошки страницы.
     * @returns - Список пунктов цепочки хлебных крошек.
@@ -94,10 +90,6 @@ export class HeaderModule implements OnInit {
             throw new Error(e);
         }
     };
-
-    public onRouteProfile() {
-        this.router.navigate(["/profile/my-data"]);
-  };
 
     public onRouteSearch(searchText: string) {
       let type = "";

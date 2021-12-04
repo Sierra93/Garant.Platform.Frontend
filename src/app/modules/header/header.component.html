@@ -54,38 +54,38 @@
         <nav>
           <ul class="list-unstyled d-flex justify-content-between">
             <li>
-              <span class="text-center">
+              <a class="text-center" [routerLink]="['']">
                 <img src="../../../assets/images/account-options/option1.svg" width="34" height="32"><br>
                 <span class="">Продать</span>
-              </span>
+              </a>
             </li>
 
             <li>
-              <span class="text-center">
+              <a class="text-center" [routerLink]="['']">
                 <img src="../../../assets/images/account-options/option2.svg" width="34" height="32"><br>
                 <span class="">Мои сделки</span>
-              </span>
+              </a>
             </li>
 
             <li>
-              <span class="text-center">
+              <a class="text-center" [routerLink]="['']">
                 <img src="../../../assets/images/account-options/option3.svg" width="34" height="32"><br>
                 <span class="">Избранное</span>
-              </span>
+              </a>
             </li>
 
             <li>
-              <span class="text-center">
+              <a class="text-center" [routerLink]="['']">
                 <img src="../../../assets/images/account-options/option4.svg" width="34" height="32"><br>
                 <span class="">Уведомления</span>
-              </span>
+              </a>
             </li>
 
-            <li class="last" (click)="onRouteProfile()">
-              <span class="text-center">
+            <li class="last">
+              <a class="text-center" [routerLink]="['/profile/my-data']">
                 <img src="../../../assets/images/account-options/option5.svg" width="34" height="32"><br>
                 <span class="">Аккаунт</span>
-              </span>
+              </a>
             </li>
           </ul>
         </nav>
@@ -100,49 +100,49 @@
       <nav>
         <ul class="list-unstyled">
           <li>
-            <span>
+            <a [routerLink]="">
               <img src="../../../assets/images/Logo=Main, Stage=Passive.svg" class="after-search-img" width="44" height="42">
               <span>Главная</span>
-            </span>
+            </a>
           </li>
 
-          <li (click)="onRouteCatalogFranchise()">
-            <span>
+          <li>
+            <a [routerLink]="['/catalog-franchise']">
               <img src="../../../assets/images/Logo=Franchise, Stage=Passive.svg" class="after-search-img" width="44"
                 height="42">
                 <span>Франшизы</span>
-            </span>
+            </a>
           </li>
 
           <li>
-            <span>
+            <a [routerLink]="['/catalog-business']">
               <img src="../../../assets/images/Logo=Business, Stage=Passive.svg" class="after-search-img" width="44"
                 height="42">
                 <span>Готовый бизнес</span>
-            </span>
+            </a>
           </li>
 
           <li>
-            <span>
+            <a [routerLink]="">
               <img src="../../../assets/images/Logo=Guarantee, Stage=Passive.svg" class="after-search-img" width="44"
                 height="42">
                 <span>Покупка через гарант</span>
-            </span>
+            </a>
           </li>
 
           <li>
-            <span class="after-search-icon-container">
+            <a [routerLink]="">
               <img src="../../../assets/images/Logo=Law, Stage=Passive.svg" class="after-search-img" width="44" height="42">
               <span>Консалтинг</span>
-            </span>
+            </a>
           </li>
 
           <li>
-            <span>
+            <a [routerLink]="">
               <img src="../../../assets/images/Logo=Settings, Stage=Passive.svg" class="after-search-img" width="44"
                 height="42">
                 <span>Упаковка франшиз</span>
-            </span>
+            </a>
           </li>
         </ul>
       </nav>

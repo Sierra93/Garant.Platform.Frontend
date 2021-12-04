@@ -1,7 +1,9 @@
 .header-container {
+  margin-bottom: 2rem !important;
+
   .navbar-top {
     margin-bottom: 1rem;
-    
+
     ul {
       margin-bottom: 0 !important;
 
@@ -84,8 +86,9 @@
           li {
             text-align: center;
 
-            > span {
+            a {
               display: inline-block;
+              text-decoration: none;
 
               span {
                 color: #2c2c2c;
@@ -98,7 +101,7 @@
             &.last {
               text-align: right;
 
-              span {
+              a {
                 span {
                   color: #1f75fe;
                 }
@@ -111,7 +114,7 @@
 
     .logo {
       cursor: pointer;
-      
+
       img {
         width: 152px;
         height: 58px;
@@ -126,12 +129,13 @@
       justify-content: space-between;
 
       li {
-        > span {
+        > a {
           display: flex;
           align-items: center;
           justify-content: space-between;
           height: 74px;
-          
+          text-decoration: none;
+
           img {
             margin-right: 2rem;
           }

@@ -1,5 +1,131 @@
-@import "/src/app/app.component.scss";  
-@import "/src/app/shared/styles/body-margins.scss";
+@import "/src/app/app.component.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/common.scss";
 @import "/src/app/modules/franchise/create-franchise/create-franchise.component.scss";
+
+
+section#franchise-view {
+  .header {
+    h3 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: #000;
+    }
+
+    ul {
+      margin-bottom: 0;
+
+      li {
+        margin-right: 1rem;
+
+        a {
+          display: flex;
+          align-items: center;
+          font-family: 'Roboto', sans-serif;
+          font-size: .75rem;
+          font-weight: 400;
+          color: #2c2c2c;
+          text-decoration: none;
+
+          img {
+            width: 24px;
+            height: 24px;
+            margin-right: .5rem;
+          }
+        }
+      }
+    }
+
+    .leave-application {
+      button {
+        background-color: #f1f6ff;
+        width: 220px;
+        height: 70px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        color: #1f75fe;
+        border-radius: 8px;
+
+        &, &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .gallery {
+    > div:last-child {
+      .franchise-presenter {
+        padding: 24px;
+        border: 2px solid #f1f1f1;
+        height: 100%;
+
+        h4 {
+          max-width: 300px;
+        }
+
+        .profile-info {
+          h5, p {
+            margin-bottom: 1rem;
+          }
+
+          h5 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: #000;
+          }
+
+          p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #646464;
+          }
+        }
+
+        .profile-img {
+          border-radius: 50%;
+        }
+
+        .options {
+          margin-top: 1rem;
+
+          button {
+            height: 70px;
+            width: 100%;
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 8px;
+
+            &, &:focus {
+              border: none;
+              outline: none;
+            }
+          }
+
+          .be-online-franchiser {
+            margin-bottom: 1rem;
+
+            button {
+              background-color: #f1f6ff;
+              color: #1f75fe;
+            }
+          }
+
+          .start-chat {
+            button {
+              background-color: #1f75fe;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

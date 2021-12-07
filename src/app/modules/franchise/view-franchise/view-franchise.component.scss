@@ -57,7 +57,10 @@ section#franchise-view {
   }
 
   .gallery {
+    margin-bottom: 2rem;
+
     > div:last-child {
+      padding-left: 13px;
       .franchise-presenter {
         padding: 24px;
         border: 2px solid #f1f1f1;
@@ -123,6 +126,160 @@ section#franchise-view {
               color: #fff;
             }
           }
+        }
+      }
+    }
+  }
+
+  .financial-information {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 5rem;
+
+    &-block {
+      background-color: #f1f1f1;
+      height: 121px;
+      width: 220px;
+      padding: 1.5rem;
+
+      h5 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        color: #000;
+        margin-bottom: .5rem;
+      }
+
+      span {
+        display: block;
+
+        &.description {
+          font-family: 'Roboto', sans-serif;
+          font-size: 10px;
+          font-weight: 400;
+          color: #646464;
+          margin-bottom: 1rem;
+        }
+
+        &.price {
+          font-family: 'Roboto', sans-serif;
+          font-size: 14px;
+          font-weight: normal;
+          color: #646464;
+        }
+      }
+    }
+  }
+
+  .company-main-info {
+    margin-bottom: 5rem;
+
+    h2.company-info-header {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #2c2c2c;
+      margin-bottom: 1.5rem;
+    }
+
+    > div:first-child {
+      p, ul, li {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        color: #2c2c2c;
+      }
+
+      p, ul {
+        padding-right: .5rem;
+      }
+    }
+
+    .investments {
+      padding: 24px;
+      background-color: #f1f1f1;
+
+      ul {
+        li {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 1.5rem;
+
+          strong {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: 1rem;
+          }
+
+          span {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #646464;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .franchise-specialty {
+    padding: 24px;
+    border-radius: 4px;
+    background-color: #f1f6ff;
+
+    > a {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+
+    h4 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: #000;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #646464;
+      margin-bottom: 2.5rem;
+    }
+
+    .buttons {
+      button {
+        padding: 0 16px;
+        border-radius: 4px;
+        height: 53px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+
+        &, &:focus {
+          border: none;
+          outline: none;
+          background-color: transparent;
+        }
+
+        &:first-child {
+          margin-right: 10px;
+          background-color: #4487ff;
+          color: #fff;
+        }
+
+        &:last-child {
+          border: solid 1px #636363;
+          color: #636363;
         }
       }
     }

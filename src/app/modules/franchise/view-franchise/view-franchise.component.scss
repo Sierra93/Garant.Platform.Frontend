@@ -378,13 +378,13 @@ section#franchise-view {
           font-family: 'Roboto', sans-serif;
           font-size: 18px;
           font-weight: 500;
-  
+
           &, &:focus {
             border: none;
             outline: none;
             background-color: transparent;
           }
-  
+
           &:first-child {
             margin-right: 10px;
             background-color: #4487ff;
@@ -397,7 +397,7 @@ section#franchise-view {
 
   .study-and-support {
     margin-bottom: 5rem;
-    
+
     h2 {
       font-family: 'Roboto', sans-serif;
       font-size: 1.5rem;
@@ -430,12 +430,73 @@ section#franchise-view {
   }
 
   .franchise-packages {
+    margin-bottom: 5rem;
+    
     h2 {
       font-family: 'Roboto', sans-serif;
       font-size: 1.5rem;
       font-weight: 500;
       color: #2c2c2c;
       margin-bottom: 2rem;
+    }
+
+    .package {
+      filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
+      width: 463px;
+
+      &-name {
+        background-color: #1653B4;
+        padding: 1.5rem;
+
+        h4 {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 1.5rem;
+          line-height: 28px;
+          color: #FFFFFF;
+        }
+      }
+
+      &-offers {
+        padding: 1rem;
+        background-color: #fff;
+
+        ul {
+          li {
+            &:not(:last-child) {
+              margin-bottom: 1.5rem;
+            }
+          }
+        }
+      }
+
+      &-characteristics {
+        padding: 1rem;
+        background-color: #F1F6FF;
+
+        ul {
+          li {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 21px;
+            color: #000000;
+            margin-bottom: 2rem;
+          }
+        }
+
+        .select-package {
+          button {
+            background-color: #4487FF;
+            color: #fff;
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 1rem 0;
+            border-radius: 4px;
+          }
+        }
+      }
     }
   }
 }

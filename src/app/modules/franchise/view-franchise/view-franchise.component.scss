@@ -503,6 +503,7 @@ section#franchise-view {
   .products {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5rem;
 
     .product {
       width: 342px;
@@ -522,6 +523,124 @@ section#franchise-view {
         font-size: 14px;
         font-weight: 400;
         color: #646464;
+      }
+    }
+  }
+
+  .video-and-feedback {
+    h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #2c2c2c;
+      margin-bottom: 2rem;
+    }
+
+    .franchise-video {
+      iframe {
+        border-radius: 10px;
+      }
+    }
+
+    .franchise-application {
+      padding-left: 1rem;
+      .form-container {
+        box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+        padding: 2rem 1.5rem;
+        height: 570px;
+        border-radius: 4px;
+        background-color: #fff;
+
+        form {
+          > div {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+
+            label {
+              font-family: 'Roboto', sans-serif;
+              font-size: .75rem;
+              font-weight: 400;
+              color: #646464;
+              margin-bottom: .5rem;
+
+              &.checkbox-label {
+                font-family: 'Roboto', sans-serif;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #646464;
+              }
+            }
+
+            input {
+              height: 69px;
+              padding: 1.5rem 1rem;
+              border-radius: 8px;
+              border: 1.5px solid #646464;
+            }
+
+            .checkbox {
+              display: flex;
+              align-items: flex-start;
+              justify-content: space-between;
+              margin: .5rem 0;
+
+              input {
+                display: none;
+              }
+
+              span:nth-child(2) {
+                display: inline-block;
+                min-width: 2rem;
+                width: 2rem;
+                height: 2rem;
+                background-color: #dadada;
+                margin-right: 18px;
+                margin-top: 5px;
+                position: relative;
+
+                &::before {
+                  content: '';
+                  display: inline-block;
+                  width: 1.4rem;
+                  height: .7rem;
+                  border: none;
+                  border-bottom: 2px solid #fff;
+                  border-left: 2px solid #fff;
+                  position: absolute;
+                  top: 40%;
+                  left: 50%;
+                  transform: translate(-50%, -50%) rotate(-45deg);
+                }
+              }
+
+              input[type=checkbox]:checked + span {
+                background-color: #1f75fe;
+              }
+            }
+
+            button {
+              height: 69px;
+              border-radius: 8px;
+              background-color: #4487ff;
+              font-family: 'Roboto', sans-serif;
+              font-size: 18px;
+              font-weight: 500;
+              color: #fff;
+              border: none;
+              outline: none;
+            }
+          }
+        }
+
+        .application-info {
+          p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #646464;
+          }
+        }
       }
     }
   }

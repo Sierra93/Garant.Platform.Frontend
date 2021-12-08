@@ -528,6 +528,8 @@ section#franchise-view {
   }
 
   .video-and-feedback {
+    margin-bottom: 5rem;
+
     h2 {
       font-family: 'Roboto', sans-serif;
       font-size: 1.5rem;
@@ -640,6 +642,108 @@ section#franchise-view {
             font-weight: 400;
             color: #646464;
           }
+        }
+      }
+    }
+  }
+
+  .franchise-feedbacks {
+    h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #2c2c2c;
+      margin-bottom: 2rem;
+    }
+
+    .feedback-blocks {
+      margin-bottom: 5rem;
+
+      .feedback-block {
+        width: 464px;
+        padding: 1.5rem 75px;
+        background-color: #f1f6ff;
+
+        .title {
+          display: flex;
+          flex-direction: column;
+
+          strong {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: .5rem;
+          }
+
+          span {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #646464;
+          }
+        }
+
+        .content {
+          margin: 2.5rem 0;
+          height: 190px;
+
+          p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: normal;
+            color: #2c2c2c;
+            background-color: #fff;
+            padding: .5rem;
+          }
+        }
+
+        .owner-info {
+          display: flex;
+          align-items: center;
+
+          img {
+            margin-right: .5rem;
+          }
+
+          strong {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: #000;
+          }
+        }
+
+        .quotes {
+          top: 1.5rem;
+          left: 1.5rem;
+        }
+      }
+    }
+
+    .buttons {
+      > div {
+        button {
+          border: none;
+          outline: none;
+          padding: 1.5rem 1rem;
+          border-radius: 8px;
+          width: 464px;
+          height: 69px;
+          font-family: 'Roboto', sans-serif;
+          font-size: 18px;
+          font-weight: 500;
+        }
+
+        &.write-to-owner button {
+          background-color: #f1f6ff;
+          color: #1f75fe;
+          margin-right: 1.5rem;
+        }
+
+        &.be-an-owner button {
+          background-color: #1f75fe;
+          color: #fff;
         }
       }
     }

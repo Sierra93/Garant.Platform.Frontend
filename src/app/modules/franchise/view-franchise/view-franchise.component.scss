@@ -431,7 +431,7 @@ section#franchise-view {
 
   .franchise-packages {
     margin-bottom: 5rem;
-    
+
     h2 {
       font-family: 'Roboto', sans-serif;
       font-size: 1.5rem;
@@ -496,6 +496,32 @@ section#franchise-view {
             border-radius: 4px;
           }
         }
+      }
+    }
+  }
+
+  .products {
+    display: flex;
+    justify-content: space-between;
+
+    .product {
+      width: 342px;
+      padding: 1.5rem;
+      background-color: #f1f6ff;
+
+      strong {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        color: #2c2c2c;
+        margin-bottom: 1rem;
+      }
+
+      span {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #646464;
       }
     }
   }

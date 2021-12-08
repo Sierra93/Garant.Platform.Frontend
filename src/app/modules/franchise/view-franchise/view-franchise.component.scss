@@ -233,6 +233,7 @@ section#franchise-view {
     padding: 24px;
     border-radius: 4px;
     background-color: #f1f6ff;
+    margin-bottom: 5rem;
 
     > a {
       position: absolute;
@@ -282,6 +283,22 @@ section#franchise-view {
           color: #636363;
         }
       }
+    }
+  }
+
+  .main-franchise-information {
+    h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #2c2c2c;
+    }
+    p.middle {
+      margin: 2rem 0;
+    }
+
+    div.image {
+      margin: 1.5rem 0;
     }
   }
 }

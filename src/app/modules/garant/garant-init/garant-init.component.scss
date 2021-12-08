@@ -1,0 +1,37 @@
+@import "/src/app/app.component.scss";  
+@import "/src/app/shared/styles/body-margins.scss";
+@import "/src/app/shared/styles/media-quaries.scss";
+@import "/src/app/shared/styles/common.scss";
+
+$whiteText: white;
+
+.left-panel-first {
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+    padding: 16px;
+}
+
+.right-panel-first {
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+    padding: 16px;
+}
+
+.content {
+    white-space: pre;
+    color: #7a7a7a;
+    font-size: 14px;
+}
+
+.block-black {
+    background: #384356;
+    margin-top: 32px;
+    padding: 24px;
+    color: $whiteText;
+
+    .content {
+        color: $whiteText;
+    }
+}
+
+.btn-black-contur {
+    border: 1px solid;
+}

@@ -54,6 +54,8 @@ import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/pr
 import { MainSearchModule } from "./modules/search/main-search/main-search.component";
 import { CatalogBusinessModule } from "./modules/business/catalog-business/catalog-business.component";
 import { DataService } from "./services/data-service";
+import { GarantInitModule } from "./modules/garant/garant-init/garant-init.component";
+import { ConvertStringToNumberPipe } from "./core/pipes/convertStringToNumber.pipe";
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import { DataService } from "./services/data-service";
     ProfileDialogMessagesModule,
     ProfileMyMessagesModule,
     MainSearchModule,
-    CatalogBusinessModule
+    CatalogBusinessModule,
+    GarantInitModule,
+    ConvertStringToNumberPipe
   ],
 
   entryComponents: [],

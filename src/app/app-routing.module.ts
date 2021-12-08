@@ -17,6 +17,7 @@ import { ProfileDialogMessagesModule } from './modules/profile/profile-dialog-me
 import { ManageAccountModule } from './modules/profile/manage-account/manage-account.component';
 import { MainSearchModule } from './modules/search/main-search/main-search.component';
 import { CatalogBusinessModule } from './modules/business/catalog-business/catalog-business.component';
+import { GarantInitModule } from './modules/garant/garant-init/garant-init.component';
 
 const routes: Routes = [
   {
@@ -101,6 +102,11 @@ const routes: Routes = [
   {
     path: "catalog-business",
     component: CatalogBusinessModule
+  },
+
+  {
+    path: "garant-init",
+    component: GarantInitModule
   }
 ];
 

@@ -287,18 +287,110 @@ section#franchise-view {
   }
 
   .main-franchise-information {
+    box-sizing: border-box;
+
     h2 {
       font-family: 'Roboto', sans-serif;
       font-size: 1.5rem;
       font-weight: 500;
       color: #2c2c2c;
+
+      &.margin-top {
+        margin-top: 5rem;
+      }
     }
-    p.middle {
-      margin: 2rem 0;
+
+    p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: #2c2c2c;
+
+      &.middle {
+        margin: 2rem 0;
+      }
     }
 
     div.image {
       margin: 1.5rem 0;
+    }
+
+    div.download-presentation, .franchise-income {
+      margin-left: 1.5rem;
+      background-color: #f1f6ff;
+      padding: 1.5rem;
+
+      &.franchise-income {
+        margin-left: 0;
+
+        .franchise-income-children {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 2.5rem;
+
+          .franchise-income-child {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            width: 214px;
+            padding: 1.5rem;
+
+            strong {
+              font-family: 'Roboto', sans-serif;
+              font-size: 18px;
+              font-weight: 500;
+              color: #000;
+              margin-bottom: 1rem;
+            }
+
+            span {
+              font-family: 'Roboto', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              color: #646464;
+            }
+          }
+        }
+      }
+
+      h4 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        color: #000;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #646464;
+        margin-bottom: 2.5rem;
+      }
+
+      .buttons {
+        button {
+          padding: 0 16px;
+          border-radius: 4px;
+          height: 53px;
+          font-family: 'Roboto', sans-serif;
+          font-size: 18px;
+          font-weight: 500;
+  
+          &, &:focus {
+            border: none;
+            outline: none;
+            background-color: transparent;
+          }
+  
+          &:first-child {
+            margin-right: 10px;
+            background-color: #4487ff;
+            color: #fff;
+          }
+        }
+      }
     }
   }
 }

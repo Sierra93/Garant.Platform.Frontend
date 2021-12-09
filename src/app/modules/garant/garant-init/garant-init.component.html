@@ -9,17 +9,65 @@
 
 <body>
   <div class="block-garant d-flex justify-content-between mt-70">
-    <!-- Правый блок. -->
+    <!-- Левый блок. -->
     <div class="col-3">
       <h5>{{oInitData.blockLeftTitle}}</h5>
 
       <div class="left-panel-first mt-32">  
         <div>Сделка проходит между</div>
         <hr>
-      </div>
+
+        <div>
+          <div>
+            <strong>{{oInitData.fullName}}</strong>
+            <br>
+            {{oInitData.role}}
+          </div>
+
+          <hr>
+
+          <div>
+            <strong>{{oInitData.otherUserFullName}}</strong>
+            <br>
+            {{oInitData.otherUserRole}}
+          </div>
+        </div>
+      </div>     
+
+      <div class="left-panel-first mt-32">  
+        <div>{{oInitData.blockLeftSumTitle}}</div>
+        <hr>
+
+        <div>
+          <div>
+            {{oInitData.totalAmount}} ₽
+          </div>
+
+          <hr>
+
+          <div>
+            <strong>{{oInitData.mainItemTitle}}</strong>
+          </div>
+
+          <hr>
+
+          <div>
+            <img [src]="oInitData.imageUrl">
+          </div>
+
+          <div>
+            {{oInitData.itemTitle}}
+          </div>
+        </div>
+      </div>   
+
+      <div class="left-panel-first mt-32">  
+        <div>{{oInitData.documentBlockTitle}}</div>      
+        <small>Документов еще нет</small>
+      </div>   
     </div>
 
-    <!-- Левый блок. -->
+    <!-- Правый блок. -->
     <div class="col-9">
       <h5>{{oInitData.blockRightTitle}}</h5>
 
@@ -40,9 +88,9 @@
           {{oInitData.totalAmount}} ₽
         </div>
 
-        <div>
+        <!-- <div>
           <button class="control-button-blue-small">{{oInitData.buttonActionText}}</button>
-        </div>
+        </div> -->
       </div>
 
       <div class="block-black">

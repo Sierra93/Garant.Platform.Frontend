@@ -827,5 +827,42 @@ section#franchise-view {
       }
     }
   }
+
+  .similar-categories {
+    margin-bottom: 5rem;
+    
+    h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #2c2c2c;
+      margin-bottom: 2rem;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+
+      .category {
+        width: 25%;
+        margin-bottom: 1.5rem;
+
+        a {
+          display: flex;
+          align-items: center;
+          height: 40px;
+          font-family: 'Roboto', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          color: #000;
+          text-decoration: none;
+
+          span.title {
+            padding: 0 2rem 0 .5rem;
+          }
+        }
+      }
+    }
+  }
 }
 

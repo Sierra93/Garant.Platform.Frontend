@@ -751,9 +751,9 @@ section#franchise-view {
     }
   }
 
-  .similar-franchises {
+  .similar-franchises, .have-seen {
     margin-bottom: 5rem;
-    
+
     h2 {
       font-family: 'Roboto', sans-serif;
       font-size: 1.5rem;
@@ -765,7 +765,7 @@ section#franchise-view {
     &-blocks {
       display: flex;
 
-      .similar-franchises-block {
+      .similar-franchises-block, .have-seen-block {
         width: 342px;
         &:not(:last-child) {
           margin-right: 1.5rem;
@@ -809,6 +809,21 @@ section#franchise-view {
             }
           }
         }
+      }
+    }
+  }
+
+  .ad {
+    display: flex;
+    margin-bottom: 5rem;
+
+    &-block {
+      width: 708px;
+      height: 272px;
+      border-radius: 16px;
+
+      &:not(:last-child) {
+        margin-right: 1.5rem;
       }
     }
   }

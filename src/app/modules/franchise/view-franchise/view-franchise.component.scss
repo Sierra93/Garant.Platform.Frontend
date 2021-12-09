@@ -648,6 +648,8 @@ section#franchise-view {
   }
 
   .franchise-feedbacks {
+    margin-bottom: 5rem;
+
     h2 {
       font-family: 'Roboto', sans-serif;
       font-size: 1.5rem;
@@ -744,6 +746,68 @@ section#franchise-view {
         &.be-an-owner button {
           background-color: #1f75fe;
           color: #fff;
+        }
+      }
+    }
+  }
+
+  .similar-franchises {
+    margin-bottom: 5rem;
+    
+    h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #2c2c2c;
+      margin-bottom: 2rem;
+    }
+
+    &-blocks {
+      display: flex;
+
+      .similar-franchises-block {
+        width: 342px;
+        &:not(:last-child) {
+          margin-right: 1.5rem;
+        }
+
+        > div {
+          &.img {
+            margin-bottom: 1.5rem;
+            img {
+              width: 100%;
+            }
+          }
+
+          &.info {
+            h5.title {
+              font-family: 'Roboto', sans-serif;
+              font-size: 18px;
+              font-weight: 500;
+              color: #000;
+              margin-bottom: .5rem;
+            }
+
+            .main-info {
+              display: flex;
+              flex-direction: column;
+
+              > span {
+                font-family: 'Roboto', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                color: #646464;
+                margin-bottom: 1.5rem;
+              }
+            }
+
+            strong.price {
+              font-family: 'Roboto', sans-serif;
+              font-size: 18px;
+              font-weight: 500;
+              color: #000;
+            }
+          }
         }
       }
     }

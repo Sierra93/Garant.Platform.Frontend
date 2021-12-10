@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from "@angular/common/http";
 import { catchError, retry } from "rxjs/operators";
 import { throwError } from "rxjs";
-import { CommonDataService } from "./services/common-data.service";
+import { CommonDataService } from "./services/common/common-data.service";
 
 // Класс перехватчика api-запросов.
 @Injectable()

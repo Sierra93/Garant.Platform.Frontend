@@ -88,9 +88,9 @@
           {{oInitData.totalAmount}} ₽
         </div>
 
-        <!-- <div>
-          <button class="control-button-blue-small">{{oInitData.buttonActionText}}</button>
-        </div> -->
+        <div *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
+          <button class="control-button-blue-small" (click)="onAcceptDealAsync()">{{oInitData.buttonActionText}}</button>
+        </div>
       </div>
 
       <div class="block-black">

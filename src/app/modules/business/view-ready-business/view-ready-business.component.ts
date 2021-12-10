@@ -4,7 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateBusinessInput } from "src/app/models/business/input/business-create-update-input";
 import { GetBusinessInput } from "src/app/models/business/input/get-business-input";
-import { CommonDataService } from "src/app/services/common-data.service";
+import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
     selector: "view-ready-business",

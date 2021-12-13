@@ -72,7 +72,43 @@
       <h5>{{oInitData.blockRightTitle}}</h5>
 
       <div class="right-panel-first mt-32">  
-         
+        <div class="">
+          <!-- <h5>Чат с {{fio}}</h5> -->
+          <div class="">
+    
+            <div class="d-flex justify-content-between">        
+              <div class="d-flex">
+                <!-- <img class="space-intgr mr-16" src="{{chatItemUrl}}"> -->
+                
+                <div>
+                  Предмет чата:<br>
+                  {{chatItemName}}
+                </div>
+              </div>
+    
+              <div>
+                Начало чата: {{dateStartDialog}}
+              </div>
+            </div>
+    
+            <hr>
+    
+            <div class="block-chat">
+              <div class="" *ngFor="let item of aMessages">
+                <div class="block-messages">
+                  <div class="message" [ngClass]="{messageEnd:item.isMyMessage}">
+                    {{item.message}}
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div>
+              <textarea class="area-message" rows="2" cols="30" pInputTextarea [autoResize]="true"
+                placeholder="Введите сообщение" [(ngModel)]="message" (keydown.enter)="onSendMessageAsync()"></textarea>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="block-black">
@@ -98,7 +134,7 @@
       </div> -->
 
       <!-- Облсть с чатом. -->
-      <div class="right-panel-first mt-32">  
+      <div class="right-panel-second mt-32">  
         Список этапов
       <!-- <div>
         <strong>{{oInitData.blockRightStatusTitle}}</strong>

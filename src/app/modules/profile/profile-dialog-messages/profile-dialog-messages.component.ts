@@ -86,6 +86,7 @@ export class ProfileDialogMessagesModule implements OnInit {
         }
     };
 
+    // TODO: Вынести в общий сервис сообщений, как только он будет создан.
     public async onSendMessageAsync() {
         console.log("Сообщение", this.message);
 

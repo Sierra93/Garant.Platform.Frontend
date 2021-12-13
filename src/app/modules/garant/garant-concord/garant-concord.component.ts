@@ -18,6 +18,11 @@ import { GarantService } from "src/app/services/garant/garant.service";
  */
 export class GarantConcordModule implements OnInit {    
     oInitData: any = {};
+    aMessages: any = [];
+    dateStartDialog: string = "";
+    chatItemName: string = "";
+    message: string = "";
+    dialogId: number = 0;
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -40,6 +45,9 @@ export class GarantConcordModule implements OnInit {
             await this.garantService.initGarantDataAsync(2, true, this.dataService.otherId).then((response: any) => {
                 this.oInitData = response;
                 console.log("garant init data stage 2: ", this.oInitData);
+                this.aMessages = response.chatData.messages;
+                this.dateStartDialog = response.chatData.dateStartDialog;
+                this.chatItemName = response.chatData.chatItemName;
             });
         }
 
@@ -77,4 +85,32 @@ export class GarantConcordModule implements OnInit {
             throw new Error(e);
         }
     };    
+
+    // TODO: Вынести в общий сервис сообщений, как только он будет создан.
+    public async onSendMessageAsync() {
+        console.log("Сообщение", this.message);
+
+        try {                
+            await this.http.post(API_URL.apiUrl.concat("/chat/send-message"), {
+                Message: this.message,
+                DialogId: this.dialogId
+            })
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Сообщения: ", response.messages);
+                        this.aMessages = response.messages; 
+                        this.dataService.dialogId = response.dialogId;      
+                        this.message = "";                 
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 }

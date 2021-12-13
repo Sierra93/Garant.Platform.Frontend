@@ -7,4 +7,13 @@ export class GarantInitInput {
 
     // Тип заказа (франшиза или бизнес).
     OrderType: string = "";
+
+    // Номер этапа.
+    Stage: number = 0;
+
+    // Флаг чата.
+    IsChat: boolean = false;
+
+    // Id другого пользователя.
+    OtherId: string = "";
 }

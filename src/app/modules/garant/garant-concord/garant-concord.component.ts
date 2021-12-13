@@ -8,15 +8,15 @@ import { DataService } from "src/app/services/common/data-service";
 import { GarantService } from "src/app/services/garant/garant.service";
 
 @Component({
-    selector: "garant-init",
-    templateUrl: "./garant-init.component.html",
-    styleUrls: ["./garant-init.component.scss"]
+    selector: "garant-concord",
+    templateUrl: "./garant-concord.component.html",
+    styleUrls: ["./garant-concord.component.scss"]
 })
 
 /** 
- * Класс модуля Гаранта (страница инита 1 этап).
+ * Класс модуля Гаранта (страница согласования этапов сделки 2 этап).
  */
-export class GarantInitModule implements OnInit {    
+export class GarantConcordModule implements OnInit {    
     oInitData: any = {};
 
     constructor(private http: HttpClient, 
@@ -37,10 +37,9 @@ export class GarantInitModule implements OnInit {
      */
     private async initGarantDataAsync() {
         try {           
-            await this.garantService.initGarantDataAsync(1, false, this.oInitData.otherId).then((response: any) => {
+            await this.garantService.initGarantDataAsync(2, true, this.dataService.otherId).then((response: any) => {
                 this.oInitData = response;
-                console.log("garant init data stage 1: ", this.oInitData);
-                this.dataService.otherId = this.oInitData.otherId;
+                console.log("garant init data stage 2: ", this.oInitData);
             });
         }
 
@@ -77,16 +76,5 @@ export class GarantInitModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    };
-
-    /**
-     * Функция перейдет к согласованию этапов сделки (2 этап сделки).
-     */
-     public async onRouteReviewIterationsAsync(itemDealId: number, type: string, userId: string) {
-        await this.commonService.setTransitionAsync(itemDealId, type, userId, type).then((data: any) => {
-            console.log("Переход записан:", data);
-        });
-
-        this.router.navigate(["/garant/garant-concord"], { queryParams: { stage: '2' } });
-    };
+    };    
 }

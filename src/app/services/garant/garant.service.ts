@@ -19,15 +19,21 @@ export class GarantService {
 
    /**
      * Функция получит данные Гаранта на ините.
+     * @param stage - Номер этапа.
+     * @param isChat - Флаг чата.
+     * @param otherId - Id другого пользователя.
      * @returns Данные инита страницы.
      */
-    public async initGarantDataAsync() {
+    public async initGarantDataAsync(stage: number, isChat: boolean, otherId: string) {
         try {
             let garantInput = new GarantInitInput();
 
             // TODO: позже убрать хардкод!
             garantInput.OriginalId = 1000005;
             garantInput.OrderType = "Franchise";
+            garantInput.Stage = stage;
+            garantInput.IsChat = isChat;
+            garantInput.OtherId = otherId;
 
             return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/garant/init"), garantInput)

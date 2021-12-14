@@ -34,7 +34,7 @@
 
 .right-panel-first {
     // height: 215px;
-    height: 370px;
+    // height: 370px;
     overflow: scroll;
     overflow-x: hidden;
 }
@@ -42,4 +42,14 @@
 .right-panel-second {
     box-shadow: 0 0 10px rgb(0 0 0 / 50%);
     padding: 16px;
+}
+
+.block-garant {
+  align-items: baseline;
+  display: flex;
+}
+
+.control-button-action-change-cancel {
+  background-color: #f1f6ff;
+  border-radius: 4px;
 }

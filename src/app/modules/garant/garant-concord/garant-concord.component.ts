@@ -23,6 +23,8 @@ export class GarantConcordModule implements OnInit {
     chatItemName: string = "";
     message: string = "";
     dialogId: number = 0;
+    aInvestInclude: any = [];
+    aIterationList: any = [];
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -43,11 +45,14 @@ export class GarantConcordModule implements OnInit {
     private async initGarantDataAsync() {
         try {           
             await this.garantService.initGarantDataAsync(2, true, this.dataService.otherId).then((response: any) => {
-                this.oInitData = response;
-                console.log("garant init data stage 2: ", this.oInitData);
+                this.oInitData = response;                
                 this.aMessages = response.chatData.messages;
                 this.dateStartDialog = response.chatData.dateStartDialog;
                 this.chatItemName = response.chatData.chatItemName;
+                this.aInvestInclude = JSON.parse(response.investInclude);
+
+                console.log("garant init data stage 2: ", this.oInitData);
+                console.log("aInvestInclude: ", this.aInvestInclude);
             });
         }
 

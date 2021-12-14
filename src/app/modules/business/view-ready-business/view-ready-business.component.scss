@@ -12,7 +12,7 @@
 }
 
 .title-name-logo {
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-size: 2rem;
   font-weight: 400;
 
@@ -45,7 +45,8 @@
 .invest-item {
   padding: 24px;
   margin: 0;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
+  min-width: 220px;
 
   &__title {
     display: inline-block;
@@ -98,6 +99,7 @@
   margin: 0;
   padding: 24px;
   padding-bottom: 0;
+  min-width: 464px;
 
   &:last-of-type {
     padding-bottom: 24px;
@@ -106,7 +108,7 @@
 
 .asset-cost {
   display: inline-block;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.125rem;
   margin: 0 !important;
   padding: 0 !important;
@@ -115,7 +117,7 @@
 
 .asset-name {
   display: inline-block;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-size: 0.875rem;
   margin: 0 !important;
   padding: 0 !important;
@@ -127,7 +129,7 @@
 }
 
 .adress {
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.125rem;
   padding-bottom: 24px;
 }
@@ -137,33 +139,39 @@
 }
 
 .consulting {
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 24px;
   margin: 0;
   padding-bottom: 24px;
 
   &-label {
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     font-size: 0.75rem;
   }
 
   &-input {
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.125rem;
     width: 904px;
-    height: 44px;
-    border: 1px solid black;
-    border-radius: 5px;
+    height: 69px;
+    padding: 24px, 16px, 24px, 16px;
+    border: 1.5px solid #646464;
+    border-radius: 8px;
     margin-bottom: 12px;
 
     &::placeholder {
-      padding-left: 8px;
+      color: #c1c1c1;
+      // padding-left: 8px;
     }
   }
 
   &-button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
     width: 904px;
     margin-top: 55px;
+
   }
 }

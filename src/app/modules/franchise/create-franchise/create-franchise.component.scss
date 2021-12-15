@@ -1,14 +1,17 @@
-@import "/src/app/app.component.scss";  
+@import "/src/app/app.component.scss";
 @import "/src/app/shared/styles/body-margins.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/common.scss";
 
-.title-name-logo {
-    margin-top: 80px;
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #2c2c2c;
 }
 
 .control-big-input {
-    width: 340px;    
+    width: 340px;
     height: 30px;
 }
 

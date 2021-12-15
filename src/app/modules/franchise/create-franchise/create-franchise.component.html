@@ -1,22 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+<div class="row">
+  <div class="col-12">
+    <h5 class="title">Название и логотип*</h5>
+  </div>
 
-<body>  
-  <p-toast [style]="{ marginTop: '80px' }"></p-toast>
+  <div class="col-2">
+    <div class="file-input-wrapper">
+      <label>Логотип</label>
+      <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" />
+      <label for="franchise-logo">
+        
+      </label>
+    </div>
+  </div>
 
-  <h5 class="title-name-logo">Название и логотип*</h5>
+  <div class="col-10"></div>
+</div>
+
+
 
   <!-- Блок с названием. -->
   <div class="d-flex">
     <div>
-      <label>Логотип</label>
-      <input type="file" (change)="uploadFranchiseLogoAsync($event)">  
+
     </div>
 
     <div class="block-two">
@@ -27,14 +34,14 @@
 
   <hr class="hr">
   <span class="title-strong">Фотографии*</span><br>
-  <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>  
+  <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>
    <div class="block-gallery">
-     <div>       
+     <div>
       <span *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</span>
        <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
          [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
          <ng-template pTemplate="item" let-item>
-           <img src="{{item}}" style="width: 600px; display: block;" />           
+           <img src="{{item}}" style="width: 600px; display: block;" />
          </ng-template>
 
          <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
@@ -48,7 +55,7 @@
      <div>
       <span class="title-strong">Ваша карточка для связи</span><br>
       <span class="title-small">{{fio}}</span><br>
-     
+
       <div>
         <label>Пример: владелец</label><br>
         <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец" [(ngModel)]="lead" name="lead" />
@@ -114,13 +121,13 @@
       <span class="title-strong">Входит в инвестиции*</span><br>
       <div class="invest-item-last" *ngFor="let item of ainvestIn">
         <small class="">Стоимость</small><br>
-        <input type="number" class="control-input-franch-price" pInputText *ngIf="item.isHideInvest" [value]="item.Price" name="priceInvest" /> 
-        <input type="number" class="control-input-franch-price" pInputText *ngIf="!item.isHideInvest" [(ngModel)]="priceInvest" name="priceInvest" /> 
+        <input type="number" class="control-input-franch-price" pInputText *ngIf="item.isHideInvest" [value]="item.Price" name="priceInvest" />
+        <input type="number" class="control-input-franch-price" pInputText *ngIf="!item.isHideInvest" [(ngModel)]="priceInvest" name="priceInvest" />
         <br>
 
         <small class="">Название</small><br>
-        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="item.isHideInvest" [value]="item.Name" name="nameInvest" />   
-        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="!item.isHideInvest" [(ngModel)]="nameInvest" name="nameInvest" />                 
+        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="item.isHideInvest" [value]="item.Name" name="nameInvest" />
+        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="!item.isHideInvest" [(ngModel)]="nameInvest" name="nameInvest" />
       </div>
       <button class="control-button-blue-small" (click)="onAddInveest(priceInvest, nameInvest)">Добавить пункт</button>
       <br>
@@ -131,7 +138,7 @@
         гарант данные разделы способствуют разбиению<br>
         на этапы.
       </small>
-     </div>     
+     </div>
    </div>
 
    <!-- Дополнительные факты. -->
@@ -152,7 +159,7 @@
     <div class="invest-item">
       <span class="title-small">Количество точек</span><br>
       <small>в России</small><br>
-      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="dotCount" name="dotCount" /> 
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="dotCount" name="dotCount" />
     </div>
 
     <div class="invest-item">
@@ -166,17 +173,17 @@
 
    <!-- Описание особенности франшизы. -->
    <span class="title-strong">Описание особенности франшизы</span><br>
-   <div class="block-details-franch">    
+   <div class="block-details-franch">
     <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText [(ngModel)]="featureFranchise" name="featureFranchise" />
     <span class="text">Прикрепить финансовую модель .xlsx</span>
     <br>
 
    <div>
-    <input type="file" (change)="uploadFinModelAsync($event)">  
+    <input type="file" (change)="uploadFinModelAsync($event)">
     <!-- <button class="control-button-blue-small">Прикрепить файл</button> -->
     <br>
     <small>
-      Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать презентацию, просто пропустите данный этап. 
+      Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать презентацию, просто пропустите данный этап.
     </small>
    </div>
    </div>
@@ -196,10 +203,10 @@
 
       <div class="invest-in">
         <span class="title-strong">Добавить презентацию</span><br>
-        <div class="block-details-franch">          
+        <div class="block-details-franch">
           <small>Прикрепить документ .pdf</small><br>
           <!-- <button class="control-button-blue-small">Прикрепить файл</button><br> -->
-          <input type="file" (change)="uploadPresentAsync($event)">  
+          <input type="file" (change)="uploadPresentAsync($event)">
         </div>
 
       <small>
@@ -241,7 +248,7 @@
           <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
             [(ngModel)]="percentFinancial1" name="" />
         </div>
-    
+
         <div class="fin-indicator">
           <small>Например: рентабельность</small><br>
           <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator2" name="finIndicator2" /><br>
@@ -250,7 +257,7 @@
           <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
             [(ngModel)]="percentFinancial2" name="percentFinancial2" />
         </div>
-    
+
         <div class="fin-indicator">
           <small>Например: средняя выручка</small><br>
           <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator3" name="finIndicator3" /><br>
@@ -259,7 +266,7 @@
           <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
             [(ngModel)]="percentFinancial3" name="percentFinancial3" />
         </div>
-    
+
         <div class="fin-indicator">
           <small>Например: товарная наценка</small><br>
           <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator4" name="finIndicator4" /><br>
@@ -281,7 +288,7 @@
       <span class="title-small">Описание обучения</span><br>
       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
         placeholder="Опишите обучение" [(ngModel)]="educationDetails" name="educationDetails"></textarea><br>
-        <input type="file" (change)="uploadEducationPhotosAsync($event)">  
+        <input type="file" (change)="uploadEducationPhotosAsync($event)">
     </div>
    </div>
 
@@ -292,7 +299,7 @@
      <div>
       <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
       <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
-     </div>        
+     </div>
    </div>
 
   <div>
@@ -322,29 +329,29 @@
         <div>
           <span class="title-small">Паушальный взнос:</span><br>
           <input type="text" class="control-big-input" pInputText [value]="item.LumpSumPayment"
-          *ngIf="item.IsHidePack" name="packLumpSumPayment" placeholder="₽" /> 
+          *ngIf="item.IsHidePack" name="packLumpSumPayment" placeholder="₽" />
           <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
-          *ngIf="!item.IsHidePack" name="packLumpSumPayment" placeholder="₽" /> 
+          *ngIf="!item.IsHidePack" name="packLumpSumPayment" placeholder="₽" />
         </div>
 
         <div>
           <span class="title-small">Роялти:</span><br>
           <input type="text" class="control-big-input" pInputText [value]="item.Royalty"
-          *ngIf="item.IsHidePack" name="royaltyPack" placeholder="%" /> 
+          *ngIf="item.IsHidePack" name="royaltyPack" placeholder="%" />
           <input type="text" class="control-big-input" pInputText [(ngModel)]="royaltyPack"
-          *ngIf="!item.IsHidePack" name="royaltyPack" placeholder="%" /> 
+          *ngIf="!item.IsHidePack" name="royaltyPack" placeholder="%" />
         </div>
 
         <div>
           <span class="title-small">Всего инвестиций:</span><br>
           <input type="text" class="control-big-input" pInputText [value]="item.Royalty"
-          *ngIf="item.IsHidePack" name="totalInvest" placeholder="₽" /> 
+          *ngIf="item.IsHidePack" name="totalInvest" placeholder="₽" />
           <input type="text" class="control-big-input" pInputText [(ngModel)]="totalInvest"
-          *ngIf="!item.IsHidePack" name="totalInvest" placeholder="₽" /> 
+          *ngIf="!item.IsHidePack" name="totalInvest" placeholder="₽" />
         </div>
       </div>
-    </div>    
-  </div>  
+    </div>
+  </div>
 
  </div>
  <div class="block-button-pack">
@@ -358,7 +365,7 @@
   <div>
    <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
    <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
-  </div>        
+  </div>
 </div>
 
 <div>
@@ -370,7 +377,7 @@
 <div>
   <span class="title-small">Ссылка на видео</span><br>
   <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="videoLink"
-    name="videoLink" /> 
+    name="videoLink" />
 </div>
 
 <hr class="hr">
@@ -380,7 +387,7 @@
   <div>
    <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
    <label for="packs" class="control-label-checkbox">Отзывы о франшизе</label>
-  </div>        
+  </div>
 </div>
 
 <div>
@@ -420,18 +427,18 @@
             name="packLumpSumPayment" /> ₽
         </div>
       </div>
-    </div>    
-  </div>  
+    </div>
+  </div>
 
   <div class="block-button-pack">
     <button class="control-button-blue">Добавить отзыв</button>
   </div>
  </div> -->
 
- <div class="switch-garant block-garant">      
+ <div class="switch-garant block-garant">
   <strong>Продажа через гарант</strong><br>
   <p-inputSwitch [(ngModel)]="isGarant" class="flag-garant" (click)="onCheckedGarant()"></p-inputSwitch>
-</div>   
+</div>
 
 <div class="d-flex">
   <div>
@@ -442,7 +449,3 @@
     <button class="control-button-blue" (click)="onCreateFranchiseAsync()">Оплатить размещение и опубликовать</button>
   </div>
 </div>
-
-</body>
-
-</html>

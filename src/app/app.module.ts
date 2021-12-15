@@ -58,6 +58,7 @@ import { ConvertStringToNumberPipe } from "./core/pipes/convertStringToNumber.pi
 import { DataService } from "./services/common/data-service";
 import { GarantService } from "./services/garant/garant.service";
 import { GarantConcordModule } from "./modules/garant/garant-concord/garant-concord.component";
+import { GarantContractModule } from "./modules/garant/garant-contract/garant-contract.component";
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { GarantConcordModule } from "./modules/garant/garant-concord/garant-conc
     CatalogBusinessModule,
     GarantInitModule,
     ConvertStringToNumberPipe,
-    GarantConcordModule
+    GarantConcordModule,
+    GarantContractModule
   ],
 
   entryComponents: [],

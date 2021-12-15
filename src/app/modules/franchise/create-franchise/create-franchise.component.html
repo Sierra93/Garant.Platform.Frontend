@@ -7,15 +7,22 @@
 
   <div class="col-2">
     <div class="file-input-wrapper">
-      <label>Логотип</label>
-      <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" />
-      <label for="franchise-logo">
-        
-      </label>
+      <label class="form-label">Логотип</label>
+      <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" class="d-none" />
+      <div class="franchise-logo">
+        <label for="franchise-logo">
+          <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
+        </label>
+      </div>
     </div>
   </div>
 
-  <div class="col-10"></div>
+  <div class="col-10">
+    <div class="block-two">
+      <label class="form-label">Название</label><br>
+      <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="logoName" name="logoName" />
+    </div>
+  </div>
 </div>
 
 
@@ -26,10 +33,7 @@
 
     </div>
 
-    <div class="block-two">
-      <label>Название</label><br>
-      <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="logoName" name="logoName" />
-    </div>
+    
   </div>
 
   <hr class="hr">

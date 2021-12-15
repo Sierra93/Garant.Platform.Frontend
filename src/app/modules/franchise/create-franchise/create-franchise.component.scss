@@ -1,8 +1,9 @@
 @import "/src/app/app.component.scss";
-@import "/src/app/shared/styles/body-margins.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/common.scss";
 
+
+// main styles
 .title {
   font-family: 'Roboto', sans-serif;
   font-size: 1.5rem;
@@ -10,13 +11,54 @@
   color: #2c2c2c;
 }
 
+.franchise-logo, .block-two input {
+    height: 70px;
+    border: 1px solid #c4c4c4;
+    border-radius: 8px;
+}
+
+.franchise-logo {
+    width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.block-two input {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #7a7a7a;
+  text-indent: 1rem;
+  width: 708px;
+}
+
+.form-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #2c2c2c;
+  margin-bottom: 1.5rem;
+}
+
+
+// primeng component styles
+::ng-deep {
+    .p-button {
+        background-color: transparent;
+        color: #c4c4c4;
+        border: 2px solid #c4c4c4;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+    }
+}
+
+
+
 .control-big-input {
     width: 340px;
     height: 30px;
-}
-
-.block-two {
-    margin-left: 24px;
 }
 
 // ::ng-deep .p-galleria-thumbnail-container {

@@ -290,6 +290,7 @@ export class CreateFranchiseModule implements OnInit {
      * Функция добавит файл лого франшизы.
      */
     public uploadFranchiseLogoAsync(event: any) {
+        event.stopPropagation();
         console.log("uploadFranchiseLogoAsync");
         this.fileLogoFormData = event.target.files[0];
     };

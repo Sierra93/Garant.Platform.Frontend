@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
+import { DocumentInput } from "src/app/models/document/input/document-input";
 import { DealInput } from "src/app/models/garant/input/deal-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 import { DataService } from "src/app/services/common/data-service";
@@ -25,6 +26,7 @@ export class GarantContractModule implements OnInit {
     dialogId: number = 0;
     aInvestInclude: any = [];
     aIterationList: any = [];
+    documentFile: any;
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -106,6 +108,42 @@ export class GarantContractModule implements OnInit {
                         this.aMessages = response.messages; 
                         this.dataService.dialogId = response.dialogId;      
                         this.message = "";                 
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public onAttachmentDocument(e: any) {
+        console.log("onAttachmentDocument", e);
+        this.documentFile = e.target.files[0];
+    };
+
+    /**
+     * Функция прикрепит документ договора к сделке.
+     */
+    public async onAttachmentDealDocumentAsync() {
+        try {                
+            let formData = new FormData();
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
+            documentInput.DocumentType = "DocumentVendor";
+            documentInput.IsDealDocument = true;
+            
+            formData.append("files", this.documentFile);      
+            formData.append("documentData", JSON.stringify(documentInput));
+
+            await this.http.post(API_URL.apiUrl.concat("/document/attachment-vendor-document-deal"), formData)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Документ сделки: ", response);                                  
                     },
 
                     error: (err) => {

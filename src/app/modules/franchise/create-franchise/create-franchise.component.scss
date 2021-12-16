@@ -12,16 +12,16 @@
 }
 
 .franchise-logo, .block-two input {
-    height: 70px;
-    border: 1px solid #c4c4c4;
-    border-radius: 8px;
+  height: 70px;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
 }
 
 .franchise-logo {
-    width: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .block-two input {
@@ -41,16 +41,142 @@
   margin-bottom: 1.5rem;
 }
 
+.photos {
+  margin-bottom: 3rem;
+
+  &-contact {
+    h6 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #2c2c2c;
+    }
+
+    strong {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: normal;
+      color: #000;
+    }
+
+    label {
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      color: #646464;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      width: 100%;
+      height: 64px;
+      padding: 24px 16px;
+      border-radius: 8px;
+      border: 1.5px solid #dadada;
+      margin-bottom: 60px;
+    }
+  }
+}
+
+.financial-data {
+  &-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    background-color: #f1f1f1;
+    height: 158px;
+    margin-top: 1.5rem;
+
+    strong {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: normal;
+      color: #000;
+      margin-bottom: .5rem;
+    }
+
+    > span {
+      font-family: 'Roboto', sans-serif;
+      font-size: 10px;
+      font-weight: normal;
+      color: #646464;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
 
 // primeng component styles
 ::ng-deep {
-    .p-button {
+    .franchise-logo .p-button, .franchise-logo .p-button:focus {
         background-color: transparent;
         color: #c4c4c4;
         border: 2px solid #c4c4c4;
         border-radius: 50%;
         width: 38px;
         height: 38px;
+        box-shadow: none;
+    }
+
+    .photos-buttons {
+      > .p-element {
+        display: block;
+        width: 100%;
+        height: 70px;
+        cursor: pointer;
+
+        .p-button {
+          height: 100%;
+          width: 100%;
+          opacity: 0.25;
+          border-radius: 8px;
+
+          &-label {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+          }
+        }
+
+        &:first-child {
+          margin-bottom: 1rem;
+
+          .p-button {
+            &-label {
+              color: #1f75fe;
+            }
+          }
+        }
+        &:last-child {
+          .p-button {
+            &-label {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+
+    .block-gallery {
+      .p-galleria-item-wrapper {
+        height: 100%;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      p-galleriaitem {
+        border: 2px solid red;
+        width: 100%;
+      }
+
+      p-galleriathumbnails {
+        border: 2px solid blue;
+        max-width: 20%;
+      }
     }
 }
 
@@ -60,10 +186,6 @@
     width: 340px;
     height: 30px;
 }
-
-// ::ng-deep .p-galleria-thumbnail-container {
-//     display: none;
-// }
 
 .block-gallery {
     display: flex;
@@ -178,10 +300,6 @@
 .block-garant {
     align-items: center;
     display: flex;
-}
-
-.block-two {
-    margin-left: 24px;
 }
 
 // Стили дял галереи.

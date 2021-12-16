@@ -81,6 +81,8 @@
 
 
 
+
+
 <!-- Ключевые финансовые данные. -->
 <div class="row financial-data">
   <div class="col-12">
@@ -161,9 +163,6 @@
     <hr class="hr">
   </div>
 </div>
-
-
-
 
 <!-- Основная информация о компании. -->
 <div class="row main-info">
@@ -253,25 +252,39 @@
 
 
 <!-- Описание особенности франшизы. -->
-<span class="title-strong">Описание особенности франшизы</span><br>
-<div class="block-details-franch">
-  <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText
-    [(ngModel)]="featureFranchise" name="featureFranchise" />
-  <span class="text">Прикрепить финансовую модель .xlsx</span>
-  <br>
+<div class="row franchise-specifications">
+  <div class="col-12">
+    <h6>Описание особенности франшизы</h6>
+  </div>
+  <div class="col-12">
+    <div class="franchise-specifications-block">
+      <div>
+        <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText
+        [(ngModel)]="featureFranchise" name="featureFranchise" />
+      </div>
 
-  <div>
-    <input type="file" (change)="uploadFinModelAsync($event)">
-    <!-- <button class="control-button-blue-small">Прикрепить файл</button> -->
-    <br>
-    <small>
-      Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать
-      презентацию, просто пропустите данный этап.
-    </small>
+      <div class="d-flex flex-column">
+        <strong>Прикрепить финансовую модель .xlsx</strong>
+        <span class="size">до 5 мб</span>
+        <input type="file" (change)="uploadFinModelAsync($event)" id="attach-file" class="d-none" />
+        <label for="attach-file" class="d-flex align-items-center">
+          <span class="me-2">
+            <img src="../../../../assets/images/franchise-pages/attach.svg" alt="gobizy attach file icon" />
+          </span>
+          <span>Прикрепить</span>
+        </label>
+      </div>
+    </div>
+
+    <div>
+      <p>Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать
+        презентацию, просто пропустите данный этап.</p>
+    </div>
+  </div>
+  <div class="col-12">
+    <hr class="hr">
   </div>
 </div>
-
-<hr class="hr">
 
 <!-- Основная информация о франшизе. -->
 <div class="d-flex">

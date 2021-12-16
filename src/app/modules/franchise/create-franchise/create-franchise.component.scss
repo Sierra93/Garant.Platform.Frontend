@@ -191,6 +191,79 @@
     }
 }
 
+.franchise-specifications {
+  h6 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: normal;
+    color: #2c2c2c;
+    margin-bottom: 1.5rem;
+  }
+
+  &-block {
+    padding: 24px;
+    border-radius: 4px;
+    background-color: #f1f6ff;
+    margin-bottom: 1rem;
+
+    > div:first-child {
+      margin-bottom: 24px;
+    }
+
+    > div:nth-child(2) {
+      strong {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: normal;
+        line-height: normal;
+        color: #2c2c2c;
+        margin-bottom: 8px;
+      }
+
+      span {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: normal;
+        color: #7a7a7a;
+        margin-bottom: 2rem;
+      }
+
+      label {
+        padding: 16px;
+        border-radius: 8px;
+        background-color: #1f75fe;
+        height: 70px;
+        width: 342px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &, span {
+          color: #fff;
+          font-family: 'Roboto', sans-serif;
+          font-size: 18px;
+          font-weight: 500;
+          line-height: normal;
+        }
+
+        span {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: #7a7a7a;
+  }
+}
+
 
 // primeng component styles
 ::ng-deep {

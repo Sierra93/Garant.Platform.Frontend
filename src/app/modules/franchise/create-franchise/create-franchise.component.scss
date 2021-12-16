@@ -106,6 +106,91 @@
   }
 }
 
+.main-info {
+    h6 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #2c2c2c;
+        margin-bottom: .5rem;
+    }
+
+    h6 + span {
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        color: #7a7a7a;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+
+        strong {
+            font-size: 18px;
+            font-weight: normal;
+            color: #2c2c2c;
+        }
+    }
+
+    .textarea {
+        margin-bottom: 3rem;
+
+        textarea {
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            border: 1.5px solid #dadada;
+        }
+    }
+
+    &-form {
+        padding: 1.5rem;
+        background-color: #f1f1f1;
+        margin-bottom: 1.5rem;
+
+        > div:first-child, label {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            color: #646464;
+        }
+    }
+
+    p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: normal;
+        line-height: normal;
+        color: #7a7a7a;
+    }
+
+    .additional-facts {
+        &-block {
+            padding: 24px;
+            background-color: #f1f1f1;
+
+            label {
+                font-family: 'Roboto', sans-serif;
+                font-size: 18px;
+                font-weight: 500;
+                color: #000;
+                margin-bottom: 8px;
+            }
+
+            span {
+                font-family: 'Roboto', sans-serif;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: normal;
+                color: #646464;
+                display: inline-block;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
 
 // primeng component styles
 ::ng-deep {

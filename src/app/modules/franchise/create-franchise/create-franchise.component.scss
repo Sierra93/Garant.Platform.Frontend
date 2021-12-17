@@ -155,6 +155,19 @@
             font-weight: normal;
             color: #646464;
         }
+
+        input {
+          height: 53px;
+          padding: 16px;
+          border-radius: 4px;
+          background-color: white;
+          width: 100%;
+          font-family: 'Roboto', sans-serif;
+          font-size: 18px;
+          font-weight: normal;
+          line-height: normal;
+          color: #646464;
+        }
     }
 
     p {
@@ -239,6 +252,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
 
         &, span {
           color: #fff;
@@ -264,10 +278,246 @@
   }
 }
 
+.main-franchise-info {
+  h6 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: normal;
+    color: #2c2c2c;
+    margin-bottom: 1.5rem;
+  }
+
+  h6 + span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: #2c2c2c;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+
+  textarea {
+    padding: 1.5rem 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #dadada;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: #7a7a7a;
+    margin-bottom: 1.5rem;
+  }
+
+  .form {
+    margin-bottom: 1rem;
+
+    strong {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: normal;
+      color: #2c2c2c;
+      margin-bottom: 8px;
+    }
+
+    span {
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: normal;
+      color: #7a7a7a;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      padding: 16px;
+      border-radius: 8px;
+      background-color: #1f75fe;
+      height: 70px;
+      width: 342px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &, span {
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: normal;
+      }
+
+      span {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    color: #7a7a7a;
+  }
+}
+
+.income-calculation {
+  h6 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: normal;
+    color: #2c2c2c;
+    margin-bottom: 1.5rem;
+  }
+
+  h6 + span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: #2c2c2c;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+
+  textarea {
+    padding: 1.5rem 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #dadada;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: #7a7a7a;
+    margin-bottom: 1.5rem;
+  }
+
+  .block-details-franch {
+    .top-form {
+      label {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: normal;
+        color: #2c2c2c;
+        margin-bottom: 1.5rem;
+      }
+
+      input {
+        height: 70px;
+        padding: 1.5rem 1rem;
+        border-radius: 8px;
+        border: 1.5px solid #dadada;
+        background-color: white;
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: normal;
+        color: #7a7a7a;
+        margin-bottom: 1.5rem;
+      }
+    }
+    .fin-indicator-first, .fin-indicator {
+      padding: 1.5rem .5rem;
+      > div {
+        display: flex;
+        flex-direction: column;
+
+        &:first-child {
+          margin-bottom: 1rem;
+        }
+
+        label {
+          font-family: 'Roboto', sans-serif;
+          font-size: .75rem;
+          font-weight: 400;
+          line-height: normal;
+          color: #000;
+          margin-bottom: 8px;
+        }
+
+        input {
+          width: 100%;
+          height: 53px;
+          padding: 16px;
+          border-radius: 4px;
+          background-color: #f1f1f1;
+          border: none;
+          font-family: 'Roboto', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: normal;
+          color: #646464;
+        }
+      }
+    }
+  }
+}
+
+.education-and-support {
+  h6 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: normal;
+    color: #2c2c2c;
+    margin-bottom: 1.5rem;
+  }
+
+  h6 + span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: #2c2c2c;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+
+  textarea {
+    padding: 1.5rem 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #dadada;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    color: #7a7a7a;
+    margin-bottom: 1.5rem;
+  }
+
+  .upload-file-education {
+    label {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: normal;
+      color: #2c2c2c;
+      margin-bottom: 1.5rem;
+    }
+
+    > div {
+      height: 480px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      border: 1px solid #c4c4c4;
+    }
+  }
+}
+
 
 // primeng component styles
 ::ng-deep {
-    .franchise-logo .p-button, .franchise-logo .p-button:focus {
+    .franchise-logo .p-button, .franchise-logo .p-button:focus,
+    .upload-file-education .p-button, .upload-file-education .p-button:focus {
         background-color: transparent;
         color: #c4c4c4;
         border: 2px solid #c4c4c4;

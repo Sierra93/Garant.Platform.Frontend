@@ -223,9 +223,9 @@
       <div>
         <label>Стоимость</label><br>
         <input type="number" class="control-input-franch-price" pInputText *ngIf="item.isHideInvest"
-          [value]="item.Price" name="priceInvest" />
+          [value]="item.Price" name="priceInvest" placeholder="- ₽" />
         <input type="number" class="control-input-franch-price" pInputText *ngIf="!item.isHideInvest"
-          [(ngModel)]="priceInvest" name="priceInvest" />
+          [(ngModel)]="priceInvest" name="priceInvest" placeholder="- ₽" />
       </div>
 
       <div>
@@ -247,10 +247,6 @@
   </div>
 </div>
 
-
-
-
-
 <!-- Описание особенности франшизы. -->
 <div class="row franchise-specifications">
   <div class="col-12">
@@ -259,8 +255,8 @@
   <div class="col-12">
     <div class="franchise-specifications-block">
       <div>
-        <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText
-        [(ngModel)]="featureFranchise" name="featureFranchise" />
+        <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения"
+          pInputText [(ngModel)]="featureFranchise" name="featureFranchise" />
       </div>
 
       <div class="d-flex flex-column">
@@ -287,113 +283,162 @@
 </div>
 
 <!-- Основная информация о франшизе. -->
-<div class="d-flex">
-  <div>
-    <span class="title-strong">Основная информация о франшизе*</span><br>
+<div class="row main-franchise-info">
+  <div class="col-8">
     <div>
-      <span class="title-small">Описание франшизы</span><br>
+      <h6>Основная информация о франшизе*</h6>
+      <span>Описание франшизы</span>
+      <div>
+        <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+          placeholder="Опишите франшизу" [(ngModel)]="defailsFranchise" name="defailsFranchise"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="form">
+      <h6>Добавить презентацию</h6>
+      <div class="block-details-franch d-flex flex-column">
+        <strong>Прикрепить документ .pdf</strong>
+        <span>до 20 мб</span>
+        <input type="file" (change)="uploadPresentAsync($event)" id="upload-present-async" class="d-none">
+        <label for="upload-present-async" class="d-flex align-items-center">
+          <span class="me-2">
+            <img src="../../../../assets/images/franchise-pages/attach.svg" alt="gobizy attach file icon" />
+          </span>
+          <span>Прикрепить</span>
+        </label>
+      </div>
+    </div>
+    <div>
+      <p>Загружать презентацию не обязательно. Однако, это способствует повышению конверсии и глубинной
+        заинтересованности в проекте. Если вы не хотите загружать презентацию, просто пропустите данный этап.</p>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <hr class="hr">
+  </div>
+</div>
+
+<!-- Пример расчета прибыли. -->
+<div class="row income-calculation">
+  <div class="col-8">
+    <div>
+      <h6>Пример расчета прибыли*</h6>
+      <span>Описание расчета</span>
       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-        placeholder="Опишите франшизу" [(ngModel)]="defailsFranchise" name="defailsFranchise"></textarea>
+        placeholder="Опишите расчет" [(ngModel)]="paymentDetails" name="paymentDetails"></textarea>
     </div>
   </div>
 
-  <div class="invest-in">
-    <span class="title-strong">Добавить презентацию</span><br>
+  <!-- Ключевые финансовые показатели. -->
+  <div class="col-8">
     <div class="block-details-franch">
-      <small>Прикрепить документ .pdf</small><br>
-      <!-- <button class="control-button-blue-small">Прикрепить файл</button><br> -->
-      <input type="file" (change)="uploadPresentAsync($event)">
-    </div>
-
-    <small>
-      Загружать презентацию не обязательно.<br>
-      Однако, это способствует повышению конверсии<br>
-      и глубинной заинтересованности в проекте. Если<br>
-      вы не хотите загружать презентацию, просто<br>
-      пропустите данный этап.
-    </small>
-  </div>
-</div>
-
-<hr class="hr">
-
-<div class="d-flex">
-  <div>
-    <span class="title-strong">Пример расчета прибыли*</span><br>
-    <span class="title-small">Описание расчета</span><br>
-    <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-      placeholder="Опишите расчет" [(ngModel)]="paymentDetails" name="paymentDetails"></textarea>
-  </div>
-</div>
-
-<hr class="hr">
-
-<!-- Ключевые финансовые показатели. -->
-<div class="d-flex">
-  <div class="block-details-franch">
-    <span class="title-strong">Ключевые финансовые показатели</span><br>
-    <label>Название</label><br>
-    <input type="text" class="franch-details" placeholder="Пример: расчет прибыль 1 кофейни" pInputText
-      [(ngModel)]="namesIndicators" name="namesIndicators" />
-
-    <div class="d-flex">
-      <div class="fin-indicator-first">
-        <small>Например: средний чек</small><br>
-        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-          [(ngModel)]="finIndicator1" name="finIndicator1" /><br>
-
-        <small>Процент или финансы</small><br>
-        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-          [(ngModel)]="percentFinancial1" name="" />
+      <h6>Ключевые финансовые показатели</h6>
+      <div class="top-form d-flex flex-column">
+        <label>Название</label>
+        <input type="text" placeholder="Пример: расчет прибыль 1 кофейни" pInputText [(ngModel)]="namesIndicators"
+          name="namesIndicators" />
       </div>
 
-      <div class="fin-indicator">
-        <small>Например: рентабельность</small><br>
-        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-          [(ngModel)]="finIndicator2" name="finIndicator2" /><br>
+      <div class="row">
+        <div class="col-3">
+          <div class="fin-indicator-first">
+            <div>
+              <label>Например: средний чек</label>
+              <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                [(ngModel)]="finIndicator1" name="finIndicator1" />
+            </div>
 
-        <small>Процент или финансы</small><br>
-        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-          [(ngModel)]="percentFinancial2" name="percentFinancial2" />
-      </div>
+            <div>
+              <label>Процент или финансы</label>
+              <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                [(ngModel)]="percentFinancial1" name="" />
+            </div>
+          </div>
+        </div>
 
-      <div class="fin-indicator">
-        <small>Например: средняя выручка</small><br>
-        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-          [(ngModel)]="finIndicator3" name="finIndicator3" /><br>
+        <div class="col-3">
+          <div class="fin-indicator">
+            <div>
+              <label>Например: рентабельность</label>
+              <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                [(ngModel)]="finIndicator2" name="finIndicator2" />
+            </div>
 
-        <small>Процент или финансы</small><br>
-        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-          [(ngModel)]="percentFinancial3" name="percentFinancial3" />
-      </div>
+            <div>
+              <label>Процент или финансы</label>
+              <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                [(ngModel)]="percentFinancial2" name="percentFinancial2" />
+            </div>
+          </div>
+        </div>
 
-      <div class="fin-indicator">
-        <small>Например: товарная наценка</small><br>
-        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-          [(ngModel)]="finIndicator4" name="finIndicator4" /><br>
+        <div class="col-3">
+          <div class="fin-indicator">
+            <div>
+              <label>Например: средняя выручка</label>
+              <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                [(ngModel)]="finIndicator3" name="finIndicator3" />
+            </div>
 
-        <small>Процент или финансы</small><br>
-        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
-          [(ngModel)]="percentFinancial4" name="percentFinancial4" />
+            <div>
+              <label>Процент или финансы</label>
+              <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                [(ngModel)]="percentFinancial3" name="percentFinancial3" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="fin-indicator">
+            <div>
+              <label>Например: товарная наценка</label>
+              <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                [(ngModel)]="finIndicator4" name="finIndicator4" />
+            </div>
+
+            <div>
+              <label>Процент или финансы</label>
+              <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                [(ngModel)]="percentFinancial4" name="percentFinancial4" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div>
+      <hr class="hr">
+    </div>
   </div>
 </div>
-
-<hr class="hr">
 
 <!-- Обучение и поддержка. -->
-<div class="d-flex">
-  <div>
-    <span class="title-strong">Обучение и поддержка*</span><br>
-    <span class="title-small">Описание обучения</span><br>
-    <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-      placeholder="Опишите обучение" [(ngModel)]="educationDetails" name="educationDetails"></textarea><br>
-    <input type="file" (change)="uploadEducationPhotosAsync($event)">
+<div class="row education-and-support">
+  <div class="col-8">
+    <h6>Обучение и поддержка*</h6>
+    <span>Описание обучения</span>
+    <div>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+      placeholder="Опишите обучение" [(ngModel)]="educationDetails" name="educationDetails"></textarea>
+    </div>
+
+    <div class="upload-file-education">
+      <label>Добавить фотографию</label>
+      <input type="file" (change)="uploadEducationPhotosAsync($event)" id="upload-file-education" class="d-none" />
+      <div>
+        <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <hr class="hr">
   </div>
 </div>
 
-<hr class="hr">
+
 
 <!-- Пакеты франшизы. -->
 <div class="p-field-checkbox control-checkbox">
@@ -405,7 +450,8 @@
 
 <div>
   <small>
-    Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет пакетов вы можете отключить данный
+    Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет пакетов вы можете отключить
+    данный
     раздел галочкой слева от названия.
   </small>
 </div>
@@ -473,7 +519,8 @@
 
 <div>
   <small>
-    Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет видео вы можете отключить данный
+    Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет видео вы можете отключить
+    данный
     раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.
   </small>
 </div>
@@ -550,6 +597,7 @@
   </div>
 
   <div class="block-two">
-    <button class="control-button-blue" (click)="onCreateFranchiseAsync()">Оплатить размещение и опубликовать</button>
+    <button class="control-button-blue" (click)="onCreateFranchiseAsync()">Оплатить размещение и
+      опубликовать</button>
   </div>
 </div>

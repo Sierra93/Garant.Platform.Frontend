@@ -537,7 +537,7 @@
 
   &-block {
     filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
-    
+
     > div {
       .block-pack {
         width: 100%;
@@ -561,8 +561,77 @@
               }
             }
           }
+
+          > div:last-child {
+            padding: 1rem;
+            filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
+            height: 485px;
+            background-color: #fff;
+
+            input {
+              height: 57px;
+              padding: 16px;
+              border-radius: 4px;
+              background-color: #f1f1f1;
+              font-family: 'Roboto', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
+              line-height: normal;
+              color: #646464;
+              width: 100%;
+            }
+
+            span {
+              margin-right: 26px;
+            }
+          }
+        }
+
+        .block-bottom-pack {
+          height: 376px;
+          padding: 16px;
+          background-color: #f1f6ff;
+          filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
+
+          > div {
+            &:not(:last-child) {
+              margin-bottom: 2rem;
+            }
+
+            label {
+              font-family: 'Roboto', sans-serif;
+              font-size: 18px;
+              font-weight: 500;
+              line-height: normal;
+              color: #000;
+              margin-bottom: 1rem;
+            }
+
+            input {
+              height: 53px;
+              padding: 16px;
+              border-radius: 4px;
+              background-color: white;
+              width: 100%;
+            }
+          }
         }
       }
+    }
+  }
+
+  .add-package {
+    .add-package-button {
+      width: 100%;
+      padding: 16px;
+      border-radius: 8px;
+      background-color: #1f75fe;
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: normal;
+      color: white;
+      border: none;
     }
   }
 }
@@ -734,19 +803,6 @@
 .control-label-checkbox {
     margin: 0;
     margin-left: 16px;
-}
-
-.block-button-pack {
-    margin-top: 32px;
-    margin-left: 24px;
-}
-
-.block-bottom-pack {
-    margin-top: 320px;
-}
-
-.pack-detail {
-    margin-top: 16px;
 }
 
 .flag-garant {

@@ -467,15 +467,20 @@
               *ngIf="!item.IsHidePack" [(ngModel)]="packName" name="packName" />
             </div>
 
-            <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание"
+            <div class="d-flex justify-content-between">
+              <span>
+                <img src="../../../../assets/images/franchise-pages/tick.svg" alt="gobizy tick icon" />
+              </span>
+              <input type="text" class="control-big-input" pInputText placeholder="Описание"
               [value]="item.Text" *ngIf="item.IsHidePack" name="packDetails" />
-            <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание"
+              <input type="text" class="control-big-input" pInputText placeholder="Описание"
               [(ngModel)]="packDetails" *ngIf="!item.IsHidePack" name="packDetails" />
+            </div>
           </div>
 
           <div class="block-bottom-pack">
             <div>
-              <span class="title-small">Паушальный взнос:</span><br>
+              <label class="title-small">Паушальный взнос:</label><br>
               <input type="text" class="control-big-input" pInputText [value]="item.LumpSumPayment"
                 *ngIf="item.IsHidePack" name="packLumpSumPayment" placeholder="₽" />
               <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
@@ -483,7 +488,7 @@
             </div>
 
             <div>
-              <span class="title-small">Роялти:</span><br>
+              <label class="title-small">Роялти:</label><br>
               <input type="text" class="control-big-input" pInputText [value]="item.Royalty" *ngIf="item.IsHidePack"
                 name="royaltyPack" placeholder="%" />
               <input type="text" class="control-big-input" pInputText [(ngModel)]="royaltyPack" *ngIf="!item.IsHidePack"
@@ -491,7 +496,7 @@
             </div>
 
             <div>
-              <span class="title-small">Всего инвестиций:</span><br>
+              <label class="title-small">Всего инвестиций:</label><br>
               <input type="text" class="control-big-input" pInputText [value]="item.Royalty" *ngIf="item.IsHidePack"
                 name="totalInvest" placeholder="₽" />
               <input type="text" class="control-big-input" pInputText [(ngModel)]="totalInvest" *ngIf="!item.IsHidePack"
@@ -505,8 +510,8 @@
   </div>
 
   <div class="col-4">
-    <div class="block-button-pack">
-      <button class="control-button-blue"
+    <div class="add-package">
+      <button class="add-package-button"
         (click)="onAddPack(packName, packDetails, packLumpSumPayment, royaltyPack, totalInvest)">Добавить пакет</button>
     </div>
   </div>

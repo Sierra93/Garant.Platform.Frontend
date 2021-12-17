@@ -183,9 +183,13 @@
         <input type="file" (change)="onAttachmentDocument($event)">  
       </div>
 
+      <div *ngIf="attachmentFileName !== '' && attachmentFileName !== null">
+        {{attachmentFileName}}
+      </div>
+
       <div class="d-flex justify-content-start"
         *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
-        <button class="control-button-blue-small" (click)="onAttachmentDealDocumentAsync()">{{oInitData.buttonActionText}}</button>
+        <button class="control-button-blue-small" (click)="onSendDocumentVendorAsync()">{{oInitData.buttonActionText}}</button>
       </div>
     </div>
 

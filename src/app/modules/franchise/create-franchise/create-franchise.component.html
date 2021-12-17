@@ -421,7 +421,7 @@
     <span>Описание обучения</span>
     <div>
       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-      placeholder="Опишите обучение" [(ngModel)]="educationDetails" name="educationDetails"></textarea>
+        placeholder="Опишите обучение" [(ngModel)]="educationDetails" name="educationDetails"></textarea>
     </div>
 
     <div class="upload-file-education">
@@ -441,71 +441,81 @@
 
 
 <!-- Пакеты франшизы. -->
-<div class="p-field-checkbox control-checkbox">
-  <div>
-    <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
-    <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
+<div class="row franchise-packages">
+  <div class="col-12">
+    <div class="p-field-checkbox control-checkbox">
+      <div class="d-flex align-items-center">
+        <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+        <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
+      </div>
+    </div>
+
+    <p>Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет пакетов вы можете отключить
+      данный раздел галочкой слева от названия.</p>
   </div>
-</div>
 
-<div>
-  <small>
-    Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет пакетов вы можете отключить
-    данный
-    раздел галочкой слева от названия.
-  </small>
-</div>
+  <div class="col-4">
+    <!-- Блок с пакетами франшизы. -->
+    <div class="franchise-packages-block">
+      <div class="d-flex">
+        <div class="block-pack" *ngFor="let item of aPacks">
+          <div class="block-top-pack">
+            <div>
+              <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
+              [value]="item.Name" *ngIf="item.IsHidePack" name="packName" />
+              <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
+              *ngIf="!item.IsHidePack" [(ngModel)]="packName" name="packName" />
+            </div>
 
-<!-- Блок с пакетами франшизы. -->
-<div class="">
-  <div class="d-flex">
-    <div class="block-pack" *ngFor="let item of aPacks">
-      <div class="block-top-pack">
-        <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
-          [value]="item.Name" *ngIf="item.IsHidePack" name="packName" />
-        <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
-          *ngIf="!item.IsHidePack" [(ngModel)]="packName" name="packName" />
-        <br>
+            <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание"
+              [value]="item.Text" *ngIf="item.IsHidePack" name="packDetails" />
+            <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание"
+              [(ngModel)]="packDetails" *ngIf="!item.IsHidePack" name="packDetails" />
+          </div>
 
-        <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [value]="item.Text"
-          *ngIf="item.IsHidePack" name="packDetails" />
-        <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание"
-          [(ngModel)]="packDetails" *ngIf="!item.IsHidePack" name="packDetails" />
-      </div>
+          <div class="block-bottom-pack">
+            <div>
+              <span class="title-small">Паушальный взнос:</span><br>
+              <input type="text" class="control-big-input" pInputText [value]="item.LumpSumPayment"
+                *ngIf="item.IsHidePack" name="packLumpSumPayment" placeholder="₽" />
+              <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+                *ngIf="!item.IsHidePack" name="packLumpSumPayment" placeholder="₽" />
+            </div>
 
-      <div class="block-bottom-pack">
-        <div>
-          <span class="title-small">Паушальный взнос:</span><br>
-          <input type="text" class="control-big-input" pInputText [value]="item.LumpSumPayment" *ngIf="item.IsHidePack"
-            name="packLumpSumPayment" placeholder="₽" />
-          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
-            *ngIf="!item.IsHidePack" name="packLumpSumPayment" placeholder="₽" />
-        </div>
+            <div>
+              <span class="title-small">Роялти:</span><br>
+              <input type="text" class="control-big-input" pInputText [value]="item.Royalty" *ngIf="item.IsHidePack"
+                name="royaltyPack" placeholder="%" />
+              <input type="text" class="control-big-input" pInputText [(ngModel)]="royaltyPack" *ngIf="!item.IsHidePack"
+                name="royaltyPack" placeholder="%" />
+            </div>
 
-        <div>
-          <span class="title-small">Роялти:</span><br>
-          <input type="text" class="control-big-input" pInputText [value]="item.Royalty" *ngIf="item.IsHidePack"
-            name="royaltyPack" placeholder="%" />
-          <input type="text" class="control-big-input" pInputText [(ngModel)]="royaltyPack" *ngIf="!item.IsHidePack"
-            name="royaltyPack" placeholder="%" />
-        </div>
-
-        <div>
-          <span class="title-small">Всего инвестиций:</span><br>
-          <input type="text" class="control-big-input" pInputText [value]="item.Royalty" *ngIf="item.IsHidePack"
-            name="totalInvest" placeholder="₽" />
-          <input type="text" class="control-big-input" pInputText [(ngModel)]="totalInvest" *ngIf="!item.IsHidePack"
-            name="totalInvest" placeholder="₽" />
+            <div>
+              <span class="title-small">Всего инвестиций:</span><br>
+              <input type="text" class="control-big-input" pInputText [value]="item.Royalty" *ngIf="item.IsHidePack"
+                name="totalInvest" placeholder="₽" />
+              <input type="text" class="control-big-input" pInputText [(ngModel)]="totalInvest" *ngIf="!item.IsHidePack"
+                name="totalInvest" placeholder="₽" />
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 
+  <div class="col-4">
+    <div class="block-button-pack">
+      <button class="control-button-blue"
+        (click)="onAddPack(packName, packDetails, packLumpSumPayment, royaltyPack, totalInvest)">Добавить пакет</button>
+    </div>
+  </div>
 </div>
-<div class="block-button-pack">
-  <button class="control-button-blue"
-    (click)="onAddPack(packName, packDetails, packLumpSumPayment, royaltyPack, totalInvest)">Добавить пакет</button>
-</div>
+
+
+
+
+
 
 <hr class="hr">
 

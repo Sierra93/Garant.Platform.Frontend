@@ -39,7 +39,7 @@ export class GarantContractModule implements OnInit {
 
     public async ngOnInit() {
         await this.initGarantDataAsync();
-        await this.getAttachmentDocumentNameVendorDealAsync();
+        // await this.getAttachmentDocumentNameVendorDealAsync();
     };    
 
     /**

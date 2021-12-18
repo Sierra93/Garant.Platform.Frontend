@@ -188,9 +188,22 @@
       </div>
 
       <div class="d-flex justify-content-start"
-        *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
-        <button class="control-button-blue-small" (click)="onSendDocumentVendorAsync()">{{oInitData.buttonActionText}}</button>
+        *ngIf="oInitData.buttonActionTextContract !== '' && oInitData.buttonActionTextContract !== null">
+        <button class="control-button-blue-small" (click)="onSendDocumentVendorAsync()">
+          {{oInitData.buttonActionTextContract}}
+        </button>
       </div>
+    </div>
+
+    <!-- Блок от продавца. -->
+    <div class="right-panel-second mt-32">          
+     <div>{{oInitData.blockRightStatusTitle}}</div>
+
+     <hr>
+
+     <div>{{oInitData.buttonActionText}}</div>
+
+     <small>{{oInitData.dopComment}}</small>
     </div>
 
     <div class="d-flex justify-content-end" 

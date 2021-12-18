@@ -1,868 +1,324 @@
 @import "/src/app/app.component.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/common.scss";
-@import "/src/app/modules/franchise/create-franchise/create-franchise.component.scss";
+@import "./../create-franchise/create-franchise.component.scss";
 
+.section-margin {
+  margin-bottom: 5rem;
+}
 
-section#franchise-view {
-  .header {
-    h3 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 2rem;
-      font-weight: 500;
+.main-title, .section-title, .subsection-title {
+  font-family: 'Roboto', sans-serif;
+  line-height: normal;
+  font-weight: 500;
+}
+
+.main-title {
+  font-size: 2rem;
+  color: #000;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: #2c2c2c;
+  margin-bottom: 2rem;
+}
+
+.subsection-title {
+  font-size: 18px;
+  color: #000;
+}
+
+.logo-and-title {
+  margin-bottom: 3rem;
+}
+
+.franchise-logo {
+  margin-right: 1.5rem;
+}
+
+.description {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+  color: #2c2c2c;
+  margin-bottom: 2rem;
+}
+
+.content {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  color: #646464;
+  margin-bottom: 2.5rem;
+}
+
+.fact-item {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background-color: #f1f1f1;
+
+  strong {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: .5rem;
+  }
+
+  span {
+    color: #646464;
+
+    &:nth-child(2) {
+      font-size: 10px;
+      margin-bottom: 1rem;
+    }
+
+    &:last-child {
+      font-size: 14px;
+    }
+  }
+}
+
+.invest {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &-block {
+    padding: 1.5rem;
+    background-color: #f1f1f1;
+    height: 100%;
+
+    > div {
+      margin-bottom: 1.5rem;
+
+      strong {
+        font-size: 18px;
+        font-weight: 500;
+        color: #000;
+        margin-bottom: 1rem;
+      }
+
+      span {
+        font-size: 14px;
+        color: #646464;
+      }
+    }
+  }
+}
+
+.photos {
+  font-family: 'Roboto', sans-serif;
+
+  .franchise-holder {
+    padding: 1.5rem;
+    border: 2px solid #f1f1f1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+    strong {
+      font-size: 18px;
       color: #000;
     }
 
-    ul {
-      margin-bottom: 0;
-
-      li {
-        margin-right: 1rem;
-
-        a {
-          display: flex;
-          align-items: center;
-          font-family: 'Roboto', sans-serif;
-          font-size: .75rem;
-          font-weight: 400;
-          color: #2c2c2c;
-          text-decoration: none;
-
-          img {
-            width: 24px;
-            height: 24px;
-            margin-right: .5rem;
-          }
-        }
-      }
-    }
-
-    .leave-application {
-      button {
-        background-color: #f1f6ff;
-        width: 220px;
-        height: 70px;
-        font-family: 'Roboto', sans-serif;
-        font-size: 18px;
-        font-weight: 500;
-        color: #1f75fe;
-        border-radius: 8px;
-
-        &, &:focus {
-          border: none;
-          outline: none;
-        }
-      }
+    span {
+      font-size: 14px;
+      color: #646464;
     }
   }
+}
 
-  .gallery {
-    margin-bottom: 2rem;
+.key-finance {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 2rem;
 
-    > div:last-child {
-      padding-left: 13px;
-      .franchise-presenter {
-        padding: 24px;
-        border: 2px solid #f1f1f1;
-        height: 100%;
-
-        h4 {
-          max-width: 300px;
-        }
-
-        .profile-info {
-          h5, p {
-            margin-bottom: 1rem;
-          }
-
-          h5 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
-            font-weight: 500;
-            color: #000;
-          }
-
-          p {
-            font-family: 'Roboto', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            color: #646464;
-          }
-        }
-
-        .profile-img {
-          border-radius: 50%;
-        }
-
-        .options {
-          margin-top: 1rem;
-
-          button {
-            height: 70px;
-            width: 100%;
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
-            font-weight: 500;
-            border-radius: 8px;
-
-            &, &:focus {
-              border: none;
-              outline: none;
-            }
-          }
-
-          .be-online-franchiser {
-            margin-bottom: 1rem;
-
-            button {
-              background-color: #f1f6ff;
-              color: #1f75fe;
-            }
-          }
-
-          .start-chat {
-            button {
-              background-color: #1f75fe;
-              color: #fff;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .financial-information {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    margin-bottom: 5rem;
-
-    &-block {
-      background-color: #f1f1f1;
-      height: 121px;
-      width: 220px;
+  > div {
+    .key-finance-block {
       padding: 1.5rem;
+      background-color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
 
-      h5 {
-        font-family: 'Roboto', sans-serif;
+      strong {
         font-size: 18px;
-        font-weight: 500;
         color: #000;
         margin-bottom: .5rem;
       }
 
       span {
-        display: block;
+        color: #646464;
 
-        &.description {
-          font-family: 'Roboto', sans-serif;
+        &:nth-child(2) {
           font-size: 10px;
-          font-weight: 400;
-          color: #646464;
           margin-bottom: 1rem;
         }
-
-        &.price {
-          font-family: 'Roboto', sans-serif;
-          font-size: 14px;
-          font-weight: normal;
-          color: #646464;
-        }
-      }
-    }
-  }
-
-  .company-main-info {
-    margin-bottom: 5rem;
-
-    h2.company-info-header {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #2c2c2c;
-      margin-bottom: 1.5rem;
-    }
-
-    > div:first-child {
-      p, ul, li {
-        font-family: 'Roboto', sans-serif;
-        font-size: 18px;
-        font-weight: 400;
-        color: #2c2c2c;
-      }
-
-      p, ul {
-        padding-right: .5rem;
-      }
-    }
-
-    .investments {
-      padding: 24px;
-      background-color: #f1f1f1;
-
-      ul {
-        li {
-          display: flex;
-          flex-direction: column;
-          margin-bottom: 1.5rem;
-
-          strong {
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
-            font-weight: 500;
-            color: #000;
-            margin-bottom: 1rem;
-          }
-
-          span {
-            font-family: 'Roboto', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            color: #646464;
-          }
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-  }
-
-  .franchise-specialty {
-    padding: 24px;
-    border-radius: 4px;
-    background-color: #f1f6ff;
-    margin-bottom: 5rem;
-
-    > a {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-    }
-
-    h4 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 18px;
-      font-weight: 500;
-      color: #000;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-family: 'Roboto', sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      color: #646464;
-      margin-bottom: 2.5rem;
-    }
-
-    .buttons {
-      button {
-        padding: 0 16px;
-        border-radius: 4px;
-        height: 53px;
-        font-family: 'Roboto', sans-serif;
-        font-size: 18px;
-        font-weight: 500;
-
-        &, &:focus {
-          border: none;
-          outline: none;
-          background-color: transparent;
-        }
-
-        &:first-child {
-          margin-right: 10px;
-          background-color: #4487ff;
-          color: #fff;
-        }
-
         &:last-child {
-          border: solid 1px #636363;
-          color: #636363;
-        }
-      }
-    }
-  }
-
-  .main-franchise-information {
-    box-sizing: border-box;
-    margin-bottom: 5rem;
-
-    h2 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #2c2c2c;
-
-      &.margin-top {
-        margin-top: 5rem;
-      }
-    }
-
-    p {
-      font-family: 'Roboto', sans-serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: #2c2c2c;
-
-      &.middle {
-        margin: 2rem 0;
-      }
-    }
-
-    div.image {
-      margin: 1.5rem 0;
-    }
-
-    div.download-presentation, .franchise-income {
-      margin-left: 1.5rem;
-      background-color: #f1f6ff;
-      padding: 1.5rem;
-
-      &.franchise-income {
-        margin-left: 0;
-
-        .franchise-income-children {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 2.5rem;
-
-          .franchise-income-child {
-            background-color: #fff;
-            display: flex;
-            flex-direction: column;
-            width: 214px;
-            padding: 1.5rem;
-
-            strong {
-              font-family: 'Roboto', sans-serif;
-              font-size: 18px;
-              font-weight: 500;
-              color: #000;
-              margin-bottom: 1rem;
-            }
-
-            span {
-              font-family: 'Roboto', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              color: #646464;
-            }
-          }
-        }
-      }
-
-      h4 {
-        font-family: 'Roboto', sans-serif;
-        font-size: 18px;
-        font-weight: 500;
-        color: #000;
-        margin-bottom: 1rem;
-      }
-
-      p {
-        font-family: 'Roboto', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        color: #646464;
-        margin-bottom: 2.5rem;
-      }
-
-      .buttons {
-        button {
-          padding: 0 16px;
-          border-radius: 4px;
-          height: 53px;
-          font-family: 'Roboto', sans-serif;
-          font-size: 18px;
-          font-weight: 500;
-
-          &, &:focus {
-            border: none;
-            outline: none;
-            background-color: transparent;
-          }
-
-          &:first-child {
-            margin-right: 10px;
-            background-color: #4487ff;
-            color: #fff;
-          }
-        }
-      }
-    }
-  }
-
-  .study-and-support {
-    margin-bottom: 5rem;
-
-    h2 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #2c2c2c;
-      margin-bottom: 2rem;
-    }
-
-    h6, ul li {
-      font-family: 'Roboto', sans-serif;
-      font-size: 18px;
-      font-weight: 400;
-      color: #2c2c2c;
-      margin-bottom: 1.5rem;
-    }
-
-    h6 {
-      text-transform: uppercase;
-    }
-
-    .study-img {
-      width: 100%;
-      height: 645px;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-
-  .franchise-packages {
-    margin-bottom: 5rem;
-
-    h2 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #2c2c2c;
-      margin-bottom: 2rem;
-    }
-
-    .package {
-      filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
-      width: 463px;
-
-      &-name {
-        background-color: #1653B4;
-        padding: 1.5rem;
-
-        h4 {
-          font-family: 'Roboto', sans-serif;
-          font-weight: 400;
-          font-size: 1.5rem;
-          line-height: 28px;
-          color: #FFFFFF;
-        }
-      }
-
-      &-offers {
-        padding: 1rem;
-        background-color: #fff;
-
-        ul {
-          li {
-            &:not(:last-child) {
-              margin-bottom: 1.5rem;
-            }
-          }
-        }
-      }
-
-      &-characteristics {
-        padding: 1rem;
-        background-color: #F1F6FF;
-
-        ul {
-          li {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 21px;
-            color: #000000;
-            margin-bottom: 2rem;
-          }
-        }
-
-        .select-package {
-          button {
-            background-color: #4487FF;
-            color: #fff;
-            border: none;
-            outline: none;
-            width: 100%;
-            padding: 1rem 0;
-            border-radius: 4px;
-          }
-        }
-      }
-    }
-  }
-
-  .products {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5rem;
-
-    .product {
-      width: 342px;
-      padding: 1.5rem;
-      background-color: #f1f6ff;
-
-      strong {
-        font-family: 'Roboto', sans-serif;
-        font-size: 18px;
-        font-weight: 500;
-        color: #2c2c2c;
-        margin-bottom: 1rem;
-      }
-
-      span {
-        font-family: 'Roboto', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        color: #646464;
-      }
-    }
-  }
-
-  .video-and-feedback {
-    margin-bottom: 5rem;
-
-    h2 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #2c2c2c;
-      margin-bottom: 2rem;
-    }
-
-    .franchise-video {
-      iframe {
-        border-radius: 10px;
-      }
-    }
-
-    .franchise-application {
-      padding-left: 1rem;
-      .form-container {
-        box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
-        padding: 2rem 1.5rem;
-        height: 570px;
-        border-radius: 4px;
-        background-color: #fff;
-
-        form {
-          > div {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 1rem;
-
-            label {
-              font-family: 'Roboto', sans-serif;
-              font-size: .75rem;
-              font-weight: 400;
-              color: #646464;
-              margin-bottom: .5rem;
-
-              &.checkbox-label {
-                font-family: 'Roboto', sans-serif;
-                font-size: 1rem;
-                font-weight: 500;
-                color: #646464;
-              }
-            }
-
-            input {
-              height: 69px;
-              padding: 1.5rem 1rem;
-              border-radius: 8px;
-              border: 1.5px solid #646464;
-            }
-
-            .checkbox {
-              display: flex;
-              align-items: flex-start;
-              justify-content: space-between;
-              margin: .5rem 0;
-
-              input {
-                display: none;
-              }
-
-              span:nth-child(2) {
-                display: inline-block;
-                min-width: 2rem;
-                width: 2rem;
-                height: 2rem;
-                background-color: #dadada;
-                margin-right: 18px;
-                margin-top: 5px;
-                position: relative;
-
-                &::before {
-                  content: '';
-                  display: inline-block;
-                  width: 1.4rem;
-                  height: .7rem;
-                  border: none;
-                  border-bottom: 2px solid #fff;
-                  border-left: 2px solid #fff;
-                  position: absolute;
-                  top: 40%;
-                  left: 50%;
-                  transform: translate(-50%, -50%) rotate(-45deg);
-                }
-              }
-
-              input[type=checkbox]:checked + span {
-                background-color: #1f75fe;
-              }
-            }
-
-            button {
-              height: 69px;
-              border-radius: 8px;
-              background-color: #4487ff;
-              font-family: 'Roboto', sans-serif;
-              font-size: 18px;
-              font-weight: 500;
-              color: #fff;
-              border: none;
-              outline: none;
-            }
-          }
-        }
-
-        .application-info {
-          p {
-            font-family: 'Roboto', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            color: #646464;
-          }
-        }
-      }
-    }
-  }
-
-  .franchise-feedbacks {
-    margin-bottom: 5rem;
-
-    h2 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #2c2c2c;
-      margin-bottom: 2rem;
-    }
-
-    .feedback-blocks {
-      margin-bottom: 5rem;
-
-      .feedback-block {
-        width: 464px;
-        padding: 1.5rem 75px;
-        background-color: #f1f6ff;
-
-        .title {
-          display: flex;
-          flex-direction: column;
-
-          strong {
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
-            font-weight: 500;
-            color: #000;
-            margin-bottom: .5rem;
-          }
-
-          span {
-            font-family: 'Roboto', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            color: #646464;
-          }
-        }
-
-        .content {
-          margin: 2.5rem 0;
-          height: 190px;
-
-          p {
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
-            font-weight: normal;
-            color: #2c2c2c;
-            background-color: #fff;
-            padding: .5rem;
-          }
-        }
-
-        .owner-info {
-          display: flex;
-          align-items: center;
-
-          img {
-            margin-right: .5rem;
-          }
-
-          strong {
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
-            font-weight: 500;
-            color: #000;
-          }
-        }
-
-        .quotes {
-          top: 1.5rem;
-          left: 1.5rem;
-        }
-      }
-    }
-
-    .buttons {
-      > div {
-        button {
-          border: none;
-          outline: none;
-          padding: 1.5rem 1rem;
-          border-radius: 8px;
-          width: 464px;
-          height: 69px;
-          font-family: 'Roboto', sans-serif;
-          font-size: 18px;
-          font-weight: 500;
-        }
-
-        &.write-to-owner button {
-          background-color: #f1f6ff;
-          color: #1f75fe;
-          margin-right: 1.5rem;
-        }
-
-        &.be-an-owner button {
-          background-color: #1f75fe;
-          color: #fff;
-        }
-      }
-    }
-  }
-
-  .similar-franchises, .have-seen {
-    margin-bottom: 5rem;
-
-    h2 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #2c2c2c;
-      margin-bottom: 2rem;
-    }
-
-    &-blocks {
-      display: flex;
-
-      .similar-franchises-block, .have-seen-block {
-        width: 342px;
-        &:not(:last-child) {
-          margin-right: 1.5rem;
-        }
-
-        > div {
-          &.img {
-            margin-bottom: 1.5rem;
-            img {
-              width: 100%;
-            }
-          }
-
-          &.info {
-            h5.title {
-              font-family: 'Roboto', sans-serif;
-              font-size: 18px;
-              font-weight: 500;
-              color: #000;
-              margin-bottom: .5rem;
-            }
-
-            .main-info {
-              display: flex;
-              flex-direction: column;
-
-              > span {
-                font-family: 'Roboto', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                color: #646464;
-                margin-bottom: 1.5rem;
-              }
-            }
-
-            strong.price {
-              font-family: 'Roboto', sans-serif;
-              font-size: 18px;
-              font-weight: 500;
-              color: #000;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .ad {
-    display: flex;
-    margin-bottom: 5rem;
-
-    &-block {
-      width: 708px;
-      height: 272px;
-      border-radius: 16px;
-
-      &:not(:last-child) {
-        margin-right: 1.5rem;
-      }
-    }
-  }
-
-  .similar-categories {
-    margin-bottom: 5rem;
-    
-    h2 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #2c2c2c;
-      margin-bottom: 2rem;
-    }
-
-    .categories {
-      display: flex;
-      flex-wrap: wrap;
-
-      .category {
-        width: 25%;
-        margin-bottom: 1.5rem;
-
-        a {
-          display: flex;
-          align-items: center;
-          height: 40px;
-          font-family: 'Roboto', sans-serif;
-          font-size: 18px;
-          font-weight: 400;
-          color: #000;
-          text-decoration: none;
-
-          span.title {
-            padding: 0 2rem 0 .5rem;
-          }
+          font-size: 14px;
         }
       }
     }
   }
 }
 
+.buttons {
+  button {
+    height: 53px;
+    padding: 1rem;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    border: none;
+    background-color: transparent;
+
+    &:first-child {
+      background-color: #4487ff;
+      color: #fff;
+      margin-right: 1rem;
+    }
+
+    &:last-child {
+      border: solid 1px #636363;
+      color: #636363;
+    }
+  }
+}
+
+.franchise-details-block {
+  padding: 1.5rem;
+  border-radius: 4px;
+  background-color: #f1f6ff;
+  position: relative;
+
+  .child-blocks-wrapper {
+    > div {
+      display: flex;
+
+      .child-block {
+        padding: 1.5rem;
+        background-color: white;
+        font-family: 'Roboto', sans-serif;
+        height: 100%;
+
+        strong {
+          font-size: 18px;
+          font-weight: 500;
+          color: #000;
+          margin-bottom: 1rem;
+        }
+
+        span {
+          font-size: 14px;
+          color: #646464;
+        }
+      }
+    }
+  }
+
+  .close {
+    top: 1rem;
+    right: 1rem;
+
+    button, button:focus {
+      border: none;
+      outline: none;
+      background-color: transparent;
+    }
+  }
+}
+
+.franchise-packages {
+  font-family: 'Roboto', sans-serif;
+
+  .package {
+    filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
+
+    &-title {
+      padding: 1.5rem;
+      background: #1653B4;
+      font-size: 1.5rem;
+      color: #FFFFFF;
+
+      h6 {
+        margin-bottom: 0;
+      }
+    }
+
+    &-description {
+      filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
+      height: 400px;
+      background-color: #fff;
+      padding: 1rem;
+    }
+
+    &-offers {
+      font-family: 'Roboto', sans-serif;
+      padding: 1rem;
+      background: #F1F6FF;
+
+      > div {
+        display: flex;
+        align-items: center;
+
+        &:not(:last-child) {
+          margin-bottom: 2rem;
+        }
+
+        strong {
+          margin-right: .2rem;
+          font-weight: normal;
+          font-size: 18px;
+          line-height: 21px;
+          color: #000000;
+        }
+      }
+    }
+
+    .add-package {
+      .primary-button {
+        height: 53px;
+      }
+    }
+  }
+}
+
+.franchise-video {
+  font-family: 'Roboto', sans-serif;
+
+  .application-form {
+    padding: 2rem 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+    background-color: white;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+
+      label {
+        font-size: 12px;
+        color: #646464;
+        margin-bottom: .5rem;
+      }
+
+      input {
+        width: 100%;
+        height: 69px;
+        padding: 1.5rem 1rem;
+        border-radius: 8px;
+        border: 1.5px solid #646464;
+        font-size: 18px;
+        color: #c1c1c1;
+      }
+    }
+  }
+}

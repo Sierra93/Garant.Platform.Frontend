@@ -1,1161 +1,548 @@
-<section id="franchise-view">
+<section id="view-franchise">
   <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
-  <div class="row directory-path mb-5">
+  <!-- Блок с названием. -->
+  <div class="row logo-and-title">
+    <!-- <div class="col-12">
+      <h1 class="main-title">Название и логотип*</h1>
+    </div> -->
+
     <div class="col-12">
-      <p>
-        <span>Главная / </span>
-        <span>Франшизы / </span>
-        <span>Сфера / </span>
-        <span>Категория / </span>
-        <span>Подкатегория / </span>
-        <span>Страница франшизы</span>
-      </p>
-    </div>
-  </div>
+      <div class="d-flex align-items-center">
+        <div class="d-flex flex-column franchise-logo">
+          <!-- <span>Логотип</span> -->
+          <!-- <input type="file" (change)="uploadFranchiseLogoAsync($event)">   -->
+          <img src="./../../../../assets/images/franchise-pages/franchise-view-header.png"
+            alt="gobizy franchise view header" />
+        </div>
 
-  <div class="row header mb-5">
-    <div class="col-2">
-      <div>
-        <img src="./../../../../assets/images/franchise-pages/franchise-view-header.png" alt="gobizy franchise view header" />
-      </div>
-    </div>
-
-    <div class="col-8 d-flex flex-column justify-content-between">
-      <h3>Название франшизы</h3>
-      <ul class="list-unstyled d-flex">
-        <li>
-          <a href="#">
-            <span>
-              <img src="./../../../../assets/images/franchise-pages/star.svg" alt="gobizy marked franchises" />
-            </span>
-            <span>В избранное</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span>
-              <img src="./../../../../assets/images/franchise-pages/share.svg" alt="gobizy share franchises" />
-            </span>
-            <span>Поделиться</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span>
-              <img src="./../../../../assets/images/franchise-pages/complain.svg" alt="gobizy complain franchises" />
-            </span>
-            <span>Пожаловаться</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="col-2 d-flex justify-content-end">
-      <div class="leave-application">
-        <button>Оставить заявку</button>
+        <div class="d-flex flex-column">
+          <!-- <span>Название</span> -->
+          <!-- <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="logoName" name="logoName" /> -->
+          <h1 class="main-title">{{franchiseData.title}}</h1>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="row gallery">
-    <div class="col-8">
-      <div class="row">
-        <div class="col-3">
-          <div class="mb-2">
-            <span>
-              <img src="./../../../../assets/images/franchise-pages/gallery-img.png" alt="gobizy gallery image" />
-            </span>
-          </div>
-          <div class="mb-2">
-            <span>
-              <img src="./../../../../assets/images/franchise-pages/gallery-img.png" alt="gobizy gallery image" />
-            </span>
-          </div>
-          <div class="mb-2">
-            <span>
-              <img src="./../../../../assets/images/franchise-pages/gallery-img.png" alt="gobizy gallery image" />
-            </span>
-          </div>
-          <div>
-            <span>
-              <img src="./../../../../assets/images/franchise-pages/gallery-img.png" alt="gobizy gallery image" />
-            </span>
-          </div>
-        </div>
+  <div class="section-margin photos">
+    <div class="row">
+      <div class="col-8">
+        <!-- <div>
+          <h3 class="section-title">Фотографии*</h3> -->
+          <!-- <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>   -->
+        <!-- </div> -->
 
-        <div class="col-9">
-          <div class="h-100">
-            <img src="./../../../../assets/images/franchise-pages/gallery-img-current.png" alt="gobizy franchises gallery current" />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-4">
-      <div class="franchise-presenter">
         <div>
-          <h4 class="mb-3">Представитель франшизы на портале</h4>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="profile-info">
-              <h5>Имя Фамилия Отчество</h5>
-              <p>Генеральный директор</p>
-              <p>Был на сайте 13 минут назад</p>
-              <p>Размещено 13 октября 2021 года</p>
-            </div>
-            <div class="profile-img">
-              <img src="./../../../../assets/images/franchise-pages/gallery-profile-photo.png" alt="gobizy franchise gallery presenter profile photo" />
-            </div>
+          <span *ngIf="!aFranchisePhotos.length">Фотографии не загружены</span>
+          <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
+            [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
+            <ng-template pTemplate="item" let-item>
+              <img src="{{item}}" style="width: 700px; display: block;" />
+            </ng-template>
+
+            <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
+              <div class="p-grid p-nogutter p-justify-center dopni">
+                <img src="{{item}}" />
+              </div>
+            </ng-template>
+          </p-galleria>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="franchise-holder">
+          <!-- <h3 class="section-title">Ваша карточка для связи</h3> -->
+          <strong>{{fio}}</strong>
+
+          <div>
+            <!-- <label>Пример: владелец</label><br> -->
+            <!-- <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец" [(ngModel)]="lead" name="lead" /> -->
+            <span>{{franchiseData.status}}</span>
           </div>
-          <div class="options">
-            <div class="be-online-franchiser">
-              <button>Стать франчайзи онлайн через гарант</button>
-            </div>
-            <div class="start-chat">
-              <button>Начать чат с представителем</button>
-            </div>
-          </div>
+
+          <button class="btn primary-button become-franchiser">Стать франчайзи онлайн через гарант</button>
+          <button class="primary-button"
+            (click)="onRouteFranchiseChatAsync(franchiseData.franchiseId, 'Franchise', franchiseData.userId)">Начать чат с
+            представителем</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ключевые финансовые данные. -->
+    <div class="row key-finance">
+      <div class="col-2">
+        <div class="key-finance-block">
+          <strong>Общие инвестиции</strong>
+          <span>включая паушальный взнос</span>
+          <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="generalInvest" name="generalInvest" /> ₽ -->
+          <span>{{franchiseData.totalInvest}} ₽</span>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="key-finance-block">
+          <strong>Паушальный взнос</strong>
+          <span>зависит от выбранного пакета</span>
+          <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="lumpSumPayment" name="lumpSumPayment" /> ₽ -->
+          <span>{{franchiseData.lumpSumPayment}} ₽</span>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="key-finance-block">
+          <strong>Роялти</strong>
+          <span>от валовой выручки</span>
+          <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="royalty" name="royalty" /> ₽ -->
+          <span>{{franchiseData.royalty}} ₽</span>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="key-finance-block">
+          <strong>Окупаемость</strong>
+          <span>средняя и планируемая</span>
+          <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="payback" name="payback" /> мес. -->
+          <span>{{franchiseData.payback}} мес.</span>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="key-finance-block">
+          <strong>Месячная прибыль</strong>
+          <span>планируемая чистая прибыль</span>
+          <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="profitMonth" name="profitMonth" /> ₽ -->
+          <span>{{franchiseData.profitMonth}} ₽</span>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="key-finance-block">
+          <strong>Срок запуска</strong>
+          <span>средний срок открытия бизнеса</span>
+          <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="launchDate" name="launchDate" /> дн. -->
+          <span>{{franchiseData.launchDate}} дн. </span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="financial-information">
-    <div class="financial-information-block">
-      <h5>Общие инвестиции</h5>
-      <span class="description">включая паушальный взнос</span>
-      <span class="price">2 400 000 ₽</span>
-    </div>
-
-    <div class="financial-information-block">
-      <h5>Паушальный взнос</h5>
-      <span class="description">зависит от выбранного пакета</span>
-      <span class="price">400 000 ₽</span>
-    </div>
-
-    <div class="financial-information-block">
-      <h5>Роялти</h5>
-      <span class="description">от валовой выручки</span>
-      <span class="price">6.5%</span>
-    </div>
-
-    <div class="financial-information-block">
-      <h5>Окупаемость</h5>
-      <span class="description">средняя и планируемая</span>
-      <span class="price">10-12 месяцев</span>
-    </div>
-
-    <div class="financial-information-block">
-      <h5>Месячная прибыль</h5>
-      <span class="description">планируемая чистая прибыль</span>
-      <span class="price">240 000 ₽</span>
-    </div>
-
-    <div class="financial-information-block">
-      <h5>Срок запуска</h5>
-      <span class="description">средний срок открытия бизнеса</span>
-      <span class="price">2-3 месяца</span>
-    </div>
-  </div>
-
-  <div class="row company-main-info">
-    <div class="col-8">
-      <h2 class="company-info-header">Основная информация о компании</h2>
-      <p>COFFEE LIKE —  это бренд, известный как в России, так и за ее пределами. В настоящее время уютные кофе-бары встречают посетителей в семи странах мира: в РФ, Казахстане, Беларуси, Киргизии, Армении, Узбекистане и Коста-Рике.</p>
-
-      <p class="my-4">Результаты деятельности нашей компании по состоянию на 2020 год:</p>
-      <ul class="list-unstyled">
-        <li>306 заведений</li>
-        <li>142 города в РФ</li>
-        <li>738 кофе-баров</li>
-      </ul>
-
-      <p class="my-4">Успешная деятельность COFFEE LIKE начинается в 2013 году и все это время компания не прекращает расти. На конец 2013 года сеть кофеен состояла из 128 объектов и в течение двух лет увеличилась на 12-14%.  Доля COFFEE LIKE на рынке увеличилась на 46% по сравнению с 2019 годом.</p>
-
-      <div class="d-flex justify-content-between">
-        <div class="financial-information-block">
-          <h5>Год основания</h5>
-          <span class="description">компании</span>
-          <span class="price">2009 год</span>
-        </div>
-
-        <div class="financial-information-block">
-          <h5>Год запуска</h5>
-          <span class="description">франчайзинга</span>
-          <span class="price">2013 год</span>
-        </div>
-
-        <div class="financial-information-block">
-          <h5>Количество точек</h5>
-          <span class="description">в России</span>
-          <span class="price">160</span>
-        </div>
-
-        <div class="financial-information-block">
-          <h5>Собственных</h5>
-          <span class="description">предприятий</span>
-          <span class="price">10</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-4" style="padding-left: 1.1rem;">
-      <h2 class="company-info-header">Входит в инвестиции</h2>
-
-      <div class="investments">
-        <ul class="list-unstyled">
-          <li>
-            <strong>350 000 ₽</strong>
-            <span>Вступительный взнос</span>
-          </li>
-          <li>
-            <strong>300 000 ₽</strong>
-            <span>Оборудование</span>
-          </li>
-          <li>
-            <strong>120 000 ₽</strong>
-            <span>Изготовления стойки в ТЦ / Павильона /Ремонта помещения (в зависимости от формата)</span>
-          </li>
-          <li>
-            <strong>100 000 ₽</strong>
-            <span>Первая закупка расходных средств</span>
-          </li>
-          <li>
-            <strong>35 000 ₽</strong>
-            <span>Аренда на первый месяц</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="franchise-specialty position-relative">
-    <div>
-      <h4>Особенность франшизы</h4>
-
-      <p>В рейтинге сетей ресторанов, специализирующихся на продаже кофе, согласно авторитетному порталу Allegra World Coffee Portal в 2018 году компания COFFEE LIKE получила 1 место в РФ и 12 место среди европейских заведений. Основанием стали цифры динамики роста – показатель прироста заведений за один год (203 заведения), что стало беспрецедентным результатом.</p>
-
-      <div class="buttons">
-        <button>Получить финансовую модель</button>
-        <button>Позднее</button>
-      </div>
-    </div>
-
-    <a>
-      <img src="../../../assets/images/close.svg" alt="close icon" />
-    </a>
-  </div>
-
-  <div class="row main-franchise-information">
+  <!-- Основная информация о компании. -->
+  <div class="row main-company-info section-margin">
     <div class="col-8">
       <div>
-        <h2>Основная информация о франшизе</h2>
+        <h3 class="section-title">Основная информация о компании*</h3>
+        <!-- <span class="title-small">Описание деятельности</span><br> -->
+        <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+   placeholder="Опишите деятельность" [(ngModel)]="activityDetail"></textarea> -->
+        <p class="description">{{franchiseData.activityDetail}}</p>
+      </div>
 
-        <p class="middle">Компания Coffee Like основана в 2013 году двумя молодыми предпринимателями Зуфаром Гариповым и Аязом Шабутдиновым. С самого дня основания она позиционировалась как международный бренд и к концу года (всего через 2 месяца!) было продано уже 24 франшизы.</p>
-
-        <p>В следующем году предприниматели продолжили активно масштабировать бизнес, увеличив сеть до 141 кофе-бара. Результаты нашей работы были отмечены на федеральном уровне: Coffee Like стал финалистом конкурса «Школа молодого миллиардера», вошёл в 10 лучших стартапов малого предпринимательства, по мнению Forbes.</p>
-
-        <div class="image">
-          <img src="../../../../assets/images/franchise-pages/main-franchise-info.png" alt="gobizy franchise main information" />
-        </div>
-
-        <p class="mb-4">Начиная с 2016 года компания взяла курс на создание стабильного качественного продукта — такого, которым будут довольны 100% наших гостей. Выбранная стратегия позволила Coffee Like стать крупнейшей сетью в формате «кофе с собой» в СНГ: на конец декабря 2017 года сеть насчитывает 290 кофе-баров в России и ближнем зарубежье.</p>
-
-        <p>Сегодня это уже не провинциальные «стартаперы» с неопределенным будущим, а компания со сложившейся структурой и опытом.</p>
-
-        <h2 class="margin-top">Пример расчета прибыли одной точки Coffe Like</h2>
-
-        <p class="middle">На старте Вы получаете готовую, работающую бизнес-модель, опробованную сотнями франчайзи, а также алгоритмы выполнения финансовых планов, базу знаний, сопровождение экспертов в течение всего времени становления Вашего бизнеса.</p>
-
-        <div class="franchise-income">
-          <h4>Средние показатели кофейни по сети (на конец 2 квартала 2020 года)</h4>
-
-          <p>yа конец 2 квартала 2020 года</p>
-
-          <div class="franchise-income-children">
-            <div class="franchise-income-child">
-              <strong>Средний чек</strong>
-              <span>185 ₽</span>
-            </div>
-            <div class="franchise-income-child">
-              <strong>Товарная наценка</strong>
-              <span>200%</span>
-            </div>
-            <div class="franchise-income-child">
-              <strong>Средняя вырчука</strong>
-              <span>395 000 ₽</span>
-            </div>
-            <div class="franchise-income-child">
-              <strong>Рентабельность</strong>
-              <span>23,5%</span>
+      <!-- Дополнительные факты. -->
+      <div>
+        <h3 class="section-title">Дополнительные факты*</h3>
+        <div class="row">
+          <div class="col-3">
+            <div class="fact-item">
+              <strong>Год основания</strong>
+              <span>компании</span>
+              <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="baseDate" name="baseDate" /> -->
+              <span>{{franchiseData.baseDate}}</span>
             </div>
           </div>
 
-          <div class="buttons">
-            <button>Получить консультацию</button>
+          <div class="col-3">
+            <div class="fact-item">
+              <strong>Год запуска</strong>
+              <span>франчайзинга</span>
+              <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="yearStart" name="yearStart" /> -->
+              <span>{{franchiseData.yearStart}}</span>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="fact-item">
+              <strong>Количество точек</strong>
+              <span>в России</span>
+              <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="dotCount" name="dotCount" />  -->
+              <span>{{franchiseData.dotCount}}</span>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="fact-item">
+              <strong>Собственных</strong>
+              <span>предприятий</span>
+              <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="businessCount" name="businessCount" /> -->
+              <span>{{franchiseData.businessCount}}</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="col-4">
-      <div class="download-presentation">
-        <h4>Скачать презентацию</h4>
+      <div class="invest">
+        <h3 class="section-title">Входит в инвестиции*</h3>
+        <div class="invest-block" *ngFor="let item of aInvestInclude">
+          <div>
+            <strong>{{item.Price}}</strong>
+            <span class="">Стоимость</span>
+            <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="priceInvest" name="priceInvest" /> ₽ -->
+          </div>
 
-        <p>Немного более подробная информация в официальной презентации франшизы.</p>
+          <div>
+            <strong>{{item.Name}}</strong>
+            <span class="">Название</span>
+            <!-- <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText [(ngModel)]="nameInvest" name="nameInvest" />  -->
+            <!-- <br>
+            <button class="control-button-blue-small">Добавить пункт</button> -->
+          </div>
+        </div>
+
+        <!-- <small>
+          Данный раздел обязателен для заполнения.<br>
+          Подойдите к заполнению данного раздела<br>
+          тщательно, так как при продаже онлайн через сервис<br>
+          гарант данные разделы способствуют разбиению<br>
+          на этапы.
+        </small> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Описание особенности франшизы. -->
+  <div class="row franchise-details section-margin">
+    <div class="col-12">
+      <div class="franchise-details-block">
+        <h5 class="subsection-title">Описание особенности франшизы</h5>
+        <!-- <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText [(ngModel)]="featureFranchise" name="featureFranchise" /> -->
+        <!-- <span class="text">Прикрепить финансовую модель .xlsx</span> -->
+
+        <p class="content">{{franchiseData.peculiarity}}</p>
 
         <div class="buttons">
-          <button>Скачать презентацию</button>
+          <button>Получить финансовую модель</button>
+          <button>Позднее</button>
+          <!-- <input type="file" (change)="uploadFinModelAsync($event)">   -->
+          <!-- <button class="control-button-blue-small">Прикрепить файл</button> -->
+          <!-- <br> -->
+          <!-- <small>
+            Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать презентацию, просто пропустите данный этап.
+          </small> -->
+        </div>
+
+        <div class="close position-absolute">
+          <button class="close">
+            <img src="../../../assets/images/close.svg" alt="close icon" />
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row study-and-support">
+  <!-- Основная информация о франшизе. -->
+  <div class="row franchise-main-info section-margin">
     <div class="col-8">
-      <h2>Обучение и поддержка</h2>
-
-      <h6>4 ЭТАПА ОЦЕНКИ МЕСТА ДЛЯ КОФЕ-БАРА:</h6>
-
-      <ul class="list-unstyled">
-        <li>Помощь в выборе места и формата кофе-бара.</li>
-        <li>Выявление арендной ставки и подсчет трафика.</li>
-        <li>Формирование бизнес-плана по развитию кофе-бара на первые 1,5 года. Этот прогноз включает в себя данные по рентабельности, прибыли, выручке, транзакциям, а также по основным переменным и постоянным расходам.</li>
-        <li>Согласование места расположения.</li>
-      </ul>
-
-      <div class="study-img">
-        <img src="../../../../assets/images/franchise-pages/study-and-support.png" alt="gobizy study and support" />
-      </div>
-    </div>
-
-    <!-- пустой блок -->
-    <div class="col-4"></div>
-    <!-- пустой блок -->
-  </div>
-
-  <div class="row franchise-packages">
-    <div class="col-12">
-      <h2>Пакеты франшизы</h2>
-    </div>
-
-    <div class="d-flex justify-content-between">
       <div>
-        <div class="package h-100">
-          <div class="package-name">
-            <h4>Пакет “Автоматическая кофейня”</h4>
-          </div>
-          <div class="package-offers h-100">
-            <ul class="list-unstyled">
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-            </ul>
-          </div>
+        <h3 class="section-title">Основная информация о франшизе*</h3>
+        <div>
+          <!-- <span class="title-small">Описание франшизы</span><br> -->
+          <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Опишите франшизу" [(ngModel)]="defailsFranchise" name="defailsFranchise"></textarea> -->
+          <p class="description">{{franchiseData.text}}</p>
         </div>
       </div>
 
-      <div>
-        <div class="package h-100">
-          <div class="package-name">
-            <h4>Пакет “Сеть кофеен”</h4>
-          </div>
-          <div class="package-offers h-100">
-            <ul class="list-unstyled">
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="package h-100">
-          <div class="package-name">
-            <h4>Пакет “Оптимальный”</h4>
-          </div>
-          <div class="package-offers h-100">
-            <ul class="list-unstyled">
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-              <li>
-                <span class="me-2">
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="tick icon" />
-                </span>
-                <span>Преимущеество 1</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="d-flex justify-content-between">
-      <div class="package">
-        <div class="package-characteristics">
-          <ul class="list-unstyled">
-            <li>Паушальный взнос: 150 000</li>
-            <li>Роялти: 5%</li>
-            <li>Всего инвестиций: 150 000</li>
-          </ul>
-
-          <div class="select-package">
-            <button>Хочу этот пакет</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="package">
-        <div class="package-characteristics">
-          <ul class="list-unstyled">
-            <li>Паушальный взнос: 150 000</li>
-            <li>Роялти: 5%</li>
-            <li>Всего инвестиций: 150 000</li>
-          </ul>
-
-          <div class="select-package">
-            <button>Хочу этот пакет</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="package">
-        <div class="package-characteristics">
-          <ul class="list-unstyled">
-            <li>Паушальный взнос: 150 000</li>
-            <li>Роялти: 5%</li>
-            <li>Всего инвестиций: 150 000</li>
-          </ul>
-
-          <div class="select-package">
-            <button>Хочу этот пакет</button>
-          </div>
-        </div>
-      </div>
+      <!-- <div class="invest-in">
+            <span class="title-strong">Добавить презентацию</span><br>
+            <div class="block-details-franch">
+              <small>Прикрепить документ .pdf</small><br>
+              <button class="control-button-blue-small">Прикрепить файл</button><br>
+              <input type="file" (change)="uploadPresentAsync($event)">
+            </div>
+            <small>
+              Загружать презентацию не обязательно.<br>
+              Однако, это способствует повышению конверсии<br>
+              и глубинной заинтересованности в проекте. Если<br>
+              вы не хотите загружать презентацию, просто<br>
+              пропустите данный этап.
+            </small>
+          </div> -->
     </div>
   </div>
 
-  <div class="products">
-    <div class="product">
-      <div class="d-flex justify-content-between">
-        <div class="d-flex flex-column">
-          <strong>Кофе с собой</strong>
-          <span>Идеальный вид бизнеса для новичков.</span>
-        </div>
-        <div>
-          <img src="../../../../assets/images/franchise-pages/prod1.png" alt="gobizy product" />
-        </div>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="d-flex justify-content-between">
-        <div class="d-flex flex-column">
-          <strong>Для начинающих</strong>
-          <span>Собраны лучшие бизнесы для новичков</span>
-        </div>
-        <div>
-          <img src="../../../../assets/images/franchise-pages/prod2.png" alt="gobizy product" />
-        </div>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="d-flex justify-content-between">
-        <div class="d-flex flex-column">
-          <strong>Стритфуд и <br />фастфуд</strong>
-          <span>Универсальная сфера для любителей сферы общепита</span>
-        </div>
-        <div>
-          <img src="../../../../assets/images/franchise-pages/prod3.png" alt="gobizy product" />
-        </div>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="d-flex justify-content-between">
-        <div class="d-flex flex-column">
-          <strong>Для начинающих</strong>
-          <span>Собраны лучшие бизнесы для новичков</span>
-        </div>
-        <div>
-          <img src="../../../../assets/images/franchise-pages/prod2.png" alt="gobizy product" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row video-and-feedback">
-    <div class="col-8 franchise-video">
-      <h2>Видео о франшизе</h2>
+  <!-- Пример расчета прибыли. -->
+  <div class="row income-calculation section-margin">
+    <div class="col-8">
       <div>
-        <iframe width="100%" height="570" src="https://www.youtube.com/embed/az2HWvWX_d4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h3 class="section-title">Пример расчета прибыли*</h3>
+        <!-- <span class="title-small">Описание расчета</span><br> -->
+        <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+          placeholder="Опишите расчет" [(ngModel)]="paymentDetails" name="paymentDetails"></textarea> -->
+        <p class="description">{{franchiseData.paymentDetail}}</p>
       </div>
     </div>
 
-    <div class="col-4 franchise-application">
-      <h2>Оставьте заявку</h2>
-      <div class="form-container">
-        <form action="">
-          <div>
-            <label for="name">Имя</label>
-            <input type="text" id="name" name="name" placeholder="Имя" />
-          </div>
+    <div class="col-8">
+      <!-- Ключевые финансовые показатели. -->
+      <div class="franchise-details-block">
+        <!-- <label>Название</label><br> -->
+        <!-- <input type="text" class="franch-details" placeholder="Пример: расчет прибыль 1 кофейни" pInputText [(ngModel)]="namesIndicators" name="namesIndicators" /> -->
+        <h5 class="subsection-title">Ключевые финансовые показатели</h5>
+        <div class="child-blocks-wrapper">
+          <div class="row" *ngFor="let item of aFinIndicators">
+            <div class="col-3">
+              <div class="child-block d-flex flex-column">
+                <strong>Средний чек</strong>
+                <!-- <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator1" name="finIndicator1" /><br> -->
+                <span>{{item.Name}}</span>
+              </div>
+            </div>
 
-          <div>
-            <label for="phone">Телефон</label>
-            <input type="text" id="phone" name="phone" placeholder="Телефон" />
-          </div>
-
-          <div>
-            <label for="city">Город</label>
-            <input type="text" id="city" name="city" placeholder="Город" />
-          </div>
-
-          <div>
-            <div class="checkbox">
-              <input type="checkbox" id="policyAgreement" name="policyAgreement" />
-              <span></span>
-              <label for="policyAgreement" class="checkbox-label">Согласен с условиями использования сервисов GoBizy и обработки персональных данных</label>
+            <div class="col-3">
+              <div class="child-block d-flex flex-column">
+                <strong>Процент или финансы</strong>
+                <!-- <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+            [(ngModel)]="percentFinancial1" name="" /> -->
+                <span>{{item.Price}}</span>
+              </div>
             </div>
           </div>
 
-          <div>
-            <button>Оставить заявку</button>
-          </div>
-        </form>
+          <!-- <div class="fin-indicator">
+            <small>Например: рентабельность</small><br>
+            <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator2" name="finIndicator2" /><br>
+            <small>Процент или финансы</small><br>
+            <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+          [(ngModel)]="percentFinancial2" name="percentFinancial2" />
+          </div> -->
 
-        <div class="application-info">
-          <p class="text-center">Заявку оставляли 5 раз за последний месяц</p>
+          <!-- <div class="fin-indicator">
+            <small>Например: средняя выручка</small><br>
+            <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator3" name="finIndicator3" /><br>
+            <small>Процент или финансы</small><br>
+            <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+          [(ngModel)]="percentFinancial3" name="percentFinancial3" />
+          </div> -->
+
+          <!-- <div class="fin-indicator">
+            <small>Например: товарная наценка</small><br>
+            <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator4" name="finIndicator4" /><br>
+            <small>Процент или финансы</small><br>
+            <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+          [(ngModel)]="percentFinancial4" name="percentFinancial4" />
+          </div> -->
+        </div>
+
+        <div class="close position-absolute">
+          <button class="close">
+            <img src="../../../assets/images/close.svg" alt="close icon" />
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="franchise-feedbacks">
-    <h2>Отзывы о франшизе</h2>
-    <div class="d-flex justify-content-between feedback-blocks">
-      <div class="feedback-block position-relative">
-        <div class="title">
-          <strong>Текстовый отзыв</strong>
-          <span>Москва</span>
-        </div>
-
-        <div class="content">
-          <p>К 2021 уже знала, что обязательно хочу окунуться в кофейный бизнес, первым выбором конечно же были такие гранды, как One Price Coffee, Cofix и Cofelike. Однако уже после первой встречи сомнений не было...</p>
-        </div>
-
-        <div class="owner-info">
-          <img src="../../../../assets/images/franchise-pages/profile1.png" alt="gobizy feedback owner profile picture" />
-          <strong class="fullname">Анастасия Иванова</strong>
-        </div>
-
-        <div class="quotes position-absolute">
-          <img src="../../../../assets/images/franchise-pages/quotes.svg" alt="quotes icon" />
-        </div>
-      </div>
-
-      <div class="feedback-block position-relative">
-        <div class="title">
-          <strong>Видео-отзыв</strong>
-          <span>Архангельск</span>
-        </div>
-
-        <div class="content">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/az2HWvWX_d4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-
-        <div class="owner-info">
-          <img src="../../../../assets/images/franchise-pages/profile2.png" alt="gobizy feedback owner profile picture" />
-          <strong class="fullname">Петр Жилин и Александр Семаков</strong>
-        </div>
-
-        <div class="quotes position-absolute">
-          <img src="../../../../assets/images/franchise-pages/quotes.svg" alt="quotes icon" />
-        </div>
-      </div>
-
-      <div class="feedback-block position-relative">
-        <div class="title">
-          <strong>Текстовый отзыв</strong>
-          <span>Москва</span>
-        </div>
-
-        <div class="content">
-          <p>К 2021 уже знала, что обязательно хочу окунуться в кофейный бизнес, первым выбором конечно же были такие гранды, как One Price Coffee, Cofix и Cofelike. Однако уже после первой встречи сомнений не было...</p>
-        </div>
-
-        <div class="owner-info">
-          <img src="../../../../assets/images/franchise-pages/profile1.png" alt="gobizy feedback owner profile picture" />
-          <strong class="fullname">Анастасия Иванова</strong>
-        </div>
-
-        <div class="quotes position-absolute">
-          <img src="../../../../assets/images/franchise-pages/quotes.svg" alt="quotes icon" />
-        </div>
-      </div>
-    </div>
-
-    <div class="d-flex buttons">
-      <div class="write-to-owner">
-        <button>Написать вледельцу</button>
-      </div>
-      <div class="be-an-owner">
-        <button>Стать владельцем онлайн</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="similar-franchises">
-    <h2>Похожие франшизы</h2>
-
-    <div class="similar-franchises-blocks">
-      <div class="similar-franchises-block">
-        <div class="img">
-          <img src="../../../../assets/images/franchise-pages/similar-franchise1.png" alt="gobizy similar franchise picture" />
-        </div>
-        <div class="info">
-          <h5 class="title">Название франшизы</h5>
-          <div class="main-info">
-            <span>
-              <span>Франшиза</span>
-              <span class="mx-2">&#x25CF;</span>
-              <span>12 точек</span>
-            </span>
-            <strong class="price">от 1 500 000 ₽</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="similar-franchises-block">
-        <div class="img">
-          <img src="../../../../assets/images/franchise-pages/similar-franchise2.png" alt="gobizy similar franchise picture" />
-        </div>
-        <div class="info">
-          <h5 class="title">Название франшизы</h5>
-          <div class="main-info">
-            <span>
-              <span>Франшиза</span>
-              <span class="mx-2">&#x25CF;</span>
-              <span>5 точек</span>
-            </span>
-            <strong class="price">от 250 000 ₽</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="similar-franchises-block">
-        <div class="img">
-          <img src="../../../../assets/images/franchise-pages/similar-franchise3.png" alt="gobizy similar franchise picture" />
-        </div>
-        <div class="info">
-          <h5 class="title">Название франшизы</h5>
-          <div class="main-info">
-            <span>
-              <span>Франшиза</span>
-              <span class="mx-2">&#x25CF;</span>
-              <span>290 точек</span>
-            </span>
-            <strong class="price">от 4 500 000 ₽</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="similar-franchises-block">
-        <div class="img">
-          <img src="../../../../assets/images/franchise-pages/similar-franchise4.png" alt="gobizy similar franchise picture" />
-        </div>
-        <div class="info">
-          <h5 class="title">Название франшизы</h5>
-          <div class="main-info">
-            <span>
-              <span>Франшиза</span>
-              <span class="mx-2">&#x25CF;</span>
-              <span>7 точек</span>
-            </span>
-            <strong class="price">Стоимость франшизы: от 800 000 ₽</strong>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="have-seen">
-    <h2>Вы смотрели</h2>
-
-    <div class="have-seen-blocks">
-      <div class="have-seen-block">
-        <div class="img">
-          <img src="../../../../assets/images/franchise-pages/similar-franchise1.png" alt="gobizy similar franchise picture" />
-        </div>
-        <div class="info">
-          <h5 class="title">Название франшизы</h5>
-          <div class="main-info">
-            <span>
-              <span>Франшиза</span>
-              <span class="mx-2">&#x25CF;</span>
-              <span>12 точек</span>
-            </span>
-            <strong class="price">от 1 500 000 ₽</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="have-seen-block">
-        <div class="img">
-          <img src="../../../../assets/images/franchise-pages/similar-franchise2.png" alt="gobizy similar franchise picture" />
-        </div>
-        <div class="info">
-          <h5 class="title">Название франшизы</h5>
-          <div class="main-info">
-            <span>
-              <span>Франшиза</span>
-              <span class="mx-2">&#x25CF;</span>
-              <span>5 точек</span>
-            </span>
-            <strong class="price">от 250 000 ₽</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="have-seen-block">
-        <div class="img">
-          <img src="../../../../assets/images/franchise-pages/similar-franchise3.png" alt="gobizy similar franchise picture" />
-        </div>
-        <div class="info">
-          <h5 class="title">Название франшизы</h5>
-          <div class="main-info">
-            <span>
-              <span>Франшиза</span>
-              <span class="mx-2">&#x25CF;</span>
-              <span>290 точек</span>
-            </span>
-            <strong class="price">от 4 500 000 ₽</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="have-seen-block">
-        <div class="img">
-          <img src="../../../../assets/images/franchise-pages/similar-franchise4.png" alt="gobizy similar franchise picture" />
-        </div>
-        <div class="info">
-          <h5 class="title">Название франшизы</h5>
-          <div class="main-info">
-            <span>
-              <span>Франшиза</span>
-              <span class="mx-2">&#x25CF;</span>
-              <span>7 точек</span>
-            </span>
-            <strong class="price">Стоимость франшизы: от 800 000 ₽</strong>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="ad">
-    <div class="ad-block">
-      <a href="">
-        <img src="../../../../assets/images/franchise-pages/ad.png" alt="gobizy advertisiment block" />
-      </a>
-    </div>
-
-    <div class="ad-block">
-      <a href="">
-        <img src="../../../../assets/images/franchise-pages/ad.png" alt="gobizy advertisiment block" />
-      </a>
-    </div>
-  </div>
-
-  <div class="similar-categories">
-    <h2>Похоже категории</h2>
-
-    <div class="categories">
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/car.svg" alt="gobizy categories car" />
-          </span>
-          <span class="title">Авто</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/children.svg" alt="gobizy categories children" />
-          </span>
-          <span class="title">Детские</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/retail.svg" alt="gobizy categories retail" />
-          </span>
-          <span class="title">Розничная торговля</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/internet-store.svg" alt="gobizy categories internet-store" />
-          </span>
-          <span class="title">Интернет-магазин</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/site-and-domain-exchange.svg" alt="gobizy categories site and domain exchange" />
-          </span>
-          <span class="title">Биржа сайтов и доменов</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/production.svg" alt="gobizy categories production" />
-          </span>
-          <span class="title">Производство</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/financial-services.svg" alt="gobizy categories financial services" />
-          </span>
-          <span class="title">Финансовые услуги</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/education.svg" alt="gobizy categories education" />
-          </span>
-          <span class="title">Обучение</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/health-and-beauty.svg" alt="gobizy categories health and beauty" />
-          </span>
-          <span class="title">Здоровье и красота</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/entertainment.svg" alt="gobizy categories entertainment" />
-          </span>
-          <span class="title">Развлечение и отдых</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/sport.svg" alt="gobizy categories sport" />
-          </span>
-          <span class="title">Спорт</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/business-services.svg" alt="gobizy categories business services" />
-          </span>
-          <span class="title">Услуги для бизнеса</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/internet.svg" alt="gobizy categories internet" />
-          </span>
-          <span class="title">Интернет и IT</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/public-catering.svg" alt="gobizy categories public catering" />
-          </span>
-          <span class="title">Общепит</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/construction.svg" alt="gobizy categories construction" />
-          </span>
-          <span class="title">Строительство</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-
-      <div class="category">
-        <a href="">
-          <span>
-            <img src="../../../../assets/images/franchise-pages/categories-icons/public-services.svg" alt="gobizy categories public services" />
-          </span>
-          <span class="title">Услуги для населения</span>
-          <span>
-            <img src="../../../../assets/images/arrow.svg" alt="arrow icon" />
-          </span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-<!-- <span>{{franchiseData.title}}</span> -->
-
-   <!-- <div class="block-gallery">
-     <div>
-      <span *ngIf="!aFranchisePhotos.length">Фотографии не загружены</span>
-       <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
-         [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
-         <ng-template pTemplate="item" let-item>
-           <img src="{{item}}" style="width: 700px; display: block;" />
-         </ng-template>
-
-         <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
-           <div class="p-grid p-nogutter p-justify-center dopni">
-             <img src="{{item}}" />
-           </div>
-         </ng-template>
-       </p-galleria>
-     </div>
-
-     <div>
-      <span class="title-strong">Ваша карточка для связи</span><br>
-      <span class="title-small">{{fio}}</span><br>
-
+  <!-- Обучение и поддержка. -->
+  <div class="row section-margin education-and-support">
+    <div class="col-8">
       <div>
-        <span>{{franchiseData.status}}</span>
+        <h3 class="section-title">Обучение и поддержка*</h3>
+        <!-- <span class="title-small">Описание обучения</span><br> -->
+        <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+      placeholder="Опишите обучение" [(ngModel)]="educationDetails" name="educationDetails"></textarea><br> -->
+        <!-- <input type="file" (change)="uploadEducationPhotosAsync($event)">   -->
+        <p class="description">{{franchiseData.trainingDetails}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Пакеты франшизы. -->
+  <div class="row franchise-packages section-margin">
+    <div class="col-12 mb-3">
+      <div class="d-flex">
+        <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+        <h3 class="section-title mb-0">
+          <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
+        </h3>
+      </div>
+    </div>
+
+    <!-- <div>
+      <small>
+        Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет пакетов вы можете отключить данный раздел галочкой слева от названия.
+      </small>
+    </div> -->
+
+  <!-- Блок с пакетами франшизы. -->
+  <div class="col-3">
+    <div class="package" *ngFor="let item of aPacks">
+      <div class="package-title">
+        <!-- <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
+        [(ngModel)]="packName" name="packName" /> -->
+        <!-- <span class="title-small">Название пакета:</span><br> -->
+        <h6>{{item.Name}}</h6>
+        <!-- <br> -->
+        <!-- <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [(ngModel)]="packDetails"
+        name="packDetails" /> -->
+        <!-- <span class="title-small">Описание:</span><br>
+        <span>{{item.Text}}</span> -->
       </div>
 
-      <button class="btn btn-link">Стать франчайзи онлайн через гарант</button><br>
-      <button class="control-button-blue" (click)="onRouteFranchiseChatAsync(franchiseData.franchiseId, 'Franchise', franchiseData.userId)">Начать чат с представителем</button>
-     </div>
-   </div> -->
+      <div class="package-description">
+        <p class="content">{{item.Text}}</p>
+      </div>
 
-   <!-- <span>{{franchiseData.totalInvest}} ₽</span> -->
+      <div class="package-offers">
+        <div>
+          <strong>Паушальный взнос:</strong>
+          <!-- <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+          name="packLumpSumPayment" /> ₽ -->
+          <span>{{item.LumpSumPayment}} ₽</span>
+        </div>
 
-   <!-- <span>{{franchiseData.lumpSumPayment}} ₽</span> -->
+        <div>
+          <strong>Роялти:</strong>
+          <!-- <input type="text" class="control-big-input" pInputText [(ngModel)]="royaltyPack"
+          name="royaltyPack" /> % -->
+          <span>{{item.Royalty}} %</span>
+        </div>
 
-   <!-- <span>{{franchiseData.royalty}} ₽</span> -->
+        <div>
+          <strong>Всего инвестиций:</strong>
+          <!-- <input type="text" class="control-big-input" pInputText [(ngModel)]="totalInvest"
+          name="totalInvest" /> ₽ -->
+          <span>{{item.TotalInvest}} ₽</span>
+        </div>
 
-   <!-- <span>{{franchiseData.payback}} мес.</span> -->
+        <div class="add-package">
+          <button class="primary-button">Добавить пакет</button>
+        </div>
+      </div>
+    </div>
 
-   <!-- <span>{{franchiseData.profitMonth}} ₽</span> -->
-
-   <!-- <span>{{franchiseData.launchDate}} дн. </span> -->
-
-   <!-- <span>{{franchiseData.activityDetail}}</span> -->
-
-   <!-- <div class="invest-item-last" *ngFor="let item of aInvestInclude">
-    <span>{{item.Price}}</span>
-    <span>{{item.Name}}</span>
+    <!-- <div class="block-button-pack">
+    <button class="control-button-blue">Добавить пакет</button>
   </div> -->
+  </div>
+  </div>
 
-  <!-- <span>{{franchiseData.baseDate}}</span> -->
+  <!-- Видео о франшизе. -->
+  <div class="row franchise-video section-margin">
+    <div class="col-8">
+      <div>
+        <div class="d-flex">
+          <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+          <h3 class="section-title mb-0">
+            <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
+          </h3>
+        </div>
 
-  <!-- <span>{{franchiseData.yearStart}}</span> -->
+        <div>
+          <!-- <span class="title-small">Ссылка на видео</span><br> -->
+          <!-- <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="videoLink"
+      name="videoLink" />  -->
+          <p class="description">{{franchiseData.urlVideo}}</p>
+        </div>
+      </div>
+    </div>
 
-  <!-- <span>{{franchiseData.dotCount}}</span> -->
+    <div class="col-4">
+      <!-- Форма заявки. -->
+      <h3 class="section-title">Оставьте заявку</h3>
 
-  <!-- <span>{{franchiseData.businessCount}}</span> -->
+      <div class="application-form">
+        <div>
+          <label for="name" class="">Имя</label>
+          <input type="text" class="control-input-filter-price" pInputText placeholder="Имя" name="name" />
+        </div>
 
-  <!-- <span>{{franchiseData.peculiarity}}</span> -->
+        <div>
+          <label for="number" class="">Телефон</label>
+          <input type="text" class="control-input-filter-price" pInputText placeholder="Телефон" name="number" />
+        </div>
 
-  <!-- <span>{{franchiseData.text}}</span> -->
+        <div>
+          <label for="city" class="">Город</label>
+          <input type="text" class="control-input-filter-price" pInputText placeholder="Город" name="city" />
+        </div>
 
-  <!-- <span>{{franchiseData.paymentDetail}}</span> -->
+        <div>
+          <button class="primary-button">Оставить заявку</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- <div class="fin-indicator-first" *ngFor="let item of aFinIndicators">
-    <span>{{item.Name}}</span><br>
-    <span>{{item.Price}}</span><br>
-  </div> -->
-
-  <!-- <span>{{franchiseData.trainingDetails}}</span> -->
 
   <!-- <div>
-    <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
-    <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
-   </div> -->
-   
-   <!-- <div class="block-pack" *ngFor="let item of aPacks">
-    <div class="block-top-pack">
-        <span class="title-small">Название пакета:</span><br>
-        <span>{{item.Name}}</span>
-      <br>
-        <span class="title-small">Описание:</span><br>
-        <span>{{item.Text}}</span>
+ <small>
+  Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет видео вы можете отключить данный раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.
+ </small>
+</div> -->
+
+  <!-- <hr class="hr"> -->
+
+  <!-- Отзывы о франшизе. -->
+  <!-- <div class="p-field-checkbox control-checkbox">
+  <div>
+   <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+   <label for="packs" class="control-label-checkbox">Отзывы о франшизе</label>
+  </div>
+</div>
+<div>
+ <small>
+  На данный момент доступны только видеоотзывы. Если у вас новая франшиза, то отзывов могло не быть. Однако вы можете добавить отзывы, если они есть или отключить их посредством галочки около названия.
+ </small>
+</div> -->
+
+  <!-- Блок с отзывами. -->
+  <!-- <div class="d-flex">
+  <div class="">
+    <div class="block-pack">
+      <div class="block-top-pack">
+        <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
+          [(ngModel)]="packName" name="packName" />
+        <br>
+        <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [(ngModel)]="packDetails"
+          name="packDetails" />
+      </div>
+      <div class="block-bottom-pack">
+        <div>
+          <span class="title-small">Паушальный взнос:</span><br>
+          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+            name="packLumpSumPayment" /> ₽
+        </div>
+        <div>
+          <span class="title-small">Роялти:</span><br>
+          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+            name="packLumpSumPayment" /> %
+        </div>
+        <div>
+          <span class="title-small">Всего инвестиций:</span><br>
+          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+            name="packLumpSumPayment" /> ₽
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="block-button-pack">
+    <button class="control-button-blue">Добавить отзыв</button>
+  </div>
+ </div> -->
 
-    <div class="block-bottom-pack">
-      <div>
-        <span class="title-small">Паушальный взнос:</span><br>
-          <span>{{item.LumpSumPayment}} ₽</span>
-      </div>
+  <!-- <div class="switch-garant block-garant">
+  <strong>Продажа через гарант</strong><br>
+  <p-inputSwitch [(ngModel)]="isGarant" class="flag-garant"></p-inputSwitch>
+</div>    -->
 
-      <div>
-        <span class="title-small">Роялти:</span><br>
-          <span>{{item.Royalty}} %</span>
-      </div>
-
-      <div>
-        <span class="title-small">Всего инвестиций:</span><br>
-          <span>{{item.TotalInvest}} ₽</span>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- <div class="col-lg-6">
-    <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
-    <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
-    <div>
-      <span class="title-small">Ссылка на видео</span>
-      <span>{{franchiseData.urlVideo}}</span>
-     </div>
-   </div> -->
+  <!-- <div class="d-flex">
+  <div>
+    <button class="control-button-white">Отменить и сохранить в черновиках</button>
+  </div>
+  <div class="block-two">
+    <button class="control-button-blue" (click)="onCreateFranchiseAsync()">Оплатить размещение и опубликовать</button>
+  </div>
+</div> -->
+</section>

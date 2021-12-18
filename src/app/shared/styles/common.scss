@@ -209,3 +209,28 @@
   }
 }
 // стили страниц франшиз
+
+button.primary-button {
+  width: 100%;
+  height: 69px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .5rem;
+  background-color: #4487ff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+
+  &, &:focus {
+    border: none;
+    outline: none;
+  }
+
+  &.become-franchiser {
+    background-color: #f1f6ff;
+    color: #1f75fe;
+    margin: 2rem 0 1rem 0;
+  }
+}

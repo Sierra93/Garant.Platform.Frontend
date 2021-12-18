@@ -604,18 +604,27 @@
   </div>
  </div> -->
 
-<div class="switch-garant block-garant">
-  <strong>Продажа через гарант</strong><br>
-  <p-inputSwitch [(ngModel)]="isGarant" class="flag-garant" (click)="onCheckedGarant()"></p-inputSwitch>
-</div>
-
-<div class="d-flex">
-  <div>
-    <button class="control-button-white">Отменить и сохранить в черновиках</button>
+<div class="row sale-through-garant">
+  <div class="col-8">
+    <div class="switch-garant">
+      <span>
+        <strong>Продажа через гарант</strong>
+        <span>?</span>
+      </span>
+      <p-inputSwitch [(ngModel)]="isGarant" (click)="onCheckedGarant()"></p-inputSwitch>
+    </div>
   </div>
 
-  <div class="block-two">
-    <button class="control-button-blue" (click)="onCreateFranchiseAsync()">Оплатить размещение и
-      опубликовать</button>
+  <div class="col-8">
+    <div class="d-flex buttons">
+      <div>
+        <button class="control-button-white">Отменить и сохранить в черновиках</button>
+      </div>
+
+      <div class="block-two">
+        <button class="control-button-blue" (click)="onCreateFranchiseAsync()">Оплатить размещение и
+          опубликовать</button>
+      </div>
+    </div>
   </div>
 </div>

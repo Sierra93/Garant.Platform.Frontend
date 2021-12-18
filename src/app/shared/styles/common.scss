@@ -15,22 +15,24 @@
   font-size: 18px;
 }
 
-.control-button-blue {
-    background-color: #1f75fe;
-    color: white;
-    padding: 24px 16px;
-    border: none;
-    border-radius: 8px;
-    margin-top: 24px;
+.control-button-white, .control-button-blue {
+  border: none;
+  padding: 1.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  line-height: 21px;
 }
 
 .control-button-white {
   background: #F1F6FF;
   color: #1F75FE;
-  padding: 24px 16px;
-  border: none;
-  border-radius: 8px;
-  margin-top: 24px;
+}
+
+.control-button-blue {
+    background-color: #1f75fe;
+    color: white;
 }
 
 .control-button-blue-small {

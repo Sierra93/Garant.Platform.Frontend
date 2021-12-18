@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CommonDataService } from 'src/app/services/common-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { API_URL } from 'src/app/core/core-urls/api-url';
+import { SearchInput } from 'src/app/models/search/input/search-input';
 
 @Component({
     selector: 'header',
@@ -16,9 +18,13 @@ export class HeaderModule implements OnInit {
     aHeader: any[] = [];
     aBreadcrumbs: any[] = [];
     routeParam: any;
+    searchText: string = "";
+    selectedValueFranchise: boolean = false;
+    selectedValueBusiness: boolean = false;
+    searchType: string = "";
 
-    constructor(private http: HttpClient, 
-        private commonService: CommonDataService,        
+    constructor(private http: HttpClient,
+        private commonService: CommonDataService,
         private router: Router,
         private route: ActivatedRoute) {
     };
@@ -29,9 +35,9 @@ export class HeaderModule implements OnInit {
         await this.getBreadcrumbsAsync();
     };
 
-     /**
-     * Функция получит поля хидера.
-     */
+    /**
+    * Функция получит поля хидера.
+    */
     private async initHeaderAsync() {
         try {
             await this.commonService.initHeaderAsync("Main").then((data: any) => {
@@ -69,10 +75,10 @@ export class HeaderModule implements OnInit {
         this.router.navigate(["/catalog-franchise"]);
     };
 
-     /**
-     * Функция сформирует хлебные крошки страницы.
-     * @returns - Список пунктов цепочки хлебных крошек.
-     */
+    /**
+    * Функция сформирует хлебные крошки страницы.
+    * @returns - Список пунктов цепочки хлебных крошек.
+    */
     private async getBreadcrumbsAsync() {
         try {
             await this.commonService.getBreadcrumbsAsync(this.router.url).then((data: any) => {
@@ -89,4 +95,18 @@ export class HeaderModule implements OnInit {
     public onRouteProfile() {
         this.router.navigate(["/profile/my-data"]);
     };
+
+    public onRouteSearch(searchText: string) {
+        let type = "";
+
+        if (this.selectedValueFranchise) {
+            type = "franchise";
+        }
+
+        else if (this.selectedValueBusiness) {
+            type = "business";
+        }
+
+        this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });
+    };   
 }

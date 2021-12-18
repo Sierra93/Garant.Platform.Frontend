@@ -1,5 +1,177 @@
-@import "/src/app/app.component.scss";  
+@import "/src/app/app.component.scss";
 @import "/src/app/shared/styles/body-margins.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/common.scss";
 @import "/src/app/modules/business/create-ready-business/create-ready-business.component.scss";
+
+.title-strong {
+  font-weight: 400;
+  display: inline-block;
+  padding-bottom: 32px;
+  margin: 0;
+}
+
+.title-name-logo {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+
+}
+
+.block-gallery {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 32px;
+}
+
+.gallery-foto {
+  max-width: 700px;
+  height: 500px;
+  width: 35vw;
+
+  display: block;
+  object-fit: cover;
+}
+
+.contacts-card {
+  padding: 24px;
+}
+
+.block-invest {
+  display: flex;
+  gap: 24px;
+}
+
+.invest-item {
+  padding: 24px;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  min-width: 220px;
+
+  &__title {
+    display: inline-block;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  &__small {
+    display: inline-block;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-top: 8px !important;
+    padding-bottom: 16px !important;
+    font-size: 0.625rem;
+  }
+
+  &__unit {
+    display: inline-block;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0.875rem;
+  }
+}
+
+.business-details {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.business-info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+// .business-description {
+//   display: inline-block;
+//   padding-bottom: 32px;
+// }
+
+.additional-info {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.asset {
+  margin: 0;
+  padding: 24px;
+  padding-bottom: 0;
+  min-width: 464px;
+
+  &:last-of-type {
+    padding-bottom: 24px;
+  }
+}
+
+.asset-cost {
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.125rem;
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-bottom: 16px !important;
+}
+
+.asset-name {
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.875rem;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.business-activity-description {
+  display: inline-block;
+  padding-bottom: 24px;
+}
+
+.adress {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.125rem;
+  padding-bottom: 24px;
+}
+
+.video {
+  padding-bottom: 80px;
+}
+
+.consulting {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  margin: 0;
+  padding-bottom: 24px;
+
+  &-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.75rem;
+  }
+
+  &-input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.125rem;
+    width: 904px;
+    height: 69px;
+    padding: 24px, 16px, 24px, 16px;
+    border: 1.5px solid #646464;
+    border-radius: 8px;
+    margin-bottom: 12px;
+
+    &::placeholder {
+      color: #c1c1c1;
+      // padding-left: 8px;
+    }
+  }
+
+  &-button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    width: 904px;
+    margin-top: 55px;
+
+  }
+}

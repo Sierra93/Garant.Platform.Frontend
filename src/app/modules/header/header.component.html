@@ -133,10 +133,32 @@
 
     <div class="">
       <div class="p-input-icon-right d-flex align-items-center">
-        <input type="text" class="input-search search-header" pInputText placeholder="Search">
-        <button class="search-btn">
+        <input type="search" class="input-search search-header" pInputText placeholder="Например: “Медицинский центр”" [(ngModel)]="searchText" (keydown.enter)="onRouteSearch(searchText)">
+        <button class="search-btn" (click)="onRouteSearch(searchText)">
           <img src="../../../assets/images/search.svg" alt="">
-        </button>
+        </button>        
+      </div>
+
+      <div class="d-flex mt-3 align-items-center">
+        <div class="mr-3">
+          <p-checkbox name="data-franchise" 
+                      value="franchise" 
+                      label="Искать по франшизам" 
+                      [(ngModel)]="selectedValueFranchise"
+                      [disabled]="selectedValueBusiness"
+                      [binary]="true">
+            </p-checkbox>
+        </div>
+  
+        <div>
+          <p-checkbox name="data-business" 
+                      value="business" 
+                      label="Искать по бизнесу" 
+                      [disabled]="selectedValueFranchise"
+                      [(ngModel)]="selectedValueBusiness"
+                      [binary]="true">
+            </p-checkbox>
+        </div>
       </div>
     </div>
 

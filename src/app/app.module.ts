@@ -51,6 +51,8 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ManageAccountModule } from "./modules/profile/manage-account/manage-account.component";
 import { ProfileDialogMessagesModule } from "./modules/profile/profile-dialog-messages/profile-dialog-messages.component";
 import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/profile-my-dialogs.component";
+import { MainSearchModule } from "./modules/search/main-search/main-search.component";
+import { CatalogBusinessModule } from "./modules/business/catalog-business/catalog-business.component";
 import { DataService } from "./services/data-service";
 
 @NgModule({
@@ -72,7 +74,9 @@ import { DataService } from "./services/data-service";
     ProfileMyDataModule,
     ManageAccountModule,
     ProfileDialogMessagesModule,
-    ProfileMyMessagesModule
+    ProfileMyMessagesModule,
+    MainSearchModule,
+    CatalogBusinessModule
   ],
 
   entryComponents: [],

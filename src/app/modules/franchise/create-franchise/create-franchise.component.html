@@ -438,8 +438,6 @@
   </div>
 </div>
 
-
-
 <!-- Пакеты франшизы. -->
 <div class="row franchise-packages">
   <div class="col-12">
@@ -515,38 +513,43 @@
         (click)="onAddPack(packName, packDetails, packLumpSumPayment, royaltyPack, totalInvest)">Добавить пакет</button>
     </div>
   </div>
-</div>
 
-
-
-
-
-
-<hr class="hr">
-
-<!-- Видео о франшизе. -->
-<div class="p-field-checkbox control-checkbox">
-  <div>
-    <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
-    <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
+  <div class="col-12">
+    <hr class="hr">
   </div>
 </div>
 
-<div>
-  <small>
-    Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет видео вы можете отключить
-    данный
-    раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.
-  </small>
+<!-- Видео о франшизе. -->
+<div class="row franchise-video-section">
+  <div class="col-8 title-section">
+    <div class="p-field-checkbox control-checkbox">
+      <div class="d-flex align-items-center">
+        <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+        <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <p>Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет видео вы можете отключить данный раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.</p>
+  </div>
+
+  <div class="col-8">
+    <div class="video-link">
+      <label>Ссылка на видео</label><br>
+      <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="videoLink"
+      name="videoLink" />
+    </div>
+  </div>
+
+  <div class="col-12">
+    <hr class="hr">
+  </div>
 </div>
 
-<div>
-  <span class="title-small">Ссылка на видео</span><br>
-  <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="videoLink"
-    name="videoLink" />
-</div>
 
-<hr class="hr">
+
+
 
 <!-- Отзывы о франшизе. -->
 <!-- <div class="p-field-checkbox control-checkbox">

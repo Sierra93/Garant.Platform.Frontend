@@ -28,6 +28,8 @@ export class GarantContractModule implements OnInit {
     aIterationList: any = [];
     documentFile: any;
     attachmentFileName: string = "";
+    isSend: boolean = false;
+    isApprove: boolean = false;
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -39,7 +41,8 @@ export class GarantContractModule implements OnInit {
 
     public async ngOnInit() {
         await this.initGarantDataAsync();
-        // await this.getAttachmentDocumentNameVendorDealAsync();
+        await this.getAttachmentDocumentNameVendorDealAsync();
+        await this.onCheckApproveDocumentAsync();
     };    
 
     /**
@@ -163,6 +166,10 @@ export class GarantContractModule implements OnInit {
         }
     };
 
+    /**
+     * Функция отправит договор продавца.
+     * @returns - Результат отправки.
+     */
     public async onSendDocumentVendorAsync() {
         try {                
             let documentInput = new DocumentInput();
@@ -175,6 +182,10 @@ export class GarantContractModule implements OnInit {
                     .subscribe({
                         next: (response: any) => {
                             console.log("Отправка документа: ", response);
+
+                            if (response) {
+                                this.isSend = true;
+                            }
                         },
 
                         error: (err) => {
@@ -195,18 +206,80 @@ export class GarantContractModule implements OnInit {
      * Функция получит название файла для согласования покупателю.
      */
     private async getAttachmentDocumentNameVendorDealAsync() {
-        try {
-            await this.http.post(API_URL.apiUrl.concat("/document/get-attachment-document-deal-name"), {})
-                .subscribe({
-                    next: (response: any) => {
-                        this.attachmentFileName = response.documentName;
-                        console.log("Название документа: ", response.documentName);                        
-                    },
+        try {        
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId
 
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
+            if (documentInput.DocumentItemId > 0 && documentInput.DocumentItemId !== null) {
+                await this.http.post(API_URL.apiUrl.concat("/document/get-attachment-document-deal-name"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            this.attachmentFileName = response.documentName;
+                            console.log("Название документа: ", response.documentName);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    private async onCheckApproveDocumentAsync() {
+        try {
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId
+
+            if (documentInput.DocumentItemId > 0 && documentInput.DocumentItemId !== null) {
+                await this.http.post(API_URL.apiUrl.concat("/document/check-approve-document-vendor"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            this.isApprove = response;
+                            console.log("approve document: ", response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onSendDocumentCustomerAsync() {
+        try {                
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
+            documentInput.DocumentType = "DocumentCustomer";
+            documentInput.IsDealDocument = true;                    
+
+            if (documentInput.DocumentItemId > 0) {
+                return await this.http.post(API_URL.apiUrl.concat("/document/send-customer-document-deal"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("Отправка документа: ", response);
+
+                            if (response) {
+                                this.isSend = true;
+                            }
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+
+            return false;
         }
 
         catch (e: any) {

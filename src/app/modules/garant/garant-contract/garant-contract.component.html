@@ -187,12 +187,32 @@
         {{attachmentFileName}}
       </div>
 
-      <div class="d-flex justify-content-start"
+      <p-messages severity="warn" *ngIf="isSend">
+        <ng-template pTemplate>
+          <div class="p-ml-2">Договор на согласовании у продавца. После согласования вы получите подписанный скан.</div>
+        </ng-template>
+      </p-messages>
+
+      <!-- <div class="d-flex justify-content-start"
         *ngIf="oInitData.buttonActionTextContract !== '' && oInitData.buttonActionTextContract !== null">
-        <button class="control-button-blue-small" (click)="onSendDocumentVendorAsync()">
+        <button [disabled]="isSend" class="control-button-blue-small" (click)="onSendDocumentVendorAsync()">
           {{oInitData.buttonActionTextContract}}
         </button>
-      </div>
+      </div> -->
+
+      <div class="d-flex">
+        <div class="mr-16">
+          <button class="control-button-blue-small">
+            {{oInitData.buttonActionTextContract}}
+          </button>
+        </div>
+  
+        <div class="">
+          <button class="control-button-red-small">
+            {{oInitData.buttonRejectDocumentText}}
+          </button>
+        </div>
+      </div>      
     </div>
 
     <!-- Блок от продавца. -->
@@ -203,7 +223,26 @@
 
      <div>{{oInitData.buttonActionText}}</div>
 
-     <small>{{oInitData.dopComment}}</small>
+     <small>{{oInitData.blockCustomerComment}}</small>    
+
+     <hr>
+
+     <!-- Договор от покупателя. -->
+     <div></div>
+
+    <div class="d-flex" *ngIf="isApprove">
+      <div class="mr-16">
+        <button class="control-button-blue-small">
+          {{oInitData.buttonApproveDocumentText}}
+        </button>
+      </div>
+
+      <div class="">
+        <button class="control-button-red-small">
+          {{oInitData.buttonRejectDocumentText}}
+        </button>
+      </div>
+    </div>
     </div>
 
     <div class="d-flex justify-content-end" 

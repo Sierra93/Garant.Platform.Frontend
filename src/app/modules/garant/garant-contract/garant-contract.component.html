@@ -201,15 +201,21 @@
       </div> -->
 
       <div class="d-flex">
-        <div class="mr-16">
+        <div class="mr-16" *ngIf="!isApproveVendorDocment" (click)="onApproveVendorDocumentAsync()">
           <button class="control-button-blue-small">
             {{oInitData.buttonActionTextContract}}
           </button>
         </div>
   
-        <div class="">
+        <div class="mr-16" *ngIf="!isApproveVendorDocment">
           <button class="control-button-red-small">
             {{oInitData.buttonRejectDocumentText}}
+          </button>
+        </div>
+
+        <div class="" *ngIf="isApproveVendorDocment">
+          <button class="control-button-green-small" [disabled]="true">
+            {{oInitData.buttonActionText}}
           </button>
         </div>
       </div>      
@@ -230,25 +236,25 @@
      <!-- Договор от покупателя. -->
      <div></div>
 
-    <div class="d-flex" *ngIf="isApprove">
+    <div class="d-flex">
       <div class="mr-16">
         <button class="control-button-blue-small">
           {{oInitData.buttonApproveDocumentText}}
         </button>
       </div>
 
-      <div class="">
+      <!-- <div class="">
         <button class="control-button-red-small">
           {{oInitData.buttonRejectDocumentText}}
         </button>
-      </div>
+      </div> -->
     </div>
     </div>
 
-    <div class="d-flex justify-content-end" 
-        *ngIf="oInitData.continueButtonText !== '' && oInitData.continueButtonText !== null">
+    <div class="d-flex justify-content-end"
+      *ngIf="oInitData.continueButtonText !== '' && oInitData.continueButtonText !== null">
       <button class="control-button-blue-small">{{oInitData.continueButtonText}}</button>
-    </div> 
+    </div>
     </div>
   </div>
 

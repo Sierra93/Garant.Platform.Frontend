@@ -29,7 +29,8 @@ export class GarantContractModule implements OnInit {
     documentFile: any;
     attachmentFileName: string = "";
     isSend: boolean = false;
-    isApprove: boolean = false;
+    isApproveVendorDocment: boolean = false;
+    isApproveCustomerDocument: boolean = false;
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -239,7 +240,10 @@ export class GarantContractModule implements OnInit {
                 await this.http.post(API_URL.apiUrl.concat("/document/check-approve-document-vendor"), documentInput)
                     .subscribe({
                         next: (response: any) => {
-                            this.isApprove = response;
+                            if (response) {
+                                this.isApproveVendorDocment = response;
+                            }
+                           
                             console.log("approve document: ", response);
                         },
 
@@ -280,6 +284,30 @@ export class GarantContractModule implements OnInit {
             }
 
             return false;
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onApproveVendorDocumentAsync() {
+        try {                
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;            
+
+            if (documentInput.DocumentItemId > 0) {
+                await this.http.post(API_URL.apiUrl.concat("/document/approve-document-vendor"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("approve vendor: ", response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
         }
 
         catch (e: any) {

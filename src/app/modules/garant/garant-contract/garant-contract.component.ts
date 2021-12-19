@@ -27,7 +27,8 @@ export class GarantContractModule implements OnInit {
     aInvestInclude: any = [];
     aIterationList: any = [];
     documentFile: any;
-    attachmentFileName: string = "";
+    attachmentVendorFileName: string = "";
+    attachmentCustomerFileName: string = "";
     isSend: boolean = false;
     isApproveVendorDocment: boolean = false;
     isApproveCustomerDocument: boolean = false;
@@ -127,19 +128,36 @@ export class GarantContractModule implements OnInit {
         }
     };
 
-    public async onAttachmentDocument(e: any) {
-        console.log("onAttachmentDocument", e);
+    /**
+     * Функция прикрепит и отправит файл договора продавца.
+     * @param e - Данные документа.
+     */
+    public async onAttachmentVendorDocument(e: any) {
+        console.log("onAttachmentVendorDocument", e);
         this.documentFile = e.target.files[0];
         
         if (e.target.files.length > 0) {
-            await this.attachmentDealDocumentAsync();
+            await this.attachmentDealVendorDocumentAsync();
         }
     };
 
     /**
-     * Функция прикрепит документ договора к сделке.
+     * Функция прикрепит и отправит файл договора покупателя.
+     * @param e - Данные документа.
      */
-    private async attachmentDealDocumentAsync() {
+    public async onAttachmentCustomerDocument(e: any) {
+        console.log("onAttachmentCustomerDocument", e);
+        this.documentFile = e.target.files[0];
+        
+        if (e.target.files.length > 0) {
+            await this.attachmentDealCustomerDocumentAsync();
+        }
+    };    
+
+    /**
+     * Функция прикрепит документ договора продавца к сделке.
+     */
+    private async attachmentDealVendorDocumentAsync() {
         try {                
             let formData = new FormData();
             let documentInput = new DocumentInput();
@@ -151,6 +169,37 @@ export class GarantContractModule implements OnInit {
             formData.append("documentData", JSON.stringify(documentInput));
 
             await this.http.post(API_URL.apiUrl.concat("/document/attachment-vendor-document-deal"), formData)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Документ сделки: ", response);                                  
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция прикрепит документ договора покупателя к сделке.
+     */
+     private async attachmentDealCustomerDocumentAsync() {
+        try {                
+            let formData = new FormData();
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
+            documentInput.DocumentType = "DocumentCustomer";
+            documentInput.IsDealDocument = true;
+            
+            formData.append("files", this.documentFile);      
+            formData.append("documentData", JSON.stringify(documentInput));
+
+            await this.http.post(API_URL.apiUrl.concat("/document/attachment-customer-document-deal"), formData)
                 .subscribe({
                     next: (response: any) => {
                         console.log("Документ сделки: ", response);                                  
@@ -215,7 +264,7 @@ export class GarantContractModule implements OnInit {
                 await this.http.post(API_URL.apiUrl.concat("/document/get-attachment-document-deal-name"), documentInput)
                     .subscribe({
                         next: (response: any) => {
-                            this.attachmentFileName = response.documentName;
+                            this.attachmentVendorFileName = response.documentName;
                             console.log("Название документа: ", response.documentName);
                         },
 
@@ -300,6 +349,10 @@ export class GarantContractModule implements OnInit {
                 await this.http.post(API_URL.apiUrl.concat("/document/approve-document-vendor"), documentInput)
                     .subscribe({
                         next: (response: any) => {
+                            if (response) {
+                                this.isApproveVendorDocment = true;
+                            }
+
                             console.log("approve vendor: ", response);
                         },
 

@@ -180,11 +180,11 @@
       </div>   
 
       <div>
-        <input type="file" (change)="onAttachmentDocument($event)">  
+        <input type="file" (change)="onAttachmentVendorDocument($event)">  
       </div>
 
-      <div *ngIf="attachmentFileName !== '' && attachmentFileName !== null">
-        {{attachmentFileName}}
+      <div *ngIf="attachmentVendorFileName !== '' && attachmentVendorFileName !== null">
+        {{attachmentVendorFileName}}
       </div>
 
       <p-messages severity="warn" *ngIf="isSend">
@@ -238,7 +238,15 @@
 
     <div class="d-flex">
       <div class="mr-16">
-        <button class="control-button-blue-small">
+        <div>
+          <input type="file" (change)="onAttachmentCustomerDocument($event)">  
+        </div>
+  
+        <div *ngIf="attachmentCustomerFileName !== '' && attachmentCustomerFileName !== null">
+          {{attachmentCustomerFileName}}
+        </div>
+
+        <button class="control-button-blue-small" (click)="onSendDocumentCustomerAsync()">
           {{oInitData.buttonApproveDocumentText}}
         </button>
       </div>

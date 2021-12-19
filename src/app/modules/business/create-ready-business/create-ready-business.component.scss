@@ -1,6 +1,7 @@
 @import "/src/app/app.component.scss";
 @import "/src/app/shared/styles/body-margins.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
+@import "/src/app/shared/styles/controls.scss";
 @import "/src/app/shared/styles/common.scss";
 
 .title-name-logo {
@@ -390,3 +391,9 @@
 ::ng-deep .p-galleria-thumbnail-item {
   overflow: visible !important;
 }
+
+.file-label {
+  margin-top: 32px;
+}
+
+

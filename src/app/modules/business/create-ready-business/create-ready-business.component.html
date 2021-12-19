@@ -24,7 +24,9 @@
   <hr class="hr">
 
   <span class="title-strong">Фотографии*</span><br>
-  <input type="file" (change)="uploadBusinessPhotosAsync($event)" multiple>
+  <label class="file-label">
+    <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)" multiple>
+    Прикрепить</label>
   <div class="block-gallery">
     <div>
       <span *ngIf="!aNamesBusinessPhotos.length">Фотографии не загружены</span>
@@ -124,50 +126,53 @@
             <div class="invest-item invest-item-first">
               <span class="title-small">Сотрудников</span><br>
               <small class="invest-item__small">количество</small><br>
-              <input type="number" class="control-input-franch-price invest-item__input" pInputText [(ngModel)]="employeeYearCount"
-                name="employeeYearCount" />
+              <input type="number" class="control-input-franch-price invest-item__input" pInputText
+                [(ngModel)]="employeeYearCount" name="employeeYearCount" />
             </div>
-  
+
             <div class="invest-item">
               <span class="title-small">Форма</span><br>
               <small class="invest-item__small">организационно-правовая</small><br>
-              <input type="text" class="control-input-franch-price invest-item__input" pInputText [(ngModel)]="form" name="form" />
+              <input type="text" class="control-input-franch-price invest-item__input" pInputText [(ngModel)]="form"
+                name="form" />
             </div>
-  
+
             <div class="invest-item">
               <span class="title-small">Доля</span><br>
               <small class="invest-item__small">к продаже</small><br>
-              <input type="number" class="control-input-franch-price invest-item__input" pInputText [(ngModel)]="share" name="share" />
+              <input type="number" class="control-input-franch-price invest-item__input" pInputText [(ngModel)]="share"
+                name="share" />
             </div>
-  
+
             <div class="invest-item">
               <span class="title-small">Сайт</span><br>
               <small class="invest-item__small">компании</small><br>
-              <input type="text" class="control-input-franch-price invest-item__input" pInputText [(ngModel)]="site" name="site" />
+              <input type="text" class="control-input-franch-price invest-item__input" pInputText [(ngModel)]="site"
+                name="site" />
             </div>
           </div>
         </div>
       </div>
-  
-      </div>
-      
+
+    </div>
+
 
     <div class="invest-in">
       <span class="title-strong">Входит в стоимость*</span><br>
       <!-- <div class="invest-item-last" *ngFor="let item of aPriceIn"> -->
       <div class="invest-in-container" *ngFor="let item of aPriceIn">
         <small class="invest-in__title">Стоимость</small><br>
-        <input type="number" class="control-input-franch-price invest-in__input" pInputText *ngIf="item.isHide" [value]="item.Price"
-          name="priceIn" />
-        <input type="number" class="control-input-franch-price invest-in__input" pInputText *ngIf="!item.isHide" [(ngModel)]="priceIn"
-          name="priceIn" />
+        <input type="number" class="control-input-franch-price invest-in__input" pInputText *ngIf="item.isHide"
+          [value]="item.Price" name="priceIn" />
+        <input type="number" class="control-input-franch-price invest-in__input" pInputText *ngIf="!item.isHide"
+          [(ngModel)]="priceIn" name="priceIn" />
         <br>
 
         <small class="invest-in__title">Название</small><br>
-        <input type="text" class="control-input-name invest-in__input" placeholder="Пример: оборудование" pInputText *ngIf="item.isHide"
-          [value]="item.Name" name="nameIn" />
-        <input type="text" class="control-input-name invest-in__input" placeholder="Пример: оборудование" pInputText *ngIf="!item.isHide"
-          [(ngModel)]="nameIn" name="nameIn" />
+        <input type="text" class="control-input-name invest-in__input" placeholder="Пример: оборудование" pInputText
+          *ngIf="item.isHide" [value]="item.Name" name="nameIn" />
+        <input type="text" class="control-input-name invest-in__input" placeholder="Пример: оборудование" pInputText
+          *ngIf="!item.isHide" [(ngModel)]="nameIn" name="nameIn" />
       </div>
       <button class="control-button-blue-small" (click)="onAddPriceIn(priceIn, nameIn)">Добавить пункт</button>
       <br>
@@ -195,7 +200,9 @@
     <br>
 
     <div>
-      <input type="file" (change)="uploadFinModelAsync($event)">
+      <label class="file-label">
+        <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)">
+        Прикрепить</label>
       <!-- <button class="control-button-blue-small">Прикрепить файл</button> -->
       <br>
       <small class="text text--bottom">
@@ -216,7 +223,9 @@
         <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
           placeholder="Опишите бизнес" [(ngModel)]="text" name="text"></textarea>
         <br>
-        <input type="file" (change)="uploadTextBusinessPhotosAsync($event)">
+        <label class="file-label">
+          <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)">
+          Прикрепить</label>
       </div>
     </div>
   </div>
@@ -226,12 +235,15 @@
   <div class="d-flex">
     <div>
       <span class="title-strong">Активы предприятия*</span><br>
-      <span class="title-small block__description">Опишите активы и их ценность чуть более подробно, чем в разделе “Входит в
+      <span class="title-small block__description">Опишите активы и их ценность чуть более подробно, чем в разделе
+        “Входит в
         стоимость”</span><br>
       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
         placeholder="Опишите активы" [(ngModel)]="assets" name="assets"></textarea>
       <br>
-      <input type="file" (change)="uploadAssetsBusinessPhotosAsync($event)">
+      <label class="file-label">
+        <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)">
+        Прикрепить</label>
     </div>
   </div>
 
@@ -244,7 +256,9 @@
       <span class="title-small block__description">Укажите реальные причины продажи</span><br>
       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
         placeholder="Опишите причины" [(ngModel)]="reasonsSale" name="reasonsSale"></textarea><br>
-      <input type="file" (change)="uploadReasonsSalePhotosAsync($event)">
+      <label class="file-label">
+        <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)">
+        Прикрепить</label>
     </div>
   </div>
 
@@ -256,8 +270,7 @@
     <div class="address">
       <label class="address__label">Адрес</label><br>
       <!-- <input type="text" class="control-big-input" pInputText placeholder="Адрес" [(ngModel)]="address" -->
-      <input type="text" class="address__input" pInputText placeholder="Адрес" [(ngModel)]="address"
-        name="address" />
+      <input type="text" class="address__input" pInputText placeholder="Адрес" [(ngModel)]="address" name="address" />
     </div>
   </div>
 
@@ -266,7 +279,8 @@
   <!-- Видео о бизнесе. -->
   <div class="p-field-checkbox control-checkbox">
     <div class="video">
-      <p-checkbox class="video__checkbox" name="group1" value="New York" [(ngModel)]="isHideVideo" inputId="video"></p-checkbox>
+      <p-checkbox class="video__checkbox" name="group1" value="New York" [(ngModel)]="isHideVideo" inputId="video">
+      </p-checkbox>
       <label for="video" class="control-label-checkbox">Видео о бизнесе</label>
     </div>
   </div>

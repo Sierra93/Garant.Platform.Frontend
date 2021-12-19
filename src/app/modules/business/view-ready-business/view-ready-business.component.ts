@@ -1,15 +1,18 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateBusinessInput } from "src/app/models/business/input/business-create-update-input";
 import { GetBusinessInput } from "src/app/models/business/input/get-business-input";
+import { RequestBusinessInput } from "src/app/models/request/input/request-business-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
     selector: "view-ready-business",
     templateUrl: "./view-ready-business.component.html",
-    styleUrls: ["./view-ready-business.component.scss"]
+    styleUrls: ["./view-ready-business.component.scss"],
+    providers: [ConfirmationService, MessageService]
 })
 
 /** 
@@ -54,12 +57,15 @@ export class ViewReadyBusinessModule implements OnInit {
     filesBusiness: any;
     routeParam: any;
     businessId: number = 0;
-    businessData: any[] = [];
+    businessData: any = [];
     aBusinessPhotos: any = [];
+    userName: string = "";
+    number: string = "";
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
-        private route: ActivatedRoute) {
+        private route: ActivatedRoute,
+        private messageService: MessageService) {
             this.responsiveOptions = [
                 {
                     breakpoint: '1024px',
@@ -375,6 +381,51 @@ export class ViewReadyBusinessModule implements OnInit {
 
                     error: (err) => {
                         this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+     /**
+     * Функция создаст заявку бизнеса.
+     * @param userName Имя.
+     * @param number Телефон.
+     * @param businessId Id бизнеса.
+     * @returns Данные заявки.
+     */
+      public async onCreateRequestBusinessAsync(userName: string, number: string, businessId: number) {
+        try {                     
+            console.log("onCreateRequestBusinessAsync");        
+            let requestBusinessInput = new RequestBusinessInput();   
+
+            if (userName == "" || number == "" || businessId <= 0) {
+                return;
+            }
+
+            requestBusinessInput.UserName = userName;
+            requestBusinessInput.Phone = number;
+            requestBusinessInput.BusinessId = businessId;
+
+            await this.http.post(API_URL.apiUrl.concat("/request/create-request-business"), requestBusinessInput)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Заявка успешно создана", response); 
+                        
+                        if (response.isSuccessCreatedRequest) {
+                            this.messageService.add({
+                                severity: 'success',
+                                summary: 'Успешно!',
+                                detail: response.statusText
+                            });    
+                        }                                       
+                    },
+
+                    error: (err) => {
                         throw new Error(err);
                     }
                 });

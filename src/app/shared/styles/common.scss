@@ -3,7 +3,7 @@
 }
 
 .title-strong {
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-size: 24px;
   font-weight: 500;
   color: #2c2c2c;
@@ -11,7 +11,7 @@
 
 .title-small {
   color: #000;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
   font-size: 18px;
 }
 
@@ -42,6 +42,33 @@
     border: none;
     border-radius: 8px;
     margin-top: 24px;
+}
+
+.control-button-red-small {
+  background-color: #EB5757;
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 24px;
+}
+
+.control-button-green-small {
+  background: #4FA13A;
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 24px;
+}
+
+.control-button-black-contur-small {
+  padding: 16px;
+  border: 1px solid;
+  border-radius: 8px;
+  margin-top: 24px;
+  background: none;
+  color: white;
 }
 
 .space-top-bottom-32 {
@@ -233,4 +260,16 @@ button.primary-button {
     color: #1f75fe;
     margin: 2rem 0 1rem 0;
   }
+}
+
+.mt-32 {
+  margin-top: 32px;
+}
+
+.mt-70 {
+  margin-top: 70px;
+}
+
+.mr-16 {
+  margin-right: 16px;
 }

@@ -7,7 +7,7 @@ import { API_URL } from "src/app/core/core-urls/api-url";
 import { FilterInput } from "src/app/models/franchise/input/filter-franchise-input";
 import { FranchiseInput } from "src/app/models/franchise/input/franchise-input";
 import { PaginationInput } from "src/app/models/pagination/input/pagination-input";
-import { CommonDataService } from "src/app/services/common-data.service";
+import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
     selector: "catalog-business",

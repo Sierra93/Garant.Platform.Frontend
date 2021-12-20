@@ -472,6 +472,20 @@
           <button class="primary-button">Оставить заявку</button>
         </div>
       </div>
+     <div>
+      <label for="name" class="">Имя</label><br>
+      <input type="text" class="control-input-filter-price" pInputText placeholder="Имя" name="name" [(ngModel)]="userName" />
+     </div>
+
+     <label for="number" class="">Телефон</label><br>
+     <input type="text" class="control-input-filter-price" pInputText placeholder="Телефон" name="number" [(ngModel)]="number" />
+    </div>
+
+    <label for="city" class="">Город</label><br>
+    <input type="text" class="control-input-filter-price" pInputText placeholder="Город" name="city" [(ngModel)]="city"/>
+
+    <div>
+      <button class="control-button-blue-small" (click)="onCreateRequestFranchiseAsync(userName, number, city, franchiseData.franchiseId)">Оставить заявку</button>
     </div>
   </div>
 

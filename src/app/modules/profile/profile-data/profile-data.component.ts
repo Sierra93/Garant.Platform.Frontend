@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { RegisterInput } from "src/app/models/register/input/register-input";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { CommonDataService } from "src/app/services/common-data.service";
+import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
     selector: "profile-data",

@@ -17,6 +17,9 @@ import { ProfileDialogMessagesModule } from './modules/profile/profile-dialog-me
 import { ManageAccountModule } from './modules/profile/manage-account/manage-account.component';
 import { MainSearchModule } from './modules/search/main-search/main-search.component';
 import { CatalogBusinessModule } from './modules/business/catalog-business/catalog-business.component';
+import { GarantInitModule } from './modules/garant/garant-init/garant-init.component';
+import { GarantConcordModule } from './modules/garant/garant-concord/garant-concord.component';
+import { GarantContractModule } from './modules/garant/garant-contract/garant-contract.component';
 
 const routes: Routes = [
   {
@@ -101,6 +104,21 @@ const routes: Routes = [
   {
     path: "catalog-business",
     component: CatalogBusinessModule
+  },
+
+  {
+    path: "garant/garant-init",
+    component: GarantInitModule
+  },
+
+  {
+    path: "garant/garant-concord",
+    component: GarantConcordModule
+  },
+
+  {
+    path: "garant/garant-contract",
+    component: GarantContractModule
   }
 ];
 

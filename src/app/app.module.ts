@@ -18,7 +18,7 @@ import { TabViewModule } from "primeng/tabview";
 import { DropdownModule } from "primeng/dropdown";
 import { RadioButtonModule } from "primeng/radiobutton";
 import { PaginatorModule } from "primeng/paginator";
-import { CommonDataService } from "./services/common-data.service";
+import { CommonDataService } from "./services/common/common-data.service";
 import { ParamInterceptor } from "./api-interceptor";
 import { HeaderModule } from "./modules/header/header.component";
 import { InputTextModule } from "primeng/inputtext";
@@ -53,7 +53,12 @@ import { ProfileDialogMessagesModule } from "./modules/profile/profile-dialog-me
 import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/profile-my-dialogs.component";
 import { MainSearchModule } from "./modules/search/main-search/main-search.component";
 import { CatalogBusinessModule } from "./modules/business/catalog-business/catalog-business.component";
-import { DataService } from "./services/data-service";
+import { GarantInitModule } from "./modules/garant/garant-init/garant-init.component";
+import { ConvertStringToNumberPipe } from "./core/pipes/convertStringToNumber.pipe";
+import { DataService } from "./services/common/data-service";
+import { GarantService } from "./services/garant/garant.service";
+import { GarantConcordModule } from "./modules/garant/garant-concord/garant-concord.component";
+import { GarantContractModule } from "./modules/garant/garant-contract/garant-contract.component";
 
 @NgModule({
   declarations: [
@@ -76,7 +81,11 @@ import { DataService } from "./services/data-service";
     ProfileDialogMessagesModule,
     ProfileMyMessagesModule,
     MainSearchModule,
-    CatalogBusinessModule
+    CatalogBusinessModule,
+    GarantInitModule,
+    ConvertStringToNumberPipe,
+    GarantConcordModule,
+    GarantContractModule
   ],
 
   entryComponents: [],
@@ -118,6 +127,7 @@ import { DataService } from "./services/data-service";
       multi: true
     },
     CommonDataService,
+    GarantService,
     DataService,
     Title,
     MessageService

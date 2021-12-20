@@ -75,13 +75,6 @@
           </div>
 
           <hr>
-
-          <!-- <div>
-                Входит в этап:
-                <ul *ngFor="let iteration of item.Items">
-                  <li>{{iteration}}</li>
-                </ul>
-              </div>      -->
         </div>
       </div>   
 
@@ -159,10 +152,6 @@
        </div>
       </div>
 
-      <!-- <div class="d-flex justify-content-end">
-        <button class="control-button-blue-small" (click)="onRouteReviewIterationsAsync(oInitData.itemDealId, oInitData.itemDealType, oInitData.otherId)">{{oInitData.continueButtonText}}</button>
-      </div> -->
-
       <!-- Область с этапами. -->
       <div class="right-panel-second mt-32">          
       <div>
@@ -193,25 +182,24 @@
         </ng-template>
       </p-messages>
 
-      <!-- <div class="d-flex justify-content-start"
-        *ngIf="oInitData.buttonActionTextContract !== '' && oInitData.buttonActionTextContract !== null">
-        <button [disabled]="isSend" class="control-button-blue-small" (click)="onSendDocumentVendorAsync()">
-          {{oInitData.buttonActionTextContract}}
-        </button>
-      </div> -->
-
       <div class="d-flex">
-        <div class="mr-16" *ngIf="!isApproveVendorDocment" (click)="onApproveVendorDocumentAsync()">
+        <div class="mr-16" *ngIf="!isApproveVendorDocment && oInitData.isOwner" (click)="onSendDocumentVendorAsync()">
+          <button class="control-button-blue-small">
+            {{oInitData.buttonActionTextContract}}
+          </button>
+        </div>
+
+        <div class="mr-16" *ngIf="!isApproveVendorDocment && !oInitData.isOwner" (click)="onApproveVendorDocumentAsync()">
           <button class="control-button-blue-small">
             {{oInitData.buttonActionTextContract}}
           </button>
         </div>
   
-        <div class="mr-16" *ngIf="!isApproveVendorDocment">
+        <div class="mr-16" *ngIf="!isApproveVendorDocment && !oInitData.isOwner">
           <button class="control-button-red-small">
             {{oInitData.buttonRejectDocumentText}}
           </button>
-        </div>
+        </div>      
 
         <div class="" *ngIf="isApproveVendorDocment">
           <button class="control-button-green-small" [disabled]="true">
@@ -234,8 +222,6 @@
      <hr>
 
      <!-- Договор от покупателя. -->
-     <div></div>
-
     <div class="d-flex">
       <div class="mr-16">
         <div>
@@ -246,16 +232,14 @@
           {{attachmentCustomerFileName}}
         </div>
 
-        <button class="control-button-blue-small" (click)="onSendDocumentCustomerAsync()">
+        <button class="control-button-blue-small mr-16" (click)="onSendDocumentCustomerAsync()">
           {{oInitData.buttonApproveDocumentText}}
         </button>
-      </div>
 
-      <!-- <div class="">
-        <button class="control-button-red-small">
+        <button class="control-button-red-small" *ngIf="isApproveVendorDocment && oInitData.isOwner">
           {{oInitData.buttonRejectDocumentText}}
         </button>
-      </div> -->
+      </div>
     </div>
     </div>
 

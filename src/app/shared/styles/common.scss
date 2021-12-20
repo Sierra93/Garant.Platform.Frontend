@@ -15,22 +15,24 @@
   font-size: 18px;
 }
 
-.control-button-blue {
-    background-color: #1f75fe;
-    color: white;
-    padding: 24px 16px;
-    border: none;
-    border-radius: 8px;
-    margin-top: 24px;
+.control-button-white, .control-button-blue {
+  border: none;
+  padding: 1.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  line-height: 21px;
 }
 
 .control-button-white {
   background: #F1F6FF;
   color: #1F75FE;
-  padding: 24px 16px;
-  border: none;
-  border-radius: 8px;
-  margin-top: 24px;
+}
+
+.control-button-blue {
+    background-color: #1f75fe;
+    color: white;
 }
 
 .control-button-blue-small {
@@ -102,25 +104,162 @@
   margin-bottom: 32px;
 }
 
-// search page sort by select styles
-::ng-deep .block-sort-by .p-dropdown {
-  width: 340px;
+//стили страницы поиска
+.search-page {
+  color: #2c2c2c;
+  font-family: 'Roboto', sans-serif;
+}
+
+.search-page label {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: .5rem;
+}
+
+.search-page ::ng-deep .block-sort-by .p-dropdown {
+  width: 100%;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #DADADA;
   border-radius: 0;
 }
 
-::ng-deep .block-sort-by .p-dropdown:not(.disabled).p-focus {
-  box-shadow: none !important;
-}
-
-::ng-deep .block-sort-by .p-dropdown > span {
+.search-page ::ng-deep .block-sort-by .p-dropdown span {
+  font-size: 14px;
+  font-weight: 400;
+  color: inherit;
   padding-left: 0;
 }
 
-::ng-deep .block-sort-by .p-dropdown > div {
+.search-page ::ng-deep .block-sort-by .p-dropdown:not(.disabled).p-focus {
+  box-shadow: none !important;
+}
+
+.search-page ::ng-deep .block-sort-by .p-dropdown > div {
   justify-content: flex-end;
+}
+
+.search-page ::ng-deep .p-inputswitch {
+  width: 79px;
+  height: 46px;
+}
+
+.search-page ::ng-deep .p-inputswitch .p-inputswitch-slider:before {
+  width: 40px;
+  height: 40px;
+  left: 3px;
+  top: 3px;
+  margin-top: 0;
+}
+
+.search-page ::ng-deep .p-inputswitch:not(.p-disabled) .p-inputswitch-slider,
+.search-page ::ng-deep .p-inputswitch:not(.p-disabled):hover .p-inputswitch-slider {
+  background-color: #c8dbff !important;
+}
+
+.search-page ::ng-deep .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider,
+.search-page ::ng-deep .p-inputswitch.p-inputswitch-checked:hover .p-inputswitch-slider {
+  background-color: #1f75fe !important;
+}
+
+.search-page ::ng-deep .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:before {
+  transform: translateX(33px);
+}
+
+.search-page ::ng-deep .p-inputswitch.p-focus,
+.search-page ::ng-deep .p-inputswitch-slider {
+  box-shadow: none;
+}
+
+.search-page .price-fields input {
+  background-color: #f1f6ff;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 400;
+  color: inherit;
+  height: 3rem;
+  text-indent: 1rem;
+  padding: 0;
+}
+
+.search-page .price-fields ::ng-deep .p-slider {
+  background-color: transparent;
+}
+
+.search-page .price-fields ::ng-deep .p-slider .p-slider-handle,
+.search-page .price-fields ::ng-deep .p-slider .p-slider-handle:hover {
+  width: 28px !important;
+  height: 28px !important;
+  border: 4px solid #1f75fe;
+  background-color: #fff;
+}
+
+.search-page .price-fields ::ng-deep .p-slider-horizontal .p-slider-range {
+  top: 5px;
+  background-color: #f1f6ff;
+}
+
+.search-page .payback-period ::ng-deep button, .search-page .payback-period ::ng-deep button:focus,
+.search-page .payback-period + .filter-btns button, .search-page .payback-period + .filter-btns button:focus {
+  background-color: rgba(218, 218, 218, 0.25);
+  color: inherit;
+  font-size: 14px;
+  font-family: inherit;
+  border: none;
+  height: 48px;
+  padding: 1rem;
+  outline: none;
+  box-shadow: none;
+}
+
+.search-page .payback-period + .filter-btns button {
+  padding: .2rem;
+}
+//стили страницы поиска
+
+// стили страниц франшиз
+.directory-path {
+  p {
+    margin-bottom: 0;
+
+    span {
+      color: #1f75fe;
+      font-size: 14px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+
+      &:last-child {
+        color: #7a7a7a;
+      }
+    }
+  }
+}
+// стили страниц франшиз
+
+button.primary-button {
+  width: 100%;
+  height: 69px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .5rem;
+  background-color: #4487ff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+
+  &, &:focus {
+    border: none;
+    outline: none;
+  }
+
+  &.become-franchiser {
+    background-color: #f1f6ff;
+    color: #1f75fe;
+    margin: 2rem 0 1rem 0;
+  }
 }
 
 .mt-32 {

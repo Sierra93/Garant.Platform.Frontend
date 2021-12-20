@@ -13,7 +13,7 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
     styleUrls: ["./main-search.component.scss"]
 })
 
-/** 
+/**
  * Класс модуля поиска.
  */
 export class MainSearchModule implements OnInit {
@@ -50,6 +50,7 @@ export class MainSearchModule implements OnInit {
     responsiveOptions: any[] = [];
     aReviewsFranchises: any[] = [];
     aResultSearch: any = [];
+    rangeValues: number[];
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -62,12 +63,12 @@ export class MainSearchModule implements OnInit {
         if (this.searchType == "franchise") {
             this.titleService.setTitle("Gobizy: Страница поиска по франшизам");
             this.isFranchise = true;
-        }        
-        
+        }
+
         if (this.searchType == "business") {
             this.titleService.setTitle("Gobizy: Страница поиска по бизнесу");
             this.isBusiness = true;
-        }   
+        }
 
         this.aSortPrices = [
             {
@@ -78,7 +79,9 @@ export class MainSearchModule implements OnInit {
                 name: "По возрастанию цены",
                 value: "Asc"
             }
-        ];
+      ];
+
+      this.rangeValues = [0, 10000000];
 
         console.log("searchType", this.searchType);
         console.log("searchText", this.searchText);
@@ -97,13 +100,13 @@ export class MainSearchModule implements OnInit {
      */
     private async onSearchAsync() {
         try {
-            let searchInput = new SearchInput();      
-            searchInput.SearchType = this.searchType;                     
+            let searchInput = new SearchInput();
+            searchInput.SearchType = this.searchType;
             searchInput.SearchText = this.searchText;
 
             await this.http.post(API_URL.apiUrl.concat("/search/search-data"), searchInput)
                 .subscribe({
-                    next: (response: any) => {                                       
+                    next: (response: any) => {
                         if (this.searchType == "franchise") {
                             this.aResultSearch = response;
 
@@ -111,10 +114,10 @@ export class MainSearchModule implements OnInit {
                             this.aFranchises.forEach((item: any) => {
                                 if (item.url != null && item.url.includes(",")) {
                                     item.url = item.url.split(",")[0];
-                                }                            
+                                }
                             });
-                        }        
-                        
+                        }
+
                         if (this.searchType == "business") {
                             this.aResultSearch = response;
 
@@ -122,9 +125,9 @@ export class MainSearchModule implements OnInit {
                             this.aBusinesses.forEach((item: any) => {
                                 if (item.url != null && item.url.includes(",")) {
                                     item.url = item.url.split(",")[0];
-                                }                                      
+                                }
                             });
-                        }   
+                        }
 
                         console.log("search data: ", response);
                     },
@@ -150,7 +153,7 @@ export class MainSearchModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/franchise/filter-franchises"), filterInput)
             .subscribe({
                 next: (response: any) => {
-                    console.log("Франшизы после фильтрации:", response);                    
+                    console.log("Франшизы после фильтрации:", response);
                     // this.aFranchises = response;
                 },
 
@@ -164,7 +167,7 @@ export class MainSearchModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    }; 
+    };
 
     public async onClearFilters() {
         await this.GetFranchisesListAsync();
@@ -177,7 +180,7 @@ export class MainSearchModule implements OnInit {
         try {
             await this.http.post(API_URL.apiUrl.concat("/franchise/catalog-franchise"), {})
                 .subscribe({
-                    next: (response: any) => {                        
+                    next: (response: any) => {
                         this.aFranchises = response;
                         this.countTotalPage = response.length;
                         console.log("Список франшиз:", response);
@@ -199,11 +202,17 @@ export class MainSearchModule implements OnInit {
         console.log("onChangeSortPrice", this.selectedSort);
     };
 
+  public async sortByRange() {
+      this.filterMinPrice = this.rangeValues[0];
+      this.filterMaxPrice = this.rangeValues[1];
+      console.log(this.rangeValues);
+    };
+
     /**
      * Функция перейдет к просмотру карточки франшизы.
      */
      public async routeViewFranchiseCardAsync(franchiseId: number) {
-        await this.setTransitionAsync(franchiseId);    
+        await this.setTransitionAsync(franchiseId);
         this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: franchiseId } });
     };
 
@@ -257,7 +266,7 @@ export class MainSearchModule implements OnInit {
      private async loadSingleSuggestionAsync() {
         try {
             await this.commonService.loadSingleSuggestionAsync().then((data: any) => {
-                this.oSuggestion = data;            
+                this.oSuggestion = data;
             });
         }
 

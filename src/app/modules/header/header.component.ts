@@ -11,7 +11,7 @@ import { SearchInput } from 'src/app/models/search/input/search-input';
     styleUrls: ['./header.component.scss']
 })
 
-/** 
+/**
  * Класс модуля хидера.
  */
 export class HeaderModule implements OnInit {
@@ -22,11 +22,14 @@ export class HeaderModule implements OnInit {
     selectedValueFranchise: boolean = false;
     selectedValueBusiness: boolean = false;
     searchType: string = "";
+    searchOptions: string[];
+    selectedSearchOption: string = "франшиза";
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private router: Router,
         private route: ActivatedRoute) {
+          this.searchOptions = ["франшиза", "бизнес"];
     };
 
     public async ngOnInit() {
@@ -71,10 +74,6 @@ export class HeaderModule implements OnInit {
         }
     };
 
-    public onRouteCatalogFranchise() {
-        this.router.navigate(["/catalog-franchise"]);
-    };
-
     /**
     * Функция сформирует хлебные крошки страницы.
     * @returns - Список пунктов цепочки хлебных крошек.
@@ -92,21 +91,18 @@ export class HeaderModule implements OnInit {
         }
     };
 
-    public onRouteProfile() {
-        this.router.navigate(["/profile/my-data"]);
-    };
-
     public onRouteSearch(searchText: string) {
-        let type = "";
+      let type = "";
+      console.log(this.selectedSearchOption);
 
-        if (this.selectedValueFranchise) {
+        if (this.selectedSearchOption == this.searchOptions[0]) {
             type = "franchise";
         }
 
-        else if (this.selectedValueBusiness) {
+        else if (this.selectedSearchOption == this.searchOptions[1]) {
             type = "business";
         }
 
         this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });
-    };   
+    };
 }

@@ -1,12 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { API_URL } from "../core/core-urls/api-url";
-import { DialogInput } from "../models/chat/input/dialog-input";
-import { BreadcrumbInput } from "../models/header/breadcrumb-input";
-import { MainHeader } from "../models/header/main-header";
-import { SuggestionInput } from "../models/suggestion/input/suggestion-input";
-import { TransitionInput } from "../models/transition/input/transition-input";
+import { API_URL } from "../../core/core-urls/api-url";
+import { DialogInput } from "../../models/chat/input/dialog-input";
+import { BreadcrumbInput } from "../../models/header/breadcrumb-input";
+import { MainHeader } from "../../models/header/main-header";
+import { SuggestionInput } from "../../models/suggestion/input/suggestion-input";
+import { TransitionInput } from "../../models/transition/input/transition-input";
 
 /**
  * Сервис общих функций.

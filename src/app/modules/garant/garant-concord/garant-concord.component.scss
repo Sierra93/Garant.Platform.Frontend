@@ -1,0 +1,53 @@
+@import "/src/app/app.component.scss";  
+@import "/src/app/shared/styles/body-margins.scss";
+@import "/src/app/shared/styles/media-quaries.scss";
+@import "/src/app/shared/styles/common.scss";
+@import "/src/app/modules/garant/garant-init/garant-init.component.scss";
+@import "/src/app/modules/profile/profile-my-data/profile-my-data.component.scss";
+
+.block-chat{
+    background: rgba(218, 218, 218, 0.15);
+    padding: 24px;
+
+    .message {
+        margin-top: 32px;
+    }
+}
+
+.messageStart {
+  text-align: start;
+}
+
+.messageEnd {
+  text-align: end;
+}
+
+.area-message {
+    width: 100%;
+}
+
+.mr-16 {
+  margin-right: 16px;
+}
+
+.right-panel-first {
+    // height: 215px;
+    // height: 370px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.right-panel-second {
+    box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+    padding: 16px;
+}
+
+.block-garant {
+  align-items: baseline;
+  display: flex;
+}
+
+.control-button-action-change-cancel {
+  background-color: #f1f6ff;
+  border-radius: 4px;
+}

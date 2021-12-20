@@ -5,7 +5,7 @@ import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franchise-create-update-input";
 import { GetFranchiseInput } from "src/app/models/franchise/input/get-franchise-input";
-import { CommonDataService } from "src/app/services/common-data.service";
+import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
     selector: "edit-franchise",

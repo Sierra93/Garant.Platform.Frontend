@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="block-garant d-flex justify-content-between mt-70">
+    <!-- Левый блок. -->
+    <div class="col-3">
+      <h5>{{oInitData.blockLeftTitle}}</h5>
+
+      <div class="left-panel-first mt-32">  
+        <div>Сделка проходит между</div>
+        <hr>
+
+        <div>
+          <div>
+            <strong>{{oInitData.fullName}}</strong>
+            <br>
+            {{oInitData.role}}
+          </div>
+
+          <hr>
+
+          <div>
+            <strong>{{oInitData.otherUserFullName}}</strong>
+            <br>
+            {{oInitData.otherUserRole}}
+          </div>
+        </div>
+      </div>     
+
+      <div class="left-panel-first mt-32">  
+        <div>{{oInitData.blockLeftSumTitle}}</div>
+        <hr>
+
+        <div>
+          <div>
+            {{oInitData.totalAmount}} ₽
+          </div>
+
+          <hr>
+
+          <div>
+            <strong>{{oInitData.mainItemTitle}}</strong>
+          </div>
+
+          <hr>
+
+          <div>
+            <img [src]="oInitData.imageUrl">
+          </div>
+
+          <div>
+            {{oInitData.itemTitle}}
+          </div>
+        </div>
+      </div>   
+
+      <div class="left-panel-first mt-32">  
+        <div>{{oInitData.documentBlockTitle}}</div>      
+        <small>Документов еще нет</small>
+      </div>   
+    </div>
+
+    <!-- Правый блок. -->
+    <div class="col-9">
+      <h5>{{oInitData.blockRightTitle}}</h5>
+
+      <div class="right-panel-first mt-32">  
+        <div>
+          <strong>{{oInitData.blockRightStatusTitle}}</strong>
+        </div>
+
+        <div class="content">
+          {{oInitData.blockRightStatusText}}
+        </div>
+        
+        <div>
+          <strong>{{oInitData.blockRightSumTitle}}</strong>
+        </div>
+
+        <div>
+          {{oInitData.totalAmount}} ₽
+        </div>
+
+        <div *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
+          <button class="control-button-blue-small" (click)="onAcceptDealAsync()">{{oInitData.buttonActionText}}</button>
+        </div>
+      </div>
+
+      <div class="block-black">
+        <div>{{oInitData.blackBlockTitle}}</div>
+
+        <div class="content">
+          {{oInitData.blackBlockText}}
+        </div>
+
+       <div class="d-flex align-items-center">
+        <div>
+          <button class="control-button-blue-small">{{oInitData.blackBlueButtonText}}</button>
+        </div>
+
+        <div class="ml-3">        
+          <button class="control-button-black-contur-small">{{oInitData.blackButtonText}}</button>
+        </div>
+       </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <button class="control-button-blue-small" (click)="onRouteReviewIterationsAsync(oInitData.itemDealId, oInitData.itemDealType, oInitData.otherId)">{{oInitData.continueButtonText}}</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

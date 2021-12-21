@@ -94,18 +94,24 @@
     height: 100%;
 
     > div {
-      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
 
       strong {
         font-size: 18px;
         font-weight: 500;
         color: #000;
-        margin-bottom: 1rem;
       }
 
       span {
         font-size: 14px;
         color: #646464;
+      }
+
+      &:not(:last-child) {
+        span {
+          margin-bottom: 1rem;
+        }
       }
     }
   }

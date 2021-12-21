@@ -185,8 +185,8 @@
       <div class="invest">
         <h3 class="section-title">Входит в инвестиции*</h3>
         <div class="invest-block" *ngFor="let item of aInvestInclude">
-          <div>
-            <strong>{{item.Price}}</strong>
+          <div *ngIf="item.Price > 0">
+            <strong>{{item.Price}} ₽</strong>
             <span class="">Стоимость</span>
             <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="priceInvest" name="priceInvest" /> ₽ -->
           </div>

@@ -1,33 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>  
+<section id="edit-franchise">
   <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
-  <h5 class="title-name-logo">Название и логотип*</h5>
-
   <!-- Блок с названием. -->
-  <div class="d-flex">
-    <div>
-      <label>Логотип</label><br>
-      <input type="file" (change)="uploadFranchiseLogoAsync($event)">  
+  <div class="row">
+    <div class="col-12">
+      <h5 class="title">Название и логотип*</h5>
     </div>
 
-    <div class="block-two">
-      <label>Название</label><br>
-      <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="franchiseData.title" name="logoName" />
+    <div class="col-2">
+      <div class="file-input-wrapper">
+        <label class="form-label">Логотип</label>
+        <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" class="d-none" />
+        <div class="franchise-logo">
+          <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
+        </div>
+      </div>
+    </div>
 
-      <!-- <span>{{item.title}}</span> -->
+    <div class="col-10">
+      <div class="block-two">
+        <label class="form-label">Название</label><br>
+        <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="franchiseData.title" name="logoName" />
+      </div>
+    </div>
+
+    <div class="col-12">
+      <hr class="hr">
     </div>
   </div>
 
-  <hr class="hr">
+
+
+  
+
+
+
   <span class="title-strong">Фотографии*</span><br>
   <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>  
    <div class="block-gallery">
@@ -471,7 +478,4 @@
     <button class="control-button-blue" (click)="onEditFranchiseAsync()">Сохранить изменения</button>
   </div>
 </div>
-
-</body>
-
-</html>
+</section>

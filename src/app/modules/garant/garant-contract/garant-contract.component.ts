@@ -32,6 +32,7 @@ export class GarantContractModule implements OnInit {
     isSend: boolean = false;
     isApproveVendorDocment: boolean = false;
     isApproveCustomerDocument: boolean = false;
+    aDocumants: string[] = [];
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -47,6 +48,7 @@ export class GarantContractModule implements OnInit {
         await this.getAttachmentDocumentNameCustomerDealAsync();
         await this.onCheckApproveDocumentVendorAsync();
         await this.onCheckApproveDocumentCustomerAsync();
+        await this.onGetDocumentsDealAsync();
     };    
 
     /**
@@ -237,6 +239,7 @@ export class GarantContractModule implements OnInit {
 
                             if (response) {
                                 this.isSend = true;
+                                this.onGetDocumentsDealAsync();
                             }
                         },
 
@@ -387,6 +390,7 @@ export class GarantContractModule implements OnInit {
 
                             if (response) {
                                 this.isSend = true;
+                                this.onGetDocumentsDealAsync();
                             }
                         },
 
@@ -452,6 +456,36 @@ export class GarantContractModule implements OnInit {
                             }
 
                             console.log("approve customer: ", response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список документов сделки.
+     * @returns - Список документов.
+     */
+     private async onGetDocumentsDealAsync() {
+        try {                
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;            
+
+            if (documentInput.DocumentItemId > 0) {
+                await this.http.post(API_URL.apiUrl.concat("/document/get-documents-deal"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {                                                        
+                            this.aDocumants = response.map((item: any) => item.documentName);
+                              
+                            console.log("Документы сделки: ", response);
                         },
 
                         error: (err) => {

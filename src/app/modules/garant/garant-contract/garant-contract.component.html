@@ -84,8 +84,12 @@
       </div>   
 
       <div class="left-panel-first mt-32">  
-        <div>{{oInitData.documentBlockTitle}}</div>      
-        <small>Документов еще нет</small>
+        <div>{{oInitData.documentBlockTitle}}</div>   
+        <div *ngFor="let item of aDocumants">
+          {{item}}
+        </div>   
+
+        <!-- <small *ngIf="aDocumants.length == 0">Документов еще нет</small> -->
       </div>   
     </div>
 

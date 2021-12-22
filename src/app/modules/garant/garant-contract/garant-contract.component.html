@@ -168,7 +168,7 @@
         <small>{{oInitData.contractText}}</small>
       </div>   
 
-      <div>
+      <div *ngIf="attachmentVendorFileName == '' || attachmentVendorFileName == null">
         <input type="file" (change)="onAttachmentVendorDocument($event)">  
       </div>
 
@@ -201,7 +201,13 @@
           </button>
         </div>      
 
-        <div class="" *ngIf="isApproveVendorDocment">
+        <div class="" *ngIf="isApproveVendorDocment && oInitData.isOwner">
+          <button class="control-button-green-small" [disabled]="true">
+            {{oInitData.buttonActionText}}
+          </button>
+        </div>
+
+        <div class="" *ngIf="isApproveVendorDocment && !oInitData.isOwner">
           <button class="control-button-green-small" [disabled]="true">
             {{oInitData.buttonActionText}}
           </button>
@@ -224,19 +230,26 @@
      <!-- Договор от покупателя. -->
     <div class="d-flex">
       <div class="mr-16">
-        <div>
+        <div *ngIf="attachmentCustomerFileName == '' || attachmentCustomerFileName == null">
           <input type="file" (change)="onAttachmentCustomerDocument($event)">  
-        </div>
+        </div>       
   
         <div *ngIf="attachmentCustomerFileName !== '' && attachmentCustomerFileName !== null">
           {{attachmentCustomerFileName}}
         </div>
 
-        <button class="control-button-blue-small mr-16" (click)="onSendDocumentCustomerAsync()">
+        <!-- <button class="control-button-blue-small mr-16" (click)="onSendDocumentCustomerAsync()">
+          {{oInitData.buttonApproveDocumentText}}
+        </button> -->
+
+        <button class="control-button-blue-small mr-16" 
+                *ngIf="oInitData.isOwner && isApproveVendorDocment && !isApproveCustomerDocument"
+                (click)="onApproveCustomerDocumentAsync()">
           {{oInitData.buttonApproveDocumentText}}
         </button>
 
-        <button class="control-button-red-small" *ngIf="isApproveVendorDocment && oInitData.isOwner">
+        <button class="control-button-red-small" 
+                *ngIf="isApproveVendorDocment && oInitData.isOwner && !isApproveCustomerDocument">
           {{oInitData.buttonRejectDocumentText}}
         </button>
       </div>

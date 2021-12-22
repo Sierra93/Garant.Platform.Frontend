@@ -44,7 +44,9 @@ export class GarantContractModule implements OnInit {
     public async ngOnInit() {
         await this.initGarantDataAsync();
         await this.getAttachmentDocumentNameVendorDealAsync();
-        await this.onCheckApproveDocumentAsync();
+        await this.getAttachmentDocumentNameCustomerDealAsync();
+        await this.onCheckApproveDocumentVendorAsync();
+        await this.onCheckApproveDocumentCustomerAsync();
     };    
 
     /**
@@ -258,10 +260,10 @@ export class GarantContractModule implements OnInit {
     private async getAttachmentDocumentNameVendorDealAsync() {
         try {        
             let documentInput = new DocumentInput();
-            documentInput.DocumentItemId = this.oInitData.itemDealId
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
 
             if (documentInput.DocumentItemId > 0 && documentInput.DocumentItemId !== null) {
-                await this.http.post(API_URL.apiUrl.concat("/document/get-attachment-document-deal-name"), documentInput)
+                await this.http.post(API_URL.apiUrl.concat("/document/get-attachment-document-vendor-deal-name"), documentInput)
                     .subscribe({
                         next: (response: any) => {
                             this.attachmentVendorFileName = response.documentName;
@@ -280,20 +282,82 @@ export class GarantContractModule implements OnInit {
         }
     };
 
-    private async onCheckApproveDocumentAsync() {
+    /**
+     * Функция получит название файла для согласования продавцу.
+     */
+     private async getAttachmentDocumentNameCustomerDealAsync() {
+        try {        
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
+
+            if (documentInput.DocumentItemId > 0 && documentInput.DocumentItemId !== null) {
+                await this.http.post(API_URL.apiUrl.concat("/document/get-attachment-document-customer-deal-name"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            this.attachmentCustomerFileName = response.documentName;
+                            console.log("Название документа: ", response.documentName);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция проверит, подтвердил ли покупатель догововор продавца.
+     */
+    private async onCheckApproveDocumentVendorAsync() {
         try {
             let documentInput = new DocumentInput();
-            documentInput.DocumentItemId = this.oInitData.itemDealId
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
 
             if (documentInput.DocumentItemId > 0 && documentInput.DocumentItemId !== null) {
                 await this.http.post(API_URL.apiUrl.concat("/document/check-approve-document-vendor"), documentInput)
                     .subscribe({
                         next: (response: any) => {
                             if (response) {
-                                this.isApproveVendorDocment = response;
+                                this.isApproveVendorDocment = true;
                             }
                            
-                            console.log("approve document: ", response);
+                            console.log("approve document vendor: ", response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+     /**
+     * Функция проверит, подтвердил ли продавец догововор покупателя.
+     */
+      private async onCheckApproveDocumentCustomerAsync() {
+        try {
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
+
+            if (documentInput.DocumentItemId > 0 && documentInput.DocumentItemId !== null) {
+                await this.http.post(API_URL.apiUrl.concat("/document/check-approve-document-customer"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            if (response) {
+                                this.isApproveCustomerDocument = true;
+                            }
+                           
+                            console.log("approve document customer: ", response);
                         },
 
                         error: (err) => {
@@ -340,6 +404,9 @@ export class GarantContractModule implements OnInit {
         }
     };
 
+    /**
+     * Функция подтвердит договор продавца.
+     */
     public async onApproveVendorDocumentAsync() {
         try {                
             let documentInput = new DocumentInput();
@@ -354,6 +421,37 @@ export class GarantContractModule implements OnInit {
                             }
 
                             console.log("approve vendor: ", response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция подтвердит договор покупателя.
+     */
+     public async onApproveCustomerDocumentAsync() {
+        try {                
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;            
+
+            if (documentInput.DocumentItemId > 0) {
+                await this.http.post(API_URL.apiUrl.concat("/document/approve-document-customer"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            if (response) {
+                                this.isApproveCustomerDocument = true;
+                            }
+
+                            console.log("approve customer: ", response);
                         },
 
                         error: (err) => {

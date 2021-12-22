@@ -14,7 +14,7 @@
 
   <!-- Блок с названием. -->
   <div class="d-flex">
-    <div class="block-two">
+    <div class="block-two business-name">
       <label class="business-name-label">Укажите полное название вашего бизнеса, без приставок ООО</label><br>
       <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="businessName"
         name="businessName" />
@@ -23,10 +23,19 @@
 
   <hr class="hr">
 
-  <span class="title-strong">Фотографии*</span><br>
-  <label class="file-label">
-    <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)" multiple>
-    Прикрепить</label>
+  <div class="fotos">
+    <span class="title-strong">Фотографии*</span><br>
+    <label class="file-label">
+      <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)" multiple>
+      Прикрепить</label>
+      <span class="picture" *ngIf="filesAssets && filesAssetsCounter === 1">
+        {{filesAssets.name}}
+       </span>
+       <span class="picture" *ngIf="filesAssets && filesAssetsCounter > 1">
+       Выбрано {{filesAssetsCounter}} файлов.
+       </span>
+  </div>
+  
   <div class="block-gallery">
     <div>
       <span *ngIf="!aNamesBusinessPhotos.length">Фотографии не загружены</span>
@@ -200,17 +209,20 @@
     <br>
 
     <div>
-      <label class="file-label">
-        <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)">
+      <label class="file-label file-label--5mb">
+        <input type="file" class="file-input" (change)="uploadFinModelAsync($event)">
         Прикрепить</label>
+        <span class="picture" *ngIf="modelFile">
+          {{modelFile.name}}
+         </span>
       <!-- <button class="control-button-blue-small">Прикрепить файл</button> -->
       <br>
-      <small class="text text--bottom">
-        Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать
-        презентацию, просто пропустите данный этап.
-      </small>
     </div>
   </div>
+  <small class="text text--bottom">
+    Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать
+    презентацию, просто пропустите данный этап.
+  </small>
 
   <hr class="hr">
 
@@ -224,8 +236,12 @@
           placeholder="Опишите бизнес" [(ngModel)]="text" name="text"></textarea>
         <br>
         <label class="file-label">
-          <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)">
-          Прикрепить</label>
+          <input type="file" class="file-input" (change)="uploadTextBusinessPhotosAsync($event)">
+          Прикрепить
+        </label>
+          <span class="picture" *ngIf="filesTextBusiness">
+            {{filesTextBusiness.name}}
+           </span>
       </div>
     </div>
   </div>
@@ -244,6 +260,9 @@
       <label class="file-label">
         <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)">
         Прикрепить</label>
+        <span class="picture" *ngIf="filesAssets">
+          {{filesAssets.name}}
+         </span>
     </div>
   </div>
 
@@ -257,8 +276,11 @@
       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
         placeholder="Опишите причины" [(ngModel)]="reasonsSale" name="reasonsSale"></textarea><br>
       <label class="file-label">
-        <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)">
+        <input type="file" class="file-input" (change)="uploadReasonsSalePhotosAsync($event)">
         Прикрепить</label>
+        <span class="picture" *ngIf="filesReasonsSale">
+          {{filesReasonsSale.name}}
+         </span>
     </div>
   </div>
 

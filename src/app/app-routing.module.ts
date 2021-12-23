@@ -20,6 +20,7 @@ import { CatalogBusinessModule } from './modules/business/catalog-business/catal
 import { GarantInitModule } from './modules/garant/garant-init/garant-init.component';
 import { GarantConcordModule } from './modules/garant/garant-concord/garant-concord.component';
 import { GarantContractModule } from './modules/garant/garant-contract/garant-contract.component';
+import { GarantAcceptPaymentModule } from './modules/garant/garant-accept-payment/garant-accept-payment.component';
 
 const routes: Routes = [
   {
@@ -119,6 +120,11 @@ const routes: Routes = [
   {
     path: "garant/garant-contract",
     component: GarantContractModule
+  },
+
+  {
+    path: "garant/garant-accept-payment",
+    component: GarantAcceptPaymentModule
   }
 ];
 

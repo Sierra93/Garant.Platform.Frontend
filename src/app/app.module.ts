@@ -59,6 +59,7 @@ import { DataService } from "./services/common/data-service";
 import { GarantService } from "./services/garant/garant.service";
 import { GarantConcordModule } from "./modules/garant/garant-concord/garant-concord.component";
 import { GarantContractModule } from "./modules/garant/garant-contract/garant-contract.component";
+import { GarantAcceptPaymentModule } from "./modules/garant/garant-accept-payment/garant-accept-payment.component";
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { GarantContractModule } from "./modules/garant/garant-contract/garant-co
     GarantInitModule,
     ConvertStringToNumberPipe,
     GarantConcordModule,
-    GarantContractModule
+    GarantContractModule,
+    GarantAcceptPaymentModule
   ],
 
   entryComponents: [],

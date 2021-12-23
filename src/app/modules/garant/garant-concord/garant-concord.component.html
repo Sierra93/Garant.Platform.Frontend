@@ -1,179 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="block-garant d-flex justify-content-between mt-70">
+  <!-- Левый блок. -->
+  <div class="col-3">
+    <h5>{{oInitData.blockLeftTitle}}</h5>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-  <div class="block-garant d-flex justify-content-between mt-70">
-    <!-- Левый блок. -->
-    <div class="col-3">
-      <h5>{{oInitData.blockLeftTitle}}</h5>
-
-      <div class="left-panel-first mt-32">  
-        <div>Сделка проходит между</div>
-        <hr>
-
-        <div>
-          <div>
-            <strong>{{oInitData.fullName}}</strong>
-            <br>
-            {{oInitData.role}}
-          </div>
-
-          <hr>
-
-          <div>
-            <strong>{{oInitData.otherUserFullName}}</strong>
-            <br>
-            {{oInitData.otherUserRole}}
-          </div>
-        </div>
-      </div>     
-
-      <div class="left-panel-first mt-32">  
-        <div>{{oInitData.blockLeftSumTitle}}</div>
-        <hr>
-
-        <div>
-          <div>
-            {{oInitData.totalAmount}} ₽
-          </div>
-
-          <hr>
-
-          <div>
-            <strong>{{oInitData.mainItemTitle}}</strong>
-          </div>
-
-          <hr>
-
-          <div>
-            <img [src]="oInitData.imageUrl">
-          </div>
-
-          <div>
-            {{oInitData.itemTitle}}
-          </div>
-        </div>
-      </div>   
-
-      <div class="left-panel-first mt-32">  
-        <div>{{oInitData.documentBlockTitle}}</div>      
-        <small>Документов еще нет</small>
-      </div>   
-    </div>
-
-    <!-- Правый блок. -->
-    <!-- Область с чатом. -->
-    <div class="col-9">
-      <h5>{{oInitData.blockRightTitle}}</h5>
-
-      <div class="right-panel-first mt-32">  
-        <div class="">
-          <!-- <h5>Чат с {{fio}}</h5> -->
-          <div class="">
-    
-            <div class="d-flex justify-content-between">        
-              <div class="d-flex">
-                <!-- <img class="space-intgr mr-16" src="{{chatItemUrl}}"> -->
-                
-                <div>
-                  Предмет чата:<br>
-                  {{chatItemName}}
-                </div>
-              </div>
-    
-              <div>
-                Начало чата: {{dateStartDialog}}
-              </div>
-            </div>
-    
-            <hr>
-    
-            <div class="block-chat">
-              <div class="" *ngFor="let item of aMessages">
-                <div class="block-messages">
-                  <div class="message" [ngClass]="{messageEnd:item.isMyMessage}">
-                    {{item.message}}
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div>
-              <textarea class="area-message" rows="2" cols="30" pInputTextarea [autoResize]="true"
-                placeholder="Введите сообщение" [(ngModel)]="message" (keydown.enter)="onSendMessageAsync()"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="block-black">
-        <div>{{oInitData.blackBlockTitle}}</div>
-
-        <div class="content">
-          {{oInitData.blackBlockText}}
-        </div>
-
-       <div class="d-flex align-items-center">
-        <div>
-          <button class="control-button-blue-small">{{oInitData.blackBlueButtonText}}</button>
-        </div>
-
-        <div class="ml-3">        
-          <button class="control-button-black-contur-small">{{oInitData.blackButtonText}}</button>
-        </div>
-       </div>
-      </div>
-
-      <!-- <div class="d-flex justify-content-end">
-        <button class="control-button-blue-small" (click)="onRouteReviewIterationsAsync(oInitData.itemDealId, oInitData.itemDealType, oInitData.otherId)">{{oInitData.continueButtonText}}</button>
-      </div> -->
-
-      <!-- Область с этапами. -->
-      <div class="right-panel-second mt-32" *ngFor="let item of aInvestInclude; let i = index">          
-      <div>
-        Этап №{{i+1}} - {{item.Name}}
-      </div>      
-
+    <div class="left-panel-first mt-32">  
+      <div>Сделка проходит между</div>
       <hr>
 
       <div>
-        Стоимость этапа<br>
-        {{item.Price}} ₽
-      </div>
-
-      <div>
-        Входит в этап:
-        <ul *ngFor="let iteration of item.Items">
-          <li>{{iteration}}</li>
-        </ul>
-      </div>      
-      
-      <div class="d-flex">
-        <div class="d-flex justify-content-end mr-16"
-          *ngIf="oInitData.buttonCancel !== '' && oInitData.buttonCancel !== null">
-          <button class="control-button-action-change-cancel">{{oInitData.buttonCancel}}</button>
+        <div>
+          <strong>{{oInitData.fullName}}</strong>
+          <br>
+          {{oInitData.role}}
         </div>
 
-        <div class="d-flex justify-content-end"
-          *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
-          <button class="control-button-action-change-cancel">{{oInitData.buttonActionText}}</button>
+        <hr>
+
+        <div>
+          <strong>{{oInitData.otherUserFullName}}</strong>
+          <br>
+          {{oInitData.otherUserRole}}
+        </div>
+      </div>
+    </div>     
+
+    <div class="left-panel-first mt-32">  
+      <div>{{oInitData.blockLeftSumTitle}}</div>
+      <hr>
+
+      <div>
+        <div>
+          {{oInitData.totalAmount}} ₽
+        </div>
+
+        <hr>
+
+        <div>
+          <strong>{{oInitData.mainItemTitle}}</strong>
+        </div>
+
+        <hr>
+
+        <div>
+          <img [src]="oInitData.imageUrl">
+        </div>
+
+        <div>
+          {{oInitData.itemTitle}}
+        </div>
+      </div>
+    </div>   
+
+    <div class="left-panel-first mt-32">  
+      <div>{{oInitData.documentBlockTitle}}</div>      
+      <small>Документов еще нет</small>
+    </div>   
+  </div>
+
+  <!-- Правый блок. -->
+  <!-- Область с чатом. -->
+  <div class="col-9">
+    <h5>{{oInitData.blockRightTitle}}</h5>
+
+    <div class="right-panel-first mt-32">  
+      <div class="">
+        <!-- <h5>Чат с {{fio}}</h5> -->
+        <div class="">
+  
+          <div class="d-flex justify-content-between">        
+            <div class="d-flex">
+              <!-- <img class="space-intgr mr-16" src="{{chatItemUrl}}"> -->
+              
+              <div>
+                Предмет чата:<br>
+                {{chatItemName}}
+              </div>
+            </div>
+  
+            <div>
+              Начало чата: {{dateStartDialog}}
+            </div>
+          </div>
+  
+          <hr>
+  
+          <div class="block-chat">
+            <div class="" *ngFor="let item of aMessages">
+              <div class="block-messages">
+                <div class="message" [ngClass]="{messageEnd:item.isMyMessage}">
+                  {{item.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div>
+            <textarea class="area-message" rows="2" cols="30" pInputTextarea [autoResize]="true"
+              placeholder="Введите сообщение" [(ngModel)]="message" (keydown.enter)="onSendMessageAsync()"></textarea>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="d-flex justify-content-end" 
-        *ngIf="oInitData.continueButtonText !== '' && oInitData.continueButtonText !== null">
-      <button class="control-button-blue-small">{{oInitData.continueButtonText}}</button>
-    </div> 
+    <div class="block-black">
+      <div>{{oInitData.blackBlockTitle}}</div>
+
+      <div class="content">
+        {{oInitData.blackBlockText}}
+      </div>
+
+     <div class="d-flex align-items-center">
+      <div>
+        <button class="control-button-blue-small">{{oInitData.blackBlueButtonText}}</button>
+      </div>
+
+      <div class="ml-3">        
+        <button class="control-button-black-contur-small">{{oInitData.blackButtonText}}</button>
+      </div>
+     </div>
+    </div>
+
+    <!-- <div class="d-flex justify-content-end">
+      <button class="control-button-blue-small" (click)="onRouteReviewIterationsAsync(oInitData.itemDealId, oInitData.itemDealType, oInitData.otherId)">{{oInitData.continueButtonText}}</button>
+    </div> -->
+
+    <!-- Область с этапами. -->
+    <div class="right-panel-second mt-32" *ngFor="let item of aInvestInclude; let i = index">          
+    <div>
+      Этап №{{i+1}} - {{item.Name}}
+    </div>      
+
+    <hr>
+
+    <div>
+      Стоимость этапа<br>
+      {{item.Price}} ₽
+    </div>
+
+    <div>
+      Входит в этап:
+      <ul *ngFor="let iteration of item.Items">
+        <li>{{iteration}}</li>
+      </ul>
+    </div>      
+    
+    <div class="d-flex">
+      <div class="d-flex justify-content-end mr-16"
+        *ngIf="oInitData.buttonCancel !== '' && oInitData.buttonCancel !== null">
+        <button class="control-button-action-change-cancel">{{oInitData.buttonCancel}}</button>
+      </div>
+
+      <div class="d-flex justify-content-end"
+        *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
+        <button class="control-button-action-change-cancel">{{oInitData.buttonActionText}}</button>
+      </div>
     </div>
   </div>
 
-</body>
-
-</html>
+  <div class="d-flex justify-content-end" 
+      *ngIf="oInitData.continueButtonText !== '' && oInitData.continueButtonText !== null">
+    <button class="control-button-blue-small">{{oInitData.continueButtonText}}</button>
+  </div> 
+  </div>
+</div>

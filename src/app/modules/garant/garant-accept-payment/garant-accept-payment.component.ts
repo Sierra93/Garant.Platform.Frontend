@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { DocumentInput } from "src/app/models/document/input/document-input";
 import { DealInput } from "src/app/models/garant/input/deal-input";
@@ -33,12 +33,15 @@ export class GarantAcceptPaymentModule implements OnInit {
     isApproveVendorDocment: boolean = false;
     isApproveCustomerDocument: boolean = false;
     aDocumants: string[] = [];
+    chatItemUrl: string = "";
+    fio: string = "";
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
         private garantService: GarantService,
         private router: Router,
-        private dataService: DataService) {
+        private dataService: DataService,
+        private route: ActivatedRoute) {
 
     };
 
@@ -49,6 +52,8 @@ export class GarantAcceptPaymentModule implements OnInit {
         await this.onCheckApproveDocumentVendorAsync();
         await this.onCheckApproveDocumentCustomerAsync();
         await this.onGetDocumentsDealAsync();
+        await this.getDialogMessagesAsync();
+        // await this.getTransitionAsync();
     };    
 
     /**
@@ -59,9 +64,10 @@ export class GarantAcceptPaymentModule implements OnInit {
         try {           
             await this.garantService.initGarantDataAsync(4, true, this.dataService.otherId).then((response: any) => {
                 this.oInitData = response;                
-                this.aMessages = response.chatData.messages;
+                this.dialogId = response.chatData.dialogId;
+                // this.aMessages = response.chatData.messages;
                 this.dateStartDialog = response.chatData.dateStartDialog;
-                this.chatItemName = response.chatData.chatItemName;
+                this.chatItemName = this.oInitData.itemTitle;
                 this.aInvestInclude = JSON.parse(response.investInclude);
 
                 console.log("garant init data stage 4: ", this.oInitData);
@@ -493,6 +499,24 @@ export class GarantAcceptPaymentModule implements OnInit {
                         }
                     });
             }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    private async getDialogMessagesAsync() {
+        try {           
+            await this.commonService.getDialogMessagesAsync(this.dialogId, "", "").then((data: any) => {
+                console.log("Список сообщений диалога: ", data);                
+                this.aMessages = data.messages;
+                this.fio = data.fullName;
+                this.dateStartDialog = data.dateStartDialog;
+                // this.chatItemName = data.chatItemName;
+                this.dialogId = data.dialogId;
+                this.chatItemUrl = data.url;
+            });
         }
 
         catch (e: any) {

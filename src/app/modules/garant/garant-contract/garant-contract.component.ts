@@ -33,6 +33,8 @@ export class GarantContractModule implements OnInit {
     isApproveVendorDocment: boolean = false;
     isApproveCustomerDocument: boolean = false;
     aDocumants: string[] = [];
+    chatItemUrl: string = "";
+    fio: string = "";
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -49,6 +51,7 @@ export class GarantContractModule implements OnInit {
         await this.onCheckApproveDocumentVendorAsync();
         await this.onCheckApproveDocumentCustomerAsync();
         await this.onGetDocumentsDealAsync();
+        await this.getDialogMessagesAsync();
     };    
 
     /**
@@ -61,7 +64,8 @@ export class GarantContractModule implements OnInit {
                 this.oInitData = response;                
                 this.aMessages = response.chatData.messages;
                 this.dateStartDialog = response.chatData.dateStartDialog;
-                this.chatItemName = response.chatData.chatItemName;
+                this.chatItemName = this.oInitData.itemTitle;
+                this.dialogId = response.chatData.dialogId;
                 this.aInvestInclude = JSON.parse(response.investInclude);
 
                 console.log("garant init data stage 3: ", this.oInitData);
@@ -493,6 +497,24 @@ export class GarantContractModule implements OnInit {
                         }
                     });
             }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    private async getDialogMessagesAsync() {
+        try {           
+            await this.commonService.getDialogMessagesAsync(this.dialogId, "", "").then((data: any) => {
+                console.log("Список сообщений диалога: ", data);                
+                this.aMessages = data.messages;
+                this.fio = data.fullName;
+                this.dateStartDialog = data.dateStartDialog;
+                // this.chatItemName = data.chatItemName;
+                this.dialogId = data.dialogId;
+                this.chatItemUrl = data.url;
+            });
         }
 
         catch (e: any) {

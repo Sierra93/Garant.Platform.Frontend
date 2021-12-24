@@ -72,8 +72,11 @@
               <!-- <img class="space-intgr mr-16" src="{{chatItemUrl}}"> -->
               
               <div>
-                Предмет чата:<br>
-                {{chatItemName}}
+                <strong>{{oInitData.blackBlockTitle}}</strong>
+                
+                <div>
+                  <small>Согласование началось {{oInitData.dateStartDeal}}</small>
+                </div>
               </div>
             </div>
   
@@ -159,7 +162,10 @@
 
   <div class="d-flex justify-content-end" 
       *ngIf="oInitData.continueButtonText !== '' && oInitData.continueButtonText !== null">
-    <button class="control-button-blue-small">{{oInitData.continueButtonText}}</button>
+    <button class="control-button-blue-small"
+            (click)="onRouteGarant4Async(oInitData.itemDealId, 'Garant', oInitData.otherId)">
+      {{oInitData.continueButtonText}}
+    </button>
   </div> 
   </div>
 </div>

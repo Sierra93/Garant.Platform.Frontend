@@ -255,7 +255,7 @@
 
   <div class="d-flex justify-content-end"
     *ngIf="oInitData.continueButtonText !== '' && oInitData.continueButtonText !== null">
-    <button class="control-button-blue-small">{{oInitData.continueButtonText}}</button>
+    <button class="control-button-blue-small" (click)="onRouteGarant4Async()">{{oInitData.continueButtonText}}</button>
   </div>
   </div>
 </div>

@@ -123,12 +123,8 @@ export class GarantConcordModule implements OnInit {
         }
     };
 
-    public async onRouteGarant4Async(dealItemId: number, type: string, userId: string) {
-        await this.commonService.setTransitionAsync(dealItemId, type, userId, type).then((data: any) => {
-            console.log("Переход записан:", data);
-        });
-
-        this.router.navigate(["/garant/garant-accept-payment"], { queryParams: { stage: 4 } });
+    public async onRouteGarant3Async() {
+        this.router.navigate(["/garant/garant-contract"], { queryParams: { stage: 3 } });
     };
 
     private async getDialogMessagesAsync() {

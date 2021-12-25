@@ -521,4 +521,8 @@ export class GarantContractModule implements OnInit {
             throw new Error(e);
         }
     };
+
+    public async onRouteGarant4Async() {       
+        this.router.navigate(["/garant/garant-accept-payment"], { queryParams: { stage: 4 } });
+    };
 }

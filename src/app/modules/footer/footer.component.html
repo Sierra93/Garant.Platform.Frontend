@@ -1,70 +1,67 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-  <div class="footer">
-    <div class="container d-flex justify-content-between before footer-top">
+<div class="app-container footer">
+  <div class="row mb-5">
+    <div class="col-6">
       <div>
-        <img src="../../../assets/images/search_logo.svg">
-      </div>
-
-      <div>
-        <img src="../../../assets/images/telega.svg">
-        <img class="space-intgr" src="../../../assets/images/facebook.svg">
-        <img class="space-intgr" src="../../../assets/images/SocialMedia.svg">
-        <img class="space-intgr" src="../../../assets/images/youtube.svg">
+        <img src="../../../assets/images/search_logo.svg" alt="gobizy logo" />
       </div>
     </div>
-
-    <!-- Пункты футера. -->
-    <div class="container d-flex justify-content-between">
-      <div>
-        <div class="block-col-footer">
-          <div *ngFor="let el of aFooterColumn1">
-            <h4 class="big-title">{{el.title}}</h4>
-            <a href="#" class="footer-link">{{el.name}}</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Проекты. -->
-      <div>
-        <div class="block-col-footer">
-          <div *ngFor="let el of aFooterColumn2">
-            <h4 class="big-title">{{el.title}}</h4>
-            <a href="#" class="footer-link">{{el.name}}</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- GoBizy. -->
-      <div>
-        <div class="block-col-footer">
-          <div *ngFor="let el of aFooterColumn3">
-            <h4 class="big-title">{{el.title}}</h4>
-            <a href="#" class="footer-link">{{el.name}}</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Политика. -->
-      <div>
-        <div class="block-col-footer">
-          <div *ngFor="let el of aFooterColumn4">
-            <h4 class="big-title">{{el.title}}</h4>
-            <a href="#" class="footer-link">{{el.name}}</a>
-          </div>
-        </div>
+    <div class="col-6 d-flex justify-content-end">
+      <div class="social-contacts">
+        <ul class="list-unstyled d-flex">
+          <li>
+            <img src="../../../assets/images/footer-icons/telegram.svg" alt="gobizy telegram channel" />
+          </li>
+          <li>
+            <img src="../../../assets/images/footer-icons/facebook.svg" alt="gobizy facebook page" />
+          </li>
+          <li>
+            <img src="../../../assets/images/footer-icons/instagram.svg" alt="gobizy instagram channel" />
+          </li>
+          <li>
+            <img src="../../../assets/images/footer-icons/youtube.svg" alt="gobizy youtube channel" />
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 
-</body>
+  <nav>
+    <div class="row">
+      <div class="col-3">
+        <ul class="list-unstyled">
+          <li *ngFor="let el of aFooterColumn1; let first = first">
+            <h4 *ngIf="first">{{el.title}}</h4>
+            <a href="javascript:void()">{{el.name}}</a>
+          </li>
+        </ul>
+      </div>
 
-</html>
+      <div class="col-3 d-flex justify-content-center">
+        <ul class="list-unstyled">
+          <li *ngFor="let el of aFooterColumn2; let first = first">
+            <h4 *ngIf="first">{{el.title}}</h4>
+            <a href="javascript:void()">{{el.name}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-3 d-flex justify-content-center">
+        <ul class="list-unstyled">
+          <li *ngFor="let el of aFooterColumn3; let first = first">
+            <h4 *ngIf="first">{{el.title}}</h4>
+            <a href="javascript:void()">{{el.name}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-3 d-flex justify-content-end">
+        <ul class="list-unstyled">
+          <li *ngFor="let el of aFooterColumn4; let first = first">
+            <h4 *ngIf="first">{{el.title}}</h4>
+            <a href="javascript:void()">{{el.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

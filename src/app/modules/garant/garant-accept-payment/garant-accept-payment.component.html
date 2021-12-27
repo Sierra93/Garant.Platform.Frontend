@@ -157,8 +157,8 @@
         </div>
 
         <div>
-            <input type="file" (change)="onAttachmentVendorDocument($event)">  
-          </div>
+          <input type="file" (change)="onAttachmentActDocument($event)">
+        </div>
       
           <!-- <div *ngIf="attachmentVendorFileName !== '' && attachmentVendorFileName !== null">
             {{attachmentVendorFileName}}
@@ -176,7 +176,9 @@
         <div class="d-flex">
           <div class="d-flex justify-content-end mr-16"
             *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
-            <button class="control-button-blue-small">{{oInitData.buttonActionText}}</button>
+            <button class="control-button-blue-small" (click)="onAttachDocumentActAsync(i)">
+              {{oInitData.buttonActionText}}
+            </button>
           </div>
     
           <!-- <div class="d-flex justify-content-end"

@@ -35,6 +35,7 @@ export class GarantAcceptPaymentModule implements OnInit {
     aDocumants: string[] = [];
     chatItemUrl: string = "";
     fio: string = "";
+    actFile: any;
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -517,6 +518,68 @@ export class GarantAcceptPaymentModule implements OnInit {
                 this.dialogId = data.dialogId;
                 this.chatItemUrl = data.url;
             });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public onAttachmentActDocument(e: any) {
+        this.actFile = e.target.files[0];
+
+        if (e.target.files.length > 0) {
+            console.log("act attach");            
+        }
+    };
+
+    /**
+     * Функция прикрепит документ акта в зависимости от номера этапа.
+     * @returns - Данные добавленного акта.
+     */
+    public async onAttachDocumentActAsync(i: number) {
+        try {                
+            let documentInput = new DocumentInput();       
+            let formData = new FormData();          
+            documentInput.DocumentItemId = this.oInitData.itemDealId;   
+            documentInput.IsDealDocument = true;    
+            
+            console.log("onAttachmentVendorDocument");     
+            console.log("actFile", this.actFile);  
+            console.log("oInitData", this.oInitData);  
+            console.log("iterationNumber", i);  
+            
+            // Если первый акт, то поставит 1.
+            if (i == 0) {
+                i = 1;
+            }
+
+            // Проставит название акта.
+            // Если владелец.
+            if (this.oInitData.isOwner) {                
+                documentInput.DocumentType = "DocumentVendorAct" + i;
+            }
+
+            // Если не владелец.
+            if (!this.oInitData.isOwner) {
+                documentInput.DocumentType = "DocumentCustomerAct" + i;
+            }                              
+            
+            formData.append("files", this.actFile);      
+            formData.append("documentData", JSON.stringify(documentInput));
+
+            if (documentInput.DocumentItemId > 0) {
+                await this.http.post(API_URL.apiUrl.concat("/document/attachment-act"), formData)
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("Документ акта: ", response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
         }
 
         catch (e: any) {

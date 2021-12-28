@@ -134,7 +134,7 @@
     <!-- Область с этапами. -->
     <div class="right-panel-second mt-32" *ngFor="let item of aInvestInclude; let i = index">          
         <div>
-          Этап №{{i+1}}: {{item.Name}}
+          <strong>Этап №{{i+1}}: {{item.Name}}</strong>
         </div>      
 
         <div>
@@ -146,8 +146,12 @@
 
         <hr>
 
-        <div>
-            {{oInitData.contractTitle}}
+        <div *ngIf="oInitData.isOwner">
+            <strong>{{oInitData.blockRightStatusTitle}}</strong>
+        </div>
+
+        <div *ngIf="!oInitData.isOwner && aCustomerActs[i] == null">
+          <strong>{{oInitData.contractTitle}}</strong>
         </div>
 
         <div>
@@ -156,13 +160,21 @@
             </small>
         </div>
 
-        <div>
+        <div *ngIf="oInitData.isOwner && aVendorActs[i] == null">
           <input type="file" (change)="onAttachmentActDocument($event)">
         </div>
-      
-          <!-- <div *ngIf="attachmentVendorFileName !== '' && attachmentVendorFileName !== null">
-            {{attachmentVendorFileName}}
-          </div> -->
+
+        <div *ngIf="!oInitData.isOwner && aCustomerActs[i] == null">
+          <input type="file" (change)="onAttachmentActDocument($event)">
+        </div>
+
+        <div *ngIf="oInitData.isOwner && aVendorActs[i] != null">
+          {{aVendorActs[i].documentName}}
+        </div>      
+
+        <div *ngIf="!oInitData.isOwner && aCustomerActs[i] != null">
+          {{aCustomerActs[i].documentName}}
+        </div>     
     
         <hr>        
     
@@ -174,24 +186,45 @@
         </div>      
         
         <div class="d-flex">
-          <div class="d-flex justify-content-end mr-16"
-            *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
-            <button class="control-button-blue-small" (click)="onAttachDocumentActAsync(i)">
+          <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
+                      && oInitData.buttonActionText !== null && oInitData.isOwner">
+            <button class="control-button-blue-small" 
+                    [disabled]="oInitData.isOwner && aVendorActs[i - 1] != null && !aVendorActs[i - 1].isPay" 
+                    (click)="onAttachDocumentActAsync(i)">
               {{oInitData.buttonActionText}}
             </button>
           </div>
+
+          <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
+                      && oInitData.buttonActionText !== null && !oInitData.isOwner">
+            <button class="control-button-blue-small" 
+                    [disabled]="!oInitData.isOwner && aCustomerActs[i - 1] != null && !aCustomerActs[i - 1].isPay" 
+                    (click)="onApproveDocumentActVendorAsync(i)">
+              {{oInitData.buttonActionText}}
+            </button>
+          </div>
+
+          <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionTextContract !== '' 
+                      && oInitData.buttonActionTextContract !== null 
+                      && !oInitData.isOwner
+                      && aCustomerActs[i - 1] != null && aCustomerActs[i - 1].isAcceptDocument">
+            <button class="control-button-blue-small"
+                    [disabled]="!oInitData.isOwner && aCustomerActs[i - 1] != null && !aCustomerActs[i - 1].isPay"
+                    (click)="onAttachDocumentActAsync(i)">
+              {{oInitData.buttonActionTextContract}} {{item.Price | formatPrice}} ₽
+            </button>
+          </div>
     
-          <!-- <div class="d-flex justify-content-end"
+          <!-- <div class="d-flex justify-content-end" 
             *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
             <button class="control-button-action-change-cancel">{{oInitData.buttonActionText}}</button>
           </div> -->
         </div>
-      </div>
-    
+      </div>    
 
     <div class="d-flex justify-content-end"
       *ngIf="oInitData.continueButtonText !== '' && oInitData.continueButtonText !== null">
-      <button class="control-button-blue-small">{{oInitData.continueButtonText}}</button>
+      <button class="control-button-blue-small" [disabled]="!isEndDeal">{{oInitData.continueButtonText}}</button>
     </div>
   </div>
 </div>

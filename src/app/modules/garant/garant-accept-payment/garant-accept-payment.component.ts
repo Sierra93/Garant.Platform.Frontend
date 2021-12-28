@@ -36,6 +36,9 @@ export class GarantAcceptPaymentModule implements OnInit {
     chatItemUrl: string = "";
     fio: string = "";
     actFile: any;
+    aVendorActs: any = [];
+    isEndDeal: boolean = false;
+    aCustomerActs: any = [];
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -54,7 +57,6 @@ export class GarantAcceptPaymentModule implements OnInit {
         await this.onCheckApproveDocumentCustomerAsync();
         await this.onGetDocumentsDealAsync();
         await this.getDialogMessagesAsync();
-        // await this.getTransitionAsync();
     };    
 
     /**
@@ -66,10 +68,12 @@ export class GarantAcceptPaymentModule implements OnInit {
             await this.garantService.initGarantDataAsync(4, true, this.dataService.otherId).then((response: any) => {
                 this.oInitData = response;                
                 this.dialogId = response.chatData.dialogId;
-                // this.aMessages = response.chatData.messages;
                 this.dateStartDialog = response.chatData.dateStartDialog;
                 this.chatItemName = this.oInitData.itemTitle;
                 this.aInvestInclude = JSON.parse(response.investInclude);
+
+                this.loadVendorActsAsync();
+                this.loadCustomerActsAsync();
 
                 console.log("garant init data stage 4: ", this.oInitData);
                 console.log("aInvestInclude: ", this.aInvestInclude);
@@ -585,5 +589,67 @@ export class GarantAcceptPaymentModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
+    };
+
+    /**
+     * Функция получит список актов продавца.
+     * @returns - Список актов.
+     */
+    private async loadVendorActsAsync() {
+        try {                
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;            
+
+            if (documentInput.DocumentItemId > 0) {
+                await this.http.post(API_URL.apiUrl.concat("/document/get-vendor-acts"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            this.aVendorActs = response;
+                            console.log("Акты продавца: ", response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список актов покупателя.
+     * @returns - Список актов.
+     */
+     private async loadCustomerActsAsync() {
+        try {                
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;            
+
+            if (documentInput.DocumentItemId > 0) {
+                await this.http.post(API_URL.apiUrl.concat("/document/get-customer-acts"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            this.aCustomerActs = response;
+                            console.log("Акты покупателя: ", response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onApproveDocumentActVendorAsync(i: number) {
+
     };
 }

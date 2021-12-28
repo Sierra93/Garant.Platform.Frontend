@@ -4,7 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateBusinessInput } from "src/app/models/business/input/business-create-update-input";
-import { CommonDataService } from "src/app/services/common-data.service";
+import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
     selector: "create-ready-business",

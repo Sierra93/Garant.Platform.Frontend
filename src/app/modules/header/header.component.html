@@ -1,248 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-  <div class="wrapper">
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow">
-      <!-- <div class="d-flex"> 
-          <img src="../../../assets/images/search_logo.jpg" width="100" height="58">
-        </div> -->
-
-      <div class="container">
-        <button class="navbar-toggler btn-state-left-menu" type="button" data-toggle="collapse"
-          data-target=".navbar-collapse" aria-label="Toggle navigation">
-
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="navbar-collapse collapse d-sm-inline-flex d-flex flex-row-reverse header">
-          <!-- Бургер левой панели. role !== 'G' && !bShowGuestHeader-->
-          <!-- <div class="burger">
-                <div class="block-left-line">
-                  <div class="left-line"></div>
-                  <div class="left-line"></div>
-                  <div class="left-line"></div>
-                </div>
-              </div> -->
-
-          <div class="header">
-            <ul class="navbar-nav flex-grow">
-              <li class="nav-item">
-                <div class="div-link">
-                  <!-- Пункты хидера. -->
-              <li *ngFor="let el of aHeader">
-                <div (click)="onGetMenuHeader(el.name)">{{el.name}}</div>
-              </li>
-          </div>
+<div class="app-container header-container">
+  <!-- верхний часть хедера -->
+  <div class="row navbar-top">
+    <div class="col-12">
+      <nav class="d-flex justify-content-end">
+        <ul class="list-unstyled d-flex">
+          <li *ngFor="let el of aHeader; let last = last">
+            <span (click)="onGetMenuHeader(el.name)" *ngIf="!last">{{el.name}}</span>
+            <span (click)="onGetMenuHeader(el.name)" *ngIf="last" class="last">
+              <span>+</span>
+              <span>{{el.name}}</span>
+            </span>
           </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- верхний часть хедера -->
+
+  <!-- лого, поисковое поле, и функции аккаунта -->
+  <div class="row logo-and-search">
+    <div class="col-2" (click)="onRouteStart()">
+      <div class="logo">
+        <img src="../../assets/images/search_logo.svg" alt="gobizy logo" />
+      </div>
+    </div>
+
+    <div class="col-5" style="height: 61px;">
+      <div class="search-container h-100 position-relative">
+        <div class="h-100 d-flex align-items-center">
+          <!-- тип селекта поиска -->
+          <div class="options">
+            <p-dropdown [options]="searchOptions" [(ngModel)]="selectedSearchOption"></p-dropdown>
+          </div>
+
+          <!-- поле для поиска -->
+          <div class="h-100 w-100">
+            <input type="search" class="input-search search-header" pInputText
+              placeholder="Например: “Медицинский центр”" [(ngModel)]="searchText"
+              (keydown.enter)="onRouteSearch(searchText)">
+          </div>
+
+          <!-- кнорка для поиска -->
+          <div class="search-button h-100">
+            <button (click)="onRouteSearch(searchText)">
+              <img src="../../../assets/images/search.svg" alt="gobizy search icon" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="account-options">
+        <nav>
+          <ul class="list-unstyled d-flex justify-content-between">
+            <li>
+              <a class="text-center" routerLink="/">
+                <img src="../../../assets/images/account-options/option1.svg" width="34" height="32"><br>
+                <span class="">Продать</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="text-center" routerLink="/">
+                <img src="../../../assets/images/account-options/option2.svg" width="34" height="32"><br>
+                <span class="">Мои сделки</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="text-center" routerLink="/">
+                <img src="../../../assets/images/account-options/option3.svg" width="34" height="32"><br>
+                <span class="">Избранное</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="text-center" routerLink="/">
+                <img src="../../../assets/images/account-options/option4.svg" width="34" height="32"><br>
+                <span class="">Уведомления</span>
+              </a>
+            </li>
+
+            <li class="last">
+              <a class="text-center" routerLink="/profile/my-data">
+                <img src="../../../assets/images/account-options/option5.svg" width="34" height="32"><br>
+                <span class="">Аккаунт</span>
+              </a>
+            </li>
           </ul>
-        </div>
-      </div>
-  </div>
-
-  <div class="right-head d-flex align-items-center">
-    <!-- <img src="../assets/images/pig1.png" 
-                  class="mr-1"
-                   /> -->
-    <!-- [hidden]="!bHideHeader" -->
-    <!-- <span class="price mr-2 d-flex">
-                        {{balance || 0}}                    
-                </span> -->
-
-    <!-- <span class="price mr-2 d-flex">руб.</span> -->
-    <!--              
-            <img src="../assets/images/get_money.png" 
-                  class="ml-1"
-                  />        -->
-    <!-- [hidden]="!bHideHeader"  -->
-
-    <div class="d-flex align-items-center">
-      <!-- Выпадающее меню. -->
-      <div class="drop-down">
-        <button type="button" class="btn-item btn btn-default state" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-user-circle-o d-flex align-items-center" aria-hidden="true">
-            <!-- <img src="../assets/images/user1.png" class="" /> -->
-          </i>
-        </button>
-        <div class="drop-menu">
-          <!-- <span class="mb-1" ><strong>{{userName}}</strong></span> -->
-          <!-- <ul>
-                    <li (click)="onGoProfile()">
-                      <span>Профиль</span>
-                    </li>
-                    
-                    <li >
-                      <span>Тарифы</span>
-                    </li>
-                    
-                    <li >
-                      <span>Подписка на задания</span>
-                    </li>
-                    
-                    <li >
-                      <span>Настройки</span>
-                    </li>
-    
-                    <hr>
-    
-                    <li >
-                      <span>Выход</span>
-                    </li>
-                  </ul> -->
-        </div>
+        </nav>
       </div>
     </div>
   </div>
+  <!-- лого, поисковое поле, и функции аккаунта -->
 
-  <div class="d-flex align-items-center">
-    <div class="d-flex align-items-center ml-2">
-      <!-- <img src="../assets/images/add_task.jpg" class="link" /> -->
-      <!-- <button class="nav-link btn btn-link link-add-task">
-                Создать задание
-              </button> -->
-    </div>
+  <!-- навбар основных страниц -->
+  <div class="row main-pages">
+    <div class="col-12">
+      <nav>
+        <ul class="list-unstyled">
+          <li>
+            <a routerLink="/">
+              <img src="../../../assets/images/Logo=Main, Stage=Passive.svg" class="after-search-img" width="44" height="42">
+              <span>Главная</span>
+            </a>
+          </li>
 
-    <div class="d-flex align-items-center ml-2">
-      <!-- <img src="../assets/images/add_task.jpg" class="link" /> -->
-      <!-- <button class="nav-link btn btn-link link-add-task">
-                Регистрация
-              </button> -->
-    </div>
+          <li>
+            <a routerLink="/catalog-franchise">
+              <img src="../../../assets/images/Logo=Franchise, Stage=Passive.svg" class="after-search-img" width="44"
+                height="42">
+                <span>Франшизы</span>
+            </a>
+          </li>
 
-    <!-- <div class="d-flex align-items-center ml-2">
-              <img src="../assets/images/add_task.jpg" class="link" />
-              <button class="nav-link btn btn-link link-add-task">
-                Войти
-              </button>
-            </div> -->
-  </div>
-  </nav>
+          <li>
+            <a routerLink="/catalog-business">
+              <img src="../../../assets/images/Logo=Business, Stage=Passive.svg" class="after-search-img" width="44"
+                height="42">
+                <span>Готовый бизнес</span>
+            </a>
+          </li>
 
-  <!-- Область с поиском. -->
-  <div class="col-lg-12 col-xs-12 block-after-header d-flex align-items-center justify-content-between">
-    <div class="search-logo" (click)="onRouteStart()">
-      <img class="search-logo__image" src="../../assets/images/search_logo.svg" width="100" height="58">
-    </div>
+          <li>
+            <a routerLink="/">
+              <img src="../../../assets/images/Logo=Guarantee, Stage=Passive.svg" class="after-search-img" width="44"
+                height="42">
+                <span>Покупка через гарант</span>
+            </a>
+          </li>
 
-    <div class="">
-      <div class="p-input-icon-right d-flex align-items-center">
-        <input type="search" class="input-search search-header" pInputText placeholder="Например: “Медицинский центр”" [(ngModel)]="searchText" (keydown.enter)="onRouteSearch(searchText)">
-        <button class="search-btn" (click)="onRouteSearch(searchText)">
-          <img src="../../../assets/images/search.svg" alt="">
-        </button>        
-      </div>
+          <li>
+            <a routerLink="/">
+              <img src="../../../assets/images/Logo=Law, Stage=Passive.svg" class="after-search-img" width="44" height="42">
+              <span>Консалтинг</span>
+            </a>
+          </li>
 
-      <div class="d-flex mt-3 align-items-center">
-        <div class="mr-3">
-          <p-checkbox name="data-franchise" 
-                      value="franchise" 
-                      label="Искать по франшизам" 
-                      [(ngModel)]="selectedValueFranchise"
-                      [disabled]="selectedValueBusiness"
-                      [binary]="true">
-            </p-checkbox>
-        </div>
-  
-        <div>
-          <p-checkbox name="data-business" 
-                      value="business" 
-                      label="Искать по бизнесу" 
-                      [disabled]="selectedValueFranchise"
-                      [(ngModel)]="selectedValueBusiness"
-                      [binary]="true">
-            </p-checkbox>
-        </div>
-      </div>
-    </div>
-
-    <div class="sell text-center">
-      <img src="../../../assets/images/megaphone 1.svg" width="34" height="32"><br>
-      <span class="">Продать</span>
-    </div>
-
-    <div class="sell text-center">
-      <img src="../../../assets/images/deal 1.svg" width="34" height="32"><br>
-      <span class="">Мои сделки</span>
-    </div>
-
-    <div class="sell text-center">
-      <img src="../../../assets/images/Vector (25).svg" width="34" height="32"><br>
-      <!-- нужна другая картинка -->
-      <span class="">Избранное</span>
-    </div>
-
-    <div class="sell text-center">
-      <img src="../../../assets/images/avatar 2.svg" width="34" height="32"><br>
-      <span class="">Уведомления</span>
-    </div>
-
-    <div class="sell text-center" (click)="onRouteProfile()">
-      <img src="../../../assets/images/avatar 1.png" width="34" height="32"><br>
-      <span class="">Аккаунт</span>
+          <li>
+            <a routerLink="/">
+              <img src="../../../assets/images/Logo=Settings, Stage=Passive.svg" class="after-search-img" width="44"
+                height="42">
+                <span>Упаковка франшиз</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
-
-  <!-- Область под поиском. -->
-  <div class="after-search d-flex justify-content-between">
-    <div class="after-search-menu d-flex align-items-center">
-      <div class="after-search-icon-container">
-        <img src="../../../assets/images/Logo=Main, Stage=Passive.svg" class="after-search-img" width="44" height="42">
-      </div>
-      <span class="">Главная</span>
-    </div>
-
-    <div class="header-link d-flex align-items-center" (click)="onRouteCatalogFranchise()">
-      <div class="after-search-icon-container">
-        <img src="../../../assets/images/Logo=Franchise, Stage=Passive.svg" class="after-search-img" width="44"
-          height="42">
-      </div>
-      <span class="">Франшизы</span>
-    </div>
-
-    <div class="after-search-menu d-flex align-items-center">
-      <div class="after-search-icon-container">
-        <img src="../../../assets/images/Logo=Business, Stage=Passive.svg" class="after-search-img" width="44"
-          height="42">
-      </div>
-      <span class="">Готовый бизнес</span>
-    </div>
-
-    <div class="after-search-menu d-flex align-items-center">
-      <div class="after-search-icon-container">
-        <img src="../../../assets/images/Logo=Guarantee, Stage=Passive.svg" class="after-search-img" width="44"
-          height="42">
-      </div>
-      <span class="">Покупка через гарант</span>
-    </div>
-
-    <div class="after-search-menu d-flex align-items-center">
-      <div class="after-search-icon-container">
-        <img src="../../../assets/images/Logo=Law, Stage=Passive.svg" class="after-search-img" width="44" height="42">
-      </div>
-      <span class="">Консалтинг</span>
-    </div>
-
-    <div class="after-search-menu d-flex align-items-center">
-      <div class="after-search-icon-container">
-        <img src="../../../assets/images/Logo=Settings, Stage=Passive.svg" class="after-search-img" width="44"
-          height="42">
-      </div>
-      <span class="">Упаковка франшиз</span>
-    </div>
-  </div>
-
-  <!-- <div class="breadcrumbs">
-    <p-breadcrumb [model]="aBreadcrumbs"></p-breadcrumb>
-  </div> -->
-  </div>
-</body>
-
-
-</html>
+  <!-- навбар основных страниц -->
+</div>

@@ -50,6 +50,7 @@ export class CreateReadyBusinessModule implements OnInit {
     businessName: string = "";
     activityPhotoName: any;
     filesAssets: any;
+    filesAssetsCounter!: number;
     filesReasonsSale: any;
     filesTextBusiness: any;
     filesBusiness: any;
@@ -224,6 +225,7 @@ export class CreateReadyBusinessModule implements OnInit {
      */
     public uploadAssetsBusinessPhotosAsync(event: any) {
         console.log("uploadAssetsBusinessPhotosAsync");
+        this.filesAssetsCounter = event.target.files.length;
         this.filesAssets = event.target.files[0];
     };
 

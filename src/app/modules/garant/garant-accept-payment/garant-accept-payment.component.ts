@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { DocumentInput } from "src/app/models/document/input/document-input";
 import { DealInput } from "src/app/models/garant/input/deal-input";
@@ -9,15 +9,15 @@ import { DataService } from "src/app/services/common/data-service";
 import { GarantService } from "src/app/services/garant/garant.service";
 
 @Component({
-    selector: "garant-contract",
-    templateUrl: "./garant-contract.component.html",
-    styleUrls: ["./garant-contract.component.scss"]
+    selector: "garant-accept-payment",
+    templateUrl: "./garant-accept-payment.component.html",
+    styleUrls: ["./garant-accept-payment.component.scss"]
 })
 
 /** 
- * Класс модуля Гаранта (страница согласования договора 3 этап).
+ * Класс модуля Гаранта (страница оплаты и подтверждения этапов 4 этап).
  */
-export class GarantContractModule implements OnInit {    
+export class GarantAcceptPaymentModule implements OnInit {    
     oInitData: any = {};
     aMessages: any = [];
     dateStartDialog: string = "";
@@ -40,7 +40,8 @@ export class GarantContractModule implements OnInit {
         private commonService: CommonDataService,
         private garantService: GarantService,
         private router: Router,
-        private dataService: DataService) {
+        private dataService: DataService,
+        private route: ActivatedRoute) {
 
     };
 
@@ -52,6 +53,7 @@ export class GarantContractModule implements OnInit {
         await this.onCheckApproveDocumentCustomerAsync();
         await this.onGetDocumentsDealAsync();
         await this.getDialogMessagesAsync();
+        // await this.getTransitionAsync();
     };    
 
     /**
@@ -60,15 +62,15 @@ export class GarantContractModule implements OnInit {
      */
     private async initGarantDataAsync() {
         try {           
-            await this.garantService.initGarantDataAsync(3, true, this.dataService.otherId).then((response: any) => {
+            await this.garantService.initGarantDataAsync(4, true, this.dataService.otherId).then((response: any) => {
                 this.oInitData = response;                
-                this.aMessages = response.chatData.messages;
+                this.dialogId = response.chatData.dialogId;
+                // this.aMessages = response.chatData.messages;
                 this.dateStartDialog = response.chatData.dateStartDialog;
                 this.chatItemName = this.oInitData.itemTitle;
-                this.dialogId = response.chatData.dialogId;
                 this.aInvestInclude = JSON.parse(response.investInclude);
 
-                console.log("garant init data stage 3: ", this.oInitData);
+                console.log("garant init data stage 4: ", this.oInitData);
                 console.log("aInvestInclude: ", this.aInvestInclude);
             });
         }
@@ -520,9 +522,5 @@ export class GarantContractModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    };
-
-    public async onRouteGarant4Async() {       
-        this.router.navigate(["/garant/garant-accept-payment"], { queryParams: { stage: 4 } });
     };
 }

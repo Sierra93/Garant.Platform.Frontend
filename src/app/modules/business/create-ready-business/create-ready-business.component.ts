@@ -56,6 +56,7 @@ export class CreateReadyBusinessModule implements OnInit {
     filesBusiness: any;
     routeParamCategory: any;
     routeParamSubCategory: any;
+    routeParamCity: any;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService, 
@@ -87,6 +88,7 @@ export class CreateReadyBusinessModule implements OnInit {
 
         this.routeParamCategory = this.route.snapshot.queryParams.category;
         this.routeParamSubCategory = this.route.snapshot.queryParams.subCategory;
+        this.routeParamCity = this.route.snapshot.queryParams.city;
 
         console.log("aPriceIn", this.aPriceIn);
     };
@@ -190,6 +192,7 @@ export class CreateReadyBusinessModule implements OnInit {
             createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;         
             createUpdateBusinessInput.Category = this.routeParamCategory;
             createUpdateBusinessInput.SubCategory = this.routeParamSubCategory;
+            createUpdateBusinessInput.BusinessCity = this.routeParamCity;        
 
             let sendFormData = new FormData();
             sendFormData.append("businessDataInput", JSON.stringify(createUpdateBusinessInput));

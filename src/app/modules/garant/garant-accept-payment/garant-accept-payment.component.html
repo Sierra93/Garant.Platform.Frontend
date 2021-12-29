@@ -199,7 +199,7 @@
                       && oInitData.buttonActionText !== null && !oInitData.isOwner">
             <button class="control-button-blue-small" 
                     [disabled]="!oInitData.isOwner && aCustomerActs[i - 1] != null && !aCustomerActs[i - 1].isPay" 
-                    (click)="onApproveDocumentActVendorAsync(i)">
+                    (click)="onApproveDocumentActVendorAsync(aVendorActs[i].documentType)">
               {{oInitData.buttonActionText}}
             </button>
           </div>

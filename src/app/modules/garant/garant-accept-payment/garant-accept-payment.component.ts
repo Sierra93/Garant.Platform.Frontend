@@ -39,6 +39,8 @@ export class GarantAcceptPaymentModule implements OnInit {
     aVendorActs: any = [];
     isEndDeal: boolean = false;
     aCustomerActs: any = [];
+    aApproveVendorActs: string[] = [];
+    aApproveCustomerActs: string[] = [];
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -649,7 +651,40 @@ export class GarantAcceptPaymentModule implements OnInit {
         }
     };
 
-    public async onApproveDocumentActVendorAsync(i: number) {
+    public async onApproveDocumentActVendorAsync(documentType: string) {
+        try {
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
+            documentInput.DocumentType = documentType;
 
+            if (documentInput.DocumentItemId > 0
+                && documentInput.DocumentItemId !== null
+                && documentInput.DocumentType !== ""
+                && documentInput.DocumentType !== null) {
+                await this.http.post(API_URL.apiUrl.concat("/document/approve-act-vendor"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            if (response) {
+                                var dublicate = this.aApproveVendorActs.filter((item: any) => item == documentType);
+
+                                if (dublicate == null) {
+                                    this.aApproveVendorActs.push(documentType);    
+                                }                                                             
+                            }
+                           
+                            console.log("approve vendor act " + documentType, response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            this.commonService.routeToStart(e);
+            throw new Error(e);
+        }
     };
 }

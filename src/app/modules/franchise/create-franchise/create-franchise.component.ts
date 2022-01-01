@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franchise-create-update-input";
-import { CommonDataService } from "src/app/services/common-data.service";
+import { CommonDataService } from "src/app/services/common/common-data.service";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { ActivatedRoute } from "@angular/router";
 
@@ -126,9 +126,11 @@ export class CreateFranchiseModule implements OnInit {
     public async uploadFranchisePhotosAsync(event: any) {
         try {
             let fileList = event.target.files;
-            let file: File = fileList[0];
             let formData: FormData = new FormData();
-            formData.append('files', file);
+
+            for (let i = 0; i < fileList.length; i++) {
+                formData.append('files', fileList[i]); 
+            }        
 
             await this.http.post(API_URL.apiUrl.concat("/franchise/temp-file"), formData)
                 .subscribe({
@@ -252,12 +254,9 @@ export class CreateFranchiseModule implements OnInit {
             createUpdateFranchiseInput.IsNew = true;
             createUpdateFranchiseInput.Title = logoName;
             createUpdateFranchiseInput.TrainingDetails = educationDetails;
-
-            // TODO: заменить на динамическое определение категории франшизы.
             createUpdateFranchiseInput.Category = this.routeParamCategory;
-
-            // TODO: заменить на динамическое определение категории франшизы.
             createUpdateFranchiseInput.SubCategory = this.routeParamSubCategory;
+            createUpdateFranchiseInput.UrlsFranchise = this.aNamesFranchisePhotos;
 
             let sendFormData = new FormData();
             sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));
@@ -291,6 +290,7 @@ export class CreateFranchiseModule implements OnInit {
      * Функция добавит файл лого франшизы.
      */
     public uploadFranchiseLogoAsync(event: any) {
+        event.stopPropagation();
         console.log("uploadFranchiseLogoAsync");
         this.fileLogoFormData = event.target.files[0];
     };

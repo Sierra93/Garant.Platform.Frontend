@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { CommonDataService } from "src/app/services/common-data.service";
+import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
     selector: "profile-my-dialogs",

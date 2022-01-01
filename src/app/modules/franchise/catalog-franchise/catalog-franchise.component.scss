@@ -1,44 +1,96 @@
-@import "/src/app/shared/styles/franchuse-styles.scss";
-@import "/src/app/app.component.scss";  
-@import "/src/app/shared/styles/image-space.scss";
-@import "/src/app/shared/styles/media-quaries.scss";
-@import "/src/app/modules/main-page/main-page.component.scss";
-
-.franchise-list {
-    flex-wrap: wrap;    
+section#catalog-franchise {
+  
 }
 
-.block-catalog {
-    padding-top: 64px;
-}
 
-.catalog-item {
-    padding-top: 24px;
-}
 
-.control-filter-franchise {
-    width: 160px;
-}
+// @import "/src/app/shared/styles/franchuse-styles.scss";
+// @import "/src/app/app.component.scss";
+// @import "/src/app/shared/styles/image-space.scss";
+// @import "/src/app/shared/styles/common.scss";
+// @import "/src/app/shared/styles/media-quaries.scss";
+// @import "/src/app/modules/main-page/main-page.component.scss";
 
-.switch-garant {
-    padding-top: 50px;
-}
+// .franchise-list {
+//   margin-left: 24px;
+//   flex-wrap: wrap;
+//   padding: 16px;
+//   background-color: #F1F6FF;
+// }
 
-.control-input-filter-price {
-    width: 160px;
-    margin: 0px 10px 0 0;
-}
+// ::ng-deep .catalog-franchises-form-item .p-dropdown {
+//   width: 342px;
+// }
 
-.control-input-price {
-    width: 340px;    
-    margin: 0 24px 0 0;
-}
+// .catalog-franchises-form {
+//   gap: 24px;
+// }
 
-::ng-deep .block-sort-by .p-dropdown {
-    width: 340px;    
-}
+// .circle-bordered-btn {
+//   border-radius: 28px;
+//   padding: 16px;
+// }
 
-.block-title-franchise {
-    display: flex;
-    justify-content: space-between;
-}
+// .ad-card {
+//   background: white;
+// }
+
+// .ad-card-content {
+//   padding: 24px 0 16px 16px;
+// }
+
+// .btn-filter-control {
+//   width: 160px;
+// }
+
+// .no-margin {
+//   margin: 0 !important;
+// }
+
+// .ad-card-content button {
+//   margin-top: 24px;
+// }
+
+// .min-price {
+//   margin-right: 24px;
+// }
+
+// .btn-align {
+//   margin-right: 24px;
+// }
+
+// .blog-item {
+//   font-size: 18px;
+// }
+
+// .block-catalog {
+//   padding-top: 64px;
+// }
+
+// .block-sort-by {
+//   width: 100%;
+//   display: block;
+// }
+
+// .control-filter-franchise {
+//   width: 160px;
+// }
+
+// .switch-garant {
+//   padding-top: 50px;
+// }
+
+// .control-input-filter-price {
+//   width: 160px;
+//   margin: 0px 10px 0 0;
+// }
+
+// .control-input-price {
+//   width: 340px;
+//   //   margin: 0 24px 0 0;
+// }
+
+// .block-title-franchise {
+//   display: flex;
+//   justify-content: space-between;
+// }

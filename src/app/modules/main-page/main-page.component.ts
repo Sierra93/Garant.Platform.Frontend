@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { CommonDataService } from 'src/app/services/common-data.service';
+import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from '@angular/router';
 import { API_URL } from 'src/app/core/core-urls/api-url';

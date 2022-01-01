@@ -3,11 +3,12 @@
 }
 
 .popular-list {
-  justify-content: space-between;
+  gap: 24px;
+  // padding: 16px;
 }
 
 .popular-item {
-  width: 342px;
+  max-width: 331px;
 }
 
 .garant {
@@ -15,10 +16,11 @@
 }
 
 .control-quick-search {
-  margin-left: 70px;
+  // margin-left: 70px;
 }
 
 .btn-filter {
+  display: inline-block;
   border: 1px solid;
 }
 

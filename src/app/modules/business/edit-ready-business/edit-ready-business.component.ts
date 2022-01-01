@@ -5,7 +5,7 @@ import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateBusinessInput } from "src/app/models/business/input/business-create-update-input";
 import { GetBusinessInput } from "src/app/models/business/input/get-business-input";
-import { CommonDataService } from "src/app/services/common-data.service";
+import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
     selector: "edit-ready-business",
@@ -51,6 +51,7 @@ export class EditReadyBusinessModule implements OnInit {
     businessName: string = "";
     activityPhotoName: any;
     filesAssets: any;
+    filesAssetsCounter!: number;
     filesReasonsSale: any;
     filesTextBusiness: any;
     filesBusiness: any;
@@ -295,6 +296,7 @@ export class EditReadyBusinessModule implements OnInit {
      */
     public uploadAssetsBusinessPhotosAsync(event: any) {
         console.log("uploadAssetsBusinessPhotosAsync");
+        this.filesAssetsCounter = event.target.files.length;
         this.filesAssets = event.target.files[0];
     };
 

@@ -3,8 +3,8 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
-import { CommonDataService } from "src/app/services/common-data.service";
-import { DataService } from "src/app/services/data-service";
+import { CommonDataService } from "src/app/services/common/common-data.service";
+import { DataService } from "src/app/services/common/data-service";
 
 @Component({
     selector: "profile-dialog-messages",
@@ -86,6 +86,7 @@ export class ProfileDialogMessagesModule implements OnInit {
         }
     };
 
+    // TODO: Вынести в общий сервис сообщений, как только он будет создан.
     public async onSendMessageAsync() {
         console.log("Сообщение", this.message);
 

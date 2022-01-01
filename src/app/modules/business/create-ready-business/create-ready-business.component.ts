@@ -1,9 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateBusinessInput } from "src/app/models/business/input/business-create-update-input";
-import { CommonDataService } from "src/app/services/common-data.service";
+import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
     selector: "create-ready-business",
@@ -49,13 +50,18 @@ export class CreateReadyBusinessModule implements OnInit {
     businessName: string = "";
     activityPhotoName: any;
     filesAssets: any;
+    filesAssetsCounter!: number;
     filesReasonsSale: any;
     filesTextBusiness: any;
     filesBusiness: any;
+    routeParamCategory: any;
+    routeParamSubCategory: any;
+    routeParamCity: any;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService, 
-        private messageService: MessageService) {
+        private messageService: MessageService,
+        private route: ActivatedRoute) {
             this.responsiveOptions = [
                 {
                     breakpoint: '1024px',
@@ -80,6 +86,10 @@ export class CreateReadyBusinessModule implements OnInit {
             }
         ];
 
+        this.routeParamCategory = this.route.snapshot.queryParams.category;
+        this.routeParamSubCategory = this.route.snapshot.queryParams.subCategory;
+        this.routeParamCity = this.route.snapshot.queryParams.city;
+
         console.log("aPriceIn", this.aPriceIn);
     };
 
@@ -87,13 +97,14 @@ export class CreateReadyBusinessModule implements OnInit {
         await this.getUserFio();
     };
 
-    // TODO: доработать множественную загрузку файлов.
     public async uploadBusinessPhotosAsync(event: any) {
         try {
-            let fileList = event.target.files[0];
-            let files: File = fileList;
+            let fileList = event.target.files;
             let formData: FormData = new FormData();
-            formData.append('files', files);           
+
+            for (let i = 0; i < fileList.length; i++) {
+                formData.append('files', fileList[i]); 
+            }           
 
             await this.http.post(API_URL.apiUrl.concat("/business/temp-file"), formData)
                 .subscribe({
@@ -179,12 +190,9 @@ export class CreateReadyBusinessModule implements OnInit {
             createUpdateBusinessInput.Address = address;
             createUpdateBusinessInput.InvestPrice = priceInJson;            
             createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;         
-
-            // TODO: заменить на динамическое определение категории франшизы.
-            createUpdateBusinessInput.Category = "Тестовая категория";
-
-            // TODO: заменить на динамическое определение категории франшизы.
-            createUpdateBusinessInput.SubCategory = "Тестовая подкатегория";
+            createUpdateBusinessInput.Category = this.routeParamCategory;
+            createUpdateBusinessInput.SubCategory = this.routeParamSubCategory;
+            createUpdateBusinessInput.BusinessCity = this.routeParamCity;        
 
             let sendFormData = new FormData();
             sendFormData.append("businessDataInput", JSON.stringify(createUpdateBusinessInput));
@@ -217,6 +225,7 @@ export class CreateReadyBusinessModule implements OnInit {
      */
     public uploadAssetsBusinessPhotosAsync(event: any) {
         console.log("uploadAssetsBusinessPhotosAsync");
+        this.filesAssetsCounter = event.target.files.length;
         this.filesAssets = event.target.files[0];
     };
 

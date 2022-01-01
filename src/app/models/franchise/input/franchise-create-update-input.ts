@@ -3,7 +3,7 @@
  */
 export class CreateUpdateFranchiseInput {
     // Путь к изображению.
-    Url?: string;
+    UrlsFranchise?: string;
 
     // Файлы изображений франшизы.
     UrlsDetails?: FormData;

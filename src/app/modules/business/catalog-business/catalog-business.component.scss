@@ -1,0 +1,41 @@
+@import "/src/app/shared/styles/franchuse-styles.scss";
+@import "/src/app/app.component.scss";  
+@import "/src/app/shared/styles/image-space.scss";
+@import "/src/app/shared/styles/common.scss";
+@import "/src/app/shared/styles/media-quaries.scss";
+@import "/src/app/modules/main-page/main-page.component.scss";
+
+.franchise-list {
+    flex-wrap: wrap;
+}
+
+.block-catalog {
+    padding-top: 64px;
+}
+
+.catalog-item {
+    padding-top: 24px;
+}
+
+.control-filter-franchise {
+    width: 160px;
+}
+
+.switch-garant {
+    padding-top: 50px;
+}
+
+.control-input-filter-price {
+    width: 160px;
+    margin: 0px 10px 0 0;
+}
+
+.control-input-price {
+    width: 340px;
+    margin: 0 24px 0 0;
+}
+
+.block-title-franchise {
+    display: flex;
+    justify-content: space-between;
+}

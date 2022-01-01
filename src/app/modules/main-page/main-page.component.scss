@@ -1,4 +1,4 @@
-@import "../../app.component.scss";
+// @import "../../app.component.scss";
 @import "/src/app/shared/styles/image-space.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/franchuse-styles.scss";
@@ -20,6 +20,24 @@
     height: 162px;
     // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
   }
+}
+
+.more-articles {
+  margin: 0;
+  background-color: #F1F1F1;
+  height: 208px;
+}
+
+::ng-deep .popular-item.more-articles .p-card {
+  background: none;
+}
+
+.blog-item {
+  max-width: 342px;
+}
+
+::ng-deep .blog-item .p-card-title {
+  font-size: 18px;
 }
 
 .wrapper {
@@ -92,7 +110,7 @@
 }
 
 ::bg-deep .p-card {
-  width: 1392px !important;
+  width: 1440px !important;
 }
 
 ::ng-deep .card-business .btn-dark {
@@ -284,7 +302,7 @@ only screen and (-webkit-device-pixel-ratio: 3) {
   background: #F1F6FF;
 }
 
-::ng-deep .p-inputtext {
+::ng-deep .quick-search .p-inputtext {
   background: #F1F6FF;
   width: 149px;
   margin-right: 16px;

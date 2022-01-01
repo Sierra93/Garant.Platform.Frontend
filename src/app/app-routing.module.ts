@@ -15,6 +15,12 @@ import { ProfileMyDataModule } from './modules/profile/profile-my-data/profile-m
 import { ProfileMyMessagesModule } from './modules/profile/profile-my-dialogs/profile-my-dialogs.component';
 import { ProfileDialogMessagesModule } from './modules/profile/profile-dialog-messages/profile-dialog-messages.component';
 import { ManageAccountModule } from './modules/profile/manage-account/manage-account.component';
+import { MainSearchModule } from './modules/search/main-search/main-search.component';
+import { CatalogBusinessModule } from './modules/business/catalog-business/catalog-business.component';
+import { GarantInitModule } from './modules/garant/garant-init/garant-init.component';
+import { GarantConcordModule } from './modules/garant/garant-concord/garant-concord.component';
+import { GarantContractModule } from './modules/garant/garant-contract/garant-contract.component';
+import { GarantAcceptPaymentModule } from './modules/garant/garant-accept-payment/garant-accept-payment.component';
 
 const routes: Routes = [
   {
@@ -90,6 +96,35 @@ const routes: Routes = [
   {
     path: "manage-account",
     component: ManageAccountModule
+  },
+
+  {
+    path: "search",
+    component: MainSearchModule
+  },
+  {
+    path: "catalog-business",
+    component: CatalogBusinessModule
+  },
+
+  {
+    path: "garant/garant-init",
+    component: GarantInitModule
+  },
+
+  {
+    path: "garant/garant-concord",
+    component: GarantConcordModule
+  },
+
+  {
+    path: "garant/garant-contract",
+    component: GarantContractModule
+  },
+
+  {
+    path: "garant/garant-accept-payment",
+    component: GarantAcceptPaymentModule
   }
 ];
 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { CommonDataService } from 'src/app/services/common-data.service';
+import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { API_URL } from 'src/app/core/core-urls/api-url';
+import { SearchInput } from 'src/app/models/search/input/search-input';
 
 @Component({
     selector: 'header',
@@ -17,11 +19,18 @@ export class HeaderModule implements OnInit {
     aBreadcrumbs: any[] = [];
     routeParam: any;
     isAuthenticated: boolean = false;
+    searchText: string = "";
+    selectedValueFranchise: boolean = false;
+    selectedValueBusiness: boolean = false;
+    searchType: string = "";
+    searchOptions: string[];
+    selectedSearchOption: string = "франшиза";
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private router: Router,
-      private route: ActivatedRoute) {
+        private route: ActivatedRoute) {
+          this.searchOptions = ["франшиза", "бизнес"];
     };
 
     public async ngOnInit() {
@@ -37,6 +46,9 @@ export class HeaderModule implements OnInit {
      /**
      * Функция получит поля хидера.
      */
+    /**
+    * Функция получит поля хидера.
+    */
     private async initHeaderAsync() {
         try {
             await this.commonService.initHeaderAsync("Main").then((data: any) => {
@@ -70,14 +82,10 @@ export class HeaderModule implements OnInit {
         }
     };
 
-    public onRouteCatalogFranchise() {
-        this.router.navigate(["/catalog-franchise"]);
-    };
-
-     /**
-     * Функция сформирует хлебные крошки страницы.
-     * @returns - Список пунктов цепочки хлебных крошек.
-     */
+    /**
+    * Функция сформирует хлебные крошки страницы.
+    * @returns - Список пунктов цепочки хлебных крошек.
+    */
     private async getBreadcrumbsAsync() {
         try {
             await this.commonService.getBreadcrumbsAsync(this.router.url).then((data: any) => {
@@ -91,8 +99,19 @@ export class HeaderModule implements OnInit {
         }
     };
 
-    public onRouteProfile() {
-        this.router.navigate(["/profile/my-data"]);
+    public onRouteSearch(searchText: string) {
+      let type = "";
+      console.log(this.selectedSearchOption);
+
+        if (this.selectedSearchOption == this.searchOptions[0]) {
+            type = "franchise";
+        }
+
+        else if (this.selectedSearchOption == this.searchOptions[1]) {
+            type = "business";
+        }
+
+        this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });
     };
 
   public checkAuthentication() {

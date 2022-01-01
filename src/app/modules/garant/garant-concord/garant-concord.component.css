@@ -1,0 +1,24 @@
+.block-chat {
+  background: rgba(218, 218, 218, 0.15);
+  padding: 24px;
+}
+
+.block-chat .message {
+  margin-top: 32px;
+}
+
+.messageStart {
+  text-align: start;
+}
+
+.messageEnd {
+  text-align: end;
+}
+
+.area-message {
+  width: 100%;
+}
+
+.mr-16 {
+  margin-right: 16px;
+}

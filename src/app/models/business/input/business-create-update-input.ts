@@ -72,4 +72,6 @@ export class CreateUpdateBusinessInput {
     SubCategory: string = "";
 
     IsNew: boolean = false;
+
+    BusinessCity: string = "";
 }

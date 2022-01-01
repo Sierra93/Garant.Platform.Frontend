@@ -823,8 +823,9 @@
               background-color: #dadada;
               background-color: #fff;
               margin: 0;
-              top: 3px;
+              top: 50%;
               left: 3px;
+              transform: translateY(-50%);
             }
 
             &.p-highlight {
@@ -840,7 +841,7 @@
           &.p-inputswitch-checked {
             .p-inputswitch-slider {
               &::before {
-                transform: translateX(33px);
+                transform: translate(33px, -50%);
               }
             }
           }

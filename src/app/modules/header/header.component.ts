@@ -9,18 +9,19 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['./header.component.scss']
 })
 
-/** 
+/**
  * Класс модуля хидера.
  */
 export class HeaderModule implements OnInit {
     aHeader: any[] = [];
     aBreadcrumbs: any[] = [];
     routeParam: any;
+    isAuthenticated: boolean = false;
 
-    constructor(private http: HttpClient, 
-        private commonService: CommonDataService,        
+    constructor(private http: HttpClient,
+        private commonService: CommonDataService,
         private router: Router,
-        private route: ActivatedRoute) {
+      private route: ActivatedRoute) {
     };
 
     public async ngOnInit() {
@@ -28,6 +29,10 @@ export class HeaderModule implements OnInit {
         await this.commonService.refreshToken();
         await this.getBreadcrumbsAsync();
     };
+
+    public async ngDoCheck() {
+      this.checkAuthentication();
+    }
 
      /**
      * Функция получит поля хидера.
@@ -89,4 +94,13 @@ export class HeaderModule implements OnInit {
     public onRouteProfile() {
         this.router.navigate(["/profile/my-data"]);
     };
+
+  public checkAuthentication() {
+      if (sessionStorage["token"] && sessionStorage["isSuccess"]) {
+        this.isAuthenticated = true;
+        return;
+      }
+
+      this.isAuthenticated = false;
+    }
 }

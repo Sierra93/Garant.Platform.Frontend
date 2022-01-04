@@ -5,6 +5,10 @@ import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateBusinessInput } from "src/app/models/business/input/business-create-update-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { sumValidator } from "src/app/shared/classes/custom-validators";
+import { FORM_ERRORS, FORM_PLACEHOLDERS, FORM_SUCCESS, FORM_VALIDATION_MESSAGES } from 'src/app/shared/classes/form-data';
+import {FinData } from 'src/app/shared/classes/fin-data';
 
 @Component({
     selector: "create-ready-business",
@@ -20,7 +24,7 @@ export class CreateReadyBusinessModule implements OnInit {
     responsiveOptions: any;
     aNamesBusinessPhotos: any = [];
     lead: string = "";
-    payback: number = 0;
+    // payback: number = 0;
     peculiarity: string = "";
     isGarant: boolean = false;
     activityDetail: string = "";
@@ -32,11 +36,11 @@ export class CreateReadyBusinessModule implements OnInit {
     ind: number = 0;
     fio: string = "";
     aPriceIn: any;
-    price: number = 0;
-    turnPrice: number = 0;
-    profitPrice: number = 0;
-    profitability: number = 0;
-    businessAge: number = 0;
+    // price: number = 0;
+    // turnPrice: number = 0;
+    // profitPrice: number = 0;
+    // profitability: number = 0;
+    // businessAge: number = 0;
     employeeYearCount: number = 0;
     form: string = "";
     share: number = 0;
@@ -58,10 +62,30 @@ export class CreateReadyBusinessModule implements OnInit {
     routeParamSubCategory: any;
     routeParamCity: any;
 
+    // formLabels = FORM_LABELS;
+    formPlaceholders = FORM_PLACEHOLDERS;
+    formSuccess = FORM_SUCCESS;
+    formErrors: any = FORM_ERRORS;
+    validationMessages: any = FORM_VALIDATION_MESSAGES;
+
+    finDataForm!: FormGroup;
+
+    price!: AbstractControl;
+    turnPrice!: AbstractControl;
+    profitPrice!: AbstractControl;
+    payback!: AbstractControl;
+    profitability!: AbstractControl;
+    businessAge!: AbstractControl;
+
+    private finData: FinData = new FinData(null, null, null, null, null, null);
+
+
+
     constructor(private http: HttpClient,
         private commonService: CommonDataService, 
         private messageService: MessageService,
-        private route: ActivatedRoute) {
+        private route: ActivatedRoute,
+        private formBuilder: FormBuilder) {
             this.responsiveOptions = [
                 {
                     breakpoint: '1024px',
@@ -94,8 +118,61 @@ export class CreateReadyBusinessModule implements OnInit {
     };
 
     public async ngOnInit() {
-        await this.getUserFio();
+      this.buildForm();
+      await this.getUserFio();
     };
+
+    private buildForm() {
+      this.finDataForm = this.formBuilder.group({
+        price: [this.finData.price, [Validators.required, sumValidator]],
+        turnPrice: [this.finData.turnPrice, [Validators.required, sumValidator]],
+        profitPrice: [this.finData.profitPrice, [Validators.required, sumValidator]],
+        payback: [this.finData.payback, [Validators.required, sumValidator]],
+        profitability: [this.finData.profitability, [Validators.required, sumValidator]],
+        businessAge: [this.finData.businessAge, [Validators.required, sumValidator]]
+      })
+  
+       this.finDataForm.valueChanges.subscribe(() => this.onValueChanged());
+       this.createControls()
+    }
+  
+    private createControls(): void {
+      this.price = this.finDataForm.controls.price,
+      this.turnPrice = this.finDataForm.controls.turnPrice,
+      this.profitPrice = this.finDataForm.controls.profitPrice,
+      this.payback = this.finDataForm.controls.payback,
+      this.profitability = this.finDataForm.controls.profitability,
+      this.businessAge = this.finDataForm.controls.businessAge
+    }
+  
+    onValueChanged(): void {
+           const form = this.finDataForm;
+
+           console.log(this.finDataForm);
+
+           Object.keys(this.finDataForm.value).forEach((key) => {
+             console.log(key);
+             console.log(this.finDataForm.value[key]);
+             this.finDataForm.value[key] = (String(this.finDataForm.value[key]).replace(/(\d)(?=(\d{3})+$)/g, '$1 '))
+             console.log(this.finDataForm.value[key]);   
+          });
+           console.log(this.finDataForm);
+           
+            
+
+           console.log(this.formErrors);
+      
+           Object.keys(this.formErrors).forEach(field => {
+             this.formErrors[field] = '';
+  
+             const control = form.get(field);
+            
+             if ((control?.dirty || control?.touched) && control.invalid) {
+               const message = this.validationMessages[field];
+               Object.keys(control.errors as any).some(key => this.formErrors[field] = message[key])
+             }
+           })
+     }
 
     public async uploadBusinessPhotosAsync(event: any) {
         try {
@@ -167,7 +244,7 @@ export class CreateReadyBusinessModule implements OnInit {
             let priceInJson = JSON.stringify(newPriceInJson);
 
             createUpdateBusinessInput.Status = lead;
-            createUpdateBusinessInput.Payback = payback;
+            createUpdateBusinessInput.Payback = +payback;
             createUpdateBusinessInput.ActivityDetail = activityDetail;            
             createUpdateBusinessInput.Peculiarity = peculiarity;
             createUpdateBusinessInput.Text = defailsFranchise;
@@ -175,11 +252,11 @@ export class CreateReadyBusinessModule implements OnInit {
             createUpdateBusinessInput.IsGarant = isGarant;
             createUpdateBusinessInput.IsNew = true;
             createUpdateBusinessInput.BusinessName = businessName;
-            createUpdateBusinessInput.Price = price;
-            createUpdateBusinessInput.TurnPrice = turnPrice;
-            createUpdateBusinessInput.ProfitPrice = profitPrice;
-            createUpdateBusinessInput.Profitability = profitability;
-            createUpdateBusinessInput.BusinessAge = businessAge;
+            createUpdateBusinessInput.Price = +price;
+            createUpdateBusinessInput.TurnPrice = +turnPrice;
+            createUpdateBusinessInput.ProfitPrice = +profitPrice;
+            createUpdateBusinessInput.Profitability = +profitability;
+            createUpdateBusinessInput.BusinessAge = +businessAge;
             createUpdateBusinessInput.EmployeeCountYear = employeeYearCount;
             createUpdateBusinessInput.Form = form;
             createUpdateBusinessInput.Share = share;

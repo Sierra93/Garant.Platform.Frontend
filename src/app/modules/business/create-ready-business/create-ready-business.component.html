@@ -60,7 +60,89 @@
 
 <!-- Ключевые финансовые данные. -->
 <span class="title-strong">Ключевые финансовые данные*</span><br>
-<div class="block-invest">
+<form class="block-invest" [formGroup]="finDataForm">
+  <!-- <div class="mb-3"> -->
+    <!-- <label class="form-label" for="price">{{formLabels.price}}<span class="text-danger">*</span></label> -->
+    <div class="invest-item invest-item-first">
+      <span class="title-small invest-item__title">Стоимость</span><br>
+      <small class="invest-item__small">полная стоимость бизнеса</small><br>
+    <input class="form-control control-input-franch-price invest-item__input" type="price" id="price" formControlName="price" placeholder="{{formPlaceholders.price}}"
+      [ngClass]="{'is-valid': price.valid,
+                'is-invalid': price.invalid && (price.touched || price.dirty)}" (blur)="onValueChanged()">
+    <div *ngIf="price.valid" class="valid-feedback">{{formSuccess.price}}</div>
+    <div *ngIf="price.invalid && (price.touched || price.dirty)" class="invalid-feedback">{{formErrors.price}}</div>
+  </div>
+  <!-- </div> -->
+
+  <!-- <div class="mb-3"> -->
+    <!-- <label class="form-label" for="turnPrice">{{formLabels.turnPrice}}<span class="text-danger">*</span></label> -->
+    <div class="invest-item">
+      <span class="title-small">Оборот</span><br>
+      <small class="invest-item__small">средняя выручка за месяц</small><br>
+    <input class="form-control control-input-franch-price invest-item__input" type="turnPrice" id="turnPrice" formControlName="turnPrice" placeholder="{{formPlaceholders.turnPrice}}"
+      [ngClass]="{'is-valid': turnPrice.valid,
+                'is-invalid': turnPrice.invalid && (turnPrice.touched || turnPrice.dirty)}" (blur)="onValueChanged()">
+    <div *ngIf="turnPrice.valid" class="valid-feedback">{{formSuccess.turnPrice}}</div>
+    <div *ngIf="turnPrice.invalid && (turnPrice.touched || turnPrice.dirty)" class="invalid-feedback">{{formErrors.turnPrice}}</div>
+  </div>
+  <!-- </div> -->
+
+  <!-- <div class="mb-3"> -->
+    <!-- <label class="form-label" for="profitPrice">{{formLabels.profitPrice}}<span class="text-danger">*</span></label> -->
+    <div class="invest-item">
+      <span class="title-small">Прибыль</span><br>
+      <small class="invest-item__small">чистая прибыль за месяц</small><br>
+    <input class="form-control control-input-franch-price invest-item__input" type="profitPrice" id="profitPrice" formControlName="profitPrice" placeholder="{{formPlaceholders.profitPrice}}"
+      [ngClass]="{'is-valid': profitPrice.valid,
+                'is-invalid': profitPrice.invalid && (profitPrice.touched || profitPrice.dirty)}" (blur)="onValueChanged()">
+    <div *ngIf="profitPrice.valid" class="valid-feedback">{{formSuccess.profitPrice}}</div>
+    <div *ngIf="profitPrice.invalid && (profitPrice.touched || profitPrice.dirty)" class="invalid-feedback">{{formErrors.profitPrice}}</div>
+  </div>
+  <!-- </div> -->
+
+  <!-- <div class="mb-3"> -->
+    <!-- <label class="form-label" for="payback">{{formLabels.payback}}<span class="text-danger">*</span></label> -->
+    <div class="invest-item">
+      <span class="title-small">Окупаемость</span><br>
+      <small class="invest-item__small">по настоящим данным</small><br>
+    <input class="form-control control-input-franch-price invest-item__input" type="payback" id="payback" formControlName="payback" placeholder="{{formPlaceholders.payback}}"
+      [ngClass]="{'is-valid': payback.valid,
+                'is-invalid': payback.invalid && (payback.touched || payback.dirty)}" (blur)="onValueChanged()">
+    <div *ngIf="payback.valid" class="valid-feedback">{{formSuccess.payback}}</div>
+    <div *ngIf="payback.invalid && (payback.touched || payback.dirty)" class="invalid-feedback">{{formErrors.payback}}</div>
+  </div>
+  <!-- </div> -->
+
+  <!-- <div class="mb-3"> -->
+    <!-- <label class="form-label" for="profitability">{{formLabels.profitability}}<span class="text-danger">*</span></label> -->
+    <div class="invest-item">
+      <span class="title-small">Рентабельность</span><br>
+      <small class="invest-item__small">по настоящим данным</small><br>
+    <input class="form-control control-input-franch-price invest-item__input" type="profitability" id="profitability" formControlName="profitability" placeholder="{{formPlaceholders.profitability}}"
+      [ngClass]="{'is-valid': profitability.valid,
+                'is-invalid': profitability.invalid && (profitability.touched || profitability.dirty)}" (blur)="onValueChanged()">
+    <div *ngIf="profitability.valid" class="valid-feedback">{{formSuccess.profitability}}</div>
+    <div *ngIf="profitability.invalid && (profitability.touched || profitability.dirty)" class="invalid-feedback">{{formErrors.profitability}}</div>
+  </div>
+  <!-- </div> -->
+
+  <!-- <div class="mb-3"> -->
+    <!-- <label class="form-label" for="businessAge">{{formLabels.businessAge}}<span class="text-danger">*</span></label> -->
+    <div class="invest-item invest-item-last">
+      <span class="title-small invest-item__title">Возраст бизнеса</span><br>
+      <small class="invest-item__small">с момента основания</small><br>
+    <input class="form-control control-input-franch-price invest-item__input" type="businessAge" id="businessAge" formControlName="businessAge" placeholder="{{formPlaceholders.businessAge}}"
+      [ngClass]="{'is-valid': businessAge.valid,
+                'is-invalid': businessAge.invalid && (businessAge.touched || businessAge.dirty)}" (blur)="onValueChanged()">
+    <div *ngIf="businessAge.valid" class="valid-feedback">{{formSuccess.businessAge}}</div>
+    <div *ngIf="businessAge.invalid && (businessAge.touched || businessAge.dirty)" class="invalid-feedback">{{formErrors.businessAge}}</div>
+  </div>
+  <!-- </div> -->
+</form>
+
+
+<!-- <span class="title-strong">Ключевые финансовые данные*</span><br>
+<form class="block-invest">
   <div class="invest-item invest-item-first">
     <span class="title-small invest-item__title">Стоимость</span><br>
     <small class="invest-item__small">полная стоимость бизнеса</small><br>
@@ -102,7 +184,7 @@
     <input type="number" class="control-input-franch-price invest-item__input" pInputText [(ngModel)]="businessAge"
       name="businessAge" /> дн.
   </div>
-</div>
+</form> -->
 
 <hr class="hr">
 

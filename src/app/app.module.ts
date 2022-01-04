@@ -7,7 +7,7 @@ import { BrowserModule, Title } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DialogModule } from "primeng/dialog";
@@ -119,7 +119,8 @@ import { GarantAcceptPaymentModule } from "./modules/garant/garant-accept-paymen
     GalleriaModule,
     InputTextareaModule,
     AvatarModule,
-    AvatarGroupModule
+    AvatarGroupModule,
+    ReactiveFormsModule
   ],
 
   providers: [

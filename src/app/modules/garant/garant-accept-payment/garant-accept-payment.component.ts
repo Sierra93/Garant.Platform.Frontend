@@ -39,7 +39,7 @@ export class GarantAcceptPaymentModule implements OnInit {
     aVendorActs: any = [];
     isEndDeal: boolean = false;
     aCustomerActs: any = [];
-    aApproveVendorActs: string[] = [];
+    aApproveVendorActs: any;
     aApproveCustomerActs: string[] = [];
 
     constructor(private http: HttpClient, 
@@ -59,6 +59,7 @@ export class GarantAcceptPaymentModule implements OnInit {
         await this.onCheckApproveDocumentCustomerAsync();
         await this.onGetDocumentsDealAsync();
         await this.getDialogMessagesAsync();
+        await this.getApproveVendorActsAsync();
     };    
 
     /**
@@ -651,6 +652,11 @@ export class GarantAcceptPaymentModule implements OnInit {
         }
     };
 
+    /**
+     * Функция подтвердит акт продавца покупателем.
+     * @param documentType - Тип акта.
+     * @returns - Флаг подтверждения.
+     */
     public async onApproveDocumentActVendorAsync(documentType: string) {
         try {
             let documentInput = new DocumentInput();
@@ -665,7 +671,7 @@ export class GarantAcceptPaymentModule implements OnInit {
                     .subscribe({
                         next: (response: any) => {
                             if (response) {
-                                var dublicate = this.aApproveVendorActs.filter((item: any) => item == documentType);
+                                var dublicate = this.aApproveVendorActs.filter((item: any) => item.documentType == documentType);
 
                                 if (dublicate == null) {
                                     this.aApproveVendorActs.push(documentType);    
@@ -673,6 +679,7 @@ export class GarantAcceptPaymentModule implements OnInit {
                             }
                            
                             console.log("approve vendor act " + documentType, response);
+                            console.log("aApproveVendorActs: " + this.aApproveVendorActs);
                         },
 
                         error: (err) => {
@@ -687,4 +694,37 @@ export class GarantAcceptPaymentModule implements OnInit {
             throw new Error(e);
         }
     };
+
+    /**
+     * Функция получит список подтвержденных актов продавца.
+     * @returns - Список актов.
+     */
+    private async getApproveVendorActsAsync() {
+        try {
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
+
+            if (documentInput.DocumentItemId > 0 && documentInput.DocumentItemId !== null) {
+                await this.http.post(API_URL.apiUrl.concat("/document/get-approve-vendor-acts"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            if (response.length > 0) {
+                                this.aApproveVendorActs = response;                                           
+                            }
+                           
+                            console.log("aApproveVendorActs: " + this.aApproveVendorActs);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            this.commonService.routeToStart(e);
+            throw new Error(e);
+        }
+    }
 }

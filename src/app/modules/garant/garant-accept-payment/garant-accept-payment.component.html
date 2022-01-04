@@ -187,11 +187,28 @@
         
         <div class="d-flex">
           <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
-                      && oInitData.buttonActionText !== null && oInitData.isOwner">
+                      && oInitData.buttonActionText !== null 
+                      && oInitData.isOwner
+                      && aCustomerActs[i] == null                       
+                      || !aCustomerActs[i].isAcceptDocument
+                      && aVendorActs[i] == null
+                      || !aVendorActs[i].isAcceptDocument">
             <button class="control-button-blue-small" 
                     [disabled]="oInitData.isOwner && aVendorActs[i - 1] != null && !aVendorActs[i - 1].isPay" 
                     (click)="onAttachDocumentActAsync(i)">
               {{oInitData.buttonActionText}}
+            </button>
+          </div>
+
+          <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
+                      && oInitData.buttonActionText !== null 
+                      && oInitData.isOwner
+                      && aCustomerActs[i] != null                       
+                      && !aCustomerActs[i].isAcceptDocument">
+            <button class="control-button-blue-small" 
+                    [disabled]="oInitData.isOwner && aVendorActs[i - 1] != null && !aVendorActs[i - 1].isPay" 
+                    (click)="onAttachDocumentActAsync(i)">
+              {{oInitData.buttonActionTextContract}}
             </button>
           </div>
 

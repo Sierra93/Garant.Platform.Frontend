@@ -186,10 +186,11 @@
         </div>      
         
         <div class="d-flex">
-          <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
+          <div *ngIf="oInitData.isOwner">
+            <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
                       && oInitData.buttonActionText !== null 
                       && oInitData.isOwner
-                      && aCustomerActs[i] == null                       
+                      && aCustomerActs[i] == null               
                       || !aCustomerActs[i].isAcceptDocument
                       && aVendorActs[i] == null
                       || !aVendorActs[i].isAcceptDocument">
@@ -207,13 +208,17 @@
                       && !aCustomerActs[i].isAcceptDocument">
             <button class="control-button-blue-small" 
                     [disabled]="oInitData.isOwner && aVendorActs[i - 1] != null && !aVendorActs[i - 1].isPay" 
-                    (click)="onAttachDocumentActAsync(i)">
+                    (click)="onApproveDocumentActCustomerAsync(aCustomerActs[i].documentType)">
               {{oInitData.buttonActionTextContract}}
             </button>
           </div>
+          </div>
 
           <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
-                      && oInitData.buttonActionText !== null && !oInitData.isOwner">
+                      && oInitData.buttonActionText !== null 
+                      && !oInitData.isOwner
+                      && aVendorActs[i] != null
+                      && !aVendorActs[i].isAcceptDocument">
             <button class="control-button-blue-small" 
                     [disabled]="!oInitData.isOwner && aCustomerActs[i - 1] != null && !aCustomerActs[i - 1].isPay" 
                     (click)="onApproveDocumentActVendorAsync(aVendorActs[i].documentType)">
@@ -224,17 +229,32 @@
           <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionTextContract !== '' 
                       && oInitData.buttonActionTextContract !== null 
                       && !oInitData.isOwner
-                      && aCustomerActs[i - 1] != null && aCustomerActs[i - 1].isAcceptDocument">
-            <button class="control-button-blue-small"
-                    [disabled]="!oInitData.isOwner && aCustomerActs[i - 1] != null && !aCustomerActs[i - 1].isPay"
+                      && aCustomerActs[i] != null 
+                      && aCustomerActs[i].isAcceptDocument">
+            <!-- <button class="control-button-blue-small"
+                    [disabled]="!oInitData.isOwner && aCustomerActs[i] != null 
+                    && !aCustomerActs[i].isPay"
+                    (click)="onAttachDocumentActAsync(i)">
+              {{oInitData.buttonActionTextContract}} {{item.Price | formatPrice}} ₽
+            </button> -->
+            <button class="control-button-blue-small"                    
                     (click)="onAttachDocumentActAsync(i)">
               {{oInitData.buttonActionTextContract}} {{item.Price | formatPrice}} ₽
             </button>
           </div>
     
-          <!-- <div class="d-flex justify-content-end" 
-            *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
-            <button class="control-button-action-change-cancel">{{oInitData.buttonActionText}}</button>
+          <!-- <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
+                      && oInitData.buttonActionText !== null 
+                      && !oInitData.isOwner
+                      && aVendorActs[i] != null
+                      && aVendorActs[i].isAcceptDocument
+                      && aCustomerActs[i] != null
+                      && aCustomerActs[i].isAcceptDocument">
+            <button class="control-button-blue-small"
+              [disabled]="!oInitData.isOwner && aCustomerActs[i - 1] != null && !aCustomerActs[i - 1].isPay"
+              (click)="onApproveDocumentActVendorAsync(aVendorActs[i].documentType)">
+              {{oInitData.buttonActionTextContract}}
+            </button>
           </div> -->
         </div>
       </div>    

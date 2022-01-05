@@ -726,5 +726,48 @@ export class GarantAcceptPaymentModule implements OnInit {
             this.commonService.routeToStart(e);
             throw new Error(e);
         }
-    }
+    };
+
+    /**
+     * Функция подтвердит акт покупателя продавцом.
+     * @param documentType - Тип акта.
+     * @returns - Флаг подтверждения.
+     */
+     public async onApproveDocumentActCustomerAsync(documentType: string) {
+        try {
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
+            documentInput.DocumentType = documentType;
+
+            if (documentInput.DocumentItemId > 0
+                && documentInput.DocumentItemId !== null
+                && documentInput.DocumentType !== ""
+                && documentInput.DocumentType !== null) {
+                await this.http.post(API_URL.apiUrl.concat("/document/approve-act-customer"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            if (response) {
+                                var dublicate = this.aApproveCustomerActs.filter((item: any) => item.documentType == documentType);
+
+                                if (dublicate == null) {
+                                    this.aApproveCustomerActs.push(documentType);    
+                                }                                                             
+                            }
+                           
+                            console.log("approve customer act " + documentType, response);
+                            console.log("aApproveCustomerActs: " + this.aApproveCustomerActs);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            this.commonService.routeToStart(e);
+            throw new Error(e);
+        }
+    };
 }

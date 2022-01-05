@@ -33,6 +33,7 @@ export class ViewFranchiseModule implements OnInit {
     userName: string = "";
     number: string = "";
     city: string = "";
+    selectedValues: string[] = [];
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,

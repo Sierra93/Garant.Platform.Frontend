@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -41,6 +41,16 @@ export class HeaderModule implements OnInit {
 
     public async ngDoCheck() {
       this.checkAuthentication();
+    }
+
+    @HostListener("window:storage")
+    public checkAuthentication() {
+      if (sessionStorage["token"] && sessionStorage["isSuccess"]) {
+        this.isAuthenticated = true;
+        return;
+      }
+
+      this.isAuthenticated = false;
     }
 
      /**
@@ -113,13 +123,4 @@ export class HeaderModule implements OnInit {
 
         this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });
     };
-
-  public checkAuthentication() {
-      if (sessionStorage["token"] && sessionStorage["isSuccess"]) {
-        this.isAuthenticated = true;
-        return;
-      }
-
-      this.isAuthenticated = false;
-    }
 }

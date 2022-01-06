@@ -77,7 +77,7 @@ export class CreateReadyBusinessModule implements OnInit {
     profitability!: AbstractControl;
     businessAge!: AbstractControl;
 
-    private finData: FinData = new FinData(null, null, null, null, null, null);
+    private finData: FinData = new FinData('', '', '', '', '', '');
 
 
 
@@ -149,6 +149,7 @@ export class CreateReadyBusinessModule implements OnInit {
            const form = this.finDataForm;
 
            console.log(this.finDataForm);
+           console.log(this.finData);
 
            Object.keys(this.finDataForm.value).forEach((key) => {
              console.log(key);
@@ -157,6 +158,7 @@ export class CreateReadyBusinessModule implements OnInit {
              console.log(this.finDataForm.value[key]);   
           });
            console.log(this.finDataForm);
+           console.log(this.finData);
            
             
 
@@ -211,19 +213,44 @@ export class CreateReadyBusinessModule implements OnInit {
         try {
             let createUpdateBusinessInput = new CreateUpdateBusinessInput();            
             let lead = this.lead;
-            let payback = this.payback;
-            let profitability = this.profitability;
+            let payback = +(String(Object.values(this.finDataForm.value)[3]).replace(/\s+/g, ''));
+
+            console.log(payback);
+            
+            let profitability = +(String(Object.values(this.finDataForm.value)[4]).replace(/\s+/g, ''));
+
+            console.log(profitability);
+
+
             let activityDetail = this.activityDetail;
             let defailsFranchise = this.defailsFranchise;
             let priceIn = this.priceIn;
             let videoLink = this.videoLink;
             let isGarant = this.isGarant || false;       
             let peculiarity = this.peculiarity;   
-            let businessName = this.businessName;        
-            let price = this.price;               
-            let turnPrice = this.turnPrice;
-            let profitPrice = this.profitPrice;
-            let businessAge = this.businessAge;
+            let businessName = this.businessName;
+            console.log(Object.values(this.finDataForm.value)[0]);
+            console.log(String(Object.values(this.finDataForm.value)[0]).replace(/\s+/g, ''));
+                    
+            let price = +(String(Object.values(this.finDataForm.value)[0]).replace(/\s+/g, '')); 
+            
+            console.log(price);
+            
+            let turnPrice = +(String(Object.values(this.finDataForm.value)[1]).replace(/\s+/g, ''));
+
+            console.log(turnPrice);
+
+
+            let profitPrice = +(String(Object.values(this.finDataForm.value)[2]).replace(/\s+/g, ''));
+
+            console.log(profitPrice);
+
+
+            let businessAge = +(String(Object.values(this.finDataForm.value)[5]).replace(/\s+/g, ''));
+
+            console.log(businessAge);
+
+
             let employeeYearCount = this.employeeYearCount;
             let form = this.form;
             let share = this.share;
@@ -244,7 +271,7 @@ export class CreateReadyBusinessModule implements OnInit {
             let priceInJson = JSON.stringify(newPriceInJson);
 
             createUpdateBusinessInput.Status = lead;
-            createUpdateBusinessInput.Payback = +payback;
+            createUpdateBusinessInput.Payback = payback;
             createUpdateBusinessInput.ActivityDetail = activityDetail;            
             createUpdateBusinessInput.Peculiarity = peculiarity;
             createUpdateBusinessInput.Text = defailsFranchise;
@@ -252,11 +279,11 @@ export class CreateReadyBusinessModule implements OnInit {
             createUpdateBusinessInput.IsGarant = isGarant;
             createUpdateBusinessInput.IsNew = true;
             createUpdateBusinessInput.BusinessName = businessName;
-            createUpdateBusinessInput.Price = +price;
-            createUpdateBusinessInput.TurnPrice = +turnPrice;
-            createUpdateBusinessInput.ProfitPrice = +profitPrice;
-            createUpdateBusinessInput.Profitability = +profitability;
-            createUpdateBusinessInput.BusinessAge = +businessAge;
+            createUpdateBusinessInput.Price = price;
+            createUpdateBusinessInput.TurnPrice = turnPrice;
+            createUpdateBusinessInput.ProfitPrice = profitPrice;
+            createUpdateBusinessInput.Profitability = profitability;
+            createUpdateBusinessInput.BusinessAge = businessAge;
             createUpdateBusinessInput.EmployeeCountYear = employeeYearCount;
             createUpdateBusinessInput.Form = form;
             createUpdateBusinessInput.Share = share;

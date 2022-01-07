@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { DocumentInput } from "src/app/models/document/input/document-input";
 import { DealInput } from "src/app/models/garant/input/deal-input";
+import { PaymentIterationCustomerInput } from "src/app/models/garant/input/payment-iteration-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 import { DataService } from "src/app/services/common/data-service";
 import { GarantService } from "src/app/services/garant/garant.service";
@@ -756,6 +757,45 @@ export class GarantAcceptPaymentModule implements OnInit {
                            
                             console.log("approve customer act " + documentType, response);
                             console.log("aApproveCustomerActs: " + this.aApproveCustomerActs);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            this.commonService.routeToStart(e);
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция создаст платеж и спишет оплату 
+     * @param i - Номер итерации этапа.
+     */
+    public async onPaymentIterationCustomerAsync(i: number) {
+        try {            
+            let paymentInput = new PaymentIterationCustomerInput();
+            paymentInput.OriginalId = this.oInitData.itemDealId;   
+              
+            if (i == 0) {
+                i = 1;
+            }     
+
+            paymentInput.Iteration = i;
+            paymentInput.OrderType = this.oInitData.itemDealType;
+
+            if (paymentInput.OriginalId > 0
+                && paymentInput.OriginalId !== null
+                && paymentInput.OrderType !== ""
+                && paymentInput.OrderType !== null) {
+                await this.http.post(API_URL.apiUrl.concat("/garant/payment-iteration-customer"), paymentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("payment iteration customer: " + i + " ок", response);                      
                         },
 
                         error: (err) => {

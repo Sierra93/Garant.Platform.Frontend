@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'formatPrice'
+    name: 'formatPriceGarant'
 })
-export class FormatPricePipe implements PipeTransform {
+export class FormatPriceGarantPipe implements PipeTransform {
     transform(value: any, args?: any): any {        
-        console.log("formatPrice");
+        console.log("formatPriceGarant");
         if (!value) {
             return null;
         }

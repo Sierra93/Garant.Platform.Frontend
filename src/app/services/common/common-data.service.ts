@@ -327,6 +327,35 @@ export class CommonDataService {
     };
 
     /**
+     * Функция получит переход по параметрам.
+     * @returns Данные перехода.
+     */
+     public async getTransitionWithParamsAsync(referenceId: number) {
+        try {
+            let transitionInput = new TransitionInput();
+            transitionInput.ReferenceId = referenceId;
+
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/user/get-transition-with-params"), transitionInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
      * Функция получит список категорий франшиз.
      * @returns Список категорий.
      */

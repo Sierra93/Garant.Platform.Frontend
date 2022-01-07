@@ -4,7 +4,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { DocumentInput } from "src/app/models/document/input/document-input";
 import { DealInput } from "src/app/models/garant/input/deal-input";
+import { GetPaymentStateInput } from "src/app/models/garant/input/get-payment-state-input";
 import { PaymentIterationCustomerInput } from "src/app/models/garant/input/payment-iteration-input";
+import { GetPaymentStateOutput } from "src/app/models/garant/output/get-payment-state-output";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 import { DataService } from "src/app/services/common/data-service";
 import { GarantService } from "src/app/services/garant/garant.service";
@@ -42,6 +44,7 @@ export class GarantAcceptPaymentModule implements OnInit {
     aCustomerActs: any = [];
     aApproveVendorActs: any;
     aApproveCustomerActs: string[] = [];
+    aActsPaymentStatuses: GetPaymentStateOutput[] = [];
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -61,6 +64,10 @@ export class GarantAcceptPaymentModule implements OnInit {
         await this.onGetDocumentsDealAsync();
         await this.getDialogMessagesAsync();
         await this.getApproveVendorActsAsync();
+
+        if (!this.oInitData.isOwner) {
+            await this.getPaymentStateAsync();
+        }
     };    
 
     /**
@@ -780,7 +787,7 @@ export class GarantAcceptPaymentModule implements OnInit {
         try {            
             let paymentInput = new PaymentIterationCustomerInput();
             paymentInput.OriginalId = this.oInitData.itemDealId;   
-              
+
             if (i == 0) {
                 i = 1;
             }     
@@ -795,7 +802,35 @@ export class GarantAcceptPaymentModule implements OnInit {
                 await this.http.post(API_URL.apiUrl.concat("/garant/payment-iteration-customer"), paymentInput)
                     .subscribe({
                         next: (response: any) => {
-                            console.log("payment iteration customer: " + i + " ок", response);                      
+                            console.log("payment iteration customer: " + i + " ок", response);    
+
+                            // Если платеж создан успешно.
+                            if (response.success) {
+                                // var paymentStatus = new GetPaymentStateOutput();
+                                // paymentStatus.status = response.status;
+
+                                // if (i <= 0) {
+                                //     i = paymentStatus.iteration;
+                                // }
+
+                                // else {
+                                //     paymentStatus.iteration = i;
+                                // }
+
+                                // paymentStatus.iteration = i;
+
+                                // var checkDublicate = this.aActsPaymentStatuses.find((item: GetPaymentStateOutput) => item.iteration == i);
+
+                                // if (checkDublicate == null) {
+                                //     this.aActsPaymentStatuses.push(paymentStatus);
+                                //     console.log("aActsPaymentStatuses", this.aActsPaymentStatuses);
+                                // }                                         
+                                
+                                // Запишет переход для периодического опрашивания бэка на статус платежа.
+                                this.commonService.setTransitionAsync(this.oInitData.itemDealId, "PaymentAct", response.paymentId, "PaymentAct").then((data: any) => {
+                                    console.log("Переход записан:", data);
+                                });
+                            }                                           
                         },
 
                         error: (err) => {
@@ -803,6 +838,39 @@ export class GarantAcceptPaymentModule implements OnInit {
                         }
                     });
             }
+        }
+
+        catch (e: any) {
+            this.commonService.routeToStart(e);
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция будет опрашивать статус платежа.
+     */
+    private async getPaymentStateAsync() {
+        try {            
+            await this.commonService.getTransitionWithParamsAsync(this.oInitData.itemDealId).then((data: any) => {
+                console.log("Переход получен:", data);
+
+                let getStateInput = new GetPaymentStateInput();
+                getStateInput.PaymentId = data.otherId;
+                getStateInput.OrderId = data.referenceId;
+
+                if (+getStateInput.PaymentId > 0 && getStateInput.OrderId > 0) {
+                    this.http.post(API_URL.apiUrl.concat("/garant/get-state-payment"), getStateInput)
+                        .subscribe({
+                            next: (response: any) => {
+                                console.log("payment state: ", response);
+                            },
+
+                            error: (err) => {
+                                throw new Error(err);
+                            }
+                        });
+                }                
+            });
         }
 
         catch (e: any) {

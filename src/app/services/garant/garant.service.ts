@@ -6,6 +6,7 @@ import { GetPaymentStateInput } from "src/app/models/garant/input/get-payment-st
 import { TransitionInput } from "src/app/models/transition/input/transition-input";
 import { API_URL } from "../../core/core-urls/api-url";
 import { CommonDataService } from "../common/common-data.service";
+import { DataService } from "../common/data-service";
 
 /**
  * Сервис Гаранта.
@@ -15,7 +16,8 @@ export class GarantService {
     constructor(private http: HttpClient, 
         private router: Router,
         private route: ActivatedRoute,
-        private commonService: CommonDataService) {
+        private commonService: CommonDataService,
+        private dataService: DataService) {
 
     }
 
@@ -101,6 +103,18 @@ export class GarantService {
                     .subscribe({
                         next: (response: any) => {
                             console.log("payment state: ", response);
+
+                            // Если покупатель оплатил заказ, то запустить вычитание комиссии и выплату средств за этап на счет продавца.
+                            if (response.status == "CONFIRMED") {
+                                this.dataService.isPayCustomerAct = true;
+                            }
+
+                            else {
+                                this.dataService.isPayCustomerAct = false;
+                            }
+
+                            console.log("Статус платежа: ", this.dataService.isPayCustomerAct);
+                            
                             resolve(response);
                         },
 

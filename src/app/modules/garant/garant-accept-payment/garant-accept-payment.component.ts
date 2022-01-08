@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { DocumentInput } from "src/app/models/document/input/document-input";
 import { DealInput } from "src/app/models/garant/input/deal-input";
-import { GetPaymentStateInput } from "src/app/models/garant/input/get-payment-state-input";
 import { PaymentIterationCustomerInput } from "src/app/models/garant/input/payment-iteration-input";
 import { GetPaymentStateOutput } from "src/app/models/garant/output/get-payment-state-output";
 import { CommonDataService } from "src/app/services/common/common-data.service";
@@ -855,7 +854,7 @@ export class GarantAcceptPaymentModule implements OnInit {
                 console.log("Переход получен:", data);
                 
                 if (+data.otherId > 0 && data.referenceId > 0) {
-                    this.garantService.checkPaymentStateAsync(data.otherId, data.referenceId);
+                    this.garantService.checkPaymentStateAsync(data.otherId, data.referenceId);                    
                 }                
             });
         }

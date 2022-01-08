@@ -105,6 +105,7 @@ export class GarantService {
                         },
 
                         error: (err) => {
+                            this.commonService.routeToStart(err);
                             throw new Error(err);
                         }
                     });
@@ -114,6 +115,6 @@ export class GarantService {
             catch (e: any) {
                 throw new Error(e);
             }
-        }, 5000); // Каждые 5 миллисек.
+        }, 5000); // Каждые 5 сек.
     };  
 };

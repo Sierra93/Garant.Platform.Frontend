@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { GarantInitInput } from "src/app/models/garant/input/garant-init-input";
+import { GetPaymentStateInput } from "src/app/models/garant/input/get-payment-state-input";
 import { TransitionInput } from "src/app/models/transition/input/transition-input";
 import { API_URL } from "../../core/core-urls/api-url";
 import { CommonDataService } from "../common/common-data.service";
@@ -86,23 +87,27 @@ export class GarantService {
     };
 
     /**
-     * Функция проверяет, оплачен ли заказ.
+     * Функция периодически проверяет, оплачен ли заказ.
      */
-    public async checkPaymentStateAsync(orderId: number) {
+    public async checkPaymentStateAsync(orderId: string, referenceId: number) {
         setInterval(async () => {
-            try {                
-                return new Promise<boolean>(async resolve => {
-                    await this.http.post(API_URL.apiUrl.concat("/garant/get-state-payment"), {})
-                        .subscribe({
-                            next: (response: any) => {
-                                resolve(response);
-                            },
+            try {        
+                let getStateInput = new GetPaymentStateInput();
+                getStateInput.PaymentId = orderId;
+                getStateInput.OrderId = referenceId;
 
-                            error: (err) => {
-                                this.commonService.routeToStart(err);
-                                throw new Error(err);
-                            }
-                        });
+                return new Promise(async resolve => {
+                    await this.http.post(API_URL.apiUrl.concat("/garant/get-state-payment"), getStateInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("payment state: ", response);
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
                 })
             }
 

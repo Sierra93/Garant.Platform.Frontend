@@ -853,22 +853,9 @@ export class GarantAcceptPaymentModule implements OnInit {
         try {            
             await this.commonService.getTransitionWithParamsAsync(this.oInitData.itemDealId).then((data: any) => {
                 console.log("Переход получен:", data);
-
-                let getStateInput = new GetPaymentStateInput();
-                getStateInput.PaymentId = data.otherId;
-                getStateInput.OrderId = data.referenceId;
-
-                if (+getStateInput.PaymentId > 0 && getStateInput.OrderId > 0) {
-                    this.http.post(API_URL.apiUrl.concat("/garant/get-state-payment"), getStateInput)
-                        .subscribe({
-                            next: (response: any) => {
-                                console.log("payment state: ", response);
-                            },
-
-                            error: (err) => {
-                                throw new Error(err);
-                            }
-                        });
+                
+                if (+data.otherId > 0 && data.referenceId > 0) {
+                    this.garantService.checkPaymentStateAsync(data.otherId, data.referenceId);
                 }                
             });
         }

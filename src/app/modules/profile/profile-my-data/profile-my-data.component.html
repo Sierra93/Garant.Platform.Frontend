@@ -118,16 +118,24 @@
                           <label for="" class="title-small">Р/С</label><br>
                           <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="pc" name="pc" />
                         </div>
+                    </div>
 
-                        <div class="space-margin-left-24">
-                          <label for="" class="title-small">Bik</label><br>
-                          <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="bik" name="bik" />
-                        </div>
+                    <div class="d-flex my-3">
+                      <div class="space-margin-left-24">
+                        <label for="" class="title-small">Bik</label><br>
+                        <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="bik" name="bik" />
+                      </div>
 
-                        <div class="space-margin-left-24">
-                          <label for="" class="title-small">Kpp</label><br>
-                          <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="kpp" name="kpp" />
-                        </div>
+                      <div class="space-margin-left-24">
+                        <label for="" class="title-small">Kpp</label><br>
+                        <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="kpp" name="kpp" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <div>
+                        <p-dropdown [options]="availableBanks" [(ngModel)]="selectedBank" optionLabel="value" [filter]="true" filterBy="value" placeholder="Выберите свой банк"></p-dropdown>
+                      </div>
                     </div>
 
                     <h5>Паспортные данные</h5>

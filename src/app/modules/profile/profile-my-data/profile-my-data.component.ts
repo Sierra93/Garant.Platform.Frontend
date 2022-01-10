@@ -42,6 +42,8 @@ export class ProfileMyDataModule implements OnInit {
     isMessageTab: boolean = false;
     bik: number = 0;
     kpp: number = 0;
+    availableBanks: any[] = [];
+    selectedBank: string = '';
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -187,6 +189,18 @@ export class ProfileMyDataModule implements OnInit {
 
                     error: (err) => {
                         this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+
+                await this.http.post(API_URL.apiUrl.concat("/control/get-bank-names-list"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        this.availableBanks = response;
+                        this.selectedBank = this.availableBanks.filter(bank => bank.isDefault)[0];
+                    },
+
+                    error: (err) => {
                         throw new Error(err);
                     }
                 });

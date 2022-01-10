@@ -46,4 +46,10 @@ export class ProfileInput {
 
     // Адрес регистрации.
     AddressRegister: string = "";
+
+    // Банковский идентификационный код.
+    Bik: number = 0;
+
+    // Код причины постановки.
+    Kpp: number = 0;
 }

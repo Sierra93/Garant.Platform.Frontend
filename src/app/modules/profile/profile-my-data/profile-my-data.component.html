@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>    
+<body>
   <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
     <div class="block-profile">
@@ -26,48 +26,48 @@
                       <label for="" class="title-small">Фамилия</label><br>
                       <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="lastName" name="lastName" />
                     </div>
-  
+
                     <div class="space-margin-left-24">
                       <label for="" class="title-small">Имя</label><br>
                       <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="firstName" name="firstName" />
                     </div>
-  
+
                     <div class="space-margin-left-24">
                       <label for="" class="title-small">Отчество</label><br>
                       <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="patr" name="patr" />
                     </div>
-  
+
                     <div class="space-margin-left-24">
                       <label for="" class="title-small">Дата рождения</label><br>
                       <input type="date" class="control-input-franch-price form-control-lg" [(ngModel)]="dateYearBirth" name="dateYearBirth" />
                     </div>
                 </div>
-  
+
                 <h5>Контактные данные</h5>
-  
+
                 <div class="d-flex">
                   <div class="">
                       <label for="" class="title-small">E-mail</label><br>
                       <input type="email" class="control-input-franch-price form-control-lg" [(ngModel)]="email"
                         name="email" />
                     </div>
-  
+
                     <div class="space-margin-left-24">
                       <label for="" class="title-small">Номер телефона</label><br>
                       <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="phone"
                         name="phone" />
-                    </div>                
+                    </div>
                 </div>
-  
+
                 <button class="control-button-blue-small" (click)="onSaveProfileFormAsync(form, 'MainData')">Сохранить</button>
               </form>
-            </div>          
+            </div>
 
             <!-- Таб сообщений. -->
             <div class="block-right" *ngIf="isMessageTab">
               <profile-my-dialogs></profile-my-dialogs>
             </div>
-            
+
             <!-- Вторая секция. -->
             <div class="col-lg-12 col-xs-12 garant card-line">
                 <p-card class="">
@@ -86,7 +86,7 @@
                         <!-- <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button> -->
                         <button class="btn btn-default btn-show-more">Подробнее</button>
                       </div>
-          
+
                       <div class="ml-1">
                         <!-- <button class="btn btn-dark">{{oSuggestion.button2Text}}</button> -->
                         <button class="btn btn-default btn-show-more">Не сейчас</button>
@@ -102,7 +102,7 @@
                   <h5>Реквизиты</h5>
                   <span>Для осуществления сделок онлайн через сервис гарант</span>
                 </div>
-                
+
               <div class="block-right">
                 <h5>Укажите свой статус</h5>
                 <p-tabView>
@@ -112,71 +112,81 @@
                       <div class="">
                           <label for="" class="title-small">ИНН</label><br>
                           <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="inn" name="inn" placeholder="12 цифр" />
-                        </div>  
-      
+                        </div>
+
                         <div class="space-margin-left-24">
                           <label for="" class="title-small">Р/С</label><br>
                           <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="pc" name="pc" />
-                        </div>                     
+                        </div>
+
+                        <div class="space-margin-left-24">
+                          <label for="" class="title-small">Bik</label><br>
+                          <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="bik" name="bik" />
+                        </div>
+
+                        <div class="space-margin-left-24">
+                          <label for="" class="title-small">Kpp</label><br>
+                          <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="kpp" name="kpp" />
+                        </div>
                     </div>
-  
+
                     <h5>Паспортные данные</h5>
-  
+
                     <div class="d-flex">
                       <div class="">
                           <label for="" class="title-small">Серия</label><br>
                           <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="serial"
                             name="serialPassport" />
                         </div>
-      
+
                         <div class="space-margin-left-24">
                           <label for="" class="title-small">Номер</label><br>
                           <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="number"
                             name="numberPassport" />
-                        </div>         
-                        
+                        </div>
+
                         <div class="space-margin-left-24">
                           <label for="" class="title-small">Дата выдачи</label><br>
                           <input type="date" class="control-input-franch-price form-control-lg" [(ngModel)]="dateGive"
                             name="dateGive" />
-                        </div>   
+                        </div>
                     </div>
-  
+
                    <div class="d-flex">
                     <div class="">
                       <label for="" class="title-small">Выдан</label><br>
                       <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="whoGive"
                         name="whoGive" />
-                    </div>   
-  
+                    </div>
+
                     <div class="space-margin-left-24">
                       <label for="" class="title-small">Код подразделения</label><br>
                       <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="code"
                         name="code" />
-                    </div>   
+                    </div>
                    </div>
-  
+
                    <div class="">
                     <label for="" class="title-small">Зарегистрирован по адресу</label><br>
                     <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="registerAddress"
                       name="registerAddress" />
-                  </div>   
-  
+                  </div>
+
                   <input type="file" class="mt-3" (change)="uploadDocumentAsync($event)"><br>
-                    
+
                     <button class="control-button-blue-small" (click)="onSaveProfileFormAsync(formReq, 'Requisites')">Сохранить</button>
                   </p-tabPanel>
-  
+
                   <p-tabPanel header="Юридическое лицо">
                       Пока не продумано
                   </p-tabPanel>
-  
+
                   <p-tabPanel header="Индивидуальный предприниматель">
                     Пока не продумано
                   </p-tabPanel>
               </p-tabView>
-              </div>   
-              </form> 
+              </div>
+              </form>
         </div>
     </div>
 </body>

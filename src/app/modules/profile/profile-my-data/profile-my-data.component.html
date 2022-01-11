@@ -134,7 +134,7 @@
 
                     <div>
                       <div>
-                        <p-dropdown [options]="availableBanks" [(ngModel)]="selectedBank" optionLabel="value" [filter]="true" filterBy="value" placeholder="Выберите свой банк"></p-dropdown>
+                        <p-dropdown [options]="availableBanks" [(ngModel)]="selectedBank" optionLabel="value" [filter]="true" filterBy="value" placeholder="Выберите свой банк" (onFilter)="filterBanksList($event)"></p-dropdown>
                       </div>
                     </div>
 

@@ -210,4 +210,45 @@ export class ProfileMyDataModule implements OnInit {
             throw new Error(e);
         }
     };
+
+  async filterBanksList(e: any) {
+    console.log(e);
+    console.log(e.filter);
+    console.log(e.filter.length);
+
+    try {
+      if (e.filter !== null) {
+        await this.http.get(API_URL.apiUrl.concat(`/control/search-bank-name?searchText=${e.filter}`))
+        .subscribe({
+          next: (response: any) => {
+            console.log(response);
+
+              if(e.filter.length){
+                this.availableBanks = response;
+              }
+            },
+
+            error: (err) => {
+                console.log(err);
+            }
+        });
+      } else {
+        await this.http.post(API_URL.apiUrl.concat("/control/get-bank-names-list"), {})
+        .subscribe({
+            next: (response: any) => {
+                this.availableBanks = response;
+            },
+
+            error: (err) => {
+                throw new Error(err);
+            }
+        });
+      }
+      console.log(this.availableBanks);
+    }
+
+    catch (e: any) {
+      throw new Error(e);
+    }
+  }
 }

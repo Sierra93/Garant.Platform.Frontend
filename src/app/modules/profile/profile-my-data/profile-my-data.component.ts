@@ -213,6 +213,10 @@ export class ProfileMyDataModule implements OnInit {
     try {        
         console.log("onFilterSearchByBankNameAsync", e);
 
+        if (!e.filter) {
+            await this.getBankListAsync();
+        }
+        
         await this.http.get(API_URL.apiUrl.concat(`/control/search-bank-name?searchText=${e.filter}`))
             .subscribe({
                 next: (response: any) => {

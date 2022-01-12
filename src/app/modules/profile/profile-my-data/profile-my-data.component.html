@@ -135,7 +135,7 @@
                     <div class="d-flex">
                       <div class="d-flex flex-column">
                         <label for="">Выберите свой банк</label>
-                        <p-dropdown [options]="availableBanks" [(ngModel)]="defaultBankName" optionLabel="value" [filter]="true" placeholder="Выберите свой банк" (onFilter)="filterBanksList($event)"></p-dropdown>
+                        <p-dropdown [options]="availableBanks" [(ngModel)]="defaultBankName" optionLabel="value" [filter]="true" placeholder="Выберите свой банк" (onFilter)="onFilterSearchByBankNameAsync($event)"></p-dropdown>
                       </div>
                       <div>
                         <label for="" class="title-small">corrAccountNumber</label><br>

@@ -57,6 +57,7 @@ export class ProfileMyDataModule implements OnInit {
     public async ngOnInit() {
         this.titleService.setTitle("Gobizy: Профиль - мои данные");
         await this.getProfileInfoAsync();
+        await this.getBankListAsync();
     };
 
     /**
@@ -195,18 +196,7 @@ export class ProfileMyDataModule implements OnInit {
                         this.commonService.routeToStart(err);
                         throw new Error(err);
                     }
-                });
-
-                await this.http.post(API_URL.apiUrl.concat("/control/get-bank-names-list"), {})
-                .subscribe({
-                    next: (response: any) => {
-                        this.availableBanks = response;
-                    },
-
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
+                });               
         }
 
         catch (e: any) {
@@ -214,15 +204,21 @@ export class ProfileMyDataModule implements OnInit {
         }
     };
 
-  async filterBanksList(e: any) {
-    try {
-      if (typeof e.filter === 'string') {
+  /**
+   * Функция найдет список банков по поисковому запросу.
+   * @param e - Запрос для поиска.
+   * @returns - Список найденных банков.
+   */
+  public async onFilterSearchByBankNameAsync(e: any) {
+    try {        
+        console.log("onFilterSearchByBankNameAsync", e);
+
         await this.http.get(API_URL.apiUrl.concat(`/control/search-bank-name?searchText=${e.filter}`))
             .subscribe({
                 next: (response: any) => {
                     if (e.filter.length) {
                         this.availableBanks = response;
-                        console.log(this.availableBanks);
+                        console.log("Банки по запросу: ", this.availableBanks);
                     }
                 },
 
@@ -230,23 +226,34 @@ export class ProfileMyDataModule implements OnInit {
                     console.log(err);
                 }
             });
-      } else {
+    }
+
+    catch (e: any) {
+        throw new Error(e);
+    }
+  };
+
+  /**
+   * Функция получит списков банков.
+   * @returns - Список банков.
+   */
+  private async getBankListAsync() {
+    try {                        
         await this.http.post(API_URL.apiUrl.concat("/control/get-bank-names-list"), {})
         .subscribe({
             next: (response: any) => {
                 this.availableBanks = response;
-                console.log(this.availableBanks);
+                console.log("Список банков: ", this.availableBanks);
             },
 
             error: (err) => {
                 throw new Error(err);
             }
         });
-      }
     }
 
     catch (e: any) {
-      throw new Error(e);
+        throw new Error(e);
     }
-  }
+  };
 }

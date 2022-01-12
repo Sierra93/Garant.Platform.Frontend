@@ -132,9 +132,14 @@
                       </div>
                     </div>
 
-                    <div>
+                    <div class="d-flex">
+                      <div class="d-flex flex-column">
+                        <label for="">Выберите свой банк</label>
+                        <p-dropdown [options]="availableBanks" [(ngModel)]="defaultBankName" optionLabel="value" [filter]="true" placeholder="Выберите свой банк" (onFilter)="filterBanksList($event)"></p-dropdown>
+                      </div>
                       <div>
-                        <p-dropdown [options]="availableBanks" [(ngModel)]="selectedBank" optionLabel="value" [filter]="true" filterBy="value" placeholder="Выберите свой банк" (onFilter)="filterBanksList($event)"></p-dropdown>
+                        <label for="" class="title-small">corrAccountNumber</label><br>
+                        <input type="number" class="control-input-franch-price form-control-lg" [(ngModel)]="corrAccountNumber" name="corrAccountNumber" />
                       </div>
                     </div>
 

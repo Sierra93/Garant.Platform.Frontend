@@ -52,4 +52,10 @@ export class ProfileInput {
 
     // Код причины постановки.
     Kpp: number = 0;
+
+    // корр. счет.
+    CorrAccountNumber: number = 0;
+
+    // выбранный банк.
+    DefaultBankName: string = '';
 }

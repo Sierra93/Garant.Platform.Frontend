@@ -43,7 +43,8 @@ export class ProfileMyDataModule implements OnInit {
     bik: number = 0;
     kpp: number = 0;
     availableBanks: any[] = [];
-    selectedBank: string = '';
+    defaultBankName: string = "";
+    corrAccountNumber: number = 0;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -82,6 +83,7 @@ export class ProfileMyDataModule implements OnInit {
             let addressRegister = form.value.registerAddress;
             let bik = form.value.bik;
             let kpp = form.value.kpp;
+            let corrAccountNumber = form.value.corrAccountNumber;
 
             let profileInput = new ProfileInput();
             profileInput.DateBirth = dateYearBirth;
@@ -101,6 +103,7 @@ export class ProfileMyDataModule implements OnInit {
             profileInput.AddressRegister = addressRegister;
             profileInput.Bik = bik;
             profileInput.Kpp = kpp;
+            profileInput.CorrAccountNumber = corrAccountNumber;
 
             let formData = new FormData();
             formData.append("documentFile", this.documentFile);
@@ -173,6 +176,7 @@ export class ProfileMyDataModule implements OnInit {
                         this.countAd = response.countAd ?? 0;
                         this.bik = response.bik ?? 0;
                         this.kpp = response.kpp ?? 0;
+                        this.corrAccountNumber = response.corrAccountNumber ?? 0;
 
                         if (this.profileData.values.includes("buy") && this.profileData.values.includes("sell")) {
                             this.role = "Продавца, покупателя";
@@ -197,7 +201,6 @@ export class ProfileMyDataModule implements OnInit {
                 .subscribe({
                     next: (response: any) => {
                         this.availableBanks = response;
-                        this.selectedBank = this.availableBanks.filter(bank => bank.isDefault)[0];
                     },
 
                     error: (err) => {
@@ -212,31 +215,27 @@ export class ProfileMyDataModule implements OnInit {
     };
 
   async filterBanksList(e: any) {
-    console.log(e);
-    console.log(e.filter);
-    console.log(e.filter.length);
-
     try {
-      if (e.filter !== null) {
+      if (typeof e.filter === 'string') {
         await this.http.get(API_URL.apiUrl.concat(`/control/search-bank-name?searchText=${e.filter}`))
-        .subscribe({
-          next: (response: any) => {
-            console.log(response);
+            .subscribe({
+                next: (response: any) => {
+                    if (e.filter.length) {
+                        this.availableBanks = response;
+                        console.log(this.availableBanks);
+                    }
+                },
 
-              if(e.filter.length){
-                this.availableBanks = response;
-              }
-            },
-
-            error: (err) => {
-                console.log(err);
-            }
-        });
+                error: (err) => {
+                    console.log(err);
+                }
+            });
       } else {
         await this.http.post(API_URL.apiUrl.concat("/control/get-bank-names-list"), {})
         .subscribe({
             next: (response: any) => {
                 this.availableBanks = response;
+                console.log(this.availableBanks);
             },
 
             error: (err) => {
@@ -244,7 +243,6 @@ export class ProfileMyDataModule implements OnInit {
             }
         });
       }
-      console.log(this.availableBanks);
     }
 
     catch (e: any) {

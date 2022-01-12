@@ -7,4 +7,8 @@ export class GetPaymentStateInput {
 
     // Id заказа в сервисе Гарант. 
     OrderId: number = 0;
+
+    ItemDealId: number = 0;
+
+    DealItemType: string = "";
 }

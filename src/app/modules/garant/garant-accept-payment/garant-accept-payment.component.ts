@@ -43,7 +43,7 @@ export class GarantAcceptPaymentModule implements OnInit {
     aCustomerActs: any = [];
     aApproveVendorActs: any;
     aApproveCustomerActs: string[] = [];
-    aActsPaymentStatuses: GetPaymentStateOutput[] = [];
+    aActsPaymentStatuses: GetPaymentStateOutput[] = [];    
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -785,11 +785,9 @@ export class GarantAcceptPaymentModule implements OnInit {
     public async onPaymentIterationCustomerAsync(i: number) {
         try {            
             let paymentInput = new PaymentIterationCustomerInput();
-            paymentInput.OriginalId = this.oInitData.itemDealId;   
-
-            if (i == 0) {
-                i = 1;
-            }     
+            paymentInput.OriginalId = this.oInitData.itemDealId;  
+            
+            i == 0 ? 1 : i++;   
 
             paymentInput.Iteration = i;
             paymentInput.OrderType = this.oInitData.itemDealType;
@@ -854,7 +852,7 @@ export class GarantAcceptPaymentModule implements OnInit {
                 console.log("Переход получен:", data);
                 
                 if (+data.otherId > 0 && data.referenceId > 0) {
-                    this.garantService.checkPaymentStateAsync(data.otherId, data.referenceId);                    
+                    this.garantService.checkPaymentStateAsync(data.otherId, data.referenceId, this.oInitData.itemDealId, this.oInitData.itemDealType);                    
                 }                
             });
         }

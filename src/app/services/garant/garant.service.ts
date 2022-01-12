@@ -92,45 +92,51 @@ export class GarantService {
      * Функция периодически проверяет, оплачен ли заказ.
      */
     public async checkPaymentStateAsync(orderId: string, referenceId: number, itemDealId: number, typeItemDeal: string) {
-        setInterval(async () => {
-            try {        
-                let getStateInput = new GetPaymentStateInput();
-                getStateInput.PaymentId = orderId;
-                getStateInput.OrderId = referenceId;
-                getStateInput.ItemDealId = itemDealId;
-                getStateInput.DealItemType = typeItemDeal;                
+        // setInterval(async () => {
+            
+        // }, 5000); // Каждые 5 сек.
 
-                return new Promise(async resolve => {
-                    await this.http.post(API_URL.apiUrl.concat("/garant/get-state-payment"), getStateInput)
-                    .subscribe({
-                        next: (response: any) => {
-                            console.log("payment state: ", response);
+        try {        
+            let getStateInput = new GetPaymentStateInput();
+            getStateInput.PaymentId = orderId;
+            getStateInput.OrderId = referenceId;
+            getStateInput.ItemDealId = itemDealId;
+            getStateInput.DealItemType = typeItemDeal;                
 
-                            // Если покупатель оплатил заказ, то запустить вычитание комиссии и выплату средств за этап на счет продавца.
-                            if (response.status == "CONFIRMED" || response.status == "PaymentSuccess") {
-                                this.dataService.isPayCustomerAct = true;
-                            }
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/garant/get-state-payment"), getStateInput)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("payment state: ", response);
 
-                            else {
-                                this.dataService.isPayCustomerAct = false;
-                            }
-
-                            console.log("Статус платежа: ", this.dataService.isPayCustomerAct);
-                            
-                            resolve(response);
-                        },
-
-                        error: (err) => {
-                            this.commonService.routeToStart(err);
-                            throw new Error(err);
+                        if (response == null) {
+                            return;
                         }
-                    });
-                })
-            }
 
-            catch (e: any) {
-                throw new Error(e);
-            }
-        }, 5000); // Каждые 5 сек.
+                        // Если покупатель оплатил заказ, то запустить вычитание комиссии и выплату средств за этап на счет продавца.
+                        if (response.status == "CONFIRMED" || response.status == "PaymentSuccess") {
+                            this.dataService.isPayCustomerAct = true;
+                        }
+
+                        else {
+                            this.dataService.isPayCustomerAct = false;
+                        }
+
+                        console.log("Статус платежа: ", this.dataService.isPayCustomerAct);
+                        
+                        resolve(response);
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
     };  
 };

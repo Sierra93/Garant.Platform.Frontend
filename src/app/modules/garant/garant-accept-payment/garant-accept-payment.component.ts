@@ -786,8 +786,14 @@ export class GarantAcceptPaymentModule implements OnInit {
         try {            
             let paymentInput = new PaymentIterationCustomerInput();
             paymentInput.OriginalId = this.oInitData.itemDealId;  
-            
-            i == 0 ? 1 : i++;   
+
+            if (i == 0) {
+                i = 1;
+            }
+
+            else {
+                i++;
+            }         
 
             paymentInput.Iteration = i;
             paymentInput.OrderType = this.oInitData.itemDealType;

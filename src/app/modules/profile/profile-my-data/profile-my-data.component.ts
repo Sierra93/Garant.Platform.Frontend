@@ -215,6 +215,7 @@ export class ProfileMyDataModule implements OnInit {
 
         if (!e.filter) {
             await this.getBankListAsync();
+            return;
         }
         
         await this.http.get(API_URL.apiUrl.concat(`/control/search-bank-name?searchText=${e.filter}`))

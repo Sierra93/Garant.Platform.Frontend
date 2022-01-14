@@ -54,12 +54,12 @@ import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/pr
 import { MainSearchModule } from "./modules/search/main-search/main-search.component";
 import { CatalogBusinessModule } from "./modules/business/catalog-business/catalog-business.component";
 import { GarantInitModule } from "./modules/garant/garant-init/garant-init.component";
-import { ConvertStringToNumberPipe } from "./core/pipes/convertStringToNumber.pipe";
 import { DataService } from "./services/common/data-service";
 import { GarantService } from "./services/garant/garant.service";
 import { GarantConcordModule } from "./modules/garant/garant-concord/garant-concord.component";
 import { GarantContractModule } from "./modules/garant/garant-contract/garant-contract.component";
 import { GarantAcceptPaymentModule } from "./modules/garant/garant-accept-payment/garant-accept-payment.component";
+import { FormatPriceGarantPipe } from "./core/pipes/formatPrice.pipe";
 
 @NgModule({
   declarations: [
@@ -84,7 +84,7 @@ import { GarantAcceptPaymentModule } from "./modules/garant/garant-accept-paymen
     MainSearchModule,
     CatalogBusinessModule,
     GarantInitModule,
-    ConvertStringToNumberPipe,
+    FormatPriceGarantPipe,
     GarantConcordModule,
     GarantContractModule,
     GarantAcceptPaymentModule

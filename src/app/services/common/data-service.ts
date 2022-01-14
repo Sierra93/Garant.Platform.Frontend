@@ -6,4 +6,7 @@ export class DataService {
 
     // Id другого пользователя.
     otherId: string = "";
+
+    // Флаг оплаты акта покупателем.
+    isPayCustomerAct: boolean = false;
 }

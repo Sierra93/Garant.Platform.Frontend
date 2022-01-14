@@ -568,6 +568,10 @@ export class GarantAcceptPaymentModule implements OnInit {
                 i = 1;
             }
 
+            else {
+                i++;
+            }
+
             // Проставит название акта.
             // Если владелец.
             if (this.oInitData.isOwner) {                

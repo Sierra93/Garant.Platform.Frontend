@@ -265,6 +265,7 @@ export class CatalogBusinessModule implements OnInit {
                 next: (response: any) => {
                     console.log("get data pagination", response);
                     this.countBusinesses = response.countAll;
+                    this.aBusinessList = response.results;
                     // this.aFranchises = response.results;
                     // this.router.navigate(['/auction'], {
                     //     queryParams: {
@@ -298,7 +299,7 @@ export class CatalogBusinessModule implements OnInit {
                 next: (response: any) => {
                     console.log("pagination init", response);
                     this.countBusinesses = response.countAll;
-                    // this.aFranchises = response.results;
+                    this.countTotalPage = response.totalCount;                    
                 },
 
                 error: (err) => {

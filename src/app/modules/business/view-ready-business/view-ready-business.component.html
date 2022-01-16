@@ -1,274 +1,264 @@
-<!DOCTYPE html>
-<html lang="en">
+<p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+<h5 class="title-name-logo">Название бизнеса*</h5>
 
-<body>
-  <p-toast [style]="{ marginTop: '80px' }"></p-toast>
+<!-- Блок с названием. -->
+<div class="d-flex">
+  <div class="block-two" *ngFor="let item of businessData">
+    <!-- <label>Укажите полное название вашего бизнеса, без приставок ООО</label><br> -->
+    <!-- <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="item.businessName" name="businessName" /> -->
+    <span>{{item.businessName}}</span>
+  </div>
+</div>
 
-  <h5 class="title-name-logo">Название бизнеса*</h5>
+<hr class="hr">
 
-  <!-- Блок с названием. -->
-  <div class="d-flex">
-    <div class="block-two" *ngFor="let item of businessData">
-      <!-- <label>Укажите полное название вашего бизнеса, без приставок ООО</label><br> -->
-      <!-- <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="item.businessName" name="businessName" /> -->
-      <span>{{item.businessName}}</span>
-    </div>
+<span class="title-strong">Фотографии*</span><br>
+<!-- <input type="file" (change)="uploadBusinessPhotosAsync($event)" multiple>   -->
+<div class="block-gallery">
+  <div>
+    <span *ngIf="!aNamesBusinessPhotos.length">Фотографии не загружены</span>
+    <p-galleria class="p-galleria" [(value)]="aNamesBusinessPhotos" [responsiveOptions]="responsiveOptions"
+      [containerStyle]="{'max-width': '1200px'}" [numVisible]="4" thumbnailsPosition="left">
+      <ng-template pTemplate="item" let-item>
+        <!-- <img src="{{item}}" style="width: 700px; display: block;" />            -->
+        <img src="{{item}}" class="p-galleria-foto" />
+      </ng-template>
+
+      <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesBusinessPhotos.length > 1">
+        <div class="p-grid p-nogutter p-justify-center p-galleria-thumbnail-block">
+          <img src="{{item}}" class="p-galleria-thumbnail-foto" />
+        </div>
+      </ng-template>
+    </p-galleria>
   </div>
 
-  <hr class="hr">
+  <div class="contacts-card">
+    <span class="title-strong">Ваша карточка для связи</span><br>
+    <span class="title-small">{{fio}}</span><br>
 
-  <span class="title-strong">Фотографии*</span><br>
-  <!-- <input type="file" (change)="uploadBusinessPhotosAsync($event)" multiple>   -->
-  <div class="block-gallery">
-    <div>
-      <span *ngIf="!aNamesBusinessPhotos.length">Фотографии не загружены</span>
-      <p-galleria class="p-galleria" [(value)]="aNamesBusinessPhotos" [responsiveOptions]="responsiveOptions"
-        [containerStyle]="{'max-width': '1200px'}" [numVisible]="4" thumbnailsPosition="left">
-        <ng-template pTemplate="item" let-item>
-          <!-- <img src="{{item}}" style="width: 700px; display: block;" />            -->
-          <img src="{{item}}" class="p-galleria-foto" />
-        </ng-template>
-
-        <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesBusinessPhotos.length > 1">
-          <div class="p-grid p-nogutter p-justify-center p-galleria-thumbnail-block">
-            <img src="{{item}}" class="p-galleria-thumbnail-foto" />
-          </div>
-        </ng-template>
-      </p-galleria>
+    <div *ngFor="let item of businessData">
+      <!-- <label>Пример: владелец</label><br> -->
+      <!-- <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец" [(ngModel)]="item.status" name="lead" /> -->
+      <span>{{item.status}}</span>
     </div>
 
-    <div class="contacts-card">
-      <span class="title-strong">Ваша карточка для связи</span><br>
-      <span class="title-small">{{fio}}</span><br>
-
-      <div *ngFor="let item of businessData">
-        <!-- <label>Пример: владелец</label><br> -->
-        <!-- <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец" [(ngModel)]="item.status" name="lead" /> -->
-        <span>{{item.status}}</span>
-      </div>
-
-      <!-- <button class="btn btn-link">Стать франчайзи онлайн через гарант</button><br>
+    <!-- <button class="btn btn-link">Стать франчайзи онлайн через гарант</button><br>
       <button class="control-button-blue">Начать чат с представителем</button> -->
-    </div>
+  </div>
+</div>
+
+<!-- Ключевые финансовые данные. -->
+<span class="title-strong">Ключевые финансовые данные*</span><br>
+<div class="block-invest" *ngFor="let item of businessData">
+  <div class="invest-item invest-item-first">
+    <span class="title-small invest-item__title">Стоимость</span><br>
+    <small class="invest-item__small">полная стоимость бизнеса</small><br>
+    <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.price" name="price" /> ₽ -->
+    <span class="invest-item__unit">{{item.price}} ₽</span>
   </div>
 
-  <!-- Ключевые финансовые данные. -->
-  <span class="title-strong">Ключевые финансовые данные*</span><br>
-  <div class="block-invest" *ngFor="let item of businessData">
-    <div class="invest-item invest-item-first">
-      <span class="title-small invest-item__title">Стоимость</span><br>
-      <small class="invest-item__small">полная стоимость бизнеса</small><br>
-      <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.price" name="price" /> ₽ -->
-      <span class="invest-item__unit">{{item.price}} ₽</span>
-    </div>
-
-    <div class="invest-item">
-      <span class="title-small invest-item__title">Оборот</span><br>
-      <small class="invest-item__small">средняя выручка за месяц</small><br>
-      <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.turnPrice" name="turnPrice" /> ₽ -->
-      <span class="invest-item__unit">{{item.turnPrice}} ₽</span>
-    </div>
-
-    <div class="invest-item">
-      <span class="title-small invest-item__title">Прибыль</span><br>
-      <small class="invest-item__small">чистая прибыль за месяц</small><br>
-      <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.profitPrice" name="profitPrice" /> ₽ -->
-      <span class="invest-item__unit">{{item.profitPrice}} ₽</span>
-    </div>
-
-    <div class="invest-item">
-      <span class="title-small invest-item__title">Окупаемость</span><br>
-      <small class="invest-item__small">по настоящим данным</small><br>
-      <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.payback" name="payback" /> мес. -->
-      <span class="invest-item__unit">{{item.payback}} мес.</span>
-    </div>
-
-    <div class="invest-item">
-      <span class="title-small invest-item__title">Рентабельность</span><br>
-      <small class="invest-item__small">по настоящим данным</small><br>
-      <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.profitability" name="profitability" /> ₽ -->
-      <span class="invest-item__unit">{{item.profitability}} ₽</span>
-    </div>
-
-    <div class="invest-item invest-item-last">
-      <span class="title-small invest-item__title">Возраст бизнеса</span><br>
-      <small class="invest-item__small">с момента основания</small><br>
-      <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.businessAge" name="businessAge" /> дн. -->
-      <span class="invest-item__unit">{{item.businessAge}} дн.</span>
-    </div>
+  <div class="invest-item">
+    <span class="title-small invest-item__title">Оборот</span><br>
+    <small class="invest-item__small">средняя выручка за месяц</small><br>
+    <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.turnPrice" name="turnPrice" /> ₽ -->
+    <span class="invest-item__unit">{{item.turnPrice}} ₽</span>
   </div>
 
-  <hr class="hr">
+  <div class="invest-item">
+    <span class="title-small invest-item__title">Прибыль</span><br>
+    <small class="invest-item__small">чистая прибыль за месяц</small><br>
+    <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.profitPrice" name="profitPrice" /> ₽ -->
+    <span class="invest-item__unit">{{item.profitPrice}} ₽</span>
+  </div>
 
-  <!-- Основная информация о компании. -->
-  <div class="d-flex business-details">
+  <div class="invest-item">
+    <span class="title-small invest-item__title">Окупаемость</span><br>
+    <small class="invest-item__small">по настоящим данным</small><br>
+    <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.payback" name="payback" /> мес. -->
+    <span class="invest-item__unit">{{item.payback}} мес.</span>
+  </div>
 
-    <div class="business-info">
-      <div *ngFor="let item of businessData">
-        <span class="title-strong business-description">Основная информация о бизнесе*</span><br>
-        <span class="title-small">Описание деятельности</span><br>
-        <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+  <div class="invest-item">
+    <span class="title-small invest-item__title">Рентабельность</span><br>
+    <small class="invest-item__small">по настоящим данным</small><br>
+    <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.profitability" name="profitability" /> ₽ -->
+    <span class="invest-item__unit">{{item.profitability}} ₽</span>
+  </div>
+
+  <div class="invest-item invest-item-last">
+    <span class="title-small invest-item__title">Возраст бизнеса</span><br>
+    <small class="invest-item__small">с момента основания</small><br>
+    <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.businessAge" name="businessAge" /> дн. -->
+    <span class="invest-item__unit">{{item.businessAge}} дн.</span>
+  </div>
+</div>
+
+<hr class="hr">
+
+<!-- Основная информация о компании. -->
+<div class="d-flex business-details">
+
+  <div class="business-info">
+    <div *ngFor="let item of businessData">
+      <span class="title-strong business-description">Основная информация о бизнесе*</span><br>
+      <span class="title-small">Описание деятельности</span><br>
+      <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
            placeholder="Опишите деятельность" [(ngModel)]="item.activityDetail"></textarea> -->
-        <span>{{item.activityDetail}}</span>
-      </div>
+      <span>{{item.activityDetail}}</span>
+    </div>
 
-      <!-- Дополнительные факты. -->
-      <div>
-        <span class="title-strong">Дополнительные факты*</span><br>
-        <div class="d-flex" *ngFor="let item of businessData">
-          <div class="additional-info">
-            <div class="invest-item invest-item-first">
-              <span class="title-small invest-item__title">Сотрудников</span><br>
-              <small class="invest-item__small">количество</small><br>
-              <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.employeeCountYear" name="employeeYearCount" /> -->
-              <span class="invest-item__unit">{{item.employeeCountYear}}</span>
-            </div>
+    <!-- Дополнительные факты. -->
+    <div>
+      <span class="title-strong">Дополнительные факты*</span><br>
+      <div class="d-flex" *ngFor="let item of businessData">
+        <div class="additional-info">
+          <div class="invest-item invest-item-first">
+            <span class="title-small invest-item__title">Сотрудников</span><br>
+            <small class="invest-item__small">количество</small><br>
+            <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.employeeCountYear" name="employeeYearCount" /> -->
+            <span class="invest-item__unit">{{item.employeeCountYear}}</span>
+          </div>
 
-            <div class="invest-item">
-              <span class="title-small invest-item__title">Форма</span><br>
-              <small class="invest-item__small">организационно-правовая</small><br>
-              <!-- <input type="text" class="control-input-franch-price" pInputText [(ngModel)]="item.form" name="form" /> -->
-              <span class="invest-item__unit">{{item.form}}</span>
-            </div>
+          <div class="invest-item">
+            <span class="title-small invest-item__title">Форма</span><br>
+            <small class="invest-item__small">организационно-правовая</small><br>
+            <!-- <input type="text" class="control-input-franch-price" pInputText [(ngModel)]="item.form" name="form" /> -->
+            <span class="invest-item__unit">{{item.form}}</span>
+          </div>
 
-            <div class="invest-item">
-              <span class="title-small invest-item__title">Доля</span><br>
-              <small class="invest-item__small">к продаже</small><br>
-              <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.share" name="share" />  -->
-              <span class="invest-item__unit">{{item.share}}</span>
-            </div>
+          <div class="invest-item">
+            <span class="title-small invest-item__title">Доля</span><br>
+            <small class="invest-item__small">к продаже</small><br>
+            <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.share" name="share" />  -->
+            <span class="invest-item__unit">{{item.share}}</span>
+          </div>
 
-            <div class="invest-item">
-              <span class="title-small invest-item__title">Сайт</span><br>
-              <small class="invest-item__small">компании</small><br>
-              <!-- <input type="text" class="control-input-franch-price" pInputText [(ngModel)]="item.site" name="site" /> -->
-              <span class="invest-item__unit">{{item.site}}</span>
-            </div>
+          <div class="invest-item">
+            <span class="title-small invest-item__title">Сайт</span><br>
+            <small class="invest-item__small">компании</small><br>
+            <!-- <input type="text" class="control-input-franch-price" pInputText [(ngModel)]="item.site" name="site" /> -->
+            <span class="invest-item__unit">{{item.site}}</span>
           </div>
         </div>
       </div>
-
     </div>
 
+  </div>
 
 
 
-    <div class="invest-in">
-      <span class="title-strong">Входит в стоимость*</span><br>
-      <div class="asset invest-item-last" *ngFor="let item of aPriceIn">
-        <small class="asset-cost">Стоимость</small><br>
-        <!-- <input type="number" class="control-input-franch-price" pInputText *ngIf="item.isHide" [value]="item.Price" name="priceIn" /> 
+
+  <div class="invest-in">
+    <span class="title-strong">Входит в стоимость*</span><br>
+    <div class="asset invest-item-last" *ngFor="let item of aPriceIn">
+      <small class="asset-cost">Стоимость</small><br>
+      <!-- <input type="number" class="control-input-franch-price" pInputText *ngIf="item.isHide" [value]="item.Price" name="priceIn" /> 
         <input type="number" class="control-input-franch-price" pInputText *ngIf="!item.isHide" [(ngModel)]="item.Price" name="priceIn" />  -->
-        <span>{{item.Price}}</span>
-        <br>
-
-        <small class="asset-name">Название</small><br>
-        <!-- <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="item.isHide" [value]="item.Name" name="nameIn" />   
-        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="!item.isHide" [(ngModel)]="item.Name" name="nameIn" />                  -->
-        <span>{{item.Name}}</span>
-      </div>
-      <!-- <button class="control-button-blue-small" (click)="onAddPriceIn(priceIn, nameIn)">Добавить пункт</button> -->
+      <span>{{item.Price}}</span>
       <br>
-      <!-- <small>
+
+      <small class="asset-name">Название</small><br>
+      <!-- <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="item.isHide" [value]="item.Name" name="nameIn" />   
+        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="!item.isHide" [(ngModel)]="item.Name" name="nameIn" />                  -->
+      <span>{{item.Name}}</span>
+    </div>
+    <!-- <button class="control-button-blue-small" (click)="onAddPriceIn(priceIn, nameIn)">Добавить пункт</button> -->
+    <br>
+    <!-- <small>
         Данный раздел обязателен для заполнения.<br>
         Подойдите к заполнению данного раздела<br>
         тщательно, так как при продаже онлайн через сервис<br>
         гарант данные разделы способствуют разбиению<br>
         на этапы.
       </small> -->
-    </div>
   </div>
+</div>
 
 
-  <hr class="hr">
+<hr class="hr">
 
-  <!-- Описание особенности бизнеса. -->
-  <span class="title-strong">Описание особенности готового бизнеса</span><br>
-  <div class="block-details-franch" *ngFor="let item of businessData">
-    <!-- <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText [(ngModel)]="item.peculiarity" name="peculiarity" /> -->
-    <span>{{item.peculiarity}}</span>
-    <!-- <span class="text">Прикрепить финансовую модель .xlsx</span> -->
+<!-- Описание особенности бизнеса. -->
+<span class="title-strong">Описание особенности готового бизнеса</span><br>
+<div class="block-details-franch" *ngFor="let item of businessData">
+  <!-- <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText [(ngModel)]="item.peculiarity" name="peculiarity" /> -->
+  <span>{{item.peculiarity}}</span>
+  <!-- <span class="text">Прикрепить финансовую модель .xlsx</span> -->
+  <br>
+
+  <div>
+    <!-- <input type="file" (change)="uploadFinModelAsync($event)">   -->
+    <!-- <button class="control-button-blue-small">Прикрепить файл</button> -->
     <br>
-
-    <div>
-      <!-- <input type="file" (change)="uploadFinModelAsync($event)">   -->
-      <!-- <button class="control-button-blue-small">Прикрепить файл</button> -->
-      <br>
-      <!-- <small>
+    <!-- <small>
       Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать презентацию, просто пропустите данный этап. 
     </small> -->
-    </div>
   </div>
+</div>
 
-  <hr class="hr">
+<hr class="hr">
 
-  <!-- Деятельность бизнеса. -->
-  <div class="d-flex" *ngFor="let item of businessData">
+<!-- Деятельность бизнеса. -->
+<div class="d-flex" *ngFor="let item of businessData">
+  <div>
+    <span class="title-strong">Деятельность бизнеса*</span><br>
     <div>
-      <span class="title-strong">Деятельность бизнеса*</span><br>
-      <div>
-        <span class="title-small business-activity-description">Описание принципов и процессов работы вашего
-          бизнеса</span><br>
-        <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+      <span class="title-small business-activity-description">Описание принципов и процессов работы вашего
+        бизнеса</span><br>
+      <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
         placeholder="Опишите бизнес" [(ngModel)]="item.text" name="text"></textarea> -->
-        <span>{{item.text}}</span>
-        <br>
-        <!-- <input type="file" (change)="uploadTextBusinessPhotosAsync($event)">   -->
-      </div>
-    </div>
-  </div>
-
-  <hr class="hr">
-
-  <div class="d-flex" *ngFor="let item of businessData">
-    <div>
-      <span class="title-strong">Активы предприятия*</span><br>
-      <!-- <span class="title-small">Опишите активы и их ценность чуть более подробно, чем в разделе “Входит в стоимость”</span><br> -->
-      <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-        placeholder="Опишите активы" [(ngModel)]="item.assets" name="assets"></textarea> -->
-      <span>{{item.assets}}</span>
+      <span>{{item.text}}</span>
       <br>
-      <!-- <input type="file" (change)="uploadAssetsBusinessPhotosAsync($event)">   -->
+      <!-- <input type="file" (change)="uploadTextBusinessPhotosAsync($event)">   -->
     </div>
   </div>
+</div>
 
-  <hr class="hr">
+<hr class="hr">
 
-  <!-- Причины продажи. -->
-  <div class="d-flex" *ngFor="let item of businessData">
-    <div>
-      <span class="title-strong">Причины продажи*</span><br>
-      <!-- <span class="title-small">Укажите реальные причины продажи</span><br> -->
-      <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+<div class="d-flex" *ngFor="let item of businessData">
+  <div>
+    <span class="title-strong">Активы предприятия*</span><br>
+    <!-- <span class="title-small">Опишите активы и их ценность чуть более подробно, чем в разделе “Входит в стоимость”</span><br> -->
+    <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Опишите активы" [(ngModel)]="item.assets" name="assets"></textarea> -->
+    <span>{{item.assets}}</span>
+    <br>
+    <!-- <input type="file" (change)="uploadAssetsBusinessPhotosAsync($event)">   -->
+  </div>
+</div>
+
+<hr class="hr">
+
+<!-- Причины продажи. -->
+<div class="d-flex" *ngFor="let item of businessData">
+  <div>
+    <span class="title-strong">Причины продажи*</span><br>
+    <!-- <span class="title-small">Укажите реальные причины продажи</span><br> -->
+    <!-- <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
         placeholder="Опишите причины" [(ngModel)]="item.reasonsSale" name="reasonsSale"></textarea><br> -->
-      <span>{{item.reasonsSale}}</span>
-      <!-- <input type="file" (change)="uploadReasonsSalePhotosAsync($event)">   -->
-    </div>
+    <span>{{item.reasonsSale}}</span>
+    <!-- <input type="file" (change)="uploadReasonsSalePhotosAsync($event)">   -->
   </div>
+</div>
 
-  <hr class="hr">
+<hr class="hr">
 
-  <!-- Адрес. -->
-  <!-- <h5 class="title-name-logo">Адрес*</h5> -->
-  <h5 class="title-strong">Адрес*</h5>
-  <div class="d-flex" *ngFor="let item of businessData">
-    <div class="">
-      <label class="adress">Адрес</label><br>
-      <!-- <input type="text" class="control-big-input" pInputText placeholder="Адрес" [(ngModel)]="item.address" name="address" /> -->
-      <span>{{item.address}}</span>
-    </div>
+<!-- Адрес. -->
+<!-- <h5 class="title-name-logo">Адрес*</h5> -->
+<h5 class="title-strong">Адрес*</h5>
+<div class="d-flex" *ngFor="let item of businessData">
+  <div class="">
+    <label class="adress">Адрес</label><br>
+    <!-- <input type="text" class="control-big-input" pInputText placeholder="Адрес" [(ngModel)]="item.address" name="address" /> -->
+    <span>{{item.address}}</span>
   </div>
+</div>
 
-  <hr class="hr">
+<hr class="hr">
 
-  <!-- Видео о бизнесе. -->
-  <!-- <div class="p-field-checkbox control-checkbox">
+<!-- Видео о бизнесе. -->
+<!-- <div class="p-field-checkbox control-checkbox">
   <div>
    <p-checkbox name="group1" value="New York" [(ngModel)]="isHideVideo" inputId="video"></p-checkbox>
    <label for="video" class="control-label-checkbox">Видео о бизнесе</label>
@@ -281,15 +271,16 @@
  </small>
 </div> -->
 
-  <div class="video" *ngFor="let item of businessData">
-    <!-- <span class="title-small">Ссылка на видео</span><br> -->
-    <span class="title-strong">Ссылка на видео</span><br>
-    <!-- <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="item.urlVideo"
+<div class="video" *ngFor="let item of businessData">
+  <!-- <span class="title-small">Ссылка на видео</span><br> -->
+  <span class="title-strong">Ссылка на видео</span><br>
+  <!-- <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="item.urlVideo"
     name="videoLink" />  -->
-    <span>{{item.urlVideo}}</span>
-  </div>
+  <span>{{item.urlVideo}}</span>
+</div>
 
-  <!-- Форма заявки. -->
+<!-- Форма заявки. -->
+<div class="row">
   <div class="col-lg-6">
     <div>
       <h5 class="consulting">Оставьте заявку</h5>
@@ -333,15 +324,11 @@
     </div>
   </div>
 
-  <!-- <hr class="hr"> -->
+</div>
 
-  <!-- <div class="switch-garant block-garant" *ngFor="let item of businessData">
+<!-- <hr class="hr"> -->
+
+<!-- <div class="switch-garant block-garant" *ngFor="let item of businessData">
     <strong>Продажа через гарант</strong><br>
     <p-inputSwitch [(ngModel)]="item.isGarant" [disabled]="true" class="flag-garant"></p-inputSwitch>
   </div> -->
-
-
-
-</body>
-
-</html>

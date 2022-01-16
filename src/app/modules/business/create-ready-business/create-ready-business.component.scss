@@ -107,6 +107,10 @@
     height: 53px;
     border-radius: 4px;
     padding: 16px;
+    
+    &::placeholder {
+      text-align: center;
+    }
   }
 }
 

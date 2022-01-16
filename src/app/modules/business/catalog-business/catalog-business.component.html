@@ -126,6 +126,13 @@
   </div>
 </div>
 
+<!-- Пагинация. -->
+<div class="mt-5">
+  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
+    [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
+  </p-paginator>
+</div>
+
 <!-- Новый бизнес. -->
 <div class="garant">
   <p-carousel [value]="aNewFranchises" [numVisible]="4" [numScroll]="4" [circular]="false"
@@ -374,9 +381,3 @@
   <!-- </div> -->
 </div>
 
-<!-- Пагинация. -->
-<div class="mt-5">
-  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
-    [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
-  </p-paginator>
-</div>

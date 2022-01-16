@@ -103,7 +103,7 @@ export class CatalogBusinessModule implements OnInit {
         await this.GetNewsTopAsync();
         await this.loadCategoriesListAsync();
         await this.loadSingleSuggestionAsync();
-        // await this.GetNewFranchisesListAsync();
+        await this.GetNewFranchisesListAsync();
         // await this.GetReviewsFranchisesAsync();
     };
 
@@ -265,6 +265,7 @@ export class CatalogBusinessModule implements OnInit {
                 next: (response: any) => {
                     console.log("get data pagination", response);
                     this.countBusinesses = response.countAll;
+                    this.aBusinessList = response.results;
                     // this.aFranchises = response.results;
                     // this.router.navigate(['/auction'], {
                     //     queryParams: {
@@ -298,7 +299,7 @@ export class CatalogBusinessModule implements OnInit {
                 next: (response: any) => {
                     console.log("pagination init", response);
                     this.countBusinesses = response.countAll;
-                    // this.aFranchises = response.results;
+                    this.countTotalPage = response.totalCount;                    
                 },
 
                 error: (err) => {
@@ -460,25 +461,25 @@ export class CatalogBusinessModule implements OnInit {
      * Функция получит список новых франшиз.
      * @returns Список франшиз.
      */
-    // private async GetNewFranchisesListAsync() {
-    //     try {
-    //         await this.http.post(API_URL.apiUrl.concat("/franchise/new-franchise"), {})
-    //             .subscribe({
-    //                 next: (response: any) => {
-    //                     console.log("Список новых франшиз:", response);
-    //                     this.aNewFranchises = response;
-    //                 },
+    private async GetNewFranchisesListAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/franchise/new-franchise"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Список новых франшиз:", response);
+                        this.aNewFranchises = response;
+                    },
 
-    //                 error: (err) => {
-    //                     throw new Error(err);
-    //                 }
-    //             });
-    //     }
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
 
-    //     catch (e: any) {
-    //         throw new Error(e);
-    //     }
-    // };
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 
     // private async GetReviewsFranchisesAsync() {
     //     try {

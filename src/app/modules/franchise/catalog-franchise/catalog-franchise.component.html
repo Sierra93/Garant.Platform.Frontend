@@ -1,14 +1,65 @@
 <section id="catalog-franchise">
-  <div class="row directory-path">
+  <!-- Популярные франшизы. -->
+  <div class="row section-mb">
     <div class="col-12">
-      <p>
-        <span>Главная / </span>
-        <span>Франшизы / </span>
-        <span>Сфера / </span>
-        <span>Категория / </span>
-        <span>Подкатегория / </span>
-        <span>Страница франшизы</span>
-      </p>
+      <h2 class="franchise-title">Популярные франшизы</h2>
+    </div>
+
+    <div class="col-xl-3 col-lg-3 col-md-3" *ngFor="let item of aPopularFranchises">
+      <div class="d-flex">
+        <div>
+          <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}">
+            <ng-template pTemplate="header">
+              <img [src]="item.url">
+            </ng-template>
+            <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+            <ng-template pTemplate="footer"></ng-template>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Каталог франшиз. -->
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between">
+        <h2 class="franchise-title">Каталог франшиз</h2>
+        <span class="franchise-count">Всего {{countFranchises}} франшиз</span>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <form class="franchise-catalog-form" #filterForm="ngForm" novalidate>
+        <div class="row">
+          <div class="col-3">
+            <label>Сфера франшиз</label>
+            <p-dropdown [options]="aViewBusiness" class="catalog-franchises-form-item" optionLabel="viewName"
+              [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
+          </div>
+
+          <div class="col-3 control-quick-search">
+            <label>Выбор категории</label>
+            <p-dropdown [options]="aBusinessCategories" class="catalog-franchises-form-item" optionLabel="categoryName"
+              [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
+          </div>
+
+          <div class="col-6">
+            <label>Инвестиции</label>
+            <div class="row">
+              <div class="col-6 control-quick-search block-price-min">
+                <input type="text" class="control-input-price min-price" pInputText placeholder="от 100 000 ₽"
+                  [(ngModel)]="minPrice" name="minPrice" />
+              </div>
+
+              <div class="col-6 block-price-max">
+                <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽"
+                  [(ngModel)]="maxPrice" name="maxPrice" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -16,59 +67,11 @@
 
 
 <div class="wrapper">
-  <!-- Популярные франшизы. -->
-  <h5 class="garant title-franchise">Популярные франшизы</h5>
-  <div class="d-flex popular-list">
-    <div class="popular-item" *ngFor="let item of aPopularFranchises">
-      <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
-        <ng-template pTemplate="header">
-          <img [src]="item.url">
-        </ng-template>
-        <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-        <ng-template pTemplate="footer">
 
-        </ng-template>
-      </p-card>
-    </div>
-  </div>
 
-  <div class="garant block-title-franchise">
-    <h5 class="title-franchise">Каталог франшиз</h5>
-    <span class="count-franchise">Всего {{countFranchises}} франшиз</span>
-  </div>
 
-  <form class="d-flex justify-content-between catalog-franchises-form" #filterForm="ngForm" novalidate>
-    <div>
-      <p><strong>Сфера франшиз</strong></p>
-      <p-dropdown [options]="aViewBusiness" class="catalog-franchises-form-item" optionLabel="viewName"
-        [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
-    </div>
 
-    <div class="control-quick-search">
-      <p><strong>Выбор категории</strong></p>
-      <p-dropdown [options]="aBusinessCategories" class="catalog-franchises-form-item" optionLabel="categoryName"
-        [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
-    </div>
 
-    <!-- <div class="control-quick-search">
-  <strong>Город</strong><br>
-  <p-dropdown [options]="aCities" optionLabel="cityName" name="city" [(ngModel)]="selectedCity" placeholder="Город" [showClear]="true"></p-dropdown>
-</div> -->
-
-    <div class="d-flex align-items-end">
-      <div class="control-quick-search block-price-min">
-        <p><strong>Инвестиции</strong></p>
-        <input type="text" class="control-input-price min-price" pInputText placeholder="от 100 000 ₽"
-          [(ngModel)]="minPrice" name="minPrice" />
-      </div>
-
-      <div class="block-price-max">
-        <p><strong></strong></p>
-        <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽"
-          [(ngModel)]="maxPrice" name="maxPrice" />
-      </div>
-    </div>
-  </form>
 
   <div class="filter-btns d-flex">
     <button class="btn btn-default btn-align mt-3 btn-sm btn-filter"

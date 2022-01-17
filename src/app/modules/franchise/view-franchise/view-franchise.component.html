@@ -30,7 +30,7 @@
       <div class="col-8">
         <!-- <div>
           <h3 class="section-title">Фотографии*</h3> -->
-          <!-- <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>   -->
+        <!-- <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>   -->
         <!-- </div> -->
 
         <div>
@@ -63,7 +63,8 @@
 
           <button class="btn primary-button become-franchiser">Стать франчайзи онлайн через гарант</button>
           <button class="primary-button"
-            (click)="onRouteFranchiseChatAsync(franchiseData.franchiseId, 'Franchise', franchiseData.userId)">Начать чат с
+            (click)="onRouteFranchiseChatAsync(franchiseData.franchiseId, 'Franchise', franchiseData.userId)">Начать чат
+            с
             представителем</button>
         </div>
       </div>
@@ -185,8 +186,8 @@
       <div class="invest">
         <h3 class="section-title">Входит в инвестиции*</h3>
         <div class="invest-block" *ngFor="let item of aInvestInclude">
-          <div>
-            <strong>{{item.Price}}</strong>
+          <div *ngIf="item.Price > 0">
+            <strong>{{item.Price}} ₽</strong>
             <span class="">Стоимость</span>
             <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="priceInvest" name="priceInvest" /> ₽ -->
           </div>
@@ -375,57 +376,57 @@
       </small>
     </div> -->
 
-  <!-- Блок с пакетами франшизы. -->
-  <div class="col-3">
-    <div class="package" *ngFor="let item of aPacks">
-      <div class="package-title">
-        <!-- <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
+    <!-- Блок с пакетами франшизы. -->
+    <div class="col-3">
+      <div class="package" *ngFor="let item of aPacks">
+        <div class="package-title">
+          <!-- <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
         [(ngModel)]="packName" name="packName" /> -->
-        <!-- <span class="title-small">Название пакета:</span><br> -->
-        <h6>{{item.Name}}</h6>
-        <!-- <br> -->
-        <!-- <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [(ngModel)]="packDetails"
+          <!-- <span class="title-small">Название пакета:</span><br> -->
+          <h6>{{item.Name}}</h6>
+          <!-- <br> -->
+          <!-- <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [(ngModel)]="packDetails"
         name="packDetails" /> -->
-        <!-- <span class="title-small">Описание:</span><br>
+          <!-- <span class="title-small">Описание:</span><br>
         <span>{{item.Text}}</span> -->
-      </div>
+        </div>
 
-      <div class="package-description">
-        <p class="content">{{item.Text}}</p>
-      </div>
+        <div class="package-description">
+          <p class="content">{{item.Text}}</p>
+        </div>
 
-      <div class="package-offers">
-        <div>
-          <strong>Паушальный взнос:</strong>
-          <!-- <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+        <div class="package-offers">
+          <div>
+            <strong>Паушальный взнос:</strong>
+            <!-- <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
           name="packLumpSumPayment" /> ₽ -->
-          <span>{{item.LumpSumPayment}} ₽</span>
-        </div>
+            <span>{{item.LumpSumPayment}} ₽</span>
+          </div>
 
-        <div>
-          <strong>Роялти:</strong>
-          <!-- <input type="text" class="control-big-input" pInputText [(ngModel)]="royaltyPack"
+          <div>
+            <strong>Роялти:</strong>
+            <!-- <input type="text" class="control-big-input" pInputText [(ngModel)]="royaltyPack"
           name="royaltyPack" /> % -->
-          <span>{{item.Royalty}} %</span>
-        </div>
+            <span>{{item.Royalty}} %</span>
+          </div>
 
-        <div>
-          <strong>Всего инвестиций:</strong>
-          <!-- <input type="text" class="control-big-input" pInputText [(ngModel)]="totalInvest"
+          <div>
+            <strong>Всего инвестиций:</strong>
+            <!-- <input type="text" class="control-big-input" pInputText [(ngModel)]="totalInvest"
           name="totalInvest" /> ₽ -->
-          <span>{{item.TotalInvest}} ₽</span>
-        </div>
+            <span>{{item.TotalInvest}} ₽</span>
+          </div>
 
-        <div class="add-package">
-          <button class="primary-button">Добавить пакет</button>
+          <div class="add-package">
+            <button class="primary-button">Добавить пакет</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- <div class="block-button-pack">
+      <!-- <div class="block-button-pack">
     <button class="control-button-blue">Добавить пакет</button>
   </div> -->
-  </div>
+    </div>
   </div>
 
   <!-- Видео о франшизе. -->
@@ -455,37 +456,39 @@
       <div class="application-form">
         <div>
           <label for="name" class="">Имя</label>
-          <input type="text" class="control-input-filter-price" pInputText placeholder="Имя" name="name" />
+          <input type="text" class="control-input-filter-price" pInputText placeholder="Имя" name="name"
+            [(ngModel)]="userName" />
         </div>
 
         <div>
           <label for="number" class="">Телефон</label>
-          <input type="text" class="control-input-filter-price" pInputText placeholder="Телефон" name="number" />
+          <input type="text" class="control-input-filter-price" pInputText placeholder="Телефон" name="number"
+            [(ngModel)]="number" />
         </div>
 
         <div>
           <label for="city" class="">Город</label>
-          <input type="text" class="control-input-filter-price" pInputText placeholder="Город" name="city" />
+          <input type="text" class="control-input-filter-price" pInputText placeholder="Город" name="city"
+            [(ngModel)]="city" />
+        </div>
+
+        <div class="agreement-policy">
+          <div>
+            <p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues"></p-checkbox>
+          </div>
+          <p>Согласен с условиями использования сервисов GoBizy и обработки персональных данных</p>
         </div>
 
         <div>
-          <button class="primary-button">Оставить заявку</button>
+          <button class="primary-button"
+            (click)="onCreateRequestFranchiseAsync(userName, number, city, franchiseData.franchiseId)">Оставить
+            заявку</button>
+        </div>
+
+        <div>
+          <p class="description">Заявку оставляли 5 раз за последний месяц</p>
         </div>
       </div>
-     <div>
-      <label for="name" class="">Имя</label><br>
-      <input type="text" class="control-input-filter-price" pInputText placeholder="Имя" name="name" [(ngModel)]="userName" />
-     </div>
-
-     <label for="number" class="">Телефон</label><br>
-     <input type="text" class="control-input-filter-price" pInputText placeholder="Телефон" name="number" [(ngModel)]="number" />
-    </div>
-
-    <label for="city" class="">Город</label><br>
-    <input type="text" class="control-input-filter-price" pInputText placeholder="Город" name="city" [(ngModel)]="city"/>
-
-    <div>
-      <button class="control-button-blue-small" (click)="onCreateRequestFranchiseAsync(userName, number, city, franchiseData.franchiseId)">Оставить заявку</button>
     </div>
   </div>
 

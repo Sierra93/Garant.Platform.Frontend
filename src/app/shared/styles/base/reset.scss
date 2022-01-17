@@ -6,3 +6,10 @@
 p, ul {
   margin-bottom: 0;
 }
+
+// сброс некоторых стилей ангулар компонентов
+::ng-deep {
+  .p-card {
+    box-shadow: none !important;
+  }
+}

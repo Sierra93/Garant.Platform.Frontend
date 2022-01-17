@@ -1,5 +1,121 @@
 section#catalog-franchise {
-  
+  font-family: 'Roboto', sans-serif;
+  color: #2c2c2c;
+
+  .franchise {
+    &-title {
+      font-size: 24px;
+      margin-bottom: 2rem;
+    }
+
+    &-count {
+      font-size: 14px;
+      color: #7a7a7a;
+    }
+
+    &-catalog-form {
+      label {
+        font-size: 18px;
+        font-weight: 500;
+        color: #2c2c2c;
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      input, input:focus {
+        display: block;
+        width: 100%;
+        height: 48px;
+        padding: 16px;
+        border-radius: 6px;
+        background-color: #f1f6ff;
+        border: none;
+        font-size: 14px;
+        color: #2c2c2c;
+      }
+    }
+  }
+
+  .section-mb {
+    margin-bottom: 5rem;
+  }
+}
+
+::ng-deep {
+  .p-card {
+    font-family: 'Roboto', sans-serif;
+    color: #2c2c2c;
+
+    .p-card-body {
+      padding: 1.5rem 0;
+    }
+
+    .p-card-title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .p-card-subtitle {
+      font-size: 12px;
+      font-weight: normal;
+      color: #646464;
+      margin-bottom: 1.5rem;
+    }
+
+    .p-card-content {
+      padding: 0;
+
+      strong {
+        font-size: 18px;
+        color: #000;
+      }
+    }
+  }
+
+  .franchise-catalog-form {
+    .p-dropdown {
+      height: 48px;
+      padding: 1rem;
+      border-radius: 6px;
+      background-color: #f1f6ff;
+      width: 100%;
+      border: none;
+
+      .p-dropdown-label.p-placeholder {
+        font-size: 14px;
+        line-height: 14px;
+        color: #2c2c2c;
+        padding: 0;
+      }
+
+      .p-dropdown-clearable .p-dropdown-label {
+        padding: 0;
+      }
+
+      .p-dropdown-clear-icon {
+        display: none;
+      }
+
+      .p-dropdown-trigger {
+        width: .75rem;
+
+        .p-dropdown-trigger-icon {
+          display: none
+        }
+
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 0;
+          height: 0;
+          border: 6px solid transparent;
+          border-top: 10px solid #000;
+          border-bottom: 0;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
 }
 
 

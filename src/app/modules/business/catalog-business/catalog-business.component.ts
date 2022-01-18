@@ -322,8 +322,8 @@ export class CatalogBusinessModule implements OnInit {
         try {
             let filterInput = new FilterInput();
             filterInput.TypeSortPrice = this.selectedSort.value;
-            filterInput.ProfitMinPrice = this.filterMinPrice.toString();
-            filterInput.ProfitMaxPrice = this.filterMaxPrice.toString();
+            filterInput.ProfitMinPrice = this.filterMinPrice;
+            filterInput.ProfitMaxPrice = this.filterMaxPrice;
 
             await this.http.post(API_URL.apiUrl.concat("/franchise/filter-franchises"), filterInput)
             .subscribe({

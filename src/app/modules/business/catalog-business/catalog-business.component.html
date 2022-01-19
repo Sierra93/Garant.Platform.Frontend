@@ -20,7 +20,7 @@
   <span class="count-franchise">Всего {{countBusinesses}} бизнесов</span>
 </div>
 
-<form class="d-flex" #filterForm="ngForm" novalidate>
+<div class="d-flex">
   <div class="business-search">
     <!-- <div>
     <strong>Сфера бизнеса</strong><br>
@@ -54,14 +54,14 @@
     </div>
   </div>
 
-</form>
+</div>
 
-<div class="btn-wrapper">
+<!-- <div class="btn-wrapper">
   <button class="btn btn--aside btn-default mt-3 btn-sm btn-filter"
     (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
   <button class="btn btn--aside btn-default btn-sm mt-3 ml-1 btn-filter" (click)="onClearFilters()">Очистить
     фильтры</button>
-</div>
+</div> -->
 
 <div class="block-catalog d-flex">
   <div class="">
@@ -86,7 +86,7 @@
       </div>
     </div>
     <div class="btn-wrapper">
-      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter" (click)="FilterFranchisesAsync()">Применить
+      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter" (click)="onFilterBusinessesAsync()">Применить
         фильтры</button>
       <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">Очистить
         фильтры</button>

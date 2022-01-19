@@ -299,6 +299,7 @@ export class CatalogFranchiseModule implements OnInit {
             filterInput.CategoryCode = this.selectedCategory.categoryCode;
             filterInput.MinPriceInvest = this.minPrice;
             filterInput.MaxPriceInvest = this.maxPrice;
+            filterInput.IsGarant = this.isGarant;
 
             await this.http.post(API_URL.apiUrl.concat("/franchise/filter-franchises"), filterInput)
             .subscribe({

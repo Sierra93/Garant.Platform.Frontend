@@ -60,6 +60,7 @@ import { GarantConcordModule } from "./modules/garant/garant-concord/garant-conc
 import { GarantContractModule } from "./modules/garant/garant-contract/garant-contract.component";
 import { GarantAcceptPaymentModule } from "./modules/garant/garant-accept-payment/garant-accept-payment.component";
 import { FormatPriceGarantPipe } from "./core/pipes/formatPrice.pipe";
+import { FranchiseLandingModule } from './modules/landing/franchise-landing/franchise-landing.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { FormatPriceGarantPipe } from "./core/pipes/formatPrice.pipe";
     FormatPriceGarantPipe,
     GarantConcordModule,
     GarantContractModule,
-    GarantAcceptPaymentModule
+    GarantAcceptPaymentModule,
+    FranchiseLandingModule
   ],
 
   entryComponents: [],

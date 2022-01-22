@@ -1,0 +1,67 @@
+<div class="app-container footer">
+  <div class="row mb-5">
+    <div class="col-6">
+      <div>
+        <img src="../../../assets/images/search_logo.svg" alt="gobizy logo" />
+      </div>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+      <div class="social-contacts">
+        <ul class="list-unstyled d-flex">
+          <li>
+            <img src="../../../assets/images/footer-icons/telegram.svg" alt="gobizy telegram channel" />
+          </li>
+          <li>
+            <img src="../../../assets/images/footer-icons/facebook.svg" alt="gobizy facebook page" />
+          </li>
+          <li>
+            <img src="../../../assets/images/footer-icons/instagram.svg" alt="gobizy instagram channel" />
+          </li>
+          <li>
+            <img src="../../../assets/images/footer-icons/youtube.svg" alt="gobizy youtube channel" />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <nav>
+    <div class="row">
+      <div class="col-3">
+        <ul class="list-unstyled">
+          <li *ngFor="let el of aFooterColumn1; let first = first">
+            <h4 *ngIf="first">{{el.title}}</h4>
+            <a href="javascript:void()">{{el.name}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-3 d-flex justify-content-center">
+        <ul class="list-unstyled">
+          <li *ngFor="let el of aFooterColumn2; let first = first">
+            <h4 *ngIf="first">{{el.title}}</h4>
+            <a href="javascript:void()">{{el.name}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-3 d-flex justify-content-center">
+        <ul class="list-unstyled">
+          <li *ngFor="let el of aFooterColumn3; let first = first">
+            <h4 *ngIf="first">{{el.title}}</h4>
+            <a href="javascript:void()">{{el.name}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-3 d-flex justify-content-end">
+        <ul class="list-unstyled">
+          <li *ngFor="let el of aFooterColumn4; let first = first">
+            <h4 *ngIf="first">{{el.title}}</h4>
+            <a href="javascript:void()">{{el.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,152 @@
+<div class="app-container header-container">
+  <!-- верхний часть хедера -->
+  <div class="row navbar-top">
+    <div class="col-12">
+      <nav class="d-flex justify-content-end">
+        <ul class="list-unstyled d-flex">
+          <li *ngFor="let el of aHeader; let last = last">
+            <span (click)="onGetMenuHeader(el.name)" *ngIf="!last">{{el.name}}</span>
+            <span (click)="onGetMenuHeader(el.name)" *ngIf="last" class="last">
+              <span>+</span>
+              <span>{{el.name}}</span>
+            </span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- верхний часть хедера -->
+
+  <!-- лого, поисковое поле, и функции аккаунта -->
+  <div class="row logo-and-search">
+    <div class="col-2" (click)="onRouteStart()">
+      <div class="logo">
+        <img src="../../assets/images/search_logo.svg" alt="gobizy logo" />
+      </div>
+    </div>
+
+    <div class="col-5" style="height: 61px;">
+      <div class="search-container h-100 position-relative">
+        <div class="h-100 d-flex align-items-center">
+          <!-- тип селекта поиска -->
+          <div class="options">
+            <p-dropdown [options]="searchOptions" [(ngModel)]="selectedSearchOption"></p-dropdown>
+          </div>
+
+          <!-- поле для поиска -->
+          <div class="h-100 w-100">
+            <input type="search" class="input-search search-header" pInputText
+              placeholder="Например: “Медицинский центр”" [(ngModel)]="searchText"
+              (keydown.enter)="onRouteSearch(searchText)">
+          </div>
+
+          <!-- кнорка для поиска -->
+          <div class="search-button h-100">
+            <button (click)="onRouteSearch(searchText)">
+              <img src="../../../assets/images/search.svg" alt="gobizy search icon" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="account-options">
+        <nav>
+          <ul class="list-unstyled d-flex justify-content-between">
+            <li>
+              <a class="text-center" routerLink="/">
+                <img src="../../../assets/images/account-options/option1.svg" width="34" height="32"><br>
+                <span class="">Продать</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="text-center" routerLink="/">
+                <img src="../../../assets/images/account-options/option2.svg" width="34" height="32"><br>
+                <span class="">Мои сделки</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="text-center" routerLink="/">
+                <img src="../../../assets/images/account-options/option3.svg" width="34" height="32"><br>
+                <span class="">Избранное</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="text-center" routerLink="/">
+                <img src="../../../assets/images/account-options/option4.svg" width="34" height="32"><br>
+                <span class="">Уведомления</span>
+              </a>
+            </li>
+
+            <li class="last">
+              <a class="text-center" routerLink="/profile/my-data">
+                <img src="../../../assets/images/account-options/option5.svg" width="34" height="32"><br>
+                <span class="">Аккаунт</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- лого, поисковое поле, и функции аккаунта -->
+
+  <!-- навбар основных страниц -->
+  <div class="row main-pages">
+    <div class="col-12">
+      <nav>
+        <ul class="list-unstyled">
+          <li>
+            <a routerLink="/">
+              <img src="../../../assets/images/Logo=Main, Stage=Passive.svg" class="after-search-img" width="44" height="42">
+              <span>Главная</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/catalog-franchise">
+              <img src="../../../assets/images/Logo=Franchise, Stage=Passive.svg" class="after-search-img" width="44"
+                height="42">
+                <span>Франшизы</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/catalog-business">
+              <img src="../../../assets/images/Logo=Business, Stage=Passive.svg" class="after-search-img" width="44"
+                height="42">
+                <span>Готовый бизнес</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/">
+              <img src="../../../assets/images/Logo=Guarantee, Stage=Passive.svg" class="after-search-img" width="44"
+                height="42">
+                <span>Покупка через гарант</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/">
+              <img src="../../../assets/images/Logo=Law, Stage=Passive.svg" class="after-search-img" width="44" height="42">
+              <span>Консалтинг</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/">
+              <img src="../../../assets/images/Logo=Settings, Stage=Passive.svg" class="after-search-img" width="44"
+                height="42">
+                <span>Упаковка франшиз</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <!-- навбар основных страниц -->
+</div>

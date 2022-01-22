@@ -1,0 +1,538 @@
+.header-container {
+  margin-bottom: 2rem !important;
+
+  .navbar-top {
+    margin-bottom: 1rem;
+
+    ul {
+      margin-bottom: 0 !important;
+
+      li {
+        cursor: pointer;
+
+        &:not(:last-child) {
+          margin-right: 1.5rem !important;
+        }
+
+        > span {
+          font-size: 12px;
+          color: #7a7a7a;
+          font-family: 'Roboto', sans-serif;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 3.5rem;
+
+          &.last {
+            span {
+              color: #1f75fe;
+
+              &:first-child {
+                margin-right: .3rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .logo-and-search {
+    margin-bottom: 2rem;
+
+    > div {
+      .search-container {
+        border: 2px solid #1f75fe;
+        border-radius: 8px;
+        padding-left: .75rem;
+        position: relative;
+
+        input {
+          width: 100%;
+          height: 100% !important;
+
+          &, &:focus, &:hover {
+            border: none;
+            outline: none;
+            box-shadow: none;
+          }
+        }
+
+        .search-button {
+          height: 61px !important;
+          transform: translateX(1px);
+
+          button {
+            width: 80px;
+            height: 100%;
+
+            &, &:focus, &:hover {
+              background-color: #1f75fe;
+              color: #fff;
+              border: none;
+              outline: none;
+              border-radius: 0 8px 8px 0;
+            }
+          }
+        }
+      }
+
+      .account-options {
+        ul {
+          margin-bottom: 0;
+          padding-left: 1.5rem;
+
+          li {
+            text-align: center;
+
+            a {
+              display: inline-block;
+              text-decoration: none;
+
+              span {
+                color: #2c2c2c;
+                font-size: .75rem;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+              }
+            }
+
+            &.last {
+              text-align: right;
+
+              a {
+                span {
+                  color: #1f75fe;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .logo {
+      cursor: pointer;
+
+      img {
+        width: 152px;
+        height: 58px;
+      }
+    }
+  }
+
+  .main-pages {
+    ul {
+      margin-bottom: 0;
+      display: flex !important;
+      justify-content: space-between;
+
+      li {
+        > a {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 74px;
+          text-decoration: none;
+
+          img {
+            margin-right: 2rem;
+          }
+
+          span {
+            font-size: 18px;
+            color: #2c2c2c;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+// стили для компонентов посторонних библиотек
+::ng-deep {
+  .search-container {
+    .p-dropdown, .p-dropdown:not(.p-disabled):hover, .p-dropdown:not(.p-disabled).p-focus {
+      border: none;
+      background-color: #f1f6ff;
+      box-shadow: none;
+      width: 145px;
+
+      .p-dropdown-label {
+        font-size: 18px;
+        color: #2c2c2c;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .p-dropdown-trigger {
+        .p-dropdown-trigger-icon {
+          display: none
+        }
+
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 0;
+          height: 0;
+          border: 6px solid transparent;
+          border-top: 10px solid #1f75fe;
+          border-bottom: 0;
+          margin-right: 10px
+        }
+      }
+    }
+  }
+}
+
+
+@import "/src/app/shared/styles/media-quaries.scss";
+
+@mixin headerTitle {
+  font-family: Oswald;
+  font-size: 40px !important;
+  //   color: #FFFFFF;
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    color: black;
+    cursor: pointer;
+  }
+}
+
+@mixin smallText {
+  color: #7A7A7A;
+  font-family: Roboto;
+  font-size: 12px;
+}
+
+.search-header {
+  background: none;
+  margin: 0;
+}
+
+// @mixin headerText {
+//   font-family: Open Sans;
+//   font-size: 16px!important;
+//   color: #FFFFFF;
+
+//   &:hover {
+//     color: #FFFFFF;
+//     cursor: pointer;
+//   }
+// }
+
+// Кнопка создать задание справа.
+.div-link {
+  display: flex;
+  align-items: center;
+  margin-right: -9rem;
+
+  .link-add-task {
+    color: #00BCD4 !important;
+  }
+
+  .link {
+    cursor: pointer;
+  }
+}
+
+.left-panel {
+  display: block;
+}
+
+.block-left-line {
+  position: absolute;
+  //top: 0%;
+  top: 15%;
+  left: 1%;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .left-line {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+  }
+}
+
+.header {
+  justify-content: space-between;
+
+  .div-link>li {
+    margin: 0 10px;
+    cursor: pointer;
+    // color: black;
+    color: #7A7A7A;
+    font-family: Roboto;
+    font-size: 12px;
+  }
+}
+
+// .container_header {
+//   background-color: #00BCD4;
+// }
+
+.btn-state-left-menu {
+  color: white;
+}
+
+.nav-header {
+  background-color: #00BCD4 !important;
+  color: white;
+}
+
+//   .header-title {
+//     @include headerTitle;
+//   }
+
+.header_nav {
+  background: #00BCD4 !important;
+  display: flex;
+  justify-content: space-around !important;
+  color: white !important;
+}
+
+.header-title {
+  @include headerTitle;
+}
+
+//   .price {
+//       color: white;
+//   }
+
+//   .header-text {
+//     @include headerText;
+//   }
+
+// .right-head {
+//   img {
+//     padding: 1%;
+//   }
+// }
+
+.wrapper {
+  max-width: 1440px !important;
+  margin: 0 auto;
+}
+
+#dropdownMenuButton {
+  padding: 0;
+}
+
+.block-user {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// Выпадающее меню.
+.drop-down {
+  position: relative;
+
+  &:hover .drop-menu {
+    visibility: visible;
+    background-color: white;
+    box-shadow: 0px 0px 5px 0px #C1C1C1;
+    cursor: pointer;
+    color: cornflowerblue;
+    z-index: 1;
+
+    span {
+      color: #676767;
+    }
+  }
+
+  .drop-menu {
+    position: absolute;
+    background-color: transparent;
+    padding: 0 10px;
+    border-radius: 8px;
+    visibility: hidden;
+    transition: .3s;
+    right: 2px;
+    line-height: 2;
+    width: 200px;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    span {
+      color: transparent;
+
+      &:hover {
+        cursor: pointer;
+        color: #00BCD4;
+      }
+    }
+  }
+
+  .user-icon {
+    width: 30px;
+  }
+}
+
+.search-btn,
+.input-search {
+  display: block;
+  height: 100%;
+}
+
+.p-input-icon-right {
+  height: 60px;
+}
+
+.search-btn {
+  width: 80px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background: #1F75FE;
+}
+
+// В том числе для логина выпадающего меню.
+// hr {
+//   margin-top: 0rem;
+//   margin-bottom: 0rem;
+//   border: 0;
+//   border-top: 1px solid rgba(0,0,0,.1);
+// }
+
+.block-after-header {
+  margin-top: 35px;
+
+  .search-logo {
+    margin-right: 81px;
+    width: 152px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &__image {
+      width: 100%;
+    }
+  }
+
+  .input-search {
+    width: 564px;
+    height: 60px;
+  }
+
+  .sell {
+    margin-left: 40px;
+    @include smallText;
+  }
+}
+
+.after-search {
+  margin-top: 49px;
+
+  .after-search-img {
+    margin-right: 10px;
+  }
+
+  .after-search-icon-container {
+    padding: 16px;
+    box-sizing: border-box;
+    width: 72px;
+    margin-right: 10px;
+
+    &:hover {
+      background: #F1F6FF;
+    }
+  }
+
+  .after-search-menu {
+    cursor: pointer;
+    height: 74px;
+
+  }
+}
+
+// Медиа-запросы.
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  /* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+  /* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+  /* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  /* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+  /* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+  /* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+  body {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+  /* Styles */
+}
+
+/* iPhone 4 - 5s ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+  /* Styles */
+}
+
+/* iPhone 6 ----------- */
+@media only screen and (max-device-width: 667px),
+only screen and (-webkit-device-pixel-ratio: 2) {
+  /* Styles */
+}
+
+/* iPhone 6+ ----------- */
+@media only screen and (min-device-width : 414px),
+only screen and (-webkit-device-pixel-ratio: 3) {
+  /*** You've spent way too much on a phone ***/
+}
+
+/* Samsung Galaxy S7 Edge ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi)and (max-width:640px) {
+  /* Styles */
+}
+
+.header-link {
+  cursor: pointer;
+}
+
+// Стили разделителя хлебных крошек.
+::ng-deep .pi-chevron-right:before {
+  content: "/";
+}
+
+.breadcrumbs {
+  margin-top: 50px;
+}

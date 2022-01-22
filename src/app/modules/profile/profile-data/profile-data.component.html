@@ -1,0 +1,63 @@
+
+    <div class="form-auth">
+      <form class="block-form-auth" #info="ngForm" novalidate>
+          <h5>Заполните данные о себе</h5>
+          <div class="input-container">
+            <label class="form-label text-lbl">Ваше имя (обязательно)</label>
+            
+            <input type="text" class="form-control input-auth" placeholder="Введите имя" 
+            name="firstName" [(ngModel)]="firstName">
+          </div>
+
+          <div class="input-container">
+            <label class="form-label text-lbl">Ваше фамилия (обязательно)</label>
+
+            <input type="text" class="form-control input-auth" placeholder="Введите фамилию" name="lastName"
+              [(ngModel)]="lastName">
+          </div>
+
+          <div class="input-container">
+            <label class="form-label text-lbl">Ваш город (обязательно)</label>
+
+            <input type="text" class="form-control input-auth" placeholder="Название города" name="city"
+              [(ngModel)]="city">
+          </div>            
+
+          <div class="input-container">
+            <label class="form-label text-lbl">Электронный адрес (обязательно)</label>
+
+            <input type="email" class="form-control input-auth" placeholder="Введите email" name="email"
+              [(ngModel)]="email">
+          </div>
+
+          <div class="input-container">
+            <label class="form-label text-lbl">Пароль (обязательно)</label>
+
+            <input type="password" class="form-control input-auth" placeholder="Введите пароль" name="pass"
+              [(ngModel)]="pass">
+          </div>
+
+          <div>
+              <div class="input-container">
+                <p-checkbox name="data-buy" value="buy" label="Хочу купить готовый бизнес или франшизу" [(ngModel)]="selectedValues" (onChange)="onChangeDataValue()"></p-checkbox>
+              </div>
+              <div class="input-container">
+                <p-checkbox name="data-sell" value="sell" label="Хочу продать бизнес или франшизу" [(ngModel)]="selectedValues" (onChange)="onChangeDataValue()"></p-checkbox>
+              </div>
+          </div>
+
+          <div class="input-container">
+            <button class="btn btn-default btn-code-active" (click)="onSaveRegisterAsync(info)">Закончить регистрацию</button>
+          </div>
+
+          <div class="input-container text-center">
+            <a routerLink="/">Заполнить позднее</a>
+          </div>
+
+          <!-- иконка для закрытия -->
+        <a class="close-form" routerLink="/">
+          <img src="../../../assets/images/close.svg" alt="close icon" />
+        </a>
+        <!-- иконка для закрытия -->
+        </form>
+  </div>

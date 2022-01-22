@@ -1,0 +1,11 @@
+@import "/src/app/app.component.scss";  
+@import "/src/app/shared/styles/body-margins.scss";
+@import "/src/app/shared/styles/media-quaries.scss";
+@import "/src/app/shared/styles/common.scss";
+@import "/src/app/modules/profile/profile-my-data/profile-my-data.component.scss";
+
+.block-profile-menu {
+    ul > li {
+        list-style: none;
+    }
+}

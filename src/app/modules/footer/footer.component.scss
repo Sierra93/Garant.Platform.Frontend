@@ -1,0 +1,42 @@
+footer {
+  background-color: #f9f9f9;
+}
+
+.footer {
+  padding: 65px 0;
+
+  .social-contacts {
+    ul {
+      margin-bottom: 0;
+
+      li {
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:not(:last-child) {
+          margin-right: 2.5rem;
+        }
+      }
+    }
+  }
+
+  nav {
+    h4 {
+      font-size: 1.5rem;
+      color: #2c2c2c;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+    }
+
+    a {
+      text-decoration: none;
+      color: #7a7a7a;
+      font-size: 14px;
+      font-family: 'Roboto', sans-serif;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+  }
+}

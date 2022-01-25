@@ -32,6 +32,9 @@ export class GarantContractModule implements OnInit {
     isSend: boolean = false;
     isApproveVendorDocment: boolean = false;
     isApproveCustomerDocument: boolean = false;
+    aDocumants: string[] = [];
+    chatItemUrl: string = "";
+    fio: string = "";
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -44,7 +47,11 @@ export class GarantContractModule implements OnInit {
     public async ngOnInit() {
         await this.initGarantDataAsync();
         await this.getAttachmentDocumentNameVendorDealAsync();
-        await this.onCheckApproveDocumentAsync();
+        await this.getAttachmentDocumentNameCustomerDealAsync();
+        await this.onCheckApproveDocumentVendorAsync();
+        await this.onCheckApproveDocumentCustomerAsync();
+        await this.onGetDocumentsDealAsync();
+        await this.getDialogMessagesAsync();
     };    
 
     /**
@@ -57,7 +64,8 @@ export class GarantContractModule implements OnInit {
                 this.oInitData = response;                
                 this.aMessages = response.chatData.messages;
                 this.dateStartDialog = response.chatData.dateStartDialog;
-                this.chatItemName = response.chatData.chatItemName;
+                this.chatItemName = this.oInitData.itemTitle;
+                this.dialogId = response.chatData.dialogId;
                 this.aInvestInclude = JSON.parse(response.investInclude);
 
                 console.log("garant init data stage 3: ", this.oInitData);
@@ -235,6 +243,7 @@ export class GarantContractModule implements OnInit {
 
                             if (response) {
                                 this.isSend = true;
+                                this.onGetDocumentsDealAsync();
                             }
                         },
 
@@ -258,10 +267,10 @@ export class GarantContractModule implements OnInit {
     private async getAttachmentDocumentNameVendorDealAsync() {
         try {        
             let documentInput = new DocumentInput();
-            documentInput.DocumentItemId = this.oInitData.itemDealId
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
 
             if (documentInput.DocumentItemId > 0 && documentInput.DocumentItemId !== null) {
-                await this.http.post(API_URL.apiUrl.concat("/document/get-attachment-document-deal-name"), documentInput)
+                await this.http.post(API_URL.apiUrl.concat("/document/get-attachment-document-vendor-deal-name"), documentInput)
                     .subscribe({
                         next: (response: any) => {
                             this.attachmentVendorFileName = response.documentName;
@@ -280,20 +289,82 @@ export class GarantContractModule implements OnInit {
         }
     };
 
-    private async onCheckApproveDocumentAsync() {
+    /**
+     * Функция получит название файла для согласования продавцу.
+     */
+     private async getAttachmentDocumentNameCustomerDealAsync() {
+        try {        
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
+
+            if (documentInput.DocumentItemId > 0 && documentInput.DocumentItemId !== null) {
+                await this.http.post(API_URL.apiUrl.concat("/document/get-attachment-document-customer-deal-name"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            this.attachmentCustomerFileName = response.documentName;
+                            console.log("Название документа: ", response.documentName);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция проверит, подтвердил ли покупатель догововор продавца.
+     */
+    private async onCheckApproveDocumentVendorAsync() {
         try {
             let documentInput = new DocumentInput();
-            documentInput.DocumentItemId = this.oInitData.itemDealId
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
 
             if (documentInput.DocumentItemId > 0 && documentInput.DocumentItemId !== null) {
                 await this.http.post(API_URL.apiUrl.concat("/document/check-approve-document-vendor"), documentInput)
                     .subscribe({
                         next: (response: any) => {
                             if (response) {
-                                this.isApproveVendorDocment = response;
+                                this.isApproveVendorDocment = true;
                             }
                            
-                            console.log("approve document: ", response);
+                            console.log("approve document vendor: ", response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+     /**
+     * Функция проверит, подтвердил ли продавец догововор покупателя.
+     */
+      private async onCheckApproveDocumentCustomerAsync() {
+        try {
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;
+
+            if (documentInput.DocumentItemId > 0 && documentInput.DocumentItemId !== null) {
+                await this.http.post(API_URL.apiUrl.concat("/document/check-approve-document-customer"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            if (response) {
+                                this.isApproveCustomerDocument = true;
+                            }
+                           
+                            console.log("approve document customer: ", response);
                         },
 
                         error: (err) => {
@@ -323,6 +394,7 @@ export class GarantContractModule implements OnInit {
 
                             if (response) {
                                 this.isSend = true;
+                                this.onGetDocumentsDealAsync();
                             }
                         },
 
@@ -340,6 +412,9 @@ export class GarantContractModule implements OnInit {
         }
     };
 
+    /**
+     * Функция подтвердит договор продавца.
+     */
     public async onApproveVendorDocumentAsync() {
         try {                
             let documentInput = new DocumentInput();
@@ -366,5 +441,88 @@ export class GarantContractModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
+    };
+
+    /**
+     * Функция подтвердит договор покупателя.
+     */
+     public async onApproveCustomerDocumentAsync() {
+        try {                
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;            
+
+            if (documentInput.DocumentItemId > 0) {
+                await this.http.post(API_URL.apiUrl.concat("/document/approve-document-customer"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            if (response) {
+                                this.isApproveCustomerDocument = true;
+                            }
+
+                            console.log("approve customer: ", response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список документов сделки.
+     * @returns - Список документов.
+     */
+     private async onGetDocumentsDealAsync() {
+        try {                
+            let documentInput = new DocumentInput();
+            documentInput.DocumentItemId = this.oInitData.itemDealId;            
+
+            if (documentInput.DocumentItemId > 0) {
+                await this.http.post(API_URL.apiUrl.concat("/document/get-documents-deal"), documentInput)
+                    .subscribe({
+                        next: (response: any) => {                                                        
+                            this.aDocumants = response.map((item: any) => item.documentName);
+                              
+                            console.log("Документы сделки: ", response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    private async getDialogMessagesAsync() {
+        try {           
+            await this.commonService.getDialogMessagesAsync(this.dialogId, "", "").then((data: any) => {
+                console.log("Список сообщений диалога: ", data);                
+                this.aMessages = data.messages;
+                this.fio = data.fullName;
+                this.dateStartDialog = data.dateStartDialog;
+                // this.chatItemName = data.chatItemName;
+                this.dialogId = data.dialogId;
+                this.chatItemUrl = data.url;
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onRouteGarant4Async() {       
+        this.router.navigate(["/garant/garant-accept-payment"], { queryParams: { stage: 4 } });
     };
 }

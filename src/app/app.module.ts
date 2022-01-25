@@ -7,7 +7,7 @@ import { BrowserModule, Title } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DialogModule } from "primeng/dialog";
@@ -54,11 +54,16 @@ import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/pr
 import { MainSearchModule } from "./modules/search/main-search/main-search.component";
 import { CatalogBusinessModule } from "./modules/business/catalog-business/catalog-business.component";
 import { GarantInitModule } from "./modules/garant/garant-init/garant-init.component";
-import { ConvertStringToNumberPipe } from "./core/pipes/convertStringToNumber.pipe";
 import { DataService } from "./services/common/data-service";
 import { GarantService } from "./services/garant/garant.service";
 import { GarantConcordModule } from "./modules/garant/garant-concord/garant-concord.component";
 import { GarantContractModule } from "./modules/garant/garant-contract/garant-contract.component";
+import { GarantAcceptPaymentModule } from "./modules/garant/garant-accept-payment/garant-accept-payment.component";
+import { FormatPriceGarantPipe } from "./core/pipes/formatPrice.pipe";
+import { FranchiseLandingModule } from './modules/landing/franchise-landing/franchise-landing.component';
+import { ConsultingLandingModule } from './modules/landing/consulting-landing/consulting-landing.component';
+import { DealLandingModule } from "./modules/landing/deal-landing/deal-landing.component";
+
 
 @NgModule({
   declarations: [
@@ -83,9 +88,13 @@ import { GarantContractModule } from "./modules/garant/garant-contract/garant-co
     MainSearchModule,
     CatalogBusinessModule,
     GarantInitModule,
-    ConvertStringToNumberPipe,
+    FormatPriceGarantPipe,
     GarantConcordModule,
-    GarantContractModule
+    GarantContractModule,
+    GarantAcceptPaymentModule,
+    FranchiseLandingModule,
+    ConsultingLandingModule,
+    DealLandingModule
   ],
 
   entryComponents: [],
@@ -117,7 +126,8 @@ import { GarantContractModule } from "./modules/garant/garant-contract/garant-co
     GalleriaModule,
     InputTextareaModule,
     AvatarModule,
-    AvatarGroupModule
+    AvatarGroupModule,
+    ReactiveFormsModule
   ],
 
   providers: [

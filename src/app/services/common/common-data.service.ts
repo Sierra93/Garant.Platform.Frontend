@@ -129,7 +129,7 @@ export class CommonDataService {
      */
     public async initFooterAsync() {
         try {
-            return new Promise<string>(async resolve => {
+            return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/user/init-footer"), {})
                     .subscribe({
                         next: (response: any) => {
@@ -155,7 +155,7 @@ export class CommonDataService {
      */
     public async loadCategoriesListAsync() {
         try {
-            return new Promise<string>(async resolve => {
+            return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/main/categories-list"), {})
                     .subscribe({
                         next: (response: any) => {
@@ -185,7 +185,7 @@ export class CommonDataService {
             suggestionInput.isSingle = true;
             suggestionInput.isAll = false;
 
-            return new Promise<string>(async resolve => {
+            return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/user/single-suggestion"), suggestionInput)
                     .subscribe({
                         next: (response: any) => {
@@ -308,6 +308,35 @@ export class CommonDataService {
         try {
             return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/user/get-transition"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит переход по параметрам.
+     * @returns Данные перехода.
+     */
+     public async getTransitionWithParamsAsync(referenceId: number) {
+        try {
+            let transitionInput = new TransitionInput();
+            transitionInput.ReferenceId = referenceId;
+
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/user/get-transition-with-params"), transitionInput)
                     .subscribe({
                         next: (response: any) => {
                             resolve(response);

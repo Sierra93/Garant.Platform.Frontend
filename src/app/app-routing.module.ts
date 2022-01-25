@@ -20,6 +20,11 @@ import { CatalogBusinessModule } from './modules/business/catalog-business/catal
 import { GarantInitModule } from './modules/garant/garant-init/garant-init.component';
 import { GarantConcordModule } from './modules/garant/garant-concord/garant-concord.component';
 import { GarantContractModule } from './modules/garant/garant-contract/garant-contract.component';
+import { GarantAcceptPaymentModule } from './modules/garant/garant-accept-payment/garant-accept-payment.component';
+import { FranchiseLandingModule } from './modules/landing/franchise-landing/franchise-landing.component';
+import { ConsultingLandingModule } from './modules/landing/consulting-landing/consulting-landing.component';
+import { DealLandingModule } from './modules/landing/deal-landing/deal-landing.component';
+
 
 const routes: Routes = [
   {
@@ -119,6 +124,26 @@ const routes: Routes = [
   {
     path: "garant/garant-contract",
     component: GarantContractModule
+  },
+
+  {
+    path: "garant/garant-accept-payment",
+    component: GarantAcceptPaymentModule
+  },
+
+  {
+    path: "franchise/start",
+    component: FranchiseLandingModule
+  },
+
+  {
+    path: "consulting/start",
+    component: ConsultingLandingModule
+  },
+
+  {
+    path: "deal/start",
+    component: DealLandingModule
   }
 ];
 

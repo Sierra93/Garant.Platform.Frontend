@@ -25,6 +25,8 @@ export class GarantConcordModule implements OnInit {
     dialogId: number = 0;
     aInvestInclude: any = [];
     aIterationList: any = [];
+    chatItemUrl: string = "";
+    fio: string = "";
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -36,6 +38,7 @@ export class GarantConcordModule implements OnInit {
 
     public async ngOnInit() {
         await this.initGarantDataAsync();
+        await this.getDialogMessagesAsync();
     };    
 
     /**
@@ -48,7 +51,8 @@ export class GarantConcordModule implements OnInit {
                 this.oInitData = response;                
                 this.aMessages = response.chatData.messages;
                 this.dateStartDialog = response.chatData.dateStartDialog;
-                this.chatItemName = response.chatData.chatItemName;
+                this.chatItemName = this.oInitData.itemTitle;
+                this.dialogId = response.chatData.dialogId;
                 this.aInvestInclude = JSON.parse(response.investInclude);
 
                 console.log("garant init data stage 2: ", this.oInitData);
@@ -112,6 +116,28 @@ export class GarantConcordModule implements OnInit {
                         throw new Error(err);
                     }
                 });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onRouteGarant3Async() {
+        this.router.navigate(["/garant/garant-contract"], { queryParams: { stage: 3 } });
+    };
+
+    private async getDialogMessagesAsync() {
+        try {           
+            await this.commonService.getDialogMessagesAsync(this.dialogId, "", "").then((data: any) => {
+                console.log("Список сообщений диалога: ", data);                
+                this.aMessages = data.messages;
+                this.fio = data.fullName;
+                this.dateStartDialog = data.dateStartDialog;
+                // this.chatItemName = data.chatItemName;
+                this.dialogId = data.dialogId;
+                this.chatItemUrl = data.url;
+            });
         }
 
         catch (e: any) {

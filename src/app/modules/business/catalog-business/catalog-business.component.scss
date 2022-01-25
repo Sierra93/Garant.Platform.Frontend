@@ -44,6 +44,20 @@ strong {
     width: 163px;
     height: 69px;
   }
+
+  &-close {
+    position: absolute;
+
+    &--top {
+      top: -12px;
+      right: 0;
+    }
+
+    &--bottom {
+      left: 24px;
+      top: 90px;
+    }
+  }
 }
 
 .title-franchise {
@@ -63,6 +77,7 @@ strong {
 }
 
 .business-search {
+  position: relative;
   display: flex;
   gap: 24px;
 }
@@ -169,6 +184,10 @@ strong {
 
 ::ng-deep .block-sort-by .p-dropdown {
   background-color: white !important;
+
+  &-label {
+    text-decoration: underline;
+  }
 }
 
 .garant-buy {
@@ -208,6 +227,7 @@ strong {
   flex-wrap: wrap;
   width: 1074px;
   padding: 16px;
+  background-color: #f1f6ff;
 }
 
 ::ng-deep .p-card {

@@ -20,13 +20,15 @@
   <span class="count-franchise">Всего {{countBusinesses}} бизнесов</span>
 </div>
 
+
 <div class="d-flex">
   <div class="business-search">
+    <button type="button" class="btn-close btn-close--top" aria-label="Close" (click)="onClearFilters()"></button>
     <!-- <div>
     <strong>Сфера бизнеса</strong><br>
     <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
   </div> -->
-
+  
     <div class="">
       <strong>Выбор категории</strong><br>
       <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory"
@@ -52,8 +54,8 @@
           name="maxPrice" />
       </div>
     </div>
+    <button type="button" class="btn-close btn-close--bottom" aria-label="Close" (click)="onClearFilters()"></button>
   </div>
-
 </div>
 
 <!-- <div class="btn-wrapper">

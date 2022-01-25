@@ -1,0 +1,274 @@
+<div class="block-garant d-flex justify-content-between mt-70">
+  <!-- Левый блок. -->
+  <div class="col-3">
+    <h5>{{oInitData.blockLeftTitle}}</h5>
+
+    <div class="left-panel-first mt-32">
+      <div>Сделка проходит между</div>
+      <hr>
+
+      <div>
+        <div>
+          <strong>{{oInitData.fullName}}</strong>
+          <br>
+          {{oInitData.role}}
+        </div>
+
+        <hr>
+
+        <div>
+          <strong>{{oInitData.otherUserFullName}}</strong>
+          <br>
+          {{oInitData.otherUserRole}}
+        </div>
+      </div>
+    </div>
+
+    <div class="left-panel-first mt-32">
+      <div>{{oInitData.blockLeftSumTitle}}</div>
+      <hr>
+
+      <div>
+        <div>
+          {{oInitData.totalAmount}} ₽
+        </div>
+
+        <hr>
+
+        <div>
+          <strong>{{oInitData.mainItemTitle}}</strong>
+        </div>
+
+        <hr>
+
+        <div>
+          <img [src]="oInitData.imageUrl">
+        </div>
+
+        <div>
+          {{oInitData.itemTitle}}
+        </div>
+      </div>
+    </div>
+
+    <div class="left-panel-first mt-32">
+      <strong>Согласованный список этапов и стоимость</strong>
+
+      <div *ngFor="let item of aInvestInclude; let i = index">
+        <div>
+          {{item.Name}}
+        </div>
+
+        <div>
+          <!-- Стоимость этапа<br> -->
+          {{item.Price}} ₽
+        </div>
+
+        <hr>
+      </div>
+    </div>
+
+    <div class="left-panel-first mt-32">
+      <div>{{oInitData.blockDocumentsTemplatesName}}</div>
+      <small>{{oInitData.blockDocumentsTemplatesDetail}}</small>
+    </div>
+
+    <div class="left-panel-first mt-32">
+      <div>{{oInitData.documentBlockTitle}}</div>
+      <div *ngFor="let item of aDocumants">
+        {{item}}
+      </div>
+
+      <!-- <small *ngIf="aDocumants.length == 0">Документов еще нет</small> -->
+    </div>
+  </div>
+
+  <!-- Правый блок. -->
+  <div class="col-9">
+    <h5>{{oInitData.blockRightTitle}}</h5>
+
+    <!-- Область с чатом. -->
+    <div class="right-panel-first mt-32">
+      <div class="">
+        <!-- <h5>Чат с {{fio}}</h5> -->
+        <div class="">
+
+          <div class="d-flex justify-content-between">
+            <div class="d-flex">
+              <!-- <img class="space-intgr mr-16" src="{{chatItemUrl}}"> -->
+
+              <div>
+                <strong>{{oInitData.blackBlockTitle}}</strong>
+                
+                <div>
+                  <small>Согласование началось {{oInitData.dateStartDeal}}</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div>
+              Начало чата: {{dateStartDialog}}
+            </div> -->
+          </div>
+
+          <hr>
+
+          <div class="block-chat">
+            <div class="" *ngFor="let item of aMessages">
+              <div class="block-messages">
+                <div class="message" [ngClass]="{messageEnd:item.isMyMessage}">
+                  {{item.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <textarea class="area-message" rows="2" cols="30" pInputTextarea [autoResize]="true"
+              placeholder="Введите сообщение" [(ngModel)]="message" (keydown.enter)="onSendMessageAsync()"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Область с этапами. -->
+    <div class="right-panel-second mt-32" *ngFor="let item of aInvestInclude; let i = index">          
+        <div>
+          <strong>Этап №{{i+1}}: {{item.Name}}</strong>
+        </div>      
+
+        <div>
+          <small>
+            Стоимость этапа
+            {{item.Price}} ₽
+          </small>
+        </div>
+
+        <hr>
+
+        <div *ngIf="oInitData.isOwner">
+            <strong>{{oInitData.blockRightStatusTitle}}</strong>
+        </div>
+
+        <div *ngIf="!oInitData.isOwner && aCustomerActs[i] == null">
+          <strong>{{oInitData.contractTitle}}</strong>
+        </div>
+
+        <div>
+            <small>
+                {{oInitData.contractText}}
+            </small>
+        </div>
+
+        <div *ngIf="oInitData.isOwner && aVendorActs[i] == null">
+          <input type="file" (change)="onAttachmentActDocument($event)">
+        </div>
+
+        <div *ngIf="!oInitData.isOwner && aCustomerActs[i] == null">
+          <input type="file" (change)="onAttachmentActDocument($event)">
+        </div>
+
+        <div *ngIf="oInitData.isOwner && aVendorActs[i] != null">
+          {{aVendorActs[i].documentName}}
+        </div>      
+
+        <div *ngIf="!oInitData.isOwner && aCustomerActs[i] != null">
+          {{aCustomerActs[i].documentName}}
+        </div>     
+    
+        <hr>        
+    
+        <div>
+          Входит в этап:
+          <ul *ngFor="let iteration of item.Items">
+            <li>{{iteration}}</li>
+          </ul>
+        </div>      
+        
+        <div class="d-flex">
+          <div *ngIf="oInitData.isOwner">
+            <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
+                      && oInitData.buttonActionText !== null 
+                      && oInitData.isOwner
+                      && aCustomerActs[i] == null               
+                      || !aCustomerActs[i].isAcceptDocument
+                      && aVendorActs[i] == null
+                      || !aVendorActs[i].isAcceptDocument">
+            <button class="control-button-blue-small" 
+                  
+                    (click)="onAttachDocumentActAsync(i)">
+                    <!--   [disabled]="oInitData.isOwner && aVendorActs[i - 1] != null && !aVendorActs[i - 1].isPay"  -->
+              {{oInitData.buttonActionText}}
+            </button>
+          </div>          
+
+          <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
+                      && oInitData.buttonActionText !== null 
+                      && oInitData.isOwner
+                      && aCustomerActs[i] != null                       
+                      && !aCustomerActs[i].isAcceptDocument">
+            <button class="control-button-blue-small" 
+                    
+                    (click)="onApproveDocumentActCustomerAsync(aCustomerActs[i].documentType)">
+                    <!-- [disabled]="oInitData.isOwner && aVendorActs[i - 1] != null && !aVendorActs[i - 1].isPay"  -->
+              {{oInitData.buttonActionTextContract}}
+            </button>
+          </div>
+          </div>
+<!-- TODO: -->
+          <div class="d-flex justify-content-end mr-16">
+            <button class="control-button-blue-small"
+            *ngIf="!oInitData.isOwner"
+              (click)="onAttachDocumentActAsync(i)">
+              {{oInitData.blackBlockText}}
+            </button>
+          </div>
+
+          <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
+                      && oInitData.buttonActionText !== null 
+                      && !oInitData.isOwner
+                      && aVendorActs[i] != null
+                      && !aVendorActs[i].isAcceptDocument">
+            <button class="control-button-blue-small" 
+                    [disabled]="!oInitData.isOwner && aCustomerActs[i - 1] != null && !aCustomerActs[i - 1].isPay" 
+                    (click)="onApproveDocumentActVendorAsync(aVendorActs[i].documentType)">
+              {{oInitData.buttonActionText}}
+            </button>
+          </div>
+
+          <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionTextContract !== '' 
+                      && oInitData.buttonActionTextContract !== null">
+            <!-- <button class="control-button-blue-small"
+                    [disabled]="!oInitData.isOwner && aCustomerActs[i] != null 
+                    && !aCustomerActs[i].isPay"
+                    (click)="onAttachDocumentActAsync(i)">
+              {{oInitData.buttonActionTextContract}} {{item.Price | formatPrice}} ₽
+            </button> -->
+            <button class="control-button-blue-small"                    
+                    (click)="onPaymentIterationCustomerAsync(i)">
+              {{oInitData.buttonActionTextContract}} {{item.Price | formatPriceGarant}} ₽
+            </button>
+          </div>
+    
+          <!-- <div class="d-flex justify-content-end mr-16" *ngIf="oInitData.buttonActionText !== '' 
+                      && oInitData.buttonActionText !== null 
+                      && !oInitData.isOwner
+                      && aVendorActs[i] != null
+                      && aVendorActs[i].isAcceptDocument
+                      && aCustomerActs[i] != null
+                      && aCustomerActs[i].isAcceptDocument">
+            <button class="control-button-blue-small"
+              [disabled]="!oInitData.isOwner && aCustomerActs[i - 1] != null && !aCustomerActs[i - 1].isPay"
+              (click)="onApproveDocumentActVendorAsync(aVendorActs[i].documentType)">
+              {{oInitData.buttonActionTextContract}}
+            </button>
+          </div> -->
+        </div>
+      </div>    
+
+    <div class="d-flex justify-content-end"
+      *ngIf="oInitData.continueButtonText !== '' && oInitData.continueButtonText !== null">
+      <button class="control-button-blue-small" [disabled]="!isEndDeal">{{oInitData.continueButtonText}}</button>
+    </div>
+  </div>
+</div>

@@ -30,7 +30,6 @@
     </div>
 
     <div class="col-12">
-      <form class="franchise-catalog-form" #filterForm="ngForm" novalidate>
         <div class="row">
           <div class="col-3">
             <label>Сфера франшиз</label>
@@ -59,7 +58,6 @@
             </div>
           </div>
         </div>
-      </form>
     </div>
 
     <div class="col-12 mt-3">
@@ -102,11 +100,11 @@
 
           <div class="filter-btns d-flex justify-content-between">
             <button class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control"
-              (click)="FilterFranchisesAsync()">Применить
-              фильтры</button>
+          (click)="onFilterFranchisesAsync()">Применить
+          фильтры</button>
             <button class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control ml-1"
-              (click)="onClearFilters()">Очистить
-              фильтры</button>
+          (click)="onClearFilters()">Очистить
+          фильтры</button>
           </div>
         </div>
 

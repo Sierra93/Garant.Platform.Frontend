@@ -1,6 +1,6 @@
 <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
-<div class="row">
+<div class="row" style="border: 2px solid red">
   <!-- Левая часть. -->
   <div class="col-lg-3">
     <manage-account></manage-account>
@@ -8,51 +8,72 @@
 
   <!-- Правая часть. -->
   <div class="col-lg-9">
-    <h5>Мои данные</h5>
+    <h2 class="profile-title">Мои данные</h2>
+
     <div class="block-right">
-      <h5>Основные данные</h5>
+      <h3 class="profile-subtitle">Основные данные</h3>
 
-      <form #form="ngForm">
-        <div class="d-flex">
-          <div class="">
-            <label for="" class="title-small">Фамилия</label><br>
-            <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="lastName"
-              name="lastName" />
+      <form #form="ngForm" class="main-info-form">
+        <div class="row form-child-mb">
+          <div class="col-8">
+            <div class="row">
+              <div class="col-4">
+                <div class="input-container">
+                  <label for="">Фамилия</label>
+                  <input type="text" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="lastName" name="lastName" />
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="input-container">
+                  <label for="">Имя</label>
+                  <input type="text" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="firstName" name="firstName" />
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="input-container">
+                  <label for="">Отчество</label>
+                  <input type="text" class="control-input-franch-price form-control form-control-lg" [(ngModel)]="patr"
+                    name="patr" />
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="space-margin-left-24">
-            <label for="" class="title-small">Имя</label><br>
-            <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="firstName"
-              name="firstName" />
-          </div>
-
-          <div class="space-margin-left-24">
-            <label for="" class="title-small">Отчество</label><br>
-            <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="patr" name="patr" />
-          </div>
-
-          <div class="space-margin-left-24">
-            <label for="" class="title-small">Дата рождения</label><br>
-            <input type="date" class="control-input-franch-price form-control-lg" [(ngModel)]="dateYearBirth"
-              name="dateYearBirth" />
+          <div class="col-4">
+            <div class="input-container">
+              <label for="">Дата рождения</label>
+              <input type="date" class="control-input-franch-price form-control form-control-lg"
+                [(ngModel)]="dateYearBirth" name="dateYearBirth" />
+            </div>
           </div>
         </div>
 
-        <h5>Контактные данные</h5>
+        <h3 class="profile-subtitle">Контактные данные</h3>
 
-        <div class="d-flex">
-          <div class="">
-            <label for="" class="title-small">E-mail</label><br>
-            <input type="email" class="control-input-franch-price form-control-lg" [(ngModel)]="email" name="email" />
-          </div>
-
-          <div class="space-margin-left-24">
-            <label for="" class="title-small">Номер телефона</label><br>
-            <input type="text" class="control-input-franch-price form-control-lg" [(ngModel)]="phone" name="phone" />
+        <div class="row form-child-mb">
+          <div class="col-8">
+            <div class="row">
+              <div class="col-6">
+                <div class="input-container">
+                  <label for="">E-mail</label><br>
+                  <input type="email" class="control-input-franch-price form-control form-control-lg" [(ngModel)]="email" name="email" />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="input-container">
+                  <label for="">Номер телефона</label><br>
+                  <input type="text" class="control-input-franch-price form-control form-control-lg" [(ngModel)]="phone" name="phone" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <button class="control-button-blue-small" (click)="onSaveProfileFormAsync(form, 'MainData')">Сохранить</button>
+        <button class="btn-save" (click)="onSaveProfileFormAsync(form, 'MainData')">Сохранить</button>
       </form>
     </div>
 

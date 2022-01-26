@@ -41,3 +41,62 @@
 //     margin-top: 128px;
 //     margin-bottom: 32px;
 //   }
+
+
+@import "./../manage-account/manage-account.component.scss";
+
+.block-right {
+  font-family: 'Roboto', sans-serif;
+  padding: 1.5rem;
+  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  border-radius: .5rem;
+  margin-bottom: 5rem;
+}
+
+.profile {
+  &-subtitle {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 1.5rem;
+  }
+}
+
+
+.main-info-form {
+  .input-container {
+    label {
+      font-size: .75rem;
+      color: #646464;
+      margin-bottom: .5rem;
+    }
+
+    input {
+      &, &:focus {
+        height: 69px;
+        font-size: 18px;
+        color: #2c2c2c;
+        padding: 1.5rem 2.5rem 1.5rem 1.5rem;
+        border-radius: .5rem;
+        border: solid 1.5px #2c2c2c;
+      }
+    }
+  }
+
+  .form-child-mb {
+    margin-bottom: 2rem;
+  }
+
+  .btn-save {
+    &, &:focus {
+      height: 53px;
+      padding: 1rem 3rem;
+      border-radius: .25rem;
+      background-color: #1f75fe;
+      font-size: 18px;
+      color: #fff;
+      border: none;
+      outline: none;
+    }
+  }
+}

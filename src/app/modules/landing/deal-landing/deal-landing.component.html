@@ -1,0 +1,653 @@
+<!-- <div class="garant block-title-franchise">
+  <h5 class="title-franchise">Каталог бизнеса</h5>
+  <span class="count-franchise">Всего {{countBusinesses}} бизнесов</span>
+</div> -->
+
+<!-- <form class="d-flex" #filterForm="ngForm" novalidate>
+  <div class="business-search"> -->
+<!-- <div>
+    <strong>Сфера бизнеса</strong><br>
+    <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
+  </div> -->
+
+<!-- <div class="">
+      <strong>Выбор категории</strong><br>
+      <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory"
+        placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
+    </div> -->
+
+<!-- <div class="control-quick-search">
+      <strong>Выбор города</strong><br>
+      <p-dropdown [options]="aCities" optionLabel="businessCityName" name="city" [(ngModel)]="selectedCity"
+        placeholder="Город" [showClear]="true"></p-dropdown>
+    </div> -->
+
+<!-- <div class="d-flex">
+      <div class="control-quick-search block-price-min">
+        <strong>Стоимость</strong><br>
+        <input type="text" class="control-input-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice"
+          name="minPrice" />
+      </div>
+
+      <div class="block-price-max">
+        <strong></strong><br>
+        <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice"
+          name="maxPrice" />
+      </div>
+    </div>
+  </div> -->
+
+<!-- </form> -->
+
+<!-- <div class="btn-wrapper">
+  <button class="btn btn--aside btn-default mt-3 btn-sm btn-filter"
+    (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
+  <button class="btn btn--aside btn-default btn-sm mt-3 ml-1 btn-filter" (click)="onClearFilters()">Очистить
+    фильтры</button>
+</div> -->
+
+<!-- <div class="block-catalog d-flex">
+  <div class=""> -->
+<!-- <div>
+      <strong>Сортировать по</strong><br>
+      <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
+        [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
+    </div>  -->
+
+<!-- <div class="switch-garant garant-buy">
+      <strong>Покупка через гарант</strong>
+      <p-inputSwitch class="flag-garant" [(ngModel)]="isGarant"></p-inputSwitch>
+    </div> -->
+
+<!-- <div class="switch-garant">
+      <strong>Прибыль в месяц</strong><br> -->
+<!-- <div class="d-flex d-flex--short">
+        <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽"
+          [(ngModel)]="filterMinPrice" name="filterMinPrice" />
+        <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽"
+          [(ngModel)]="filterMaxPrice" name="filterMaxPrice" />
+      </div> -->
+<!-- </div> -->
+<!-- <div class="btn-wrapper">
+      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter" (click)="FilterFranchisesAsync()">Применить
+        фильтры</button>
+      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">Очистить
+        фильтры</button>
+    </div> -->
+
+<!-- </div> -->
+
+<!-- Список бизнеса. -->
+<!-- <div class="d-flex popular-list franchise-list">
+  <div class="popular-item catalog-item col-lg-4" *ngFor="let item of aBusinessList">
+    <p-card header="{{item.title}}" subheader="{{item.text}}"
+    [style]="{width: '100%'}" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+      <img [src]="item.url">
+    </ng-template>
+    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+    <ng-template pTemplate="footer">
+      <button class="btn btn-default btn-filter" (click)="routeViewFranchiseCardAsync(item.franchiseId)">Подробнее</button>
+    </ng-template>
+  </p-card>
+  </div>
+</div> -->
+
+<!-- <div class="d-flex popular-list">
+    <div class="popular-item" *ngFor="let item of aBusinessList">
+      <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+          <img [src]="item.url">
+        </ng-template>
+        <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+        <ng-template pTemplate="footer">
+          <button class="btn btn-default btn-filter"
+            (click)="routeViewFranchiseCardAsync(item.businessId)">Подробнее</button>
+        </ng-template>
+      </p-card>
+    </div>
+  </div> -->
+<!-- </div> -->
+
+<!-- Пагинация. -->
+<!-- <div class="mt-5">
+  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
+    [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
+  </p-paginator>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+<div class="header">
+  <div class="header-content">
+    <div class="header-content__title">Онлайн сделка</div>
+    <div class="header-content__subtitle">по покупке бизнеса</div>
+    <div class="header-content__text">или франшизы</div>
+    <button class="header-content__button">Как начать сделку?</button>
+  </div>
+  <div class="header-image">
+    <img src="../../../../assets/images/deal-landing/shield.png" alt="Изображение щита">
+  </div>
+</div>
+
+<div class="statistics">
+  <div class="statistics-item">
+    <p class="statistics-item__number">10</p>
+    <p class="statistics-item__text">сделок в среднем <br> проходит <br> через сервис гарант</p>
+  </div>
+  <div class="statistics-item">
+    <p class="statistics-item__number">35</p>
+    <p class="statistics-item__text">франшиз <br> были проданы <br> через сервис гарант</p>
+  </div>
+  <div class="statistics-item">
+    <p class="statistics-item__number">105</p>
+    <p class="statistics-item__text">бизнесов уже были <br> проданы через <br> сервис гарант</p>
+  </div>
+  <div class="statistics-item">
+    <p class="statistics-item__number">0,5-3%</p>
+    <p class="statistics-item__text">комиссия <br> за использование <br> сервиса покупки онлайн</p>
+  </div>
+</div>
+
+<div class="consulting">
+  <div class="consulting-content">
+    <div class="consulting-content__title">Консультация</div>
+    <div class="consulting-content__subtitle">при покупке бизнеса онлайн</div>
+    <div class="consulting-content__text">с юристом и консультантами сервиса</div>
+    <div class="consulting-content__inputs">
+      <label class="consulting-content__label">Имя
+        <input class="consulting-content__input" type="text" name="name" placeholder="Введите имя">
+      </label>
+      <label class="consulting-content__label">Номер телефона
+        <input class="consulting-content__input" type="tel" name="telephone" placeholder="Введите номер телефона">
+      </label>
+    </div>
+    <button class="consulting-content__button">Обратиться за консультацией</button>
+  </div>
+  <div class="consulting-image">
+    <img src="../../../../assets/images/deal-landing/template_person6 1.png" alt="Фото консультанта">
+  </div>
+</div>
+
+<!-- <div class="founder">
+  <div class="founder-content">
+    <div class="founder-content__title">Азамат Булатов</div>
+    <div class="founder-content__subtitle">сооснователь проекта</div>
+    <div class="founder-content__text">Лично ответственный за каждую упакованную франшизу</div>
+    <div class="founder-content__inputs">
+      <label class="founder-content__label">Имя
+        <input class="founder-content__input" type="text" name="name" placeholder="Введите имя">
+      </label>
+      <label class="founder-content__label">Номер телефона
+        <input class="founder-content__input" type="tel" name="telephone" placeholder="Введите номер телефона">
+      </label>
+    </div>
+    <button class="founder-content__button">Обратиться за консультацией</button>
+  </div>
+  <div class="founder-image">
+    <img src="../../../../assets/images/franchise-landing/template_person6 1.png" alt="Фото сооснователя">
+  </div>
+</div> -->
+
+<h5 class="steps-header">4 простых шага для безопасной сделки онлайн</h5>
+<div class="steps">
+  <div class="steps-item">
+    <div class="steps-item__image">
+      <img src="../../../../assets/images/deal-landing/loupe-clip-art-6 1.png" alt="Лупа">
+    </div>
+    <p class="steps-item__title">Выбрать бизнес</p>
+    <p class="steps-item__subtitle">или франшизу
+    </p>
+    <p class="steps-item__stage">Шаг 1
+    </p>
+    <p class="steps-item__text">Воспользуйтесь каталогом для <br> удобного и быстрого поиска <br> по вашим параметрам.
+    </p>
+    <button class="steps-item__button">Начать поиск</button>
+  </div>
+  <div class="steps-item">
+    <div class="steps-item__image">
+      <img src="../../../../assets/images/deal-landing/pen-clip-art-6 2.png" alt="Ручка">
+    </div>
+    <p class="steps-item__title">Пройти регистрацию</p>
+    <p class="steps-item__subtitle">на нашем портале</p>
+    <p class="steps-item__stage">Шаг 2
+    </p>
+    <p class="steps-item__text">Вы можете пройти быструю <br> регистрацию до начала выбора <br> бизнеса или во время.</p>
+    <button class="steps-item__button">Пройти регистрацию</button>
+  </div>
+  <div class="steps-item">
+    <div class="steps-item__image">
+      <img src="../../../../assets/images/deal-landing/file-clip-art-6 3.png" alt="Папка">
+    </div>
+    <p class="steps-item__title">Начать сделку</p>
+    <p class="steps-item__subtitle">и распланировать этапы сделки</p>
+    <p class="steps-item__stage">Шаг 3
+    </p>
+    <p class="steps-item__text">Вы сможете распланировать <br> онлайн сделку посредством <br> сервиса гарант.</p>
+    <button class="steps-item__button">Начать сделку</button>
+  </div>
+  <div class="steps-item">
+    <div class="steps-item__image">
+      <img src="../../../../assets/images/deal-landing/credit_card_PNG24 1.png" alt="Кредитная карточка">
+    </div>
+    <p class="steps-item__title">Провести оплату</p>
+    <p class="steps-item__subtitle">по каждому этапу</p>
+    <p class="steps-item__stage">Шаг 4
+    </p>
+    <p class="steps-item__text">После оплаты каждого этапа <br> вы становитесь полноправным <br> владельцем бизнеса</p>
+    <button class="steps-item__button">Получить консультацию</button>
+  </div>
+</div>
+
+<!-- Область с 3 карточками. -->
+<div class="d-flex three-cards">
+  <div class="col-lg-4 card-business" *ngFor="let item of aDataActions">
+    <p-card class="three-cards-wrapper" header="{{item.title}}" subheader="{{item.subTitle}}" [style]="{width: '100%'}"
+      styleClass="card">
+      <ng-template pTemplate="header">
+        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+      </ng-template>
+      <p>{{item.text}}</p>
+      <ng-template pTemplate="footer">
+        <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+        <button class="btn btn-dark">{{item.buttonText}}</button>
+        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+        </p-button> -->
+      </ng-template>
+    </p-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 col-xs-12 garant card-line">
+    <p-card class="card-line-wrapper">
+      <ng-template pTemplate="header">
+        <strong>Вы можете приобрести бизнес с гарантиями</strong>
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </ng-template>
+      <p>{{oSuggestion.text}}</p>
+      <ng-template pTemplate="footer">
+        <div class="d-flex">
+          <div class="ml-1">
+            <button class="btn btn-dark">{{oSuggestion.button2Text}}</button>
+          </div>
+
+          <div>
+            <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button>
+          </div>
+
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
+
+<!-- <h5 class="packs-header">Пакеты юридических услуг</h5>
+<div class="packs">
+  <div class="packs-item"> -->
+    <!-- <div class="packs-item__image">
+      <img src="../../../../assets/images/franchise-landing/fast-start 1.png" alt="Пакет из 7 инструментов">
+    </div> -->
+    <!-- <button class="packs-item__title">Пакет “Подготовка договора”</button>
+    <div class="packs-item__text">Подготовка договора</div>
+    <ul class="packs-item__list packs-item__list--first">
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Подготовка ключевого договора</span>
+      </li>
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Подготовка актов приема передачи</span>
+      </li>
+      <li>
+        <div class="packs-item__no"></div>
+        <span class="packs-item__tool">Разработка сайта для продажи франшизы (до 10 страниц)</span>
+      </li>     
+    </ul>
+    <div class="packs-item-bottom">
+      <p class="packs-item-bottom__title">Срок: 5 рабочих дней</p>
+           <p class="packs-item-bottom__price">Стоимость пакета: 15 000 ₽</p>
+      <button class="packs-item-bottom__button">Подготовить договор за 15 000 ₽</button>
+    </div>
+  </div> -->
+
+  <!-- <div class="packs-item"> -->
+    <!-- <div class="packs-item__image">
+      <img src="../../../../assets/images/franchise-landing/fast-start 2.png" alt="Пакет из 15 инструментов">
+    </div> -->
+    <!-- <button class="packs-item__title">Пакет “Проверка контрагента”</button>
+    <div class="packs-item__text">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью упакованный бизнес во франшизу</div>
+    <ul class="packs-item__list">
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Аудит бизнеса</span>
+      </li>
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Разработка сайта для продажи франшизы (до 10 страниц)</span>
+      </li>
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Книга продаж Вашей франшизы</span>
+      </li>
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Разработка стратегии: «Каналы продаж франшизы»</span>
+      </li>
+      <li>
+        <div class="packs-item__no"></div>
+        <span class="packs-item__tool">Настройка рекламной кампании, для запуска продаж Вашей франшизы либо размещение в ТОП-овом каталоге франшиз;</span>
+      </li>
+      <li>
+        <div class="packs-item__no"></div>
+        <span class="packs-item__tool">Внедрение системы записи звонков</span>
+      </li>
+      <li>
+        <div class="packs-item__no"></div>
+        <span class="packs-item__tool">Контроль качества звонков менеджера, нашим руководителем отдела продаж</span>
+      </li>
+      <li>
+        <div class="packs-item__no"></div>
+        <span class="packs-item__tool">Совместная обработка звонков и возникающих вопросов у клиента</span>
+      </li>
+      <li>
+        <div class="packs-item__no"></div>
+        <span class="packs-item__tool">Настройка CRM-системы</span>
+      </li>
+      <li>
+        <div class="packs-item__no"></div>
+        <span class="packs-item__tool">Гарантированное сопровождение и доведение до первых продаж франшизы;</span>
+      </li>      
+    </ul>
+    <div class="packs-item-bottom">
+      <p class="packs-item-bottom__title">Срок: 7 рабочих дней</p>
+           <p class="packs-item-bottom__price">Стоимость пакета: 35 000 ₽</p>
+      <button class="packs-item-bottom__button">Проверить контрагента за 35 000 ₽</button>
+    </div>
+  </div> -->
+
+  <!-- <div class="packs-item"> -->
+    <!-- <div class="packs-item__image">
+      <img src="../../../../assets/images/franchise-landing/fast-start 3.png" alt="Пакет из 25 инструментов">
+    </div> -->
+    <!-- <button class="packs-item__title">Пакет “Сопровождение сделки”</button>
+    <div class="packs-item__text">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью упакованный бизнес во франшизу</div>
+    <ul class="packs-item__list packs-item__list--last">
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Аудит бизнеса и анализ конкурентов</span>
+      </li>
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Разработка состава франшизы: определение стоимости франшизы, создание уникального предложения и концепции франшизы</span>
+      </li>
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Разработка пакетов франшизы и определение их стоимости</span>
+      </li>
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Создание финансовой модели франшизы (инвестиции в запуск, доходность и окупаемость)</span>
+      </li>
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Контроль качества звонков менеджера, нашим руководителем отдела продаж</span>
+      </li>
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Совместная обработка звонков и возникающих вопросов у клиента</span>
+      </li>
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Настройка CRM-системы</span>
+      </li>
+      <li>
+        <div class="packs-item__yes"></div>
+        <span class="packs-item__tool">Гарантированное сопровождение и доведение до первых продаж франшизы;</span>
+      </li>      
+    </ul>
+    <div class="packs-item-bottom packs-item-bottom--last">
+      <p class="packs-item-bottom__title">Срок: 35 рабочих дней</p>
+      <p class="packs-item-bottom--last__text">Бесплатный бонус: проверка торгового знака + консультирование по окончанию
+        упаковки в течение 6 месяцев + обучение и прокачка Вас и Вашего менеджера;</p>
+      <p class="packs-item-bottom__price">Стоимость пакета: 750 000 ₽</p>
+      <button class="packs-item-bottom__button">Упаковать франшизу за 750 000 ₽</button>
+    </div>
+  </div>
+</div> -->
+
+
+
+<!-- Популярный бизнес. -->
+<h5 class="garant title-franchise">Популярныe франшизы</h5>
+<div class="d-flex popular-list">
+  <div class="popular-item" *ngFor="let item of aPopularBusiness">
+    <p-card header="{{item.businessName}}" subheader="{{item.text}}" [style]="{width: '100%'}"
+      styleClass="p-card-shadow">
+      <ng-template pTemplate="header">
+        <img [src]="item.url">
+      </ng-template>
+      <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+      <ng-template pTemplate="footer">
+
+      </ng-template>
+    </p-card>
+  </div>
+</div>
+
+<!-- Новый бизнес. -->
+<div class="garant">
+  <p-carousel [value]="aNewFranchises" [numVisible]="4" [numScroll]="4" [circular]="false"
+    [responsiveOptions]="responsiveOptions" [showNavigators]="false">
+    <ng-template pTemplate="header">
+      <h5 class="title-franchise">Новыe объявления готового бизнеса</h5>
+    </ng-template>
+    <ng-template let-item pTemplate="item">
+      <div class="product-item">
+        <div class="product-item-content">
+          <div class="p-mb-3">
+            <img [src]="item.url" class="product-image">
+          </div>
+          <div>
+            <p-card header="Название готового бизнеса" subheader="{{item.fullText}}" [style]="{width: '100%'}"
+              styleClass="p-card-shadow">
+              <ng-template pTemplate="header">
+                <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+              </ng-template>
+              <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+              <ng-template pTemplate="footer">
+                <!-- <p-button label="Save" icon="pi pi-check"></p-button>
+                          <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
+              </ng-template>
+            </p-card>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+
+<!-- Отзывы о франшизах -->
+<!-- <div class="d-flex garant">
+<div class="col-lg-8">
+  <p-carousel [value]="aReviewsFranchises" [numVisible]="2" [numScroll]="2" [circular]="false" [responsiveOptions]="responsiveOptions" [showNavigators]="false">
+    <ng-template pTemplate="header">
+      <h5 class="title-franchise">Отзывы о франшизах</h5>
+    </ng-template>
+    <ng-template let-item pTemplate="item">
+        <div class="product-item">
+            <div class="product-item-content">
+                <div class="p-mb-3">
+                    <img [src]="item.url" class="product-image">
+                </div>
+                <div>
+                  <p-card header="Название готового бизнеса" subheader="{{item.fullText}}"
+                    [style]="{width: '100%'}" styleClass="p-card-shadow">
+                    <ng-template pTemplate="header">
+                      
+                    </ng-template>
+                    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+                    <ng-template pTemplate="footer">
+
+                    </ng-template>
+                  </p-card>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+</div>
+
+<div class="col-lg-4">
+  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5> 
+  <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" styleClass="card">
+    <ng-template pTemplate="header">
+
+    </ng-template>
+    <p>{{oTopAction.text}}</p>
+    <ng-template pTemplate="footer">
+      <button class="btn btn-dark">Подробнее</button>
+    </ng-template>
+  </p-card>
+</div>
+</div> -->
+
+
+
+
+<!-- Область с банерами (2 картинки). -->
+<!-- <div class="d-flex block-baner garant">
+  <img class="baner" src="../../../assets/images/Rectangle 13.png">
+  <img class="baner" src="../../../assets/images/Rectangle 14.png">
+</div> -->
+
+
+
+<!-- Бизнес блог. -->
+<h5 class="garant title-franchise">Бизнес блог</h5>
+<div class="d-flex popular-list-blog">
+  <div class="popular-item-blog" *ngFor="let item of aBlogs">
+    <p-card class="popular-item-blog-wrapper1" header="{{item.title}}" subheader="" [style]="{width: '100%'}"
+      styleClass="p-card-shadow">
+      <ng-template pTemplate="header">
+        <img [src]="item.url">
+      </ng-template>
+
+      <ng-template pTemplate="footer">
+
+      </ng-template>
+    </p-card>
+  </div>
+
+  <div class="popular-item-blog">
+    <p-card class="popular-item-blog-wrapper2" header="Больше статей" subheader="" [style]="{width: '100%'}"
+      styleClass="p-card-shadow">
+      <ng-template pTemplate="header">
+
+      </ng-template>
+
+      <div class="d-flex">
+        <p>Перейдите в наш блог и найдите <br>
+          там массу полезной информации.</p>
+        <div class="image">
+          <img src="../../../assets/images/Frame 66.png" height="32">
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+
+      </ng-template>
+    </p-card>
+  </div>
+</div>
+
+<!-- Новости делового мира. -->
+<h5 class="garant title-franchise">Новости делового мира</h5>
+<div class="d-flex">
+  <div>
+    <img src="../../../assets/images/Frame 31.png">
+  </div>
+
+  <div>
+    <div class="news-item" *ngFor="let item of aNews">
+      <img [src]="item.url">
+      <strong class="news-title">{{item.name}}</strong>
+      <div class="news-bottom-line">
+        <small>{{item.time}}</small>
+        <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
+        <small>{{item.date}}</small>
+        <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
+        <small>{{item.type}}</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Категории готового бизнеса. -->
+<div class="row garant">
+  <!-- <div class="d-flex"> -->
+  <div class="col-6">
+    <h5 class="title-franchise">Категории готового бизнеса</h5>
+    <div class="row">
+      <!-- 1 столбец. -->
+      <div class="col-6">
+        <!-- <div class="category-block-first"> -->
+        <div>
+          <div class="category-item" *ngFor="let item of categoryList1">
+            <img class="space-right-image-category" [src]="item.url">
+            <span class="category-text">{{item.name}}</span>
+            <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 столбец -->
+      <div class="col-6">
+        <!-- <div class="garant">&nbsp;</div> -->
+        <div class="category-item" *ngFor="let item of categoryList2">
+          <img class="space-right-image-category" [src]="item.url">
+          <span class="category-text">{{item.name}}</span>
+          <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-6">
+    <h5 class="title-franchise">Категории франшиз</h5>
+    <div class="row">
+      <!-- 3 столбец. -->
+      <div class="col-6">
+        <!-- <div class="category-block-second"> -->
+        <div>
+          <div class="category-item" *ngFor="let item of categoryList3">
+            <img class="space-right-image-category" [src]="item.url">
+            <span class="category-text">{{item.name}}</span>
+            <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 столбец -->
+      <div class="col-6">
+        <!-- <div class="garant">&nbsp;</div> -->
+        <div class="category-item" *ngFor="let item of categoryList4">
+          <img class="space-right-image-category" [src]="item.url">
+          <span class="category-text">{{item.name}}</span>
+          <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+</div>

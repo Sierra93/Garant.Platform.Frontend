@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +16,6 @@ export class HeaderModule implements OnInit {
     aHeader: any[] = [];
     aBreadcrumbs: any[] = [];
     routeParam: any;
-    isAuthenticated: boolean = false;
     searchText: string = "";
     selectedValueFranchise: boolean = false;
     selectedValueBusiness: boolean = false;
@@ -37,23 +36,6 @@ export class HeaderModule implements OnInit {
         await this.getBreadcrumbsAsync();
     };
 
-    public async ngDoCheck() {
-      this.checkAuthentication();
-    }
-
-    @HostListener("window:storage")
-    public checkAuthentication() {
-      if (sessionStorage["token"] && sessionStorage["isSuccess"]) {
-        this.isAuthenticated = true;
-        return;
-      }
-
-      this.isAuthenticated = false;
-    }
-
-     /**
-     * Функция получит поля хидера.
-     */
     /**
     * Функция получит поля хидера.
     */

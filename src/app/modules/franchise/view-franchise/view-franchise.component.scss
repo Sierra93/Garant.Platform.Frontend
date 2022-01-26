@@ -94,18 +94,24 @@
     height: 100%;
 
     > div {
-      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
 
       strong {
         font-size: 18px;
         font-weight: 500;
         color: #000;
-        margin-bottom: 1rem;
       }
 
       span {
         font-size: 14px;
         color: #646464;
+      }
+
+      &:not(:last-child) {
+        span {
+          margin-bottom: 1rem;
+        }
       }
     }
   }
@@ -319,6 +325,37 @@
         font-size: 18px;
         color: #c1c1c1;
       }
+    }
+
+    .agreement-policy {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      > div:first-child {
+        margin-right: 18px;
+      }
+
+      p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        text-align: left;
+        color: #646464;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .agreement-policy {    
+    .p-checkbox, .p-checkbox .p-checkbox-box {
+      width: 2rem;
+      height: 2rem;
+      background-color: #f7f7f7;
+    }
+
+    .p-checkbox .p-checkbox-box .p-checkbox-icon {
+      font-size: 1.5rem;
     }
   }
 }

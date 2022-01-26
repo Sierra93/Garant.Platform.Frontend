@@ -1,108 +1,120 @@
 <div class="block-garant d-flex justify-content-between mt-70">
   <!-- Левый блок. -->
   <div class="col-3 block-left">
-    <h5>{{oInitData.blockLeftTitle}}</h5>
+    <h5 class="block-left__title">{{oInitData.blockLeftTitle}}</h5>
 
-    <div class="left-panel-first mt-32">  
-      <div>Сделка проходит между</div>
+    <div class="left-panel-first mt-32 block-left-sides">
+      <div class="block-left-sides__title">Сделка проходит между</div>
+      <hr class="hr-small">
+
+      <!-- <div> -->
+      <!-- <div> -->
+      <strong class="block-left-sides__name">{{oInitData.fullName}}</strong>
+      <!-- <br> -->
+      <span class="block-left-sides__role">
+        {{oInitData.role}}
+      </span>
+      <!-- </div> -->
+
       <hr>
 
-      <div>
-        <div>
-          <strong>{{oInitData.fullName}}</strong>
-          <br>
-          {{oInitData.role}}
-        </div>
+      <!-- <div> -->
+      <strong class="block-left-sides__name">{{oInitData.otherUserFullName}}</strong>
+      <!-- <br> -->
+      <span class="block-left-sides__role">
+        {{oInitData.otherUserRole}}
+      </span>
+      <!-- </div> -->
+      <!-- </div> -->
+    </div>
 
-        <hr>
+    <div class="left-panel-first mt-32 block-left-deal">
+      <div class="block-left-deal__title">{{oInitData.blockLeftSumTitle}}</div>
+      <hr class="hr-small">
 
-        <div>
-          <strong>{{oInitData.otherUserFullName}}</strong>
-          <br>
-          {{oInitData.otherUserRole}}
-        </div>
+      <!-- <div> -->
+      <div class="block-left-deal__sum">
+        {{oInitData.totalAmount}} ₽
       </div>
-    </div>     
 
-    <div class="left-panel-first mt-32">  
-      <div>{{oInitData.blockLeftSumTitle}}</div>
+      <button class="block-left-deal__button">Цена изменилась</button>
+
+      <hr class="hr-short">
+
+      <!-- <div> -->
+        <strong class="block-left-deal__item">{{oInitData.mainItemTitle}}</strong>
+      <!-- </div> -->
+
       <hr>
 
-      <div>
-        <div>
-          {{oInitData.totalAmount}} ₽
-        </div>
-
-        <hr>
-
-        <div>
-          <strong>{{oInitData.mainItemTitle}}</strong>
-        </div>
-
-        <hr>
-
-        <div>
-          <img [src]="oInitData.imageUrl">
-        </div>
-
-        <div>
-          {{oInitData.itemTitle}}
-        </div>
+      <div class="block-left-deal__image">
+        <img [src]="oInitData.imageUrl">
       </div>
-    </div>   
 
-    <div class="left-panel-first mt-32">  
-      <div>{{oInitData.documentBlockTitle}}</div>      
-      <small>Документов еще нет</small>
-    </div>   
+      <div class="block-left-deal__name">
+        {{oInitData.itemTitle}}
+      </div>
+      <!-- </div> -->
+    </div>
+
+    <div class="left-panel-first mt-32 block-left-documents">
+      <div class="block-left-documents__list">{{oInitData.documentBlockTitle}}</div>
+      <small class="block-left-documents__no">Документов еще нет</small>
+    </div>
   </div>
 
   <!-- Правый блок. -->
   <div class="col-9 block-right">
-    <h5>{{oInitData.blockRightTitle}}</h5>
+    <h5 class="block-right__title">{{oInitData.blockRightTitle}}</h5>
 
-    <div class="right-panel-first mt-32">  
-      <div>
-        <strong>{{oInitData.blockRightStatusTitle}}</strong>
+    <div class="right-panel-first mt-32 block-right-body">
+      <!-- <div> -->
+        <strong class="block-right-body__title">{{oInitData.blockRightStatusTitle}}</strong>
+      <!-- </div> -->
+
+      <div class="block-right-body__content">
+       
       </div>
 
-      <div class="content">
+      <div class="block-right-body__small">
         {{oInitData.blockRightStatusText}}
       </div>
-      
-      <div>
-        <strong>{{oInitData.blockRightSumTitle}}</strong>
-      </div>
 
-      <div>
+      <!-- <div> -->
+        <strong class="block-right-body__sumtitle">{{oInitData.blockRightSumTitle}}</strong>
+      <!-- </div> -->
+
+      <div class="block-right-body__sum">
         {{oInitData.totalAmount}} ₽
       </div>
 
       <div *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
-        <button class="control-button-blue-small" *ngIf="!isCheckDeal" (click)="onAcceptDealAsync()">{{oInitData.buttonActionText}}</button>
+        <button class="control-button-blue-small block-right-body__button" *ngIf="!isCheckDeal"
+          (click)="onAcceptDealAsync()">{{oInitData.buttonActionText}}</button>
       </div>
     </div>
 
-    <div class="block-black">
-      <div>{{oInitData.blackBlockTitle}}</div>
+    <div class="block-right-black">
+      <div class="block-right-black__title">{{oInitData.blackBlockTitle}}</div>
 
-      <div class="content">
+      <div class="block-right-black__content">
         {{oInitData.blackBlockText}}
       </div>
 
-     <div class="d-flex align-items-center">
-      <div>
-        <button class="control-button-blue-small">{{oInitData.blackBlueButtonText}}</button>
-      </div>
+      <div class="d-flex align-items-center block-right-black__buttons">
+        <div>
+          <button class="control-button-blue-small">{{oInitData.blackBlueButtonText}}</button>
+        </div>
 
-      <div class="ml-3">        
-        <button class="control-button-black-contur-small">{{oInitData.blackButtonText}}</button>
+        <!-- <div class="ml-3"> -->
+          <button class="control-button-black-contur-small">{{oInitData.blackButtonText}}</button>
+        <!-- </div> -->
       </div>
-     </div>
     </div>
 
     <div class="d-flex justify-content-end">
-      <button class="control-button-blue-small" (click)="onRouteReviewIterationsAsync(oInitData.itemDealId, oInitData.itemDealType, oInitData.otherId)">{{oInitData.continueButtonText}}</button>
+      <button class="control-button-blue-small"
+        (click)="onRouteReviewIterationsAsync(oInitData.itemDealId, oInitData.itemDealType, oInitData.otherId)">{{oInitData.continueButtonText}}</button>
     </div>
   </div>
 </div>

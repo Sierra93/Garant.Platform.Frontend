@@ -1,11 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { FilterInput } from "src/app/models/franchise/input/filter-franchise-input";
-import { FranchiseInput } from "src/app/models/franchise/input/franchise-input";
 import { PaginationInput } from "src/app/models/pagination/input/pagination-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 
@@ -30,8 +28,8 @@ export class CatalogFranchiseModule implements OnInit {
     city: string = "";
     category: string = "";
     selectedCity: string = "";
-    selectedCategory: string = "";
-    selectedViewBusiness: string = "";
+    selectedCategory: any;
+    selectedViewBusiness: any;
     aFranchises: any[] = [];
     selectedSort: any;
     aSortPrices: any[] = [];
@@ -126,41 +124,6 @@ export class CatalogFranchiseModule implements OnInit {
             throw new Error(e);
         }
     };
-
-    /**
-     * Функция отфильтрует список франшиз по фильтрам.
-     * @param viewCode - Код вида бизнеса.
-     * @param categoryCode - Код категории бизнеса.
-     * @param cityCode - Город бизнеса. 
-     * @param minPrice - Цена от.
-     * @param maxPrice - Цена до.
-     */
-     public async onFilterFranchisesAsync(form: NgForm) {                
-        try {
-            let filterInput = new FranchiseInput();
-            filterInput.viewCode = form.value.view.viewCode;
-            filterInput.cityCode = form.value.city.cityCode;
-            filterInput.categoryCode = form.value.category.categoryCode;
-            filterInput.minPrice = form.value.minPrice;
-            filterInput.maxPrice = form.value.maxPrice;
-
-            await this.http.post(API_URL.apiUrl.concat("/main/filter"), filterInput)
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Отфильтрованный список франшиз:", response);
-                        // this.aFranchises = response;
-                    },
-
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
-        }
-
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };  
 
     /**
      * Функция получит список франшиз.
@@ -322,18 +285,27 @@ export class CatalogFranchiseModule implements OnInit {
         console.log("onChangeSortPrice", this.selectedSort);
     };
 
-    public async FilterFranchisesAsync() {
+    /**
+     * Функция фильтрует франшизы по параметрам.
+     * @returns - Отфильтрованный список франшиз.
+     */
+    public async onFilterFranchisesAsync() {
         try {
             let filterInput = new FilterInput();
             filterInput.TypeSortPrice = this.selectedSort.value;
-            filterInput.ProfitMinPrice = this.filterMinPrice.toString();
-            filterInput.ProfitMaxPrice = this.filterMaxPrice.toString();
+            filterInput.ProfitMinPrice = this.filterMinPrice;
+            filterInput.ProfitMaxPrice = this.filterMaxPrice;
+            filterInput.ViewCode = this.selectedViewBusiness.viewCode;
+            filterInput.CategoryCode = this.selectedCategory.categoryCode;
+            filterInput.MinPriceInvest = this.minPrice;
+            filterInput.MaxPriceInvest = this.maxPrice;
+            filterInput.IsGarant = this.isGarant;
 
             await this.http.post(API_URL.apiUrl.concat("/franchise/filter-franchises"), filterInput)
             .subscribe({
                 next: (response: any) => {
                     console.log("Франшизы после фильтрации:", response);                    
-                    // this.aFranchises = response;
+                    this.aFranchises = response;
                 },
 
                 error: (err) => {

@@ -14,10 +14,10 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
     providers: [ConfirmationService, MessageService]
 })
 
-/** 
+/**
  * Класс модуля просмотра франшизы.
  */
-export class ViewFranchiseModule implements OnInit {    
+export class ViewFranchiseModule implements OnInit {
     franchiseId: number = 0;
     franchiseData: any = [];
     routeParam: any;
@@ -33,8 +33,9 @@ export class ViewFranchiseModule implements OnInit {
     userName: string = "";
     number: string = "";
     city: string = "";
+    selectedValues: string[] = [];
 
-    constructor(private http: HttpClient, 
+    constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private route: ActivatedRoute,
         private router: Router,
@@ -55,12 +56,12 @@ export class ViewFranchiseModule implements OnInit {
                     breakpoint: '560px',
                     numVisible: 1
                 }
-            ]; 
+            ];
     };
 
     public async ngOnInit() {
         await this.getTransitionAsync();
-    };    
+    };
 
     private async getTransitionAsync() {
         try {
@@ -82,24 +83,24 @@ export class ViewFranchiseModule implements OnInit {
      * @returns - данные франшизы.
      */
     private async getViewFranchiseAsync(franchiseId: number) {
-        try {                     
-            console.log("getViewFranchiseAsync");        
+        try {
+            console.log("getViewFranchiseAsync");
             let getFranchiseInput = new GetFranchiseInput();
             getFranchiseInput.FranchiseId = franchiseId;
-            getFranchiseInput.Mode = "View";           
+            getFranchiseInput.Mode = "View";
 
             await this.http.post(API_URL.apiUrl.concat("/franchise/get-franchise"), getFranchiseInput)
                 .subscribe({
                     next: (response: any) => {
                         console.log("Полученная франшиза:", response);
-                        this.franchiseData = response;                          
-                        this.aNamesFranchisePhotos = this.franchiseData.url.split(",");                        
-                        this.aInvestInclude = [JSON.parse(response.investInclude)];
+                        this.franchiseData = response;
+                        this.aNamesFranchisePhotos = this.franchiseData.url.split(",");
+                        this.aInvestInclude = JSON.parse(response.investInclude);
                         this.aFinIndicators = [JSON.parse(response.finIndicators)];
                         this.aPacks = [JSON.parse(response.franchisePacks)];
                         this.fio = response.fullName;
 
-                        console.log("franchiseData", this.franchiseData);    
+                        console.log("franchiseData", this.franchiseData);
                         console.log("aInvestInclude", this.aInvestInclude);
                         console.log("aFinIndicators", this.aFinIndicators);
                         console.log("aPacks", this.aPacks);
@@ -135,9 +136,9 @@ export class ViewFranchiseModule implements OnInit {
      * @returns Данные заявки.
      */
     public async onCreateRequestFranchiseAsync(userName: string, number: string, city: string, franchiseId: number) {
-        try {                     
-            console.log("getViewFranchiseAsync");        
-            let requestFranchiseInput = new RequestFranchiseInput();   
+        try {
+            console.log("getViewFranchiseAsync");
+            let requestFranchiseInput = new RequestFranchiseInput();
 
             if (userName == "" || number == "" || city == "" || franchiseId <= 0) {
                 return;
@@ -151,15 +152,15 @@ export class ViewFranchiseModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/request/create-request-franchise"), requestFranchiseInput)
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Заявка успешно создана", response); 
-                        
+                        console.log("Заявка успешно создана", response);
+
                         if (response.isSuccessCreatedRequest) {
                             this.messageService.add({
                                 severity: 'success',
                                 summary: 'Успешно!',
                                 detail: response.statusText
-                            });    
-                        }                                       
+                            });
+                        }
                     },
 
                     error: (err) => {

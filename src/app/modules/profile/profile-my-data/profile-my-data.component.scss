@@ -62,6 +62,14 @@
   }
 }
 
+.requisite-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #7a7a7a;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
 
 .main-info-form {
   .input-container {
@@ -97,6 +105,75 @@
       color: #fff;
       border: none;
       outline: none;
+    }
+  }
+}
+
+.second-block {
+  padding: 1.5rem;
+  border-radius: .25rem;
+  background-color: #f1f6ff;
+  margin-bottom: 5rem;
+
+  &-description {
+    width: 419px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #646464;
+    margin-bottom: 2.5rem;
+  }
+
+  &-buttons {
+    button {
+      width: 125px;
+      padding: 16px;
+      border-radius: 4px;
+      font-size: 18px;
+      color: #1f1f1f;
+
+      &.first {
+        background-color: #1f1f1f;
+        color: #fff;
+        margin-right: 1rem;
+      }
+
+      &.last {
+        border: solid 1px #1f1f1f;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .bank-name-select {
+    .p-dropdown {
+      display: flex;
+      align-items: center;
+      height: 69px;
+      border-radius: .5rem;
+      padding: 1.5rem 1rem 1.5rem 1.5rem;
+    }
+  }
+
+  .second-block {
+    .p-card {
+      background-color: transparent;
+
+      &-body {
+        padding: 0;
+      }
+    }
+
+    .remove {
+      button.close {
+        &, &:focus {
+          border: none;
+          outline: none;
+          background-color: transparent;
+          font-size: 16px;
+          color: #646464;
+        }
+      }
     }
   }
 }

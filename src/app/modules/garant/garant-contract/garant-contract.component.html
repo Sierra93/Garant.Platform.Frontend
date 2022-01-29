@@ -1,6 +1,121 @@
 <div class="block-garant d-flex justify-content-between mt-70">
+
   <!-- Левый блок. -->
-  <div class="col-3">
+  <div class="col-3 block-left">
+    <h5 class="block-left__title">{{oInitData.blockLeftTitle}}</h5>
+
+    <div class="left-panel-first mt-32 block-left-sides">
+      <div class="block-left-sides__title">Сделка проходит между</div>
+      <hr class="hr-small">
+
+      <!-- <div> -->
+      <!-- <div> -->
+      <strong class="block-left-sides__name">{{oInitData.fullName}}</strong>
+      <!-- <br> -->
+      <span class="block-left-sides__role">
+        {{oInitData.role}}
+      </span>
+      <!-- </div> -->
+
+      <hr>
+
+      <!-- <div> -->
+      <strong class="block-left-sides__name">{{oInitData.otherUserFullName}}</strong>
+      <!-- <br> -->
+      <span class="block-left-sides__role">
+        {{oInitData.otherUserRole}}
+      </span>
+      <!-- </div> -->
+      <!-- </div> -->
+    </div>
+
+    <div class="left-panel-first mt-32 block-left-deal">
+      <div class="block-left-deal__title">{{oInitData.blockLeftSumTitle}}</div>
+      <hr class="hr-small">
+
+      <!-- <div> -->
+      <div class="block-left-deal__sum">
+        {{oInitData.totalAmount}} ₽
+      </div>
+
+      <button class="block-left-deal__button">Цена изменилась</button>
+
+      <hr class="hr-short">
+
+      <!-- <div> -->
+      <strong class="block-left-deal__item">{{oInitData.mainItemTitle}}</strong>
+      <!-- </div> -->
+
+      <hr>
+
+      <div class="block-left-deal__image">
+        <img [src]="oInitData.imageUrl">
+      </div>
+
+      <div class="block-left-deal__name">
+        {{oInitData.itemTitle}}
+      </div>
+      <!-- </div> -->
+    </div>
+
+    <div class="left-panel-first mt-32 block-left-stages">
+      <strong class="block-left-stages__title">Согласованный список этапов и стоимость</strong>
+
+      <hr>
+
+      <div *ngFor="let item of aInvestInclude; let i = index; let last = last" class="block-left-stages__list">
+        <ul>
+          <li class="block-left-stages__item">
+            <div class="block-left-stages__name">
+              {{item.Name}}
+            </div>
+
+            <div class="block-left-stages__price">
+              <!-- Стоимость этапа<br> -->
+              {{item.Price}} ₽
+            </div>
+          </li>
+        </ul>
+
+
+        <hr *ngIf="!last">
+
+      </div>
+    </div>
+
+    <div class="left-panel-first mt-32 block-left-patterns">
+      <div class="block-left-patterns__title"><img class="img-left" src="../../../../assets/images/garant/file.png"
+          alt="папка">{{oInitData.blockDocumentsTemplatesName}}<img class="img-right"
+          src="../../../../assets/images/garant/arrow.png" alt="стрелка"></div>
+      <small class="block-left-patterns__text">{{oInitData.blockDocumentsTemplatesDetail}}</small>
+    </div>
+
+    <div class="left-panel-first mt-32 block-left-documents">
+      <div class="block-left-documents__title"><img class="img-left" src="../../../../assets/images/garant/file.png"
+          alt="папка">{{oInitData.documentBlockTitle}}<img class="img-right"
+          src="../../../../assets/images/garant/arrow.png" alt="стрелка"></div>
+
+      <div class="hr"></div>
+
+
+      <div class="block-left-documents__list">
+        <button *ngFor="let item of aDocumants" class="block-left-documents__button">
+          <img class="img-left"
+            src="../../../../assets/images/garant/5876007_action_arrow_down_download_save_icon 1.png" alt="сохранить">
+          {{item}}
+        </button>
+      </div>
+      <!-- <small class="block-left-documents__no">Документов еще нет</small> -->
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- Левый блок. -->
+  <!-- <div class="col-3">
     <h5>{{oInitData.blockLeftTitle}}</h5>
 
     <div class="left-panel-first mt-32">  
@@ -59,9 +174,9 @@
           {{item.Name}}
         </div>
 
-        <div>
-          <!-- Стоимость этапа<br> -->
-          {{item.Price}} ₽
+        <div> -->
+  <!-- Стоимость этапа<br> -->
+  <!-- {{item.Price}} ₽
         </div>
 
         <hr>
@@ -80,24 +195,97 @@
       </div>   
 
       <!-- <small *ngIf="aDocumants.length == 0">Документов еще нет</small> -->
-    </div>   
-  </div>
+  <!-- </div>   
+  </div> -->
 
   <!-- Правый блок. -->
-  <div class="col-9">
-    <h5>{{oInitData.blockRightTitle}}</h5>
+  <!-- Область с чатом. -->
+  <div class="col-9 block-right">
+    <h5 class="block-right__title">{{oInitData.blockRightTitle}}</h5>
 
-    <!-- Область с чатом. -->
-    <div class="right-panel-first mt-32">  
+    <div class="right-panel-first mt-32 block-right-chat">
       <div class="">
         <!-- <h5>Чат с {{fio}}</h5> -->
         <div class="">
-  
-          <div class="d-flex justify-content-between">        
+
+          <div class="d-flex justify-content-between">
             <div class="d-flex">
               <!-- <img class="space-intgr mr-16" src="{{chatItemUrl}}"> -->
-              
+
               <div>
+                <strong class="block-right-chat__title">{{oInitData.blackBlockTitle}}</strong>
+
+                <div>
+                  <small class="block-right-chat__subtitle">Согласование началось {{oInitData.dateStartDeal}}</small>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              Начало чата: {{dateStartDialog}}
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="block-chat block-right-chat__body">
+            <div class="" *ngFor="let item of aMessages">
+              <div class="block-messages">
+                <div class="block-right-chat__message" [ngClass]="{messageEnd:item.isMyMessage}">
+                  {{item.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block-right-chat__container"><img class="img-left"
+              src="../../../../assets/images/garant/5172585_attachment_binder_clip_paper_icon 2.png" alt="скрепка">
+            <div class="block-right-chat__textareawrapper">
+              <textarea class="area-message block-right-chat__textarea" rows="2" cols="30" pInputTextarea
+                [autoResize]="true" placeholder="Отправьте комментарий по поводу этапов сделки или предложить изменение"
+                [(ngModel)]="message" (keydown.enter)="onSendMessageAsync()"></textarea>
+              <img class="img-right" src="../../../../assets/images/garant/icons.png" alt="стрелка вправо">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-right-black">
+      <div class="block-right-black__title">{{oInitData.blackBlockTitle}}</div>
+
+      <div class="block-right-black__content">
+        {{oInitData.blackBlockText}}
+      </div>
+
+      <div class="d-flex align-items-center block-right-black__buttons">
+        <div>
+          <button class="control-button-blue-small">{{oInitData.blackBlueButtonText}}</button>
+        </div>
+
+        <!-- <div class="ml-3"> -->
+        <button class="control-button-black-contur-small">{{oInitData.blackButtonText}}</button>
+        <!-- </div> -->
+      </div>
+    </div>
+
+
+    <!-- Правый блок. -->
+    <!-- <div class="col-9 block-right">
+    <h5>{{oInitData.blockRightTitle}}</h5> -->
+
+    <!-- Область с чатом. -->
+    <!-- <div class="right-panel-first mt-32">  
+      <div class=""> -->
+    <!-- <h5>Чат с {{fio}}</h5> -->
+    <!-- <div class="">
+  
+          <div class="d-flex justify-content-between">        
+            <div class="d-flex"> -->
+    <!-- <img class="space-intgr mr-16" src="{{chatItemUrl}}"> -->
+
+    <!-- <div>
                 <strong>{{oInitData.blackBlockTitle}}</strong>
                 
                 <div>
@@ -147,115 +335,134 @@
         <button class="control-button-black-contur-small">{{oInitData.blackButtonText}}</button>
       </div>
      </div>
-    </div>
+    </div> -->
 
     <!-- Область с этапами. -->
-    <div class="right-panel-second mt-32">          
-    <div>
-      {{oInitData.contractTitle}}
-    </div>     
+    <div class="right-panel-second mt-32 block-right-contract">
+      <div class="block-right-contract__title">
+        {{oInitData.contractTitle}}
+      </div>
 
-    <hr>
+      <hr>
 
-    <div>
-      {{oInitData.contractDetail}}
-    </div>  
-    
-    <div>
-      <small>{{oInitData.contractText}}</small>
-    </div>   
+      <div class="block-right-contract__detail">
+        {{oInitData.contractDetail}}
+      </div>
 
-    <div *ngIf="attachmentVendorFileName == '' || attachmentVendorFileName == null">
-      <input type="file" (change)="onAttachmentVendorDocument($event)">  
+      <div class="block-right-contract__text">
+        <!-- <small> -->
+        {{oInitData.contractText}}
+        <!-- </small> -->
+      </div>
+
+      <div *ngIf="attachmentVendorFileName == '' || attachmentVendorFileName == null">
+        <label class="file-label">
+          <input type="file" class="file-input" (change)="onAttachmentVendorDocument($event)">
+          Прикрепить
+        </label>
+      </div>
+
+      <div *ngIf="attachmentVendorFileName !== '' && attachmentVendorFileName !== null"
+        class="block-right-contract__filename"><img class="img-left"
+          src="../../../../assets/images/garant/paperclip 1.png" alt="треугольник">
+        {{attachmentVendorFileName}}
+      </div>
+
+      <p-messages severity="warn" *ngIf="isSend">
+        <ng-template pTemplate>
+          <div class="p-ml-2 block-right-contract__message">Договор на согласовании у продавца. После согласования вы
+            получите подписанный скан.</div>
+        </ng-template>
+      </p-messages>
+
+      <hr class="hr-4">
+
+      <div class="d-flex block-right-contract__buttons">
+        <div class="mr-16" *ngIf="!isApproveVendorDocment && oInitData.isOwner" (click)="onSendDocumentVendorAsync()">
+          <button class="control-button-blue-small">
+            {{oInitData.buttonActionTextContract}}
+          </button>
+        </div>
+
+        <div class="mr-16" *ngIf="!isApproveVendorDocment && !oInitData.isOwner"
+          (click)="onApproveVendorDocumentAsync()">
+          <button class="control-button-blue-small">
+            {{oInitData.buttonActionTextContract}}
+          </button>
+        </div>
+
+        <div class="mr-16" *ngIf="!isApproveVendorDocment && !oInitData.isOwner">
+          <button class="control-button-red-small">
+            {{oInitData.buttonRejectDocumentText}}
+          </button>
+        </div>
+
+        <div class="" *ngIf="isApproveVendorDocment && oInitData.isOwner">
+          <button class="control-button-green-small" [disabled]="true">
+            {{oInitData.buttonActionText}}
+          </button>
+        </div>
+
+        <div class="" *ngIf="isApproveVendorDocment && !oInitData.isOwner">
+          <button class="control-button-green-small" [disabled]="true">
+            {{oInitData.buttonActionText}}
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div *ngIf="attachmentVendorFileName !== '' && attachmentVendorFileName !== null">
-      {{attachmentVendorFileName}}
-    </div>
+    <!-- Блок от продавца. -->
+    <div class="right-panel-second mt-32 block-right-sides">
+      <div class="block-right-sides__title">{{oInitData.blockRightStatusTitle}}</div>
 
-    <p-messages severity="warn" *ngIf="isSend">
-      <ng-template pTemplate>
-        <div class="p-ml-2">Договор на согласовании у продавца. После согласования вы получите подписанный скан.</div>
-      </ng-template>
-    </p-messages>
+      <hr>
 
-    <div class="d-flex">
-      <div class="mr-16" *ngIf="!isApproveVendorDocment && oInitData.isOwner" (click)="onSendDocumentVendorAsync()">
-        <button class="control-button-blue-small">
-          {{oInitData.buttonActionTextContract}}
-        </button>
-      </div>
+      <div class="block-right-sides__text">{{oInitData.buttonActionText}}</div>
 
-      <div class="mr-16" *ngIf="!isApproveVendorDocment && !oInitData.isOwner" (click)="onApproveVendorDocumentAsync()">
-        <button class="control-button-blue-small">
-          {{oInitData.buttonActionTextContract}}
-        </button>
-      </div>
+      <small class="block-right-sides__comment">{{oInitData.blockCustomerComment}}</small>
 
-      <div class="mr-16" *ngIf="!isApproveVendorDocment && !oInitData.isOwner">
-        <button class="control-button-red-small">
-          {{oInitData.buttonRejectDocumentText}}
-        </button>
-      </div>      
+      <hr class="hr-5">
 
-      <div class="" *ngIf="isApproveVendorDocment && oInitData.isOwner">
-        <button class="control-button-green-small" [disabled]="true">
-          {{oInitData.buttonActionText}}
-        </button>
-      </div>
+      <!-- Договор от покупателя. -->
+      <div class="d-flex">
+        <div class="mr-16">
+          <div *ngIf="attachmentCustomerFileName == '' || attachmentCustomerFileName == null">
+            <label class="file-label">
+              <input type="file" class="file-input" (change)="onAttachmentCustomerDocument($event)">
+              Прикрепить
+            </label>
+          </div>
 
-      <div class="" *ngIf="isApproveVendorDocment && !oInitData.isOwner">
-        <button class="control-button-green-small" [disabled]="true">
-          {{oInitData.buttonActionText}}
-        </button>
-      </div>
-    </div>      
-  </div>
+          <div *ngIf="attachmentCustomerFileName !== '' && attachmentCustomerFileName !== null"
+            class="block-right-sides__filename"><img class="img-left"
+              src="../../../../assets/images/garant/paperclip 2.png" alt="скрепка">
+            {{attachmentCustomerFileName}}
+          </div>
 
-  <!-- Блок от продавца. -->
-  <div class="right-panel-second mt-32">          
-   <div>{{oInitData.blockRightStatusTitle}}</div>
-
-   <hr>
-
-   <div>{{oInitData.buttonActionText}}</div>
-
-   <small>{{oInitData.blockCustomerComment}}</small>    
-
-   <hr>
-
-   <!-- Договор от покупателя. -->
-  <div class="d-flex">
-    <div class="mr-16">
-      <div *ngIf="attachmentCustomerFileName == '' || attachmentCustomerFileName == null">
-        <input type="file" (change)="onAttachmentCustomerDocument($event)">  
-      </div>       
-
-      <div *ngIf="attachmentCustomerFileName !== '' && attachmentCustomerFileName !== null">
-        {{attachmentCustomerFileName}}
-      </div>
-
-      <!-- <button class="control-button-blue-small mr-16" (click)="onSendDocumentCustomerAsync()">
+          <!-- <button class="control-button-blue-small mr-16" (click)="onSendDocumentCustomerAsync()">
         {{oInitData.buttonApproveDocumentText}}
       </button> -->
+          <div class="block-right-sides__buttons">
+            <button class="control-button-blue-small"
+            *ngIf="oInitData.isOwner && isApproveVendorDocment && !isApproveCustomerDocument"
+            (click)="onApproveCustomerDocumentAsync()">
+            {{oInitData.buttonApproveDocumentText}}
+          </button>
 
-      <button class="control-button-blue-small mr-16" 
-              *ngIf="oInitData.isOwner && isApproveVendorDocment && !isApproveCustomerDocument"
-              (click)="onApproveCustomerDocumentAsync()">
-        {{oInitData.buttonApproveDocumentText}}
-      </button>
-
-      <button class="control-button-red-small" 
-              *ngIf="isApproveVendorDocment && oInitData.isOwner && !isApproveCustomerDocument">
-        {{oInitData.buttonRejectDocumentText}}
-      </button>
+          <button class="control-button-red-small"
+            *ngIf="isApproveVendorDocment && oInitData.isOwner && !isApproveCustomerDocument">
+            {{oInitData.buttonRejectDocumentText}}
+          </button>
+          </div>
+          
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
 
-  <div class="d-flex justify-content-end"
-    *ngIf="oInitData.continueButtonText !== '' && oInitData.continueButtonText !== null">
-    <button class="control-button-blue-small" (click)="onRouteGarant4Async()">{{oInitData.continueButtonText}}</button>
-  </div>
+    <div class="d-flex justify-content-end"
+      *ngIf="oInitData.continueButtonText !== '' && oInitData.continueButtonText !== null">
+      <button class="control-button-blue-small"
+        (click)="onRouteGarant4Async()">{{oInitData.continueButtonText}}</button>
+    </div>
   </div>
 </div>

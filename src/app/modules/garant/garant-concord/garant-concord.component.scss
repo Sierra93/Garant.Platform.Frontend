@@ -19,6 +19,15 @@
 //     }
 // }
 
+.img-left {
+  margin-right: 8px;
+}
+
+.img-right {
+  position: absolute;
+  right: 8px;
+}
+
 .messageStart {
   text-align: start;
 }
@@ -35,12 +44,12 @@
 //   margin-right: 16px;
 // }
 
-.right-panel-first {
-  // height: 215px;
-  // height: 370px;
-  overflow: scroll;
-  overflow-x: hidden;
-}
+// .right-panel-first {
+//   // height: 215px;
+//   // height: 370px;
+//   // overflow: scroll;
+//   // overflow-x: hidden;
+// }
 
 .right-panel-second {
   box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
@@ -224,7 +233,8 @@
     border-radius: 8px;
     padding: 24px;
 
-    &__list {
+    &__title {
+      position: relative;
       display: flex;
       // justify-content: center;
       align-items: center;
@@ -291,7 +301,10 @@
     &__body {
       background: rgba(218, 218, 218, 0.15);
       padding: 24px;
-    }
+      height: 359px;
+      overflow: scroll;
+      overflow-x: hidden;
+          }
 
     &__message {
       display: block;
@@ -301,6 +314,29 @@
       line-height: 16px;
       color: #2c2c2c;
       margin-bottom: 24px;
+    }
+
+    &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+       margin-top: 16px;
+    }
+
+    .img-left {
+      display: inline-block;
+    }
+
+    &__textareawrapper {
+      position: relative;
+      display: inline-block;
+      width: 978px;
+    }
+
+    .img-right {
+      position: absolute;
+      right: 16px;
+      top: 16px;
     }
 
     &__textarea {
@@ -313,7 +349,7 @@
       border: 1.5px solid #dadada;
       border-radius: 8px;
       padding: 8px 16px;
-      margin-top: 16px;
+      // margin-top: 16px;
       // margin-bottom: 24px;
 
       &::placeholder {

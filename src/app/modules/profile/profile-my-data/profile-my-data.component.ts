@@ -15,10 +15,10 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
     providers: [ConfirmationService, MessageService]
 })
 
-/** 
+/**
  * Класс модуля профиля пользователя (мои данные).
  */
-export class ProfileMyDataModule implements OnInit {    
+export class ProfileMyDataModule implements OnInit {
     lastName: string = "";
     firstName: string = "";
     patr: string = "";
@@ -38,12 +38,17 @@ export class ProfileMyDataModule implements OnInit {
     role: string = "";
     countTimeSite: string = "";
     countAd: number = 0;
-    // aProfileMenu: any = [];    
+    // aProfileMenu: any = [];
     isMessageTab: boolean = false;
+    bik: number = 0;
+    kpp: number = 0;
+    availableBanks: any[] = [];
+    defaultBankName: string = "";
+    corrAccountNumber: number = 0;
 
-    constructor(private route: ActivatedRoute, 
-        private router: Router, 
-        private http: HttpClient, 
+    constructor(private route: ActivatedRoute,
+        private router: Router,
+        private http: HttpClient,
         private titleService: Title,
         private messageService: MessageService,
         private commonService: CommonDataService) {
@@ -52,7 +57,8 @@ export class ProfileMyDataModule implements OnInit {
     public async ngOnInit() {
         this.titleService.setTitle("Gobizy: Профиль - мои данные");
         await this.getProfileInfoAsync();
-    };  
+        await this.getBankListAsync();
+    };
 
     /**
      * Функция сохранит данные формы профиля.
@@ -76,6 +82,9 @@ export class ProfileMyDataModule implements OnInit {
             let dateGive = form.value.dateGive;
             let whoGive = form.value.whoGive;
             let addressRegister = form.value.registerAddress;
+            let bik = form.value.bik;
+            let kpp = form.value.kpp;
+            let corrAccountNumber = form.value.corrAccountNumber;
 
             let profileInput = new ProfileInput();
             profileInput.DateBirth = dateYearBirth;
@@ -93,6 +102,9 @@ export class ProfileMyDataModule implements OnInit {
             profileInput.DateGive = dateGive;
             profileInput.WhoGive = whoGive;
             profileInput.AddressRegister = addressRegister;
+            profileInput.Bik = bik;
+            profileInput.Kpp = kpp;
+            profileInput.CorrAccountNumber = corrAccountNumber;
 
             let formData = new FormData();
             formData.append("documentFile", this.documentFile);
@@ -163,6 +175,9 @@ export class ProfileMyDataModule implements OnInit {
                         this.registerAddress = response.addressRegister ?? "";
                         this.countTimeSite = response.countTimeSite ?? "";
                         this.countAd = response.countAd ?? 0;
+                        this.bik = response.bik ?? 0;
+                        this.kpp = response.kpp ?? 0;
+                        this.corrAccountNumber = response.corrAccountNumber ?? 0;
 
                         if (this.profileData.values.includes("buy") && this.profileData.values.includes("sell")) {
                             this.role = "Продавца, покупателя";
@@ -181,11 +196,69 @@ export class ProfileMyDataModule implements OnInit {
                         this.commonService.routeToStart(err);
                         throw new Error(err);
                     }
-                });
+                });               
         }
 
         catch (e: any) {
             throw new Error(e);
         }
-    };    
+    };
+
+  /**
+   * Функция найдет список банков по поисковому запросу.
+   * @param e - Запрос для поиска.
+   * @returns - Список найденных банков.
+   */
+  public async onFilterSearchByBankNameAsync(e: any) {
+    try {        
+        console.log("onFilterSearchByBankNameAsync", e);
+
+        if (!e.filter) {
+            await this.getBankListAsync();
+            return;
+        }
+        
+        await this.http.get(API_URL.apiUrl.concat(`/control/search-bank-name?searchText=${e.filter}`))
+            .subscribe({
+                next: (response: any) => {
+                    if (e.filter.length) {
+                        this.availableBanks = response;
+                        console.log("Банки по запросу: ", this.availableBanks);
+                    }
+                },
+
+                error: (err) => {
+                    console.log(err);
+                }
+            });
+    }
+
+    catch (e: any) {
+        throw new Error(e);
+    }
+  };
+
+  /**
+   * Функция получит списков банков.
+   * @returns - Список банков.
+   */
+  private async getBankListAsync() {
+    try {                        
+        await this.http.post(API_URL.apiUrl.concat("/control/get-bank-names-list"), {})
+        .subscribe({
+            next: (response: any) => {
+                this.availableBanks = response;
+                console.log("Список банков: ", this.availableBanks);
+            },
+
+            error: (err) => {
+                throw new Error(err);
+            }
+        });
+    }
+
+    catch (e: any) {
+        throw new Error(e);
+    }
+  };
 }

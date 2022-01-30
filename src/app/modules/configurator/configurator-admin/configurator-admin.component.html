@@ -1,5 +1,5 @@
 <p-tabView>
-    <p-tabPanel [header]="item.header" *ngFor="let item of items; let i = index" [selected]="i == 0">
-        {{item.label}}
+    <p-tabPanel [header]="item.menuItemName" *ngFor="let item of aMenuList">
+        <!-- {{item.label}} -->
     </p-tabPanel>
 </p-tabView>

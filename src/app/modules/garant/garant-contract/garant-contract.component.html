@@ -365,7 +365,7 @@
       <div *ngIf="attachmentVendorFileName !== '' && attachmentVendorFileName !== null"
         class="block-right-contract__filename"><img class="img-left"
           src="../../../../assets/images/garant/paperclip 1.png" alt="треугольник">
-        {{attachmentVendorFileName}}
+        {{attachmentVendorFileName}}<img class="x" src="../../../../assets/images/garant/x.png" alt="x">
       </div>
 
       <p-messages severity="warn" *ngIf="isSend">
@@ -444,17 +444,17 @@
       </button> -->
           <div class="block-right-sides__buttons">
             <button class="control-button-blue-small"
-            *ngIf="oInitData.isOwner && isApproveVendorDocment && !isApproveCustomerDocument"
-            (click)="onApproveCustomerDocumentAsync()">
-            {{oInitData.buttonApproveDocumentText}}
-          </button>
+              *ngIf="oInitData.isOwner && isApproveVendorDocment && !isApproveCustomerDocument"
+              (click)="onApproveCustomerDocumentAsync()">
+              {{oInitData.buttonApproveDocumentText}}
+            </button>
 
-          <button class="control-button-red-small"
-            *ngIf="isApproveVendorDocment && oInitData.isOwner && !isApproveCustomerDocument">
-            {{oInitData.buttonRejectDocumentText}}
-          </button>
+            <button class="control-button-red-small"
+              *ngIf="isApproveVendorDocment && oInitData.isOwner && !isApproveCustomerDocument">
+              {{oInitData.buttonRejectDocumentText}}
+            </button>
           </div>
-          
+
         </div>
       </div>
     </div>

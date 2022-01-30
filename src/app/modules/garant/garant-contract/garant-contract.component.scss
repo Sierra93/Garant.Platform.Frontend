@@ -583,6 +583,10 @@
       color: #1f75fe;
     }
 
+    .x {
+      margin-left: 48px;
+    }
+
     .hr-4 {
       margin-top: 24px;
       margin-bottom: 8px;
@@ -608,7 +612,6 @@
       color: #ffffff;
       background-color: #4fa13a;
     }
-  
   }
 
   &-sides {
@@ -653,7 +656,7 @@
       font-weight: 400;
       line-height: 21px;
       color: #1f75fe;
-    }
+          }
 
     &__buttons {
       display: flex;

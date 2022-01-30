@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { ErrorObserver } from "rxjs";
+import { Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
+import { ConfiguratorAuthInput } from "src/app/models/configurator/configurator-auth-input";
 
 @Component({
     selector: "configurator-auth",
@@ -16,7 +17,7 @@ export class ConfiguratorAuthModule implements OnInit {
     inputData: string = "";
     password: string = "";
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
 
     };
 
@@ -24,17 +25,30 @@ export class ConfiguratorAuthModule implements OnInit {
 
     };
 
-    public async onAuthAsync(inputData: string, password: string) {
-        console.log("inputData ",inputData, " password",password);
-
+    /**
+     * Функция авторизует сотрудника сервиса.
+     * @param inputData - Данные для проверки. Email или телефон.
+     * @param password - пароль.
+     * @returns - Данные сотрудника.
+     */
+    public async onAuthAsync(inputData: string, password: string) {        
         try {                     
-            await this.http.post(API_URL.apiUrl.concat("/configurator/login"), {
-                "InputData": inputData,
-                "Password": password
-            })
+            let configuratorAuthInput = new ConfiguratorAuthInput();
+
+            if (inputData !== "" && password !== "") {
+                configuratorAuthInput.InputData = inputData;
+                configuratorAuthInput.Password = password;
+            }
+
+            await this.http.post(API_URL.apiUrl.concat("/configurator/login"), configuratorAuthInput)
                 .subscribe({
                     next: (response: any) => {                        
-                        console.log("employee auth status:", response);
+                        console.log("employee auth data:", response);
+
+                        // Если у сотрудника есть доступ.
+                        if (response.accessPanel == 1) {
+                            this.router.navigate(["/configurator/admin"]);
+                        }
                     },
 
                     error: (err) => {

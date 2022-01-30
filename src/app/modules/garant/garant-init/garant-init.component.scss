@@ -5,6 +5,15 @@
 
 $whiteText: white;
 
+.img-left {
+  margin-right: 8px;
+}
+
+.img-right {
+  position: absolute;
+  right: 8px;
+}
+
 .left-panel-first {
   box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
   // padding: 16px;
@@ -170,7 +179,8 @@ $whiteText: white;
     border-radius: 8px;
     padding: 24px;
 
-    &__list {
+    &__title {
+      position: relative;
       display: flex;
       // justify-content: center;
       align-items: center;

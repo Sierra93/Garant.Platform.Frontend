@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { API_URL } from 'src/app/core/core-urls/api-url';
-import { SearchInput } from 'src/app/models/search/input/search-input';
 
 @Component({
     selector: 'header',
@@ -104,5 +102,9 @@ export class HeaderModule implements OnInit {
         }
 
         this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });
+    };
+
+    public onRouteGarant() {
+        this.router.navigate(["/garant/garant-init"], { queryParams: { stage: 1 } });
     };
 }

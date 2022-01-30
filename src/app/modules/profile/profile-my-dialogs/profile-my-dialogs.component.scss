@@ -1,13 +1,52 @@
 @import "/src/app/modules/profile/profile-my-data/profile-my-data.component.scss";
 
-.dialog-photo {
-    margin-right: 16px;
-}
+.dialog {
+  font-family: 'Roboto', sans-serif;
 
-.dialog-line {
-    margin-right: 16px;
-}
+  &-top {
+    margin-bottom: .75rem;
+  }
 
-.block-dialog-line {
-    cursor: pointer;
+  &-photo {
+    margin-right: 1rem;
+  }
+
+  &-content {
+    > div {
+      &:first-child {
+        margin-right: 2.5rem;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-sender {
+    font-size: 14px;
+    color: #2c2c2c;
+  }
+
+  &-date {
+    font-size: 14px;
+    color: #7a7a7a;
+  }
+
+  &-title {
+    font-size: 14px;
+    color: #2c2c2c;
+    margin-bottom: .25rem;
+  }
+
+  &-message {
+    font-size: 14px;
+    color: #7a7a7a;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

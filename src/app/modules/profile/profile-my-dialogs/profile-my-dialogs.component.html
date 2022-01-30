@@ -1,47 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="row">
+  <!-- Левая часть. -->
+  <div class="col-lg-4">
+    <manage-account></manage-account>
+  </div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+  <!-- Правая часть. -->
+  <div class="col-lg-8">
+    <h2 class="profile-title">Мои сообщения</h2>
 
-<body>
-  <div class="block-profile">
-    <!-- Левая часть. -->
-    <div class="col-lg-4">
-      <manage-account></manage-account>
-    </div>
-
-    <!-- Правая часть. -->
-    <div class="col-lg-8">
-      <h5>Мои сообщения</h5>
-      <div class="block-right">
-        <div class="block-chat d-flex" *ngFor="let item of aDialogs">
-            <div class="d-flex block-dialog-line" (click)="onGetDialogMessageAsync(item.dialogId)">
-                <div class="dialog-photo">
-                  <img class="space-intgr mr-16" src="{{item.url}}">
-                </div>
-    
-                <div class="d-flex">
-                    <div class="dialog-line">
-                      {{item.fullName}}<br>
-                      Название предмета обсуждения<br><br>
-                      {{item.lastMessage}}
-                    </div>
-                    
-                    <div>
-                        <span *ngIf="item.calcShortDate !== null">{{item.calcShortDate}}</span>
-                        <span *ngIf="item.calcTime !== null">{{item.calcTime}}</span>                    
-                    </div>
-                </div>
+    <div class="block-right">
+      <div class="block-chat" *ngFor="let item of aDialogs">
+        <div class="row block-dialog-line" (click)="onGetDialogMessageAsync(item.dialogId)">
+          <div class="col-lg-3">
+            <div class="dialog-photo">
+              <img class="space-intgr mr-16" src="{{item.url}}">
             </div>
+          </div>
+
+          <div class="col-lg-9">
+            <div class="h-100">
+              <div class="d-flex justify-content-between dialog-top">
+                <span class="dialog-sender">{{item.fullName}}</span>
+                <span class="dialog-date" *ngIf="item.calcShortDate !== null">{{item.calcShortDate}}</span>
+                <span class="dialog-date" *ngIf="item.calcTime !== null">{{item.calcTime}}</span>
+              </div>
+              <div class="dialog-content d-flex justify-content-between">
+                <div>
+                  <strong class="dialog-title">Название предмета обсуждения</strong>
+                  <p class="dialog-message">{{item.lastMessage}}</p>
+                </div>
+                <div>
+                  <img src="./../../../../assets/images/more.svg" alt="more options icon" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-</body>
-
-</html>
+</div>

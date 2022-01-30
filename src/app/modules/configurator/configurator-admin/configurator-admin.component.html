@@ -1,5 +1,65 @@
-<p-tabView>
-    <p-tabPanel [header]="item.menuItemName" *ngFor="let item of aMenuList">
-        <!-- {{item.label}} -->
-    </p-tabPanel>
+<p-tabView (onChange)="onChangeTab($event)">
+  <p-tabPanel [header]="item.menuItemName" *ngFor="let item of aMenuList">
+      <!-- Таб новости. -->
+    <div *ngIf="tabIndex == 0">
+      <!-- <label for="selectedSort">Сортировать по</label>
+      <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
+        [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"
+        id="selectedSort">
+      </p-dropdown> -->
+    </div>
+
+    <!-- Таб блоги. -->
+    <div *ngIf="tabIndex == 1">
+      <div>
+        <div>
+            <label for="selectedBlogAction">Действия с блогом</label>
+        </div>
+        
+        <div>
+          <p-dropdown class="block-sort-by" [options]="aBlogActions" optionLabel="name" optionCode="value"
+            name="blogAction" [(ngModel)]="selectedBlogAction" placeholder="Действие с блогом" [showClear]="true" id="selectedBlogAction">
+          </p-dropdown>
+        </div>
+      </div>
+
+      <!-- Создать блог. -->
+      <div *ngIf="selectedBlogAction != null && selectedBlogAction.value == 'CreateBlog'">
+        <div>
+            <div>
+                <label for="selectedBlogTheme" class="mt-3">Список тем блогов</label>
+            </div>
+            
+            <div>
+              <p-dropdown class="block-sort-by" [options]="aBlogThemes" optionLabel="title" optionCode="themeCategoryCode"
+                name="blogAction" [(ngModel)]="selectedBlogCodeTheme" placeholder="Темы блогов" [showClear]="true"
+                (onChange)="onSelectBlogTheme(selectedBlogCodeTheme)" id="selectedBlogTheme">
+              </p-dropdown>
+            </div>
+          </div>
+
+          <div>
+            <label for="titleBlog" class="mt-3">Заголовок блога</label>
+          </div>
+          
+          <div>
+            <input id="titleBlog" type="text" class="" [(ngModel)]="blogTitle">         
+          </div>
+
+          <div>
+            <div>
+                <label for="idFileBlog" class="mt-3">Выберите файл блога</label><br>
+            </div>
+            <div>
+                <input type="file" id="idFileBlog" (change)="uploadFileBlogAsync($event)"> 
+            </div>
+          </div>
+
+          <div>
+            <button pButton type="button" label="Создать блог" class="p-button-outlined mt-3" 
+            (click)="onCreateBlogAsync()"></button>
+          </div>
+      </div>       
+    </div>
+  </p-tabPanel>
 </p-tabView>

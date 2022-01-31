@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ArticleInput } from "src/app/models/blog/article-input";
 import { API_URL } from "../../core/core-urls/api-url";
 import { DialogInput } from "../../models/chat/input/dialog-input";
 import { BreadcrumbInput } from "../../models/header/breadcrumb-input";
@@ -575,4 +576,26 @@ export class CommonDataService {
             throw new Error(e);
         }
     };
+
+    public async onGetBlogsAsync() {
+        try {                                                        
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/blog/get-blogs"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };    
 };

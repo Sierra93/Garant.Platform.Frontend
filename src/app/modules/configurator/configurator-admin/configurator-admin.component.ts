@@ -26,7 +26,8 @@ export class ConfiguratorAdminModule implements OnInit {
     blogFile: any;
     blogTitle: string = "";
     aBlogs: any[] = [];
-    selectedBlog: string = "";
+    oEditBlog: any = {};
+    selectedBlog: any;
     aArticleThemes: any[] = [];
     selectedTheme: any;
     articleTitle: string = "";
@@ -37,6 +38,7 @@ export class ConfiguratorAdminModule implements OnInit {
     signature: string = "";
     selectedBlogId: number = 0;
     shortArticleDescription: string = "";
+    isNew: boolean = false;
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
@@ -203,7 +205,7 @@ export class ConfiguratorAdminModule implements OnInit {
 
     public onSelectBlogTheme(e: any) {
         console.log(e);
-        this.selectedBlogCodeTheme = e.themeCategoryCode;
+        this.selectedBlogCodeTheme = e.themeCategoryCode;        
     };
 
     private async getBlogsAsync() {
@@ -285,14 +287,92 @@ export class ConfiguratorAdminModule implements OnInit {
         }
     };
 
-    public onSelectBlog(e: any) {
+    public async onSelectBlog(e: any, isNew: boolean) {
         console.log("onSelectBlog",e);
         this.selectedBlogId = e.value.blogId;
+        this.isNew = isNew;
+
+        if (!this.isNew) {
+            await this.getEditBlogAsync(this.selectedBlogId);
+        }
     };
 
     public onSelectThemeArticle(e: any) {
         console.log("onSelectThemeArticle",e);
         this.selectedTheme = e.value.themeCode;
         console.log("selectedTheme",this.selectedTheme);
+    };
+
+     /**
+     * Функция получит блог для изменения.
+     * @returns - Данные блога.
+     */
+    private async getEditBlogAsync(blogId: number) {
+        try {
+            if (+this.selectedBlog.blogId > 0 && !this.isNew) {
+                await this.http.get(API_URL.apiUrl.concat("/blog/get-blog?blogId=" + blogId))
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("Блог для изменения: ", response);
+                            this.oEditBlog = response;
+                            // this.selectedBlog.isPaid = response.isPaid;
+                            this.blogTitle = response.title;
+                            // this.selectedBlog.url = response.url;
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }            
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция изменит блог.
+     * @returns - Измененные данные блога.
+     */
+    public async onEditBlogAsync() {
+        try {                                 
+            if (this.selectedBlogCodeTheme == "" || this.blogTitle == "") {
+                return;
+            }
+
+            let blogInput = new BlogInput();
+            blogInput.Title = this.blogTitle;
+            blogInput.ThemeCategoryCode = this.selectedBlogCodeTheme;
+            blogInput.BlogId = this.selectedBlogId;
+            let formData = new FormData();
+
+            formData.append("blogData", JSON.stringify(blogInput));
+            formData.append("images", this.blogFile);
+            
+            if (blogInput.Title != "" && blogInput.ThemeCategoryCode != "") {
+                await this.http.put(API_URL.apiUrl.concat("/blog/update-blog"), formData)
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("Измененный блог: ", response);
+
+                            this.messageService.add({
+                                severity: 'success',
+                                summary: 'Успешно!',
+                                detail: 'Успешно изменено'
+                            });
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
     };
 }

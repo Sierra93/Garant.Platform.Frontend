@@ -73,7 +73,7 @@
 
             <div>
               <p-dropdown class="block-sort-by" [options]="aBlogs" optionLabel="title" optionCode="themeCategoryCode"
-                name="blogAction" [(ngModel)]="selectedBlog" placeholder="Выберите блог" [showClear]="true" (onChange)="onSelectBlog($event)">
+                name="blogAction" [(ngModel)]="selectedBlog" placeholder="Выберите блог" [showClear]="true" (onChange)="onSelectBlog($event, true)">
               </p-dropdown>
             </div>
           </div>
@@ -156,6 +156,57 @@
           (click)="onCreateArticleAsync(selectedBlogId, selectedTheme.themeCode, articleTitle, shortArticleDescription, articleDescription, signature)"></button>
         </div>
       </div>
+
+       <!-- Изменить блог. -->
+       <div *ngIf="selectedBlogAction != null && selectedBlogAction.blogActionSysName == 'ChangeBlog'">
+        <div>
+          <div>
+            <label class="mt-3">Выберите блог для изменения</label>
+          </div>           
+
+          <div>
+            <p-dropdown class="block-sort-by" [options]="aBlogs" optionLabel="title" optionCode="themeCategoryCode"
+              name="blogAction" [(ngModel)]="selectedBlog" placeholder="Выберите блог" [showClear]="true" (onChange)="onSelectBlog($event, false)">
+            </p-dropdown>
+          </div>
+        </div>
+
+        <div>
+          <div>
+              <label for="selectedBlogTheme" class="mt-3">Список тем блогов</label>
+          </div>
+          
+          <div>
+            <p-dropdown class="block-sort-by" [options]="aBlogThemes" optionLabel="title" optionCode="themeCategoryCode"
+              name="blogAction" [(ngModel)]="selectedBlogCodeTheme" placeholder="Выберите тему блога" [showClear]="true"
+              (onChange)="onSelectBlogTheme(selectedBlogCodeTheme)" id="selectedBlogTheme">
+            </p-dropdown>
+          </div>
+        </div>
+
+          <div>
+            <label for="titleBlog" class="mt-3">Заголовок блога</label>
+          </div>
+          
+          <div>
+            <input id="titleBlog" type="text" class="" [(ngModel)]="blogTitle">         
+          </div>
+
+          <div>
+            <div>
+                <label for="idFileBlog" class="mt-3">Выберите файл блога</label><br>
+            </div>
+            <div>
+                <input type="file" id="idFileBlog" (change)="uploadFileBlogAsync($event)"> 
+            </div>
+          </div>
+
+          <div>
+            <button pButton type="button" label="Сохранить изменения" class="p-button-outlined mt-3" 
+            (click)="onEditBlogAsync()"></button>
+          </div>
+      </div>     
+
     </div>
 
   </p-tabPanel>

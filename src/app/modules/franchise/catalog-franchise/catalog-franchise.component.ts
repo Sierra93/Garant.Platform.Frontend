@@ -126,6 +126,7 @@ export class CatalogFranchiseModule implements OnInit {
     };
 
     /**
+      * TODO: вынести в общий сервис.
      * Функция получит список франшиз.
      */
     private async GetFranchisesListAsync() {

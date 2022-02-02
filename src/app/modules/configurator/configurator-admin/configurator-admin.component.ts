@@ -29,6 +29,8 @@ export class ConfiguratorAdminModule implements OnInit {
     aBlogs: any[] = [];
     oEditBlog: any = {};
     selectedBlog: any;
+    selectedFranchise: any;
+    selectedFranchiseId: number = 0;
     aArticleThemes: any[] = [];
     selectedTheme: any;
     articleTitle: string = "";
@@ -95,8 +97,13 @@ export class ConfiguratorAdminModule implements OnInit {
     routeParamSubCategory: any;
     routeParamSubCity: any;
     selectedCardAction: any;
-    isShowCreateFranchise: boolean = false;
-    isShowCreateBusiness: boolean = false;
+    aFranchises: any[] = [];
+    franchiseId: number = 0;
+    franchiseData: any = [];
+    routeParam: any;
+    aInvestInclude: any = [];
+    aFinIndicators: any[] = [];
+    aFranchisePhotos: any[] = [];
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
@@ -111,6 +118,11 @@ export class ConfiguratorAdminModule implements OnInit {
             {
                 cardActionSysName: "CreateBusiness",
                 cardActionName: "Создать бизнес"
+            },
+
+            {
+                cardActionSysName: "ChangeFranchise",
+                cardActionName: "Изменить франшизу"
             }
         ];
 
@@ -822,18 +834,245 @@ export class ConfiguratorAdminModule implements OnInit {
     //     }
     // };
 
-    public onSelectCardAction(cardAction: any, e: any) {
+    public async onSelectCardAction(cardAction: any) {
         console.log("cardAction", cardAction);
         this.selectedCardAction = cardAction.cardActionSysName;
 
-        if (this.selectedCardAction == "CreateFranchise") {
-            this.isShowCreateFranchise = true;
-            this.isShowCreateBusiness = false;
+        if (this.selectedCardAction == "ChangeFranchise") {
+            await this.GetFranchisesListAsync();
+        }
+    };
+
+    /**
+     * TODO: вынести в общий сервис.
+     * Функция получит список франшиз.
+     */
+     private async GetFranchisesListAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/franchise/catalog-franchise"), {})
+                .subscribe({
+                    next: (response: any) => {                        
+                        this.aFranchises = response;
+                        console.log("Список франшиз:", response);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
         }
 
-        if (this.selectedCardAction == "CreateBusiness") {
-            this.isShowCreateFranchise = false;
-            this.isShowCreateBusiness = true;
+        catch (e: any) {
+            throw new Error(e);
         }
+    };
+
+    public async onSelectFranchise(e: any, isNew: boolean) {
+        console.log("onSelectFranchise",e);
+        this.selectedFranchiseId = e.value.franchiseId;
+        this.isNew = isNew;
+
+        if (!this.isNew) {
+            await this.getEditFranchiseAsync(this.selectedFranchiseId);
+        }
+    };
+
+    /**
+     * Функция получит франшизу для изменения.
+     * @returns - Данные франшизы.
+     */
+     private async getEditFranchiseAsync(franchiseId: number) {
+        try {
+            if (+this.selectedFranchise.franchiseId > 0 && !this.isNew) {
+                await this.http.get(API_URL.apiUrl.concat("/configurator/get-franchise?franchiseId=" + franchiseId))
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("Франшиза для изменения: ", response);
+                            console.log("Полученная франшиза:", response);
+                            this.franchiseData = response;     
+                            console.log("franchiseData", this.franchiseData);     
+                            
+                            this.aInvestInclude = [JSON.parse(response.investInclude)];
+                            this.aFinIndicators = [JSON.parse(response.finIndicators)];
+                            this.aPacks = [JSON.parse(response.franchisePacks)];
+    
+                            console.log("aInvestInclude", this.aInvestInclude);
+                            console.log("aFinIndicators", this.aFinIndicators);
+                            console.log("aPacks", this.aPacks);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }            
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+     /**
+     * Функция изменит франшизу.
+     * @returns - Данные созданной франшизы.
+     */
+      public async onEditFranchiseAsync() {
+        console.log("onEditFranchiseAsync");    
+        console.log("log franchiseData", this.franchiseData);
+        let newFranchiseData = this.franchiseData;
+
+        try {
+            let createUpdateFranchiseInput = new CreateUpdateFranchiseInput();            
+            let logoName = this.logoName;
+            // let logoFormData = this.fileLogoFormData;
+            let franchiseFiles = this.franchisePhotos;
+            let lead = this.lead;
+            let generalInvest = this.generalInvest;
+            let royalty = this.royalty;
+            let payback = this.payback;
+            let profitMonth = this.profitMonth;
+            let launchDate = this.launchDate;
+            let activityDetail = this.activityDetail;
+            let priceInvest = this.priceInvest;
+            let nameInvest = this.nameInvest;
+            let baseDate = this.baseDate;
+            let yearStart = this.yearStart;
+            let dotCount = this.dotCount;
+            let businessCount = this.businessCount;
+            let featureFranchise = this.featureFranchise;
+            let defailsFranchise = this.defailsFranchise;
+            let paymentDetails = this.paymentDetails;
+            let namesIndicators = this.namesIndicators;
+            let finIndicator1 = this.finIndicator1;
+            let finIndicator2 = this.finIndicator2;
+            let finIndicator3 = this.finIndicator3;
+            let finIndicator4 = this.finIndicator4;
+            let percentFinancial1 = this.percentFinancial1;
+            let percentFinancial2 = this.percentFinancial2;
+            let percentFinancial3 = this.percentFinancial3;
+            let percentFinancial4 = this.percentFinancial4;
+            let educationDetails = this.educationDetails;
+            // let fileEducationFormData = this.fileEducationFormData;
+            let packName = this.packName;
+            let packDetails = this.packDetails;
+            let packLumpSumPayment = this.packLumpSumPayment;
+            let totalInvest = this.totalInvest;
+            let videoLink = this.videoLink;
+            let isGarant = this.isGarant || false;
+
+            // Формирование json входит в инвестиции.
+             // TODO: переделать на динамическое кол-во блоков.
+            let investInJson = {
+                Name: nameInvest,
+                Price: priceInvest
+            };
+
+            // Формирование json фин.индикаторов.
+            let namesIndicatorsJson = [
+                {
+                    Name: finIndicator1,
+                    Price: percentFinancial1
+                },
+
+                {
+                    Name: finIndicator2,
+                    Price: percentFinancial2
+                },
+
+                {
+                    Name: finIndicator3,
+                    Price: percentFinancial3
+                },
+
+                {
+                    Name: finIndicator4,
+                    Price: percentFinancial4
+                }
+            ];
+
+            // Формирование json пакетов.
+            // TODO: переделать на динамическое кол-во блоков с пакетами.
+            let packetJson = [
+                {
+                    Name: packName,
+                    Text: packDetails,
+                    LumpSumPayment: packLumpSumPayment,
+                    Royalty: this.royaltyPack,
+                    TotalInvest: totalInvest
+                }
+            ];
+
+            let investInJsonString = JSON.stringify(investInJson);
+            let namesIndicatorsJsonString = JSON.stringify(namesIndicatorsJson);
+            let packetJsonString = JSON.stringify(packetJson);
+
+            // createUpdateFranchiseInput.fileLogo = logoFormData;;
+            // createUpdateFranchiseInput.franchisePhoto = franchiseFiles;
+            createUpdateFranchiseInput.Status = newFranchiseData.status;
+            createUpdateFranchiseInput.GeneralInvest = newFranchiseData.generalInvest;
+            createUpdateFranchiseInput.LumpSumPayment = newFranchiseData.lumpSumPayment;
+            createUpdateFranchiseInput.Royalty = newFranchiseData.royalty;
+            createUpdateFranchiseInput.Payback = newFranchiseData.payback;
+            createUpdateFranchiseInput.ProfitMonth = newFranchiseData.profitMonth;
+            createUpdateFranchiseInput.LaunchDate = newFranchiseData.launchDate;
+            createUpdateFranchiseInput.ActivityDetail = newFranchiseData.activityDetail;            
+            createUpdateFranchiseInput.BaseDate = newFranchiseData.baseDate;
+            createUpdateFranchiseInput.YearStart = newFranchiseData.yearStart;
+            createUpdateFranchiseInput.DotCount = newFranchiseData.dotCount;
+            createUpdateFranchiseInput.BusinessCount = newFranchiseData.businessCount;
+            createUpdateFranchiseInput.Peculiarity = newFranchiseData.peculiarity;
+            createUpdateFranchiseInput.Text = newFranchiseData.text;
+            createUpdateFranchiseInput.PaymentDetail = newFranchiseData.paymentDetail;
+            // createUpdateFranchiseInput.trainingPhoto = fileEducationFormData;
+            createUpdateFranchiseInput.UrlVideo = newFranchiseData.urlVideo;
+            createUpdateFranchiseInput.IsGarant = newFranchiseData.isGarant ?? false;
+            createUpdateFranchiseInput.InvestInclude = JSON.stringify(this.aInvestInclude);;
+            createUpdateFranchiseInput.FinIndicators = JSON.stringify(this.aFinIndicators);
+            createUpdateFranchiseInput.NameFinIndicators = newFranchiseData.nameFinIndicators;
+            createUpdateFranchiseInput.FranchisePacks = JSON.stringify(this.aPacks);
+            createUpdateFranchiseInput.IsNew = false;
+            createUpdateFranchiseInput.Title = newFranchiseData.title;
+            createUpdateFranchiseInput.TrainingDetails = newFranchiseData.trainingDetails;            
+            createUpdateFranchiseInput.Category = newFranchiseData.category;
+            createUpdateFranchiseInput.SubCategory = newFranchiseData.subCategory;
+
+            let sendFormData = new FormData();
+            sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));
+            sendFormData.append("filesLogo", this.fileLogoFormData);
+            sendFormData.append("urlsDetails", this.franchisePhotos);
+            sendFormData.append("trainingPhoto", this.fileEducationFormData);
+            sendFormData.append("finModelFile", this.modelFile);
+            sendFormData.append("presentFile", this.presentFile);
+            sendFormData.append("franchiseFile", this.presentFile);
+
+            await this.http.post(API_URL.apiUrl.concat("/franchise/create-update-franchise"), sendFormData)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Франшиза успешно изменена:", response);
+                        this.showMessageAfterSuccessEditFranchise();
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {           
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция покажет сообщение об успешном изменении франшизы.
+     */
+     private showMessageAfterSuccessEditFranchise() {
+        this.messageService.add({
+            severity: 'success',
+            summary: 'Успешно!',
+            detail: 'Франшиза успешно изменена'
+        });
     };
 }

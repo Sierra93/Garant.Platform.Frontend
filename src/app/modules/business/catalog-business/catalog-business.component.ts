@@ -160,6 +160,7 @@ export class CatalogBusinessModule implements OnInit {
     // };  
 
     /**
+     * TODO: Вынести в общий сервис.    
      * Функция получит список бизнеса.
      */
     private async GetBusinessListAsync() {

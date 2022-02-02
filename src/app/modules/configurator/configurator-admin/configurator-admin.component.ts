@@ -35,7 +35,9 @@ export class ConfiguratorAdminModule implements OnInit {
     oEditBlog: any = {};
     selectedBlog: any;
     selectedFranchise: any;
+    selectedBusiness: any;
     selectedFranchiseId: number = 0;
+    selectedBusinessId: number = 0;
     aArticleThemes: any[] = [];
     selectedTheme: any;
     articleTitle: string = "";
@@ -103,6 +105,7 @@ export class ConfiguratorAdminModule implements OnInit {
     routeParamSubCity: any;
     selectedCardAction: any;
     aFranchises: any[] = [];
+    aBusinessList: any[] = [];
     franchiseId: number = 0;
     franchiseData: any = [];
     routeParam: any;
@@ -151,6 +154,9 @@ export class ConfiguratorAdminModule implements OnInit {
     profitPrice!: AbstractControl;
     profitability!: AbstractControl;
     businessAge!: AbstractControl;
+    businessId: number = 0;
+    businessData: any = [];
+    aBusinessPhotos: any = [];
 
     private finData: FinData = new FinData('', '', '', '', '', '');
 
@@ -173,6 +179,11 @@ export class ConfiguratorAdminModule implements OnInit {
             {
                 cardActionSysName: "ChangeFranchise",
                 cardActionName: "Изменить франшизу"
+            },
+
+            {
+                cardActionSysName: "ChangeBusiness",
+                cardActionName: "Изменить бизнес"
             }
         ];
 
@@ -220,6 +231,11 @@ export class ConfiguratorAdminModule implements OnInit {
         await this.loadMenuItemsAsync();      
         // await this.getUserFio();  
         this.buildForm();
+    };
+
+    public ngOnAfterViewInit() {
+        this.aBusinessPhotos = this.aNamesBusinessPhotos;
+        console.log("aBusinessPhotos",this.aBusinessPhotos);
     };
 
     /**
@@ -890,7 +906,11 @@ export class ConfiguratorAdminModule implements OnInit {
         this.selectedCardAction = cardAction.cardActionSysName;
 
         if (this.selectedCardAction == "ChangeFranchise") {
-            await this.GetFranchisesListAsync();
+            await this.getFranchisesListAsync();
+        }
+
+        if (this.selectedCardAction == "ChangeBusiness") {
+            await this.getBusinessListAsync();
         }
     };
 
@@ -898,13 +918,37 @@ export class ConfiguratorAdminModule implements OnInit {
      * TODO: вынести в общий сервис.
      * Функция получит список франшиз.
      */
-     private async GetFranchisesListAsync() {
+     private async getFranchisesListAsync() {
         try {
             await this.http.post(API_URL.apiUrl.concat("/franchise/catalog-franchise"), {})
                 .subscribe({
                     next: (response: any) => {                        
                         this.aFranchises = response;
                         console.log("Список франшиз:", response);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * TODO: Вынести в общий сервис.    
+     * Функция получит список бизнеса.
+     */
+     private async getBusinessListAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/business/catalog-business"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Список бизнеса:", response);
+                        this.aBusinessList = response;
                     },
 
                     error: (err) => {
@@ -925,6 +969,16 @@ export class ConfiguratorAdminModule implements OnInit {
 
         if (!this.isNew) {
             await this.getEditFranchiseAsync(this.selectedFranchiseId);
+        }
+    };
+
+    public async onSelectBusiness(e: any, isNew: boolean) {
+        console.log("onSelectBusiness",e);
+        this.selectedBusinessId = e.value.businessId;
+        this.isNew = isNew;
+
+        if (!this.isNew) {
+            await this.getEditBusinessAsync(this.selectedBusinessId);
         }
     };
 
@@ -1405,4 +1459,141 @@ export class ConfiguratorAdminModule implements OnInit {
   
           console.log("aPriceIn", this.aPriceIn);
       };     
+
+      /**
+     * Функция получит данные бизнеса, которые нужно изменить.
+     * @returns - данные бизнеса.
+     */
+     private async getEditBusinessAsync(businessId: number) {
+        try {                     
+            console.log("getEditBusinessAsync");        
+
+            await this.http.get(API_URL.apiUrl.concat("/configurator/get-business?businessId=" + businessId))
+                .subscribe({
+                    next: (response: any) => {                        
+                        this.businessData = response;                                                    
+                        this.aPriceIn = JSON.parse(response.investPrice);                                                
+
+                        // Запишет пути изображений бизнеса.
+                        // this.businessData.forEach((item: any) => {
+                        //     this.aNamesBusinessPhotos = item.urlsBusiness;
+                        // });
+
+                        // this.businessData.urlsBusiness.forEach((item: any) => {
+                        //     this.aNamesBusinessPhotos = item.urlsBusiness;
+                        // });
+
+                        console.log("Полученный бизнес:", response);
+                        console.log("businessData", this.businessData);      
+                        console.log("aPriceIn", this.aPriceIn);
+                        console.log("aBusinessPhotos", this.aNamesBusinessPhotos);
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция изменит бизнес.
+     * @returns - Данные бизнеса.
+     */
+    public async onEditBusinessAsync() {
+        console.log("onEditBusinessAsync");    
+
+        try {
+            let createUpdateBusinessInput = new CreateUpdateBusinessInput();        
+            let newBusinessData = this.businessData;    
+            let lead = newBusinessData.status;
+            let payback = newBusinessData.payback;
+            let profitability = newBusinessData.profitability;
+            let activityDetail = newBusinessData.activityDetail;
+            let defailsFranchise = newBusinessData.defailsFranchise;
+            let priceIn = newBusinessData.priceIn;
+            let videoLink = newBusinessData.urlVideo;
+            let isGarant = newBusinessData.isGarant || false;       
+            let peculiarity = newBusinessData.peculiarity;   
+            let businessName = newBusinessData.businessName;        
+            let price = +newBusinessData.price;               
+            let turnPrice = newBusinessData.turnPrice;
+            let profitPrice = newBusinessData.profitPrice;
+            let businessAge = newBusinessData.businessAge;
+            let employeeYearCount = newBusinessData.employeeCountYear;
+            let form = newBusinessData.form;
+            let share = newBusinessData.share;
+            let site = newBusinessData.site;
+            let text = newBusinessData.text;
+            let assets = newBusinessData.assets;
+            let reasonsSale = newBusinessData.reasonsSale;
+            let address = newBusinessData.address;
+            // let aPriceInData = JSON.parse(this.aPriceIn);
+            let aNamesBusinessPhotos = this.aNamesBusinessPhotos;
+
+            // Уберет флаги видимости.
+            let newPriceInJson = this.aPriceIn.map((item: any) => ({
+                Price: item.Price,
+                Name: item.Name
+            }));
+
+            let priceInJson = JSON.stringify(newPriceInJson);
+
+            createUpdateBusinessInput.Status = lead;
+            createUpdateBusinessInput.Payback = payback;
+            createUpdateBusinessInput.ActivityDetail = activityDetail;            
+            createUpdateBusinessInput.Peculiarity = peculiarity;
+            createUpdateBusinessInput.Text = defailsFranchise;
+            createUpdateBusinessInput.UrlVideo = videoLink;
+            createUpdateBusinessInput.IsGarant = isGarant;
+            createUpdateBusinessInput.IsNew = false;
+            createUpdateBusinessInput.BusinessName = businessName;
+            createUpdateBusinessInput.Price = price;
+            createUpdateBusinessInput.TurnPrice = turnPrice;
+            createUpdateBusinessInput.ProfitPrice = profitPrice;
+            createUpdateBusinessInput.Profitability = profitability;
+            createUpdateBusinessInput.BusinessAge = businessAge;
+            createUpdateBusinessInput.EmployeeCountYear = employeeYearCount;
+            createUpdateBusinessInput.Form = form;
+            createUpdateBusinessInput.Share = share;
+            createUpdateBusinessInput.Site = site;
+            createUpdateBusinessInput.Text = text;
+            createUpdateBusinessInput.Assets = assets;
+            createUpdateBusinessInput.ReasonsSale = reasonsSale;
+            createUpdateBusinessInput.Address = address;
+            createUpdateBusinessInput.InvestPrice = priceInJson;            
+            createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;        
+            createUpdateBusinessInput.Category = newBusinessData.category;
+            createUpdateBusinessInput.SubCategory = newBusinessData.subCategory; 
+
+            let sendFormData = new FormData();
+            sendFormData.append("businessDataInput", JSON.stringify(createUpdateBusinessInput));
+            sendFormData.append("filesAssets", this.filesAssets);
+            sendFormData.append("filesReasonsSale", this.filesReasonsSale);
+            sendFormData.append("finModelFile", this.modelFile);
+            sendFormData.append("filesTextBusiness", this.filesTextBusiness);
+
+            await this.http.post(API_URL.apiUrl.concat("/business/create-update-business"), sendFormData)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Бизнес успешно изменен:", response);
+                        this.showMessageAfterSuccessCreateBusiness();
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {           
+            throw new Error(e);
+        }
+    };
 }

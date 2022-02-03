@@ -5,6 +5,7 @@ import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { ArticleInput } from "src/app/models/blog/article-input";
 import { BlogInput } from "src/app/models/blog/blog-input";
+import { NewsInput } from "src/app/models/blog/news-input";
 import { CreateUpdateBusinessInput } from "src/app/models/business/input/business-create-update-input";
 import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franchise-create-update-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
@@ -26,6 +27,7 @@ export class ConfiguratorAdminModule implements OnInit {
     aMenuList: any[] = [];
     tabIndex: number = 0;
     selectedBlogAction: any;
+    selectedNewsAction: any;
     aBlogActions: any[] = [];
     aBlogThemes: any[] = [];
     selectedBlogCodeTheme: string = "";
@@ -160,10 +162,17 @@ export class ConfiguratorAdminModule implements OnInit {
     aBusinessPhotos: any = [];
     selectedBlogArticleId: any;
     isEditArticle: boolean = false;
-
-    private finData: FinData = new FinData('', '', '', '', '', '');
+    finData: FinData = new FinData('', '', '', '', '', '');
     aBlogArticles: any[] = [];
     selectedBlogArticle: any;
+    aNewsActions: any[] = [];
+    newsFile: any;
+    newsTitle: string = "";
+    typeNews: any;
+    textNews: string = "";
+    oNews: any = {};
+    selectedNews: any;
+    aNews: any[] = [];
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
@@ -189,6 +198,18 @@ export class ConfiguratorAdminModule implements OnInit {
             {
                 cardActionSysName: "ChangeBusiness",
                 cardActionName: "Изменить бизнес"
+            }
+        ];
+
+        this.aNewsActions = [
+            {
+                newsActionSysName: "CreateNews",
+                newsActionName: "Создать новость"
+            },
+
+            {
+                newsActionSysName: "ChangeNews",
+                newsActionName: "Изменить новость"
             }
         ];
 
@@ -369,6 +390,10 @@ export class ConfiguratorAdminModule implements OnInit {
         this.tabIndex = e.index;
 
         switch (this.tabIndex) {
+            case 0:
+                await this.getNewsAsync();
+                break;
+
             case 1:
                 await this.loadBlogActions();
                 await this.getBlogThemesAsync();
@@ -378,19 +403,25 @@ export class ConfiguratorAdminModule implements OnInit {
         }
     };
 
-    public async uploadFileBlogAsync(e: any) {
+    public uploadFileBlogAsync(e: any) {
         console.log("uploadFileBlogAsync");
         this.blogFile = e.target.files[0];
         console.log("blogFile",this.blogFile);
     };
 
-    public async uploadFilePreviewAsync(e: any) {
+    public uploadFileNewsAsync(e: any) {
+        console.log("uploadFileNewsAsync");
+        this.newsFile = e.target.files[0];
+        console.log("newsFile",this.newsFile);
+    };
+
+    public uploadFilePreviewAsync(e: any) {
         console.log("uploadFilePreviewAsync");
         this.previewFile = e.target.files[0];
         console.log("previewFile",this.previewFile);
     };
 
-    public async uploadFileArticleAsync(e: any) {
+    public uploadFileArticleAsync(e: any) {
         console.log("uploadFilePreviewAsync");
         this.articleFile = e.target.files[0];
         console.log("articleFile",this.articleFile);
@@ -510,6 +541,16 @@ export class ConfiguratorAdminModule implements OnInit {
         console.log("onSelectThemeArticle",e);
         this.selectedTheme = e.value.themeCode;
         console.log("selectedTheme",this.selectedTheme);
+    };
+
+    public async onSelectNews(e: any, isNew: boolean) {
+        this.selectedNews = e.value.newsId;
+        console.log("selectedNews",e);
+        this.selectedNews = e.value.newsId;
+
+        if (!isNew) {
+            await this.getEditNewsAsync(this.selectedNews);
+        }
     };
 
      /**
@@ -1694,6 +1735,83 @@ export class ConfiguratorAdminModule implements OnInit {
                         throw new Error(err);
                     }
                 });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onCreateNewsAsync() {
+        try {
+            let newsInput = new NewsInput();
+            let formData = new FormData();
+            newsInput.Title = this.newsTitle;
+            newsInput.Text = this.textNews;
+            newsInput.Type = this.typeNews;
+
+            formData.append("images", this.newsFile);
+            formData.append("newsData", JSON.stringify(newsInput));
+
+            await this.http.post(API_URL.apiUrl.concat("/blog/create-new"), formData)
+                .subscribe({
+                    next: (response: any) => {                        
+                        console.log("Созданая новость",response);
+                        this.oNews = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    private async getEditNewsAsync(newsId: number) {
+        try {
+            if (this.selectedNews > 0 && !this.isNew) {
+                await this.http.get(API_URL.apiUrl.concat("/blog/get-new?newsId=" + newsId))
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("Новость для изменения: ", response);
+                            this.newsTitle = response.title;
+                            this.typeNews = response.type;
+                            this.textNews = response.text;
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }            
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onEditNewsAsync() {
+
+    };
+
+    private async getNewsAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/blog/get-news"), {})
+            .subscribe({
+                next: (response: any) => {
+                    console.log("Список новостей: ", response);
+                    this.aNews = response;
+                },
+
+                error: (err) => {
+                    throw new Error(err);
+                }
+            });          
         }
 
         catch (e: any) {

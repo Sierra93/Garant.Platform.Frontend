@@ -157,8 +157,12 @@ export class ConfiguratorAdminModule implements OnInit {
     businessId: number = 0;
     businessData: any = [];
     aBusinessPhotos: any = [];
+    selectedBlogArticleId: any;
+    isEditArticle: boolean = false;
 
     private finData: FinData = new FinData('', '', '', '', '', '');
+    aBlogArticles: any[] = [];
+    selectedBlogArticle: any;
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
@@ -475,14 +479,28 @@ export class ConfiguratorAdminModule implements OnInit {
         }
     };
 
-    public async onSelectBlog(e: any, isNew: boolean) {
+    public async onSelectBlog(e: any, isNew: boolean, isEditArticle: boolean) {
         console.log("onSelectBlog",e);
         this.selectedBlogId = e.value.blogId;
         this.isNew = isNew;
 
-        if (!this.isNew) {
+        if (!this.isNew && !isEditArticle) {
             await this.getEditBlogAsync(this.selectedBlogId);
+        }         
+
+        if (isEditArticle) {
+            await this.getBlogArticlesAsync(this.selectedBlogId);
         }
+    };
+
+    public async onSelectBlogArticle(e: any, isNew: boolean) {
+        // await this.getEditBlogArticleAsync(this.selectedBlogArticleId);
+        this.selectedBlogArticleId = e.value.articleId;
+
+        // if (!isNew) {
+        //     // this.selectedBlogId
+        //     await this.getEditBlogArticleAsync();
+        // }
     };
 
     public onSelectThemeArticle(e: any) {
@@ -1593,6 +1611,88 @@ export class ConfiguratorAdminModule implements OnInit {
         }
 
         catch (e: any) {           
+            throw new Error(e);
+        }
+    };
+
+    private async getEditBlogArticleAsync(articleId: number) {
+        try {
+            if (+this.selectedBlogArticleId.articleId > 0 && !this.isNew && this.isEditArticle) {
+                await this.http.get(API_URL.apiUrl.concat("/blog/get-blog-articles?articleId=" + articleId))
+                    .subscribe({
+                        next: (response: any) => {
+                            console.log("Статья для изменения: ", response);
+                            this.oEditBlog = response;
+                            // this.selectedBlog.isPaid = response.isPaid;
+                            this.blogTitle = response.title;
+                            // this.selectedBlog.url = response.url;
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            }            
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onEditArticleAsync(selectedBlogId: number, selectedTheme: any, articleTitle: string, shortArticleDescription: string, articleDescription: string, signature: string) {
+        try {
+            let formData = new FormData();
+            formData.append("previewFile", this.previewFile);
+            formData.append("articleFile", this.articleFile);
+
+            let articleInput = new ArticleInput();
+            articleInput.Title = articleTitle;
+            articleInput.BlogId = selectedBlogId;
+            articleInput.ThemeCode = this.selectedTheme;
+            articleInput.Description = shortArticleDescription;
+            articleInput.Text = articleDescription;
+            articleInput.SignatureText = signature;
+
+            formData.append("articleData", JSON.stringify(articleInput));         
+
+            await this.http.post(API_URL.apiUrl.concat("/blog/update-article"), formData)
+                .subscribe({
+                    next: (response: any) => {                        
+                        console.log(response);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    // TODO: вынести в общий сервис.
+    private async getBlogArticlesAsync(blogId: number) {
+        try {
+            let articleInput = new ArticleInput();
+            articleInput.BlogId = blogId;
+
+            await this.http.post(API_URL.apiUrl.concat("/blog/get-blog-articles"), articleInput)
+                .subscribe({
+                    next: (response: any) => {                        
+                        console.log("aBlogArticles",response);
+                        this.aBlogArticles = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
             throw new Error(e);
         }
     };

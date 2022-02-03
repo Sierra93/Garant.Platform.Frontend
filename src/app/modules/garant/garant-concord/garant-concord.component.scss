@@ -5,10 +5,13 @@
 // @import "/src/app/modules/garant/garant-init/garant-init.component.scss";
 // @import "/src/app/modules/profile/profile-my-data/profile-my-data.component.scss";
 
-@import "/src/app/app.component.scss";
-@import "/src/app/shared/styles/body-margins.scss";
-@import "/src/app/shared/styles/media-quaries.scss";
-@import "/src/app/shared/styles/common.scss";
+@use "/src/app/app.component.scss";
+// @import "/src/app/shared/styles/body-margins.scss";
+// @import "/src/app/shared/styles/media-quaries.scss";
+// @import "/src/app/shared/styles/common.scss";
+
+@use "../../../../app/shared/styles" as *;
+@use "../../../../app/shared/styles/base" as *;
 
 // .block-chat{
 //     background: rgba(218, 218, 218, 0.15);

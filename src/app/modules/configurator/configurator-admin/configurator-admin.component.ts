@@ -33,6 +33,7 @@ export class ConfiguratorAdminModule implements OnInit {
     blogTitle: string = "";
     aBlogs: any[] = [];
     oEditBlog: any = {};
+    oEditArticle: any = {};
     selectedBlog: any;
     selectedFranchise: any;
     selectedBusiness: any;
@@ -496,11 +497,13 @@ export class ConfiguratorAdminModule implements OnInit {
     public async onSelectBlogArticle(e: any, isNew: boolean) {
         // await this.getEditBlogArticleAsync(this.selectedBlogArticleId);
         this.selectedBlogArticleId = e.value.articleId;
+        console.log("onSelectBlogArticle",e);
+        this.selectedBlogArticleId = e.value.articleId;
 
-        // if (!isNew) {
-        //     // this.selectedBlogId
-        //     await this.getEditBlogArticleAsync();
-        // }
+        if (!isNew) {
+            // this.selectedBlogId
+            await this.getEditBlogArticleAsync(this.selectedBlogArticleId);
+        }
     };
 
     public onSelectThemeArticle(e: any) {
@@ -520,7 +523,7 @@ export class ConfiguratorAdminModule implements OnInit {
                     .subscribe({
                         next: (response: any) => {
                             console.log("Блог для изменения: ", response);
-                            this.oEditBlog = response;
+                            // this.oEditBlog = response;
                             // this.selectedBlog.isPaid = response.isPaid;
                             this.blogTitle = response.title;
                             // this.selectedBlog.url = response.url;
@@ -1617,15 +1620,16 @@ export class ConfiguratorAdminModule implements OnInit {
 
     private async getEditBlogArticleAsync(articleId: number) {
         try {
-            if (+this.selectedBlogArticleId.articleId > 0 && !this.isNew && this.isEditArticle) {
-                await this.http.get(API_URL.apiUrl.concat("/blog/get-blog-articles?articleId=" + articleId))
+            if (+this.selectedBlogArticleId > 0 && !this.isNew) {
+                await this.http.get(API_URL.apiUrl.concat("/blog/get-article?articleId=" + articleId))
                     .subscribe({
                         next: (response: any) => {
                             console.log("Статья для изменения: ", response);
-                            this.oEditBlog = response;
-                            // this.selectedBlog.isPaid = response.isPaid;
-                            this.blogTitle = response.title;
-                            // this.selectedBlog.url = response.url;
+                            this.oEditArticle = response;
+                            this.articleTitle = response.title;
+                            this.shortArticleDescription = response.description;
+                            this.articleDescription = response.text;
+                            this.signature = response.signatureText;
                         },
 
                         error: (err) => {

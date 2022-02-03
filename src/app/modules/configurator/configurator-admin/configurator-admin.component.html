@@ -197,7 +197,7 @@
             <div>
               <p-dropdown class="block-sort-by" [options]="aBlogArticles" optionLabel="title" optionCode="themeCategoryCode"
                 name="blogAction" [(ngModel)]="selectedBlogArticle" placeholder="Выберите статью блога" [showClear]="true"
-                (onChange)="onSelectBlogArticle($event, true)">
+                (onChange)="onSelectBlogArticle($event, false)">
               </p-dropdown>
             </div>
           </div>

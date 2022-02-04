@@ -760,6 +760,8 @@ export class ConfiguratorAdminModule implements OnInit {
             createUpdateFranchiseInput.Category = this.routeParamCategory;
             createUpdateFranchiseInput.SubCategory = this.routeParamSubCategory;
             createUpdateFranchiseInput.UrlsFranchise = this.aNamesFranchisePhotos;
+            createUpdateFranchiseInput.Category = "Тестовая категория";
+            createUpdateFranchiseInput.SubCategory = "Тестовая подкатегория";
 
             let sendFormData = new FormData();
             sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));

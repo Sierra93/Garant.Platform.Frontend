@@ -455,17 +455,6 @@
       </div>
 
       <section id="create-franchise" *ngIf="selectedCardAction == 'CreateFranchise'">
-        <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>  
-  <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
   <h5 class="title-name-logo">Название и логотип*</h5>
 
@@ -899,10 +888,6 @@
     <button class="control-button-blue" (click)="onCreateFranchiseAsync()">Оплатить размещение и опубликовать</button>
   </div>
 </div>
-
-</body>
-
-</html>
       </section>
        
 
@@ -931,10 +916,10 @@
             <div class="col-2">
               <div class="file-input-wrapper">
                 <label class="form-label">Логотип</label>
-                <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" class="d-none" />
-                <div class="franchise-logo">
+                <input type="file" (change)="uploadFranchiseLogoAsync($event)" />
+                <!-- <div class="franchise-logo">
                   <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -1304,10 +1289,10 @@
 
               <div class="upload-file-education">
                 <label>Добавить фотографию</label>
-                <input type="file" (change)="uploadEducationPhotosAsync($event)" class="d-none" />
-                <div>
+                <input type="file" (change)="uploadEducationPhotosAsync($event)" />
+                <!-- <div>
                   <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
-                </div>
+                </div> -->
               </div>
             </div>
 

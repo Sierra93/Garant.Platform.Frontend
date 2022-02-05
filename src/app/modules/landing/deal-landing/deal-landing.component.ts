@@ -402,7 +402,7 @@ export class DealLandingModule implements OnInit {
    */
    private async GetNewsTopAsync() {
       try {
-          await this.http.post(API_URL.apiUrl.concat("/blog/main-news"), {})
+          await this.http.post(API_URL.apiUrl.concat("/blog/get-news"), {})
               .subscribe({
                   next: (response: any) => {
                       console.log("Список новостей:", response);

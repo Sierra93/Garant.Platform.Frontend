@@ -774,7 +774,7 @@ export class ConfiguratorAdminModule implements OnInit {
             let sendFormData = new FormData();
             sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));
             sendFormData.append("filesLogo", this.fileLogoFormData);
-            sendFormData.append("urlsDetails", this.franchisePhotos);
+            // sendFormData.append("urlsDetails", this.franchisePhotos);
             sendFormData.append("trainingPhoto", this.fileEducationFormData);
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("presentFile", this.presentFile);
@@ -788,7 +788,6 @@ export class ConfiguratorAdminModule implements OnInit {
                     },
 
                     error: (err) => {
-                        this.commonService.routeToStart(err);
                         throw new Error(err);
                     }
                 });
@@ -803,9 +802,9 @@ export class ConfiguratorAdminModule implements OnInit {
      * Функция добавит файл лого франшизы.
      */
     public uploadFranchiseLogoAsync(event: any) {
-        event.stopPropagation();
-        console.log("uploadFranchiseLogoAsync");
+        event.stopPropagation();        
         this.fileLogoFormData = event.target.files[0];
+        console.log("uploadFranchiseLogoAsync", this.fileLogoFormData);
     };
 
     /**
@@ -1213,17 +1212,19 @@ export class ConfiguratorAdminModule implements OnInit {
             createUpdateFranchiseInput.TrainingDetails = newFranchiseData.trainingDetails;            
             createUpdateFranchiseInput.Category = newFranchiseData.category;
             createUpdateFranchiseInput.SubCategory = newFranchiseData.subCategory;
+            createUpdateFranchiseInput.FranchiseId = this.franchiseData.franchiseId;   
+            createUpdateFranchiseInput.UrlsFranchise = this.aNamesFranchisePhotos;    
 
             let sendFormData = new FormData();
             sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));
             sendFormData.append("filesLogo", this.fileLogoFormData);
-            sendFormData.append("urlsDetails", this.franchisePhotos);
+            // sendFormData.append("urlsDetails", this.franchisePhotos);
             sendFormData.append("trainingPhoto", this.fileEducationFormData);
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("presentFile", this.presentFile);
             sendFormData.append("franchiseFile", this.presentFile);
 
-            await this.http.post(API_URL.apiUrl.concat("/franchise/create-update-franchise"), sendFormData)
+            await this.http.post(API_URL.apiUrl.concat("/configurator/create-update-franchise"), sendFormData)
                 .subscribe({
                     next: (response: any) => {
                         console.log("Франшиза успешно изменена:", response);
@@ -1231,7 +1232,6 @@ export class ConfiguratorAdminModule implements OnInit {
                     },
 
                     error: (err) => {
-                        this.commonService.routeToStart(err);
                         throw new Error(err);
                     }
                 });
@@ -1316,7 +1316,7 @@ export class ConfiguratorAdminModule implements OnInit {
                   formData.append('files', fileList[i]); 
               }           
   
-              await this.http.post(API_URL.apiUrl.concat("/business/temp-file"), formData)
+              await this.http.post(API_URL.apiUrl.concat("/configurator/temp-file"), formData)
                   .subscribe({
                       next: (response: any) => {
                           console.log("Загруженные файлы бизнеса:", response);
@@ -1412,7 +1412,7 @@ export class ConfiguratorAdminModule implements OnInit {
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("filesTextBusiness", this.filesTextBusiness);
   
-              await this.http.post(API_URL.apiUrl.concat("/business/create-update-business"), sendFormData)
+              await this.http.post(API_URL.apiUrl.concat("/configurator/create-update-business"), sendFormData)
                   .subscribe({
                       next: (response: any) => {
                           console.log("Бизнес успешно создан:", response);
@@ -1420,7 +1420,6 @@ export class ConfiguratorAdminModule implements OnInit {
                       },
   
                       error: (err) => {
-                          this.commonService.routeToStart(err);
                           throw new Error(err);
                       }
                   });

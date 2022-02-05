@@ -90,6 +90,13 @@
               display: inline-block;
               text-decoration: none;
 
+              svg {
+                path {
+                  fill: #2C2C2C;
+                  stroke: #2C2C2C;
+                }
+              }
+
               span {
                 color: #2c2c2c;
                 font-size: .75rem;
@@ -100,12 +107,6 @@
 
             &.last {
               text-align: right;
-
-              a {
-                span {
-                  color: #1f75fe;
-                }
-              }
             }
           }
         }
@@ -150,6 +151,149 @@
       }
     }
   }
+
+  &.garant-header {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+
+    .garant-hr {
+      .col-12 {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+
+      hr {
+        height: 1px;
+        background-color: #DADADA;
+        margin-bottom: 1.75rem;
+      }
+    }
+
+    .garant-title {
+      font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 1.75rem;
+      color: #F1F6FF;
+      margin-bottom: 0 !important;
+    }
+
+    .garant-deal {
+      padding-bottom: 1rem !important;
+
+      button {
+        height: 53px;
+        padding: 0 1rem;
+        border-radius: .25rem;
+        background-color: #f1f6ff;
+
+        &, &:focus {
+          border: none;
+          outline: none;
+        }
+
+        img {
+          margin-right: .5rem;
+        }
+
+        span {
+          font-size: 18px;
+          color: #1f75fe;
+        }
+      }
+    }
+
+    .navbar-top {
+      ul {
+        span {
+          color: #fff !important;
+        }
+      }
+    }
+
+    .logo-and-search {
+      margin-bottom: 0 !important;
+
+      .logo-text {
+        font-size: .75rem;
+        color: #f1f6ff;
+      }
+
+      .account-options {
+        ul {
+          a {
+            svg {
+              path {
+                fill: #fff !important;
+                stroke: #fff !important;
+              }
+            }
+
+            span {
+              color: #fff !important;
+            }
+          }
+        }
+      }
+    }
+
+    .deal-info {
+      padding: 1rem;
+      border-radius: .5rem;
+      box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+      background-color: #1653b4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      > div:first-child {
+        margin-right: 1rem;
+      }
+
+      strong {
+        transform: rotate(-0.02deg);
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: .5rem;
+        display: inline-block;
+      }
+
+      hr {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      span {
+        transform: rotate(-0.02deg);
+        font-size: .75rem;
+        color: #dadada;
+      }
+
+      button {
+        height: 48px;
+        padding: 0 1rem;
+        border-radius: .25rem;
+        background-color: #f1f6ff;
+        font-size: 14px;
+        color: #1f75fe;
+        white-space: nowrap;
+
+        &, &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+    }
+
+    .main-pages {
+      border: 3px solid yellow;
+    }
+  }
+
+  .stepper {
+    height: 223px;
+    padding: 1rem 240px;
+    background-color: #384356;
+  }
 }
 
 // стили для компонентов посторонних библиотек
@@ -181,6 +325,60 @@
           border-top: 10px solid #1f75fe;
           border-bottom: 0;
           margin-right: 10px
+        }
+      }
+    }
+  }
+
+  .stepper {
+    display: flex;
+    align-items: center;
+
+    .p-element {
+      width: 100%;
+    }
+
+    .p-steps-item {
+      &:first-child {
+        &::before {
+          left: 50%;
+          width: calc(100% - 30px);
+        }
+      }
+
+      &:last-child {
+        &::before {
+          left: calc(-50% + 30px);
+        }
+      }
+
+      &::before {
+        transform: translateY(-50%);
+        border: 4px solid #DADADA;
+      }
+
+      .p-menuitem-link {
+        background: transparent;
+
+        .p-steps-number {
+          width: 60px;
+          height: 60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 36px;
+          box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+          border: 4px solid #fff;
+          background-color: #384356;
+          color: #fff;
+          z-index: 100;
+        }
+
+        .p-steps-title {
+          transform: rotate(-0.02deg);
+          font-size: 18px;
+          font-weight: 500;
+          color: #dadada;
         }
       }
     }

@@ -1,10 +1,18 @@
-@import "/src/app/app.component.scss";  
-@import "/src/app/shared/styles/body-margins.scss";
-@import "/src/app/shared/styles/media-quaries.scss";
-@import "/src/app/shared/styles/common.scss";
-@import "/src/app/modules/business/create-ready-business/create-ready-business.component.scss";
-@import "/src/app/shared/styles/controls.scss";
+// @import "/src/app/app.component.scss";  
+// @import "/src/app/shared/styles/body-margins.scss";
+// @import "/src/app/shared/styles/media-quaries.scss";
+// @import "/src/app/shared/styles/common.scss";
+// @import "/src/app/modules/business/create-ready-business/create-ready-business.component.scss";
+// @import "/src/app/shared/styles/controls.scss";
 
+@use "/src/app/app.component.scss";  
+// @import "/src/app/shared/styles/body-margins.scss";
+// @import "/src/app/shared/styles/media-quaries.scss";
+// @import "/src/app/shared/styles/common.scss";
+@use "/src/app/modules/business/create-ready-business/create-ready-business.component.scss";
+// @import "/src/app/shared/styles/controls.scss";
+@use "../../../../app/shared/styles" as *;
+@use "../../../../app/shared/styles/base" as *;
 
 .title-name-logo {
   margin-top: 80px;

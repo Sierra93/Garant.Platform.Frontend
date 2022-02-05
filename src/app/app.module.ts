@@ -28,6 +28,7 @@ import { MainPageModule } from "./modules/main-page/main-page.component";
 import { CardModule } from "primeng/card";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { SliderModule } from "primeng/slider";
+import { StepsModule } from 'primeng/steps';
 import { FooterModule } from "./modules/footer/footer.component";
 import { LoginModule } from "./modules/login/login.component";
 import { ProfileDataModule } from "./modules/profile/profile-data/profile-data.component";
@@ -133,7 +134,8 @@ import { ConfiguratorAdminModule } from "./modules/configurator/configurator-adm
     AvatarModule,
     AvatarGroupModule,
     ReactiveFormsModule,
-    TabMenuModule
+    TabMenuModule,
+    StepsModule
   ],
 
   providers: [

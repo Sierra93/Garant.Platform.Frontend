@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {MenuItem} from 'primeng/api';
 
 @Component({
     selector: 'header',
@@ -22,18 +23,42 @@ export class HeaderModule implements OnInit {
     searchType: string = "";
     searchOptions: string[];
     selectedSearchOption: string = "франшиза";
+    isGarant: boolean = false;
+    items!: MenuItem[];
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private router: Router,
         private route: ActivatedRoute) {
           this.searchOptions = ["франшиза", "бизнес"];
+
+          this.items = [
+            {label: 'Подтверждение продажи'},
+            {label: 'Согласование этапов сделки'},
+            {label: 'Согласование договора'},
+            {label: 'Оплата и исполнение этапов сделки'}
+        ];
+
     };
+
+    ngDoCheck(){
+      if (window.location.href.includes("stage")) {
+        this.isGarant = true;
+      } else {
+        this.isGarant = false;
+      }
+    }
 
     public async ngOnInit() {
         await this.initHeaderAsync();
         await this.commonService.refreshToken();
         await this.getBreadcrumbsAsync();
+
+        this.items = [
+            {label: 'Step 1'},
+            {label: 'Step 2'},
+            {label: 'Step 3'}
+        ];
     };
 
     /**

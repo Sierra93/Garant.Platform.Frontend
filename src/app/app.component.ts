@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  isGarant: boolean = false;
 
+  ngDoCheck(){
+    if (window.location.href.includes("stage")) {
+      this.isGarant = true;
+    } else {
+      this.isGarant = false;
+    }
+  }
 }

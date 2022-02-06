@@ -174,6 +174,7 @@ export class ConfiguratorAdminModule implements OnInit {
     oNews: any = {};
     selectedNews: any;
     aNews: any[] = [];
+    selectedCardActionSysName: any;
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
@@ -979,15 +980,16 @@ export class ConfiguratorAdminModule implements OnInit {
     //     }
     // };
 
-    public async onSelectCardAction(cardAction: any) {
-        console.log("cardAction", cardAction);
-        this.selectedCardAction = cardAction.cardActionSysName;
+    public async onSelectCardAction() {
+        console.log("cardAction", this.selectedCardAction);
+        // this.selectedCardAction = cardAction.cardActionSysName;
+        this.selectedCardActionSysName = this.selectedCardAction.cardActionSysName;
 
-        if (this.selectedCardAction == "ChangeFranchise") {
+        if (this.selectedCardActionSysName == "ChangeFranchise") {
             await this.getFranchisesListAsync();
         }
 
-        if (this.selectedCardAction == "ChangeBusiness") {
+        if (this.selectedCardActionSysName == "ChangeBusiness") {
             await this.getBusinessListAsync();
         }
     };

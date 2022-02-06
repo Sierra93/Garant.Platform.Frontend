@@ -447,14 +447,14 @@
         </div>
 
         <div>
-          <p-dropdown class="block-sort-by" [options]="aCardActions" optionLabel="cardActionName" name="cardAction"
-            [(ngModel)]="selectedCardAction" placeholder="Действие с карточками" [showClear]="true"
-            (onChange)="onSelectCardAction(selectedCardAction)">
+          <p-dropdown class="block-sort-by" [options]="aCardActions" optionLabel="cardActionName" name="cardAction1"
+          [(ngModel)]="selectedCardAction" placeholder="Действие с карточками" [showClear]="true"
+            (onChange)="onSelectCardAction()">
           </p-dropdown>
         </div>
       </div>
 
-      <section id="create-franchise" *ngIf="selectedCardAction == 'CreateFranchise'">
+      <section id="create-franchise" *ngIf="selectedCardActionSysName == 'CreateFranchise'">
 
   <h5 class="title-name-logo">Название и логотип*</h5>
 
@@ -892,7 +892,7 @@
        
 
       <!-- Изменить карточку франшизы. -->
-      <div *ngIf="selectedCardAction == 'ChangeFranchise'">
+      <div *ngIf="selectedCardActionSysName == 'ChangeFranchise'">
         <div>
           <div>
             <label class="mt-3">Список франшиз</label>
@@ -1487,7 +1487,7 @@
       </div>
 
       <!-- Создать карточку бизнеса. -->
-      <div *ngIf="selectedCardAction == 'CreateBusiness'">
+      <div *ngIf="selectedCardActionSysName == 'CreateBusiness'">
 
         <h5 class="title-name-logo">Название бизнеса*</h5>
 
@@ -1750,7 +1750,7 @@
       </div>
 
       <!-- Изменить карточку бизнеса. -->
-      <div *ngIf="selectedCardAction == 'ChangeBusiness'">
+      <div *ngIf="selectedCardActionSysName == 'ChangeBusiness'">
         <div>
           <div>
             <label class="mt-3">Список бизнесов</label>

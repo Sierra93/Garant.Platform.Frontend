@@ -1426,6 +1426,10 @@ export class ConfiguratorAdminModule implements OnInit {
                       next: (response: any) => {
                           console.log("Бизнес успешно создан:", response);
                           this.showMessageAfterSuccessCreateBusiness();
+
+                          setTimeout(() => {
+                            this.router.navigate(["/business/view"], { queryParams: { franchiseId: response.businessId, mode: "view" } });
+                        }, 2000);   
                       },
   
                       error: (err) => {

@@ -89,6 +89,8 @@ export class EditFranchiseModule implements OnInit {
                     numVisible: 1
                 }
             ]; 
+
+            this.routeParam = this.route.snapshot.queryParams;
     };
 
     public async ngOnInit() {
@@ -107,7 +109,7 @@ export class EditFranchiseModule implements OnInit {
                 franchiseId = this.franchiseId;
             }           
 
-            await this.commonService.getTransitionAsync().then((data: any) => {
+            await this.commonService.getTransitionAsync(this.routeParam).then((data: any) => {
                 console.log("Переход получен:", data);
                 this.getViewFranchiseAsync(franchiseId);
             });

@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, HostListener } from "@angular/core";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
@@ -8,7 +8,7 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
     styleUrls: ["./footer.component.scss"]
 })
 
-/** 
+/**
  * Класс модуля футера.
  */
 export class FooterModule implements OnInit {
@@ -17,6 +17,7 @@ export class FooterModule implements OnInit {
     aFooterColumn2: any[] = [];
     aFooterColumn3: any[] = [];
     aFooterColumn4: any[] = [];
+    tabletStart: boolean = false;
 
     constructor(private http: HttpClient, private commonService: CommonDataService) {
 
@@ -26,6 +27,16 @@ export class FooterModule implements OnInit {
         await this.initFooter();
     };
 
+    @HostListener('window:resize', ['$event'])
+    @HostListener('window:load', ['$event'])
+    onResize() {
+      if (window.innerWidth === 768) {
+        this.tabletStart = true;
+      } else {
+        this.tabletStart = false;
+      }
+    }
+
      /**
      * Функция получит поля футера.
      */
@@ -34,7 +45,7 @@ export class FooterModule implements OnInit {
             await this.commonService.initFooterAsync().then((data: any) => {
                 // Распределит пункты футера в каждый стобец.
                 data.forEach((item: any) => {
-                    if (item.column == 1 && item.title !== "gobizy") {                                 
+                    if (item.column == 1 && item.title !== "gobizy") {
                         this.aFooterColumn1.push(item);
                     }
 
@@ -48,7 +59,7 @@ export class FooterModule implements OnInit {
 
                     else if (item.column == 4) {
                         this.aFooterColumn4.push(item);
-                    }                    
+                    }
                 });
             });
         }
@@ -69,4 +80,8 @@ export class FooterModule implements OnInit {
         //         break;
         // }
     };
+
+    openNextElements(e: any){
+      e.path[3].classList.toggle('open');
+    }
 }

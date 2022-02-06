@@ -115,4 +115,7 @@ export class CreateUpdateFranchiseInput {
 
     // Новая ли франшиза.
     IsNew?: boolean;
+
+    // Id франшизы.
+    FranchiseId: number = 0;
 }

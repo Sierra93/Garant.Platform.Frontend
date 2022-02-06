@@ -125,11 +125,8 @@ export class EditFranchiseModule implements OnInit {
      private async getViewFranchiseAsync(franchiseId: number) {
         try {                     
             console.log("getViewFranchiseAsync");        
-            let getFranchiseInput = new GetFranchiseInput();
-            getFranchiseInput.FranchiseId = franchiseId;
-            getFranchiseInput.Mode = "View";
 
-            await this.http.post(API_URL.apiUrl.concat("/franchise/get-franchise"), getFranchiseInput)
+            await this.http.get(API_URL.apiUrl.concat("/franchise/get-franchise?franchiseId=" + franchiseId))
                 .subscribe({
                     next: (response: any) => {
                         console.log("Полученная франшиза:", response);

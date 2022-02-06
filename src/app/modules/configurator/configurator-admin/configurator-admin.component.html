@@ -1,0 +1,2104 @@
+<p-toast [style]="{ marginTop: '80px' }"></p-toast>
+
+<p-tabView (onChange)="onChangeTab($event)">
+  <p-tabPanel [header]="item.menuItemName" *ngFor="let item of aMenuList">
+    <!-- Таб новости. -->
+    <div *ngIf="tabIndex == 0">
+      <div>
+        <div>
+          <h5>Действия с новостями</h5>
+        </div>
+
+        <div>
+          <p-dropdown class="block-sort-by" [options]="aNewsActions" optionLabel="newsActionName"
+            optionCode="newsActionSysName" name="newsAction" [(ngModel)]="selectedNewsAction"
+            placeholder="Действие с новостью" [showClear]="true">
+          </p-dropdown>
+        </div>
+      </div>
+
+      <!-- Создать новость. -->
+      <div *ngIf="selectedNewsAction != null && selectedNewsAction.newsActionSysName == 'CreateNews'">
+       <div>
+        <div>
+          <label class="mt-3">Название новости</label>
+        </div>
+
+        <div>
+          <input type="text" class="" [(ngModel)]="newsTitle">
+        </div>
+       </div>
+
+       <div>
+        <div>
+          <label class="mt-3">Тематика новости</label>
+        </div>
+
+        <div>
+          <input type="text" class="" [(ngModel)]="typeNews">
+        </div>
+       </div>
+
+       <div>
+        <div>
+          <label class="mt-3">Текст новости</label>
+        </div>
+
+        <div>
+          <input type="text" class="" [(ngModel)]="textNews">
+        </div>
+       </div>
+
+       <div>
+        <div>
+          <label class="mt-3">Изображение новости</label>
+        </div>
+
+        <div>
+          <input type="file" (change)="uploadFileNewsAsync($event)">
+        </div>
+       </div>
+
+       <div>
+        <button pButton type="button" label="Создать новость" class="p-button-outlined mt-3"
+          (click)="onCreateNewsAsync()"></button>
+      </div>
+      </div>
+
+      <!-- Изменить новость. -->
+      <div *ngIf="selectedNewsAction != null && selectedNewsAction.newsActionSysName == 'ChangeNews'">
+        <div>
+          <div>
+            <label class="mt-3">Список новостей</label>
+          </div>
+
+          <div>
+            <p-dropdown class="block-sort-by" [options]="aNews" optionLabel="title" optionCode="newsId"
+              name="newsAction" [(ngModel)]="selectedBlogCodeTheme" placeholder="Выберите новость" [showClear]="true"
+              (onChange)="onSelectNews($event, false)">
+            </p-dropdown>
+          </div>
+        </div>
+
+        <div>
+         <div>
+           <label class="mt-3">Название новости</label>
+         </div>
+ 
+         <div>
+           <input type="text" class="" [(ngModel)]="newsTitle">
+         </div>
+        </div>
+ 
+        <div>
+         <div>
+           <label class="mt-3">Тематика новости</label>
+         </div>
+ 
+         <div>
+           <input type="text" class="" [(ngModel)]="typeNews">
+         </div>
+        </div>
+ 
+        <div>
+         <div>
+           <label class="mt-3">Текст новости</label>
+         </div>
+ 
+         <div>
+           <input type="text" class="" [(ngModel)]="textNews">
+         </div>
+        </div>
+ 
+        <div>
+         <div>
+           <label class="mt-3">Изображение новости</label>
+         </div>
+ 
+         <div>
+           <input type="file" (change)="uploadFileNewsAsync($event)">
+         </div>
+        </div>
+ 
+        <div>
+         <button pButton type="button" label="Сохранить изменения" class="p-button-outlined mt-3"
+           (click)="onEditNewsAsync()"></button>
+       </div>
+       </div>
+    </div>
+
+    <!-- Таб блоги. -->
+    <div *ngIf="tabIndex == 1">
+      <div>
+        <div>
+          <h5>Действия с блогом</h5>
+        </div>
+
+        <div>
+          <p-dropdown class="block-sort-by" [options]="aBlogActions" optionLabel="blogActionName"
+            optionCode="blogActionSysName" name="blogAction" [(ngModel)]="selectedBlogAction"
+            placeholder="Действие с блогом" [showClear]="true" id="selectedBlogAction">
+          </p-dropdown>
+        </div>
+      </div>
+
+      <!-- Создать блог. -->
+      <div *ngIf="selectedBlogAction != null && selectedBlogAction.blogActionSysName == 'CreateBlog'">
+        <div>
+          <div>
+            <label for="selectedBlogTheme" class="mt-3">Список тем блогов</label>
+          </div>
+
+          <div>
+            <p-dropdown class="block-sort-by" [options]="aBlogThemes" optionLabel="title" optionCode="themeCategoryCode"
+              name="blogAction" [(ngModel)]="selectedBlogCodeTheme" placeholder="Выберите тему блога" [showClear]="true"
+              (onChange)="onSelectBlogTheme(selectedBlogCodeTheme)" id="selectedBlogTheme">
+            </p-dropdown>
+          </div>
+        </div>
+
+        <div>
+          <label for="titleBlog" class="mt-3">Заголовок блога</label>
+        </div>
+
+        <div>
+          <input id="titleBlog" type="text" class="" [(ngModel)]="blogTitle">
+        </div>
+
+        <div>
+          <div>
+            <label for="idFileBlog" class="mt-3">Выберите файл блога</label><br>
+          </div>
+          <div>
+            <input type="file" id="idFileBlog" (change)="uploadFileBlogAsync($event)">
+          </div>
+        </div>
+
+        <div>
+          <button pButton type="button" label="Создать блог" class="p-button-outlined mt-3"
+            (click)="onCreateBlogAsync()"></button>
+        </div>
+      </div>
+
+      <!-- Создать статью блога. -->
+      <div *ngIf="selectedBlogAction != null && selectedBlogAction.blogActionSysName == 'CreateBlogArticle'">
+        <div>
+          <div>
+            <div>
+              <label class="mt-3">Список блогов</label>
+            </div>
+
+            <div>
+              <p-dropdown class="block-sort-by" [options]="aBlogs" optionLabel="title" optionCode="themeCategoryCode"
+                name="blogAction" [(ngModel)]="selectedBlog" placeholder="Выберите блог" [showClear]="true"
+                (onChange)="onSelectBlog($event, true, false)">
+              </p-dropdown>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <label class="mt-3">Список тем статей</label>
+            </div>
+
+            <div>
+              <p-dropdown class="block-sort-by" [options]="aArticleThemes" optionLabel="themeName"
+                optionCode="themeCode" name="articleTheme" [(ngModel)]="selectedTheme"
+                placeholder="Выберите тему статьи" [showClear]="true" (onChange)="onSelectThemeArticle($event)">
+              </p-dropdown>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <label class="mt-3">Название статьи</label>
+            </div>
+
+            <div>
+              <input type="text" [(ngModel)]="articleTitle">
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <label class="mt-3">Краткое описание статьи</label>
+            </div>
+
+            <div>
+              <input type="text" [(ngModel)]="shortArticleDescription">
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <label class="mt-3">Текст статьи</label>
+            </div>
+
+            <div>
+              <input type="text" [(ngModel)]="articleDescription">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Выберите файл превью обложки</label>
+          </div>
+
+          <div>
+            <input type="file" (change)="uploadFilePreviewAsync($event)">
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Выберите файл изображения статьи</label>
+          </div>
+
+          <div>
+            <input type="file" (change)="uploadFileArticleAsync($event)">
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Подпись под основным изображением</label>
+          </div>
+
+          <div>
+            <input type="text" [(ngModel)]="signature">
+          </div>
+        </div>
+
+        <div>
+          <button pButton type="button" label="Создать статью" class="p-button-outlined mt-3"
+            (click)="onCreateArticleAsync(selectedBlogId, selectedTheme.themeCode, articleTitle, shortArticleDescription, articleDescription, signature)"></button>
+        </div>
+      </div>
+
+       <!-- Изменить статью блога. -->
+       <div *ngIf="selectedBlogAction != null && selectedBlogAction.blogActionSysName == 'ChangeBlogArticle'">
+        <div>
+          <div>
+            <div>
+              <label class="mt-3">Список блогов</label>
+            </div>
+
+            <div>
+              <p-dropdown class="block-sort-by" [options]="aBlogs" optionLabel="title" optionCode="themeCategoryCode"
+                name="blogAction" [(ngModel)]="selectedBlog" placeholder="Выберите блог" [showClear]="true"
+                (onChange)="onSelectBlog($event, false, true)">
+              </p-dropdown>
+            </div>
+          </div>         
+
+          <div>
+            <div>
+              <label class="mt-3">Список тем статей</label>
+            </div>
+
+            <div>
+              <p-dropdown class="block-sort-by" [options]="aArticleThemes" optionLabel="themeName"
+                optionCode="themeCode" name="articleTheme" [(ngModel)]="selectedTheme"
+                placeholder="Выберите тему статьи" [showClear]="true" (onChange)="onSelectThemeArticle($event)">
+              </p-dropdown>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <label class="mt-3">Список статей блогов</label>
+            </div>
+
+            <div>
+              <p-dropdown class="block-sort-by" [options]="aBlogArticles" optionLabel="title" optionCode="themeCategoryCode"
+                name="blogAction" [(ngModel)]="selectedBlogArticle" placeholder="Выберите статью блога" [showClear]="true"
+                (onChange)="onSelectBlogArticle($event, false)">
+              </p-dropdown>
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <label class="mt-3">Название статьи</label>
+            </div>
+
+            <div>
+              <input type="text" [(ngModel)]="articleTitle">
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <label class="mt-3">Краткое описание статьи</label>
+            </div>
+
+            <div>
+              <input type="text" [(ngModel)]="shortArticleDescription">
+            </div>
+          </div>
+
+          <div>
+            <div>
+              <label class="mt-3">Текст статьи</label>
+            </div>
+
+            <div>
+              <input type="text" [(ngModel)]="articleDescription">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Выберите файл превью обложки</label>
+          </div>
+
+          <div>
+            <input type="file" (change)="uploadFilePreviewAsync($event)">
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Выберите файл изображения статьи</label>
+          </div>
+
+          <div>
+            <input type="file" (change)="uploadFileArticleAsync($event)">
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Подпись под основным изображением</label>
+          </div>
+
+          <div>
+            <input type="text" [(ngModel)]="signature">
+          </div>
+        </div>
+
+        <div>
+          <button pButton type="button" label="Сохранить изменения" class="p-button-outlined mt-3"
+            (click)="onEditArticleAsync(selectedBlogId, selectedTheme.themeCode, articleTitle, shortArticleDescription, articleDescription, signature)"></button>
+        </div>
+      </div>
+
+      <!-- Изменить блог. -->
+      <div *ngIf="selectedBlogAction != null && selectedBlogAction.blogActionSysName == 'ChangeBlog'">
+        <div>
+          <div>
+            <label class="mt-3">Выберите блог для изменения</label>
+          </div>
+
+          <div>
+            <p-dropdown class="block-sort-by" [options]="aBlogs" optionLabel="title" optionCode="themeCategoryCode"
+              name="blogAction" [(ngModel)]="selectedBlog" placeholder="Выберите блог" [showClear]="true"
+              (onChange)="onSelectBlog($event, false, false)">
+            </p-dropdown>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label for="selectedBlogTheme" class="mt-3">Список тем блогов</label>
+          </div>
+
+          <div>
+            <p-dropdown class="block-sort-by" [options]="aBlogThemes" optionLabel="title" optionCode="themeCategoryCode"
+              name="blogAction" [(ngModel)]="selectedBlogCodeTheme" placeholder="Выберите тему блога" [showClear]="true"
+              (onChange)="onSelectBlogTheme(selectedBlogCodeTheme)" id="selectedBlogTheme">
+            </p-dropdown>
+          </div>
+        </div>
+
+        <div>
+          <label for="titleBlog" class="mt-3">Заголовок блога</label>
+        </div>
+
+        <div>
+          <input id="titleBlog" type="text" class="" [(ngModel)]="blogTitle">
+        </div>
+
+        <div>
+          <div>
+            <label for="idFileBlog" class="mt-3">Выберите файл блога</label><br>
+          </div>
+          <div>
+            <input type="file" id="idFileBlog" (change)="uploadFileBlogAsync($event)">
+          </div>
+        </div>
+
+        <div>
+          <button pButton type="button" label="Сохранить изменения" class="p-button-outlined mt-3"
+            (click)="onEditBlogAsync()"></button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Таб карточек. -->
+    <!-- Создать карточку франшизы. -->
+    <div *ngIf="tabIndex == 2">
+      <div>
+        <div>
+          <h5>Действия с карточками</h5>
+        </div>
+
+        <div>
+          <p-dropdown class="block-sort-by" [options]="aCardActions" optionLabel="cardActionName" name="cardAction"
+            [(ngModel)]="selectedCardAction" placeholder="Действие с карточками" [showClear]="true"
+            (onChange)="onSelectCardAction(selectedCardAction)">
+          </p-dropdown>
+        </div>
+      </div>
+
+      <section id="create-franchise" *ngIf="selectedCardAction == 'CreateFranchise'">
+
+  <h5 class="title-name-logo">Название и логотип*</h5>
+
+  <!-- Блок с названием. -->
+  <div class="d-flex">
+    <div>
+      <label>Логотип</label>
+      <input type="file" (change)="uploadFranchiseLogoAsync($event)">  
+    </div>
+
+    <div class="block-two">
+      <label>Название</label><br>
+      <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="logoName" name="logoName" />
+    </div>
+  </div>
+
+  <hr class="hr">
+  <span class="title-strong">Фотографии*</span><br>
+  <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>  
+   <div class="block-gallery">
+     <div>       
+      <span *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</span>
+       <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
+         [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
+         <ng-template pTemplate="item" let-item>
+           <img src="{{item}}" style="width: 700px; display: block;" />           
+         </ng-template>
+
+         <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
+           <div class="p-grid p-nogutter p-justify-center">
+             <img src="{{item}}" />
+           </div>
+         </ng-template>
+       </p-galleria>
+     </div>
+
+     <div>
+      <span class="title-strong">Ваша карточка для связи</span><br>
+      <span class="title-small">{{fio}}</span><br>
+     
+      <div>
+        <label>Пример: владелец</label><br>
+        <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец" [(ngModel)]="lead" name="lead" />
+      </div>
+
+      <button class="btn btn-link">Стать франчайзи онлайн через гарант</button><br>
+      <button class="control-button-blue">Начать чат с представителем</button>
+     </div>
+   </div>
+
+   <!-- Ключевые финансовые данные. -->
+   <span class="title-strong">Ключевые финансовые данные*</span><br>
+   <div class="block-invest">
+    <div class="invest-item-first">
+      <span class="title-small">Общие инвестиции</span><br>
+      <small>включая паушальный взнос</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="generalInvest" name="generalInvest" /> ₽
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Паушальный взнос</span><br>
+      <small>зависит от выбранного пакета</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="lumpSumPayment" name="lumpSumPayment" /> ₽
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Роялти</span><br>
+      <small>от валовой выручки</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="royalty" name="royalty" /> ₽
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Окупаемость</span><br>
+      <small>средняя и планируемая</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="payback" name="payback" /> мес.
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Месячная прибыль</span><br>
+      <small>планируемая чистая прибыль</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="profitMonth" name="profitMonth" /> ₽
+    </div>
+
+    <div class="invest-item-last">
+      <span class="title-small">Срок запуска</span><br>
+      <small>средний срок открытия бизнеса</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="launchDate" name="launchDate" /> дн.
+    </div>
+   </div>
+
+   <hr class="hr">
+
+   <!-- Основная информация о компании. -->
+   <div class="d-flex">
+     <div>
+       <span class="title-strong">Основная информация о компании*</span><br>
+       <span class="title-small">Описание деятельности</span><br>
+       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+         placeholder="Опишите деятельность" [(ngModel)]="activityDetail"></textarea>
+     </div>
+
+     <div class="invest-in">
+      <span class="title-strong">Входит в инвестиции*</span><br>
+      <div class="invest-item-last" *ngFor="let item of ainvestIn">
+        <small class="">Стоимость</small><br>
+        <input type="number" class="control-input-franch-price" pInputText *ngIf="item.isHideInvest" [value]="item.Price" name="priceInvest" /> 
+        <input type="number" class="control-input-franch-price" pInputText *ngIf="!item.isHideInvest" [(ngModel)]="priceInvest" name="priceInvest" /> 
+        <br>
+
+        <small class="">Название</small><br>
+        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="item.isHideInvest" [value]="item.Name" name="nameInvest" />   
+        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="!item.isHideInvest" [(ngModel)]="nameInvest" name="nameInvest" />                 
+      </div>
+      <button class="control-button-blue-small" (click)="onAddInveest(priceInvest, nameInvest)">Добавить пункт</button>
+      <br>
+      <small>
+        Данный раздел обязателен для заполнения.<br>
+        Подойдите к заполнению данного раздела<br>
+        тщательно, так как при продаже онлайн через сервис<br>
+        гарант данные разделы способствуют разбиению<br>
+        на этапы.
+      </small>
+     </div>     
+   </div>
+
+   <!-- Дополнительные факты. -->
+   <span class="title-strong">Дополнительные факты*</span><br>
+   <div class="d-flex">
+    <div class="invest-item-first">
+      <span class="title-small">Год основания</span><br>
+      <small>компании</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="baseDate" name="baseDate" />
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Год запуска</span><br>
+      <small>франчайзинга</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="yearStart" name="yearStart" />
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Количество точек</span><br>
+      <small>в России</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="dotCount" name="dotCount" /> 
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Собственных</span><br>
+      <small>предприятий</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="businessCount" name="businessCount" />
+    </div>
+   </div>
+
+   <hr class="hr">
+
+   <!-- Описание особенности франшизы. -->
+   <span class="title-strong">Описание особенности франшизы</span><br>
+   <div class="block-details-franch">    
+    <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText [(ngModel)]="featureFranchise" name="featureFranchise" />
+    <span class="text">Прикрепить финансовую модель .xlsx</span>
+    <br>
+
+   <div>
+    <input type="file" (change)="uploadFinModelAsync($event)">  
+    <!-- <button class="control-button-blue-small">Прикрепить файл</button> -->
+    <br>
+    <small>
+      Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать презентацию, просто пропустите данный этап. 
+    </small>
+   </div>
+   </div>
+
+   <hr class="hr">
+
+   <!-- Основная информация о франшизе. -->
+   <div class="d-flex">
+    <div>
+      <span class="title-strong">Основная информация о франшизе*</span><br>
+     <div>
+      <span class="title-small">Описание франшизы</span><br>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Опишите франшизу" [(ngModel)]="defailsFranchise" name="defailsFranchise"></textarea>
+     </div>
+    </div>
+
+      <div class="invest-in">
+        <span class="title-strong">Добавить презентацию</span><br>
+        <div class="block-details-franch">          
+          <small>Прикрепить документ .pdf</small><br>
+          <!-- <button class="control-button-blue-small">Прикрепить файл</button><br> -->
+          <input type="file" (change)="uploadPresentAsync($event)">  
+        </div>
+
+      <small>
+        Загружать презентацию не обязательно.<br>
+        Однако, это способствует повышению конверсии<br>
+        и глубинной заинтересованности в проекте. Если<br>
+        вы не хотите загружать презентацию, просто<br>
+        пропустите данный этап.
+      </small>
+    </div>
+   </div>
+
+   <hr class="hr">
+
+   <div class="d-flex">
+    <div>
+      <span class="title-strong">Пример расчета прибыли*</span><br>
+      <span class="title-small">Описание расчета</span><br>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Опишите расчет" [(ngModel)]="paymentDetails" name="paymentDetails"></textarea>
+    </div>
+   </div>
+
+   <hr class="hr">
+
+   <!-- Ключевые финансовые показатели. -->
+   <div class="d-flex">
+    <div class="block-details-franch">
+      <span class="title-strong">Ключевые финансовые показатели</span><br>
+      <label>Название</label><br>
+      <input type="text" class="franch-details" placeholder="Пример: расчет прибыль 1 кофейни" pInputText [(ngModel)]="namesIndicators" name="namesIndicators" />
+
+      <div class="d-flex">
+        <div class="fin-indicator-first">
+          <small>Например: средний чек</small><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator1" name="finIndicator1" /><br>
+
+          <small>Процент или финансы</small><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+            [(ngModel)]="percentFinancial1" name="" />
+        </div>
+    
+        <div class="fin-indicator">
+          <small>Например: рентабельность</small><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator2" name="finIndicator2" /><br>
+
+          <small>Процент или финансы</small><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+            [(ngModel)]="percentFinancial2" name="percentFinancial2" />
+        </div>
+    
+        <div class="fin-indicator">
+          <small>Например: средняя выручка</small><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator3" name="finIndicator3" /><br>
+
+          <small>Процент или финансы</small><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+            [(ngModel)]="percentFinancial3" name="percentFinancial3" />
+        </div>
+    
+        <div class="fin-indicator">
+          <small>Например: товарная наценка</small><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText [(ngModel)]="finIndicator4" name="finIndicator4" /><br>
+
+          <small>Процент или финансы</small><br>
+          <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+            [(ngModel)]="percentFinancial4" name="percentFinancial4" />
+        </div>
+      </div>
+    </div>
+   </div>
+
+   <hr class="hr">
+
+   <!-- Обучение и поддержка. -->
+   <div class="d-flex">
+    <div>
+      <span class="title-strong">Обучение и поддержка*</span><br>
+      <span class="title-small">Описание обучения</span><br>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Опишите обучение" [(ngModel)]="educationDetails" name="educationDetails"></textarea><br>
+        <input type="file" (change)="uploadEducationPhotosAsync($event)">  
+    </div>
+   </div>
+
+   <hr class="hr">
+
+   <!-- Пакеты франшизы. -->
+   <div class="p-field-checkbox control-checkbox">
+     <div>
+      <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+      <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
+     </div>        
+   </div>
+
+  <div>
+    <small>
+      Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет пакетов вы можете отключить данный раздел галочкой слева от названия.
+    </small>
+  </div>
+
+  <!-- Блок с пакетами франшизы. -->
+ <div class="">
+  <div class="d-flex">
+    <div class="block-pack" *ngFor="let item of aPacks">
+      <div class="block-top-pack">
+        <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
+        [value]="item.Name" *ngIf="item.IsHidePack" name="packName" />
+        <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
+          *ngIf="!item.IsHidePack" [(ngModel)]="packName" name="packName" />
+        <br>
+
+        <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [value]="item.Text"
+        *ngIf="item.IsHidePack" name="packDetails" />
+        <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [(ngModel)]="packDetails"
+        *ngIf="!item.IsHidePack" name="packDetails" />
+      </div>
+
+      <div class="block-bottom-pack">
+        <div>
+          <span class="title-small">Паушальный взнос:</span><br>
+          <input type="text" class="control-big-input" pInputText [value]="item.LumpSumPayment"
+          *ngIf="item.IsHidePack" name="packLumpSumPayment" placeholder="₽" /> 
+          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+          *ngIf="!item.IsHidePack" name="packLumpSumPayment" placeholder="₽" /> 
+        </div>
+
+        <div>
+          <span class="title-small">Роялти:</span><br>
+          <input type="text" class="control-big-input" pInputText [value]="item.Royalty"
+          *ngIf="item.IsHidePack" name="royaltyPack" placeholder="%" /> 
+          <input type="text" class="control-big-input" pInputText [(ngModel)]="royaltyPack"
+          *ngIf="!item.IsHidePack" name="royaltyPack" placeholder="%" /> 
+        </div>
+
+        <div>
+          <span class="title-small">Всего инвестиций:</span><br>
+          <input type="text" class="control-big-input" pInputText [value]="item.Royalty"
+          *ngIf="item.IsHidePack" name="totalInvest" placeholder="₽" /> 
+          <input type="text" class="control-big-input" pInputText [(ngModel)]="totalInvest"
+          *ngIf="!item.IsHidePack" name="totalInvest" placeholder="₽" /> 
+        </div>
+      </div>
+    </div>    
+  </div>  
+
+ </div>
+ <div class="block-button-pack">
+  <button class="control-button-blue" (click)="onAddPack(packName, packDetails, packLumpSumPayment, royaltyPack, totalInvest)">Добавить пакет</button>
+</div>
+
+ <hr class="hr">
+
+ <!-- Видео о франшизе. -->
+ <div class="p-field-checkbox control-checkbox">
+  <div>
+   <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+   <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
+  </div>        
+</div>
+
+<div>
+ <small>
+  Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет видео вы можете отключить данный раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.
+ </small>
+</div>
+
+<div>
+  <span class="title-small">Ссылка на видео</span><br>
+  <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="videoLink"
+    name="videoLink" /> 
+</div>
+
+<hr class="hr">
+
+<!-- Отзывы о франшизе. -->
+<!-- <div class="p-field-checkbox control-checkbox">
+  <div>
+   <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+   <label for="packs" class="control-label-checkbox">Отзывы о франшизе</label>
+  </div>        
+</div>
+
+<div>
+ <small>
+  На данный момент доступны только видеоотзывы. Если у вас новая франшиза, то отзывов могло не быть. Однако вы можете добавить отзывы, если они есть или отключить их посредством галочки около названия.
+ </small>
+</div> -->
+
+<!-- Блок с отзывами. -->
+<!-- <div class="d-flex">
+  <div class="">
+    <div class="block-pack">
+      <div class="block-top-pack">
+        <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
+          [(ngModel)]="packName" name="packName" />
+        <br>
+        <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [(ngModel)]="packDetails"
+          name="packDetails" />
+      </div>
+
+      <div class="block-bottom-pack">
+        <div>
+          <span class="title-small">Паушальный взнос:</span><br>
+          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+            name="packLumpSumPayment" /> ₽
+        </div>
+
+        <div>
+          <span class="title-small">Роялти:</span><br>
+          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+            name="packLumpSumPayment" /> %
+        </div>
+
+        <div>
+          <span class="title-small">Всего инвестиций:</span><br>
+          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+            name="packLumpSumPayment" /> ₽
+        </div>
+      </div>
+    </div>    
+  </div>  
+
+  <div class="block-button-pack">
+    <button class="control-button-blue">Добавить отзыв</button>
+  </div>
+ </div> -->
+
+ <div class="switch-garant block-garant">      
+  <strong>Продажа через гарант</strong><br>
+  <p-inputSwitch [(ngModel)]="isGarant" class="flag-garant" (click)="onCheckedGarant()"></p-inputSwitch>
+</div>   
+
+<div class="d-flex">
+  <div>
+    <button class="control-button-white">Отменить и сохранить в черновиках</button>
+  </div>
+
+  <div class="block-two">
+    <button class="control-button-blue" (click)="onCreateFranchiseAsync()">Оплатить размещение и опубликовать</button>
+  </div>
+</div>
+      </section>
+       
+
+      <!-- Изменить карточку франшизы. -->
+      <div *ngIf="selectedCardAction == 'ChangeFranchise'">
+        <div>
+          <div>
+            <label class="mt-3">Список франшиз</label>
+          </div>
+
+          <div>
+            <p-dropdown class="block-sort-by" [options]="aFranchises" optionLabel="title" name="franchiseAction"
+              [(ngModel)]="selectedFranchise" placeholder="Выберите франшизу" [showClear]="true"
+              (onChange)="onSelectFranchise($event, false)">
+            </p-dropdown>
+          </div>
+        </div>
+
+        <section id="edit-franchise">
+          <!-- Блок с названием. -->
+          <div class="row">
+            <div class="col-12">
+              <h5 class="title">Название и логотип*</h5>
+            </div>
+
+            <div class="col-2">
+              <div class="file-input-wrapper">
+                <label class="form-label">Логотип</label>
+                <input type="file" (change)="uploadFranchiseLogoAsync($event)" />
+                <!-- <div class="franchise-logo">
+                  <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="col-10">
+              <div class="block-two">
+                <label class="form-label">Название</label><br>
+                <input type="text" class="control-big-input" pInputText placeholder="Название"
+                  [(ngModel)]="franchiseData.title" name="logoName" />
+              </div>
+            </div>
+
+            <div class="col-12">
+              <hr class="hr">
+            </div>
+          </div>
+
+
+
+
+
+
+
+          <div class="row photos">
+            <div class="col-12">
+              <h5 class="title">Фотографии*</h5>
+            </div>
+
+            <div class="col-8">
+              <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>
+              <div class="block-gallery">
+                <div class="w-100">
+                  <span *ngIf="!aFranchisePhotos.length">Фотографии не загружены</span>
+
+                  <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
+                    [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
+                    <ng-template pTemplate="item" let-item>
+                      <img src="{{item}}" style="width: 700px; display: block;" />
+                    </ng-template>
+
+                    <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
+                      <div class="p-grid p-nogutter p-justify-center">
+                        <img src="{{item}}" />
+                      </div>
+                    </ng-template>
+                  </p-galleria>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div>
+                <h6>Ваша карточка для связи</h6>
+                <strong>Ваше Имя Фамилия Отчество</strong>
+
+                <div>
+                  <!-- <label>Пример: владелец</label><br> -->
+                  <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец"
+                    [(ngModel)]="franchiseData.status" name="lead" />
+                  <!-- <span>{{item.status}}</span> -->
+                </div>
+
+                <div class="photos-buttons">
+                  <p-button label="Стать франчайзи онлайн через гарант" styleClass="p-button-link" [disabled]="true">
+                  </p-button>
+                  <p-button label="Начать чат с представителем" styleClass="control-button-blue" [disabled]="true">
+                  </p-button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div>
+              <!-- Ключевые финансовые данные. -->
+              <span class="title-strong">Ключевые финансовые данные*</span><br>
+              <div class="block-invest">
+                <div class="invest-item-first">
+                  <span class="title-small">Общие инвестиции</span><br>
+                  <small>включая паушальный взнос</small><br>
+                  <input type="number" class="control-input-franch-price" pInputText
+                    [(ngModel)]="franchiseData.generalInvest" name="generalInvest" /> ₽
+                  <!-- <span>{{item.totalInvest}} ₽</span> -->
+                </div>
+
+                <div class="invest-item">
+                  <span class="title-small">Паушальный взнос</span><br>
+                  <small>зависит от выбранного пакета</small><br>
+                  <input type="number" class="control-input-franch-price" pInputText
+                    [(ngModel)]="franchiseData.lumpSumPayment" name="lumpSumPayment" /> ₽
+                  <!-- <span>{{item.lumpSumPayment}} ₽</span> -->
+                </div>
+
+                <div class="invest-item">
+                  <span class="title-small">Роялти</span><br>
+                  <small>от валовой выручки</small><br>
+                  <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.royalty"
+                    name="royalty" /> ₽
+                  <!-- <span>{{item.royalty}} ₽</span> -->
+                </div>
+
+                <div class="invest-item">
+                  <span class="title-small">Окупаемость</span><br>
+                  <small>средняя и планируемая</small><br>
+                  <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.payback"
+                    name="payback" /> мес.
+                  <!-- <span>{{item.payback}} мес.</span> -->
+                </div>
+
+                <div class="invest-item">
+                  <span class="title-small">Месячная прибыль</span><br>
+                  <small>планируемая чистая прибыль</small><br>
+                  <input type="number" class="control-input-franch-price" pInputText
+                    [(ngModel)]="franchiseData.profitMonth" name="profitMonth" /> ₽
+                  <!-- <span>{{item.profitMonth}} ₽</span> -->
+                </div>
+
+                <div class="invest-item-last">
+                  <span class="title-small">Срок запуска</span><br>
+                  <small>средний срок открытия бизнеса</small><br>
+                  <input type="number" class="control-input-franch-price" pInputText
+                    [(ngModel)]="franchiseData.launchDate" name="launchDate" /> дн.
+                  <!-- <span>{{item.launchDate}} дн. </span> -->
+                </div>
+              </div>
+
+              <hr class="hr">
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+          <!-- Основная информация о компании. -->
+          <div class="row main-info">
+            <div class="col-8">
+              <div class="textarea">
+                <h6>Основная информация о компании*</h6>
+                <span><strong>Описание деятельности</strong></span><br>
+                <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+                  placeholder="Опишите деятельность" [(ngModel)]="franchiseData.activityDetail"></textarea>
+                <!-- <span>{{item.activityDetail}}</span> -->
+              </div>
+
+              <!-- Дополнительные факты. -->
+              <div class="additional-facts">
+                <h6>Дополнительные факты*</h6>
+                <span>0 из 4</span>
+                <div class="row">
+                  <div class="col-3">
+                    <div class="additional-facts-block">
+                      <label>Год основания</label><br>
+                      <span>компании</span><br>
+                      <input type="number" class="control-input-franch-price" pInputText
+                        [(ngModel)]="franchiseData.baseDate" name="baseDate" />
+                      <!-- <span>{{item.baseDate}}</span> -->
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="additional-facts-block">
+                      <label>Год запуска</label><br>
+                      <span>франчайзинга</span><br>
+                      <input type="number" class="control-input-franch-price" pInputText
+                        [(ngModel)]="franchiseData.yearStart" name="yearStart" />
+                      <!-- <span>{{item.yearStart}}</span> -->
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="additional-facts-block">
+                      <label>Количество точек</label><br>
+                      <span>в России</span><br>
+                      <input type="number" class="control-input-franch-price" pInputText
+                        [(ngModel)]="franchiseData.dotCount" name="dotCount" />
+                      <!-- <span>{{item.dotCount}}</span> -->
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="additional-facts-block">
+                      <label>Собственных</label><br>
+                      <span>предприятий</span><br>
+                      <input type="number" class="control-input-franch-price" pInputText
+                        [(ngModel)]="franchiseData.businessCount" name="businessCount" />
+                      <!-- <span>{{item.businessCount}}</span> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <h6>Входит в инвестиции*</h6>
+              <span>1 из 10</span>
+              <div class="main-info-form" *ngFor="let item of aInvestInclude">
+
+                <div>
+                  <label>Стоимость</label><br>
+                  <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.Price"
+                    name="priceInvest" placeholder="- ₽" />
+                  <!-- <span>{{item.Price}}</span> -->
+                </div>
+
+                <div>
+                  <label>Название</label><br>
+                  <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText
+                    [(ngModel)]="item.Name" name="nameInvest" />
+                  <!-- <span>{{item.Name}}</span> -->
+                </div>
+
+                <button class="control-button-blue-small">Добавить пункт</button>
+              </div>
+              <p>Данный раздел обязателен для заполнения. Подойдите к заполнению данного раздела тщательно, так как при
+                продаже
+                онлайн через сервис гарант данные разделы способствуют разбиению на этапы.</p>
+            </div>
+
+            <div class="col-12">
+              <hr class="hr">
+            </div>
+          </div>
+
+          <!-- Описание особенности франшизы. -->
+          <div class="row franchise-specifications">
+            <div class="col-12">
+              <h6>Описание особенности франшизы</h6>
+            </div>
+            <div class="col-12">
+              <div class="franchise-specifications-block">
+                <div>
+                  <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения"
+                    pInputText [(ngModel)]="franchiseData.peculiarity" name="featureFranchise" />
+                </div>
+
+                <div class="d-flex flex-column">
+                  <strong>Прикрепить финансовую модель .xlsx</strong>
+                  <span class="size">до 5 мб</span>
+                  <input type="file" (change)="uploadFinModelAsync($event)" id="attach-file" class="d-none" />
+                  <label for="attach-file" class="d-flex align-items-center">
+                    <span class="me-2">
+                      <img src="../../../../assets/images/franchise-pages/attach.svg" alt="gobizy attach file icon" />
+                    </span>
+                    <span>Прикрепить</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <p>Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите
+                  загружать
+                  презентацию, просто пропустите данный этап.</p>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <hr class="hr">
+            </div>
+          </div>
+
+          <!-- Основная информация о франшизе. -->
+          <div class="row main-franchise-info">
+            <div class="col-8">
+              <div>
+                <h6>Основная информация о франшизе*</h6>
+                <span>Описание франшизы</span>
+                <div>
+                  <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+                    placeholder="Опишите франшизу" [(ngModel)]="franchiseData.text" name="defailsFranchise"></textarea>
+                  <!-- <span>{{item.text}}</span> -->
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form">
+                <h6>Добавить презентацию</h6>
+                <div class="block-details-franch d-flex flex-column">
+                  <strong>Прикрепить документ .pdf</strong>
+                  <span>до 20 мб</span>
+                  <input type="file" (change)="uploadPresentAsync($event)" id="upload-present-async" class="d-none" />
+                  <label for="upload-present-async" class="d-flex align-items-center">
+                    <span class="me-2">
+                      <img src="../../../../assets/images/franchise-pages/attach.svg" alt="gobizy attach file icon" />
+                    </span>
+                    <span>Прикрепить</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <p>Загружать презентацию не обязательно. Однако, это способствует повышению конверсии и глубинной
+                  заинтересованности в проекте. Если вы не хотите загружать презентацию, просто пропустите данный этап.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <hr class="hr">
+            </div>
+          </div>
+
+          <!-- Пример расчета прибыли. -->
+          <div class="row income-calculation">
+            <div class="col-8">
+              <div>
+                <h6>Пример расчета прибыли*</h6>
+                <span>Описание расчета</span>
+                <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+                  placeholder="Опишите расчет" [(ngModel)]="franchiseData.paymentDetail"
+                  name="paymentDetails"></textarea>
+                <!-- <span>{{item.paymentDetail}}</span> -->
+              </div>
+            </div>
+
+            <div class="col-8">
+              <!-- Ключевые финансовые показатели. -->
+              <div class="block-details-franch">
+                <h6>Ключевые финансовые показатели</h6>
+                <div class="top-form d-flex flex-column">
+                  <label>Название</label>
+                  <input type="text" class="franch-details" placeholder="Пример: расчет прибыль 1 кофейни" pInputText
+                    [(ngModel)]="franchiseData.peculiarity" name="" />
+                </div>
+
+                <div class="row">
+                  <div class="col-3" *ngFor="let item of aFinIndicators">
+                    <div class="fin-indicator-first">
+                      <div>
+                        <label>Например: средний чек</label>
+                        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                          [(ngModel)]="item.Name" name="finIndicator1" />
+                        <!-- <span>{{item.Name}}</span><br> -->
+                      </div>
+
+                      <div>
+                        <label>Процент или финансы</label>
+                        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                          [(ngModel)]="item.Price" name="" />
+                        <!-- <span>{{item.Price}}</span><br> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <hr class="hr">
+              </div>
+            </div>
+          </div>
+
+          <!-- Обучение и поддержка. -->
+          <div class="row education-and-support">
+            <div class="col-8">
+              <h6>Обучение и поддержка*</h6>
+              <span>Описание обучения</span>
+              <div>
+                <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+                  placeholder="Опишите обучение" [(ngModel)]="franchiseData.trainingDetails"
+                  name="educationDetails"></textarea>
+              </div>
+
+              <div class="upload-file-education">
+                <label>Добавить фотографию</label>
+                <input type="file" (change)="uploadEducationPhotosAsync($event)" />
+                <!-- <div>
+                  <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="col-12">
+              <hr class="hr">
+            </div>
+          </div>
+
+          <!-- Пакеты франшизы. -->
+          <div class="row franchise-packages">
+            <div class="col-12">
+              <div class="p-field-checkbox control-checkbox">
+                <div class="d-flex align-items-center">
+                  <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+                  <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
+                </div>
+              </div>
+
+              <p>Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет пакетов вы можете
+                отключить
+                данный раздел галочкой слева от названия.</p>
+            </div>
+
+            <div class="col-4">
+              <!-- Блок с пакетами франшизы. -->
+              <div class="franchise-packages-block">
+                <div class="d-flex">
+                  <div class="block-pack" *ngFor="let item of aPacks">
+                    <div class="block-top-pack">
+                      <div>
+                        <input type="text" class="control-big-input" pInputText
+                          placeholder="Название пакета, например: “Базовый”" [(ngModel)]="item.Name" name="packName" />
+                      </div>
+
+                      <div class="d-flex justify-content-between">
+                        <span>
+                          <img src="../../../../assets/images/franchise-pages/tick.svg" alt="gobizy tick icon" />
+                        </span>
+                        <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание"
+                          [(ngModel)]="item.Text" name="packDetails" />
+                      </div>
+                    </div>
+
+                    <div class="block-bottom-pack">
+                      <div>
+                        <label class="title-small">Паушальный взнос:</label><br>
+                        <div class="d-flex align-items-center">
+                          <input type="text" class="control-big-input" pInputText [(ngModel)]="item.LumpSumPayment"
+                            name="packLumpSumPayment" />
+                          <span class="ms-3">₽</span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label class="title-small">Роялти:</label><br>
+                        <div class="d-flex align-items-center">
+                          <input type="text" class="control-big-input" pInputText [(ngModel)]="item.Royalty"
+                            name="royaltyPack" />
+                          <span class="ms-3">%</span>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label class="title-small">Всего инвестиций:</label><br>
+                        <div class="d-flex align-items-center">
+                          <input type="text" class="control-big-input" pInputText [(ngModel)]="item.TotalInvest"
+                            name="totalInvest" />
+                          <span class="ms-3">₽</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="add-package">
+                <button class="add-package-button">Добавить пакет</button>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <hr class="hr">
+            </div>
+          </div>
+
+          <!-- Видео о франшизе. -->
+          <div class="row franchise-video-section">
+            <div class="col-8 title-section">
+              <div class="p-field-checkbox control-checkbox">
+                <div class="d-flex align-items-center">
+                  <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+                  <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-8">
+              <p>Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет видео вы можете
+                отключить данный
+                раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.</p>
+            </div>
+
+            <div class="col-8">
+              <div class="video-link">
+                <label>Ссылка на видео</label><br>
+                <input type="text" class="control-big-input" placeholder="https://" pInputText
+                  [(ngModel)]="franchiseData.urlVideo" name="videoLink" />
+              </div>
+            </div>
+
+            <div class="col-12">
+              <hr class="hr">
+            </div>
+          </div>
+
+          <div class="row sale-through-garant">
+            <div class="col-8">
+              <div class="switch-garant">
+                <button class="control-button-blue" (click)="onEditFranchiseAsync()">Сохранить изменения</button>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+          <!-- Отзывы о франшизе. -->
+          <!-- <div class="p-field-checkbox control-checkbox">
+          <div>
+           <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+           <label for="packs" class="control-label-checkbox">Отзывы о франшизе</label>
+          </div>
+        </div>
+        
+        <div>
+         <small>
+          На данный момент доступны только видеоотзывы. Если у вас новая франшиза, то отзывов могло не быть. Однако вы можете добавить отзывы, если они есть или отключить их посредством галочки около названия.
+         </small>
+        </div> -->
+
+          <!-- Блок с отзывами. -->
+          <!-- <div class="d-flex">
+          <div class="">
+            <div class="block-pack">
+              <div class="block-top-pack">
+                <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
+                  [(ngModel)]="packName" name="packName" />
+                <br>
+                <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [(ngModel)]="packDetails"
+                  name="packDetails" />
+              </div>
+        
+              <div class="block-bottom-pack">
+                <div>
+                  <span class="title-small">Паушальный взнос:</span><br>
+                  <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+                    name="packLumpSumPayment" /> ₽
+                </div>
+        
+                <div>
+                  <span class="title-small">Роялти:</span><br>
+                  <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+                    name="packLumpSumPayment" /> %
+                </div>
+        
+                <div>
+                  <span class="title-small">Всего инвестиций:</span><br>
+                  <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
+                    name="packLumpSumPayment" /> ₽
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="block-button-pack">
+            <button class="control-button-blue">Добавить отзыв</button>
+          </div>
+         </div> -->
+
+          <!-- <div class="switch-garant block-garant">
+          <strong>Продажа через гарант</strong><br>
+          <p-inputSwitch [(ngModel)]="isGarant" class="flag-garant"></p-inputSwitch>
+        </div>    -->
+        </section>
+
+      </div>
+
+      <!-- Создать карточку бизнеса. -->
+      <div *ngIf="selectedCardAction == 'CreateBusiness'">
+
+        <h5 class="title-name-logo">Название бизнеса*</h5>
+
+  <!-- Блок с названием. -->
+  <div class="d-flex">
+    <div class="block-two">
+      <label>Укажите полное название вашего бизнеса, без приставок ООО</label><br>
+      <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="businessName" name="businessName" />
+    </div>
+  </div>
+
+  <hr class="hr">
+  
+  <span class="title-strong">Фотографии*</span><br>
+  <input type="file" (change)="uploadBusinessPhotosAsync($event)" multiple>  
+   <div class="block-gallery">
+     <div>       
+      <span *ngIf="!aNamesBusinessPhotos.length">Фотографии не загружены</span>
+       <p-galleria [(value)]="aNamesBusinessPhotos" [responsiveOptions]="responsiveOptions"
+         [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
+         <ng-template pTemplate="item" let-item>
+           <img src="{{item}}" style="width: 700px; display: block;" />           
+         </ng-template>
+
+         <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesBusinessPhotos.length > 1">
+           <div class="p-grid p-nogutter p-justify-center">
+             <img src="{{item}}" />
+           </div>
+         </ng-template>
+       </p-galleria>
+     </div>
+
+     <div>
+      <span class="title-strong">Ваша карточка для связи</span><br>
+      <span class="title-small">{{fio}}</span><br>
+     
+      <div>
+        <label>Пример: владелец</label><br>
+        <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец" [(ngModel)]="lead" name="lead" />
+      </div>
+
+      <!-- <button class="btn btn-link">Стать франчайзи онлайн через гарант</button><br>
+      <button class="control-button-blue">Начать чат с представителем</button> -->
+     </div>
+   </div>
+
+   <!-- Ключевые финансовые данные. -->
+   <span class="title-strong">Ключевые финансовые данные*</span><br>
+   <div class="block-invest">
+    <div class="invest-item-first">
+      <span class="title-small">Стоимость</span><br>
+      <small>полная стоимость бизнеса</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="price" name="price" /> ₽
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Оборот</span><br>
+      <small>средняя выручка за месяц</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="turnPrice" name="turnPrice" /> ₽
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Прибыль</span><br>
+      <small>чистая прибыль за месяц</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="profitPrice" name="profitPrice" /> ₽
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Окупаемость</span><br>
+      <small>по настоящим данным</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="payback" name="payback" /> мес.
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Рентабельность</span><br>
+      <small>по настоящим данным</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="profitability" name="profitability" /> ₽
+    </div>
+
+    <div class="invest-item-last">
+      <span class="title-small">Возраст бизнеса</span><br>
+      <small>с момента основания</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="businessAge" name="businessAge" /> дн.
+    </div>
+   </div>
+
+   <hr class="hr">
+
+   <!-- Основная информация о компании. -->
+   <div class="d-flex">
+     <div>
+       <span class="title-strong">Основная информация о бизнесе*</span><br>
+       <span class="title-small">Описание деятельности</span><br>
+       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+         placeholder="Опишите деятельность" [(ngModel)]="activityDetail"></textarea>
+     </div>
+
+     <div class="invest-in">
+      <span class="title-strong">Входит в стоимость*</span><br>
+      <div class="invest-item-last" *ngFor="let item of aPriceIn">
+        <small class="">Стоимость</small><br>
+        <input type="number" class="control-input-franch-price" pInputText *ngIf="item.isHide" [value]="item.Price" name="priceIn" /> 
+        <input type="number" class="control-input-franch-price" pInputText *ngIf="!item.isHide" [(ngModel)]="priceIn" name="priceIn" /> 
+        <br>
+
+        <small class="">Название</small><br>
+        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="item.isHide" [value]="item.Name" name="nameIn" />   
+        <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText *ngIf="!item.isHide" [(ngModel)]="nameIn" name="nameIn" />                 
+      </div>
+      <button class="control-button-blue-small" (click)="onAddPriceIn(priceIn, nameIn)">Добавить пункт</button>
+      <br>
+      <small>
+        Данный раздел обязателен для заполнения.<br>
+        Подойдите к заполнению данного раздела<br>
+        тщательно, так как при продаже онлайн через сервис<br>
+        гарант данные разделы способствуют разбиению<br>
+        на этапы.
+      </small>
+     </div>     
+   </div>
+
+   <!-- Дополнительные факты. -->
+   <span class="title-strong">Дополнительные факты*</span><br>
+   <div class="d-flex">
+    <div class="invest-item-first">
+      <span class="title-small">Сотрудников</span><br>
+      <small>количество</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="employeeYearCount" name="employeeYearCount" />
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Форма</span><br>
+      <small>организационно-правовая</small><br>
+      <input type="text" class="control-input-franch-price" pInputText [(ngModel)]="form" name="form" />
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Доля</span><br>
+      <small>к продаже</small><br>
+      <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="share" name="share" /> 
+    </div>
+
+    <div class="invest-item">
+      <span class="title-small">Сайт</span><br>
+      <small>компании</small><br>
+      <input type="text" class="control-input-franch-price" pInputText [(ngModel)]="site" name="site" />
+    </div>
+   </div>
+
+   <hr class="hr">
+
+   <!-- Описание особенности бизнеса. -->
+   <span class="title-strong">Описание особенности готового бизнеса</span><br>
+   <div class="block-details-franch">    
+    <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText [(ngModel)]="peculiarity" name="peculiarity" />
+    <span class="text">Прикрепить финансовую модель .xlsx</span>
+    <br>
+
+   <div>
+    <input type="file" (change)="uploadFinModelAsync($event)">  
+    <!-- <button class="control-button-blue-small">Прикрепить файл</button> -->
+    <br>
+    <small>
+      Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать презентацию, просто пропустите данный этап. 
+    </small>
+   </div>
+   </div>
+
+   <hr class="hr">
+
+   <!-- Деятельность бизнеса. -->
+   <div class="d-flex">
+    <div>
+      <span class="title-strong">Деятельность бизнеса*</span><br>
+     <div>
+      <span class="title-small">Описание принципов и процессов работы вашего бизнеса</span><br>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Опишите бизнес" [(ngModel)]="text" name="text"></textarea>
+        <br>
+        <input type="file" (change)="uploadTextBusinessPhotosAsync($event)">  
+     </div>
+    </div>     
+   </div>
+
+   <hr class="hr">
+
+   <div class="d-flex">
+    <div>
+      <span class="title-strong">Активы предприятия*</span><br>
+      <span class="title-small">Опишите активы и их ценность чуть более подробно, чем в разделе “Входит в стоимость”</span><br>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Опишите активы" [(ngModel)]="assets" name="assets"></textarea>
+        <br>
+        <input type="file" (change)="uploadAssetsBusinessPhotosAsync($event)">  
+    </div>
+   </div>
+
+   <hr class="hr">  
+
+   <!-- Причины продажи. -->
+   <div class="d-flex">
+    <div>
+      <span class="title-strong">Причины продажи*</span><br>
+      <span class="title-small">Укажите реальные причины продажи</span><br>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Опишите причины" [(ngModel)]="reasonsSale" name="reasonsSale"></textarea><br>
+        <input type="file" (change)="uploadReasonsSalePhotosAsync($event)">  
+    </div>
+   </div>
+
+ <hr class="hr">
+
+  <!-- Адрес. -->
+  <h5 class="title-name-logo">Адрес*</h5>
+  <div class="d-flex">
+    <div class="">
+      <label>Адрес</label><br>
+      <input type="text" class="control-big-input" pInputText placeholder="Адрес" [(ngModel)]="address" name="address" />
+    </div>
+  </div>
+
+   <hr class="hr">
+
+ <!-- Видео о бизнесе. -->
+ <div class="p-field-checkbox control-checkbox">
+  <div>
+   <p-checkbox name="group1" value="New York" [(ngModel)]="isHideVideo" inputId="video"></p-checkbox>
+   <label for="video" class="control-label-checkbox">Видео о бизнесе</label>
+  </div>        
+</div>
+
+<div>
+ <small>
+    Данный раздел не является обязательным для заполнения. Если у вашего бизнеса нет видео вы можете отключить данный раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.
+ </small>
+</div>
+
+<div>
+  <span class="title-small">Ссылка на видео</span><br>
+  <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="videoLink"
+    name="videoLink" /> 
+</div>
+
+<hr class="hr">
+
+ <div class="switch-garant block-garant">      
+  <strong>Продажа через гарант</strong><br>
+  <p-inputSwitch [(ngModel)]="isGarant" class="flag-garant" (click)="onCheckedGarant()"></p-inputSwitch>
+</div>   
+
+<div class="d-flex">
+  <div>
+    <button class="control-button-white">Отменить и сохранить в черновиках</button>
+  </div>
+
+  <div class="block-two">
+    <button class="control-button-blue" (click)="onCreateBusinessAsync()">Оплатить размещение и опубликовать</button>
+  </div>
+</div>
+      </div>
+
+      <!-- Изменить карточку бизнеса. -->
+      <div *ngIf="selectedCardAction == 'ChangeBusiness'">
+        <div>
+          <div>
+            <label class="mt-3">Список бизнесов</label>
+          </div>
+
+          <div>
+            <p-dropdown class="block-sort-by" [options]="aBusinessList" optionLabel="title" name="businessAction"
+              [(ngModel)]="selectedBusiness" placeholder="Выберите бизнес" [showClear]="true"
+              (onChange)="onSelectBusiness($event, false)">
+            </p-dropdown>
+          </div>
+        </div>
+
+        <h5 class="title-name-logo">Название бизнеса*</h5>
+
+        <!-- Блок с названием. -->
+        <div class="d-flex">
+          <div class="block-two business-name">
+            <label class="business-name-label">Укажите полное название вашего бизнеса, без приставок ООО</label><br>
+            <input type="text" class="control-big-input" pInputText placeholder="Название"
+              [(ngModel)]="businessData.businessName" name="businessName" />
+          </div>
+        </div>
+
+        <hr class="hr">
+
+        <div class="fotos">
+          <span class="title-strong">Фотографии*</span><br>
+          <label class="file-label">
+            <input type="file" class="file-input" (change)="uploadBusinessPhotosAsync($event)" multiple>
+            Прикрепить</label>
+          <span class="picture" *ngIf="filesAssets && filesAssetsCounter === 1">
+            {{filesAssets.name}}
+          </span>
+          <span class="picture" *ngIf="filesAssets && filesAssetsCounter > 1">
+            Выбрано {{filesAssetsCounter}} файлов.
+          </span>
+        </div>
+
+        <div class="block-gallery">
+          <div>
+            <span *ngIf="!aNamesBusinessPhotos.length">Фотографии не загружены</span>
+            <p-galleria [(value)]="aNamesBusinessPhotos" [responsiveOptions]="responsiveOptions"
+              [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
+              <ng-template pTemplate="item" let-item>
+                <img src="{{item}}" style="width: 700px; display: block;" />
+              </ng-template>
+
+              <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesBusinessPhotos.length > 1">
+                <div class="p-grid p-nogutter p-justify-center">
+                  <img src="{{item}}" />
+                </div>
+              </ng-template>
+            </p-galleria>
+          </div>
+
+          <div>
+            <span class="title-strong">Ваша карточка для связи</span><br>
+            <span class="title-small">{{fio}}</span><br>
+
+            <div>
+              <label class="control-label-gallery">Пример: владелец</label><br>
+              <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец"
+                [(ngModel)]="businessData.status" name="lead" />
+            </div>
+
+            <!-- <button class="btn btn-link">Стать франчайзи онлайн через гарант</button><br>
+      <button class="control-button-blue">Начать чат с представителем</button> -->
+          </div>
+        </div>
+
+        <!-- Ключевые финансовые данные. -->
+        <span class="title-strong">Ключевые финансовые данные*</span><br>
+        <div class="block-invest">
+          <div class="invest-item invest-item-first">
+            <span class="title-small invest-item__title">Стоимость</span><br>
+            <small class="invest-item__small">полная стоимость бизнеса</small><br>
+            <input type="number" class="control-input-franch-price invest-item__input" pInputText
+              [(ngModel)]="businessData.price" name="price" /> ₽
+          </div>
+
+          <div class="invest-item">
+            <span class="title-small">Оборот</span><br>
+            <small class="invest-item__small">средняя выручка за месяц</small><br>
+            <input type="number" class="control-input-franch-price invest-item__input" pInputText
+              [(ngModel)]="businessData.turnPrice" name="turnPrice" /> ₽
+          </div>
+
+          <div class="invest-item">
+            <span class="title-small">Прибыль</span><br>
+            <small class="invest-item__small">чистая прибыль за месяц</small><br>
+            <input type="number" class="control-input-franch-price invest-item__input" pInputText
+              [(ngModel)]="businessData.profitPrice" name="profitPrice" /> ₽
+          </div>
+
+          <div class="invest-item">
+            <span class="title-small">Окупаемость</span><br>
+            <small class="invest-item__small">по настоящим данным</small><br>
+            <input type="number" class="control-input-franch-price invest-item__input" pInputText
+              [(ngModel)]="businessData.payback" name="payback" /> мес.
+          </div>
+
+          <div class="invest-item">
+            <span class="title-small">Рентабельность</span><br>
+            <small class="invest-item__small">по настоящим данным</small><br>
+            <input type="number" class="control-input-franch-price invest-item__input" pInputText
+              [(ngModel)]="businessData.profitability" name="profitability" /> ₽
+          </div>
+
+          <div class="invest-item invest-item-last">
+            <span class="title-small invest-item__title">Возраст бизнеса</span><br>
+            <small class="invest-item__small">с момента основания</small><br>
+            <input type="number" class="control-input-franch-price invest-item__input" pInputText
+              [(ngModel)]="businessData.businessAge" name="businessAge" /> дн.
+          </div>
+        </div>
+
+        <hr class="hr">
+
+        <!-- Основная информация о компании. -->
+        <div class="d-flex business-details">
+
+          <div class="business-info">
+            <div>
+              <span class="title-strong">Основная информация о бизнесе*</span><br>
+              <span class="title-small business-info__small">Описание деятельности</span><br>
+              <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+                placeholder="Опишите деятельность" [(ngModel)]="businessData.activityDetail"></textarea>
+            </div>
+
+            <!-- Дополнительные факты. -->
+            <div>
+              <span class="title-strong">Дополнительные факты*</span><br>
+              <div class="d-flex">
+                <div class="additional-info">
+                  <div class="invest-item invest-item-first">
+                    <span class="title-small">Сотрудников</span><br>
+                    <small class="invest-item__small">количество</small><br>
+                    <input type="number" class="control-input-franch-price invest-item__input" pInputText
+                      [(ngModel)]="businessData.employeeCountYear" name="employeeYearCount" />
+                  </div>
+
+                  <div class="invest-item">
+                    <span class="title-small">Форма</span><br>
+                    <small class="invest-item__small">организационно-правовая</small><br>
+                    <input type="text" class="control-input-franch-price invest-item__input" pInputText
+                      [(ngModel)]="businessData.form" name="form" />
+                  </div>
+
+                  <div class="invest-item">
+                    <span class="title-small">Доля</span><br>
+                    <small class="invest-item__small">к продаже</small><br>
+                    <input type="number" class="control-input-franch-price invest-item__input" pInputText
+                      [(ngModel)]="businessData.share" name="share" />
+                  </div>
+
+                  <div class="invest-item">
+                    <span class="title-small">Сайт</span><br>
+                    <small class="invest-item__small">компании</small><br>
+                    <input type="text" class="control-input-franch-price invest-item__input" pInputText
+                      [(ngModel)]="businessData.site" name="site" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="invest-in">
+            <span class="title-strong">Входит в стоимость*</span><br>
+            <!-- <div class="invest-item-last" *ngFor="let item of aPriceIn"> -->
+            <div class="invest-in-container" *ngFor="let item of ainvestIn">
+              <small class="invest-in__title">Стоимость</small><br>
+              <input type="number" class="control-input-franch-price invest-in__input" pInputText *ngIf="item.isHide"
+                [value]="item.Price" name="priceIn" />
+              <input type="number" class="control-input-franch-price invest-in__input" pInputText *ngIf="!item.isHide"
+                [(ngModel)]="item.Price" name="priceIn" />
+              <br>
+
+              <small class="invest-in__title">Название</small><br>
+              <input type="text" class="control-input-name invest-in__input" placeholder="Пример: оборудование"
+                pInputText *ngIf="item.isHide" [value]="item.Name" name="nameIn" />
+              <input type="text" class="control-input-name invest-in__input" placeholder="Пример: оборудование"
+                pInputText *ngIf="!item.isHide" [(ngModel)]="item.Name" name="nameIn" />
+            </div>
+            <button class="control-button-blue-small" (click)="onAddPriceIn(priceIn, nameIn)">Добавить пункт</button>
+            <br>
+            <small class="invest-in__text">
+              Данный раздел обязателен для заполнения.<br>
+              Подойдите к заполнению данного раздела<br>
+              тщательно, так как при продаже онлайн через сервис<br>
+              гарант данные разделы способствуют разбиению<br>
+              на этапы.
+            </small>
+          </div>
+        </div>
+
+
+
+
+        <hr class="hr">
+
+        <!-- Описание особенности бизнеса. -->
+        <span class="title-strong">Описание особенности готового бизнеса</span><br>
+        <div class="block-details-franch">
+          <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения"
+            pInputText [(ngModel)]="businessData.peculiarity" name="peculiarity" />
+          <span class="text">Прикрепить финансовую модель .xlsx</span>
+          <br>
+
+          <div>
+            <label class="file-label file-label--5mb">
+              <input type="file" class="file-input" (change)="uploadFinModelAsync($event)">
+              Прикрепить</label>
+            <span class="picture" *ngIf="modelFile">
+              {{modelFile.name}}
+            </span>
+            <!-- <button class="control-button-blue-small">Прикрепить файл</button> -->
+            <br>
+          </div>
+        </div>
+        <small class="text text--bottom">
+          Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать
+          презентацию, просто пропустите данный этап.
+        </small>
+
+        <hr class="hr">
+
+        <!-- Деятельность бизнеса. -->
+        <div class="d-flex">
+          <div>
+            <span class="title-strong">Деятельность бизнеса*</span><br>
+            <div>
+              <span class="title-small block__description">Описание принципов и процессов работы вашего
+                бизнеса</span><br>
+              <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+                placeholder="Опишите бизнес" [(ngModel)]="businessData.text" name="text"></textarea>
+              <br>
+              <label class="file-label">
+                <input type="file" class="file-input" (change)="uploadTextBusinessPhotosAsync($event)">
+                Прикрепить
+              </label>
+              <span class="picture" *ngIf="filesTextBusiness">
+                {{filesTextBusiness.name}}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="hr">
+
+        <div class="d-flex">
+          <div>
+            <span class="title-strong">Активы предприятия*</span><br>
+            <span class="title-small block__description">Опишите активы и их ценность чуть более подробно, чем в разделе
+              “Входит в
+              стоимость”</span><br>
+            <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+              placeholder="Опишите активы" [(ngModel)]="businessData.assets" name="assets"></textarea>
+            <br>
+            <label class="file-label">
+              <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)">
+              Прикрепить</label>
+            <span class="picture" *ngIf="filesAssets">
+              {{filesAssets.name}}
+            </span>
+          </div>
+        </div>
+
+        <hr class="hr">
+
+        <!-- Причины продажи. -->
+        <div class="d-flex">
+          <div>
+            <span class="title-strong">Причины продажи*</span><br>
+            <span class="title-small block__description">Укажите реальные причины продажи</span><br>
+            <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+              placeholder="Опишите причины" [(ngModel)]="businessData.reasonsSale" name="reasonsSale"></textarea><br>
+            <label class="file-label">
+              <input type="file" class="file-input" (change)="uploadReasonsSalePhotosAsync($event)">
+              Прикрепить</label>
+            <span class="picture" *ngIf="filesReasonsSale">
+              {{filesReasonsSale.name}}
+            </span>
+          </div>
+        </div>
+
+        <hr class="hr">
+
+        <!-- Адрес. -->
+        <h5 class="title-name-logo">Адрес*</h5>
+        <div class="d-flex">
+          <div class="address">
+            <label class="address__label">Адрес</label><br>
+            <!-- <input type="text" class="control-big-input" pInputText placeholder="Адрес" [(ngModel)]="address" -->
+            <input type="text" class="address__input" pInputText placeholder="Адрес" [(ngModel)]="businessData.address"
+              name="address" />
+          </div>
+        </div>
+
+        <hr class="hr">
+
+        <!-- Видео о бизнесе. -->
+        <div class="p-field-checkbox control-checkbox">
+          <div class="video">
+            <p-checkbox class="video__checkbox" name="group1" value="New York" [(ngModel)]="isHideVideo"
+              inputId="video">
+            </p-checkbox>
+            <label for="video" class="control-label-checkbox">Видео о бизнесе</label>
+          </div>
+        </div>
+
+        <div class="video__text">
+          <small>
+            Данный раздел не является обязательным для заполнения. Если у вашего бизнеса нет видео вы можете отключить
+            данный
+            раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.
+          </small>
+        </div>
+
+        <div>
+          <span class="title-small">Ссылка на видео</span><br>
+          <!-- <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="videoLink" -->
+          <input type="text" class="video__input" placeholder="https://" pInputText [(ngModel)]="businessData.urlVideo"
+            name="videoLink" />
+        </div>
+
+        <hr class="hr">
+
+        <div class="switch-garant block-garant">
+          <strong class="block-garant__title">Продажа через гарант</strong><br>
+          <p-inputSwitch [(ngModel)]="businessData.isGarant" class="flag-garant" (click)="onCheckedGarant()">
+          </p-inputSwitch>
+        </div>
+
+        <div class="d-flex">
+          <div>
+            <button class="control-button-white">Отменить и сохранить в черновиках</button>
+          </div>
+
+          <div class="block-two">
+            <button class="control-button-blue" (click)="onEditBusinessAsync()">Оплатить размещение и
+              опубликовать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </p-tabPanel>
+</p-tabView>

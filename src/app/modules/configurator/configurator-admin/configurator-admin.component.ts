@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { ArticleInput } from "src/app/models/blog/article-input";
@@ -12,6 +12,7 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
 import { FinData } from "src/app/shared/classes/fin-data";
 import { FORM_ERRORS, FORM_PLACEHOLDERS, FORM_SUCCESS, FORM_VALIDATION_MESSAGES } from "src/app/shared/classes/form-data";
 import { sumValidator } from "src/app/shared/classes/custom-validators";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "configurator-admin",
@@ -177,7 +178,8 @@ export class ConfiguratorAdminModule implements OnInit {
     constructor(private http: HttpClient, 
         private messageService: MessageService,
         private commonService: CommonDataService,
-        private formBuilder: FormBuilder) {
+        private formBuilder: FormBuilder,
+        private router: Router) {
         // TODO: переделать на вывод с бэка.
         this.aCardActions = [
             {
@@ -784,7 +786,12 @@ export class ConfiguratorAdminModule implements OnInit {
                 .subscribe({
                     next: (response: any) => {
                         console.log("Франшиза успешно создана:", response);
+
                         this.showMessageAfterSuccessCreateFranchise();
+
+                        setTimeout(() => {
+                            this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: response.franchiseId, mode: "view" } });
+                        }, 2000);                        
                     },
 
                     error: (err) => {

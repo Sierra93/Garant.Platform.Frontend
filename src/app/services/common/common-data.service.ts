@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ArticleInput } from "src/app/models/blog/article-input";
 import { API_URL } from "../../core/core-urls/api-url";
 import { DialogInput } from "../../models/chat/input/dialog-input";
 import { BreadcrumbInput } from "../../models/header/breadcrumb-input";
@@ -14,10 +13,12 @@ import { TransitionInput } from "../../models/transition/input/transition-input"
  */
 @Injectable()
 export class CommonDataService {
+    currentRoute: any;
+
     constructor(private http: HttpClient, 
         private router: Router,
         private route: ActivatedRoute) {
-
+            this.currentRoute = this.route.snapshot.queryParams;
     }
 
     // Функция отсчитывает время бездействия юзера, по окончании простоя убивает сессию и перенаправляет на стартовую для авторизации.
@@ -112,17 +113,9 @@ export class CommonDataService {
     public routeToStart(err: any) {
         if (err.status === 401) {
             sessionStorage.clear();
-            sessionStorage["role"] = "G";
             
             this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
         }
-
-        // if (typeof(err) === "string") {
-        //     sessionStorage.clear();
-        //     sessionStorage["role"] = "G";
-
-        //     this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
-        // }
     };
 
     /**
@@ -305,8 +298,8 @@ export class CommonDataService {
      * Функция получит переход.
      * @returns Данные перехода.
      */
-     public async getTransitionAsync() {
-        try {
+     public async getTransitionAsync(currentRoute: any) {
+        try {                     
             return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/user/get-transition"), {})
                     .subscribe({
@@ -315,8 +308,14 @@ export class CommonDataService {
                         },
 
                         error: (err) => {
-                            this.routeToStart(err);
-                            throw new Error(err);
+                            console.log("currentRoute", currentRoute);
+
+                            if (currentRoute.mode !== "view") {
+                                this.routeToStart(err);        
+                                throw new Error(err);                       
+                            }                          
+                            
+                           
                         }
                     });
             })

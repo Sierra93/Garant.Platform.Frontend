@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <div class="col-xxl-5 {{ isSmallScreen ? 'col-xl-12' : 'col-xl-5'}} col-lg-12 col-md-12 {{ isMobile ? 'col-sm-12' : 'col-sm-7'}} col-12 item-search" [ngStyle]="{'height': isGarant ? 'auto' : '61px'}">
+      <div class="col-xxl-5 {{ isSmallScreen ? 'col-xl-12' : 'col-xl-5'}} col-lg-12 {{ tabletStart ? 'col-md-7' : 'col-md-12' }} {{ isMobile ? 'col-sm-12' : 'col-sm-7'}} col-12 item-search" [ngStyle]="{'height': isGarant ? 'auto' : '61px'}">
         <div class="search-container h-100 position-relative" *ngIf="!isGarant">
           <div class="h-100 d-flex align-items-center">
             <!-- тип селекта поиска -->

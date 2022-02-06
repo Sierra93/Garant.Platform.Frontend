@@ -28,6 +28,7 @@ export class HeaderModule implements OnInit {
     isSmallScreen: boolean = false;
     isMobile: boolean = false;
     isMenuHidden: boolean = true;
+    tabletStart: boolean = false;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
@@ -77,6 +78,12 @@ export class HeaderModule implements OnInit {
         this.isMobile = true;
       } else {
         this.isMobile = false;
+      }
+
+      if (window.innerWidth === 768) {
+        this.tabletStart = true;
+      } else {
+        this.tabletStart = false;
       }
     }
 

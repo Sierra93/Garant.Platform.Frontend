@@ -20,7 +20,7 @@
 
     <!-- лого, поисковое поле, и функции аккаунта -->
     <div class="row logo-and-search {{ isGarant ? 'align-items-center' : '' }}">
-      <div class="col-2" (click)="onRouteStart()">
+      <div class="col-xxl-2 {{ isSmallScreen ? 'col-xl-4' : 'col-xl-2'}} col-lg-4 col-md-3 {{ isMobile ? 'col-sm-8' : 'col-sm-3'}} col-8 item-logo" (click)="onRouteStart()">
         <div class="logo">
           <img src="../../assets/images/search_logo.svg" alt="gobizy logo" *ngIf="!isGarant" />
           <img src="../../../assets/images/logo-garant.svg" alt="gobizy logo" *ngIf="isGarant" class="mb-3" />
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <div class="col-5" [ngStyle]="{'height': isGarant ? 'auto' : '61px'}">
+      <div class="col-xxl-5 {{ isSmallScreen ? 'col-xl-12' : 'col-xl-5'}} col-lg-12 col-md-12 {{ isMobile ? 'col-sm-12' : 'col-sm-7'}} col-12 item-search" [ngStyle]="{'height': isGarant ? 'auto' : '61px'}">
         <div class="search-container h-100 position-relative" *ngIf="!isGarant">
           <div class="h-100 d-flex align-items-center">
             <!-- тип селекта поиска -->
@@ -66,7 +66,16 @@
           </div>
         </div>
       </div>
-      <div class="col-5">
+
+      <div class="{{ isMobile ? 'col-sm-4 d-flex justify-content-end' : 'col-sm-2'}} col-4 hamburger item-hamburger">
+        <div>
+          <button (click)="toggleMenu(true)">
+            <img src="./../../../assets/images/navbar-toggler.svg" alt="hamburger icon" />
+          </button>
+        </div>
+      </div>
+
+      <div class="col-xxl-5 {{ isSmallScreen ? 'col-xl-8' : 'col-xl-5'}} col-lg-8 col-md-9 item-account">
         <div class="account-options">
           <nav>
             <ul class="list-unstyled d-flex justify-content-between">
@@ -181,9 +190,9 @@
     <!-- Управление сделкой -->
 
     <!-- навбар основных страниц -->
-    <div class="row main-pages" *ngIf="!isGarant">
+    <div class="row" *ngIf="!isGarant">
       <div class="col-12">
-        <nav>
+        <nav class="main-pages">
           <ul class="list-unstyled">
             <li>
               <a routerLink="/">
@@ -241,5 +250,72 @@
 
   <div class="stepper" *ngIf="isGarant">
     <p-steps [model]="items"></p-steps>
+  </div>
+
+  <div class="menu-responsive {{ isMenuHidden ? 'hidden' : 'visible' }}">
+    <div class="header">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+          <img src="./../../../assets/images/search_logo.svg" alt="gobizy logo" />
+        </div>
+
+        <span>
+          <button (click)="toggleMenu(false)">
+            <img src="./../../../assets/images/navbar-close.svg" alt="close navbar" />
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <div class="content">
+      <ul>
+        <li *ngFor="let el of aHeader" class="d-flex justify-content-between align-items-center">
+          <span (click)="onGetMenuHeader(el.name)">{{el.name}}</span>
+          <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
+        </li>
+
+        <li>
+          <a routerLink="/" class="d-flex justify-content-between align-items-center">
+            <span>Главная</span>
+            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/catalog-franchise" class="d-flex justify-content-between align-items-center">
+            <span>Франшизы</span>
+            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/catalog-business" class="d-flex justify-content-between align-items-center">
+            <span>Готовый бизнес</span>
+            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
+          </a>
+        </li>
+
+        <li (click)="onRouteGarant()">
+          <a routerLink="/" class="d-flex justify-content-between align-items-center">
+            <span>Покупка через гарант</span>
+            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/" class="d-flex justify-content-between align-items-center">
+            <span>Консалтинг</span>
+            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/" class="d-flex justify-content-between align-items-center">
+            <span>Упаковка франшиз</span>
+            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

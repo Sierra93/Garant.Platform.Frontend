@@ -213,7 +213,7 @@ export class MainSearchModule implements OnInit {
      */
      public async routeViewFranchiseCardAsync(franchiseId: number) {
         await this.setTransitionAsync(franchiseId);
-        this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: franchiseId } });
+        this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: franchiseId, mode: "ViewFranchise" } });
     };
 
     /**

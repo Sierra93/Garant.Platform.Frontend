@@ -4,7 +4,7 @@ import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franchise-create-update-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
     selector: "create-franchise",
@@ -74,7 +74,8 @@ export class CreateFranchiseModule implements OnInit {
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private messageService: MessageService,
-        private route: ActivatedRoute) {
+        private route: ActivatedRoute,
+        private router: Router) {
         this.routeParamCategory = this.route.snapshot.queryParams.category;
         this.routeParamSubCategory = this.route.snapshot.queryParams.subCategory;
         this.routeParamSubCity = this.route.snapshot.queryParams.city;
@@ -272,6 +273,10 @@ export class CreateFranchiseModule implements OnInit {
                     next: (response: any) => {
                         console.log("Франшиза успешно создана:", response);
                         this.showMessageAfterSuccessCreateFranchise();
+
+                        setTimeout(() => {
+                            this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: response.franchiseId, mode: "view" } });
+                        }, 2000);   
                     },
 
                     error: (err) => {

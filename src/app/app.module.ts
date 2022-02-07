@@ -64,6 +64,9 @@ import { FormatPriceGarantPipe } from "./core/pipes/formatPrice.pipe";
 import { FranchiseLandingModule } from './modules/landing/franchise-landing/franchise-landing.component';
 import { ConsultingLandingModule } from './modules/landing/consulting-landing/consulting-landing.component';
 import { DealLandingModule } from "./modules/landing/deal-landing/deal-landing.component";
+import { ConfiguratorAuthModule } from "./modules/configurator/configurator-auth/configurator-auth.component";
+import { TabMenuModule } from 'primeng/tabmenu';
+import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/configurator-admin.component";
 
 
 @NgModule({
@@ -95,7 +98,9 @@ import { DealLandingModule } from "./modules/landing/deal-landing/deal-landing.c
     GarantAcceptPaymentModule,
     FranchiseLandingModule,
     ConsultingLandingModule,
-    DealLandingModule
+    DealLandingModule,
+    ConfiguratorAuthModule,
+    ConfiguratorAdminModule
   ],
 
   entryComponents: [],
@@ -129,6 +134,7 @@ import { DealLandingModule } from "./modules/landing/deal-landing/deal-landing.c
     AvatarModule,
     AvatarGroupModule,
     ReactiveFormsModule,
+    TabMenuModule,
     StepsModule
   ],
 

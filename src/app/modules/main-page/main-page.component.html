@@ -1,7 +1,7 @@
 <section id="main-page">
-  <div class="row section-mb">
+  <div class="row carousel-block section-mb">
     <!-- Блок с каруселью. -->
-    <div class="col-lg-7">
+    <div class="col-lg-7 col-md-6">
       <p-carousel [value]="aSlider" [numVisible]="2" [numScroll]="2" [circular]="false"
         [responsiveOptions]="responsiveOptions" [showNavigators]="false">
         <ng-template pTemplate="header">
@@ -32,7 +32,7 @@
       </p-carousel>
     </div>
 
-    <div class="col-lg-5 right">
+    <div class="col-lg-5 col-md-6 right">
       <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
       <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" style="background-color: #F1F1F1"
         styleClass="card">
@@ -53,7 +53,7 @@
 
   <!-- Область с 3 карточками. -->
   <div class="row section-mb">
-    <div class="col-4" *ngFor="let item of aDataActions">
+    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions">
       <div class="card-business">
         <h3 class="three-cards-header">{{item.title}}</h3>
         <p-card [style]="{width: '100%'}" styleClass="card">
@@ -110,14 +110,14 @@
             </ng-template>
 
             <form #filterForm="ngForm" novalidate>
-              <div class="row">
-                <div class="col-2">
+              <div class="row quick-search-form">
+                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                   <p><strong>Вид бизнеса</strong></p>
                   <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness"
                     placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
                 </div>
 
-                <div class="col-2">
+                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                   <div class="control-quick-search">
                     <p><strong>Категория</strong></p>
                     <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName"
@@ -126,7 +126,7 @@
                   </div>
                 </div>
 
-                <div class="col-2">
+                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
                   <div class="control-quick-search">
                     <p><strong>Город</strong></p>
                     <p-dropdown [options]="aCities" optionLabel="cityName" name="city" [(ngModel)]="selectedCity"
@@ -134,11 +134,11 @@
                   </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
                   <div>
                     <p class="d-inline-block"><strong>Стоимость</strong></p>
                   </div>
-                  <div>
+                  <div class="price-range-input">
                     <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
 
                     <input type="text" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice"
@@ -146,7 +146,7 @@
                   </div>
                 </div>
 
-                <div class="col-2">
+                <div class="col-xxl-2 col-xl-6 col-lg-6 col-md-12">
                   <div class="control-quick-search">
                     <p><strong>Покупка через гарант</strong></p>
                     <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
@@ -165,7 +165,7 @@
         <div class="block-cards-franchises-inner">
           <div class="col-12">
             <div class="row">
-              <div class="col-3" *ngFor="let item of aFranchises">
+              <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 quick-search-card-holder" *ngFor="let item of aFranchises">
                 <div class="card-franchise">
                   <div class="quick-search-card">
                     <p-card header="{{item.title}}" subheader="{{item.text}}" styleClass="p-card-shadow" class="card-item">
@@ -193,12 +193,12 @@
 
   <!-- Область с банерами (2 картинки). -->
   <div class="row section-mb">
-    <div class="col-6">
+    <div class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
       <div>
         <img class="baner" src="../../../assets/images/Rectangle 13.png">
       </div>
     </div>
-    <div class="col-6">
+    <div class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
       <div>
         <img class="baner" src="../../../assets/images/Rectangle 14.png">
       </div>
@@ -210,7 +210,7 @@
     <div class="col-12">
       <h5 class="title-franchise">Популярные франшизы</h5>
     </div>
-    <div class="col-3" *ngFor="let item of aPopularFranchises">
+    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aPopularFranchises">
       <div class="popular-list">
         <div>
           <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}"
@@ -233,7 +233,7 @@
     <div class="col-12">
       <h5 class="title-franchise">Новые объявления готового бизнеса</h5>
     </div>
-    <div class="col-3" *ngFor="let item of aAds">
+    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aAds">
       <div class="popular-list">
         <div>
           <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}"
@@ -256,7 +256,7 @@
     <div class="col-12">
       <h5 class="title-franchise">Бизнес блог</h5>
     </div>
-    <div class="col-3" *ngFor="let item of aBlogs">
+    <div class="col--xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aBlogs">
       <div class="popular-list">
         <div class="blog-item">
           <p-card header="{{item.title}}" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
@@ -272,7 +272,7 @@
       </div>
     </div>
 
-    <div class="col-3">
+    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
       <div class="more-articles">
         <p-card header="" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
           <ng-template pTemplate="header">
@@ -297,13 +297,13 @@
 
   <!-- Новости делового мира. -->
   <div class="row section-mb">
-    <div class="col-6">
+    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
       <div class="business-world-img">
         <img src="../../../assets/images/Frame 31.png">
       </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
       <div class="news-item space-left-item" *ngFor="let item of aNews">
         <img [src]="item.url">
         <strong class="title-news">{{item.name}}</strong>
@@ -319,9 +319,9 @@
   </div>
 
   <!-- Категории готового бизнеса. -->
-  <div class="row section-mb">
+  <div class="row ready-business-categories section-mb">
     <!-- 1 столбец. -->
-    <div class="col-lg-3 col-xs-12">
+    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
       <h5 class="title-franchise">Новости делового мира</h5>
       <div>
         <div class="category-item" *ngFor="let item of categoryList1">
@@ -333,7 +333,7 @@
     </div>
 
     <!-- 2 столбец -->
-    <div class="col-lg-3">
+    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
       <div class="title-franchise">&nbsp;</div>
       <div class="category-item" *ngFor="let item of categoryList2">
         <img class="space-right-image-category" [src]="item.url">
@@ -343,7 +343,7 @@
     </div>
 
     <!-- 3 столбец. -->
-    <div class="col-lg-3">
+    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
       <h5 class="title-franchise">Категории франшиз</h5>
       <div>
         <div class="category-item" *ngFor="let item of categoryList3">
@@ -355,7 +355,7 @@
     </div>
 
     <!-- 4 столбец -->
-    <div class="col-lg-3">
+    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
       <div class="title-franchise">&nbsp;</div>
       <div class="category-item" *ngFor="let item of categoryList4">
         <img class="space-right-image-category" [src]="item.url">

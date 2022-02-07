@@ -55,7 +55,7 @@
 }
 
 ::ng-deep .card-business {
-  max-width: 464px;
+  max-width: 100%;
 }
 
 .p-carousel-container {
@@ -111,12 +111,10 @@
 }
 
 ::ng-deep .card-business .btn-dark {
-  margin-top: 68px;
   padding: 16px;
 }
 
 ::ng-deep .right .btn-dark {
-  margin-top: 68px;
   padding: 16px;
 }
 
@@ -346,4 +344,152 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 
 .block-cards-franchises-inner {
   padding: 1.5rem;
+}
+
+.quick-search-form {
+  [class^=col] {
+    margin: 1rem 0;
+  }
+}
+
+
+@media (max-width: 1800px) {
+  .three-cards-header {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1700px) {
+  .quick-search-form {
+    [class^=col] {
+      &:nth-child(1), &:nth-child(2) {
+        width: 20%;
+      }
+      &:nth-child(3) {
+        width: 20%;
+      }
+      &:nth-child(4) {
+        width: 40%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .quick-search-card-holder {
+    margin-bottom: 1.5rem;
+
+    img {
+      height: auto;
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .three-cards-header {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .p-inputtext {
+    max-width: 120px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 788px) {
+  .carousel-block {
+    .title-franchise {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-block {
+    flex-direction: column-reverse;
+
+    .right {
+      margin-bottom: 2.25rem;
+    }
+
+    [class^=col] {
+      width: 100%;
+    }
+  }
+
+  .baner-img {
+    &:first-child {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .ready-business-categories {
+    [class^=col] {
+      width: 100%;
+    }
+
+    .title-franchise {
+      display: none;
+    }
+
+    .category-item {
+      position: relative;
+
+      .space-arrow-category {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .price-range-input {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .p-inputtext {
+    max-width: 50%;
+    width: 48% !important;
+    margin: 0;
+  }
+}
+
+@media (max-width: 486px) {
+  .price-range-input {
+    flex-direction: column;
+  }
+
+  .p-inputtext {
+    max-width: 100%;
+    width: 100% !important;
+
+    &:first-child {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+::ng-deep {
+  @media (max-width: 992px) {
+    .card-business-holder {
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .p-carousel {
+      max-width: 100%;
+    }
+
+    .quick-search-form {
+      .p-dropdown {
+        width: 100%;
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-# Garant.Platform.Frontend - Garant.Platform.Frontend - Фронт маркетплейса для покупки и продажи бизнеса онлайн.
+# Garant.Platform.Frontend - Фронт маркетплейса для покупки и продажи бизнеса онлайн.
 <hr>
 
 # Стек фронта

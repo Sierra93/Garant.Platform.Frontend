@@ -28,6 +28,7 @@ import { MainPageModule } from "./modules/main-page/main-page.component";
 import { CardModule } from "primeng/card";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { SliderModule } from "primeng/slider";
+import { StepsModule } from 'primeng/steps';
 import { FooterModule } from "./modules/footer/footer.component";
 import { LoginModule } from "./modules/login/login.component";
 import { ProfileDataModule } from "./modules/profile/profile-data/profile-data.component";
@@ -64,6 +65,9 @@ import { FranchiseLandingModule } from './modules/landing/franchise-landing/fran
 import { ConsultingLandingModule } from './modules/landing/consulting-landing/consulting-landing.component';
 import { DealLandingModule } from "./modules/landing/deal-landing/deal-landing.component";
 import { NotificationsModule } from "./modules/profile/profile-requests/notifications.component";
+import { ConfiguratorAuthModule } from "./modules/configurator/configurator-auth/configurator-auth.component";
+import { TabMenuModule } from 'primeng/tabmenu';
+import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/configurator-admin.component";
 
 
 @NgModule({
@@ -96,7 +100,9 @@ import { NotificationsModule } from "./modules/profile/profile-requests/notifica
     FranchiseLandingModule,
     ConsultingLandingModule,
     DealLandingModule,
-    NotificationsModule
+    NotificationsModule,
+    ConfiguratorAuthModule,
+    ConfiguratorAdminModule
   ],
 
   entryComponents: [],
@@ -129,7 +135,9 @@ import { NotificationsModule } from "./modules/profile/profile-requests/notifica
     InputTextareaModule,
     AvatarModule,
     AvatarGroupModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TabMenuModule,
+    StepsModule
   ],
 
   providers: [

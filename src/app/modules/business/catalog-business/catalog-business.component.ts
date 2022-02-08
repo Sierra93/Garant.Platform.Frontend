@@ -160,6 +160,7 @@ export class CatalogBusinessModule implements OnInit {
     // };  
 
     /**
+     * TODO: Вынести в общий сервис.    
      * Функция получит список бизнеса.
      */
     private async GetBusinessListAsync() {
@@ -413,7 +414,7 @@ export class CatalogBusinessModule implements OnInit {
      */
      private async GetNewsTopAsync() {
         try {
-            await this.http.post(API_URL.apiUrl.concat("/blog/main-news"), {})
+            await this.http.post(API_URL.apiUrl.concat("/blog/get-news"), {})
                 .subscribe({
                     next: (response: any) => {
                         console.log("Список новостей:", response);

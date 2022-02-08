@@ -13,10 +13,12 @@ import { TransitionInput } from "../../models/transition/input/transition-input"
  */
 @Injectable()
 export class CommonDataService {
+    currentRoute: any;
+
     constructor(private http: HttpClient, 
         private router: Router,
         private route: ActivatedRoute) {
-
+            this.currentRoute = this.route.snapshot.queryParams;
     }
 
     // Функция отсчитывает время бездействия юзера, по окончании простоя убивает сессию и перенаправляет на стартовую для авторизации.
@@ -111,17 +113,9 @@ export class CommonDataService {
     public routeToStart(err: any) {
         if (err.status === 401) {
             sessionStorage.clear();
-            sessionStorage["role"] = "G";
             
             this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
         }
-
-        // if (typeof(err) === "string") {
-        //     sessionStorage.clear();
-        //     sessionStorage["role"] = "G";
-
-        //     this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
-        // }
     };
 
     /**
@@ -304,8 +298,8 @@ export class CommonDataService {
      * Функция получит переход.
      * @returns Данные перехода.
      */
-     public async getTransitionAsync() {
-        try {
+     public async getTransitionAsync(currentRoute: any) {
+        try {                     
             return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/user/get-transition"), {})
                     .subscribe({
@@ -314,8 +308,14 @@ export class CommonDataService {
                         },
 
                         error: (err) => {
-                            this.routeToStart(err);
-                            throw new Error(err);
+                            console.log("currentRoute", currentRoute);
+
+                            if (currentRoute.mode !== "view") {
+                                this.routeToStart(err);        
+                                throw new Error(err);                       
+                            }                          
+                            
+                           
                         }
                     });
             })
@@ -575,4 +575,26 @@ export class CommonDataService {
             throw new Error(e);
         }
     };
+
+    public async onGetBlogsAsync() {
+        try {                                                        
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/blog/get-blogs"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };    
 };

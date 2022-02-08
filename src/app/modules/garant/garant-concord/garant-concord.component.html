@@ -1,68 +1,70 @@
 <div class="block-garant d-flex justify-content-between mt-70">
 
-<!-- Левый блок. -->
-<div class="col-3 block-left">
-  <h5 class="block-left__title">{{oInitData.blockLeftTitle}}</h5>
+  <!-- Левый блок. -->
+  <div class="col-3 block-left">
+    <h5 class="block-left__title">{{oInitData.blockLeftTitle}}</h5>
 
-  <div class="left-panel-first mt-32 block-left-sides">
-    <div class="block-left-sides__title">Сделка проходит между</div>
-    <hr class="hr-small">
+    <div class="left-panel-first mt-32 block-left-sides">
+      <div class="block-left-sides__title">Сделка проходит между</div>
+      <hr class="hr-small">
 
-    <!-- <div> -->
-    <!-- <div> -->
-    <strong class="block-left-sides__name">{{oInitData.fullName}}</strong>
-    <!-- <br> -->
-    <span class="block-left-sides__role">
-      {{oInitData.role}}
-    </span>
-    <!-- </div> -->
+      <!-- <div> -->
+      <!-- <div> -->
+      <strong class="block-left-sides__name">{{oInitData.fullName}}</strong>
+      <!-- <br> -->
+      <span class="block-left-sides__role">
+        {{oInitData.role}}
+      </span>
+      <!-- </div> -->
 
-    <hr>
+      <hr>
 
-    <!-- <div> -->
-    <strong class="block-left-sides__name">{{oInitData.otherUserFullName}}</strong>
-    <!-- <br> -->
-    <span class="block-left-sides__role">
-      {{oInitData.otherUserRole}}
-    </span>
-    <!-- </div> -->
-    <!-- </div> -->
-  </div>
-
-  <div class="left-panel-first mt-32 block-left-deal">
-    <div class="block-left-deal__title">{{oInitData.blockLeftSumTitle}}</div>
-    <hr class="hr-small">
-
-    <!-- <div> -->
-    <div class="block-left-deal__sum">
-      {{oInitData.totalAmount}} ₽
+      <!-- <div> -->
+      <strong class="block-left-sides__name">{{oInitData.otherUserFullName}}</strong>
+      <!-- <br> -->
+      <span class="block-left-sides__role">
+        {{oInitData.otherUserRole}}
+      </span>
+      <!-- </div> -->
+      <!-- </div> -->
     </div>
 
-    <button class="block-left-deal__button">Цена изменилась</button>
+    <div class="left-panel-first mt-32 block-left-deal">
+      <div class="block-left-deal__title">{{oInitData.blockLeftSumTitle}}</div>
+      <hr class="hr-small">
 
-    <hr class="hr-short">
+      <!-- <div> -->
+      <div class="block-left-deal__sum">
+        {{oInitData.totalAmount}} ₽
+      </div>
 
-    <!-- <div> -->
+      <button class="block-left-deal__button">Цена изменилась</button>
+
+      <hr class="hr-short">
+
+      <!-- <div> -->
       <strong class="block-left-deal__item">{{oInitData.mainItemTitle}}</strong>
-    <!-- </div> -->
+      <!-- </div> -->
 
-    <hr>
+      <hr>
 
-    <div class="block-left-deal__image">
-      <img [src]="oInitData.imageUrl">
+      <div class="block-left-deal__image">
+        <img [src]="oInitData.imageUrl">
+      </div>
+
+      <div class="block-left-deal__name">
+        {{oInitData.itemTitle}}
+      </div>
+      <!-- </div> -->
     </div>
 
-    <div class="block-left-deal__name">
-      {{oInitData.itemTitle}}
+    <div class="left-panel-first mt-32 block-left-documents">
+      <div class="block-left-documents__title"><img class="img-left" src="../../../../assets/images/garant/file.png"
+          alt="папка">{{oInitData.documentBlockTitle}}<img class="img-right"
+          src="../../../../assets/images/garant/arrow.png" alt="стрелка"></div>
+      <small class="block-left-documents__no">Документов еще нет</small>
     </div>
-    <!-- </div> -->
   </div>
-
-  <div class="left-panel-first mt-32 block-left-documents">
-    <div class="block-left-documents__list">{{oInitData.documentBlockTitle}}</div>
-    <small class="block-left-documents__no">Документов еще нет</small>
-  </div>
-</div>
 
 
 
@@ -133,31 +135,31 @@
   <div class="col-9 block-right">
     <h5 class="block-right__title">{{oInitData.blockRightTitle}}</h5>
 
-    <div class="right-panel-first mt-32 block-right-chat">  
+    <div class="right-panel-first mt-32 block-right-chat">
       <div class="">
         <!-- <h5>Чат с {{fio}}</h5> -->
         <div class="">
-  
-          <div class="d-flex justify-content-between">        
+
+          <div class="d-flex justify-content-between">
             <div class="d-flex">
               <!-- <img class="space-intgr mr-16" src="{{chatItemUrl}}"> -->
-              
+
               <div>
                 <strong class="block-right-chat__title">{{oInitData.blackBlockTitle}}</strong>
-                
+
                 <div>
                   <small class="block-right-chat__subtitle">Согласование началось {{oInitData.dateStartDeal}}</small>
                 </div>
               </div>
             </div>
-  
+
             <div>
               Начало чата: {{dateStartDialog}}
             </div>
           </div>
-  
+
           <hr>
-  
+
           <div class="block-chat block-right-chat__body">
             <div class="" *ngFor="let item of aMessages">
               <div class="block-messages">
@@ -167,10 +169,17 @@
               </div>
             </div>
           </div>
-  
-          <div>
-            <textarea class="area-message block-right-chat__textarea" rows="2" cols="30" pInputTextarea [autoResize]="true"
-              placeholder="Отправьте комментарий по поводу этапов сделки или предложить изменение" [(ngModel)]="message" (keydown.enter)="onSendMessageAsync()"></textarea>
+
+          <div class="block-right-chat__container"><img class="img-left"
+              src="../../../../assets/images/garant/5172585_attachment_binder_clip_paper_icon 2.png" alt="скрепка">
+            <div class="block-right-chat__textareawrapper">
+              <textarea class="area-message block-right-chat__textarea" rows="2" cols="30" pInputTextarea
+                [autoResize]="true" placeholder="Отправьте комментарий по поводу этапов сделки или предложить изменение"
+                [(ngModel)]="message"
+                (keydown.enter)="onSendMessageAsync()"></textarea>
+                <img class="img-right"  src="../../../../assets/images/garant/icons.png" alt="стрелка вправо">
+            </div>
+
           </div>
         </div>
       </div>
@@ -189,7 +198,7 @@
         </div>
 
         <!-- <div class="ml-3"> -->
-          <button class="control-button-black-contur-small">{{oInitData.blackButtonText}}</button>
+        <button class="control-button-black-contur-small">{{oInitData.blackButtonText}}</button>
         <!-- </div> -->
       </div>
     </div>
@@ -217,52 +226,53 @@
     </div> -->
 
     <!-- Область с этапами. -->
-    <div class="right-panel-second mt-32 block-right-stages" *ngFor="let item of aInvestInclude; let i = index">          
-    <div class="block-right-stages__title">
-      Этап №{{i+1}} - {{item.Name}}
-    </div>      
+    <div class="right-panel-second mt-32 block-right-stages" *ngFor="let item of aInvestInclude; let i = index">
+      <div class="block-right-stages__title">
+        Этап №{{i+1}} - {{item.Name}}
+      </div>
 
-    <hr class="hr-1">
+      <hr class="hr-1">
 
-    <div class="block-right-stages__sumtitle">
-      Стоимость этапа
-    
-    </div>
-    <div class="block-right-stages__sum">
-      {{item.Price}} ₽
+      <div class="block-right-stages__sumtitle">
+        Стоимость этапа
 
-    </div>
+      </div>
+      <div class="block-right-stages__sum">
+        {{item.Price}} ₽
 
-    <hr class="hr-2">
+      </div>
 
-    <div class="block-right-stages__body">
-      Входит в этап:
-    </div>  
-      <ul *ngFor="let iteration of item.Items" class="block-right-stages__list" >
+      <hr class="hr-2">
+
+      <div class="block-right-stages__body">
+        Входит в этап:
+      </div>
+      <ul *ngFor="let iteration of item.Items" class="block-right-stages__list">
         <li class="block-right-stages__item">{{iteration}}</li>
       </ul>
-    
-    <hr class="hr-3">
-    
-    <div class="d-flex block-right-stages__buttons">
-      <div class="d-flex justify-content-end mr-16"
-        *ngIf="oInitData.buttonCancel !== '' && oInitData.buttonCancel !== null">
-        <button class="control-button-action-change-cancel block-right-stages__button1">{{oInitData.buttonCancel}}</button>
-      </div>
 
-      <div class="d-flex justify-content-end"
-        *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
-        <button class="control-button-action-change-cancel block-right-stages__button2">{{oInitData.buttonActionText}}</button>
+      <hr class="hr-3">
+
+      <div class="d-flex block-right-stages__buttons">
+        <div class="d-flex justify-content-end mr-16"
+          *ngIf="oInitData.buttonCancel !== '' && oInitData.buttonCancel !== null">
+          <button
+            class="control-button-action-change-cancel block-right-stages__button1">{{oInitData.buttonCancel}}</button>
+        </div>
+
+        <div class="d-flex justify-content-end"
+          *ngIf="oInitData.buttonActionText !== '' && oInitData.buttonActionText !== null">
+          <button
+            class="control-button-action-change-cancel block-right-stages__button2">{{oInitData.buttonActionText}}</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="d-flex justify-content-end" 
+    <div class="d-flex justify-content-end"
       *ngIf="oInitData.continueButtonText !== '' && oInitData.continueButtonText !== null">
-    <button class="control-button-blue-small"
-            (click)="onRouteGarant3Async()">
-      {{oInitData.continueButtonText}}
-    </button>
-  </div> 
+      <button class="control-button-blue-small" (click)="onRouteGarant3Async()">
+        {{oInitData.continueButtonText}}
+      </button>
+    </div>
   </div>
 </div>

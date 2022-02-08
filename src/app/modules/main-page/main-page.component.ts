@@ -259,7 +259,7 @@ export class MainPageModule implements OnInit {
      */
     private async GetBlogsAsync() {
         try {
-            await this.http.post(API_URL.apiUrl.concat("/blog/main-blogs"), {})
+            await this.http.post(API_URL.apiUrl.concat("/blog/get-blogs"), {})
                 .subscribe({
                     next: (response: any) => {
                         console.log("Список блогов:", response);
@@ -283,7 +283,7 @@ export class MainPageModule implements OnInit {
      */
     private async GetNewsTopAsync() {
         try {
-            await this.http.post(API_URL.apiUrl.concat("/blog/main-news"), {})
+            await this.http.post(API_URL.apiUrl.concat("/blog/get-news"), {})
                 .subscribe({
                     next: (response: any) => {
                         console.log("Список новостей:", response);

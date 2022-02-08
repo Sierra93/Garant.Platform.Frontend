@@ -25,7 +25,8 @@ import { FranchiseLandingModule } from './modules/landing/franchise-landing/fran
 import { ConsultingLandingModule } from './modules/landing/consulting-landing/consulting-landing.component';
 import { DealLandingModule } from './modules/landing/deal-landing/deal-landing.component';
 import { NotificationsModule } from './modules/profile/profile-requests/notifications.component';
-
+import { ConfiguratorAuthModule } from './modules/configurator/configurator-auth/configurator-auth.component';
+import { ConfiguratorAdminModule } from './modules/configurator/configurator-admin/configurator-admin.component';
 
 const routes: Routes = [
   {
@@ -149,7 +150,17 @@ const routes: Routes = [
 
   {
     path: "profile/notifications",
-    component: NotificationsModule
+    component: NotificationsModule,
+  },
+
+  {
+    path: "configurator/auth",
+    component: ConfiguratorAuthModule
+  },
+
+  {
+    path: "configurator/admin",
+    component: ConfiguratorAdminModule
   }
 ];
 

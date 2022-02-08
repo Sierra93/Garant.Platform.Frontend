@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,6 +25,10 @@ export class HeaderModule implements OnInit {
     selectedSearchOption: string = "франшиза";
     isGarant: boolean = false;
     items!: MenuItem[];
+    isSmallScreen: boolean = false;
+    isMobile: boolean = false;
+    isMenuHidden: boolean = true;
+    tabletStart: boolean = false;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
@@ -60,6 +64,32 @@ export class HeaderModule implements OnInit {
             {label: 'Step 3'}
         ];
     };
+
+    @HostListener('window:resize', ['$event'])
+    @HostListener('window:load', ['$event'])
+    onResize() {
+      if (window.innerWidth > 676 && window.innerWidth <= 1280) {
+        this.isSmallScreen = true;
+      } else if (window.innerWidth > 1280) {
+        this.isSmallScreen = false;
+      }
+
+      if (window.innerWidth <= 676) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
+
+      if (window.innerWidth === 768) {
+        this.tabletStart = true;
+      } else {
+        this.tabletStart = false;
+      }
+    }
+
+    public toggleMenu(show: boolean): void {
+      this.isMenuHidden = !show;
+    }
 
     /**
     * Функция получит поля хидера.

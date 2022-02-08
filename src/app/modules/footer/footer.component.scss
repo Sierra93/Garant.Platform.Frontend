@@ -17,6 +17,10 @@ footer {
 
         &:not(:last-child) {
           margin-right: 2.5rem;
+
+          @media (max-width: 576px) {
+            margin-right: 1.5rem;
+          }
         }
       }
     }
@@ -28,6 +32,10 @@ footer {
       color: #2c2c2c;
       font-family: 'Roboto', sans-serif;
       font-weight: 500;
+
+      img {
+        display: none;
+      }
     }
 
     a {
@@ -37,6 +45,69 @@ footer {
       font-family: 'Roboto', sans-serif;
       display: inline-block;
       margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 1.5rem;
+
+      .row {
+        > div {
+          &.d-flex {
+            justify-content: flex-start !important;
+          }
+        }
+      }
+
+      h4 {
+        font-size: 18px;
+      }
+
+      a {
+        font-size: .75rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .row {
+        > .d-flex {
+          display: block !important;
+        }
+      }
+
+      a {
+        display: none;
+      }
+
+      h4 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        img {
+          display: block;
+          transition: transform .3s;
+        }
+      }
+
+      ul.open {
+        h4 {
+          img {
+            transform: rotate(90deg);
+          }
+        }
+
+        a {
+          display: block;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .social {
+      justify-content: flex-start !important;
+      margin-top: 18px;
     }
   }
 }

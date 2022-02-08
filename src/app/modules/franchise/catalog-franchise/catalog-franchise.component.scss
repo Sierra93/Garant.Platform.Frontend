@@ -137,7 +137,6 @@ section#catalog-franchise {
 
     &-banner {
       width: 100%;
-      height: 272px;
 
       img {
         width: 100%;
@@ -173,6 +172,11 @@ section#catalog-franchise {
     }
   }
 
+  .baner {
+    width: 100%;
+    height: auto;
+  }
+
   .business-blog-video {
     padding: 1.5rem;
     background-color: #f1f1f1;
@@ -180,7 +184,7 @@ section#catalog-franchise {
 
   .business-world-news {
     img {
-      height: 434px;
+      width: 100%;
     }
   }
 
@@ -237,6 +241,99 @@ section#catalog-franchise {
     span {
       font-size: 18px;
       color: #2c2c2c;
+    }
+  }
+}
+
+.popular-franchises {
+  img {
+    height: 150px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1400px) {
+  .franchise-categories {
+    .category-item {
+      .space-right-image-category:first-child {
+        margin-right: .5rem !important;
+      }
+
+      span {
+        font-size: 14px !important;
+      }
+
+      .space-arrow-category {
+        margin-left: 1rem !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .popular-franchises-block {
+    width: 100%;
+    margin: .5rem 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .franchise-description-small {
+    margin-bottom: 1.5rem;
+  }
+
+  .investment-amount {
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 788px) {
+  .carousel-block {
+    .title-franchise {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .baner-img {
+    &:first-child {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .carousel-block {
+    flex-direction: column-reverse;
+
+    [class^=col] {
+      width: 100%;
+    }
+
+    .right {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .franchise-sphere {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 486px) {
+  .franchise-categories {
+    .category-item {
+      .space-right-image-category:first-child {
+        margin-right: .5rem !important;
+      }
+
+      span {
+        font-size: 14px !important;
+      }
+
+      .space-arrow-category {
+        margin-left: 1rem !important;
+      }
     }
   }
 }
@@ -549,7 +646,7 @@ section#catalog-franchise {
   }
 
   .franchise-three-cards {
-    height: calc(100% - 60px);
+    height: auto;
 
     .p-card.p-component {
       padding: 1.5rem;
@@ -597,6 +694,44 @@ section#catalog-franchise {
 
         .franchise-card-description {
           font-size: 14px !important;
+        }
+      }
+    }
+  }
+
+  .p-carousel-item {
+    .product-item {
+      margin-right: 1rem;
+
+      &-content {
+        img {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .card-business-holder {
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 560px) {
+    .p-carousel-item {
+      .product-item {
+        margin-right: 0;
+      }
+    }
+  }
+
+  @media (max-width: 486px) {
+    .franchise-business-creation {
+      .p-card-footer {
+        button {
+          font-size: .75rem;
         }
       }
     }

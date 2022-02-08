@@ -89,6 +89,8 @@ export class EditReadyBusinessModule implements OnInit {
         ];
 
         console.log("aPriceIn", this.aPriceIn);
+
+        this.routeParam = this.route.snapshot.queryParams;
     };
 
     public async ngOnInit() {
@@ -113,7 +115,7 @@ export class EditReadyBusinessModule implements OnInit {
                 businessId = this.businessId;
             }           
 
-            await this.commonService.getTransitionAsync().then((data: any) => {
+            await this.commonService.getTransitionAsync(this.routeParam ).then((data: any) => {
                 console.log("Переход получен:", data);
                 this.getViewBusinessAsync(businessId);
             });

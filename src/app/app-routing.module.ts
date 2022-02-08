@@ -24,6 +24,7 @@ import { GarantAcceptPaymentModule } from './modules/garant/garant-accept-paymen
 import { FranchiseLandingModule } from './modules/landing/franchise-landing/franchise-landing.component';
 import { ConsultingLandingModule } from './modules/landing/consulting-landing/consulting-landing.component';
 import { DealLandingModule } from './modules/landing/deal-landing/deal-landing.component';
+import { NotificationsModule } from './modules/profile/profile-requests/notifications.component';
 
 
 const routes: Routes = [
@@ -144,6 +145,11 @@ const routes: Routes = [
   {
     path: "deal/start",
     component: DealLandingModule
+  },
+
+  {
+    path: "profile/notifications",
+    component: NotificationsModule
   }
 ];
 

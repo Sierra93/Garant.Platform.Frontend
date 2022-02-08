@@ -3,7 +3,6 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
-import { GetFranchiseInput } from "src/app/models/franchise/input/get-franchise-input";
 import { RequestFranchiseInput } from "src/app/models/request/input/request-franchise-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 
@@ -67,7 +66,7 @@ export class ViewFranchiseModule implements OnInit {
         try {
             let franchiseId = this.franchiseId;
 
-            await this.commonService.getTransitionAsync().then((data: any) => {
+            await this.commonService.getTransitionAsync(this.routeParam).then((data: any) => {
                 console.log("Переход получен:", data);
                 this.getViewFranchiseAsync(franchiseId);
             });
@@ -85,11 +84,8 @@ export class ViewFranchiseModule implements OnInit {
     private async getViewFranchiseAsync(franchiseId: number) {
         try {
             console.log("getViewFranchiseAsync");
-            let getFranchiseInput = new GetFranchiseInput();
-            getFranchiseInput.FranchiseId = franchiseId;
-            getFranchiseInput.Mode = "View";
 
-            await this.http.post(API_URL.apiUrl.concat("/franchise/get-franchise"), getFranchiseInput)
+            await this.http.get(API_URL.apiUrl.concat("/franchise/get-franchise?franchiseId=" + franchiseId))
                 .subscribe({
                     next: (response: any) => {
                         console.log("Полученная франшиза:", response);

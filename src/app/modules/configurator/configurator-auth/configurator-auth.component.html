@@ -1,0 +1,15 @@
+<div class="">    
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email или телефон сотрудника</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" [(ngModel)]="inputData">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Пароль сотрудника</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="password"></textarea>
+  </div>
+
+  <div>
+    <button pButton type="button" label="Войти" class="p-button-outlined" (click)="onAuthAsync(inputData, password)"></button>
+  </div>
+</div>

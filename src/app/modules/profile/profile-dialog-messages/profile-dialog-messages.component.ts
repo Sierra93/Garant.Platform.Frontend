@@ -28,6 +28,8 @@ export class ProfileDialogMessagesModule implements OnInit, AfterViewChecked {
     chatItemName: string = "";
     dialogId: number = 0;
     chatItemUrl: string = "";
+    routeParam: any;
+
     @ViewChild('chatBox') private chatBoxScroll!: ElementRef<HTMLDivElement>;
 
     constructor(private route: ActivatedRoute,
@@ -35,7 +37,7 @@ export class ProfileDialogMessagesModule implements OnInit, AfterViewChecked {
         private http: HttpClient,
         private commonService: CommonDataService,
         private dataService: DataService) {
-
+            this.routeParam = this.route.snapshot.queryParams;
     };
 
     public async ngOnInit() {
@@ -84,7 +86,7 @@ export class ProfileDialogMessagesModule implements OnInit, AfterViewChecked {
 
     private async getTransitionAsync() {
         try {
-            await this.commonService.getTransitionAsync().then((data: any) => {
+            await this.commonService.getTransitionAsync(this.routeParam).then((data: any) => {
                 console.log("Переход получен:", data);
                 this.transitionId = data.referenceId;
                 this.typeItem = data.transitionType;

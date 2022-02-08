@@ -13,7 +13,6 @@
 @use "../../../../app/shared/styles" as *;
 @use "../../../../app/shared/styles/base" as *;
 
-
 strong {
   font-family: "Roboto", sans-serif;
   font-size: 1.125rem;
@@ -66,6 +65,7 @@ strong {
   margin-top: 80px;
   margin-bottom: 16px;
 
+  
   &-content {
     width: 624px;
     height: 368px;

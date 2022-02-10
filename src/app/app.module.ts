@@ -64,6 +64,7 @@ import { FormatPriceGarantPipe } from "./core/pipes/formatPrice.pipe";
 import { FranchiseLandingModule } from './modules/landing/franchise-landing/franchise-landing.component';
 import { ConsultingLandingModule } from './modules/landing/consulting-landing/consulting-landing.component';
 import { DealLandingModule } from "./modules/landing/deal-landing/deal-landing.component";
+import { NotificationsModule } from "./modules/profile/profile-requests/notifications.component";
 import { ConfiguratorAuthModule } from "./modules/configurator/configurator-auth/configurator-auth.component";
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/configurator-admin.component";
@@ -99,6 +100,7 @@ import { ConfiguratorAdminModule } from "./modules/configurator/configurator-adm
     FranchiseLandingModule,
     ConsultingLandingModule,
     DealLandingModule,
+    NotificationsModule,
     ConfiguratorAuthModule,
     ConfiguratorAdminModule
   ],

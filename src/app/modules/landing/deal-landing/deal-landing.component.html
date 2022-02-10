@@ -220,7 +220,8 @@
     <p class="steps-item__subtitle">на нашем портале</p>
     <p class="steps-item__stage">Шаг 2
     </p>
-    <p class="steps-item__text">Вы можете пройти быструю <br> регистрацию до начала выбора <br> бизнеса или во время.</p>
+    <p class="steps-item__text">Вы можете пройти быструю <br> регистрацию до начала выбора <br> бизнеса или во время.
+    </p>
     <button class="steps-item__button">Пройти регистрацию</button>
   </div>
   <div class="steps-item">
@@ -247,15 +248,44 @@
   </div>
 </div>
 
+<!-- <div class="row"> -->
+<div class="garant card-line">
+  <p-card class="card-line-wrapper">
+    <ng-template pTemplate="header">
+      <strong>Вы можете приобрести бизнес с гарантиями</strong>
+      <button type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </ng-template>
+    <p>{{oSuggestion.text}}</p>
+    <ng-template pTemplate="footer">
+      <!-- <div class="d-flex"> -->
+        <div class="ml-1">
+          <button class="btn btn-dark">{{oSuggestion.button2Text}}</button>
+        </div>
+
+        <div>
+          <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button>
+        </div>
+
+      <!-- </div> -->
+    </ng-template>
+  </p-card>
+</div>
+<!-- </div> -->
+
 <!-- Область с 3 карточками. -->
 <div class="d-flex three-cards">
-  <div class="col-lg-4 card-business" *ngFor="let item of aDataActions">
+  <div class="card-business" *ngFor="let item of aDataActions; let last = last">
     <p-card class="three-cards-wrapper" header="{{item.title}}" subheader="{{item.subTitle}}" [style]="{width: '100%'}"
-      styleClass="card">
+      styleClass="card" [class.three-cards-wrapper--last]="last">
       <ng-template pTemplate="header">
         <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
       </ng-template>
-      <p>{{item.text}}</p>
+
+      <p>{{item.text}}
+        <span class="three-cards__image"></span>
+      </p>
       <ng-template pTemplate="footer">
         <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
         <button class="btn btn-dark">{{item.buttonText}}</button>
@@ -266,39 +296,15 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-lg-12 col-xs-12 garant card-line">
-    <p-card class="card-line-wrapper">
-      <ng-template pTemplate="header">
-        <strong>Вы можете приобрести бизнес с гарантиями</strong>
-        <button type="button" class="close" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </ng-template>
-      <p>{{oSuggestion.text}}</p>
-      <ng-template pTemplate="footer">
-        <div class="d-flex">
-          <div class="ml-1">
-            <button class="btn btn-dark">{{oSuggestion.button2Text}}</button>
-          </div>
 
-          <div>
-            <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button>
-          </div>
-
-        </div>
-      </ng-template>
-    </p-card>
-  </div>
-</div>
 
 <!-- <h5 class="packs-header">Пакеты юридических услуг</h5>
 <div class="packs">
   <div class="packs-item"> -->
-    <!-- <div class="packs-item__image">
+<!-- <div class="packs-item__image">
       <img src="../../../../assets/images/franchise-landing/fast-start 1.png" alt="Пакет из 7 инструментов">
     </div> -->
-    <!-- <button class="packs-item__title">Пакет “Подготовка договора”</button>
+<!-- <button class="packs-item__title">Пакет “Подготовка договора”</button>
     <div class="packs-item__text">Подготовка договора</div>
     <ul class="packs-item__list packs-item__list--first">
       <li>
@@ -321,11 +327,11 @@
     </div>
   </div> -->
 
-  <!-- <div class="packs-item"> -->
-    <!-- <div class="packs-item__image">
+<!-- <div class="packs-item"> -->
+<!-- <div class="packs-item__image">
       <img src="../../../../assets/images/franchise-landing/fast-start 2.png" alt="Пакет из 15 инструментов">
     </div> -->
-    <!-- <button class="packs-item__title">Пакет “Проверка контрагента”</button>
+<!-- <button class="packs-item__title">Пакет “Проверка контрагента”</button>
     <div class="packs-item__text">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью упакованный бизнес во франшизу</div>
     <ul class="packs-item__list">
       <li>
@@ -376,11 +382,11 @@
     </div>
   </div> -->
 
-  <!-- <div class="packs-item"> -->
-    <!-- <div class="packs-item__image">
+<!-- <div class="packs-item"> -->
+<!-- <div class="packs-item__image">
       <img src="../../../../assets/images/franchise-landing/fast-start 3.png" alt="Пакет из 25 инструментов">
     </div> -->
-    <!-- <button class="packs-item__title">Пакет “Сопровождение сделки”</button>
+<!-- <button class="packs-item__title">Пакет “Сопровождение сделки”</button>
     <div class="packs-item__text">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью упакованный бизнес во франшизу</div>
     <ul class="packs-item__list packs-item__list--last">
       <li>

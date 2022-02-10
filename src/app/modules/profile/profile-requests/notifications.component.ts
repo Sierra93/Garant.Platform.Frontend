@@ -15,6 +15,8 @@ import { ConfirmationService, MessageService } from "primeng/api";
  * Класс модуля уведомлений.
  */
 export class NotificationsModule implements OnInit {
+    aNotifyData: any[] = [];
+
     constructor(private titleService: Title,
         private http: HttpClient) {
 
@@ -36,7 +38,8 @@ export class NotificationsModule implements OnInit {
             await this.http.get(API_URL.apiUrl.concat("/request/get-requests"))
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Список заявок: ", response);                    
+                        console.log("Список заявок: ", response);   
+                        this.aNotifyData = response;                 
                     },
 
                     error: (err) => {

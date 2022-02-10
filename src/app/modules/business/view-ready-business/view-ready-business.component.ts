@@ -437,4 +437,38 @@ export class ViewReadyBusinessModule implements OnInit {
             throw new Error(e);
         }
     };
+
+    /**
+     * Функция перейдет в Гарант, если заявка по текущей карточке подтверждена продавцом.
+     */
+    public async onRouteOnlineBusinessAsync() {
+        console.log("onRouteOnlineBusinessAsync", this.routeParam);
+
+        try {
+            await this.http.get(API_URL.apiUrl.concat("/request/check-confirmed-request?id=" 
+            + this.routeParam.businessId + "&type=Business"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Статус проверки заявки: ", response);
+
+                        if (!response) {
+                            this.messageService.add({
+                                severity: 'warn',
+                                summary: 'Внимание',
+                                detail: "Продавец еще не подтвердил вашу заявку. После подтверждения вам придет оповещение."
+                            });    
+                        }
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 }

@@ -70,7 +70,7 @@
       <div class="{{ isMobile ? 'col-sm-4 d-flex justify-content-end' : 'col-sm-2'}} col-4 hamburger item-hamburger">
         <div>
           <button (click)="toggleMenu(true)">
-            <img src="./../../../assets/images/navbar-toggler.svg" alt="hamburger icon" />
+            <img src="../../../assets/images/navbar-toggler.svg" alt="hamburger icon" />
           </button>
         </div>
       </div>
@@ -218,8 +218,8 @@
               </a>
             </li>
 
-            <li (click)="onRouteGarant()">
-              <a>
+            <li>
+              <a routerLink="/deal/start">
                 <img src="../../../assets/images/Logo=Guarantee, Stage=Passive.svg" class="after-search-img" width="44"
                   height="42">
                 <span>Покупка через гарант</span>
@@ -295,7 +295,7 @@
           </a>
         </li>
 
-        <li (click)="onRouteGarant()">
+        <li>
           <a routerLink="/deal/start" class="d-flex justify-content-between align-items-center">
             <span>Покупка через гарант</span>
             <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />

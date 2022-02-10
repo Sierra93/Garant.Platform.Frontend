@@ -157,9 +157,5 @@ export class HeaderModule implements OnInit {
         }
 
         this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });
-    };
-
-    public onRouteGarant() {
-        this.router.navigate(["/garant/garant-init"], { queryParams: { stage: 1 } });
-    };
+    };   
 }

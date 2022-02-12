@@ -29,7 +29,10 @@
                 </div>
 
                 <ng-template pTemplate="footer">
-                  <button pButton pRipple type="button" [label]="item.buttonActionText" class="p-button-info"></button>
+                  <button pButton pRipple type="button" 
+                          [label]="item.buttonActionText" 
+                          class="p-button-info"
+                          (click)="onRouteDealAsync(item.itemId, item.type)"></button>
                 </ng-template>
               </p-card>
             </div>

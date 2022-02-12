@@ -53,4 +53,27 @@ export class MyDealsModule implements OnInit {
             throw new Error(e);
         }
     };
+
+    /**
+     * Функция перейдет в Гарант, если заявка подтверждена.
+     */
+    public async onRouteDealAsync(requestId: number, type: string) {
+        try {
+            await this.http.get(API_URL.apiUrl.concat("/request/check-confirm-request?requestId=" + requestId + "&type=" + type))
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Статус заявки: ", response);            
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 }

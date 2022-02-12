@@ -68,6 +68,7 @@ import { NotificationsModule } from "./modules/profile/profile-requests/notifica
 import { ConfiguratorAuthModule } from "./modules/configurator/configurator-auth/configurator-auth.component";
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/configurator-admin.component";
+import { MyDealsModule } from "./modules/profile/profile-my-deals/profile-my-deals.component";
 
 
 @NgModule({
@@ -102,7 +103,8 @@ import { ConfiguratorAdminModule } from "./modules/configurator/configurator-adm
     DealLandingModule,
     NotificationsModule,
     ConfiguratorAuthModule,
-    ConfiguratorAdminModule
+    ConfiguratorAdminModule,
+    MyDealsModule
   ],
 
   entryComponents: [],

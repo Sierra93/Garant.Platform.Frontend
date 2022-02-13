@@ -1058,4 +1058,28 @@
     overflow: visible!important;
 }
 
+::ng-deep {
+  .block-gallery {
+    .p-galleria.p-component {
+      max-width: 100% !important;
+    }
 
+    p-galleriathumbnails {
+      width: 12%;
+      max-width: 12%;
+    }
+
+    p-galleriaitem {
+      width: 88%;
+      max-width: 88%;
+    }
+
+    .p-galleria-item-container {
+      width: 100%;
+    }
+
+    .p-galleria-item-wrapper img {
+      width: 100% !important;
+    }
+  }
+}

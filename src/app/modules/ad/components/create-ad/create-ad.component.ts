@@ -48,7 +48,7 @@ export class CreateAdComponent implements OnInit, OnDestroy {
             this.adService.loadCities(),
             this.adService.loadFranchiseCategories(),
             this.adService.loadFranchiseSubcategories()
-        ]).subscribe(console.log);
+        ]).subscribe();
 
         this.createAdForm.controls.readyBusiness.valueChanges.pipe(
             tap(value => {
@@ -82,8 +82,8 @@ export class CreateAdComponent implements OnInit, OnDestroy {
         if (franchise) {
             this.router.navigate(['franchise', 'create'], {
                 queryParams: {
-                    category: categoryName,
-                    subCategory: subCategoryName
+                    category: categoryName.categoryName,
+                    subCategory: subCategoryName.subCategoryName
                 }
             });
         }
@@ -91,9 +91,9 @@ export class CreateAdComponent implements OnInit, OnDestroy {
         if (readyBusiness) {
             this.router.navigate(['business', 'create'], {
                 queryParams: {
-                    category: categoryName,
-                    subCategory: subCategoryName,
-                    city
+                    category: categoryName.categoryName,
+                    subCategory: subCategoryName.subCategoryName,
+                    city: city.businessCityName
                 }
             });
         }

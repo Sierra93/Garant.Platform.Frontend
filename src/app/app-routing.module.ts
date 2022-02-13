@@ -10,7 +10,6 @@ import { ViewFranchiseModule } from './modules/franchise/view-franchise/view-fra
 import { CreateReadyBusinessModule } from './modules/business/create-ready-business/create-ready-business.component';
 import { ViewReadyBusinessModule } from './modules/business/view-ready-business/view-ready-business.component';
 import { EditReadyBusinessModule } from './modules/business/edit-ready-business/edit-ready-business.component';
-import { CreateAdModule } from './modules/ad/create-ad/create-ad.component';
 import { ProfileMyDataModule } from './modules/profile/profile-my-data/profile-my-data.component';
 import { ProfileMyMessagesModule } from './modules/profile/profile-my-dialogs/profile-my-dialogs.component';
 import { ProfileDialogMessagesModule } from './modules/profile/profile-dialog-messages/profile-dialog-messages.component';
@@ -81,7 +80,7 @@ const routes: Routes = [
 
   {
     path: "ad/create",
-    component: CreateAdModule
+    loadChildren: () => import('./modules/ad/ad.module').then(m => m.AdModule)
   },
 
   {

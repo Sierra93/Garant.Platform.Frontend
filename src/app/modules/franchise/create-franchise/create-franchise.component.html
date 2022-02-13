@@ -10,7 +10,7 @@
     <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-5">
       <div class="file-input-wrapper">
         <label class="form-label">Логотип</label>
-        <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" />
+        <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" class="form-control" />
         <!-- <div class="franchise-logo">
           <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
         </div> -->
@@ -424,7 +424,7 @@
 
       <div class="upload-file-education">
         <label>Добавить фотографию</label>
-        <input type="file" (change)="uploadEducationPhotosAsync($event)" id="upload-file-education" />
+        <input type="file" (change)="uploadEducationPhotosAsync($event)" id="upload-file-education" class="form-control" />
         <!-- <div>
           <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
         </div> -->

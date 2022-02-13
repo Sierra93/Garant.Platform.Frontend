@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { CommonDataService } from "src/app/services/common/common-data.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "profile-my-deals",
@@ -20,7 +21,8 @@ export class MyDealsModule implements OnInit {
 
     constructor(private titleService: Title,
         private http: HttpClient,
-        private commonService: CommonDataService) {
+        private commonService: CommonDataService,
+        private router: Router) {
 
     };
 
@@ -62,7 +64,25 @@ export class MyDealsModule implements OnInit {
             await this.http.get(API_URL.apiUrl.concat("/request/check-confirm-request?requestId=" + requestId + "&type=" + type))
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Статус заявки: ", response);            
+                        console.log("Статус заявки: ", response);                       
+
+                        if (type == "Business") {
+                            this.router.navigate(["/garant/garant-init"], {
+                                queryParams: {
+                                    businessId: requestId,
+                                    stage: 1
+                                }
+                            });
+                        }
+
+                        if (type == "Franchise") {
+                            this.router.navigate(["/garant/garant-init"], {
+                                queryParams: {                                    
+                                    franchiseId: requestId,
+                                    stage: 1
+                                }
+                            });
+                        }                      
                     },
 
                     error: (err) => {

@@ -54,6 +54,8 @@ export class CreateAdComponent implements OnInit, OnDestroy {
             tap(value => {
                 if (value) {
                     this.createAdForm.controls.franchise.setValue(false, { emitEvent: false });
+                    this.createAdForm.controls.city.setValidators([Validators.required]);
+                    this.createAdForm.updateValueAndValidity();
                 }
             }),
             takeUntil(this.unsub$)
@@ -64,6 +66,9 @@ export class CreateAdComponent implements OnInit, OnDestroy {
                 if (value) {
                     this.createAdForm.controls.readyBusiness.setValue(false, { emitEvent: false });
                     this.createAdForm.controls.city.setValue(null, { emitEvent: false });
+                    this.createAdForm.controls.city.setErrors(null);
+                    this.createAdForm.controls.city.clearValidators();
+                    this.createAdForm.updateValueAndValidity();
                 }
             }),
             takeUntil(this.unsub$)

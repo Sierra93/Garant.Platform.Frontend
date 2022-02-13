@@ -53,7 +53,6 @@
         Выбор города
       </div>
       <p-dropdown 
-        [required]="true" 
         [options]="cities$ | async" 
         optionLabel="businessCityName" 
         formControlName="city" 
@@ -94,7 +93,7 @@
   
   <button 
     class="btn btn-default btn-code-active" 
-    [class.disabled]="!canGoAhead || createAdForm.invalid" 
+    [class.disabled]="createAdForm.invalid" 
     type="submit"
   >Продолжить</button>
 </form>

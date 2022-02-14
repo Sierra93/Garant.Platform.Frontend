@@ -35,7 +35,7 @@ export class NotificationsModule implements OnInit {
         console.log("onGetBusinessRequestsAsync");
 
         try {
-            await this.http.get(API_URL.apiUrl.concat("/request/get-requests"))
+            await this.http.post(API_URL.apiUrl.concat("/request/get-requests"), {})
                 .subscribe({
                     next: (response: any) => {
                         console.log("Список заявок: ", response);   

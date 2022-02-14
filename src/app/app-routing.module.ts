@@ -26,6 +26,7 @@ import { DealLandingModule } from './modules/landing/deal-landing/deal-landing.c
 import { ConfiguratorAuthModule } from './modules/configurator/configurator-auth/configurator-auth.component';
 import { ConfiguratorAdminModule } from './modules/configurator/configurator-admin/configurator-admin.component';
 import { NotificationsModule } from './modules/profile/profile-requests/notifications.component';
+import { MyDealsModule } from './modules/profile/profile-my-deals/profile-my-deals.component';
 
 const routes: Routes = [
   {
@@ -160,6 +161,11 @@ const routes: Routes = [
   {
     path: "configurator/admin",
     component: ConfiguratorAdminModule
+  },
+
+  {
+    path: "profile/deals",
+    component: MyDealsModule
   }
 ];
 

@@ -401,29 +401,77 @@ export class ViewReadyBusinessModule implements OnInit {
      * @returns Данные заявки.
      */
       public async onCreateRequestBusinessAsync(userName: string, number: string, businessId: number) {
-        try {                     
-            console.log("onCreateRequestBusinessAsync");        
-            let requestBusinessInput = new RequestBusinessInput();   
+        // try {                     
+        //     console.log("onCreateRequestBusinessAsync");        
+        //     let requestBusinessInput = new RequestBusinessInput();   
 
-            if (userName == "" || number == "" || businessId <= 0) {
-                return;
-            }
+        //     if (userName == "" || number == "" || businessId <= 0) {
+        //         return;
+        //     }
 
-            requestBusinessInput.UserName = userName;
-            requestBusinessInput.Phone = number;
-            requestBusinessInput.BusinessId = businessId;
+        //     requestBusinessInput.UserName = userName;
+        //     requestBusinessInput.Phone = number;
+        //     requestBusinessInput.BusinessId = businessId;
 
-            await this.http.post(API_URL.apiUrl.concat("/request/create-request-business"), requestBusinessInput)
+        //     new Promise(function(resolve, reject) {
+
+        //         setTimeout(async() => {
+        //             await this.checkUserPassportDataAsync();
+        //             console.log("result",result);
+        //         }, 1000); // (*)
+              
+        //       }).then(async(result) =>{ // (**)
+              
+        //         await this.checkUserPassportDataAsync();
+        //         console.log("result",result);
+              
+        //       }).then(async(result) => { // (***)
+              
+        //         await this.http.post(API_URL.apiUrl.concat("/request/create-request-business"), requestBusinessInput)
+        //         .subscribe({
+        //             next: (response: any) => {
+        //                 console.log("Заявка успешно создана", response);                         
+                        
+        //                 if (response.isSuccessCreatedRequest) {
+        //                     this.messageService.add({
+        //                         severity: 'success',
+        //                         summary: 'Успешно!',
+        //                         detail: response.statusText
+        //                     });    
+        //                 }                                       
+        //             },
+
+        //             error: (err) => {
+        //                 throw new Error(err);
+        //             }
+        //         });              
+        //       });
+        // }
+
+        // catch (e: any) {
+        //     throw new Error(e);
+        // }
+    };    
+
+    /**
+     * Функция проверит заполненность паспортных данных пользователя.
+     * @returns - Статус проверки.
+     */
+    private async checkUserPassportDataAsync() {
+        try {                                            
+            await this.http.get(API_URL.apiUrl.concat("/user/check-user-passport-data"))
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Заявка успешно создана", response); 
+                        console.log("check passport data: ", response); 
                         
-                        if (response.isSuccessCreatedRequest) {
+                        if (!response) {
                             this.messageService.add({
-                                severity: 'success',
-                                summary: 'Успешно!',
-                                detail: response.statusText
+                                severity: 'warn',
+                                summary: 'Внимание',
+                                detail: 'Вы не заполнили свои паспортные данные. Они обязательны для сделки через Гарант.'
                             });    
+
+                            return;
                         }                                       
                     },
 

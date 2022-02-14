@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-lg-3">
+    <manage-account></manage-account>
+  </div>
+
+  <div class="col-lg-9">
+    <h2 class="profile-title">Мои сделки</h2>
+
+    <div class="mt-3">
+      <div class="card">
+        <p-tabView>
+          <p-tabPanel header="Активные">
+            <div *ngFor="let item of aDeals">
+              <p-card [style]="{width: '360px'}" styleClass="p-card-shadow">
+                <ng-template pTemplate="header">
+                  <img [src]="item.itemDealUrl">
+                </ng-template>
+
+                <div>
+                  {{item.dealItemTitle}}
+                </div>
+
+                <div>
+                  {{item.statusTitle}} {{item.statusText}}
+                </div>
+
+                <div>
+                  {{item.middleText}} {{item.currentUserName}} {{item.ownerDeaItemUserName}}
+                </div>
+
+                <ng-template pTemplate="footer">
+                  <button pButton pRipple type="button" 
+                          [label]="item.buttonActionText" 
+                          class="p-button-info"
+                          (click)="onRouteDealAsync(item.itemId, item.type)"></button>
+                </ng-template>
+              </p-card>
+            </div>
+          </p-tabPanel>
+
+          <p-tabPanel header="Завершенные">
+
+          </p-tabPanel>
+
+          <p-tabPanel header="Не состоявшиеся">
+
+          </p-tabPanel>
+        </p-tabView>
+      </div>
+    </div>
+  </div>
+</div>

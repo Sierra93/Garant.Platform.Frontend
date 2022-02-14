@@ -6,6 +6,7 @@ import { API_URL } from "src/app/core/core-urls/api-url";
 import { FilterInput } from "src/app/models/franchise/input/filter-franchise-input";
 import { SearchInput } from "src/app/models/search/input/search-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
+import { DataService } from "src/app/services/common/data-service";
 
 @Component({
     selector: "main-search",
@@ -56,7 +57,8 @@ export class MainSearchModule implements OnInit {
         private router: Router,
         private http: HttpClient,
         private titleService: Title,
-        private commonService: CommonDataService) {
+        private commonService: CommonDataService,
+        private dataService: DataService) {
         this.searchType = this.route.snapshot.queryParams.searchType;
         this.searchText = this.route.snapshot.queryParams.searchText;
 
@@ -87,18 +89,22 @@ export class MainSearchModule implements OnInit {
         console.log("searchText", this.searchText);
     };
 
-    public async ngOnInit() {
-        await this.onSearchAsync();
+    public async ngOnInit() {        
         await this.GetFranchisesListAsync();
         await this.loadCategoriesListAsync();
         await this.loadSingleSuggestionAsync();
     };
 
+    // public async ngDoCheck() {
+    //     console.log("ngDoCheck");
+    //     // await this.searchAsync();
+    // };
+
     /**
      * Функция найдет по параметрам данные.
      * @param searchText Текст поиска.
      */
-    private async onSearchAsync() {
+    private async searchAsync() {
         try {
             let searchInput = new SearchInput();
             searchInput.SearchType = this.searchType;
@@ -107,9 +113,9 @@ export class MainSearchModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/search/search-data"), searchInput)
                 .subscribe({
                     next: (response: any) => {
-                        if (this.searchType == "franchise") {
-                            this.aResultSearch = response;
+                        this.dataService.aResultSearch = response;
 
+                        if (this.searchType == "franchise") {
                             // Возьмет 1 изображение.
                             this.aFranchises.forEach((item: any) => {
                                 if (item.url != null && item.url.includes(",")) {
@@ -118,9 +124,7 @@ export class MainSearchModule implements OnInit {
                             });
                         }
 
-                        if (this.searchType == "business") {
-                            this.aResultSearch = response;
-
+                        if (this.searchType == "business") {                            
                             // Возьмет 1 изображение.
                             this.aBusinesses.forEach((item: any) => {
                                 if (item.url != null && item.url.includes(",")) {

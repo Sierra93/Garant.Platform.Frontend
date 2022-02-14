@@ -576,7 +576,7 @@ strong {
       }
 
       @include md {
-        width: 320px;
+        width: 288px;
         margin-top: 16px;
         margin-left: 16px;
         margin-right: 16px;
@@ -636,6 +636,7 @@ strong {
       font-size: 1.125rem;
       font-weight: 400;
       color: #2c2c2c;
+      height: 63px;
       line-height: 21px;
       margin-left: 24px;
       margin-right: 24px;
@@ -1416,6 +1417,7 @@ strong {
   &-image {
     width: 622px;
     height: 559px;
+    border-radius: 7px;
 
     @include ul-xl {
       margin-left: -13px;

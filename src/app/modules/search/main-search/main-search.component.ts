@@ -113,7 +113,7 @@ export class MainSearchModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/search/search-data"), searchInput)
                 .subscribe({
                     next: (response: any) => {
-                        this.dataService.aResultSearch = response;
+                        this.aResultSearch = response;
 
                         if (this.searchType == "franchise") {
                             // Возьмет 1 изображение.

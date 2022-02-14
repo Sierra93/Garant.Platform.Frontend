@@ -2,12 +2,12 @@
   <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
   <!-- Блок с названием. -->
-  <div class="row">
+  <div class="row title-block">
     <div class="col-12">
       <h5 class="title">Название и логотип*</h5>
     </div>
 
-    <div class="col-2">
+    <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-5">
       <div class="file-input-wrapper">
         <label class="form-label">Логотип</label>
         <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" class="d-none" />
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div class="col-10">
+    <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-8 col-sm-7">
       <div class="block-two">
         <label class="form-label">Название</label><br>
         <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="franchiseData.title"
@@ -30,18 +30,12 @@
     </div>
   </div>
 
-
-
-
-
-
-
   <div class="row photos">
     <div class="col-12">
       <h5 class="title">Фотографии*</h5>
     </div>
 
-    <div class="col-8">
+    <div class="col-xxl-8 col-xl-9 col-lg-8 col-md-12">
       <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>
       <div class="block-gallery">
         <div class="w-100">
@@ -63,16 +57,15 @@
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 photos-contact">
       <div>
         <h6>Ваша карточка для связи</h6>
         <strong>Ваше Имя Фамилия Отчество</strong>
 
         <div>
-          <!-- <label>Пример: владелец</label><br> -->
+          <label>Пример: владелец</label><br>
           <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец"
             [(ngModel)]="franchiseData.status" name="lead" />
-          <!-- <span>{{item.status}}</span> -->
         </div>
 
         <div class="photos-buttons">
@@ -83,81 +76,92 @@
     </div>
   </div>
 
+  <!-- Ключевые финансовые данные. -->
+  <div class="row financial-data">
+    <div class="col-12">
+      <h5 class="title-strong">Ключевые финансовые данные*</h5>
+      <span>0 из 6</span>
+    </div>
 
-  <div class="row">
-    <div>
-      <!-- Ключевые финансовые данные. -->
-      <span class="title-strong">Ключевые финансовые данные*</span><br>
-      <div class="block-invest">
-        <div class="invest-item-first">
-          <span class="title-small">Общие инвестиции</span><br>
-          <small>включая паушальный взнос</small><br>
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.generalInvest"
-            name="generalInvest" /> ₽
-          <!-- <span>{{item.totalInvest}} ₽</span> -->
-        </div>
-
-        <div class="invest-item">
-          <span class="title-small">Паушальный взнос</span><br>
-          <small>зависит от выбранного пакета</small><br>
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.lumpSumPayment"
-            name="lumpSumPayment" /> ₽
-          <!-- <span>{{item.lumpSumPayment}} ₽</span> -->
-        </div>
-
-        <div class="invest-item">
-          <span class="title-small">Роялти</span><br>
-          <small>от валовой выручки</small><br>
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.royalty"
-            name="royalty" /> ₽
-          <!-- <span>{{item.royalty}} ₽</span> -->
-        </div>
-
-        <div class="invest-item">
-          <span class="title-small">Окупаемость</span><br>
-          <small>средняя и планируемая</small><br>
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.payback"
-            name="payback" /> мес.
-          <!-- <span>{{item.payback}} мес.</span> -->
-        </div>
-
-        <div class="invest-item">
-          <span class="title-small">Месячная прибыль</span><br>
-          <small>планируемая чистая прибыль</small><br>
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.profitMonth"
-            name="profitMonth" /> ₽
-          <!-- <span>{{item.profitMonth}} ₽</span> -->
-        </div>
-
-        <div class="invest-item-last">
-          <span class="title-small">Срок запуска</span><br>
-          <small>средний срок открытия бизнеса</small><br>
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.launchDate"
-            name="launchDate" /> дн.
-          <!-- <span>{{item.launchDate}} дн. </span> -->
+    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+      <div class="financial-data-block">
+        <strong>Общие инвестиции</strong>
+        <span>включая паушальный взнос</span>
+        <div class="d-flex align-items-center">
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.generalInvest" name="generalInvest" />
+          <span class="ms-2">₽</span>
         </div>
       </div>
+    </div>
 
+    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+      <div class="financial-data-block">
+        <strong>Паушальный взнос</strong>
+        <span>зависит от выбранного пакета</span>
+        <div class="d-flex align-items-center">
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.lumpSumPayment" name="lumpSumPayment" />
+          <span class="ms-2">₽</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+      <div class="financial-data-block">
+        <strong>Роялти</strong>
+        <span>от валовой выручки</span>
+        <div class="d-flex align-items-center">
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.royalty" name="royalty" />
+          <span class="ms-2">₽</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+      <div class="financial-data-block">
+        <strong>Окупаемость</strong>
+        <span>средняя и планируемая</span>
+        <div class="d-flex align-items-center">
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.payback" name="payback" />
+          <span class="ms-2">₽</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+      <div class="financial-data-block">
+        <strong>Месячная прибыль</strong>
+        <span>планируемая чистая прибыль</span>
+        <div class="d-flex align-items-center">
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.profitMonth" name="profitMonth" />
+          <span class="ms-2">₽</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+      <div class="financial-data-block">
+        <strong>Срок запуска</strong>
+        <span>средний срок открытия бизнеса</span>
+        <div class="d-flex align-items-center">
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.launchDate" name="launchDate" />
+          <span class="ms-2">₽</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
       <hr class="hr">
     </div>
   </div>
 
-
-
-
-
-
-
-
   <!-- Основная информация о компании. -->
   <div class="row main-info">
-    <div class="col-8">
+    <div class="col-xxl-8 col-xl-8">
       <div class="textarea">
         <h6>Основная информация о компании*</h6>
         <span><strong>Описание деятельности</strong></span><br>
         <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
           placeholder="Опишите деятельность" [(ngModel)]="franchiseData.activityDetail"></textarea>
-        <!-- <span>{{item.activityDetail}}</span> -->
       </div>
 
       <!-- Дополнительные факты. -->
@@ -165,66 +169,55 @@
         <h6>Дополнительные факты*</h6>
         <span>0 из 4</span>
         <div class="row">
-          <div class="col-3">
+          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="additional-facts-block">
               <label>Год основания</label><br>
               <span>компании</span><br>
-              <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.baseDate"
-                name="baseDate" />
-              <!-- <span>{{item.baseDate}}</span> -->
+              <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.baseDate" name="baseDate" />
             </div>
           </div>
 
-          <div class="col-3">
+          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="additional-facts-block">
               <label>Год запуска</label><br>
               <span>франчайзинга</span><br>
-              <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.yearStart"
-                name="yearStart" />
-              <!-- <span>{{item.yearStart}}</span> -->
+              <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.yearStart" name="yearStart" />
             </div>
           </div>
 
-          <div class="col-3">
+          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="additional-facts-block">
               <label>Количество точек</label><br>
               <span>в России</span><br>
-              <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.dotCount"
-                name="dotCount" />
-              <!-- <span>{{item.dotCount}}</span> -->
+              <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.dotCount" name="dotCount" />
             </div>
           </div>
 
-          <div class="col-3">
+          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="additional-facts-block">
               <label>Собственных</label><br>
               <span>предприятий</span><br>
               <input type="number" class="control-input-franch-price" pInputText
                 [(ngModel)]="franchiseData.businessCount" name="businessCount" />
-              <!-- <span>{{item.businessCount}}</span> -->
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-xxl-4 col-xl-4">
       <h6>Входит в инвестиции*</h6>
       <span>1 из 10</span>
       <div class="main-info-form" *ngFor="let item of aInvestInclude">
-
         <div>
           <label>Стоимость</label><br>
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.Price" name="priceInvest"
-            placeholder="- ₽" />
-          <!-- <span>{{item.Price}}</span> -->
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.Price" name="priceInvest" placeholder="- ₽" />
         </div>
 
         <div>
           <label>Название</label><br>
           <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText
             [(ngModel)]="item.Name" name="nameInvest" />
-          <!-- <span>{{item.Name}}</span> -->
         </div>
 
         <button class="control-button-blue-small">Добавить пункт</button>
@@ -276,19 +269,18 @@
 
   <!-- Основная информация о франшизе. -->
   <div class="row main-franchise-info">
-    <div class="col-8">
+    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-6">
       <div>
         <h6>Основная информация о франшизе*</h6>
         <span>Описание франшизы</span>
         <div>
           <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
             placeholder="Опишите франшизу" [(ngModel)]="franchiseData.text" name="defailsFranchise"></textarea>
-          <!-- <span>{{item.text}}</span> -->
         </div>
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
       <div class="form">
         <h6>Добавить презентацию</h6>
         <div class="block-details-franch d-flex flex-column">
@@ -317,18 +309,17 @@
 
   <!-- Пример расчета прибыли. -->
   <div class="row income-calculation">
-    <div class="col-8">
+    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-10">
       <div>
         <h6>Пример расчета прибыли*</h6>
         <span>Описание расчета</span>
         <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
           placeholder="Опишите расчет" [(ngModel)]="franchiseData.paymentDetail" name="paymentDetails"></textarea>
-        <!-- <span>{{item.paymentDetail}}</span> -->
       </div>
     </div>
 
-    <div class="col-8">
-      <!-- Ключевые финансовые показатели. -->
+    <!-- Ключевые финансовые показатели. -->
+    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-10">
       <div class="block-details-franch">
         <h6>Ключевые финансовые показатели</h6>
         <div class="top-form d-flex flex-column">
@@ -338,20 +329,18 @@
         </div>
 
         <div class="row">
-          <div class="col-3" *ngFor="let item of aFinIndicators">
+          <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aFinIndicators">
             <div class="fin-indicator-first">
               <div>
                 <label>Например: средний чек</label>
                 <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="item.Name" name="finIndicator1" />
-                <!-- <span>{{item.Name}}</span><br> -->
               </div>
 
               <div>
                 <label>Процент или финансы</label>
                 <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="item.Price" name="" />
-                <!-- <span>{{item.Price}}</span><br> -->
               </div>
             </div>
           </div>
@@ -366,7 +355,7 @@
 
   <!-- Обучение и поддержка. -->
   <div class="row education-and-support">
-    <div class="col-8">
+    <div class="col-xxl-8 col-xl-8">
       <h6>Обучение и поддержка*</h6>
       <span>Описание обучения</span>
       <div>
@@ -402,11 +391,11 @@
         данный раздел галочкой слева от названия.</p>
     </div>
 
-    <div class="col-4">
+    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 package" *ngFor="let item of aPacks">
       <!-- Блок с пакетами франшизы. -->
       <div class="franchise-packages-block">
         <div class="d-flex">
-          <div class="block-pack" *ngFor="let item of aPacks">
+          <div class="block-pack">
             <div class="block-top-pack">
               <div>
                 <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
@@ -427,16 +416,14 @@
                 <label class="title-small">Паушальный взнос:</label><br>
                 <div class="d-flex align-items-center">
                   <input type="text" class="control-big-input" pInputText [(ngModel)]="item.LumpSumPayment"
-                  name="packLumpSumPayment" />
-                  <span class="ms-3">₽</span>
+                  name="packLumpSumPayment" placeholder="₽" />
                 </div>
               </div>
 
               <div>
                 <label class="title-small">Роялти:</label><br>
                 <div class="d-flex align-items-center">
-                  <input type="text" class="control-big-input" pInputText [(ngModel)]="item.Royalty" name="royaltyPack" />
-                  <span class="ms-3">%</span>
+                  <input type="text" class="control-big-input" pInputText [(ngModel)]="item.Royalty" name="royaltyPack" placeholder="%" />
                 </div>
               </div>
 
@@ -444,18 +431,16 @@
                 <label class="title-small">Всего инвестиций:</label><br>
                 <div class="d-flex align-items-center">
                   <input type="text" class="control-big-input" pInputText [(ngModel)]="item.TotalInvest"
-                  name="totalInvest" />
-                  <span class="ms-3">₽</span>
+                  name="totalInvest" placeholder="₽" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
       <div class="add-package">
         <button class="add-package-button">Добавить пакет</button>
       </div>
@@ -468,7 +453,7 @@
 
   <!-- Видео о франшизе. -->
   <div class="row franchise-video-section">
-    <div class="col-8 title-section">
+    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12 title-section">
       <div class="p-field-checkbox control-checkbox">
         <div class="d-flex align-items-center">
           <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
@@ -477,12 +462,12 @@
       </div>
     </div>
 
-    <div class="col-8">
+    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12">
       <p>Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет видео вы можете отключить данный
         раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.</p>
     </div>
 
-    <div class="col-8">
+    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12">
       <div class="video-link">
         <label>Ссылка на видео</label><br>
         <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="franchiseData.urlVideo"
@@ -495,75 +480,12 @@
     </div>
   </div>
 
+  <!-- сохранить. -->
   <div class="row sale-through-garant">
-    <div class="col-8">
+    <div class="col-xxl-8 col-xl-8 col-lg-8">
       <div class="switch-garant">
         <button class="control-button-blue" (click)="onEditFranchiseAsync()">Сохранить изменения</button>
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-  <!-- Отзывы о франшизе. -->
-  <!-- <div class="p-field-checkbox control-checkbox">
-  <div>
-   <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
-   <label for="packs" class="control-label-checkbox">Отзывы о франшизе</label>
-  </div>
-</div>
-
-<div>
- <small>
-  На данный момент доступны только видеоотзывы. Если у вас новая франшиза, то отзывов могло не быть. Однако вы можете добавить отзывы, если они есть или отключить их посредством галочки около названия.
- </small>
-</div> -->
-
-  <!-- Блок с отзывами. -->
-  <!-- <div class="d-flex">
-  <div class="">
-    <div class="block-pack">
-      <div class="block-top-pack">
-        <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
-          [(ngModel)]="packName" name="packName" />
-        <br>
-        <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [(ngModel)]="packDetails"
-          name="packDetails" />
-      </div>
-
-      <div class="block-bottom-pack">
-        <div>
-          <span class="title-small">Паушальный взнос:</span><br>
-          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
-            name="packLumpSumPayment" /> ₽
-        </div>
-
-        <div>
-          <span class="title-small">Роялти:</span><br>
-          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
-            name="packLumpSumPayment" /> %
-        </div>
-
-        <div>
-          <span class="title-small">Всего инвестиций:</span><br>
-          <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
-            name="packLumpSumPayment" /> ₽
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="block-button-pack">
-    <button class="control-button-blue">Добавить отзыв</button>
-  </div>
- </div> -->
-
-  <!-- <div class="switch-garant block-garant">
-  <strong>Продажа через гарант</strong><br>
-  <p-inputSwitch [(ngModel)]="isGarant" class="flag-garant"></p-inputSwitch>
-</div>    -->
 </section>

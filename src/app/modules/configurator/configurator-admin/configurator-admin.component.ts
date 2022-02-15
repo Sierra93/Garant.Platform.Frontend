@@ -724,6 +724,51 @@ export class ConfiguratorAdminModule implements OnInit {
                 }
             ];
 
+            // Если не добавляли записи и осталась лежать одна пустая.
+            if (!this.ainvestIn[0].Name || !this.ainvestIn[0].Price) {                  
+                this.ainvestIn[0].Name = this.nameInvest;
+                this.ainvestIn[0].Price = this.priceInvest;
+            }
+
+            else {
+                this.ainvestIn.push({
+                    Name: this.nameInvest,
+                    Price: this.priceInvest
+                });
+            }
+
+             // Уберет пустые записи.
+            this.ainvestIn = this.ainvestIn.filter((item: any) => item.Name !== "" && item.Price !== "");
+
+            if (!this.aPacks[0].Name
+                || !this.aPacks[0].Text
+                || !this.aPacks[0].LumpSumPayment
+                || !this.aPacks[0].Royalty
+                || !this.aPacks[0].TotalInvest) {
+                this.aPacks[0].Name = this.packName;
+                this.aPacks[0].Text = this.packDetails;
+                this.aPacks[0].LumpSumPayment = this.packLumpSumPayment;
+                this.aPacks[0].Royalty = this.royaltyPack;
+                this.aPacks[0].TotalInvest = this.totalInvest;
+            }
+
+            else {
+                this.aPacks.push({
+                    Name: this.packName,
+                    Text: this.packDetails,
+                    LumpSumPayment: this.packLumpSumPayment,
+                    Royalty: this.royaltyPack,
+                    TotalInvest: this.totalInvest
+                });
+            }
+
+            // Уберет пустые записи.
+            this.aPacks = this.aPacks.filter((item: any) => item.Name !== ""
+                && item.Text !== ""
+                && item.LumpSumPayment !== ""
+                && item.Royalty !== ""
+                && item.TotalInvest !== "");
+
             // Уберет ключи флагов.
             let newainvestIn = this.ainvestIn.map((item: any) => ({
                 Name: item.Name,
@@ -1376,6 +1421,22 @@ export class ConfiguratorAdminModule implements OnInit {
             let address = this.address;
             let aPriceInData = this.aPriceIn;
             let aNamesBusinessPhotos = this.aNamesBusinessPhotos;
+
+             // Если не добавляли записи и осталась лежать одна пустая.
+             if (!this.aPriceIn[0].Name || !this.aPriceIn[0].Price) {
+                this.aPriceIn[0].Name = this.nameIn;
+                this.aPriceIn[0].Price = this.priceIn;
+            }
+
+            else {
+                this.aPriceIn.push({
+                    Name: this.nameIn,
+                    Price: this.priceIn
+                });
+            }
+
+            // Уберет пустые записи.
+            this.aPriceIn = this.aPriceIn.filter((item: any) => item.Name !== "" && item.Price !== "");
 
             // Уберет флаги видимости.
             let newPriceInJson = aPriceInData.map((item: any) => ({

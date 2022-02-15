@@ -92,8 +92,8 @@ export class ViewFranchiseModule implements OnInit {
                         this.franchiseData = response;
                         this.aNamesFranchisePhotos = this.franchiseData.url.split(",");
                         this.aInvestInclude = JSON.parse(response.investInclude);
-                        this.aFinIndicators = [JSON.parse(response.finIndicators)];
-                        this.aPacks = [JSON.parse(response.franchisePacks)];
+                        this.aFinIndicators = JSON.parse(response.finIndicators);
+                        this.aPacks = JSON.parse(response.franchisePacks);
                         this.fio = response.fullName;
 
                         console.log("franchiseData", this.franchiseData);

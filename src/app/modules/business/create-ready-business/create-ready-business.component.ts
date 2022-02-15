@@ -233,14 +233,31 @@ export class CreateReadyBusinessModule implements OnInit {
           let assets = this.assets;
           let reasonsSale = this.reasonsSale;
           let address = this.address;
+
+            // Если не добавляли записи и осталась лежать одна пустая.
+            if (!this.aPriceIn[0].Name || !this.aPriceIn[0].Price) {
+                this.aPriceIn[0].Name = this.nameIn;
+                this.aPriceIn[0].Price = this.priceIn;
+            }
+
+            else {
+                this.aPriceIn.push({
+                    Name: this.nameIn,
+                    Price: this.priceIn
+                });
+            }
+
+            // Уберет пустые записи.
+            this.aPriceIn = this.aPriceIn.filter((item: any) => item.Name !== "" && item.Price !== "");
+
           let aPriceInData = this.aPriceIn;
           let aNamesBusinessPhotos = this.aNamesBusinessPhotos;
-
+           
           // Уберет флаги видимости.
           let newPriceInJson = aPriceInData.map((item: any) => ({
               Price: item.Price,
               Name: item.Name
-          }));
+          }));         
 
           let priceInJson = JSON.stringify(newPriceInJson);
 
@@ -268,10 +285,8 @@ export class CreateReadyBusinessModule implements OnInit {
           createUpdateBusinessInput.Address = address;
           createUpdateBusinessInput.InvestPrice = priceInJson;            
           createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;         
-          // createUpdateBusinessInput.Category = this.routeParamCategory;
-          // createUpdateBusinessInput.SubCategory = this.routeParamSubCategory;
-          createUpdateBusinessInput.Category = "Тестовая категория";
-          createUpdateBusinessInput.SubCategory = "Тестовая подкатегория";
+          createUpdateBusinessInput.Category = this.routeParamCategory;
+          createUpdateBusinessInput.SubCategory = this.routeParamSubCategory;
 
           let sendFormData = new FormData();
           sendFormData.append("businessDataInput", JSON.stringify(createUpdateBusinessInput));

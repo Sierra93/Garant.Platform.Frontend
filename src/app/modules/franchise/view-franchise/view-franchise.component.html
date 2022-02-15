@@ -22,7 +22,7 @@
     <div class="col-xxl-8 col-xl-9 col-lg-8 col-md-12">
       <div class="block-gallery">
         <div class="w-100">
-          <span *ngIf="!aFranchisePhotos.length">Фотографии не загружены</span>
+          <span *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</span>
           <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
             [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
             <ng-template pTemplate="item" let-item>
@@ -164,13 +164,13 @@
         <h3 class="section-title">Входит в инвестиции*</h3>
         <div class="invest-block" *ngFor="let item of aInvestInclude">
           <div *ngIf="item.Price > 0">
-            <strong>{{item.Price}} ₽</strong>
             <span class="">Стоимость</span>
+            <strong>{{item.Price}} ₽</strong>            
           </div>
 
           <div>
-            <strong>{{item.Name}}</strong>
             <span class="">Название</span>
+            <strong>{{item.Name}}</strong>            
           </div>
         </div>
       </div>
@@ -265,7 +265,7 @@
   <div class="row franchise-packages section-margin">
     <div class="col-12 mb-3">
       <div class="d-flex">
-        <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+        <!-- <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox> -->
         <h3 class="section-title mb-0">
           <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
         </h3>
@@ -312,7 +312,7 @@
     <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-7">
       <div>
         <div class="d-flex">
-          <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+          <!-- <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox> -->
           <h3 class="section-title mb-0">
             <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
           </h3>
@@ -360,9 +360,9 @@
             заявку</button>
         </div>
 
-        <div>
+        <!-- <div>
           <p class="description">Заявку оставляли 5 раз за последний месяц</p>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

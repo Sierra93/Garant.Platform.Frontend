@@ -33,6 +33,7 @@ export class ViewFranchiseModule implements OnInit {
     number: string = "";
     city: string = "";
     selectedValues: string[] = [];
+    isHideIndicators: boolean = false;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
@@ -92,8 +93,23 @@ export class ViewFranchiseModule implements OnInit {
                         this.franchiseData = response;
                         this.aNamesFranchisePhotos = this.franchiseData.url.split(",");
                         this.aInvestInclude = JSON.parse(response.investInclude);
-                        this.aFinIndicators = JSON.parse(response.finIndicators);
-                        this.aPacks = JSON.parse(response.franchisePacks);
+
+                        let checkFinIndicators = JSON.parse(response.finIndicators);
+
+                        // Если массив индикаторов не пустой.
+                        if (checkFinIndicators[0].Name) {
+                            this.aFinIndicators = checkFinIndicators;
+                            this.isHideIndicators = true;
+                        }
+
+                        let checkPacks = JSON.parse(response.franchisePacks);
+
+                        // Если массив пакетов не пустой.
+                        if (this.aPacks[0].Name) {
+                            this.aPacks = checkPacks;
+                            this.isHidePacks = true;
+                        }
+                        
                         this.fio = response.fullName;
 
                         console.log("franchiseData", this.franchiseData);

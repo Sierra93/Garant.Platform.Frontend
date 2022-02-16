@@ -60,7 +60,7 @@
   <div class="row financial-data">
     <div class="col-12">
       <h5 class="title-strong">Ключевые финансовые данные*</h5>
-      <span>0 из 6</span>
+      <!-- <span>0 из 6</span> -->
     </div>
 
     <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
@@ -178,7 +178,7 @@
   </div>
 
   <!-- Описание особенности франшизы. -->
-  <div class="row franchise-details section-margin">
+  <div class="row franchise-details section-margin" *ngIf="franchiseData.peculiarity != null">
     <div class="col-12">
       <div class="franchise-details-block">
         <h5 class="subsection-title">Описание особенности франшизы</h5>
@@ -221,7 +221,7 @@
     </div>
 
     <!-- Ключевые финансовые показатели. -->
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-10">
+    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-10" *ngIf="isHideIndicators">
       <div class="franchise-details-block">
         <h5 class="subsection-title">Ключевые финансовые показатели</h5>
         <div class="child-blocks-wrapper">
@@ -262,7 +262,7 @@
   </div>
 
   <!-- Пакеты франшизы. -->
-  <div class="row franchise-packages section-margin">
+  <div class="row franchise-packages section-margin" *ngIf="isHidePacks">
     <div class="col-12 mb-3">
       <div class="d-flex">
         <!-- <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox> -->
@@ -308,7 +308,7 @@
   </div>
 
   <!-- Видео о франшизе. -->
-  <div class="row franchise-video section-margin">
+  <div class="row franchise-video section-margin" *ngIf="franchiseData.urlVideo != null">
     <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-7">
       <div>
         <div class="d-flex">

@@ -808,11 +808,11 @@ export class ConfiguratorAdminModule implements OnInit {
             createUpdateFranchiseInput.IsGarant = isGarant;
             createUpdateFranchiseInput.InvestInclude = investInJsonString;
             createUpdateFranchiseInput.FinIndicators = namesIndicatorsJsonString;
-            createUpdateFranchiseInput.NameFinIndicators = namesIndicators;
+            createUpdateFranchiseInput.NameFinIndicators = namesIndicators ?? "";
             createUpdateFranchiseInput.FranchisePacks = packetJsonString;
             createUpdateFranchiseInput.IsNew = true;
             createUpdateFranchiseInput.Title = logoName;
-            createUpdateFranchiseInput.TrainingDetails = educationDetails;
+            createUpdateFranchiseInput.TrainingDetails = educationDetails ?? "";
             createUpdateFranchiseInput.Category = this.routeParamCategory;
             createUpdateFranchiseInput.SubCategory = this.routeParamSubCategory;
             createUpdateFranchiseInput.UrlsFranchise = this.aNamesFranchisePhotos;

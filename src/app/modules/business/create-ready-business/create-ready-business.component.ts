@@ -295,7 +295,7 @@ export class CreateReadyBusinessModule implements OnInit {
           sendFormData.append("finModelFile", this.modelFile);
           sendFormData.append("filesTextBusiness", this.filesTextBusiness);
 
-            await this.http.post(API_URL.apiUrl.concat("/configurator/create-update-business"), sendFormData)
+            await this.http.post(API_URL.apiUrl.concat("/business/create-update-business"), sendFormData)
                 .subscribe({
                     next: (response: any) => {
                         console.log("Бизнес успешно создан:", response);

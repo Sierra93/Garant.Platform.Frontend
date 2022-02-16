@@ -808,21 +808,21 @@ export class ConfiguratorAdminModule implements OnInit {
             createUpdateFranchiseInput.IsGarant = isGarant;
             createUpdateFranchiseInput.InvestInclude = investInJsonString;
             createUpdateFranchiseInput.FinIndicators = namesIndicatorsJsonString;
-            createUpdateFranchiseInput.NameFinIndicators = namesIndicators ?? "";
+            createUpdateFranchiseInput.NameFinIndicators = namesIndicators;
             createUpdateFranchiseInput.FranchisePacks = packetJsonString;
             createUpdateFranchiseInput.IsNew = true;
             createUpdateFranchiseInput.Title = logoName;
-            createUpdateFranchiseInput.TrainingDetails = educationDetails ?? "";
+            createUpdateFranchiseInput.TrainingDetails = educationDetails;
             createUpdateFranchiseInput.Category = this.routeParamCategory;
+
+            // TODO: тут сделать выбор сферы и катеории из списков.
             createUpdateFranchiseInput.SubCategory = this.routeParamSubCategory;
             createUpdateFranchiseInput.UrlsFranchise = this.aNamesFranchisePhotos;
-            createUpdateFranchiseInput.Category = "Тестовая категория";
-            createUpdateFranchiseInput.SubCategory = "Тестовая подкатегория";
 
             let sendFormData = new FormData();
             sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));
             sendFormData.append("filesLogo", this.fileLogoFormData);
-            // sendFormData.append("urlsDetails", this.franchisePhotos);
+            sendFormData.append("urlsDetails", this.franchisePhotos);
             sendFormData.append("trainingPhoto", this.fileEducationFormData);
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("presentFile", this.presentFile);
@@ -1419,33 +1419,34 @@ export class ConfiguratorAdminModule implements OnInit {
             let assets = this.assets;
             let reasonsSale = this.reasonsSale;
             let address = this.address;
+  
+              // Если не добавляли записи и осталась лежать одна пустая.
+              if (!this.aPriceIn[0].Name || !this.aPriceIn[0].Price) {
+                  this.aPriceIn[0].Name = this.nameIn;
+                  this.aPriceIn[0].Price = this.priceIn;
+              }
+  
+              else {
+                  this.aPriceIn.push({
+                      Name: this.nameIn,
+                      Price: this.priceIn
+                  });
+              }
+  
+              // Уберет пустые записи.
+              this.aPriceIn = this.aPriceIn.filter((item: any) => item.Name !== "" && item.Price !== "");
+  
             let aPriceInData = this.aPriceIn;
             let aNamesBusinessPhotos = this.aNamesBusinessPhotos;
-
-             // Если не добавляли записи и осталась лежать одна пустая.
-             if (!this.aPriceIn[0].Name || !this.aPriceIn[0].Price) {
-                this.aPriceIn[0].Name = this.nameIn;
-                this.aPriceIn[0].Price = this.priceIn;
-            }
-
-            else {
-                this.aPriceIn.push({
-                    Name: this.nameIn,
-                    Price: this.priceIn
-                });
-            }
-
-            // Уберет пустые записи.
-            this.aPriceIn = this.aPriceIn.filter((item: any) => item.Name !== "" && item.Price !== "");
-
+             
             // Уберет флаги видимости.
             let newPriceInJson = aPriceInData.map((item: any) => ({
                 Price: item.Price,
                 Name: item.Name
-            }));
-
+            }));         
+  
             let priceInJson = JSON.stringify(newPriceInJson);
-
+  
             createUpdateBusinessInput.Status = lead;
             createUpdateBusinessInput.Payback = payback;
             createUpdateBusinessInput.ActivityDetail = activityDetail;            
@@ -1469,12 +1470,12 @@ export class ConfiguratorAdminModule implements OnInit {
             createUpdateBusinessInput.ReasonsSale = reasonsSale;
             createUpdateBusinessInput.Address = address;
             createUpdateBusinessInput.InvestPrice = priceInJson;            
-            createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;         
-            // createUpdateBusinessInput.Category = this.routeParamCategory;
-            // createUpdateBusinessInput.SubCategory = this.routeParamSubCategory;
-            createUpdateBusinessInput.Category = "Тестовая категория";
-            createUpdateBusinessInput.SubCategory = "Тестовая подкатегория";
-
+            createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;     
+            
+            // TODO: тут сделать выбор сферы и катеории из списков.
+            createUpdateBusinessInput.Category = this.routeParamCategory;
+            createUpdateBusinessInput.SubCategory = this.routeParamSubCategory;
+  
             let sendFormData = new FormData();
             sendFormData.append("businessDataInput", JSON.stringify(createUpdateBusinessInput));
             sendFormData.append("filesAssets", this.filesAssets);

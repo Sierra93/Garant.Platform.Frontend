@@ -4,7 +4,6 @@ import { ActivatedRoute } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franchise-create-update-input";
-import { GetFranchiseInput } from "src/app/models/franchise/input/get-franchise-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
@@ -70,6 +69,7 @@ export class EditFranchiseModule implements OnInit {
     aFinIndicators: any[] = [];
     aPacks: any[] = [];
     aFranchisePhotos: any[] = [];
+    isHideIndicators: boolean = false;
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -133,11 +133,27 @@ export class EditFranchiseModule implements OnInit {
                     next: (response: any) => {
                         console.log("Полученная франшиза:", response);
                         this.franchiseData = response;     
-                        console.log("franchiseData", this.franchiseData);     
+                        console.log("franchiseData", this.franchiseData);    
                         
-                        this.aInvestInclude = [JSON.parse(response.investInclude)];
-                        this.aFinIndicators = [JSON.parse(response.finIndicators)];
-                        this.aPacks = [JSON.parse(response.franchisePacks)];
+                        // let checkFinIndicators = JSON.parse(response.finIndicators);
+
+                        // // Если массив индикаторов не пустой.
+                        // if (Object.keys(checkFinIndicators[0]).length > 0) {
+                        //     this.aFinIndicators = checkFinIndicators;
+                        //     this.isHideIndicators = true;
+                        // }
+
+                        // let checkPacks = JSON.parse(response.franchisePacks);
+
+                        // // Если массив пакетов не пустой.
+                        // if (Object.keys(checkPacks[0]).length > 0) {
+                        //     this.aPacks = checkPacks;
+                        //     this.isHidePacks = true;
+                        // }
+                        
+                        this.aInvestInclude = JSON.parse(response.investInclude);
+                        this.aFinIndicators = JSON.parse(response.finIndicators);
+                        this.aPacks = JSON.parse(response.franchisePacks);
 
                         console.log("aInvestInclude", this.aInvestInclude);
                         console.log("aFinIndicators", this.aFinIndicators);

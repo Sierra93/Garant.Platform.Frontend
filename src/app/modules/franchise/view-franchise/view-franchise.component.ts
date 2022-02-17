@@ -96,8 +96,8 @@ export class ViewFranchiseModule implements OnInit {
 
                         let checkFinIndicators = JSON.parse(response.finIndicators);
 
-                        // Если массив индикаторов не пустой.
-                        if (checkFinIndicators[0].Name) {
+                        // Если массив индикаторов не пустой.                        
+                        if (Object.keys(checkFinIndicators).length > 0) {
                             this.aFinIndicators = checkFinIndicators;
                             this.isHideIndicators = true;
                         }
@@ -105,7 +105,7 @@ export class ViewFranchiseModule implements OnInit {
                         let checkPacks = JSON.parse(response.franchisePacks);
 
                         // Если массив пакетов не пустой.
-                        if (this.aPacks[0].Name) {
+                        if (Object.keys(checkPacks).length > 0) {
                             this.aPacks = checkPacks;
                             this.isHidePacks = true;
                         }

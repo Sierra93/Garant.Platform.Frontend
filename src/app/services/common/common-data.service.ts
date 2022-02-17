@@ -597,4 +597,13 @@ export class CommonDataService {
             throw new Error(e);
         }
     };    
+
+    /**
+     * Функция уберет пробелы в числе, которое в строке.
+     * @param value - Входное значение в строке, у которого нужно убрать пробелы.
+     * @returns - Число без пробелов.
+     */
+    public TrimSpaceInNumber(value: string) {
+        return value.replace(/\s/g, "");
+    }
 };

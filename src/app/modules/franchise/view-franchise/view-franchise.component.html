@@ -185,8 +185,10 @@
 
         <p class="content">{{franchiseData.peculiarity}}</p>
 
+        <p class="content">{{franchiseData.nameFinModelFile}}</p>
+
         <div class="buttons">
-          <button>Получить финансовую модель</button>
+          <button (click)="onDownloadFinModelFileAsync(franchiseData.nameFinModelFile)">Получить финансовую модель</button>
           <button>Позднее</button>
         </div>
 
@@ -208,6 +210,22 @@
           <p class="description">{{franchiseData.text}}</p>
         </div>
       </div>
+
+       <!-- <div class="invest-in">
+            <span class="title-strong">Добавить презентацию</span><br>
+            <div class="block-details-franch">
+              <small>Прикрепить документ .pdf</small><br>
+              <button class="control-button-blue-small">Прикрепить файл</button><br>
+              <input type="file" (change)="uploadPresentAsync($event)">
+            </div>
+            <small>
+              Загружать презентацию не обязательно.<br>
+              Однако, это способствует повышению конверсии<br>
+              и глубинной заинтересованности в проекте. Если<br>
+              вы не хотите загружать презентацию, просто<br>
+              пропустите данный этап.
+            </small>
+          </div> -->
     </div>
   </div>
 

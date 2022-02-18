@@ -66,7 +66,7 @@ import { NotificationsModule } from "./modules/profile/profile-requests/notifica
 import { ConfiguratorAuthModule } from "./modules/configurator/configurator-auth/configurator-auth.component";
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/configurator-admin.component";
-
+import { DocumentService } from "./services/garant/document.service";
 
 @NgModule({
   declarations: [
@@ -146,7 +146,8 @@ import { ConfiguratorAdminModule } from "./modules/configurator/configurator-adm
     GarantService,
     DataService,
     Title,
-    MessageService
+    MessageService,
+    DocumentService
   ],
 
   bootstrap: [AppComponent]

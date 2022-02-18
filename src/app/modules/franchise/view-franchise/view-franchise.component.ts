@@ -5,6 +5,7 @@ import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { RequestFranchiseInput } from "src/app/models/request/input/request-franchise-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
+import { DocumentService } from "src/app/services/garant/document.service";
 
 @Component({
     selector: "view-franchise",
@@ -39,7 +40,8 @@ export class ViewFranchiseModule implements OnInit {
         private commonService: CommonDataService,
         private route: ActivatedRoute,
         private router: Router,
-        private messageService: MessageService) {
+        private messageService: MessageService,
+        private documentService: DocumentService) {
             this.routeParam = this.route.snapshot.queryParams;
             this.franchiseId = this.route.snapshot.queryParams.franchiseId;
 
@@ -185,4 +187,20 @@ export class ViewFranchiseModule implements OnInit {
             throw new Error(e);
         }
     };
+
+    /**
+     * Функция скачает файл.
+     * @param fileName - Имя файла.
+     */
+    public async onDownloadFinModelFileAsync(fileName: string) {
+        try {            
+            await this.documentService.downloadFileAsync(fileName).then((data: any) => {
+
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    }
 }

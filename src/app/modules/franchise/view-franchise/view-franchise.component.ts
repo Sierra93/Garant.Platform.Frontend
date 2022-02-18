@@ -98,7 +98,7 @@ export class ViewFranchiseModule implements OnInit {
 
                         let checkFinIndicators = JSON.parse(response.finIndicators);
 
-                        // Если массив индикаторов не пустой.                        
+                        // Если массив индикаторов не пустой.
                         if (Object.keys(checkFinIndicators).length > 0) {
                             this.aFinIndicators = checkFinIndicators;
                             this.isHideIndicators = true;
@@ -111,7 +111,7 @@ export class ViewFranchiseModule implements OnInit {
                             this.aPacks = checkPacks;
                             this.isHidePacks = true;
                         }
-                        
+
                         this.fio = response.fullName;
 
                         console.log("franchiseData", this.franchiseData);
@@ -193,7 +193,7 @@ export class ViewFranchiseModule implements OnInit {
      * @param fileName - Имя файла.
      */
     public async onDownloadFinModelFileAsync(fileName: string) {
-        try {            
+        try {
             await this.documentService.downloadFileAsync(fileName).then((data: any) => {
 
             });

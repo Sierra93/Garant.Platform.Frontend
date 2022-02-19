@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { forkJoin, Subject } from "rxjs";
-import { takeUntil, tap } from "rxjs/operators";
+import { switchMap, takeUntil, tap } from 'rxjs/operators';
 import { AdService } from "../../services/ad.service";
 
 @Component({
@@ -11,7 +11,7 @@ import { AdService } from "../../services/ad.service";
     styleUrls: ["./create-ad.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CreateAdComponent implements OnInit, OnDestroy {    
+export class CreateAdComponent implements OnInit, OnDestroy {
     public readonly createAdForm = new FormGroup({
         franchise: new FormControl(),
         readyBusiness: new FormControl(),
@@ -39,15 +39,14 @@ export class CreateAdComponent implements OnInit, OnDestroy {
     }
 
     constructor(
-        private readonly router: Router, 
+        private readonly router: Router,
         private readonly adService: AdService
     ) {};
-    
+
     ngOnInit(): void {
         forkJoin([
             this.adService.loadCities(),
-            this.adService.loadFranchiseCategories(),
-            this.adService.loadFranchiseSubcategories()
+            this.adService.loadFranchiseCategories()
         ]).subscribe();
 
         this.createAdForm.controls.readyBusiness.valueChanges.pipe(
@@ -73,15 +72,20 @@ export class CreateAdComponent implements OnInit, OnDestroy {
             }),
             takeUntil(this.unsub$)
         ).subscribe();
+
+      this.createAdForm.controls.categoryName.valueChanges.pipe(
+        switchMap(category => this.adService.loadFranchiseSubcategories(category)),
+        takeUntil(this.unsub$)
+      ).subscribe();
     };
 
     onSubmit(): void {
-        const { 
-            categoryName, 
-            subCategoryName, 
-            franchise, 
-            readyBusiness, 
-            city 
+        const {
+            categoryName,
+            subCategoryName,
+            franchise,
+            readyBusiness,
+            city
         } = this.createAdForm.value;
 
         if (franchise) {

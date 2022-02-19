@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, forkJoin } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -23,14 +23,22 @@ export class AdService {
     }
 
     public loadFranchiseCategories() {
-        return this.http.post(this.api + '/franchise/category-list', {}).pipe(
+        return this.http.get(this.api + '/franchise/category-list', {}).pipe(
             tap(data => this.franchiseCateogryList$.next(data))
         );
     }
 
-    public loadFranchiseSubcategories() {
-        return this.http.post(this.api + '/franchise/subcategory-list', {}).pipe(
-            tap(data => this.franchiseSubcategoryList$.next(data))
+    public loadFranchiseSubcategories(category: {
+        categoryCode: string;
+        categoryName: string;
+        franchiseCategorySysName: string
+    }) {
+        const params = new HttpParams().appendAll({
+          categoryCode: category.categoryCode,
+          categorySysName: category.franchiseCategorySysName
+        });
+        return this.http.get(this.api + '/franchise/subcategory-list', {params}).pipe(
+          tap(data => this.franchiseSubcategoryList$.next(data))
         );
     }
 }

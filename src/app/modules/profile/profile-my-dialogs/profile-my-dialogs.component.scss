@@ -1,15 +1,35 @@
 @import "/src/app/modules/profile/profile-my-data/profile-my-data.component.scss";
 
+.block-right {
+  .row {
+    @media (max-width: 768px) {
+      align-items: center !important;
+    }
+  }
+}
+
 .dialog {
   font-family: 'Roboto', sans-serif;
 
   &-top {
     margin-bottom: .75rem;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+
+      span {
+        font-size: .7rem;
+      }
+    }
   }
 
   &-photo {
     img {
       width: 100%;
+
+      @media (max-width: 576px) {
+        min-height: 70px;
+      }
     }
   }
 
@@ -20,6 +40,10 @@
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        @media (max-width: 576px) {
+          margin-right: .5rem;
+        }
       }
 
       img {
@@ -42,6 +66,10 @@
     font-size: 14px;
     color: #2c2c2c;
     margin-bottom: .25rem;
+
+    @media (max-width: 576px) {
+      white-space: nowrap;
+    }
 
     @media (max-width: 425px) {
       font-size: .7rem;

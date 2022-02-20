@@ -8,7 +8,9 @@
   }
 
   &-photo {
-    margin-right: 1rem;
+    img {
+      width: 100%;
+    }
   }
 
   &-content {
@@ -40,6 +42,10 @@
     font-size: 14px;
     color: #2c2c2c;
     margin-bottom: .25rem;
+
+    @media (max-width: 425px) {
+      font-size: .7rem;
+    }
   }
 
   &-message {
@@ -48,5 +54,7 @@
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 0 !important;
+    white-space: nowrap;
   }
 }

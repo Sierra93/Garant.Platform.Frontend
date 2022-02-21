@@ -175,6 +175,7 @@ export class ConfiguratorAdminModule implements OnInit {
     selectedNews: any;
     aNews: any[] = [];
     selectedCardActionSysName: any;
+    aNotAcceptedFranchises: any[] = [];
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
@@ -268,6 +269,7 @@ export class ConfiguratorAdminModule implements OnInit {
         await this.loadMenuItemsAsync();      
         // await this.getUserFio();  
         this.buildForm();
+        await this.getNotAcceptedFranchisesAsync();
     };
 
     public ngOnAfterViewInit() {
@@ -1878,4 +1880,24 @@ export class ConfiguratorAdminModule implements OnInit {
             throw new Error(e);
         }
     };
+
+    private async getNotAcceptedFranchisesAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/configurator/franchises-not-accepted"), {})
+            .subscribe({
+                next: (response: any) => {
+                    console.log("Список франшиз ожидающих согласования: ", response);
+                    this.aNotAcceptedFranchises = response;
+                },
+
+                error: (err) => {
+                    throw new Error(err);
+                }
+            });          
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    }
 }

@@ -1,0 +1,99 @@
+<form class="create-ad-form" [formGroup]="createAdForm" (ngSubmit)="onSubmit()">
+  <div class="form-title">
+    Добавить обьявление
+  </div>
+  <div class="form-row -franchise-or-business">
+    <div class="title">Вид бизнеса</div>
+    <div class="controls">
+      <div class="checkbox">
+        <p-checkbox [binary]="true" formControlName="franchise"></p-checkbox>
+        <div class="control-label">Франшиза</div>
+      </div>
+      
+      <div class="checkbox">
+        <p-checkbox [binary]="true" formControlName="readyBusiness"></p-checkbox>
+        <div class="control-label">Готовый бизнес</div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="canGoAhead">
+    <div class="form-row">
+      <div class="title">Выбор сферы</div>
+      <p-dropdown 
+        [required]="true" 
+        [options]="franchiseCategoryList$ | async" 
+        optionLabel="categoryName" 
+        formControlName="categoryName" 
+        name="categoryName"
+        placeholder="Выберите сферу"
+        [style]="{'width': '100%'}" 
+        dataKey="value"
+        [showClear]="true"
+      ></p-dropdown>
+    </div>
+    
+    <div class="form-row">
+      <div class="title">Выбор категории</div>
+      <p-dropdown 
+        [required]="true" 
+        [options]="franchiseSubcategoryList$ | async" 
+        optionLabel="subCategoryName"
+        formControlName="subCategoryName" 
+        placeholder="Выберите категорию" 
+        name="subCategoryName"
+        dataKey="value"
+        [style]="{'width': '100%'}" 
+        [showClear]="true"
+      ></p-dropdown>
+    </div>
+    
+    <div class="form-row" *ngIf="needCity">
+      <div class="title">
+        Выбор города
+      </div>
+      <p-dropdown 
+        [options]="cities$ | async" 
+        optionLabel="businessCityName" 
+        formControlName="city" 
+        placeholder="Выберите город"
+        [style]="{'width': '100%'}" 
+        [showClear]="true"
+      ></p-dropdown>
+    </div>
+  </ng-container>
+
+  <div class="form-row">
+    <div class="checkbox">
+      <p-checkbox 
+        formControlName="termsAgreed" 
+        [required]="true" 
+        [binary]="true"
+      ></p-checkbox>
+      <div class="control-label">
+        Согласен с условиями использования <br>
+        сервисов GoBizy и обработки персональных
+        данных
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="checkbox">
+      <p-checkbox 
+        formControlName="wantSell" 
+        [disabled]="true" 
+        [binary]="true"
+      ></p-checkbox>
+      <div class="control-label">
+        Хочу продать бизнес онлайн
+      </div>
+    </div>
+  </div>
+  
+  <button 
+    class="btn btn-default btn-code-active" 
+    [class.disabled]="createAdForm.invalid" 
+    type="submit"
+  >Продолжить</button>
+</form>

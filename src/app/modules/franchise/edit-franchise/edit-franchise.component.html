@@ -36,23 +36,13 @@
     </div>
 
     <div class="col-xxl-8 col-xl-9 col-lg-8 col-md-12">
-      <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>
       <div class="block-gallery">
         <div class="w-100">
           <span *ngIf="!aFranchisePhotos.length">Фотографии не загружены</span>
 
-          <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
-            [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
-            <ng-template pTemplate="item" let-item>
-              <img src="{{item}}" style="width: 700px; display: block;" />
-            </ng-template>
-
-            <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
-              <div class="p-grid p-nogutter p-justify-center">
-                <img src="{{item}}" />
-              </div>
-            </ng-template>
-          </p-galleria>
+          <gar-img-uploader
+                  (upload)="uploadImages($event)"
+                  [existing]="aFranchisePhotos"></gar-img-uploader>
         </div>
       </div>
     </div>

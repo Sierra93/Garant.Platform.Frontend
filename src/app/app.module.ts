@@ -67,6 +67,7 @@ import { ConfiguratorAuthModule } from "./modules/configurator/configurator-auth
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/configurator-admin.component";
 import { DocumentService } from "./services/garant/document.service";
+import { GarLibModule } from "./gar-lib/gar-lib.module";
 
 @NgModule({
   declarations: [
@@ -103,38 +104,39 @@ import { DocumentService } from "./services/garant/document.service";
   ],
 
   entryComponents: [],
-
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    ButtonModule,
-    DialogModule,
-    ConfirmDialogModule,
-    MessagesModule,
-    ToastModule,
-    TabViewModule,
-    PaginatorModule,
-    RadioButtonModule,
-    InputTextModule,
-    AutoCompleteModule,
-    CarouselModule,
-    CardModule,
-    InputSwitchModule,
-    SliderModule,
-    CheckboxModule,
-    BreadcrumbModule,
-    FileUploadModule,
-    GalleriaModule,
-    InputTextareaModule,
-    AvatarModule,
-    AvatarGroupModule,
-    ReactiveFormsModule,
-    TabMenuModule,
-    StepsModule
-  ],
+	
+	imports: [
+		BrowserModule,
+		FormsModule,
+		AppRoutingModule,
+		HttpClientModule,
+		BrowserAnimationsModule,
+		ButtonModule,
+		DialogModule,
+		ConfirmDialogModule,
+		MessagesModule,
+		ToastModule,
+		TabViewModule,
+		PaginatorModule,
+		RadioButtonModule,
+		InputTextModule,
+		AutoCompleteModule,
+		CarouselModule,
+		CardModule,
+		InputSwitchModule,
+		SliderModule,
+		CheckboxModule,
+		BreadcrumbModule,
+		FileUploadModule,
+		GalleriaModule,
+		InputTextareaModule,
+		AvatarModule,
+		AvatarGroupModule,
+		ReactiveFormsModule,
+		TabMenuModule,
+		StepsModule,
+		GarLibModule
+	],
 
   providers: [
     {

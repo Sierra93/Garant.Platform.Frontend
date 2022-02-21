@@ -1,0 +1,9 @@
+@use "/src/app/app.component.scss";
+@use "/src/app/shared/styles/image-space.scss";
+@use "/src/app/shared/styles/media-quaries.scss";
+@use "/src/app/shared/styles/common.scss";
+@use "/src/app/modules/franchise/create-franchise/create-franchise.component.scss";
+@use "/src/app/modules/login/login.component.scss";
+.block-space-check {
+  margin: 0 64px;
+}

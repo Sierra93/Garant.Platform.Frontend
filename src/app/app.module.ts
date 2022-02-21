@@ -68,6 +68,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/configurator-admin.component";
 import { DocumentService } from "./services/garant/document.service";
 import { CreateAdModule } from "./modules/create-ad/create-ad.component";
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -135,7 +136,8 @@ import { CreateAdModule } from "./modules/create-ad/create-ad.component";
     AvatarGroupModule,
     ReactiveFormsModule,
     TabMenuModule,
-    StepsModule
+    StepsModule,
+    TableModule
   ],
 
   providers: [

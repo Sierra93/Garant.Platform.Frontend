@@ -2144,5 +2144,37 @@
       </div>
     </div>
 
+     <!-- Таб модерации. -->
+     <div *ngIf="tabIndex == 4">
+      <div>
+        <div>
+          <h5>Панель модератора</h5>
+        </div>
+
+        <!-- Таблица с карточками франшиз, которые требуют согласования. -->
+        <!-- <div>
+          <p-table [value]="cars">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Vin</th>
+                    <th>Year</th>
+                    <th>Brand</th>
+                    <th>Color</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-car>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+            </ng-template>
+        </p-table>
+        </div> -->
+      </div>
+     
+    </div>
+
   </p-tabPanel>
 </p-tabView>

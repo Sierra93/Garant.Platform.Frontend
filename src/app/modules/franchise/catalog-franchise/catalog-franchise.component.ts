@@ -19,7 +19,7 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
  */
 export class CatalogFranchiseModule implements OnInit {
     aPopularFranchises: any[] = [];
-    isGarant: boolean = false;
+    isGarant: boolean = true;
     aCities: any[] = [];
     aBusinessCategories: any[] = [];
     aViewBusiness: any[] = [];
@@ -96,7 +96,8 @@ export class CatalogFranchiseModule implements OnInit {
 
         await this.GetPopularAsync();
         await this.GetFranchisesListAsync();
-        await this.loadCitiesFranchisesListAsync();
+        //TODO: Возможно вызов не нужен, франшизы грузятся при ините пагинации.
+        //await this.loadCitiesFranchisesListAsync();
         await this.loadCategoriesFranchisesListAsync();
         await this.loadViewBusinessFranchisesListAsync();
         await this.loadPaginationInitAsync();
@@ -270,7 +271,8 @@ export class CatalogFranchiseModule implements OnInit {
                 next: (response: any) => {
                     console.log("pagination init", response);
                     this.countFranchises = response.countAll;
-                    // this.aFranchises = response.results;
+                    this.aFranchises = response.results;
+                    this.countTotalPage = response.totalCount;   
                 },
 
                 error: (err) => {
@@ -295,6 +297,7 @@ export class CatalogFranchiseModule implements OnInit {
      */
     public async onFilterFranchisesAsync() {
         try {
+            //TODO: Удалить, если не используется.
             let filterInput = new FilterInput();
             filterInput.TypeSortPrice = this.selectedSort.value;
             filterInput.ProfitMinPrice = this.filterMinPrice;
@@ -348,8 +351,7 @@ export class CatalogFranchiseModule implements OnInit {
                     console.log("Франшизы после фильтрации:", response.results);                    
                     this.aFranchises = response.results;
                     this.countFranchises = response.countAll;
-                    this.countTotalPage = response.totalPagesCount;
-                    console.log("Ответ:", this.countTotalPage);  
+                    this.countTotalPage = response.totalCount;                  
                 },
                 error: (err) => {
                     this.commonService.routeToStart(err);

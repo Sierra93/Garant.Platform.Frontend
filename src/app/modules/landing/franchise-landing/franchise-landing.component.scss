@@ -8,7 +8,7 @@
 @use "/src/app/app.component.scss";
 // @import "/src/app/shared/styles/image-space.scss";
 // @import "/src/app/shared/styles/common.scss";
-// @import "/src/app/shared/styles/media-quaries.scss";
+@import "/src/app/shared/styles/media-quaries.scss";
 @use "/src/app/modules/main-page/main-page.component.scss";
 @use "../../../../app/shared/styles" as *;
 @use "../../../../app/shared/styles/base" as *;
@@ -244,18 +244,18 @@ strong {
     }
 
     @include lg-md {
-     display: none;
+      display: none;
     }
 
     @include md {
-     display: none;
+      display: none;
     }
 
     img {
       @include xl-lg {
         width: 518px;
         height: 284px;
-      }      
+      }
     }
   }
 
@@ -267,14 +267,14 @@ strong {
       display: block;
       width: 384px;
       height: 363px;
-     }
+    }
 
-     img {
+    img {
       @include lg-md {
         width: 384px;
         height: 363px;
-       }
-     }
+      }
+    }
   }
 
   &-image2 {

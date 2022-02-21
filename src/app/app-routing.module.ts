@@ -26,6 +26,7 @@ import { DealLandingModule } from './modules/landing/deal-landing/deal-landing.c
 import { ConfiguratorAuthModule } from './modules/configurator/configurator-auth/configurator-auth.component';
 import { ConfiguratorAdminModule } from './modules/configurator/configurator-admin/configurator-admin.component';
 import { NotificationsModule } from './modules/profile/profile-requests/notifications.component';
+import { CreateAdModule } from './modules/create-ad/create-ad.component';
 
 const routes: Routes = [
   {
@@ -80,7 +81,7 @@ const routes: Routes = [
 
   {
     path: "ad/create",
-    loadChildren: () => import('./modules/ad/ad.module').then(m => m.AdModule)
+    component: CreateAdModule
   },
 
   {

@@ -67,6 +67,7 @@ import { ConfiguratorAuthModule } from "./modules/configurator/configurator-auth
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/configurator-admin.component";
 import { DocumentService } from "./services/garant/document.service";
+import { CreateAdModule } from "./modules/create-ad/create-ad.component";
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { DocumentService } from "./services/garant/document.service";
     DealLandingModule,
     NotificationsModule,
     ConfiguratorAuthModule,
-    ConfiguratorAdminModule
+    ConfiguratorAdminModule,
+    CreateAdModule
   ],
 
   entryComponents: [],

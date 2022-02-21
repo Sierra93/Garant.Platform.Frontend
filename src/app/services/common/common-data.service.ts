@@ -362,14 +362,13 @@ export class CommonDataService {
     public async GetFranchiseCategoriesListAsync() {
         try {
             return new Promise(async resolve => {
-                await this.http.post(API_URL.apiUrl.concat("/franchise/category-list"), {})
+                await this.http.get(API_URL.apiUrl.concat("/franchise/category-list"))
                     .subscribe({
                         next: (response: any) => {
                             resolve(response);
                         },
 
                         error: (err) => {
-                            this.routeToStart(err);
                             throw new Error(err);
                         }
                     });
@@ -385,17 +384,18 @@ export class CommonDataService {
      * Функция получит список подкатеорий франшиз.
      * @returns Список подкатеорий.
      */
-     public async GetFranchiseSubCategoriesListAsync() {
+     public async GetFranchiseSubCategoriesListAsync(categoryCode: string, categorySysName: string) {
         try {
             return new Promise(async resolve => {
-                await this.http.post(API_URL.apiUrl.concat("/franchise/subcategory-list"), {})
+                await this.http.get(API_URL.apiUrl.concat("/franchise/subcategory-list?categoryCode=" 
+                + categoryCode
+                + "&categorySysName=" + categorySysName))
                     .subscribe({
                         next: (response: any) => {
                             resolve(response);
                         },
 
                         error: (err) => {
-                            this.routeToStart(err);
                             throw new Error(err);
                         }
                     });
@@ -597,4 +597,13 @@ export class CommonDataService {
             throw new Error(e);
         }
     };    
+
+    /**
+     * Функция уберет пробелы в числе, которое в строке.
+     * @param value - Входное значение в строке, у которого нужно убрать пробелы.
+     * @returns - Число без пробелов.
+     */
+    public TrimSpaceInNumber(value: string) {
+        return value.replace(/\s/g, "");
+    }
 };

@@ -18,7 +18,7 @@
 }
 
 .franchise-logo {
-  width: 220px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +30,7 @@
   font-weight: 400;
   color: #7a7a7a;
   text-indent: 1rem;
-  width: 708px;
+  width: 100%;
 }
 
 .form-label {
@@ -79,14 +79,15 @@
 }
 
 .financial-data {
+  margin-top: 1.5rem;
+
   &-block {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 24px;
     background-color: #f1f1f1;
-    height: 158px;
-    margin-top: 1.5rem;
+    height: 100%;
 
     strong {
       font-family: 'Roboto', sans-serif;
@@ -102,6 +103,10 @@
       font-weight: normal;
       color: #646464;
       margin-bottom: 1rem;
+    }
+
+    input {
+      width: 80%;
     }
   }
 }
@@ -137,6 +142,7 @@
             padding: 1.5rem 1rem;
             border-radius: 8px;
             border: 1.5px solid #dadada;
+            width: 100%;
         }
     }
 
@@ -265,6 +271,10 @@
         span {
           margin-bottom: 0;
         }
+
+        @media (max-width: 576px) {
+          width: 100%;
+        }
       }
     }
   }
@@ -308,6 +318,7 @@
     line-height: normal;
     color: #7a7a7a;
     margin-bottom: 1.5rem;
+    width: 100%;
   }
 
   .form {
@@ -336,7 +347,7 @@
       border-radius: 8px;
       background-color: #1f75fe;
       height: 70px;
-      width: 342px;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -395,6 +406,7 @@
     line-height: normal;
     color: #7a7a7a;
     margin-bottom: 1.5rem;
+    width: 100%;
   }
 
   .block-details-franch {
@@ -424,6 +436,7 @@
     }
     .fin-indicator-first, .fin-indicator {
       padding: 1.5rem .5rem;
+
       > div {
         display: flex;
         flex-direction: column;
@@ -489,6 +502,8 @@
     line-height: normal;
     color: #7a7a7a;
     margin-bottom: 1.5rem;
+    height: 210px !important;
+    width: 100%;
   }
 
   .upload-file-education {
@@ -514,6 +529,10 @@
 }
 
 .franchise-packages {
+  .package {
+    margin-bottom: 1.5rem;
+  }
+
   .control-checkbox {
     margin-bottom: 8px;
 
@@ -875,13 +894,11 @@
 
 .fin-indicator {
   padding: 10px;
-  margin: 10px;
   background-color: white;
 }
 
 .fin-indicator-first {
   padding: 10px;
-  margin: 10px 0 10px 0;
   background-color: white;
 }
 
@@ -944,7 +961,125 @@
     margin-left: 16px;
 }
 
+
+@media (max-width: 1400px) {
+  .financial-data {
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .sale-through-garant {
+    .buttons {
+      button {
+        padding: 1rem;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .fin-indicator {
+    margin: .5rem 0;
+  }
+
+  .main-info {
+    > div {
+      &:first-child {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .additional-facts {
+      [class^=col] {
+        margin: 1rem 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .sale-through-garant {
+    .buttons {
+      flex-direction: column;
+
+      button {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .sale-through-garant {
+    .switch-garant {
+      > span {
+        margin-right: 1.5rem !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .file-input-wrapper {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 486px) {
+  .sale-through-garant {
+    .switch-garant {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      > span {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .buttons {
+      button {
+        padding: .5rem;
+        font-size: .8rem;
+      }
+    }
+  }
+
+  .photos {
+    input[type=file] {
+      width: 100%;
+    }
+  }
+}
+
+
 // Стили дял галереи.
 ::ng-deep .p-galleria-thumbnail-item {
     overflow: visible!important;
+}
+
+::ng-deep {
+  .block-gallery {
+    .p-galleria.p-component {
+      max-width: 100% !important;
+    }
+
+    p-galleriathumbnails {
+      width: 12%;
+      max-width: 12%;
+    }
+
+    p-galleriaitem {
+      width: 88%;
+      max-width: 88%;
+    }
+
+    .p-galleria-item-container {
+      width: 100%;
+    }
+
+    .p-galleria-item-wrapper img {
+      width: 100% !important;
+    }
+  }
 }

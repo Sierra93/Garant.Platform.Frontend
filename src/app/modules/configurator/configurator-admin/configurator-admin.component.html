@@ -2163,7 +2163,10 @@
              </div>
            </div>
 
-          <p-table [value]="aNotAcceptedFranchises" [scrollable]="true" scrollHeight="400px">
+          <p-table 
+          [value]="aNotAcceptedFranchises" 
+          [scrollable]="true" 
+          scrollHeight="400px">
             <ng-template pTemplate="header">
               <tr>
                 <th>ID</th>
@@ -2176,7 +2179,7 @@
               </tr>
             </ng-template>
 
-            <ng-template pTemplate="body" let-item>
+            <ng-template pTemplate="body" let-item let-index="rowIndex">
               <tr>
                 <td>{{item.franchiseId}}</td>
                 <td>
@@ -2185,14 +2188,28 @@
                 <td>{{item.title}}</td>
                 <td>{{item.dateCreate}}</td>
                 <td>
-                  <button pButton type="button" label="Просмотреть" class="p-button-outlined p-button-info"></button>
-                </td>
-                <td>
-                  <button pButton type="button" label="Одобрить" class="p-button-outlined p-button-success"></button>
+                  <button pButton 
+                    type="button" 
+                    label="Просмотреть" 
+                    class="p-button-outlined p-button-info"
+                    (click)="onViewFranchise(index)">
+                </button>
                 </td>
 
                 <td>
-                  <button pButton type="button" label="Отклонить" class="p-button-outlined p-button-danger"></button>
+                  <button pButton 
+                    type="button" 
+                    label="Одобрить" 
+                    class="p-button-outlined p-button-success">
+                </button>
+                </td>
+
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Отклонить" 
+                    class="p-button-outlined p-button-danger">
+                </button>
                 </td>
               </tr>
             </ng-template>

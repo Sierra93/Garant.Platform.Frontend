@@ -176,6 +176,7 @@ export class ConfiguratorAdminModule implements OnInit {
     aNews: any[] = [];
     selectedCardActionSysName: any;
     aNotAcceptedFranchises: any[] = [];
+    franchiseRowIndex: number = 0;
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
@@ -1881,6 +1882,10 @@ export class ConfiguratorAdminModule implements OnInit {
         }
     };
 
+    /**
+     * Функция получит список франшиз, которые ожидают согласования.
+     * @returns - Список франшиз.
+     */
     private async getNotAcceptedFranchisesAsync() {
         try {
             await this.http.post(API_URL.apiUrl.concat("/configurator/franchises-not-accepted"), {})
@@ -1899,5 +1904,10 @@ export class ConfiguratorAdminModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    }
+    };
+
+    public onViewFranchise(index: number) {
+        console.log("index", this.aNotAcceptedFranchises[index].franchiseId);
+        this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: this.aNotAcceptedFranchises[index].franchiseId, mode: "view" } });
+    };
 }

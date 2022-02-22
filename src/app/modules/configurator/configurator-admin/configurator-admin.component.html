@@ -698,41 +698,41 @@
             <div class="d-flex">
               <div class="fin-indicator-first">
                 <small>Например: средний чек</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="finIndicator1" name="finIndicator1" /><br>
 
                 <small>Процент или финансы</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="percentFinancial1" name="" />
               </div>
 
               <div class="fin-indicator">
                 <small>Например: рентабельность</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="finIndicator2" name="finIndicator2" /><br>
 
                 <small>Процент или финансы</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="percentFinancial2" name="percentFinancial2" />
               </div>
 
               <div class="fin-indicator">
                 <small>Например: средняя выручка</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="finIndicator3" name="finIndicator3" /><br>
 
                 <small>Процент или финансы</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="percentFinancial3" name="percentFinancial3" />
               </div>
 
               <div class="fin-indicator">
                 <small>Например: товарная наценка</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="finIndicator4" name="finIndicator4" /><br>
 
                 <small>Процент или финансы</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="percentFinancial4" name="percentFinancial4" />
               </div>
             </div>
@@ -853,7 +853,7 @@
   <div>
    <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
    <label for="packs" class="control-label-checkbox">Отзывы о франшизе</label>
-  </div>        
+  </div>
 </div>
 
 <div>
@@ -893,8 +893,8 @@
             name="packLumpSumPayment" /> ₽
         </div>
       </div>
-    </div>    
-  </div>  
+    </div>
+  </div>
 
   <div class="block-button-pack">
     <button class="control-button-blue">Добавить отзыв</button>
@@ -1281,14 +1281,14 @@
                     <div class="fin-indicator-first">
                       <div>
                         <label>Например: средний чек</label>
-                        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                        <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                           [(ngModel)]="item.Name" name="finIndicator1" />
                         <!-- <span>{{item.Name}}</span><br> -->
                       </div>
 
                       <div>
                         <label>Процент или финансы</label>
-                        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                        <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                           [(ngModel)]="item.Price" name="" />
                         <!-- <span>{{item.Price}}</span><br> -->
                       </div>
@@ -1459,7 +1459,7 @@
            <label for="packs" class="control-label-checkbox">Отзывы о франшизе</label>
           </div>
         </div>
-        
+
         <div>
          <small>
           На данный момент доступны только видеоотзывы. Если у вас новая франшиза, то отзывов могло не быть. Однако вы можете добавить отзывы, если они есть или отключить их посредством галочки около названия.
@@ -1477,20 +1477,20 @@
                 <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [(ngModel)]="packDetails"
                   name="packDetails" />
               </div>
-        
+
               <div class="block-bottom-pack">
                 <div>
                   <span class="title-small">Паушальный взнос:</span><br>
                   <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
                     name="packLumpSumPayment" /> ₽
                 </div>
-        
+
                 <div>
                   <span class="title-small">Роялти:</span><br>
                   <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
                     name="packLumpSumPayment" /> %
                 </div>
-        
+
                 <div>
                   <span class="title-small">Всего инвестиций:</span><br>
                   <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
@@ -1499,7 +1499,7 @@
               </div>
             </div>
           </div>
-        
+
           <div class="block-button-pack">
             <button class="control-button-blue">Добавить отзыв</button>
           </div>
@@ -2142,6 +2142,130 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Таб модерации. -->
+    <div *ngIf="tabIndex == 4">
+      <div>
+        <div>
+          <h5>Панель модератора</h5>
+        </div>
+
+        <!-- Таблица с карточками франшиз, которые требуют согласования. -->
+        <div>        
+          <div class="mt-3 mb-3">
+            <div>
+              <strong style="font-size: 20px;">Франшизы ожидающие согласования</strong>
+            </div>
+  
+             <div>
+              Кол-во: {{aNotAcceptedFranchises.length}}
+             </div>
+           </div>
+
+          <p-table 
+          [value]="aNotAcceptedFranchises" 
+          [scrollable]="true" 
+          scrollHeight="400px">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>ID</th>
+                <th>Изображение</th>
+                <th>Название</th>
+                <th>Дата размещения</th>
+                <th>Просмотр</th>
+                <th>Одобрение</th>
+                <th>Отклонение</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-item let-index="rowIndex">
+              <tr>
+                <td>{{item.franchiseId}}</td>
+                <td>
+                  <img [src]="item.url" />
+                </td>
+                <td>{{item.title}}</td>
+                <td>{{item.dateCreate}}</td>
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Просмотреть" 
+                    class="p-button-outlined p-button-info"
+                    (click)="onViewFranchise(index)">
+                </button>
+                </td>
+
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Одобрить" 
+                    class="p-button-outlined p-button-success"
+                    (click)="onAcceptCardAsync(item.franchiseId, 'Franchise')">
+                </button>
+                </td>
+
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Отклонить" 
+                    class="p-button-outlined p-button-danger">
+                </button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+
+        <!-- Таблица с карточками бизнеса, которые требуют согласования. -->
+        <div>
+         <div class="mt-3 mb-3">
+          <div>
+            <strong style="font-size: 20px;">Бизнесы ожидающие согласования</strong>
+          </div>
+
+           <div>
+            Кол-во: {{aNotAcceptedFranchises.length}}
+           </div>
+         </div>
+
+          <p-table [value]="aNotAcceptedFranchises" [scrollable]="true" scrollHeight="400px">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>ID</th>
+                <th>Изображение</th>
+                <th>Название</th>
+                <th>Дата размещения</th>
+                <th>Просмотр</th>
+                <th>Одобрение</th>
+                <th>Отклонение</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-item>
+              <tr>
+                <td>{{item.franchiseId}}</td>
+                <td>
+                  <img [src]="item.url" />
+                </td>
+                <td>{{item.title}}</td>
+                <td>{{item.dateCreate}}</td>
+                <td>
+                  <button pButton type="button" label="Просмотреть" class="p-button-outlined p-button-info"></button>
+                </td>
+                <td>
+                  <button pButton type="button" label="Одобрить" class="p-button-outlined p-button-success"></button>
+                </td>
+
+                <td>
+                  <button pButton type="button" label="Отклонить" class="p-button-outlined p-button-danger"></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+
     </div>
 
   </p-tabPanel>

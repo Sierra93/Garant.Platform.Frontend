@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Spinkit } from 'ng-http-loader';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   isGarant: boolean = false;
+  spinnerStyle = Spinkit;
 
   ngDoCheck(){
     if (window.location.href.includes("stage")) {

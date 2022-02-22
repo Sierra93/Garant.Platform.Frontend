@@ -61,6 +61,8 @@ export class ViewReadyBusinessModule implements OnInit {
     aBusinessPhotos: any = [];
     userName: string = "";
     number: string = "";
+    isHidePeculiarity: boolean = false;
+    isUrlVideo: boolean = false;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
@@ -150,6 +152,14 @@ export class ViewReadyBusinessModule implements OnInit {
                         //     this.aNamesBusinessPhotos = item.urlsBusiness;
                         // });
                         this.aNamesBusinessPhotos = response.urlsBusiness.split(",");
+
+                        if (!this.businessData[0].peculiarity) {
+                            this.isHidePeculiarity = true;
+                        }
+
+                        if (!this.businessData[0].urlVideo) {
+                            this.isUrlVideo = true;
+                        }
 
                         console.log("Полученный бизнес:", response);
                         console.log("businessData", this.businessData);      

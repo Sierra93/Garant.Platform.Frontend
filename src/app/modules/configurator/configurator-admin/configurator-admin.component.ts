@@ -175,6 +175,8 @@ export class ConfiguratorAdminModule implements OnInit {
     selectedNews: any;
     aNews: any[] = [];
     selectedCardActionSysName: any;
+    aNotAcceptedFranchises: any[] = [];
+    franchiseRowIndex: number = 0;
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
@@ -268,6 +270,7 @@ export class ConfiguratorAdminModule implements OnInit {
         await this.loadMenuItemsAsync();      
         // await this.getUserFio();  
         this.buildForm();
+        await this.getNotAcceptedFranchisesAsync();
     };
 
     public ngOnAfterViewInit() {
@@ -724,6 +727,51 @@ export class ConfiguratorAdminModule implements OnInit {
                 }
             ];
 
+            // Если не добавляли записи и осталась лежать одна пустая.
+            if (!this.ainvestIn[0].Name || !this.ainvestIn[0].Price) {                  
+                this.ainvestIn[0].Name = this.nameInvest;
+                this.ainvestIn[0].Price = this.priceInvest;
+            }
+
+            else {
+                this.ainvestIn.push({
+                    Name: this.nameInvest,
+                    Price: this.priceInvest
+                });
+            }
+
+             // Уберет пустые записи.
+            this.ainvestIn = this.ainvestIn.filter((item: any) => item.Name !== "" && item.Price !== "");
+
+            if (!this.aPacks[0].Name
+                || !this.aPacks[0].Text
+                || !this.aPacks[0].LumpSumPayment
+                || !this.aPacks[0].Royalty
+                || !this.aPacks[0].TotalInvest) {
+                this.aPacks[0].Name = this.packName;
+                this.aPacks[0].Text = this.packDetails;
+                this.aPacks[0].LumpSumPayment = this.packLumpSumPayment;
+                this.aPacks[0].Royalty = this.royaltyPack;
+                this.aPacks[0].TotalInvest = this.totalInvest;
+            }
+
+            else {
+                this.aPacks.push({
+                    Name: this.packName,
+                    Text: this.packDetails,
+                    LumpSumPayment: this.packLumpSumPayment,
+                    Royalty: this.royaltyPack,
+                    TotalInvest: this.totalInvest
+                });
+            }
+
+            // Уберет пустые записи.
+            this.aPacks = this.aPacks.filter((item: any) => item.Name !== ""
+                && item.Text !== ""
+                && item.LumpSumPayment !== ""
+                && item.Royalty !== ""
+                && item.TotalInvest !== "");
+
             // Уберет ключи флагов.
             let newainvestIn = this.ainvestIn.map((item: any) => ({
                 Name: item.Name,
@@ -769,15 +817,15 @@ export class ConfiguratorAdminModule implements OnInit {
             createUpdateFranchiseInput.Title = logoName;
             createUpdateFranchiseInput.TrainingDetails = educationDetails;
             createUpdateFranchiseInput.Category = this.routeParamCategory;
+
+            // TODO: тут сделать выбор сферы и катеории из списков.
             createUpdateFranchiseInput.SubCategory = this.routeParamSubCategory;
             createUpdateFranchiseInput.UrlsFranchise = this.aNamesFranchisePhotos;
-            createUpdateFranchiseInput.Category = "Тестовая категория";
-            createUpdateFranchiseInput.SubCategory = "Тестовая подкатегория";
 
             let sendFormData = new FormData();
             sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));
             sendFormData.append("filesLogo", this.fileLogoFormData);
-            // sendFormData.append("urlsDetails", this.franchisePhotos);
+            sendFormData.append("urlsDetails", this.franchisePhotos);
             sendFormData.append("trainingPhoto", this.fileEducationFormData);
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("presentFile", this.presentFile);
@@ -1374,17 +1422,34 @@ export class ConfiguratorAdminModule implements OnInit {
             let assets = this.assets;
             let reasonsSale = this.reasonsSale;
             let address = this.address;
+  
+              // Если не добавляли записи и осталась лежать одна пустая.
+              if (!this.aPriceIn[0].Name || !this.aPriceIn[0].Price) {
+                  this.aPriceIn[0].Name = this.nameIn;
+                  this.aPriceIn[0].Price = this.priceIn;
+              }
+  
+              else {
+                  this.aPriceIn.push({
+                      Name: this.nameIn,
+                      Price: this.priceIn
+                  });
+              }
+  
+              // Уберет пустые записи.
+              this.aPriceIn = this.aPriceIn.filter((item: any) => item.Name !== "" && item.Price !== "");
+  
             let aPriceInData = this.aPriceIn;
             let aNamesBusinessPhotos = this.aNamesBusinessPhotos;
-
+             
             // Уберет флаги видимости.
             let newPriceInJson = aPriceInData.map((item: any) => ({
                 Price: item.Price,
                 Name: item.Name
-            }));
-
+            }));         
+  
             let priceInJson = JSON.stringify(newPriceInJson);
-
+  
             createUpdateBusinessInput.Status = lead;
             createUpdateBusinessInput.Payback = payback;
             createUpdateBusinessInput.ActivityDetail = activityDetail;            
@@ -1408,12 +1473,12 @@ export class ConfiguratorAdminModule implements OnInit {
             createUpdateBusinessInput.ReasonsSale = reasonsSale;
             createUpdateBusinessInput.Address = address;
             createUpdateBusinessInput.InvestPrice = priceInJson;            
-            createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;         
-            // createUpdateBusinessInput.Category = this.routeParamCategory;
-            // createUpdateBusinessInput.SubCategory = this.routeParamSubCategory;
-            createUpdateBusinessInput.Category = "Тестовая категория";
-            createUpdateBusinessInput.SubCategory = "Тестовая подкатегория";
-
+            createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;     
+            
+            // TODO: тут сделать выбор сферы и катеории из списков.
+            createUpdateBusinessInput.Category = this.routeParamCategory;
+            createUpdateBusinessInput.SubCategory = this.routeParamSubCategory;
+  
             let sendFormData = new FormData();
             sendFormData.append("businessDataInput", JSON.stringify(createUpdateBusinessInput));
             sendFormData.append("filesAssets", this.filesAssets);
@@ -1804,6 +1869,60 @@ export class ConfiguratorAdminModule implements OnInit {
                 next: (response: any) => {
                     console.log("Список новостей: ", response);
                     this.aNews = response;
+                },
+
+                error: (err) => {
+                    throw new Error(err);
+                }
+            });          
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список франшиз, которые ожидают согласования.
+     * @returns - Список франшиз.
+     */
+    private async getNotAcceptedFranchisesAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/configurator/franchises-not-accepted"), {})
+            .subscribe({
+                next: (response: any) => {
+                    console.log("Список франшиз ожидающих согласования: ", response);
+                    this.aNotAcceptedFranchises = response;
+                },
+
+                error: (err) => {
+                    throw new Error(err);
+                }
+            });          
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public onViewFranchise(index: number) {
+        console.log("index", this.aNotAcceptedFranchises[index].franchiseId);
+        this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: this.aNotAcceptedFranchises[index].franchiseId, mode: "view" } });
+    };
+
+    /**
+     * Функция одобрит карточку. Далее карточка попадет в каталоги.
+     * @param cardId - Id карточки.
+     * @param cardType - Тип карточки.
+     * @returns - Статус одобрения.
+     */
+    public async onAcceptCardAsync(cardId: number, cardType: string) {
+        try {
+            await this.http.get(API_URL.apiUrl.concat("/configurator/accept-card?cardId=" + cardId + "&cardType=" + cardType))
+            .subscribe({
+                next: (response: any) => {
+                    console.log("Одобрение карточки: ", response);
                 },
 
                 error: (err) => {

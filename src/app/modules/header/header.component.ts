@@ -157,7 +157,6 @@ export class HeaderModule implements OnInit {
             type = "business";
         }        
 
-        // console.log(this.route.snapshot.queryParams);
         this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });        
     };   
 }

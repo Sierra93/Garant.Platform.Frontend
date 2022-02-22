@@ -125,7 +125,7 @@ export class MainSearchModule implements OnInit {
                             });
                         }
 
-                        if (this.searchType == "business") {                            
+                        if (this.searchType == "business") {                         
                             // Возьмет 1 изображение.
                             this.aBusinesses.forEach((item: any) => {
                                 if (item.url != null && item.url.includes(",")) {
@@ -135,6 +135,14 @@ export class MainSearchModule implements OnInit {
                         }
 
                         console.log("search data: ", response);
+
+                        // this.router.navigate(["/search"], {
+                        //     queryParams:
+                        //     {
+                        //         searchType: searchType, 
+                        //         searchText: searchText
+                        //     }
+                        // });  
                     },
 
                     error: (err) => {
@@ -219,6 +227,11 @@ export class MainSearchModule implements OnInit {
      public async routeViewFranchiseCardAsync(franchiseId: number) {
         await this.setTransitionAsync(franchiseId);
         this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: franchiseId, mode: "ViewFranchise" } });
+    };
+
+    public async routeViewBusinessCardAsync(businessId: number) {
+        await this.setTransitionAsync(businessId);
+        this.router.navigate(["/business/view"], { queryParams: { businessId: businessId, mode: "ViewBusiness" } });
     };
 
     /**

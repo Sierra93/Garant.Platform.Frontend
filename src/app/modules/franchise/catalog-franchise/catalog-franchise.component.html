@@ -102,7 +102,7 @@
 
           <div class="filter-btns d-flex justify-content-between">
             <button class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control"
-          (click)="onFilterFranchisesAsync()">Применить
+          (click)="onFilterFranchisesWithPaginationAsync()">Применить
           фильтры</button>
             <button class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control ml-1"
           (click)="onClearFilters()">Очистить
@@ -142,7 +142,7 @@
 
               <div class="col-12">
                 <div class="franchise-card-pagination">
-                  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
+                  <p-paginator [rows]="12" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[12,21,30]"
                     [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
                   </p-paginator>
                 </div>

@@ -1,346 +1,264 @@
-@use 'sass:math';
-
+@use "sass:math";
 
 // Медиа-запросы.
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
 }
 
 /* Smartphones (landscape) ----------- */
-@media only screen 
-and (min-width : 321px) {
+@media only screen and (min-width: 321px) {
   /* Styles */
 }
 
 /* Smartphones (portrait) ----------- */
-@media only screen 
-and (max-width : 320px) {
+@media only screen and (max-width: 320px) {
   /* Styles */
 }
 
 /* iPads (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* Styles */
 }
 
 /* iPads (landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   /* Styles */
 }
 
 /* iPads (portrait) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : portrait) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   /* Styles */
 }
 
 /* Desktops and laptops ----------- */
-@media only screen 
-and (min-width : 1224px) {
-    body {
-        margin-left: 24px;
-        margin-right: 24px;
-    }
+@media only screen and (min-width: 1224px) {
+  body {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 }
 
 /* Large screens ----------- */
-@media only screen 
-and (min-width : 1824px) {
-    body {
-        margin-left: 240px;
-        margin-right: 240px;
-    }
+@media only screen and (min-width: 1824px) {
+  body {
+    margin-left: 240px;
+    margin-right: 240px;
+  }
 }
 
 /* iPhone 4 - 5s ----------- */
-@media
-only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
   /* Styles */
 }
 
 /* iPhone 6 ----------- */
-@media
-only screen and (max-device-width: 667px), 
-only screen and (-webkit-device-pixel-ratio: 2) {
+@media only screen and (max-device-width: 667px),
+  only screen and (-webkit-device-pixel-ratio: 2) {
   /* Styles */
 }
 
 /* iPhone 6+ ----------- */
-@media
-only screen and (min-device-width : 414px), 
-only screen and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (min-device-width: 414px),
+  only screen and (-webkit-device-pixel-ratio: 3) {
   /*** You've spent way too much on a phone ***/
 }
 
 /* Samsung Galaxy S7 Edge ----------- */
-@media only screen
-and (-webkit-min-device-pixel-ratio: 3)
-and (min-resolution: 192dpi)and (max-width:640px) {
- /* Styles */
+@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi) and (max-width: 640px) {
+  /* Styles */
 }
-
-
-
 
 $ul: 1440px;
 $xl: 1200px;
 $lg: 980px;
+
 $md: 360px;
 // $sm: 576px;
 
 /* ul */
-@mixin ul-min
-{
-    @media (min-width: $ul)
-    {
-        @content;
-    }
+@mixin ul-min {
+  @media (min-width: $ul) {
+    @content;
+  }
 }
 
-@mixin ul
-{
-    @media (max-width: ($ul - .2px))
-    {
-        @content;
-    }
+@mixin ul {
+  @media (max-width: ($ul - 0.2px)) {
+    @content;
+  }
 }
 
-@mixin ul-xl
-{
-    @media (max-width: ($ul - .2)) and (min-width: $xl)
-    {
-        @content;
-    }
+@mixin ul-xl {
+  @media (max-width: ($ul - 0.2)) and (min-width: $xl) {
+    @content;
+  }
 }
 
-@mixin ul-lg
-{
-    @media (max-width: ($ul - .2)) and (min-width: $lg)
-    {
-        @content;
-    }
+@mixin ul-lg {
+  @media (max-width: ($ul - 0.2)) and (min-width: $lg) {
+    @content;
+  }
 }
 
-@mixin ul-md
-{
-    @media (max-width: ($ul - .2)) and (min-width: $md)
-    {
-        @content;
-    }
+@mixin ul-md {
+  @media (max-width: ($ul - 0.2)) and (min-width: $md) {
+    @content;
+  }
 }
 
-@mixin ul-sm
-{
-    @media (max-width: ($ul - .2)) and (min-width: $sm)
-    {
-        @content;
-    }
+@mixin ul-sm {
+  @media (max-width: ($ul - 0.2)) and (min-width: $sm) {
+    @content;
+  }
 }
 
-@mixin ul-xs
-{
-    @media (max-width: ($ul - .2)) and (min-width: $xs)
-    {
-        @content;
-    }
+@mixin ul-xs {
+  @media (max-width: ($ul - 0.2)) and (min-width: $xs) {
+    @content;
+  }
 }
 
 /* xl */
-@mixin xl-min
-{
-    @media (min-width: $xl)
-    {
-        @content;
-    }
+@mixin xl-min {
+  @media (min-width: $xl) {
+    @content;
+  }
 }
 
-@mixin xl
-{
-    @media (max-width: ($xl - .2))
-    {
-        @content;
-    }
+@mixin xl {
+  @media (max-width: ($xl - 0.2)) {
+    @content;
+  }
 }
 
-@mixin xl-lg
-{
-    @media (max-width: ($xl - .2)) and (min-width: $lg)
-    {
-        @content;
-    }
+@mixin xl-lg {
+  @media (max-width: ($xl - 0.2)) and (min-width: $lg) {
+    @content;
+  }
 }
 
-@mixin xl-md
-{
-    @media (max-width: ($xl - .2)) and (min-width: $md)
-    {
-        @content;
-    }
+@mixin xl-md {
+  @media (max-width: ($xl - 0.2)) and (min-width: $md) {
+    @content;
+  }
 }
 
-@mixin xl-sm
-{
-    @media (max-width: ($xl - .2)) and (min-width: $sm)
-    {
-        @content;
-    }
+@mixin xl-sm {
+  @media (max-width: ($xl - 0.2)) and (min-width: $sm) {
+    @content;
+  }
 }
 
-@mixin xl-xs
-{
-    @media (max-width: ($xl - .2)) and (min-width: $xs)
-    {
-        @content;
-    }
+@mixin xl-xs {
+  @media (max-width: ($xl - 0.2)) and (min-width: $xs) {
+    @content;
+  }
 }
 
 /* lg */
-@mixin lg-min
-{
-    @media (min-width: $lg)
-    {
-        @content;
-    }
+@mixin lg-min {
+  @media (min-width: $lg) {
+    @content;
+  }
 }
 
-@mixin lg
-{
-    @media (max-width: ($lg - .2))
-    {
-        @content;
-    }
+@mixin lg {
+  @media (max-width: ($lg - 0.2)) {
+    @content;
+  }
 }
 
-@mixin lg-md
-{
-    @media (max-width: ($lg - .2)) and (min-width: $md)
-    {
-        @content;
-    }
+@mixin lg-md {
+  @media (max-width: ($lg - 0.2)) and (min-width: $md) {
+    @content;
+  }
 }
 
-@mixin lg-sm
-{
-    @media (max-width: ($lg - .2)) and (min-width: $sm)
-    {
-        @content;
-    }
+@mixin lg-sm {
+  @media (max-width: ($lg - 0.2)) and (min-width: $sm) {
+    @content;
+  }
 }
 
-@mixin lg-xs
-{
-    @media (max-width:( $lg - .2)) and (min-width: $xs)
-    {
-        @content;
-    }
+@mixin lg-xs {
+  @media (max-width: ( $lg - 0.2)) and (min-width: $xs) {
+    @content;
+  }
 }
 
 /* md */
-@mixin md-min
-{
-    @media (min-width: $md)
-    {
-        @content;
-    }
+@mixin md-min {
+  @media (min-width: $md) {
+    @content;
+  }
 }
 
-@mixin md
-{
-    @media (max-width: ($md - .2))
-    {
-        @content;
-    }
+@mixin md {
+  @media (max-width: ($md - 0.2)) {
+    @content;
+  }
 }
 
-@mixin md-sm
-{
-    @media (max-width: ($md - .2)) and (min-width: $sm)
-    {
-        @content;
-    }
+@mixin md-sm {
+  @media (max-width: ($md - 0.2)) and (min-width: $sm) {
+    @content;
+  }
 }
 
-@mixin md-xs
-{
-    @media (max-width: ($md - .2)) and (min-width: $xs)
-    {
-        @content;
-    }
+@mixin md-xs {
+  @media (max-width: ($md - 0.2)) and (min-width: $xs) {
+    @content;
+  }
 }
 
-@mixin md-xx
-{
-    @media (max-width: ($md - .2)) and (min-width: $xx)
-    {
-        @content;
-    }
+@mixin md-xx {
+  @media (max-width: ($md - 0.2)) and (min-width: $xx) {
+    @content;
+  }
 }
 
 /* sm */
-@mixin sm-min
-{
-    @media (min-width: $sm)
-    {
-        @content;
-    }
+@mixin sm-min {
+  @media (min-width: $sm) {
+    @content;
+  }
 }
 
-@mixin sm
-{
-    @media (max-width: ($sm - .2))
-    {
-        @content;
-    }
+@mixin sm {
+  @media (max-width: ($sm - 0.2)) {
+    @content;
+  }
 }
 
-@mixin sm-xs
-{
-    @media (max-width: ($sm - .2)) and (min-width: $xs)
-    {
-        @content;
-    }
+@mixin sm-xs {
+  @media (max-width: ($sm - 0.2)) and (min-width: $xs) {
+    @content;
+  }
 }
 
 /* xs */
-@mixin xs-min
-{
-    @media (min-width: $xs)
-    {
-        @content;
-    }
+@mixin xs-min {
+  @media (min-width: $xs) {
+    @content;
+  }
 }
 
-@mixin xs
-{
-    @media (max-width: ($xs - .2))
-    {
-        @content;
-    }
+@mixin xs {
+  @media (max-width: ($xs - 0.2)) {
+    @content;
+  }
 }
 
 /* xx */
-@mixin xx-min
-{
-    @media (min-width: $xx)
-    {
-        @content;
-    }
+@mixin xx-min {
+  @media (min-width: $xx) {
+    @content;
+  }
 }
-@mixin xx
-{
-    @media (max-width: ($xx - .2))
-    {
-        @content;
-    }
+@mixin xx {
+  @media (max-width: ($xx - 0.2)) {
+    @content;
+  }
 }

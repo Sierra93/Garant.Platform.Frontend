@@ -18,8 +18,7 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
  * Класс модуля каталога франшиз.
  */
 export class CatalogFranchiseModule implements OnInit {
-    //TODO: при ручном сбросе фильтров и отправке запроса с сервера приходит BadRequest, думаю что это из-за того, 
-    //что на бэке не ожидаются nullable значения фильтров. 
+    
     aPopularFranchises: any[] = [];
     isGarant: boolean = true;
     aCities: any[] = [];
@@ -39,7 +38,8 @@ export class CatalogFranchiseModule implements OnInit {
     filterMinPrice!: number;
     filterMaxPrice!: number;
     countTotalPage: number = 0;   
-    selectedCountRows: number = 12; 
+    aRowsPerPageOptions: number[] = [12,21,30];
+    selectedCountRows: number = 12;     
     countFranchises!: number;
     aBlogs: any[] = [];
     aNews: any[] = [];
@@ -98,8 +98,8 @@ export class CatalogFranchiseModule implements OnInit {
         this.titleService.setTitle("Gobizy: Каталог франшиз");
 
         await this.GetPopularAsync();
-        await this.GetFranchisesListAsync();
         //TODO: Возможно вызов не нужен, франшизы грузятся при ините пагинации.
+        //await this.GetFranchisesListAsync();        
         //await this.loadCitiesFranchisesListAsync();
         await this.loadCategoriesFranchisesListAsync();
         await this.loadViewBusinessFranchisesListAsync();
@@ -242,6 +242,7 @@ export class CatalogFranchiseModule implements OnInit {
             filterInput.PageNumber = event.page + 1;
             filterInput.CountRows = event.rows;
             this.selectedCountRows = event.rows;
+            console.log("rows", event.rows);  
             await this.http.post(API_URL.apiUrl.concat("/franchise/filter-pagination"), filterInput)
             .subscribe({
                 next: (response: any) => {
@@ -268,6 +269,7 @@ export class CatalogFranchiseModule implements OnInit {
 
         // TODO: доработать на динамическое получение из роута или как-нибудь еще, чтобы помнить, что выбирал пользователь.
         paginationData.PageNumber = 1;
+        paginationData.CountRows = 12;
 
         try {
             await this.http.post(API_URL.apiUrl.concat("/pagination/init-catalog-franchise"), paginationData)
@@ -318,7 +320,8 @@ export class CatalogFranchiseModule implements OnInit {
                     console.log("Франшизы после фильтрации:", response.results);                    
                     this.aFranchises = response.results;
                     this.countFranchises = response.countAll;
-                    this.countTotalPage = response.totalCount;                  
+                    this.countTotalPage = response.totalCount; 
+                                     
                 },
                 error: (err) => {
                     this.commonService.routeToStart(err);

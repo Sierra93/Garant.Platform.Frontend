@@ -8,5 +8,5 @@ export class FilterFranchiseWithPaginationInput {
     MinInvest: number = 0;
     MaxInvest: number = 0;
     PageNumber: number = 1;
-    CountRows: number = 10;
+    CountRows: number = 12;
 }

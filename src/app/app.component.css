@@ -1,3 +1,12 @@
+@use "./shared/styles/base/reset.scss";
+@use "./shared/styles/base/typography.scss";
+@use "./modules/header/header.component.scss";
+@use "./modules/footer/footer.component.scss";
+@use "./modules/franchise/catalog-franchise/catalog-franchise.component.scss";
 [hidden] {
   display: none !important;
+}
+
+.garant-header {
+  background-color: #1f75fe;
 }

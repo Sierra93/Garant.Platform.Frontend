@@ -39,7 +39,7 @@ export class CatalogBusinessModule implements OnInit {
     countTotalPage!: number;
     countBusinesses!: number;
     aRowsPerPageOptions: number[] = [10,20,30];
-    selectedCountRows : number = 10;
+    selectedCountRows : number = 10;    
     aBlogs: any[] = [];
     aNews: any[] = [];
     categoryList1: any[] = [];
@@ -313,7 +313,7 @@ export class CatalogBusinessModule implements OnInit {
                         console.log("Бизнеса после фильтрации:", response);                    
                         this.aBusinessList = response.results;
                         this.countBusinesses = response.countAll;
-                        this.countTotalPage = response.countAll;  
+                        this.countTotalPage = response.countAll;                          
                     },
     
                     error: (err) => {

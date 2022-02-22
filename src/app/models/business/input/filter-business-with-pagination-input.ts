@@ -8,5 +8,5 @@ export class FilterBusinessWithPaginationInput {
     MinPrice: number = 0;
     MaxPrice: number = 0;
     PageNumber: number = 1;
-    CountRows: number = 12;
+    CountRows: number=10;
 }

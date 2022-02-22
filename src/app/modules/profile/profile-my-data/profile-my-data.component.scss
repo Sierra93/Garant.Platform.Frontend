@@ -25,7 +25,6 @@
   margin-bottom: 2rem;
 }
 
-
 .main-info-form {
   .input-container {
     label {
@@ -76,6 +75,10 @@
     font-size: 14px;
     color: #646464;
     margin-bottom: 2.5rem;
+
+    @media (max-width: 786px) {
+      width: 100%;
+    }
   }
 
   &-buttons {
@@ -94,6 +97,18 @@
 
       &.last {
         border: solid 1px #1f1f1f;
+      }
+    }
+
+    @media (max-width: 425px) {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+
+        &:first-child {
+          margin-bottom: 1rem;
+        }
       }
     }
   }
@@ -115,7 +130,7 @@
       background-color: transparent;
 
       &-body {
-        padding: 0;
+        padding: 1.5rem 0 !important;
       }
     }
 
@@ -128,6 +143,10 @@
           font-size: 16px;
           color: #646464;
         }
+      }
+
+      @media (max-width: 576px) {
+        align-items: flex-start !important;
       }
     }
   }

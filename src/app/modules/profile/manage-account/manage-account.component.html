@@ -39,7 +39,10 @@
     <div class="profile-menu">
       <ul *ngFor="let item of aProfileMenu" class="list-unstyled">
         <li>
-          <a routerLink="/{{item.navigationLink}}" *ngIf="!item.isHide" routerLinkActive="active">{{item.navigationText}}</a>
+          <a routerLink="/{{item.navigationLink}}" *ngIf="!item.isHide" routerLinkActive="active" class="d-flex justify-content-between">
+            <span>{{item.navigationText}}</span>
+            <img src="./../../../../assets/images/Arrow 1.png" alt="">
+          </a>
         </li>
       </ul>
     </div>

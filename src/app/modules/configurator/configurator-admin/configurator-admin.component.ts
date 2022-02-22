@@ -1910,4 +1910,29 @@ export class ConfiguratorAdminModule implements OnInit {
         console.log("index", this.aNotAcceptedFranchises[index].franchiseId);
         this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: this.aNotAcceptedFranchises[index].franchiseId, mode: "view" } });
     };
+
+    /**
+     * Функция одобрит карточку. Далее карточка попадет в каталоги.
+     * @param cardId - Id карточки.
+     * @param cardType - Тип карточки.
+     * @returns - Статус одобрения.
+     */
+    public async onAcceptCardAsync(cardId: number, cardType: string) {
+        try {
+            await this.http.get(API_URL.apiUrl.concat("/configurator/accept-card?cardId=" + cardId + "&cardType=" + cardType))
+            .subscribe({
+                next: (response: any) => {
+                    console.log("Одобрение карточки: ", response);
+                },
+
+                error: (err) => {
+                    throw new Error(err);
+                }
+            });          
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 }

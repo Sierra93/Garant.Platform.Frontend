@@ -69,6 +69,7 @@ import { ConfiguratorAdminModule } from "./modules/configurator/configurator-adm
 import { DocumentService } from "./services/garant/document.service";
 import { CreateAdModule } from "./modules/create-ad/create-ad.component";
 import {TableModule} from 'primeng/table';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 @NgModule({
   declarations: [
@@ -137,7 +138,8 @@ import {TableModule} from 'primeng/table';
     ReactiveFormsModule,
     TabMenuModule,
     StepsModule,
-    TableModule
+    TableModule,
+    NgHttpLoaderModule.forRoot()
   ],
 
   providers: [

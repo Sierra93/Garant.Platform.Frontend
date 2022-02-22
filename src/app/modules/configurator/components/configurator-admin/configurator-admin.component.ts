@@ -13,6 +13,7 @@ import { FinData } from "src/app/shared/classes/fin-data";
 import { FORM_ERRORS, FORM_PLACEHOLDERS, FORM_SUCCESS, FORM_VALIDATION_MESSAGES } from "src/app/shared/classes/form-data";
 import { sumValidator } from "src/app/shared/classes/custom-validators";
 import { Router } from "@angular/router";
+import { ConfiguratorService } from "../../services/configurator.service";
 
 @Component({
     selector: "configurator-admin",
@@ -144,6 +145,7 @@ export class ConfiguratorAdminModule implements OnInit {
     filesTextBusiness: any;
     filesBusiness: any;
     routeParamCity: any;
+    selectedRowIndexFranchise: number = 0;
 
     // formLabels = FORM_LABELS;
     formPlaceholders = FORM_PLACEHOLDERS;
@@ -177,12 +179,16 @@ export class ConfiguratorAdminModule implements OnInit {
     selectedCardActionSysName: any;
     aNotAcceptedFranchises: any[] = [];
     franchiseRowIndex: number = 0;
+    isShowRejectFranchiseModal: boolean = false;
+    commentRejected: string = "";
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
         private commonService: CommonDataService,
         private formBuilder: FormBuilder,
-        private router: Router) {
+        private router: Router,
+        private readonly configuratorService: ConfiguratorService) {
+            
         // TODO: переделать на вывод с бэка.
         this.aCardActions = [
             {
@@ -1921,11 +1927,22 @@ export class ConfiguratorAdminModule implements OnInit {
         try {
             await this.http.get(API_URL.apiUrl.concat("/configurator/accept-card?cardId=" + cardId + "&cardType=" + cardType))
             .subscribe({
-                next: (response: any) => {
+                next: async (response: any) => {
                     console.log("Одобрение карточки: ", response);
+                    await this.getNotAcceptedFranchisesAsync();
+                    this.messageService.add({
+                        severity: 'success',
+                        summary: 'Успешно',
+                        detail: 'Карточка успешно одобрена'
+                    });
                 },
 
                 error: (err) => {
+                    this.messageService.add({
+                        severity: 'error',
+                        summary: 'Ошибка',
+                        detail: 'Ошибка при одобрении карточки'
+                    });
                     throw new Error(err);
                 }
             });          
@@ -1934,5 +1951,31 @@ export class ConfiguratorAdminModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
+    };
+
+    public onShowRejectFranchiseModal(index: number) {
+        this.isShowRejectFranchiseModal = true;
+        this.selectedRowIndexFranchise = index;
+    };
+
+    /**
+     * Функция отклонит карточку франшизы.
+     * @param cardType 
+     */
+    public async onRejectFranchiseCardAsync(cardType: string) {
+        // Индекс выделенной строки таблицы франшиз.
+        let i = this.selectedRowIndexFranchise; 
+
+        await this.configuratorService.onRejectFranchiseCardAsync(this.aNotAcceptedFranchises[i].franchiseId, cardType, this.commentRejected).then((response: any) => {
+            if (response) {
+                this.messageService.add({
+                    severity: 'success',
+                    summary: 'Успешно',
+                    detail: 'Карточка успешно отклонена'
+                });
+
+                this.isShowRejectFranchiseModal = false;
+            }
+        });                
     };
 }

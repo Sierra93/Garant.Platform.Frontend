@@ -2209,7 +2209,8 @@
                   <button pButton 
                     type="button" 
                     label="Отклонить" 
-                    class="p-button-outlined p-button-danger">
+                    class="p-button-outlined p-button-danger"
+                    (click)="onShowRejectFranchiseModal(index)">
                 </button>
                 </td>
               </tr>
@@ -2270,3 +2271,27 @@
 
   </p-tabPanel>
 </p-tabView>
+
+<p-dialog [(visible)]="isShowRejectFranchiseModal">
+  <ng-template pTemplate="header">
+      Укажите причину отклонения
+  </ng-template>
+  
+  <div>
+    <div>    
+      <span class="title-small">Причина отклонения</span><br>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Укажите причину отклонения" [(ngModel)]="commentRejected"></textarea>
+    </div>
+  </div>
+
+  <!-- Модалки. -->
+  <ng-template pTemplate="footer">
+    <button 
+      pButton type="button" 
+      label="Подтвердить отклонение" 
+      class="p-button-outlined p-button-danger"
+      (click)="onRejectFranchiseCardAsync('Franchise')">
+  </button>
+  </ng-template>
+</p-dialog>

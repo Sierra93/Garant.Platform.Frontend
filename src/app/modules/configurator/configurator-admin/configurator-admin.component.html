@@ -2144,5 +2144,129 @@
       </div>
     </div>
 
+    <!-- Таб модерации. -->
+    <div *ngIf="tabIndex == 4">
+      <div>
+        <div>
+          <h5>Панель модератора</h5>
+        </div>
+
+        <!-- Таблица с карточками франшиз, которые требуют согласования. -->
+        <div>        
+          <div class="mt-3 mb-3">
+            <div>
+              <strong style="font-size: 20px;">Франшизы ожидающие согласования</strong>
+            </div>
+  
+             <div>
+              Кол-во: {{aNotAcceptedFranchises.length}}
+             </div>
+           </div>
+
+          <p-table 
+          [value]="aNotAcceptedFranchises" 
+          [scrollable]="true" 
+          scrollHeight="400px">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>ID</th>
+                <th>Изображение</th>
+                <th>Название</th>
+                <th>Дата размещения</th>
+                <th>Просмотр</th>
+                <th>Одобрение</th>
+                <th>Отклонение</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-item let-index="rowIndex">
+              <tr>
+                <td>{{item.franchiseId}}</td>
+                <td>
+                  <img [src]="item.url" />
+                </td>
+                <td>{{item.title}}</td>
+                <td>{{item.dateCreate}}</td>
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Просмотреть" 
+                    class="p-button-outlined p-button-info"
+                    (click)="onViewFranchise(index)">
+                </button>
+                </td>
+
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Одобрить" 
+                    class="p-button-outlined p-button-success"
+                    (click)="onAcceptCardAsync(item.franchiseId, 'Franchise')">
+                </button>
+                </td>
+
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Отклонить" 
+                    class="p-button-outlined p-button-danger">
+                </button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+
+        <!-- Таблица с карточками бизнеса, которые требуют согласования. -->
+        <div>
+         <div class="mt-3 mb-3">
+          <div>
+            <strong style="font-size: 20px;">Бизнесы ожидающие согласования</strong>
+          </div>
+
+           <div>
+            Кол-во: {{aNotAcceptedFranchises.length}}
+           </div>
+         </div>
+
+          <p-table [value]="aNotAcceptedFranchises" [scrollable]="true" scrollHeight="400px">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>ID</th>
+                <th>Изображение</th>
+                <th>Название</th>
+                <th>Дата размещения</th>
+                <th>Просмотр</th>
+                <th>Одобрение</th>
+                <th>Отклонение</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-item>
+              <tr>
+                <td>{{item.franchiseId}}</td>
+                <td>
+                  <img [src]="item.url" />
+                </td>
+                <td>{{item.title}}</td>
+                <td>{{item.dateCreate}}</td>
+                <td>
+                  <button pButton type="button" label="Просмотреть" class="p-button-outlined p-button-info"></button>
+                </td>
+                <td>
+                  <button pButton type="button" label="Одобрить" class="p-button-outlined p-button-success"></button>
+                </td>
+
+                <td>
+                  <button pButton type="button" label="Отклонить" class="p-button-outlined p-button-danger"></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+
+    </div>
+
   </p-tabPanel>
 </p-tabView>

@@ -10,7 +10,7 @@
 @use "/src/app/app.component.scss";
 // @import "/src/app/shared/styles/image-space.scss";
 // @import "/src/app/shared/styles/common.scss";
-// @import "/src/app/shared/styles/media-quaries.scss";
+@import "/src/app/shared/styles/media-quaries.scss";
 @use "/src/app/modules/main-page/main-page.component.scss";
 @use "../../../../app/shared/styles" as *;
 @use "../../../../app/shared/styles/base" as *;
@@ -42,7 +42,6 @@ strong {
     margin-top: 24px;
   }
 }
-
 
 .d-flex {
   display: flex;
@@ -1374,7 +1373,7 @@ strong {
       width: 464px;
       height: 239.21px;
       border-radius: 4px;
-      
+
       @include ul-xl {
         width: 448px;
       }

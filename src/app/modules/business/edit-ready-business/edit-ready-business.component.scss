@@ -1,11 +1,11 @@
-// @import "/src/app/app.component.scss";  
+// @import "/src/app/app.component.scss";
 // @import "/src/app/shared/styles/body-margins.scss";
 // @import "/src/app/shared/styles/media-quaries.scss";
 // @import "/src/app/shared/styles/common.scss";
 // @import "/src/app/modules/business/create-ready-business/create-ready-business.component.scss";
 // @import "/src/app/shared/styles/controls.scss";
 
-@use "/src/app/app.component.scss";  
+@use "/src/app/app.component.scss";
 // @import "/src/app/shared/styles/body-margins.scss";
 // @import "/src/app/shared/styles/media-quaries.scss";
 // @import "/src/app/shared/styles/common.scss";
@@ -22,7 +22,7 @@
 }
 
 .business-name {
-  margin-left: 0!important;
+  margin-left: 0 !important;
 
   &-label {
     font-family: "Roboto", sans-serif;
@@ -337,7 +337,7 @@
 
 .block-pack {
   margin-top: 56px;
-  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  box-shadow: 0 0 10px rgb(0, 0, 0.5);
   padding: 16px;
 }
 

@@ -175,6 +175,8 @@ export class ConfiguratorAdminModule implements OnInit {
     selectedNews: any;
     aNews: any[] = [];
     selectedCardActionSysName: any;
+    aNotAcceptedFranchises: any[] = [];
+    franchiseRowIndex: number = 0;
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
@@ -268,6 +270,7 @@ export class ConfiguratorAdminModule implements OnInit {
         await this.loadMenuItemsAsync();      
         // await this.getUserFio();  
         this.buildForm();
+        await this.getNotAcceptedFranchisesAsync();
     };
 
     public ngOnAfterViewInit() {
@@ -1866,6 +1869,60 @@ export class ConfiguratorAdminModule implements OnInit {
                 next: (response: any) => {
                     console.log("Список новостей: ", response);
                     this.aNews = response;
+                },
+
+                error: (err) => {
+                    throw new Error(err);
+                }
+            });          
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    /**
+     * Функция получит список франшиз, которые ожидают согласования.
+     * @returns - Список франшиз.
+     */
+    private async getNotAcceptedFranchisesAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/configurator/franchises-not-accepted"), {})
+            .subscribe({
+                next: (response: any) => {
+                    console.log("Список франшиз ожидающих согласования: ", response);
+                    this.aNotAcceptedFranchises = response;
+                },
+
+                error: (err) => {
+                    throw new Error(err);
+                }
+            });          
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public onViewFranchise(index: number) {
+        console.log("index", this.aNotAcceptedFranchises[index].franchiseId);
+        this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: this.aNotAcceptedFranchises[index].franchiseId, mode: "view" } });
+    };
+
+    /**
+     * Функция одобрит карточку. Далее карточка попадет в каталоги.
+     * @param cardId - Id карточки.
+     * @param cardType - Тип карточки.
+     * @returns - Статус одобрения.
+     */
+    public async onAcceptCardAsync(cardId: number, cardType: string) {
+        try {
+            await this.http.get(API_URL.apiUrl.concat("/configurator/accept-card?cardId=" + cardId + "&cardType=" + cardType))
+            .subscribe({
+                next: (response: any) => {
+                    console.log("Одобрение карточки: ", response);
                 },
 
                 error: (err) => {

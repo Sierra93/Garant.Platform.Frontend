@@ -18,6 +18,8 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
  * Класс модуля каталога франшиз.
  */
 export class CatalogFranchiseModule implements OnInit {
+    //TODO: при ручном сбросе фильтров и отправке запроса с сервера приходит BadRequest, думаю что это из-за того, 
+    //что на бэке не ожидаются nullable значения фильтров. 
     aPopularFranchises: any[] = [];
     isGarant: boolean = true;
     aCities: any[] = [];
@@ -36,7 +38,8 @@ export class CatalogFranchiseModule implements OnInit {
     aSortPrices: any[] = [];
     filterMinPrice!: number;
     filterMaxPrice!: number;
-    countTotalPage: number = 0;    
+    countTotalPage: number = 0;   
+    selectedCountRows: number = 12; 
     countFranchises!: number;
     aBlogs: any[] = [];
     aNews: any[] = [];
@@ -238,13 +241,14 @@ export class CatalogFranchiseModule implements OnInit {
             filterInput.IsGarant = this.isGarant;
             filterInput.PageNumber = event.page + 1;
             filterInput.CountRows = event.rows;
-
+            this.selectedCountRows = event.rows;
             await this.http.post(API_URL.apiUrl.concat("/franchise/filter-pagination"), filterInput)
             .subscribe({
                 next: (response: any) => {
                     console.log("Франшизы после фильтрации:", response.results);                    
                     this.aFranchises = response.results;
                     this.countFranchises = response.countAll;
+                    this.countTotalPage = response.countAll;
                                         
                 },
                 error: (err) => {
@@ -272,7 +276,7 @@ export class CatalogFranchiseModule implements OnInit {
                     console.log("pagination init", response);
                     this.countFranchises = response.countAll;
                     this.aFranchises = response.results;
-                    this.countTotalPage = response.totalCount;   
+                    this.countTotalPage = response.countAll;   
                 },
 
                 error: (err) => {
@@ -291,44 +295,8 @@ export class CatalogFranchiseModule implements OnInit {
         console.log("onChangeSortPrice", this.selectedSort);
     };
 
-    /**
-     * Функция фильтрует франшизы по параметрам.
-     * @returns - Отфильтрованный список франшиз.
-     */
-    public async onFilterFranchisesAsync() {
-        try {
-            //TODO: Удалить, если не используется.
-            let filterInput = new FilterInput();
-            filterInput.TypeSortPrice = this.selectedSort.value;
-            filterInput.ProfitMinPrice = this.filterMinPrice;
-            filterInput.ProfitMaxPrice = this.filterMaxPrice;
-            filterInput.ViewCode = this.selectedViewBusiness.viewCode;
-            filterInput.CategoryCode = this.selectedCategory.categoryCode;
-            filterInput.MinPriceInvest = this.minPrice;
-            filterInput.MaxPriceInvest = this.maxPrice;
-            filterInput.IsGarant = this.isGarant;
-
-            await this.http.post(API_URL.apiUrl.concat("/franchise/filter-franchises"), filterInput)
-            .subscribe({
-                next: (response: any) => {
-                    console.log("Франшизы после фильтрации:", response);                    
-                    this.aFranchises = response;
-                },
-
-                error: (err) => {
-                    this.commonService.routeToStart(err);
-                    throw new Error(err);
-                }
-            });
-        }
-
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };
-
      /**
-     * Функция фильтрует франшизы по параметрам.
+     * Функция фильтрует франшизы по параметрам с учётом пагинации.
      * @returns - Отфильтрованный список франшиз.
      */
       public async onFilterFranchisesWithPaginationAsync() {
@@ -343,8 +311,7 @@ export class CatalogFranchiseModule implements OnInit {
             filterInput.MaxInvest = this.maxPrice;
             filterInput.IsGarant = this.isGarant;
             filterInput.PageNumber = 1;
-            filterInput.CountRows = 10;
-
+            filterInput.CountRows = this.selectedCountRows;
             await this.http.post(API_URL.apiUrl.concat("/franchise/filter-pagination"), filterInput)
             .subscribe({
                 next: (response: any) => {
@@ -367,7 +334,15 @@ export class CatalogFranchiseModule implements OnInit {
 
 
     public async onClearFilters() {
-        await this.GetFranchisesListAsync();
+        this.isGarant = true;
+        this.minPrice = 0;
+        this.filterMinPrice =0;
+        this.maxPrice = 0;
+        this.filterMaxPrice =0;
+        this.selectedCategory ="";
+        this.selectedSort="";
+        this.selectedViewBusiness="";
+        await this.loadPaginationInitAsync();
     };
 
     /**

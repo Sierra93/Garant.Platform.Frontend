@@ -68,7 +68,8 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/configurator-admin.component";
 import { DocumentService } from "./services/garant/document.service";
 import { CreateAdModule } from "./modules/create-ad/create-ad.component";
-import { GarLibModule } from "./gar-lib/gar-lib.module";
+import {TableModule} from 'primeng/table';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 @NgModule({
   declarations: [
@@ -137,7 +138,8 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
     ReactiveFormsModule,
     TabMenuModule,
     StepsModule,
-    GarLibModule
+    TableModule,
+    NgHttpLoaderModule.forRoot()
   ],
 
   providers: [

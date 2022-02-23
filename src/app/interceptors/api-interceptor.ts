@@ -1,20 +1,26 @@
-import { Injectable } from "@angular/core";
+import { Inject, Injectable } from "@angular/core";
 import { HttpInterceptor, HttpHandler, HttpRequest } from "@angular/common/http";
 import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
-import { CommonDataService } from "./services/common/common-data.service";
+import { CommonDataService } from "../services/common/common-data.service";
+import { SESSION_TOKEN } from "../core/session/session.token";
+import { SessionService } from "../core/session/session.service";
+import { SessionItems } from "../core/session/session-items";
 
 // Класс перехватчика api-запросов.
 @Injectable()
 export class ParamInterceptor implements HttpInterceptor {
-    constructor(private commonService: CommonDataService) {
+    constructor(
+        @Inject(SESSION_TOKEN)
+        private _sessionService: SessionService,
+        private commonService: CommonDataService) {
 
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         req = req.clone({
             headers: req.headers.set(
-                "Authorization", "Bearer ".concat(sessionStorage["token"])
+                "Authorization", `Bearer ${this._sessionService.getDataItem(SessionItems.token)}`
             ),
             
             // Если нужно отправлять куки с каждым запросом.

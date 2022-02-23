@@ -36,10 +36,8 @@
       <h5 class="title">Фотографии*</h5>
     </div>
 
-    <gar-img-uploader (upload)="uploadImages($event)"></gar-img-uploader>
-
     <div class="col-xxl-8 col-xl-9 col-lg-8 col-md-12">
-<!--      <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>-->
+      <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>
       <div class="block-gallery">
         <div class="w-100">
           <span *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</span>

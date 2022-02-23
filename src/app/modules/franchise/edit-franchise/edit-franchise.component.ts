@@ -5,26 +5,18 @@ import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franchise-create-update-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
-import { BehaviorSubject, Observable, of } from "rxjs";
-import { attachment } from "../../../gar-lib/attachment";
-import { catchError, map, switchMap, takeUntil, tap } from "rxjs/operators";
-import { FranchiseOutput } from "../../../models/franchise/output/franchise-output";
-import { DestroyService } from "../../../core/destroy.service";
 
 @Component({
     selector: "edit-franchise",
     templateUrl: "./edit-franchise.component.html",
     styleUrls: ["./edit-franchise.component.scss"],
-    providers: [ConfirmationService, MessageService, DestroyService]
+    providers: [ConfirmationService, MessageService]
 })
 
-/** 
+/**
  * Класс модуля изменения франшизы.
  */
 export class EditFranchiseModule implements OnInit {
-    
-    private _attachedFiles$ = new BehaviorSubject<string[]>([]);
-    
     franchiseId: number = 0;
     logoName?: string;
     responsiveOptions: any;
@@ -71,7 +63,7 @@ export class EditFranchiseModule implements OnInit {
     videoLink?: string;
     modelFile: any;
     presentFile: any;
-    franchiseData: any = [];
+    franchiseData: any = {};
     routeParam: any;
     aInvestInclude: any = [];
     aFinIndicators: any[] = [];
@@ -79,13 +71,10 @@ export class EditFranchiseModule implements OnInit {
     aFranchisePhotos: any[] = [];
     isHideIndicators: boolean = false;
 
-    constructor(
-        private http: HttpClient,
+    constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private route: ActivatedRoute,
-        private messageService: MessageService,
-        private _destroy$: DestroyService
-    ) {
+        private messageService: MessageService) {
             this.responsiveOptions = [
                 {
                     breakpoint: '1024px',
@@ -99,14 +88,14 @@ export class EditFranchiseModule implements OnInit {
                     breakpoint: '560px',
                     numVisible: 1
                 }
-            ]; 
+            ];
 
             this.routeParam = this.route.snapshot.queryParams;
     };
 
     public async ngOnInit() {
         await this.getTransitionAsync();
-    };    
+    };
 
     private async getTransitionAsync() {
         try {
@@ -118,7 +107,7 @@ export class EditFranchiseModule implements OnInit {
 
             else {
                 franchiseId = this.franchiseId;
-            }           
+            }
 
             await this.commonService.getTransitionAsync(this.routeParam).then((data: any) => {
                 console.log("Переход получен:", data);
@@ -136,8 +125,8 @@ export class EditFranchiseModule implements OnInit {
      * @returns - данные франшизы.
      */
      private async getViewFranchiseAsync(franchiseId: number) {
-        try {                     
-            console.log("getViewFranchiseAsync");        
+        try {
+            console.log("getViewFranchiseAsync");
 
             await this.http.get(API_URL.apiUrl.concat("/franchise/get-franchise?franchiseId=" + franchiseId))
                 .subscribe({
@@ -145,8 +134,8 @@ export class EditFranchiseModule implements OnInit {
                         console.log("Полученная франшиза:", response);
                         this.franchiseData = response;
                         this.aFranchisePhotos = this.franchiseData.url.split(",");
-                        console.log("franchiseData", this.franchiseData);    
-                        
+                        console.log("franchiseData", this.franchiseData);
+
                         // let checkFinIndicators = JSON.parse(response.finIndicators);
 
                         // // Если массив индикаторов не пустой.
@@ -162,7 +151,7 @@ export class EditFranchiseModule implements OnInit {
                         //     this.aPacks = checkPacks;
                         //     this.isHidePacks = true;
                         // }
-                        
+
                         this.aInvestInclude = JSON.parse(response.investInclude);
                         this.aFinIndicators = JSON.parse(response.finIndicators);
                         this.aPacks = JSON.parse(response.franchisePacks);
@@ -198,7 +187,7 @@ export class EditFranchiseModule implements OnInit {
         console.log("uploadEducationPhotosAsync");
         this.fileEducationFormData = event.target.files[0];
     };
-    
+
     /**
      * Функция добавит фото франшизы.
      */
@@ -223,28 +212,27 @@ export class EditFranchiseModule implements OnInit {
         this.presentFile = event.target.files[0];
     };
 
-    public uploadFranchisePhotosAsync(files: attachment.IAttachment[]): Observable<string[]> {
+    public async uploadFranchisePhotosAsync(event: any) {
         try {
-            const fileList = files.filter(f => !!f.file).map(f => f.file!);
-            const formData: FormData = new FormData();
-            const alreadyUploadedFiles = files.filter(f => !f.file).map(f => f.src! as string);
-    
-            for (let i = 0; i < fileList.length; i++) {
-                formData.append('files', fileList[i]);
-            }
+            let fileList = event.target.files;
+            let file: File = fileList[0];
+            let formData: FormData = new FormData();
+            formData.append('files', file);
 
-            return this.http.post<string[]>(API_URL.apiUrl.concat("/franchise/temp-file"), formData).pipe(
-                map(response => {
-                    console.log("Загруженные файлы франшизы:", response);
-                    this.aNamesFranchisePhotos = response;
-                    const resultFiles = alreadyUploadedFiles.concat(response);
-                    return resultFiles;
-                }),
-                catchError(err => {
-                    throw new Error(err)
-                })
-            )
-        } catch (e: any) {
+            await this.http.post(API_URL.apiUrl.concat("/franchise/temp-file"), formData)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Загруженные файлы франшизы:", response);
+                        this.aNamesFranchisePhotos = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
             throw new Error(e);
         }
     };
@@ -254,12 +242,12 @@ export class EditFranchiseModule implements OnInit {
      * @returns - Данные созданной франшизы.
      */
       public async onEditFranchiseAsync() {
-        console.log("onEditFranchiseAsync");    
+        console.log("onEditFranchiseAsync");
         console.log("log franchiseData", this.franchiseData);
         let newFranchiseData = this.franchiseData;
 
         try {
-            let createUpdateFranchiseInput = new CreateUpdateFranchiseInput();            
+            let createUpdateFranchiseInput = new CreateUpdateFranchiseInput();
             let logoName = this.logoName;
             // let logoFormData = this.fileLogoFormData;
             let franchiseFiles = this.franchisePhotos;
@@ -352,7 +340,7 @@ export class EditFranchiseModule implements OnInit {
             createUpdateFranchiseInput.Payback = newFranchiseData.payback;
             createUpdateFranchiseInput.ProfitMonth = newFranchiseData.profitMonth;
             createUpdateFranchiseInput.LaunchDate = newFranchiseData.launchDate;
-            createUpdateFranchiseInput.ActivityDetail = newFranchiseData.activityDetail;            
+            createUpdateFranchiseInput.ActivityDetail = newFranchiseData.activityDetail;
             createUpdateFranchiseInput.BaseDate = newFranchiseData.baseDate;
             createUpdateFranchiseInput.YearStart = newFranchiseData.yearStart;
             createUpdateFranchiseInput.DotCount = newFranchiseData.dotCount;
@@ -369,7 +357,7 @@ export class EditFranchiseModule implements OnInit {
             createUpdateFranchiseInput.FranchisePacks = JSON.stringify(this.aPacks);
             createUpdateFranchiseInput.IsNew = false;
             createUpdateFranchiseInput.Title = newFranchiseData.title;
-            createUpdateFranchiseInput.TrainingDetails = newFranchiseData.trainingDetails;            
+            createUpdateFranchiseInput.TrainingDetails = newFranchiseData.trainingDetails;
             createUpdateFranchiseInput.Category = newFranchiseData.category;
             createUpdateFranchiseInput.SubCategory = newFranchiseData.subCategory;
 
@@ -381,26 +369,22 @@ export class EditFranchiseModule implements OnInit {
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("presentFile", this.presentFile);
             sendFormData.append("franchiseFile", this.presentFile);
-    
-            of(true).pipe(
-                switchMap(_ => this._attachedFiles$),
-                map((res: string[]) => {
-                    // @ts-ignore
-                    sendFormData.append('UrlsFranchise', res);
-                    return sendFormData;
-                }),
-                switchMap(data => this.http.post<FranchiseOutput>(API_URL.apiUrl.concat("/franchise/create-update-franchise"), data)),
-                takeUntil(this._destroy$)
-            ).subscribe( response => {
-                console.log("Франшиза успешно изменена:", response);
-                this.showMessageAfterSuccessEditFranchise();
-            }, (error) => {
-                this.commonService.routeToStart(error);
-                throw new Error(error);
-            });
+
+            await this.http.post(API_URL.apiUrl.concat("/franchise/create-update-franchise"), sendFormData)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Франшиза успешно изменена:", response);
+                        this.showMessageAfterSuccessEditFranchise();
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
         }
 
-        catch (e: any) {           
+        catch (e: any) {
             throw new Error(e);
         }
     };
@@ -415,8 +399,4 @@ export class EditFranchiseModule implements OnInit {
             detail: 'Франшиза успешно изменена'
         });
     };
-    
-    uploadImages(files: string[]) {
-        this._attachedFiles$.next(files);
-    }
 }

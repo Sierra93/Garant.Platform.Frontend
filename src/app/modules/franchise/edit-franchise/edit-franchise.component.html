@@ -41,13 +41,15 @@
         <div class="w-100">
           <span *ngIf="!aFranchisePhotos.length">Фотографии не загружены</span>
 
-          <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
-            [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
+          <p-galleria [value]="aFranchisePhotos"
+                      [responsiveOptions]="responsiveOptions"
+                      [containerStyle]="{'max-width': '660px'}"
+                      [numVisible]="4" thumbnailsPosition="left">
             <ng-template pTemplate="item" let-item>
               <img src="{{item}}" style="width: 700px; display: block;" />
             </ng-template>
 
-            <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
+            <ng-template pTemplate="thumbnail" let-item *ngIf="aFranchisePhotos.length > 1">
               <div class="p-grid p-nogutter p-justify-center">
                 <img src="{{item}}" />
               </div>
@@ -246,6 +248,7 @@
         <div class="d-flex flex-column">
           <strong>Прикрепить финансовую модель .xlsx</strong>
           <span class="size">до 5 мб</span>
+          <span class="content">{{ modelFile ? modelFile.name : franchiseData.nameFinModelFile}}</span>
           <input type="file" (change)="uploadFinModelAsync($event)" id="attach-file" class="d-none" />
           <label for="attach-file" class="d-flex align-items-center">
             <span class="me-2">
@@ -258,7 +261,7 @@
 
       <div>
         <p>Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать
-          презентацию, просто пропустите данный этап.</p>
+          финансовую модель, просто пропустите данный этап.</p>
       </div>
     </div>
 
@@ -286,6 +289,7 @@
         <div class="block-details-franch d-flex flex-column">
           <strong>Прикрепить документ .pdf</strong>
           <span>до 20 мб</span>
+          <span class="content">{{presentFile ? presentFile.name : franchiseData.namePresentFile}}</span>
           <input type="file" (change)="uploadPresentAsync($event)" id="upload-present-async" class="d-none" />
           <label for="upload-present-async" class="d-flex align-items-center">
             <span class="me-2">

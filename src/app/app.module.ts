@@ -65,7 +65,7 @@ import { DealLandingModule } from "./modules/landing/deal-landing/deal-landing.c
 import { NotificationsModule } from "./modules/profile/profile-requests/notifications.component";
 import { ConfiguratorAuthModule } from "./modules/configurator/configurator-auth/configurator-auth.component";
 import { TabMenuModule } from 'primeng/tabmenu';
-import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/configurator-admin.component";
+// import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/components/configurator-admin.component";
 import { DocumentService } from "./services/garant/document.service";
 import { CreateAdModule } from "./modules/create-ad/create-ad.component";
 import {TableModule} from 'primeng/table';
@@ -103,7 +103,7 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
     DealLandingModule,
     NotificationsModule,
     ConfiguratorAuthModule,
-    ConfiguratorAdminModule,
+    // ConfiguratorAdminModule,
     CreateAdModule
   ],
 

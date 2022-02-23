@@ -5,27 +5,18 @@ import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franc
 import { CommonDataService } from "src/app/services/common/common-data.service";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { ActivatedRoute, Router } from "@angular/router";
-import { attachment } from "../../../gar-lib/attachment";
-import { BehaviorSubject, Observable, of } from "rxjs";
-import { map, switchMap, takeUntil, tap } from "rxjs/operators";
-import { DestroyService } from "../../../core/destroy.service";
-import { error } from "jquery";
-import { FranchiseOutput } from "../../../models/franchise/output/franchise-output";
 
 @Component({
     selector: "create-franchise",
     templateUrl: "./create-franchise.component.html",
     styleUrls: ["./create-franchise.component.scss"],
-    providers: [ConfirmationService, MessageService, DestroyService]
+    providers: [ConfirmationService, MessageService]
 })
 
 /** 
  * Класс модуля создания франшизы.
  */
 export class CreateFranchiseModule implements OnInit {
-    
-    private _attachedFiles$ = new BehaviorSubject<string[]>([]);
-    
     logoName?: string;
     responsiveOptions: any;
     aNamesFranchisePhotos: any = [];
@@ -80,14 +71,11 @@ export class CreateFranchiseModule implements OnInit {
     routeParamSubCategory: any;
     routeParamSubCity: any;
 
-    constructor(
-        private http: HttpClient,
+    constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private messageService: MessageService,
         private route: ActivatedRoute,
-        private router: Router,
-        private _destroy$: DestroyService
-    ) {
+        private router: Router) {
         this.routeParamCategory = this.route.snapshot.queryParams.category;
         this.routeParamSubCategory = this.route.snapshot.queryParams.subCategory;
         this.routeParamSubCity = this.route.snapshot.queryParams.city;
@@ -135,21 +123,27 @@ export class CreateFranchiseModule implements OnInit {
     public async ngOnInit() {
         await this.getUserFio();
     };
-    
-    public uploadImages(files: string[]) {
-        this._attachedFiles$.next(files);
-    }
 
-    public uploadFranchisePhotosAsync(files: attachment.IAttachment[]): Observable<string[]> {
+    public async uploadFranchisePhotosAsync(event: any) {
         try {
-            let fileList = files.map(f => f.file!);
+            let fileList = event.target.files;
             let formData: FormData = new FormData();
-    
+
             for (let i = 0; i < fileList.length; i++) {
-                formData.append('files', fileList[i]);
-            }
-    
-            return this.http.post<string[]>(API_URL.apiUrl.concat("/franchise/temp-file"), formData)
+                formData.append('files', fileList[i]); 
+            }        
+
+            await this.http.post(API_URL.apiUrl.concat("/franchise/temp-file"), formData)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Загруженные файлы франшизы:", response);
+                        this.aNamesFranchisePhotos = response;
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
         }
 
         catch (e: any) {
@@ -318,28 +312,26 @@ export class CreateFranchiseModule implements OnInit {
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("presentFile", this.presentFile);
             sendFormData.append("franchiseFile", this.presentFile);
-            
-            of(true).pipe(
-                switchMap(_ => this._attachedFiles$),
-                map(res => {
-                    // @ts-ignore
-                    sendFormData.append('UrlsFranchise', res);
-                    return sendFormData;
-                }),
-                switchMap(data => this.http.post<FranchiseOutput>(API_URL.apiUrl.concat("/franchise/create-update-franchise"), data)),
-                takeUntil(this._destroy$)
-            ).subscribe( response => {
-                console.log("Франшиза успешно создана:", response);
-                this.showMessageAfterSuccessCreateFranchise();
-    
-                setTimeout(() => {
-                    this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: response.franchiseId, mode: "view" } });
-                }, 2000);
-            }, (error) => {
-                this.commonService.routeToStart(error);
-                throw new Error(error);
-            });
-        } catch (e: any) {
+
+            await this.http.post(API_URL.apiUrl.concat("/franchise/create-update-franchise"), sendFormData)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Франшиза успешно создана:", response);
+                        this.showMessageAfterSuccessCreateFranchise();
+
+                        setTimeout(() => {
+                            this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: response.franchiseId, mode: "view" } });
+                        }, 2000);   
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
             throw new Error(e);
         }
     };

@@ -82,13 +82,13 @@
       <strong>Прибыль в месяц</strong><br>
       <div class="d-flex d-flex--short">
         <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽"
-          [(ngModel)]="filterMinPrice" name="filterMinPrice" />
+          [(ngModel)]="minProfit" name="minProfit" />
         <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽"
-          [(ngModel)]="filterMaxPrice" name="filterMaxPrice" />
+          [(ngModel)]="maxProfit" name="maxProfit" />
       </div>
     </div>
     <div class="btn-wrapper">
-      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter" (click)="onFilterBusinessesAsync()">Применить
+      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter" (click)="onFilterBusinessesWithPaginationAsync()">Применить
         фильтры</button>
       <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">Очистить
         фильтры</button>
@@ -114,7 +114,7 @@
 
   <div class="d-flex popular-list">
     <div class="popular-item" *ngFor="let item of aBusinessList">
-      <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
+      <p-card header="{{item.title}}" subheader="{{item.fullText}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
         <ng-template pTemplate="header">
           <img [src]="item.url">
         </ng-template>
@@ -130,7 +130,7 @@
 
 <!-- Пагинация. -->
 <div class="mt-5">
-  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
+  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="aRowsPerPageOptions"
     [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
   </p-paginator>
 </div>

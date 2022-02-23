@@ -1,11 +1,14 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CheckCodeInput } from "src/app/models/login/input/check-code-input";
 import { LoginInput } from "src/app/models/login/input/login-input";
+import { SESSION_TOKEN } from "../../core/session/session.token";
+import { SessionService } from "../../core/session/session.service";
+import { SessionItems } from "../../core/session/session-items";
 
 @Component({
     selector: "login",
@@ -34,7 +37,14 @@ export class LoginModule implements OnInit {
     isPolicyAgreement: boolean = false;
     isAdsEmail: boolean = false;
 
-    constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, private titleService: Title) {
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private http: HttpClient,
+        private titleService: Title,
+        @Inject(SESSION_TOKEN)
+        private _sessionService: SessionService
+    ) {
         this.routeParam = this.route.snapshot.queryParams.loginType;
 
         // Если вход по коду.
@@ -97,7 +107,7 @@ export class LoginModule implements OnInit {
                         console.log("Авторизация:", response);
 
                         if (response.token && response.isSuccess) {
-                            sessionStorage["token"] = response.token;
+                            this._sessionService.setToken({[SessionItems.token]: response.token});
                             sessionStorage["user"] = response.user;
                             sessionStorage["isSuccess"] = response.isSuccess;
                             document.cookie = "user=" + response.user;
@@ -166,7 +176,7 @@ export class LoginModule implements OnInit {
                         this.isGetCode = true;
 
                         if (response.token && response.isSuccess) {
-                            sessionStorage["token"] = response.token;
+                            this._sessionService.setToken({[SessionItems.token]: response.token});
                             sessionStorage["user"] = response.user;
                             sessionStorage["isSuccess"] = response.isSuccess;
 

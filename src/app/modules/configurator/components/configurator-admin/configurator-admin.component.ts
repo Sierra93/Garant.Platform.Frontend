@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
@@ -14,18 +14,19 @@ import { FORM_ERRORS, FORM_PLACEHOLDERS, FORM_SUCCESS, FORM_VALIDATION_MESSAGES 
 import { sumValidator } from "src/app/shared/classes/custom-validators";
 import { Router } from "@angular/router";
 import { ConfiguratorService } from "../../services/configurator.service";
+import { BehaviorSubject, forkJoin, Subject } from "rxjs";
 
 @Component({
     selector: "configurator-admin",
     templateUrl: "./configurator-admin.component.html",
     styleUrls: ["./configurator-admin.component.scss"],
-    providers: [ConfirmationService, MessageService]
+    providers: [ConfirmationService, MessageService]    
 })
 
 /** 
  * Класс модуля конфигуратора (панель).
  */
-export class ConfiguratorAdminModule implements OnInit {
+export class ConfiguratorAdminModule implements OnInit, OnDestroy {
     aMenuList: any[] = [];
     tabIndex: number = 0;
     selectedBlogAction: any;
@@ -146,6 +147,7 @@ export class ConfiguratorAdminModule implements OnInit {
     filesBusiness: any;
     routeParamCity: any;
     selectedRowIndexFranchise: number = 0;
+    selectedRowIndexBusiness: number = 0;
 
     // formLabels = FORM_LABELS;
     formPlaceholders = FORM_PLACEHOLDERS;
@@ -180,7 +182,11 @@ export class ConfiguratorAdminModule implements OnInit {
     aNotAcceptedFranchises: any[] = [];
     franchiseRowIndex: number = 0;
     isShowRejectFranchiseModal: boolean = false;
+    isShowRejectBusinessModal: boolean = false;
     commentRejected: string = "";
+
+    public readonly notAcceptedBusinesses$ = this.configuratorService.notAcceptedBusinesses$;
+    private readonly unsub$ = new Subject<void>();
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
@@ -277,6 +283,11 @@ export class ConfiguratorAdminModule implements OnInit {
         // await this.getUserFio();  
         this.buildForm();
         await this.getNotAcceptedFranchisesAsync();
+
+        forkJoin([
+            this.configuratorService.getNotAcceptedBusinesses(),
+        ]).subscribe();
+        console.log("notAcceptedBusinesses$",this.notAcceptedBusinesses$);
     };
 
     public ngOnAfterViewInit() {
@@ -1917,6 +1928,11 @@ export class ConfiguratorAdminModule implements OnInit {
         this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: this.aNotAcceptedFranchises[index].franchiseId, mode: "view" } });
     };
 
+    public onViewBusiness(index: number) {
+        console.log("index", this.notAcceptedBusinesses$.value[index].businessId);
+        this.router.navigate(["/business/view"], { queryParams: { businessId: this.notAcceptedBusinesses$.value[index].businessId, mode: "view" } });
+    };
+
     /**
      * Функция одобрит карточку. Далее карточка попадет в каталоги.
      * @param cardId - Id карточки.
@@ -1929,7 +1945,16 @@ export class ConfiguratorAdminModule implements OnInit {
             .subscribe({
                 next: async (response: any) => {
                     console.log("Одобрение карточки: ", response);
-                    await this.getNotAcceptedFranchisesAsync();
+
+                    if (cardType == "Franchise") {
+                        await this.getNotAcceptedFranchisesAsync();
+                    }
+
+                    if (cardType == "Business") {
+                        this.configuratorService.getNotAcceptedBusinesses().subscribe();                   
+                    }
+
+                    
                     this.messageService.add({
                         severity: 'success',
                         summary: 'Успешно',
@@ -1958,15 +1983,19 @@ export class ConfiguratorAdminModule implements OnInit {
         this.selectedRowIndexFranchise = index;
     };
 
+    public onShowRejectBusinessModal(index: number) {
+        this.isShowRejectBusinessModal = true;
+        this.selectedRowIndexFranchise = index;
+    };
+
     /**
      * Функция отклонит карточку франшизы.
      * @param cardType 
      */
     public async onRejectFranchiseCardAsync(cardType: string) {
-        // Индекс выделенной строки таблицы франшиз.
         let i = this.selectedRowIndexFranchise; 
 
-        await this.configuratorService.onRejectFranchiseCardAsync(this.aNotAcceptedFranchises[i].franchiseId, cardType, this.commentRejected).then((response: any) => {
+        await this.configuratorService.onRejectCardAsync(this.aNotAcceptedFranchises[i].franchiseId, cardType, this.commentRejected).then(async (response: any) => {
             if (response) {
                 this.messageService.add({
                     severity: 'success',
@@ -1974,8 +2003,56 @@ export class ConfiguratorAdminModule implements OnInit {
                     detail: 'Карточка успешно отклонена'
                 });
 
+                await this.getNotAcceptedFranchisesAsync();
+
                 this.isShowRejectFranchiseModal = false;
             }
         });                
     };
+
+    public async onRejectBusinessCardAsync(cardType: string) {
+        let i = this.selectedRowIndexBusiness;
+
+        await this.configuratorService.onRejectCardAsync(this.notAcceptedBusinesses$.value[i].businessId, cardType, this.commentRejected).then((response: any) => {
+            if (response) {
+                this.messageService.add({
+                    severity: 'success',
+                    summary: 'Успешно',
+                    detail: 'Карточка успешно отклонена'
+                });
+
+                this.configuratorService.getNotAcceptedBusinesses().subscribe();  
+
+                this.isShowRejectBusinessModal = false;
+            }
+        });
+    };
+
+    /**
+     * Функция получит список бизнесов, которые ожидают согласования.
+     * @returns - Список бизнесов.
+     */
+    //  private async getNotAcceptedBusinessesAsync() {
+    //     try {
+    //         await this.http.post(API_URL.apiUrl.concat("/configurator/businesses-not-accepted"), {})
+    //         .subscribe({
+    //             next: (response: any) => {
+    //                 console.log("Список бизнесов ожидающих согласования: ", response);
+    //                 this.aNotAcceptedBusinesses = response;
+    //             },
+
+    //             error: (err) => {
+    //                 throw new Error(err);
+    //             }
+    //         });          
+    //     }
+
+    //     catch (e: any) {
+    //         throw new Error(e);
+    //     }
+    // };
+
+    ngOnDestroy(): void {
+        this.unsub$.next();
+    }
 }

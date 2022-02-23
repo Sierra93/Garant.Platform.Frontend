@@ -70,6 +70,7 @@ import { DocumentService } from "./services/garant/document.service";
 import { CreateAdModule } from "./modules/create-ad/create-ad.component";
 import {TableModule} from 'primeng/table';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { GarLibModule } from "./gar-lib/gar-lib.module";
 
 @NgModule({
   declarations: [
@@ -139,7 +140,8 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
     TabMenuModule,
     StepsModule,
     TableModule,
-    NgHttpLoaderModule.forRoot()
+    NgHttpLoaderModule.forRoot(),
+    GarLibModule
   ],
 
   providers: [

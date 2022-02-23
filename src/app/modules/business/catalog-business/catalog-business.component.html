@@ -20,13 +20,15 @@
   <span class="count-franchise">Всего {{countBusinesses}} бизнесов</span>
 </div>
 
-<form class="d-flex" #filterForm="ngForm" novalidate>
+
+<div class="d-flex">
   <div class="business-search">
+    <button type="button" class="btn-close btn-close--top" aria-label="Close" (click)="onClearFilters()"></button>
     <!-- <div>
     <strong>Сфера бизнеса</strong><br>
     <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
   </div> -->
-
+  
     <div class="">
       <strong>Выбор категории</strong><br>
       <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory"
@@ -52,16 +54,16 @@
           name="maxPrice" />
       </div>
     </div>
+    <button type="button" class="btn-close btn-close--bottom" aria-label="Close" (click)="onClearFilters()"></button>
   </div>
+</div>
 
-</form>
-
-<div class="btn-wrapper">
+<!-- <div class="btn-wrapper">
   <button class="btn btn--aside btn-default mt-3 btn-sm btn-filter"
     (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
   <button class="btn btn--aside btn-default btn-sm mt-3 ml-1 btn-filter" (click)="onClearFilters()">Очистить
     фильтры</button>
-</div>
+</div> -->
 
 <div class="block-catalog d-flex">
   <div class="">
@@ -80,13 +82,13 @@
       <strong>Прибыль в месяц</strong><br>
       <div class="d-flex d-flex--short">
         <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽"
-          [(ngModel)]="filterMinPrice" name="filterMinPrice" />
+          [(ngModel)]="minProfit" name="minProfit" />
         <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽"
-          [(ngModel)]="filterMaxPrice" name="filterMaxPrice" />
+          [(ngModel)]="maxProfit" name="maxProfit" />
       </div>
     </div>
     <div class="btn-wrapper">
-      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter" (click)="FilterFranchisesAsync()">Применить
+      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter" (click)="onFilterBusinessesWithPaginationAsync()">Применить
         фильтры</button>
       <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">Очистить
         фильтры</button>
@@ -112,7 +114,7 @@
 
   <div class="d-flex popular-list">
     <div class="popular-item" *ngFor="let item of aBusinessList">
-      <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
+      <p-card header="{{item.title}}" subheader="{{item.fullText}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
         <ng-template pTemplate="header">
           <img [src]="item.url">
         </ng-template>
@@ -128,7 +130,7 @@
 
 <!-- Пагинация. -->
 <div class="mt-5">
-  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
+  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="aRowsPerPageOptions"
     [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
   </p-paginator>
 </div>

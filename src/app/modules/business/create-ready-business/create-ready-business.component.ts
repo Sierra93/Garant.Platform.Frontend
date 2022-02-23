@@ -1,12 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateBusinessInput } from "src/app/models/business/input/business-create-update-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { sumValidator } from "src/app/shared/classes/custom-validators";
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { FORM_ERRORS, FORM_PLACEHOLDERS, FORM_SUCCESS, FORM_VALIDATION_MESSAGES } from 'src/app/shared/classes/form-data';
 import {FinData } from 'src/app/shared/classes/fin-data';
 
@@ -24,7 +23,7 @@ export class CreateReadyBusinessModule implements OnInit {
     responsiveOptions: any;
     aNamesBusinessPhotos: any = [];
     lead: string = "";
-    // payback: number = 0;
+    payback: number = 0;
     peculiarity: string = "";
     isGarant: boolean = false;
     activityDetail: string = "";
@@ -36,11 +35,11 @@ export class CreateReadyBusinessModule implements OnInit {
     ind: number = 0;
     fio: string = "";
     aPriceIn: any;
-    // price: number = 0;
-    // turnPrice: number = 0;
-    // profitPrice: number = 0;
-    // profitability: number = 0;
-    // businessAge: number = 0;
+    price: number = 0;
+    turnPrice: number = 0;
+    profitPrice: number = 0;
+    profitability: number = 0;
+    businessAge: number = 0;
     employeeYearCount: number = 0;
     form: string = "";
     share: number = 0;
@@ -68,16 +67,16 @@ export class CreateReadyBusinessModule implements OnInit {
     formErrors: any = FORM_ERRORS;
     validationMessages: any = FORM_VALIDATION_MESSAGES;
 
-    finDataForm!: FormGroup;
+    // finDataForm!: FormGroup;
 
-    price!: AbstractControl;
-    turnPrice!: AbstractControl;
-    profitPrice!: AbstractControl;
-    payback!: AbstractControl;
-    profitability!: AbstractControl;
-    businessAge!: AbstractControl;
+    // price!: AbstractControl;
+    // turnPrice!: AbstractControl;
+    // profitPrice!: AbstractControl;
+    // payback!: AbstractControl;
+    // profitability!: AbstractControl;
+    // businessAge!: AbstractControl;
 
-    private finData: FinData = new FinData('', '', '', '', '', '');
+    // private finData: FinData = new FinData('', '', '', '', '', '');
 
 
 
@@ -85,7 +84,7 @@ export class CreateReadyBusinessModule implements OnInit {
         private commonService: CommonDataService, 
         private messageService: MessageService,
         private route: ActivatedRoute,
-        private formBuilder: FormBuilder) {
+        private router: Router) {
             this.responsiveOptions = [
                 {
                     breakpoint: '1024px',
@@ -118,63 +117,63 @@ export class CreateReadyBusinessModule implements OnInit {
     };
 
     public async ngOnInit() {
-      this.buildForm();
+    //   this.buildForm();
       await this.getUserFio();
     };
 
-    private buildForm() {
-      this.finDataForm = this.formBuilder.group({
-        price: [this.finData.price, [Validators.required, sumValidator]],
-        turnPrice: [this.finData.turnPrice, [Validators.required, sumValidator]],
-        profitPrice: [this.finData.profitPrice, [Validators.required, sumValidator]],
-        payback: [this.finData.payback, [Validators.required, sumValidator]],
-        profitability: [this.finData.profitability, [Validators.required, sumValidator]],
-        businessAge: [this.finData.businessAge, [Validators.required, sumValidator]]
-      })
+    // private buildForm() {
+    //   this.finDataForm = this.formBuilder.group({
+    //     price: [this.finData.price, [Validators.required, sumValidator]],
+    //     turnPrice: [this.finData.turnPrice, [Validators.required, sumValidator]],
+    //     profitPrice: [this.finData.profitPrice, [Validators.required, sumValidator]],
+    //     payback: [this.finData.payback, [Validators.required, sumValidator]],
+    //     profitability: [this.finData.profitability, [Validators.required, sumValidator]],
+    //     businessAge: [this.finData.businessAge, [Validators.required, sumValidator]]
+    //   })
   
-       this.finDataForm.valueChanges.subscribe(() => this.onValueChanged());
-       this.createControls()
-    }
+    //    this.finDataForm.valueChanges.subscribe(() => this.onValueChanged());
+    //    this.createControls()
+    // }
   
-    private createControls(): void {
-      this.price = this.finDataForm.controls.price,
-      this.turnPrice = this.finDataForm.controls.turnPrice,
-      this.profitPrice = this.finDataForm.controls.profitPrice,
-      this.payback = this.finDataForm.controls.payback,
-      this.profitability = this.finDataForm.controls.profitability,
-      this.businessAge = this.finDataForm.controls.businessAge
-    }
+    // private createControls(): void {
+    //   this.price = this.finDataForm.controls.price,
+    //   this.turnPrice = this.finDataForm.controls.turnPrice,
+    //   this.profitPrice = this.finDataForm.controls.profitPrice,
+    //   this.payback = this.finDataForm.controls.payback,
+    //   this.profitability = this.finDataForm.controls.profitability,
+    //   this.businessAge = this.finDataForm.controls.businessAge
+    // }
   
-    onValueChanged(): void {
-           const form = this.finDataForm;
+    // onValueChanged(): void {
+    //        const form = this.finDataForm;
 
-           console.log(this.finDataForm);
-           console.log(this.finData);
+    //        console.log(this.finDataForm);
+    //        console.log(this.finData);
 
-           Object.keys(this.finDataForm.value).forEach((key) => {
-             console.log(key);
-             console.log(this.finDataForm.value[key]);
-             this.finDataForm.value[key] = (String(this.finDataForm.value[key]).replace(/(\d)(?=(\d{3})+$)/g, '$1 '))
-             console.log(this.finDataForm.value[key]);   
-          });
-           console.log(this.finDataForm);
-           console.log(this.finData);
+    //        Object.keys(this.finDataForm.value).forEach((key) => {
+    //          console.log(key);
+    //          console.log(this.finDataForm.value[key]);
+    //          this.finDataForm.value[key] = (String(this.finDataForm.value[key]).replace(/(\d)(?=(\d{3})+$)/g, '$1 '))
+    //          console.log(this.finDataForm.value[key]);   
+    //       });
+    //        console.log(this.finDataForm);
+    //        console.log(this.finData);
            
             
 
-           console.log(this.formErrors);
+    //        console.log(this.formErrors);
       
-           Object.keys(this.formErrors).forEach(field => {
-             this.formErrors[field] = '';
+    //        Object.keys(this.formErrors).forEach(field => {
+    //          this.formErrors[field] = '';
   
-             const control = form.get(field);
+    //          const control = form.get(field);
             
-             if ((control?.dirty || control?.touched) && control.invalid) {
-               const message = this.validationMessages[field];
-               Object.keys(control.errors as any).some(key => this.formErrors[field] = message[key])
-             }
-           })
-     }
+    //          if ((control?.dirty || control?.touched) && control.invalid) {
+    //            const message = this.validationMessages[field];
+    //            Object.keys(control.errors as any).some(key => this.formErrors[field] = message[key])
+    //          }
+    //        })
+    //  }
 
     public async uploadBusinessPhotosAsync(event: any) {
         try {
@@ -207,113 +206,107 @@ export class CreateReadyBusinessModule implements OnInit {
      * Функция создаст новый бизнес.
      * @returns - Данные созданного бизнеса.
      */
-    public async onCreateBusinessAsync() {
+     public async onCreateBusinessAsync() {
         console.log("onCreateBusinessAsync");    
 
         try {
-            let createUpdateBusinessInput = new CreateUpdateBusinessInput();            
-            let lead = this.lead;
-            let payback = +(String(Object.values(this.finDataForm.value)[3]).replace(/\s+/g, ''));
+          let createUpdateBusinessInput = new CreateUpdateBusinessInput();            
+          let lead = this.lead;
+          let payback = this.payback;
+          let profitability = this.profitability;
+          let activityDetail = this.activityDetail;
+          let defailsFranchise = this.defailsFranchise;
+          let priceIn = this.priceIn;
+          let videoLink = this.videoLink;
+          let isGarant = this.isGarant || false;       
+          let peculiarity = this.peculiarity;   
+          let businessName = this.businessName;        
+          let price = this.price;               
+          let turnPrice = this.turnPrice;
+          let profitPrice = this.profitPrice;
+          let businessAge = this.businessAge;
+          let employeeYearCount = this.employeeYearCount;
+          let form = this.form;
+          let share = this.share;
+          let site = this.site;
+          let text = this.text;
+          let assets = this.assets;
+          let reasonsSale = this.reasonsSale;
+          let address = this.address;
 
-            console.log(payback);
-            
-            let profitability = +(String(Object.values(this.finDataForm.value)[4]).replace(/\s+/g, ''));
+            // Если не добавляли записи и осталась лежать одна пустая.
+            if (!this.aPriceIn[0].Name || !this.aPriceIn[0].Price) {
+                this.aPriceIn[0].Name = this.nameIn;
+                this.aPriceIn[0].Price = this.priceIn;
+            }
 
-            console.log(profitability);
+            else {
+                this.aPriceIn.push({
+                    Name: this.nameIn,
+                    Price: this.priceIn
+                });
+            }
 
+            // Уберет пустые записи.
+            this.aPriceIn = this.aPriceIn.filter((item: any) => item.Name !== "" && item.Price !== "");
 
-            let activityDetail = this.activityDetail;
-            let defailsFranchise = this.defailsFranchise;
-            let priceIn = this.priceIn;
-            let videoLink = this.videoLink;
-            let isGarant = this.isGarant || false;       
-            let peculiarity = this.peculiarity;   
-            let businessName = this.businessName;
-            console.log(Object.values(this.finDataForm.value)[0]);
-            console.log(String(Object.values(this.finDataForm.value)[0]).replace(/\s+/g, ''));
-                    
-            let price = +(String(Object.values(this.finDataForm.value)[0]).replace(/\s+/g, '')); 
-            
-            console.log(price);
-            
-            let turnPrice = +(String(Object.values(this.finDataForm.value)[1]).replace(/\s+/g, ''));
+          let aPriceInData = this.aPriceIn;
+          let aNamesBusinessPhotos = this.aNamesBusinessPhotos;
+           
+          // Уберет флаги видимости.
+          let newPriceInJson = aPriceInData.map((item: any) => ({
+              Price: item.Price,
+              Name: item.Name
+          }));         
 
-            console.log(turnPrice);
+          let priceInJson = JSON.stringify(newPriceInJson);
 
+          createUpdateBusinessInput.Status = lead;
+          createUpdateBusinessInput.Payback = payback;
+          createUpdateBusinessInput.ActivityDetail = activityDetail;            
+          createUpdateBusinessInput.Peculiarity = peculiarity;
+          createUpdateBusinessInput.Text = defailsFranchise;
+          createUpdateBusinessInput.UrlVideo = videoLink;
+          createUpdateBusinessInput.IsGarant = isGarant;
+          createUpdateBusinessInput.IsNew = true;
+          createUpdateBusinessInput.BusinessName = businessName;
+          createUpdateBusinessInput.Price = price;
+          createUpdateBusinessInput.TurnPrice = turnPrice;
+          createUpdateBusinessInput.ProfitPrice = profitPrice;
+          createUpdateBusinessInput.Profitability = profitability;
+          createUpdateBusinessInput.BusinessAge = businessAge;
+          createUpdateBusinessInput.EmployeeCountYear = employeeYearCount;
+          createUpdateBusinessInput.Form = form;
+          createUpdateBusinessInput.Share = share;
+          createUpdateBusinessInput.Site = site;
+          createUpdateBusinessInput.Text = text;
+          createUpdateBusinessInput.Assets = assets;
+          createUpdateBusinessInput.ReasonsSale = reasonsSale;
+          createUpdateBusinessInput.Address = address;
+          createUpdateBusinessInput.InvestPrice = priceInJson;            
+          createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;         
+          createUpdateBusinessInput.Category = this.routeParamCategory;
+          createUpdateBusinessInput.SubCategory = this.routeParamSubCategory;
 
-            let profitPrice = +(String(Object.values(this.finDataForm.value)[2]).replace(/\s+/g, ''));
-
-            console.log(profitPrice);
-
-
-            let businessAge = +(String(Object.values(this.finDataForm.value)[5]).replace(/\s+/g, ''));
-
-            console.log(businessAge);
-
-
-            let employeeYearCount = this.employeeYearCount;
-            let form = this.form;
-            let share = this.share;
-            let site = this.site;
-            let text = this.text;
-            let assets = this.assets;
-            let reasonsSale = this.reasonsSale;
-            let address = this.address;
-            let aPriceInData = this.aPriceIn;
-            let aNamesBusinessPhotos = this.aNamesBusinessPhotos;
-
-            // Уберет флаги видимости.
-            let newPriceInJson = aPriceInData.map((item: any) => ({
-                Price: item.Price,
-                Name: item.Name
-            }));
-
-            let priceInJson = JSON.stringify(newPriceInJson);
-
-            createUpdateBusinessInput.Status = lead;
-            createUpdateBusinessInput.Payback = payback;
-            createUpdateBusinessInput.ActivityDetail = activityDetail;            
-            createUpdateBusinessInput.Peculiarity = peculiarity;
-            createUpdateBusinessInput.Text = defailsFranchise;
-            createUpdateBusinessInput.UrlVideo = videoLink;
-            createUpdateBusinessInput.IsGarant = isGarant;
-            createUpdateBusinessInput.IsNew = true;
-            createUpdateBusinessInput.BusinessName = businessName;
-            createUpdateBusinessInput.Price = price;
-            createUpdateBusinessInput.TurnPrice = turnPrice;
-            createUpdateBusinessInput.ProfitPrice = profitPrice;
-            createUpdateBusinessInput.Profitability = profitability;
-            createUpdateBusinessInput.BusinessAge = businessAge;
-            createUpdateBusinessInput.EmployeeCountYear = employeeYearCount;
-            createUpdateBusinessInput.Form = form;
-            createUpdateBusinessInput.Share = share;
-            createUpdateBusinessInput.Site = site;
-            createUpdateBusinessInput.Text = text;
-            createUpdateBusinessInput.Assets = assets;
-            createUpdateBusinessInput.ReasonsSale = reasonsSale;
-            createUpdateBusinessInput.Address = address;
-            createUpdateBusinessInput.InvestPrice = priceInJson;            
-            createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;         
-            createUpdateBusinessInput.Category = this.routeParamCategory;
-            createUpdateBusinessInput.SubCategory = this.routeParamSubCategory;
-            createUpdateBusinessInput.BusinessCity = this.routeParamCity;        
-
-            let sendFormData = new FormData();
-            sendFormData.append("businessDataInput", JSON.stringify(createUpdateBusinessInput));
-            sendFormData.append("filesAssets", this.filesAssets);
-            sendFormData.append("filesReasonsSale", this.filesReasonsSale);
-            sendFormData.append("finModelFile", this.modelFile);
-            sendFormData.append("filesTextBusiness", this.filesTextBusiness);
+          let sendFormData = new FormData();
+          sendFormData.append("businessDataInput", JSON.stringify(createUpdateBusinessInput));
+          sendFormData.append("filesAssets", this.filesAssets);
+          sendFormData.append("filesReasonsSale", this.filesReasonsSale);
+          sendFormData.append("finModelFile", this.modelFile);
+          sendFormData.append("filesTextBusiness", this.filesTextBusiness);
 
             await this.http.post(API_URL.apiUrl.concat("/business/create-update-business"), sendFormData)
                 .subscribe({
                     next: (response: any) => {
                         console.log("Бизнес успешно создан:", response);
                         this.showMessageAfterSuccessCreateBusiness();
+
+                        setTimeout(() => {
+                          this.router.navigate(["/business/view"], { queryParams: { businessId: response.businessId, mode: "view" } });
+                      }, 2000);   
                     },
 
                     error: (err) => {
-                        this.commonService.routeToStart(err);
                         throw new Error(err);
                     }
                 });

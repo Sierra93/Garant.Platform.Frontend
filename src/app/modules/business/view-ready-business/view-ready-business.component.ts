@@ -61,6 +61,8 @@ export class ViewReadyBusinessModule implements OnInit {
     aBusinessPhotos: any = [];
     userName: string = "";
     number: string = "";
+    isHidePeculiarity: boolean = false;
+    isUrlVideo: boolean = false;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
@@ -91,6 +93,8 @@ export class ViewReadyBusinessModule implements OnInit {
         ];
 
         console.log("aPriceIn", this.aPriceIn);
+
+        this.routeParam = this.route.snapshot.queryParams;
     };
 
     public async ngOnInit() {
@@ -115,7 +119,7 @@ export class ViewReadyBusinessModule implements OnInit {
                 businessId = this.businessId;
             }           
 
-            await this.commonService.getTransitionAsync().then((data: any) => {
+            await this.commonService.getTransitionAsync(this.routeParam).then((data: any) => {
                 console.log("Переход получен:", data);
                 this.getViewBusinessAsync(businessId);
             });
@@ -148,6 +152,14 @@ export class ViewReadyBusinessModule implements OnInit {
                         //     this.aNamesBusinessPhotos = item.urlsBusiness;
                         // });
                         this.aNamesBusinessPhotos = response.urlsBusiness.split(",");
+
+                        if (!this.businessData[0].peculiarity) {
+                            this.isHidePeculiarity = true;
+                        }
+
+                        if (!this.businessData[0].urlVideo) {
+                            this.isUrlVideo = true;
+                        }
 
                         console.log("Полученный бизнес:", response);
                         console.log("businessData", this.businessData);      

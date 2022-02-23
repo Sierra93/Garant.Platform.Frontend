@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { API_URL } from "src/app/core/core-urls/api-url";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 
 @Component({
@@ -67,14 +68,9 @@ export class CreateAdModule implements OnInit {
         if (this.isSelectFranch) {
             try {
                 await this.commonService.GetFranchiseCategoriesListAsync().then((data: any) => {
-                    console.log("Список категорий франшиз:", data);                
+                    console.log("Список категорий франшиз:", data);
                     this.aCategories = data;
-                });
-
-                await this.commonService.GetFranchiseSubCategoriesListAsync().then((data: any) => {
-                    console.log("Список подкатегорий франшиз:", data);                
-                    this.aSubCategories = data;
-                });
+                });               
             }
     
             catch (e: any) {
@@ -116,5 +112,58 @@ export class CreateAdModule implements OnInit {
             this.aCategories = [];
             this.aSubCategories = [];
         }
+    };
+
+    /**
+     * Функция фильтрует список сфер в зависимости от поискового запроса.
+     * @param searchText - Поисковый запрос.
+     * @returns - Список сфер.
+     */
+    public async onFilterFranchiseSphereAsync(searchText: string) {
+        try {
+            await this.http.get(API_URL.apiUrl.concat("/franchise/search-sphere?searchText=" + searchText))
+                .subscribe({
+                    next: (response: any) => {                        
+                        console.log("Список сфер :", response);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onFilterFranchiseCategoryAsync(searchText: string, categoryCode: string, categorySysName: string) {
+        try {
+            await this.http.get(API_URL.apiUrl.concat("/franchise/search-category?searchText=" 
+            + searchText
+            + "&categoryCode=" + categoryCode
+            + "&categorySysName=" + categorySysName))
+                .subscribe({
+                    next: (response: any) => {                        
+                        console.log("Список категорий сферы :", response);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onChangeValueSphereAsync(categoryCode: string, categorySysName: string) {
+        await this.commonService.GetFranchiseSubCategoriesListAsync(categoryCode, categorySysName).then((data: any) => {
+            console.log("Список подкатегорий сферы:", data);                
+            this.aSubCategories = data;
+        });
     };
 }

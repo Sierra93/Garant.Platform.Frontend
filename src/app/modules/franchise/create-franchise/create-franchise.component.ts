@@ -4,19 +4,28 @@ import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franchise-create-update-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { attachment } from "../../../gar-lib/attachment";
+import { BehaviorSubject, Observable, of } from "rxjs";
+import { map, switchMap, takeUntil, tap } from "rxjs/operators";
+import { DestroyService } from "../../../core/destroy.service";
+import { error } from "jquery";
+import { FranchiseOutput } from "../../../models/franchise/output/franchise-output";
 
 @Component({
     selector: "create-franchise",
     templateUrl: "./create-franchise.component.html",
     styleUrls: ["./create-franchise.component.scss"],
-    providers: [ConfirmationService, MessageService]
+    providers: [ConfirmationService, MessageService, DestroyService]
 })
 
 /** 
  * Класс модуля создания франшизы.
  */
 export class CreateFranchiseModule implements OnInit {
+    
+    private _attachedFiles$ = new BehaviorSubject<string[]>([]);
+    
     logoName?: string;
     responsiveOptions: any;
     aNamesFranchisePhotos: any = [];
@@ -71,10 +80,14 @@ export class CreateFranchiseModule implements OnInit {
     routeParamSubCategory: any;
     routeParamSubCity: any;
 
-    constructor(private http: HttpClient,
+    constructor(
+        private http: HttpClient,
         private commonService: CommonDataService,
         private messageService: MessageService,
-        private route: ActivatedRoute) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private _destroy$: DestroyService
+    ) {
         this.routeParamCategory = this.route.snapshot.queryParams.category;
         this.routeParamSubCategory = this.route.snapshot.queryParams.subCategory;
         this.routeParamSubCity = this.route.snapshot.queryParams.city;
@@ -122,27 +135,21 @@ export class CreateFranchiseModule implements OnInit {
     public async ngOnInit() {
         await this.getUserFio();
     };
+    
+    public uploadImages(files: string[]) {
+        this._attachedFiles$.next(files);
+    }
 
-    public async uploadFranchisePhotosAsync(event: any) {
+    public uploadFranchisePhotosAsync(files: attachment.IAttachment[]): Observable<string[]> {
         try {
-            let fileList = event.target.files;
+            let fileList = files.map(f => f.file!);
             let formData: FormData = new FormData();
-
+    
             for (let i = 0; i < fileList.length; i++) {
-                formData.append('files', fileList[i]); 
-            }        
-
-            await this.http.post(API_URL.apiUrl.concat("/franchise/temp-file"), formData)
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Загруженные файлы франшизы:", response);
-                        this.aNamesFranchisePhotos = response;
-                    },
-
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
+                formData.append('files', fileList[i]);
+            }
+    
+            return this.http.post<string[]>(API_URL.apiUrl.concat("/franchise/temp-file"), formData)
         }
 
         catch (e: any) {
@@ -210,6 +217,51 @@ export class CreateFranchiseModule implements OnInit {
                 }
             ];
 
+            // Если не добавляли записи и осталась лежать одна пустая.
+            if (!this.ainvestIn[0].Name || !this.ainvestIn[0].Price) {                  
+                this.ainvestIn[0].Name = this.nameInvest;
+                this.ainvestIn[0].Price = this.priceInvest;
+            }
+
+            else {
+                this.ainvestIn.push({
+                    Name: this.nameInvest,
+                    Price: this.priceInvest
+                });
+            }
+
+             // Уберет пустые записи.
+            this.ainvestIn = this.ainvestIn.filter((item: any) => item.Name !== "" && item.Price !== "");
+
+            if (!this.aPacks[0].Name
+                || !this.aPacks[0].Text
+                || !this.aPacks[0].LumpSumPayment
+                || !this.aPacks[0].Royalty
+                || !this.aPacks[0].TotalInvest) {
+                this.aPacks[0].Name = this.packName;
+                this.aPacks[0].Text = this.packDetails;
+                this.aPacks[0].LumpSumPayment = this.packLumpSumPayment;
+                this.aPacks[0].Royalty = this.royaltyPack;
+                this.aPacks[0].TotalInvest = this.totalInvest;
+            }
+
+            else {
+                this.aPacks.push({
+                    Name: this.packName,
+                    Text: this.packDetails,
+                    LumpSumPayment: this.packLumpSumPayment,
+                    Royalty: this.royaltyPack,
+                    TotalInvest: this.totalInvest
+                });
+            }
+
+            // Уберет пустые записи.
+            this.aPacks = this.aPacks.filter((item: any) => item.Name !== ""
+                && item.Text !== ""
+                && item.LumpSumPayment !== ""
+                && item.Royalty !== ""
+                && item.TotalInvest !== "");
+
             // Уберет ключи флагов.
             let newainvestIn = this.ainvestIn.map((item: any) => ({
                 Name: item.Name,
@@ -266,22 +318,28 @@ export class CreateFranchiseModule implements OnInit {
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("presentFile", this.presentFile);
             sendFormData.append("franchiseFile", this.presentFile);
-
-            await this.http.post(API_URL.apiUrl.concat("/franchise/create-update-franchise"), sendFormData)
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Франшиза успешно создана:", response);
-                        this.showMessageAfterSuccessCreateFranchise();
-                    },
-
-                    error: (err) => {
-                        this.commonService.routeToStart(err);
-                        throw new Error(err);
-                    }
-                });
-        }
-
-        catch (e: any) {
+            
+            of(true).pipe(
+                switchMap(_ => this._attachedFiles$),
+                map(res => {
+                    // @ts-ignore
+                    sendFormData.append('UrlsFranchise', res);
+                    return sendFormData;
+                }),
+                switchMap(data => this.http.post<FranchiseOutput>(API_URL.apiUrl.concat("/franchise/create-update-franchise"), data)),
+                takeUntil(this._destroy$)
+            ).subscribe( response => {
+                console.log("Франшиза успешно создана:", response);
+                this.showMessageAfterSuccessCreateFranchise();
+    
+                setTimeout(() => {
+                    this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: response.franchiseId, mode: "view" } });
+                }, 2000);
+            }, (error) => {
+                this.commonService.routeToStart(error);
+                throw new Error(error);
+            });
+        } catch (e: any) {
             throw new Error(e);
         }
     };

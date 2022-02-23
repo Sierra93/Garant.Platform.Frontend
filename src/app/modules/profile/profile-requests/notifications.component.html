@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-xxl-3 col-xl-3 col-lg-4">
+    <manage-account></manage-account>
+  </div>
+
+  <div class="col-xxl-9 col-xl-9 col-lg-8">
+    <h2 class="profile-title">Уведомления</h2>
+
+    <div class="mt-3 notification" *ngFor="let item of aNotifyData">
+      <div>
+        <h5 class="notification-title">{{item.notifyTitle}}</h5>
+      </div>
+
+      <div>
+        <p class="notification-description">{{item.notifyDescription}}</p>
+      </div>
+
+      <div class="notification-buttons d-flex">
+        <div>
+          <button pButton pRipple type="button" label="Подробнее"></button>
+        </div>
+
+        <div>
+          <button pButton pRipple type="button" label="Скрыть"></button>
+        </div>
+      </div>
+
+      <div class="notification-remove">
+        <button>
+          <img src="../../../../assets/images/close.svg" alt="close icon" />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

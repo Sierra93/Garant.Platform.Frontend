@@ -18,6 +18,7 @@ import { GarantService } from "src/app/services/garant/garant.service";
  */
 export class GarantInitModule implements OnInit {    
     oInitData: any = {};
+    isCheckDeal: boolean = false;
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -29,6 +30,7 @@ export class GarantInitModule implements OnInit {
 
     public async ngOnInit() {
         await this.initGarantDataAsync();
+        await this.checkDealAsync();
     };    
 
     /**
@@ -88,5 +90,37 @@ export class GarantInitModule implements OnInit {
         });
 
         this.router.navigate(["/garant/garant-concord"], { queryParams: { stage: '2' } });
+    };
+
+    /**
+     * Функция проверит существование сделки.
+     * @returns - Статус проверки.
+     */
+    private async checkDealAsync() {
+        try {            
+            let dataInput = new DealInput();
+
+            if (this.oInitData !== null && this.oInitData !== undefined) {
+                dataInput.DealItemId = this.oInitData.itemDealId;
+                dataInput.OrderType = this.oInitData.itemDealType;
+            }            
+
+            await this.http.post(API_URL.apiUrl.concat("/garant/check-deal"), dataInput)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Проверка сделки: ", response);
+                        this.isCheckDeal = response;
+                    },
+
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
     };
 }

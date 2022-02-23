@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { API_URL } from 'src/app/core/core-urls/api-url';
-import { SearchInput } from 'src/app/models/search/input/search-input';
+import {MenuItem} from 'primeng/api';
 
 @Component({
     selector: 'header',
@@ -24,19 +23,74 @@ export class HeaderModule implements OnInit {
     searchType: string = "";
     searchOptions: string[];
     selectedSearchOption: string = "франшиза";
+    isGarant: boolean = false;
+    items!: MenuItem[];
+    isSmallScreen: boolean = false;
+    isMobile: boolean = false;
+    isMenuHidden: boolean = true;
+    tabletStart: boolean = false;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private router: Router,
         private route: ActivatedRoute) {
           this.searchOptions = ["франшиза", "бизнес"];
+
+          this.items = [
+            {label: 'Подтверждение продажи'},
+            {label: 'Согласование этапов сделки'},
+            {label: 'Согласование договора'},
+            {label: 'Оплата и исполнение этапов сделки'}
+        ];
+
+        this.routeParam = this.route.snapshot.queryParams;
     };
+
+    ngDoCheck(){
+      if (window.location.href.includes("stage")) {
+        this.isGarant = true;
+      } else {
+        this.isGarant = false;
+      }
+    }
 
     public async ngOnInit() {
         await this.initHeaderAsync();
         await this.commonService.refreshToken();
         await this.getBreadcrumbsAsync();
+
+        this.items = [
+            {label: 'Step 1'},
+            {label: 'Step 2'},
+            {label: 'Step 3'}
+        ];
     };
+
+    @HostListener('window:resize', ['$event'])
+    @HostListener('window:load', ['$event'])
+    onResize() {
+      if (window.innerWidth > 676 && window.innerWidth <= 1280) {
+        this.isSmallScreen = true;
+      } else if (window.innerWidth > 1280) {
+        this.isSmallScreen = false;
+      }
+
+      if (window.innerWidth <= 676) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
+
+      if (window.innerWidth === 768) {
+        this.tabletStart = true;
+      } else {
+        this.tabletStart = false;
+      }
+    }
+
+    public toggleMenu(show: boolean): void {
+      this.isMenuHidden = !show;
+    }
 
     /**
     * Функция получит поля хидера.
@@ -101,8 +155,8 @@ export class HeaderModule implements OnInit {
 
         else if (this.selectedSearchOption == this.searchOptions[1]) {
             type = "business";
-        }
+        }        
 
-        this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });
-    };
+        this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });        
+    };   
 }

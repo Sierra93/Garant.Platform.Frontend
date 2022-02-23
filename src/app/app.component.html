@@ -1,5 +1,14 @@
-<header></header>
-<main class="app-container">
-  <router-outlet></router-outlet>
+<header class="{{ isGarant ? 'garant-header' : '' }}"></header>
+<main class="app-container">  
+  <ng-http-loader 
+    [backdrop]="true"
+    [backgroundColor]="'blue'"
+    [debounceDelay]="100"
+    [extraDuration]="300"
+    [minDuration]="300"
+    [spinner]="spinnerStyle.skSpinnerPulse">
+</ng-http-loader>
+
+  <router-outlet></router-outlet>  
 </main>
 <footer></footer>

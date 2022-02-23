@@ -3,6 +3,19 @@
 @import "/src/app/shared/styles/common.scss";
 @import "./../create-franchise/create-franchise.component.scss";
 
+/* Стили для определенного компонента определять внутри хоста */
+:host {
+  .view-franchise {
+    &.title-btn.p-button {
+      width: initial;
+      height: initial;
+      border-radius: initial;
+    }
+  }
+}
+
+
+
 .section-margin {
   margin-bottom: 5rem;
 }
@@ -347,7 +360,7 @@
 }
 
 ::ng-deep {
-  .agreement-policy {    
+  .agreement-policy {
     .p-checkbox, .p-checkbox .p-checkbox-box {
       width: 2rem;
       height: 2rem;
@@ -357,5 +370,73 @@
     .p-checkbox .p-checkbox-box .p-checkbox-icon {
       font-size: 1.5rem;
     }
+  }
+}
+
+.logo-and-title {
+  .franchise-logo {
+    justify-content: flex-start;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      height: auto;
+      align-items: flex-start;
+
+      > div:first-child {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.franchise-details {
+  .buttons {
+    button {
+      @media (max-width: 650px) {
+        &:first-child {
+          margin-bottom: .5rem;
+        }
+      }
+
+      @media (max-width: 425px) {
+        font-size: .75rem;
+      }
+    }
+  }
+}
+
+.income-calculation {
+  .franchise-details-block {
+    .subsection-title {
+      @media (max-width: 486px) {
+        margin-right: 1rem;
+      }
+    }
+
+    .child-blocks-wrapper {
+      .row {
+        [class^=col] {
+          @media (max-width: 576px) {
+            margin-bottom: 1rem !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-info {
+  .margin-bottom {
+    @media (max-width: 992px) {
+      margin-bottom: 1rem !important;
+    }
+  }
+}
+
+.financial-data {
+  margin-bottom: 5rem;
+
+  .financial-data {
+    margin-bottom: 0;
   }
 }

@@ -1,16 +1,34 @@
+// // импорт стилей сброса
+// @import "./shared/styles/base/reset.scss";
+// // импорт стилей фонтов
+// @import "./shared/styles/base/typography.scss";
+
+// // импорт стилей компоненты header
+// @import "./modules/header/header.component.scss";
+
+// // импорт стилей компоненты footer
+// @import "./modules/footer/footer.component.scss";
+
+// // импорт стилей страницы каталога франшизы
+// @import "./modules/franchise/catalog-franchise/catalog-franchise.component.scss";
+
 // импорт стилей сброса
-@import "./shared/styles/base/reset.scss";
+@use "./shared/styles/base/reset.scss";
 // импорт стилей фонтов
-@import "./shared/styles/base/typography.scss";
+@use"./shared/styles/base/typography.scss";
 
 // импорт стилей компоненты header
-@import "./modules/header/header.component.scss";
+@use "./modules/header/header.component.scss";
 
 // импорт стилей компоненты footer
-@import "./modules/footer/footer.component.scss";
+@use "./modules/footer/footer.component.scss";
 
 // импорт стилей страницы каталога франшизы
-@import "./modules/franchise/catalog-franchise/catalog-franchise.component.scss";
+@use "./modules/franchise/catalog-franchise/catalog-franchise.component.scss";
 
 
 [hidden] { display: none !important;}
+
+.garant-header {
+  background-color: #1f75fe;
+}

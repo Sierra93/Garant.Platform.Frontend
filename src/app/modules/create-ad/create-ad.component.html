@@ -67,8 +67,17 @@
           <strong class="title-small">Выбор сферы</strong>
         </div>
 
-        <p-dropdown [options]="aCategories" optionLabel="categoryName" name="category" [(ngModel)]="selectedCategory"
-          placeholder="Выберите сферу" [showClear]="true"></p-dropdown>
+        <p-dropdown 
+          [options]="aCategories" 
+          optionLabel="categoryName" 
+          optionCode="categoryCode"
+          [filter]="true" name="category" 
+          placeholder="Выберите сферу" 
+          [(ngModel)]="selectedCategory"
+          [showClear]="true"
+          (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
+          (onFilter)="onFilterFranchiseSphereAsync($event.filter)">
+      </p-dropdown>
       </div>
 
       <div>
@@ -76,18 +85,27 @@
           <strong class="title-small">Выбор категории</strong>
         </div>
 
-        <p-dropdown [options]="aSubCategories" optionLabel="subCategoryName" name="subCategory" [(ngModel)]="selectedSubCategory"
-          placeholder="Выберите категорию" [showClear]="true"></p-dropdown>
+        <p-dropdown
+          [options]="aSubCategories" 
+          optionLabel="subCategoryName" 
+          [filter]="true" 
+          name="subCategory" 
+          [(ngModel)]="selectedSubCategory"
+            optionCode="categoryCode" 
+            placeholder="Выберите категорию" 
+            [showClear]="true" 
+            (onFilter)="onFilterFranchiseCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)">
+        </p-dropdown>
       </div>
 
-      <div>
+      <!-- <div>
         <div class="space-top-bottom-32">
           <strong class="title-small">Выбор города</strong>
         </div>
 
         <p-dropdown [options]="aCities" optionLabel="cityName" name="cityName" [(ngModel)]="selectedCityName"
           placeholder="Выберите город" [showClear]="true"></p-dropdown>
-      </div>
+      </div> -->
 
       <div class="d-flex space-top-bottom-32">
         <p-checkbox name="condition" inputId="cond" [(ngModel)]="isSelectGobizy" [binary]="true"></p-checkbox>

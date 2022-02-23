@@ -72,6 +72,7 @@ import {TableModule} from 'primeng/table';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { SESSION_TOKEN } from "./core/session/session.token";
 import { SessionService } from "./core/session/session.service";
+import { GarLibModule } from "./gar-lib/gar-lib.module";
 
 @NgModule({
   declarations: [
@@ -141,7 +142,8 @@ import { SessionService } from "./core/session/session.service";
     TabMenuModule,
     StepsModule,
     TableModule,
-    NgHttpLoaderModule.forRoot()
+    NgHttpLoaderModule.forRoot(),
+    GarLibModule
   ],
 
   providers: [

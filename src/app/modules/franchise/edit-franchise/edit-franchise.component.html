@@ -36,7 +36,6 @@
     </div>
 
     <div class="col-xxl-8 col-xl-9 col-lg-8 col-md-12">
-      <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>
       <div class="block-gallery">
         <div class="w-100">
           <span *ngIf="!aFranchisePhotos.length">Фотографии не загружены</span>
@@ -55,6 +54,9 @@
               </div>
             </ng-template>
           </p-galleria>
+          <gar-img-uploader
+                  (upload)="uploadImages($event)"
+                  [existing]="aFranchisePhotos"></gar-img-uploader>
         </div>
       </div>
     </div>

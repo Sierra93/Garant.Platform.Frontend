@@ -5,18 +5,26 @@ import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { CreateUpdateFranchiseInput } from "src/app/models/franchise/input/franchise-create-update-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
+import { BehaviorSubject, Observable, of } from "rxjs";
+import { attachment } from "../../../gar-lib/attachment";
+import { catchError, map, switchMap, takeUntil, tap } from "rxjs/operators";
+import { FranchiseOutput } from "../../../models/franchise/output/franchise-output";
+import { DestroyService } from "../../../core/destroy.service";
 
 @Component({
     selector: "edit-franchise",
     templateUrl: "./edit-franchise.component.html",
     styleUrls: ["./edit-franchise.component.scss"],
-    providers: [ConfirmationService, MessageService]
+    providers: [ConfirmationService, MessageService, DestroyService]
 })
 
 /** 
  * Класс модуля изменения франшизы.
  */
 export class EditFranchiseModule implements OnInit {
+    
+    private _attachedFiles$ = new BehaviorSubject<string[]>([]);
+    
     franchiseId: number = 0;
     logoName?: string;
     responsiveOptions: any;
@@ -71,10 +79,13 @@ export class EditFranchiseModule implements OnInit {
     aFranchisePhotos: any[] = [];
     isHideIndicators: boolean = false;
 
-    constructor(private http: HttpClient, 
+    constructor(
+        private http: HttpClient,
         private commonService: CommonDataService,
         private route: ActivatedRoute,
-        private messageService: MessageService) {
+        private messageService: MessageService,
+        private _destroy$: DestroyService
+    ) {
             this.responsiveOptions = [
                 {
                     breakpoint: '1024px',
@@ -132,7 +143,8 @@ export class EditFranchiseModule implements OnInit {
                 .subscribe({
                     next: (response: any) => {
                         console.log("Полученная франшиза:", response);
-                        this.franchiseData = response;     
+                        this.franchiseData = response;
+                        this.aFranchisePhotos = this.franchiseData.url.split(",");
                         console.log("franchiseData", this.franchiseData);    
                         
                         // let checkFinIndicators = JSON.parse(response.finIndicators);
@@ -209,31 +221,6 @@ export class EditFranchiseModule implements OnInit {
     public uploadPresentAsync(event: any) {
         console.log("uploadPresentAsync");
         this.presentFile = event.target.files[0];
-    };
-
-    public async uploadFranchisePhotosAsync(event: any) {
-        try {
-            let fileList = event.target.files;
-            let file: File = fileList[0];
-            let formData: FormData = new FormData();
-            formData.append('files', file);           
-
-            await this.http.post(API_URL.apiUrl.concat("/franchise/temp-file"), formData)
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Загруженные файлы франшизы:", response);
-                        this.aNamesFranchisePhotos = response;                        
-                    },
-
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
-        }
-
-        catch (e: any) {
-            throw new Error(e);
-        }
     };
 
      /**
@@ -368,19 +355,23 @@ export class EditFranchiseModule implements OnInit {
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("presentFile", this.presentFile);
             sendFormData.append("franchiseFile", this.presentFile);
-
-            await this.http.post(API_URL.apiUrl.concat("/franchise/create-update-franchise"), sendFormData)
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Франшиза успешно изменена:", response);
-                        this.showMessageAfterSuccessEditFranchise();
-                    },
-
-                    error: (err) => {
-                        this.commonService.routeToStart(err);
-                        throw new Error(err);
-                    }
-                });
+    
+            of(true).pipe(
+                switchMap(_ => this._attachedFiles$),
+                map((res: string[]) => {
+                    // @ts-ignore
+                    sendFormData.append('UrlsFranchise', res);
+                    return sendFormData;
+                }),
+                switchMap(data => this.http.post<FranchiseOutput>(API_URL.apiUrl.concat("/franchise/create-update-franchise"), data)),
+                takeUntil(this._destroy$)
+            ).subscribe( response => {
+                console.log("Франшиза успешно изменена:", response);
+                this.showMessageAfterSuccessEditFranchise();
+            }, (error) => {
+                this.commonService.routeToStart(error);
+                throw new Error(error);
+            });
         }
 
         catch (e: any) {           
@@ -398,4 +389,8 @@ export class EditFranchiseModule implements OnInit {
             detail: 'Франшиза успешно изменена'
         });
     };
+    
+    uploadImages(files: string[]) {
+        this._attachedFiles$.next(files);
+    }
 }

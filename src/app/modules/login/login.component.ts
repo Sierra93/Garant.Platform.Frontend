@@ -31,8 +31,8 @@ export class LoginModule implements OnInit {
     time: number = 60;
     interval: any;
     play: boolean = false;
-    isPolicyAgreement: boolean = true;
-    isAdsEmail: boolean = true;
+    isPolicyAgreement: boolean = false;
+    isAdsEmail: boolean = false;
 
     constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, private titleService: Title) {
         this.routeParam = this.route.snapshot.queryParams.loginType;

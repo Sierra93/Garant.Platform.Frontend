@@ -21,14 +21,13 @@ import { filter, map } from "rxjs/operators";
 export class HeaderModule implements OnInit {
     private _aHeader$ = new BehaviorSubject<header.IItem[] | null>(null);
     
-    public sHeader$: Observable<header.IItem[] | null> = combineLatest([this._sessionService.isLogin$, this._aHeader$]).pipe(
+    public aHeader$: Observable<header.IItem[] | null> = combineLatest([this._sessionService.isLogin$, this._aHeader$]).pipe(
         filter(([isLogin, aHeader]) => !!aHeader?.length),
         map(([isLogin, aHeader]) => {
             return !isLogin ? aHeader : aHeader!.filter(h => h.name !== 'Вход или регистрация')
         })
     )
     
-    aHeader: any[] = [];
     aBreadcrumbs: any[] = [];
     routeParam: any;
     searchText: string = "";

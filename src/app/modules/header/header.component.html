@@ -5,13 +5,15 @@
       <div class="col-12">
         <nav class="d-flex justify-content-end">
           <ul class="list-unstyled d-flex">
-            <li *ngFor="let el of aHeader; let last = last">
-              <span (click)="onGetMenuHeader(el.name)" *ngIf="!last">{{el.name}}</span>
-              <span (click)="onGetMenuHeader(el.name)" *ngIf="last" class="last">
+            <ng-container *ngIf="!!(sHeader$ | async)">
+              <li *ngFor="let el of sHeader$ | async; let last = last">
+                <span (click)="onGetMenuHeader(el.name)" *ngIf="!last">{{el.name}}</span>
+                <span (click)="onGetMenuHeader(el.name)" *ngIf="last" class="last">
                 <span>+</span>
                 <span>{{el.name}}</span>
               </span>
-            </li>
+              </li>
+            </ng-container>
           </ul>
         </nav>
       </div>

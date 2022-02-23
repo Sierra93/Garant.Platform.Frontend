@@ -13,6 +13,8 @@
         <div class="d-flex flex-column">
           <h1 class="main-title">{{franchiseData.title}}</h1>
         </div>
+<!--        TODO: Навешен индивидуальный стиль для кнопки в заголовке карточки, так как перебиваются стили из других компонентов-->
+        <button routerLink="/franchise/edit" [queryParams]="{franchiseId: franchiseData.franchiseId}" class="view-franchise title-btn p-button-outlined mx-2" pButton type="button" label="Изменить"></button>
       </div>
     </div>
   </div>

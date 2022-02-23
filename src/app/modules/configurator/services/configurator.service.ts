@@ -1,36 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, forkJoin } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { API_URL } from 'src/app/core/core-urls/api-url';
 
 @Injectable()
 export class ConfiguratorService {
-    // private readonly api = API_URL.apiUrl;
+    private readonly api = API_URL.apiUrl;
+    public readonly notAcceptedBusinesses$ = new BehaviorSubject<any>(undefined);
 
-    // public readonly franchiseCateogryList$ = new BehaviorSubject<any>(undefined);
+    constructor(private readonly http: HttpClient) { }
 
-    // public readonly franchiseSubcategoryList$ = new BehaviorSubject<any>(undefined);
+    public async onRejectCardAsync(cardId: number, cardType: string, comment: string) {
+        try {
+            return new Promise(async resolve => {
+                return await this.http.get(this.api + '/configurator/reject-card?cardId=' + cardId
+                    + "&cardType=" + cardType
+                    + "&comment=" + comment)
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
 
-    // public readonly cities$ = new BehaviorSubject<any>(undefined);
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
 
-    // constructor(private readonly http: HttpClient) {}
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 
-    // public loadCities() {
-    //     return this.http.post(this.api + '/business/cities-list', {}).pipe(
-    //         tap(data => this.cities$.next(data))
-    //     );
-    // }
-
-    // public loadFranchiseCategories() {
-    //     return this.http.post(this.api + '/franchise/category-list', {}).pipe(
-    //         tap(data => this.franchiseCateogryList$.next(data))
-    //     );
-    // }
-
-    // public loadFranchiseSubcategories() {
-    //     return this.http.post(this.api + '/franchise/subcategory-list', {}).pipe(
-    //         tap(data => this.franchiseSubcategoryList$.next(data))
-    //     );
-    // }
+    public getNotAcceptedBusinesses() {
+        console.log("getNotAcceptedBusinesses");
+        return this.http.post(this.api + '/configurator/businesses-not-accepted', {}).pipe(
+            tap(data => this.notAcceptedBusinesses$.next(data))
+        );
+    }
 }

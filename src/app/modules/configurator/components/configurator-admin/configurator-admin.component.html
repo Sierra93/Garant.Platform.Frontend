@@ -2209,7 +2209,8 @@
                   <button pButton 
                     type="button" 
                     label="Отклонить" 
-                    class="p-button-outlined p-button-danger">
+                    class="p-button-outlined p-button-danger"
+                    (click)="onShowRejectFranchiseModal(index)">
                 </button>
                 </td>
               </tr>
@@ -2225,11 +2226,11 @@
           </div>
 
            <div>
-            Кол-во: {{aNotAcceptedFranchises.length}}
+            Кол-во: {{notAcceptedBusinesses$.value.length}}
            </div>
          </div>
 
-          <p-table [value]="aNotAcceptedFranchises" [scrollable]="true" scrollHeight="400px">
+          <p-table [value]="notAcceptedBusinesses$ | async" [scrollable]="true" scrollHeight="400px">
             <ng-template pTemplate="header">
               <tr>
                 <th>ID</th>
@@ -2242,23 +2243,38 @@
               </tr>
             </ng-template>
 
-            <ng-template pTemplate="body" let-item>
+            <ng-template pTemplate="body" let-item let-index="rowIndex">
               <tr>
-                <td>{{item.franchiseId}}</td>
+                <td>{{item.businessId}}</td>
                 <td>
                   <img [src]="item.url" />
                 </td>
-                <td>{{item.title}}</td>
+                <td>{{item.businessName}}</td>
                 <td>{{item.dateCreate}}</td>
                 <td>
-                  <button pButton type="button" label="Просмотреть" class="p-button-outlined p-button-info"></button>
+                  <button pButton 
+                    type="button" 
+                    label="Просмотреть" 
+                    class="p-button-outlined p-button-info"
+                    (click)="onViewBusiness(index)">
+                </button>
                 </td>
                 <td>
-                  <button pButton type="button" label="Одобрить" class="p-button-outlined p-button-success"></button>
+                  <button pButton 
+                    type="button" 
+                    label="Одобрить" 
+                    class="p-button-outlined p-button-success"
+                    (click)="onAcceptCardAsync(item.businessId, 'Business')">
+                </button>
                 </td>
 
                 <td>
-                  <button pButton type="button" label="Отклонить" class="p-button-outlined p-button-danger"></button>
+                  <button pButton 
+                    type="button" 
+                    label="Отклонить" 
+                    class="p-button-outlined p-button-danger"
+                    (click)="onShowRejectBusinessModal(index)">
+                </button>
                 </td>
               </tr>
             </ng-template>
@@ -2270,3 +2286,51 @@
 
   </p-tabPanel>
 </p-tabView>
+
+<!-- Диалог франшизы. -->
+<p-dialog [(visible)]="isShowRejectFranchiseModal">
+  <ng-template pTemplate="header">
+      Укажите причину отклонения
+  </ng-template>
+  
+  <div>
+    <div>    
+      <span class="title-small">Причина отклонения</span><br>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Укажите причину отклонения" [(ngModel)]="commentRejected"></textarea>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button 
+      pButton type="button" 
+      label="Подтвердить отклонение" 
+      class="p-button-outlined p-button-danger"
+      (click)="onRejectFranchiseCardAsync('Franchise')">
+  </button>
+  </ng-template>
+</p-dialog>
+
+<!-- Диалог бизнеса. -->
+<p-dialog [(visible)]="isShowRejectBusinessModal">
+  <ng-template pTemplate="header">
+      Укажите причину отклонения
+  </ng-template>
+  
+  <div>
+    <div>    
+      <span class="title-small">Причина отклонения</span><br>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Укажите причину отклонения" [(ngModel)]="commentRejected"></textarea>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button 
+      pButton type="button" 
+      label="Подтвердить отклонение" 
+      class="p-button-outlined p-button-danger"
+      (click)="onRejectBusinessCardAsync('Business')">
+  </button>
+  </ng-template>
+</p-dialog>

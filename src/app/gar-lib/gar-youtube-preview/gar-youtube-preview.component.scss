@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  .gar-row >
+  .preview {
+    display: flex;
+    height: 120px;
+    width: 180px;
+    margin-right: 1rem;
+    > img {
+      margin-right: 1.5rem;
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+  .description {
+    > *:last-child {
+      cursor: pointer;
+      color: #EB5757;
+    }
+  }
+}

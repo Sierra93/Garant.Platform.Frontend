@@ -1,0 +1,22 @@
+<div class="gar-row-item">
+    <div class="gar-row">
+        <div class="gar-row-item">
+            <input
+                    type="text"
+                    class="gar-input"
+                    placeholder="https://"
+                    pInputText [(ngModel)]="value"
+                    (focusout)="onTouched()"
+                    name="videoLink">
+        </div>
+    </div>
+    <div class="gar-row" *ngIf="!!(videoPreviewLink$ | async)">
+        <div class="preview">
+            <img [src]="videoPreviewLink$ | async">
+        </div>
+        <div class="description">
+            <p>{{nameVide$ | async}}</p>
+            <p (click)="remove()">Удалить</p>
+        </div>
+    </div>
+</div>

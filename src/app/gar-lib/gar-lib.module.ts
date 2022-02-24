@@ -2,18 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GarImgUploaderComponent } from './gar-img-uploader/gar-img-uploader.component';
 import { DragDropModule } from "@angular/cdk/drag-drop";
+import { GarYoutubePreviewComponent } from './gar-youtube-preview/gar-youtube-preview.component';
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
 	declarations: [
-		GarImgUploaderComponent
+		GarImgUploaderComponent,
+		GarYoutubePreviewComponent
 	],
 	imports: [
 		CommonModule,
-		DragDropModule
+		DragDropModule,
+		FormsModule
 	],
 	exports: [
-		GarImgUploaderComponent
+		GarImgUploaderComponent,
+		GarYoutubePreviewComponent
 	]
 })
 export class GarLibModule {

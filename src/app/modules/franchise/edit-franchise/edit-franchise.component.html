@@ -462,8 +462,7 @@
     <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12 title-section">
       <div class="p-field-checkbox control-checkbox">
         <div class="d-flex align-items-center">
-          <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
-          <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
+          <label class="gar-row title">Видео о франшизе</label>
         </div>
       </div>
     </div>
@@ -473,13 +472,8 @@
         раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.</p>
     </div>
 
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12">
-      <div class="video-link">
-        <label>Ссылка на видео</label><br>
-        <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="franchiseData.urlVideo"
-          name="videoLink" />
-      </div>
-    </div>
+    <label class="gar-row title">Ссылка на видео</label>
+    <gar-youtube-preview [(ngModel)]="franchiseData.urlVideo"></gar-youtube-preview>
 
     <div class="col-12">
       <hr class="hr">

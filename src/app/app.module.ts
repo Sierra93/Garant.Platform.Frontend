@@ -74,6 +74,7 @@ import { SessionService } from "./core/session/session.service";
 import { MissingTranslationHandler, TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpLoaderFactory } from "./core/ngx-translate/translate-loader-factory";
 import { MissingTranslationService } from "./core/ngx-translate/missing-translation.service ";
+import { GarLibModule } from "./gar-lib/gar-lib.module";
 
 @NgModule({
   declarations: [
@@ -155,7 +156,8 @@ import { MissingTranslationService } from "./core/ngx-translate/missing-translat
         useClass: MissingTranslationService
       },
       useDefaultLang: false,
-    })
+    }),
+    GarLibModule
   ],
 
   providers: [

@@ -135,3 +135,11 @@ hr.hr {
     }
   }
 }
+
+::ng-deep {
+  .message-input {
+    .p-inputtext {
+      width: 100% !important;
+    }
+  }
+}

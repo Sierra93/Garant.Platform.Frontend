@@ -6,7 +6,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule, Title } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -65,13 +65,15 @@ import { DealLandingModule } from "./modules/landing/deal-landing/deal-landing.c
 import { NotificationsModule } from "./modules/profile/profile-requests/notifications.component";
 import { ConfiguratorAuthModule } from "./modules/configurator/configurator-auth/configurator-auth.component";
 import { TabMenuModule } from 'primeng/tabmenu';
-// import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/components/configurator-admin.component";
 import { DocumentService } from "./services/garant/document.service";
 import { CreateAdModule } from "./modules/create-ad/create-ad.component";
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { SESSION_TOKEN } from "./core/session/session.token";
 import { SessionService } from "./core/session/session.service";
+import { MissingTranslationHandler, TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { HttpLoaderFactory } from "./core/ngx-translate/translate-loader-factory";
+import { MissingTranslationService } from "./core/ngx-translate/missing-translation.service ";
 import { GarLibModule } from "./gar-lib/gar-lib.module";
 
 @NgModule({
@@ -105,7 +107,6 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
     DealLandingModule,
     NotificationsModule,
     ConfiguratorAuthModule,
-    // ConfiguratorAdminModule,
     CreateAdModule
   ],
 
@@ -143,6 +144,19 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
     StepsModule,
     TableModule,
     NgHttpLoaderModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      missingTranslationHandler:
+      {
+        provide: MissingTranslationHandler,
+        useClass: MissingTranslationService
+      },
+      useDefaultLang: false,
+    }),
     GarLibModule
   ],
 
@@ -151,7 +165,8 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
       provide: HTTP_INTERCEPTORS,
       useClass: ParamInterceptor,
       multi: true
-    }, {
+    },
+    {
       provide: SESSION_TOKEN,
       useClass: SessionService
     },

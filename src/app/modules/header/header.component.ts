@@ -43,6 +43,7 @@ export class HeaderModule implements OnInit {
             {label: 'Оплата и исполнение этапов сделки'}
         ];
 
+        this.routeParam = this.route.snapshot.queryParams;
     };
 
     ngDoCheck(){
@@ -154,8 +155,8 @@ export class HeaderModule implements OnInit {
 
         else if (this.selectedSearchOption == this.searchOptions[1]) {
             type = "business";
-        }
+        }        
 
-        this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });
+        this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });        
     };   
 }

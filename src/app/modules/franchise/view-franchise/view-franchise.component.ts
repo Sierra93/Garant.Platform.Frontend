@@ -5,6 +5,7 @@ import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { RequestFranchiseInput } from "src/app/models/request/input/request-franchise-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
+import { DocumentService } from "src/app/services/garant/document.service";
 
 @Component({
     selector: "view-franchise",
@@ -33,12 +34,14 @@ export class ViewFranchiseModule implements OnInit {
     number: string = "";
     city: string = "";
     selectedValues: string[] = [];
+    isHideIndicators: boolean = false;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private route: ActivatedRoute,
         private router: Router,
-        private messageService: MessageService) {
+        private messageService: MessageService,
+        private documentService: DocumentService) {
             this.routeParam = this.route.snapshot.queryParams;
             this.franchiseId = this.route.snapshot.queryParams.franchiseId;
 
@@ -92,8 +95,23 @@ export class ViewFranchiseModule implements OnInit {
                         this.franchiseData = response;
                         this.aNamesFranchisePhotos = this.franchiseData.url.split(",");
                         this.aInvestInclude = JSON.parse(response.investInclude);
-                        this.aFinIndicators = [JSON.parse(response.finIndicators)];
-                        this.aPacks = [JSON.parse(response.franchisePacks)];
+
+                        let checkFinIndicators = JSON.parse(response.finIndicators);
+
+                        // Если массив индикаторов не пустой.                        
+                        if (Object.keys(checkFinIndicators).length > 0) {
+                            this.aFinIndicators = checkFinIndicators;
+                            this.isHideIndicators = true;
+                        }
+
+                        let checkPacks = JSON.parse(response.franchisePacks);
+
+                        // Если массив пакетов не пустой.
+                        if (Object.keys(checkPacks).length > 0) {
+                            this.aPacks = checkPacks;
+                            this.isHidePacks = true;
+                        }
+                        
                         this.fio = response.fullName;
 
                         console.log("franchiseData", this.franchiseData);
@@ -169,4 +187,20 @@ export class ViewFranchiseModule implements OnInit {
             throw new Error(e);
         }
     };
+
+    /**
+     * Функция скачает файл.
+     * @param fileName - Имя файла.
+     */
+    public async onDownloadFinModelFileAsync(fileName: string) {
+        try {            
+            await this.documentService.downloadFileAsync(fileName).then((data: any) => {
+
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    }
 }

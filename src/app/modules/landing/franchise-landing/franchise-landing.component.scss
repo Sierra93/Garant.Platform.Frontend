@@ -8,7 +8,7 @@
 @use "/src/app/app.component.scss";
 // @import "/src/app/shared/styles/image-space.scss";
 // @import "/src/app/shared/styles/common.scss";
-// @import "/src/app/shared/styles/media-quaries.scss";
+@import "/src/app/shared/styles/media-quaries.scss";
 @use "/src/app/modules/main-page/main-page.component.scss";
 @use "../../../../app/shared/styles" as *;
 @use "../../../../app/shared/styles/base" as *;
@@ -19,6 +19,26 @@ strong {
   font-weight: 500;
   color: #2c2c2c;
   margin-bottom: 16px;
+}
+
+.garant {
+  margin-top: 80px;
+
+  @include ul-xl {
+    margin-top: 74px;
+  }
+
+  @include xl-lg {
+    margin-top: 64px;
+  }
+
+  @include lg-md {
+    margin-top: 36px;
+  }
+
+  @include md {
+    margin-top: 24px;
+  }
 }
 
 .d-flex {
@@ -65,10 +85,54 @@ strong {
   margin-top: 80px;
   margin-bottom: 16px;
 
-  
+  @include ul-xl {
+    width: 1392px;
+    margin-top: 74px;
+    gap: 43px;
+  }
+
+  @include xl-lg {
+    width: 1024px;
+    height: 456px;
+    margin-top: 64px;
+    gap: 10px;
+    padding: 44px 0 44px 44px;
+  }
+
+  @include lg-md {
+    width: 768px;
+    height: 432px;
+    margin-top: 36px;
+    gap: 0px;
+    padding: 32px 0 32px 32px;
+  }
+
+  @include md {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 354px;
+    margin-top: 24px;
+    gap: 16px;
+    padding: 24px 23.5px;
+  }
+
   &-content {
     width: 624px;
     height: 368px;
+
+    @include xl-lg {
+      width: 452px;
+    }
+
+    @include lg-md {
+      width: 429px;
+    }
+
+    @include md {
+      width: 272px;
+    }
 
     &__title {
       font-family: "Roboto", sans-serif;
@@ -77,6 +141,24 @@ strong {
       color: #2c2c2c;
       line-height: 113px;
       margin-bottom: 8px;
+
+      @include xl-lg {
+        font-size: 4rem;
+        line-height: 75px;
+      }
+
+      @include lg-md {
+        width: 429px;
+        font-size: 4rem;
+        line-height: 75px;
+      }
+
+      @include md {
+        text-align: center;
+        width: 272px;
+        font-size: 2rem;
+        line-height: 38px;
+      }
     }
 
     &__subtitle {
@@ -86,6 +168,22 @@ strong {
       color: #2c2c2c;
       line-height: 75px;
       margin-bottom: 16px;
+
+      @include xl-lg {
+        font-size: 2.75rem;
+        line-height: 52px;
+      }
+
+      @include lg-md {
+        font-size: 2.75rem;
+        line-height: 52px;
+      }
+
+      @include md {
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 28px;
+      }
     }
 
     &__text {
@@ -95,6 +193,22 @@ strong {
       color: #7a7a7a;
       line-height: 28px;
       margin-bottom: 52px;
+
+      @include xl-lg {
+        margin-bottom: 113px;
+      }
+
+      @include lg-md {
+        width: 332px;
+        margin-bottom: 85px;
+      }
+
+      @include md {
+        text-align: center;
+        font-size: 1.0625rem;
+        line-height: 20px;
+        margin-bottom: 24px;
+      }
     }
 
     &__button {
@@ -113,6 +227,70 @@ strong {
       padding: 24px 32px;
       margin: 0;
       background-color: #1f75fe;
+
+      @include md {
+        width: 273px;
+        padding: 8px 16px;
+      }
+    }
+  }
+
+  &-image {
+    // margin-right: 64px;
+
+    @include xl-lg {
+      width: 518px;
+      height: 284px;
+    }
+
+    @include lg-md {
+      display: none;
+    }
+
+    @include md {
+      display: none;
+    }
+
+    img {
+      @include xl-lg {
+        width: 518px;
+        height: 284px;
+      }
+    }
+  }
+
+  &-image1 {
+    display: none;
+
+    @include lg-md {
+      margin-left: -77px;
+      display: block;
+      width: 384px;
+      height: 363px;
+    }
+
+    img {
+      @include lg-md {
+        width: 384px;
+        height: 363px;
+      }
+    }
+  }
+
+  &-image2 {
+    display: none;
+
+    @include md {
+      display: block;
+      order: -1;
+      width: 273px;
+      height: 60px;
+      margin-right: 0;
+
+      img {
+        width: 273px;
+        height: 60px;
+      }
     }
   }
 }

@@ -96,3 +96,42 @@ hr.hr {
     }
   }
 }
+
+@media (max-width: 1080px) {
+  .chat-start-date {
+    display: flex;
+    flex-flow: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-item-name, .chat-start-date {
+    span {
+      font-size: .75rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .chat-item-name, .chat-start-date {
+    flex-direction: row !important;
+  }
+
+  .chat-header-wrapper {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 425px) {
+  .block-profile {
+    .row {
+      > div {
+        width: 100% !important;
+
+        &:first-child {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}

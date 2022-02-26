@@ -246,6 +246,10 @@ section#catalog-franchise {
 }
 
 .popular-franchises {
+  &-block {
+    width: 100%;
+  }
+
   img {
     height: 150px;
   }

@@ -7,7 +7,6 @@ import { BreadcrumbInput } from "../../models/header/breadcrumb-input";
 import { MainHeader } from "../../models/header/main-header";
 import { SuggestionInput } from "../../models/suggestion/input/suggestion-input";
 import { TransitionInput } from "../../models/transition/input/transition-input";
-import { ready, type } from "jquery";
 import { SESSION_TOKEN } from "../../core/session/session.token";
 import { SessionService } from "../../core/session/session.service";
 import { SessionItems } from "../../core/session/session-items";
@@ -616,5 +615,13 @@ export class CommonDataService {
      */
     public TrimSpaceInNumber(value: string) {
         return value.replace(/\s/g, "");
-    }
+    };
+
+    /**
+     * Функция вернет регион пользователя.
+     * @returns - Страна пользователя.
+     */
+    public getUserLocation(): string {
+        return window.navigator.language.substr(0, 2).toLowerCase();
+    };
 };

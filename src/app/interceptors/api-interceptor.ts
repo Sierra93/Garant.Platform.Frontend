@@ -18,6 +18,8 @@ export class ParamInterceptor implements HttpInterceptor {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
+        document.cookie = "geozone=" + this.commonService.getUserLocation();
+
         req = req.clone({
             headers: req.headers.set(
                 "Authorization", `Bearer ${this._sessionService.getDataItem(SessionItems.token)}`

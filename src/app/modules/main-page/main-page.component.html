@@ -14,7 +14,7 @@
                 <img [src]="item.url" class="product-image">
               </div>
               <div>
-                <p-card header="{{'RecentlyPurchased.Name' | translate}}" subheader="{{item.text}}" [style]="{width: '100%'}"
+                <p-card header="{{item.name}}" subheader="{{item.text}}" [style]="{width: '100%'}"
                   styleClass="p-card-shadow">
                   <ng-template pTemplate="header">
                     <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
@@ -41,10 +41,10 @@
           <!-- <h5>Покупка бизнеса любого размера онлайн с гарантиями</h5> -->
         </ng-template>
         <!-- <p>{{oTopAction.text}}</p> -->
-        <p>{{'oTopAction.text' | translate}}</p>
+        <p>{{oTopAction.text}}</p>
         <ng-template pTemplate="footer">
           <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
-          <button class="btn btn-dark">{{'Detail.Details' | translate}}</button>
+          <button class="btn btn-dark">Подробнее</button>
           <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
     </p-button> -->
         </ng-template>

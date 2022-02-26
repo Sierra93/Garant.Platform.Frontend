@@ -39,5 +39,5 @@ export class ConfiguratorService {
         return this.http.post(this.api + '/configurator/businesses-not-accepted', {}).pipe(
             tap(data => this.notAcceptedBusinesses$.next(data))
         );
-    }
+    };
 }

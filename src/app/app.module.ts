@@ -71,9 +71,6 @@ import { TableModule } from 'primeng/table';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { SESSION_TOKEN } from "./core/session/session.token";
 import { SessionService } from "./core/session/session.service";
-import { MissingTranslationHandler, TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { HttpLoaderFactory } from "./core/ngx-translate/translate-loader-factory";
-import { MissingTranslationService } from "./core/ngx-translate/missing-translation.service ";
 import { GarLibModule } from "./gar-lib/gar-lib.module";
 
 @NgModule({
@@ -144,19 +141,6 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
     StepsModule,
     TableModule,
     NgHttpLoaderModule.forRoot(),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-      missingTranslationHandler:
-      {
-        provide: MissingTranslationHandler,
-        useClass: MissingTranslationService
-      },
-      useDefaultLang: false,
-    }),
     GarLibModule
   ],
 

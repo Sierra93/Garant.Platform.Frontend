@@ -7,8 +7,6 @@ import { API_URL } from 'src/app/core/core-urls/api-url';
 import { ConfirmEmailInput } from 'src/app/models/register/input/confirm-email-input';
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { NgForm } from "@angular/forms";
-import { environment } from 'src/environments/environment';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'main-page',
@@ -55,8 +53,7 @@ export class MainPageModule implements OnInit {
         private commonService: CommonDataService,
         private titleService: Title,
         private route: ActivatedRoute,
-        private router: Router,
-        private translateService: TranslateService) {
+        private router: Router) {
         this.responsiveOptions = [
             {
                 breakpoint: '1024px',
@@ -99,13 +96,6 @@ export class MainPageModule implements OnInit {
         await this.loadCitiesFranchisesListAsync();
         await this.loadCategoriesFranchisesListAsync();
         await this.loadViewBusinessFranchisesListAsync();
-
-    //     this.translateService.use(environment.defaultLocale);
-    // this.translateService.get(['KEY1', 'KEY2'])
-    //   .subscribe(translations => {
-    //     console.log(translations['KEY1'])
-    //     console.log(translations['KEY2'])
-    //   });
     };    
 
     /**

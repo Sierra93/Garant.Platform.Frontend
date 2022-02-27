@@ -14,8 +14,10 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
  * Класс модуля страницы выбора создания объявления.
  */
 export class CreateAdModule implements OnInit {    
-    aCategories: any;
-    aSubCategories: any;
+    aFranchiseCategories: any;
+    aBusinessCategories: any;
+    aFranchiseSubCategories: any;
+    aBusinessSubCategories: any;
     aCities: any;
     selectedCategory: any;
     selectedSubCategory: any;
@@ -34,6 +36,7 @@ export class CreateAdModule implements OnInit {
     public async ngOnInit() {    
         await this.onSelectFracnhiseCheck();
         await this.GetFranchiseCategoriesListAsync();
+        await this.getCitiesAsync();
     };
 
     public onContinue(isSelectFranch: boolean, isSelectBus: boolean, isSelectGobizy: boolean, isSelectSell: boolean) {
@@ -55,7 +58,7 @@ export class CreateAdModule implements OnInit {
         try {
             await this.commonService.GetFranchiseCategoriesListAsync().then((data: any) => {
                 console.log("Список категорий франшиз:", data);
-                this.aCategories = data;
+                this.aFranchiseCategories = data;
             });
         }
 
@@ -64,12 +67,25 @@ export class CreateAdModule implements OnInit {
         }
     };    
 
+    private async GetBusinessCategoriesListAsync() {
+        try {
+            await this.commonService.GetFranchiseCategoriesListAsync().then((data: any) => {
+                console.log("Список категорий бизнеса:", data);
+                this.aBusinessCategories = data;
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };  
+
     public async onSelectFracnhiseCheck() {
         if (this.isSelectFranch) {
             try {
                 await this.commonService.GetFranchiseCategoriesListAsync().then((data: any) => {
                     console.log("Список категорий франшиз:", data);
-                    this.aCategories = data;
+                    this.aFranchiseCategories = data;
                 });               
             }
     
@@ -79,8 +95,9 @@ export class CreateAdModule implements OnInit {
         }
 
         else if (!this.isSelectFranch && this.isSelectBus) {
-            this.aCategories = [];
-            this.aSubCategories = [];
+            this.aFranchiseCategories = [];
+            // this.aBusinessCategories = [];
+            this.aFranchiseSubCategories = [];
         }
     };
 
@@ -89,18 +106,13 @@ export class CreateAdModule implements OnInit {
             try {
                 await this.commonService.GetBusinessCategoriesListAsync().then((data: any) => {
                     console.log("Список категорий бизнеса:", data);                
-                    this.aCategories = data;
+                    this.aBusinessCategories = data;
                 });
 
                 await this.commonService.GetBusinessSubCategoriesListAsync().then((data: any) => {
                     console.log("Список подкатегорий бизнеса:", data);                
-                    this.aSubCategories = data;
-                });
-
-                await this.commonService.GetBusinessCitiesListAsync().then((data: any) => {
-                    console.log("Список городов бизнеса:", data);                
-                    this.aCities = data;
-                });
+                    this.aBusinessSubCategories = data;
+                });                
             }
     
             catch (e: any) {
@@ -109,8 +121,9 @@ export class CreateAdModule implements OnInit {
         }
 
         else if (!this.isSelectBus && this.isSelectFranch) {
-            this.aCategories = [];
-            this.aSubCategories = [];
+            this.aFranchiseCategories = [];
+            this.aBusinessCategories = [];
+            this.aFranchiseSubCategories = [];
         }
     };
 
@@ -119,7 +132,7 @@ export class CreateAdModule implements OnInit {
      * @param searchText - Поисковый запрос.
      * @returns - Список сфер.
      */
-    public async onFilterFranchiseSphereAsync(searchText: string) {
+    public async onFilterSphereAsync(searchText: string) {
         try {
             await this.http.get(API_URL.apiUrl.concat("/franchise/search-sphere?searchText=" + searchText))
                 .subscribe({
@@ -138,7 +151,14 @@ export class CreateAdModule implements OnInit {
         }
     };
 
-    public async onFilterFranchiseCategoryAsync(searchText: string, categoryCode: string, categorySysName: string) {
+    private async getCitiesAsync() {
+        await this.commonService.GetBusinessCitiesListAsync().then((data: any) => {
+            console.log("Список городов бизнеса:", data);                
+            this.aCities = data;
+        });
+    };
+
+    public async onFilterCategoryAsync(searchText: string, categoryCode: string, categorySysName: string) {
         try {
             await this.http.get(API_URL.apiUrl.concat("/franchise/search-category?searchText=" 
             + searchText
@@ -163,7 +183,7 @@ export class CreateAdModule implements OnInit {
     public async onChangeValueSphereAsync(categoryCode: string, categorySysName: string) {
         await this.commonService.GetFranchiseSubCategoriesListAsync(categoryCode, categorySysName).then((data: any) => {
             console.log("Список подкатегорий сферы:", data);                
-            this.aSubCategories = data;
+            this.aFranchiseSubCategories = data;
         });
     };
 }

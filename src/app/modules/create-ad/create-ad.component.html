@@ -68,15 +68,31 @@
         </div>
 
         <p-dropdown 
-          [options]="aCategories" 
+          [options]="aFranchiseCategories" 
           optionLabel="categoryName" 
           optionCode="categoryCode"
-          [filter]="true" name="category" 
+          [filter]="true" 
+          name="category" 
           placeholder="Выберите сферу" 
           [(ngModel)]="selectedCategory"
           [showClear]="true"
           (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
-          (onFilter)="onFilterFranchiseSphereAsync($event.filter)">
+          (onFilter)="onFilterSphereAsync($event.filter)"
+          *ngIf="isSelectFranch">
+      </p-dropdown>
+
+      <p-dropdown 
+          [options]="aBusinessCategories" 
+          optionLabel="categoryName" 
+          optionCode="categoryCode"
+          [filter]="true" 
+          name="category" 
+          placeholder="Выберите сферу" 
+          [(ngModel)]="selectedCategory"
+          [showClear]="true"
+          (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
+          (onFilter)="onFilterSphereAsync($event.filter)"
+          *ngIf="isSelectBus">
       </p-dropdown>
       </div>
 
@@ -86,7 +102,7 @@
         </div>
 
         <p-dropdown
-          [options]="aSubCategories" 
+          [options]="aFranchiseSubCategories" 
           optionLabel="subCategoryName" 
           [filter]="true" 
           name="subCategory" 
@@ -94,18 +110,32 @@
             optionCode="categoryCode" 
             placeholder="Выберите категорию" 
             [showClear]="true" 
-            (onFilter)="onFilterFranchiseCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)">
+            (onFilter)="onFilterCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)"
+            *ngIf="isSelectFranch">
+        </p-dropdown>
+
+        <p-dropdown
+          [options]="aBusinessSubCategories" 
+          optionLabel="subCategoryName" 
+          [filter]="true" 
+          name="subCategory" 
+          [(ngModel)]="selectedSubCategory"
+            optionCode="categoryCode" 
+            placeholder="Выберите категорию" 
+            [showClear]="true" 
+            (onFilter)="onFilterCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)"
+            *ngIf="isSelectBus">
         </p-dropdown>
       </div>
 
-      <!-- <div>
+      <div *ngIf="isSelectBus">
         <div class="space-top-bottom-32">
           <strong class="title-small">Выбор города</strong>
         </div>
 
-        <p-dropdown [options]="aCities" optionLabel="cityName" name="cityName" [(ngModel)]="selectedCityName"
+        <p-dropdown [options]="aCities" optionLabel="businessCityName" name="cityName" [(ngModel)]="selectedCityName"
           placeholder="Выберите город" [showClear]="true"></p-dropdown>
-      </div> -->
+      </div>
 
       <div class="d-flex space-top-bottom-32">
         <p-checkbox name="condition" inputId="cond" [(ngModel)]="isSelectGobizy" [binary]="true"></p-checkbox>

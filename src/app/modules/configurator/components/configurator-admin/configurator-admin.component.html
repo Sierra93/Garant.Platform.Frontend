@@ -455,6 +455,38 @@
       </div>
 
       <section id="create-franchise" *ngIf="selectedCardActionSysName == 'CreateFranchise'">
+        <div class="space-top-bottom-32">
+          <strong class="title-small">Выбор сферы</strong>
+        </div>
+
+        <p-dropdown 
+          [options]="aFranchiseCategories" 
+          optionLabel="categoryName" 
+          optionCode="categoryCode"
+          [filter]="true" 
+          name="category" 
+          placeholder="Выберите сферу" 
+          [(ngModel)]="selectedCategory"
+          [showClear]="true"
+          (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
+          (onFilter)="onFilterSphereAsync($event.filter)">
+      </p-dropdown>
+
+      <div class="space-top-bottom-32">
+        <strong class="title-small">Выбор категории</strong>
+      </div>
+
+      <p-dropdown
+        [options]="aFranchiseSubCategories" 
+        optionLabel="subCategoryName" 
+        [filter]="true" 
+        name="subCategory" 
+        [(ngModel)]="selectedSubCategory"
+          optionCode="categoryCode" 
+          placeholder="Выберите категорию" 
+          [showClear]="true" 
+          (onFilter)="onFilterCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)">
+      </p-dropdown>
 
         <h5 class="title-name-logo">Название и логотип*</h5>
 
@@ -502,8 +534,8 @@
                 [(ngModel)]="lead" name="lead" />
             </div>
 
-            <button class="btn btn-link">Стать франчайзи онлайн через гарант</button><br>
-            <button class="control-button-blue">Начать чат с представителем</button>
+            <!-- <button class="btn btn-link">Стать франчайзи онлайн через гарант</button><br>
+            <button class="control-button-blue">Начать чат с представителем</button> -->
           </div>
         </div>
 
@@ -1008,12 +1040,12 @@
                   <!-- <span>{{item.status}}</span> -->
                 </div>
 
-                <div class="photos-buttons">
+                <!-- <div class="photos-buttons">
                   <p-button label="Стать франчайзи онлайн через гарант" styleClass="p-button-link" [disabled]="true">
                   </p-button>
                   <p-button label="Начать чат с представителем" styleClass="control-button-blue" [disabled]="true">
                   </p-button>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -1515,6 +1547,48 @@
 
       <!-- Создать карточку бизнеса. -->
       <div *ngIf="selectedCardActionSysName == 'CreateBusiness'">
+
+        <div class="space-top-bottom-32">
+          <strong class="title-small">Выбор сферы</strong>
+        </div>
+
+        <p-dropdown 
+          [options]="aBusinessCategories" 
+          optionLabel="categoryName" 
+          optionCode="categoryCode"
+          [filter]="true" 
+          name="category" 
+          placeholder="Выберите сферу" 
+          [(ngModel)]="selectedCategory"
+          [showClear]="true"
+          (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
+          (onFilter)="onFilterSphereAsync($event.filter)">
+      </p-dropdown>
+
+      <div class="space-top-bottom-32">
+        <strong class="title-small">Выбор категории</strong>
+      </div>
+
+      <p-dropdown
+          [options]="aBusinessSubCategories" 
+          optionLabel="subCategoryName" 
+          [filter]="true" 
+          name="subCategory" 
+          [(ngModel)]="selectedSubCategory"
+            optionCode="categoryCode" 
+            placeholder="Выберите категорию" 
+            [showClear]="true" 
+            (onFilter)="onFilterCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)">
+        </p-dropdown>
+
+        <div>
+          <div class="space-top-bottom-32">
+            <strong class="title-small">Выбор города</strong>
+          </div>
+  
+          <p-dropdown [options]="aCities" optionLabel="businessCityName" name="cityName" [(ngModel)]="selectedCityName"
+            placeholder="Выберите город" [showClear]="true"></p-dropdown>
+        </div>
 
         <h5 class="title-name-logo">Название бизнеса*</h5>
 

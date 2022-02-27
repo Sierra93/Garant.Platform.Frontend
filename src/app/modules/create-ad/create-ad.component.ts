@@ -67,18 +67,18 @@ export class CreateAdModule implements OnInit {
         }
     };    
 
-    private async GetBusinessCategoriesListAsync() {
-        try {
-            await this.commonService.GetFranchiseCategoriesListAsync().then((data: any) => {
-                console.log("Список категорий бизнеса:", data);
-                this.aBusinessCategories = data;
-            });
-        }
+    // private async GetBusinessCategoriesListAsync() {
+    //     try {
+    //         await this.commonService.GetFranchiseCategoriesListAsync().then((data: any) => {
+    //             console.log("Список категорий бизнеса:", data);
+    //             this.aBusinessCategories = data;
+    //         });
+    //     }
 
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };  
+    //     catch (e: any) {
+    //         throw new Error(e);
+    //     }
+    // };  
 
     public async onSelectFracnhiseCheck() {
         if (this.isSelectFranch) {

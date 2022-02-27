@@ -228,55 +228,6 @@
 
 </div>
 
-<!-- <div class="steps">
-  <div class="steps-item">
-    <div class="steps-item__image">
-      <img src="../../../../assets/images/consulting-landing/loupe-clip-art-6 1.png" alt="Лупа">
-    </div>
-    <p class="steps-item__title">Проверка бизнеса</p>
-    <p class="steps-item__subtitle">или франшизы
-    </p>
-    <p class="steps-item__stage">Шаг 1
-    </p>
-    <p class="steps-item__text">До приобретения бизнеса и начала сделки следует заказать полную проверку.
-    </p>
-    <button class="steps-item__button">Проверить бизнес</button>
-  </div>
-  <div class="steps-item">
-    <div class="steps-item__image">
-      <img src="../../../../assets/images/consulting-landing/credit_card_PNG24 1.png" alt="Кредитная карточка">
-    </div>
-    <p class="steps-item__title">Консультация</p>
-    <p class="steps-item__subtitle">на каждом этапе сделки</p>
-    <p class="steps-item__stage">Шаг 2
-    </p>
-    <p class="steps-item__text">После оплаты каждого этапа вы становитесь полноправным владельцем бизнеса</p>
-    <button class="steps-item__button">Получить консультацию</button>
-  </div>
-  <div class="steps-item">
-    <div class="steps-item__image">
-      <img src="../../../../assets/images/consulting-landing/pen-clip-art-6 2.png" alt="Ручка">
-    </div>
-    <p class="steps-item__title">Составление договора</p>
-    <p class="steps-item__subtitle">в процессе сделки</p>
-    <p class="steps-item__stage">Шаг 3
-    </p>
-    <p class="steps-item__text">Вы можете заказать составление договора для сделки у юриста и всех актов.</p>
-    <button class="steps-item__button">Заказать договор</button>
-  </div>
-  <div class="steps-item">
-    <div class="steps-item__image">
-      <img src="../../../../assets/images/consulting-landing/file-clip-art-6 3.png" alt="Папка">
-    </div>
-    <p class="steps-item__title">Согласование договора</p>
-    <p class="steps-item__subtitle">и корректировки</p>
-    <p class="steps-item__stage">Шаг 4
-    </p>
-    <p class="steps-item__text">В процессе сделки вы будете получать договор от продавца. Юрист проверит его.</p>
-    <button class="steps-item__button">Получить сопровождение</button>
-  </div>
-</div> -->
-
 <!-- Область с 3 карточками. -->
 <!-- <div class="d-flex three-cards">
   <div class="col-lg-4 card-business" *ngFor="let item of aDataActions">
@@ -296,183 +247,222 @@
   </div>
 </div> -->
 
-<h5 class="packs-header">Пакеты юридических услуг</h5>
+
+
 <div class="packs">
-  <div class="packs-item packs-item--first">
-    <!-- <div class="packs-item__image">
-      <img src="../../../../assets/images/franchise-landing/fast-start 1.png" alt="Пакет из 7 инструментов">
-    </div> -->
-    <button class="packs-item__title">Пакет “Подготовка договора”</button>
-    <div class="packs-item__text">Подготовка договора</div>
-    <ul class="packs-item__list packs-item__list--first">
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Подготовка ключевого договора</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Подготовка актов приема передачи</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Разработка сайта для продажи франшизы (до 10 страниц)</span>
-      </li>
-    </ul>
-    <div class="packs-item-bottom">
-      <p class="packs-item-bottom__title"><span class="packs-item-bottom__start">Срок</span> <span
-          class="packs-item-bottom__end">5 рабочих дней</span></p>
-      <p class="packs-item-bottom__price"><span class="packs-item-bottom__start">Стоимость пакета</span> <span
-          class="packs-item-bottom__end">15 000 ₽</span></p>
-      <button class="packs-item-bottom__button">Подготовить договор</button>
-    </div>
-  </div>
+  <h2 class="packs__title">Пакеты юридических услуг</h2>
+  <ul class="packs__list">
+    <li class="packs__item">
+      <div class="packs__services services">
+        <button class="services__btn">Пакет “Подготовка договора”</button>
+        <span class="services__more">Подготовка договора</span>
+        <ul class="services__list">
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Подготовка ключевого договора</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Подготовка актов приема передачи</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-no"></div>
+            <span class="services__item-text">Разработка сайта для продажи франшизы (до 10 страниц)</span>
+          </li>
+        </ul>
+        <div class="services__wrap">
+          <ul class="services__card info">
+            <li class="info__item">
+              <span class="info__text">Срок</span>
+              <span class="info__text-resul">5 рабочих дней</span>
+            </li>
+            <li class="info__item">
+              <span class="info__text">Стоимость пакета</span>
+              <span class="info__text-resul">15 000 ₽</span>
+            </li>
+          </ul>
+          <button class="services__btn-conf">Подготовить договор</button>
+        </div>
+      </div>
+    </li>
+    <li class="packs__item">
+      <div class="packs__services services">
+        <button class="services__btn">Пакет “Проверка контрагента”</button>
+        <span class="services__more">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью
+          упакованный бизнес во франшизу</span>
+        <ul class="services__list">
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Аудит бизнеса</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Разработка сайта для продажи
+              франшизы (до 10 страниц)</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Разработка пакетов франшизы
+              и определение их стоимости</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Книга продаж Вашей франшизы</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Разработка стратегии: «Каналы
+              продаж франшизы»</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-no"></div>
+            <span class="services__item-text">Настройка рекламной кампании,
+              для запуска продаж Вашей франшизы либо размещение в ТОП-овом каталоге франшиз;</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-no"></div>
+            <span class="services__item-text">Внедрение системы записи звонков</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-no"></div>
+            <span class="services__item-text">Контроль качества звонков менеджера,
+              нашим руководителем отдела продаж</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-no"></div>
+            <span class="services__item-text">Совместная обработка звонков
+              и возникающих вопросов у клиента</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-no"></div>
+            <span class="services__item-text">Настройка CRM-системы</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-no"></div>
+            <span class="services__item-text">Гарантированное сопровождение и
+              доведение до первых продаж франшизы;</span>
+          </li>
+        </ul>
+        <div class="services__wrap">
+          <ul class="services__card info">
+            <li class="info__item">
+              <span class="info__text">Срок</span>
+              <span class="info__text-resul">7 раб. дней</span>
+            </li>
+            <li class="info__item">
+              <span class="info__text">Стоимость пакета</span>
+              <span class="info__text-resul">35 000 ₽</span>
+            </li>
+          </ul>
+          <button class="services__btn-conf">Подготовить договор</button>
+        </div>
+      </div>
+    </li>
+    <li class="packs__item">
+      <div class="packs__services services">
+        <button class="services__btn">Пакет “Сопровождение сделки”</button>
+        <span class="services__more">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью
+          упакованный бизнес во франшизу</span>
+        <ul class="services__list">
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Аудит бизнеса</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Разработка сайта для продажи
+              франшизы (до 10 страниц)</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Разработка пакетов франшизы
+              и определение их стоимости</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Книга продаж Вашей франшизы</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Разработка стратегии: «Каналы
+              продаж франшизы»</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Настройка рекламной кампании,
+              для запуска продаж Вашей франшизы либо размещение в ТОП-овом каталоге франшиз;</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Внедрение системы записи звонков</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Контроль качества звонков менеджера,
+              нашим руководителем отдела продаж</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Совместная обработка звонков
+              и возникающих вопросов у клиента</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Настройка CRM-системы</span>
+          </li>
+          <li class="services__item">
+            <div class="services__markers-yes"></div>
+            <span class="services__item-text">Гарантированное сопровождение и
+              доведение до первых продаж франшизы;</span>
+          </li>
+        </ul>
+        <div class="services__wrap">
+          <ul class="services__card info">
+            <li class="info__item">
+              <span class="info__text">Срок</span>
+              <span class="info__text-resul">14 раб. дней</span>
+            </li>
+            <li class="info__item">
+              <span class="info__text">Стоимость пакета</span>
+              <span class="info__text-resul">55 000 ₽</span>
+            </li>
+          </ul>
+          <button class="services__btn-conf">Подготовить договор</button>
+        </div>
+      </div>
+    </li>
+    <!-- <li class="packs__item"></li>
+    <li class="packs__item"></li> -->
+  </ul>
 
-  <div class="packs-item">
-    <!-- <div class="packs-item__image">
-      <img src="../../../../assets/images/franchise-landing/fast-start 2.png" alt="Пакет из 15 инструментов">
-    </div> -->
-    <button class="packs-item__title packs-item__title--blue">Пакет “Проверка контрагента”</button>
-    <div class="packs-item__text">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью
-      упакованный бизнес во франшизу</div>
-    <ul class="packs-item__list">
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Аудит бизнеса</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка сайта для продажи франшизы (до 10 страниц)</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка пакетов франшизы и определение их стоимости</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Книга продаж Вашей франшизы</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка стратегии: «Каналы продаж франшизы»</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Настройка рекламной кампании, для запуска продаж Вашей франшизы либо размещение в
-          ТОП-овом каталоге франшиз;</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Внедрение системы записи звонков</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Контроль качества звонков менеджера, нашим руководителем отдела продаж</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Совместная обработка звонков и возникающих вопросов у клиента</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Настройка CRM-системы</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Гарантированное сопровождение и доведение до первых продаж франшизы;</span>
-      </li>
-    </ul>
-    <div class="packs-item-bottom">
-      <p class="packs-item-bottom__title"><span class="packs-item-bottom__start">Срок</span> <span
-          class="packs-item-bottom__end">7 рабочих дней</span></p>
-      <p class="packs-item-bottom__price"><span class="packs-item-bottom__start">Стоимость пакета</span> <span
-          class="packs-item-bottom__end">35 000 ₽</span></p>
-      <button class="packs-item-bottom__button">Проверить контрагента</button>
-    </div>
-  </div>
-
-  <div class="packs-item">
-    <!-- <div class="packs-item__image">
-      <img src="../../../../assets/images/franchise-landing/fast-start 3.png" alt="Пакет из 25 инструментов">
-    </div> -->
-    <button class="packs-item__title">Пакет “Сопровождение сделки”</button>
-    <div class="packs-item__text">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью
-      упакованный бизнес во франшизу</div>
-    <ul class="packs-item__list packs-item__list--last">
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Аудит бизнеса</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка сайта для продажи франшизы (до 10 страниц)</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка пакетов франшизы и определение их стоимости</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Книга продаж Вашей франшизы</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка стратегии: «Каналы продаж франшизы»</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Настройка рекламной кампании, для запуска продаж Вашей франшизы либо размещение в
-          ТОП-овом каталоге франшиз;</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Внедрение системы записи звонков</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Контроль качества звонков менеджера, нашим руководителем отдела продаж</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Совместная обработка звонков и возникающих вопросов у клиента</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Настройка CRM-системы</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Гарантированное сопровождение и доведение до первых продаж франшизы;</span>
-      </li>
-    </ul>
-    <div class="packs-item-bottom">
-      <p class="packs-item-bottom__title"><span class="packs-item-bottom__start">Срок</span> <span
-          class="packs-item-bottom__end">14 рабочих дней</span></p>
-      <p class="packs-item-bottom__price"><span class="packs-item-bottom__start">Стоимость пакета</span> <span
-          class="packs-item-bottom__end">55 000 ₽</span></p>
-      <button class="packs-item-bottom__button">Заказать сопровождение</button>
-    </div>
-  </div>
 </div>
 
 <div class="check">
-  <div class="check-content">
-    <div class="check-content__title">Проверка</div>
-    <div class="check-content__subtitle">юридических документов</div>
-    <div class="check-content__text">при покупке франшизы или готового бизнеса</div>
-    <div class="check-content__inputs">
-      <label class="check-content__label">Имя
-        <input class="check-content__input" type="text" name="name" placeholder="Введите имя">
+
+  <form class="check__form form" action="">
+    <h2 class="check__title">Проверка</h2>
+    <h3 class="check__subtitle">юридических документов</h3>
+    <span class="check__more">при покупке франшизы или
+      готового бизнеса</span>
+    <div class="check__wrap">
+      <label class="check__label">Имя
+        <input class="check__input" type="text" name="name" placeholder="Введите имя">
       </label>
-      <label class="check-content__label">Номер телефона
-        <input class="check-content__input" type="tel" name="telephone" placeholder="Введите номер телефона">
+      <label class="check__label">Номер телефона
+        <input class="check__input" type="tel" name="telephone" placeholder="Введите номер телефона">
       </label>
     </div>
-    <button class="check-content__button">Отправить договор на проверку</button>
-  </div>
-  <div class="check-image">
-    <img src="../../../../assets/images/consulting-landing/template_person6 1.png" alt="Фото проверяющего">
+
+    <button class="check__button">Отправить договор на проверку</button>
+  </form>
+  <div class="check__block-foto">
+    <img class="check__img" src="../../../../assets/images/consulting-landing/men-pic.png" alt="Фото проверяющего">
   </div>
 </div>
+
+
+
+
 
 <!-- Популярный бизнес. -->
 <!-- <h5 class="garant title-franchise">Популярныe франшизы</h5>
@@ -639,6 +629,11 @@
     </p-card>
   </div>
 </div> -->
+
+
+
+
+
 
 <!-- Новости делового мира. Мешает адаптиву -->
 <!-- <h5 class="garant title-franchise">Новости делового мира</h5>

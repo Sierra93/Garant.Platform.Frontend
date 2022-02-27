@@ -165,12 +165,12 @@
         <div class="invest-block" *ngFor="let item of aInvestInclude">
           <div *ngIf="item.Price > 0">
             <span class="">Стоимость</span>
-            <strong>{{item.Price}} ₽</strong>            
+            <strong>{{item.Price}} ₽</strong>
           </div>
 
           <div>
             <span class="">Название</span>
-            <strong>{{item.Name}}</strong>            
+            <strong>{{item.Name}}</strong>
           </div>
         </div>
       </div>
@@ -210,28 +210,12 @@
           <p class="description">{{franchiseData.text}}</p>
         </div>
       </div>
-
-       <!-- <div class="invest-in">
-            <span class="title-strong">Добавить презентацию</span><br>
-            <div class="block-details-franch">
-              <small>Прикрепить документ .pdf</small><br>
-              <button class="control-button-blue-small">Прикрепить файл</button><br>
-              <input type="file" (change)="uploadPresentAsync($event)">
-            </div>
-            <small>
-              Загружать презентацию не обязательно.<br>
-              Однако, это способствует повышению конверсии<br>
-              и глубинной заинтересованности в проекте. Если<br>
-              вы не хотите загружать презентацию, просто<br>
-              пропустите данный этап.
-            </small>
-          </div> -->
     </div>
   </div>
 
   <!-- Пример расчета прибыли. -->
   <div class="row income-calculation section-margin">
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-10">
+    <div class="col-12">
       <div>
         <h3 class="section-title">Пример расчета прибыли*</h3>
         <p class="description">{{franchiseData.paymentDetail}}</p>
@@ -239,7 +223,7 @@
     </div>
 
     <!-- Ключевые финансовые показатели. -->
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-10" *ngIf="isHideIndicators">
+    <div class="col-12" *ngIf="isHideIndicators">
       <div class="franchise-details-block">
         <h5 class="subsection-title">Ключевые финансовые показатели</h5>
         <div class="child-blocks-wrapper">
@@ -291,7 +275,7 @@
     </div>
 
     <!-- Блок с пакетами франшизы. -->
-    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 package" *ngFor="let item of aPacks">
+    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 package" *ngFor="let item of aPacks">
       <div class="franchise-packages-block">
         <div class="package-title">
           <h6>{{item.Name}}</h6>

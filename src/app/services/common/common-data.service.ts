@@ -624,4 +624,26 @@ export class CommonDataService {
     public getUserLocation(): string {
         return window.navigator.language.substr(0, 2).toLowerCase();
     };
+
+    public async getNewBusinessAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/business/new-business"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Последние объявления бизнеса:", response);
+                        resolve(response);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 };

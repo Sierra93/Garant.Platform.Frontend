@@ -51,6 +51,7 @@ export class DealLandingModule implements OnInit {
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
+  aPopularFranchises: any[] = [];
 
   constructor(private http: HttpClient,
       private commonService: CommonDataService,
@@ -103,6 +104,7 @@ export class DealLandingModule implements OnInit {
       await this.loadSingleSuggestionAsync();
       await this.GetNewFranchisesListAsync();
       // await this.GetReviewsFranchisesAsync();
+      await this.getPopularAsync();
   };
 
   /**
@@ -521,4 +523,21 @@ export class DealLandingModule implements OnInit {
       await this.setTransitionAsync(businessId);    
       this.router.navigate(["/business/view"], { queryParams: { businessId: businessId } });
   };
+
+  /**
+     * Функция получит список популярныз франшиз.
+     * @returns Список франшиз.
+     */
+   private async getPopularAsync() {        
+    try {
+        await this.commonService.getPopularAsync().then((data: any) => {
+            console.log("Популярные франшизы:", data);
+            this.aPopularFranchises = data;
+        });
+    }
+
+    catch (e: any) {
+        throw new Error(e);
+    }
+};
 }

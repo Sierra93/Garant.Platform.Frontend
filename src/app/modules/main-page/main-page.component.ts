@@ -48,6 +48,7 @@ export class MainPageModule implements OnInit {
     view: string = "";
     city: string = "";
     category: string = "";
+    aNewBusiness: any[] = [];
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -88,8 +89,8 @@ export class MainPageModule implements OnInit {
         await this.loadSliderLastBuyAsync();
         await this.GetActionsAsync();
         await this.loadSingleSuggestionAsync();
-        await this.GetPopularAsync();
-        await this.GetAdsAsync();
+        await this.getPopularAsync();
+        await this.getNewBusinessAsync();
         await this.GetBlogsAsync();
         await this.GetNewsTopAsync();
         await this.GetQuickFranchisesAsync();
@@ -216,7 +217,7 @@ export class MainPageModule implements OnInit {
      * Функция получит список популярныз франшиз.
      * @returns Список франшиз.
      */
-    private async GetPopularAsync() {        
+    private async getPopularAsync() {        
         try {
             await this.commonService.getPopularAsync().then((data: any) => {
                 console.log("Популярные франшизы:", data);
@@ -230,22 +231,15 @@ export class MainPageModule implements OnInit {
     };
 
     /**
-     * Функция получит список последних объявлений.
+     * Функция получит список последних бизнесов.
      * @returns Список объявлений.
      */
-     private async GetAdsAsync() {
+     private async getNewBusinessAsync() {
         try {
-            await this.http.post(API_URL.apiUrl.concat("/ad/new"), {})
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Последние объявления:", response);
-                        this.aAds = response;
-                    },
-
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
+            await this.commonService.getNewBusinessAsync().then((data: any) => {
+                console.log("Последний бизнес:", data);
+                this.aNewBusiness = data;
+            });
         }
 
         catch (e: any) {

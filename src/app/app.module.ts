@@ -6,7 +6,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule, Title } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -18,7 +18,7 @@ import { TabViewModule } from "primeng/tabview";
 import { RadioButtonModule } from "primeng/radiobutton";
 import { PaginatorModule } from "primeng/paginator";
 import { CommonDataService } from "./services/common/common-data.service";
-import { ParamInterceptor } from "./api-interceptor";
+import { ParamInterceptor } from "./interceptors/api-interceptor";
 import { HeaderModule } from "./modules/header/header.component";
 import { InputTextModule } from "primeng/inputtext";
 import { AutoCompleteModule } from "primeng/autocomplete";
@@ -65,9 +65,13 @@ import { DealLandingModule } from "./modules/landing/deal-landing/deal-landing.c
 import { NotificationsModule } from "./modules/profile/profile-requests/notifications.component";
 import { ConfiguratorAuthModule } from "./modules/configurator/configurator-auth/configurator-auth.component";
 import { TabMenuModule } from 'primeng/tabmenu';
-import { ConfiguratorAdminModule } from "./modules/configurator/configurator-admin/configurator-admin.component";
 import { DocumentService } from "./services/garant/document.service";
 import { CreateAdModule } from "./modules/create-ad/create-ad.component";
+import { TableModule } from 'primeng/table';
+import { NgHttpLoaderModule } from 'ng-http-loader';
+import { SESSION_TOKEN } from "./core/session/session.token";
+import { SessionService } from "./core/session/session.service";
+import { GarLibModule } from "./gar-lib/gar-lib.module";
 
 @NgModule({
   declarations: [
@@ -100,7 +104,6 @@ import { CreateAdModule } from "./modules/create-ad/create-ad.component";
     DealLandingModule,
     NotificationsModule,
     ConfiguratorAuthModule,
-    ConfiguratorAdminModule,
     CreateAdModule
   ],
 
@@ -135,7 +138,10 @@ import { CreateAdModule } from "./modules/create-ad/create-ad.component";
     AvatarGroupModule,
     ReactiveFormsModule,
     TabMenuModule,
-    StepsModule
+    StepsModule,
+    TableModule,
+    NgHttpLoaderModule.forRoot(),
+    GarLibModule
   ],
 
   providers: [
@@ -143,6 +149,10 @@ import { CreateAdModule } from "./modules/create-ad/create-ad.component";
       provide: HTTP_INTERCEPTORS,
       useClass: ParamInterceptor,
       multi: true
+    },
+    {
+      provide: SESSION_TOKEN,
+      useClass: SessionService
     },
     CommonDataService,
     GarantService,

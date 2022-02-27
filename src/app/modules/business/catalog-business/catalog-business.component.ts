@@ -4,8 +4,7 @@ import { NgForm } from "@angular/forms";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
-import { FilterInput } from "src/app/models/franchise/input/filter-franchise-input";
-import { FranchiseInput } from "src/app/models/franchise/input/franchise-input";
+import { FilterBusinessWithPaginationInput } from "src/app/models/business/input/filter-business-with-pagination-input";
 import { PaginationInput } from "src/app/models/pagination/input/pagination-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 
@@ -20,25 +19,27 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
  */
 export class CatalogBusinessModule implements OnInit {
     aPopularBusiness: any[] = [];
-    isGarant: boolean = false;
+    isGarant: boolean = true;
     aCities: any[] = [];
     aBusinessCategories: any[] = [];
     aViewBusiness: any[] = [];
-    minPrice!: number;
-    maxPrice!: number;
+    minPrice!: number;    
+    maxPrice!: number;    
     view: string = "";
     city: string = "";
     category: string = "";
     selectedCity: string = "";
-    selectedCategory: any;
+    selectedCategory: any = "";
     selectedViewBusiness: any;
     aBusinessList: any[] = [];
-    selectedSort: any;
+    selectedSort: any = "";
     aSortPrices: any[] = [];
-    filterMinPrice!: number;
-    filterMaxPrice!: number;
+    minProfit!: number;
+    maxProfit!: number;
     countTotalPage!: number;
     countBusinesses!: number;
+    aRowsPerPageOptions: number[] = [10,20,30];
+    selectedCountRows : number = 10;    
     aBlogs: any[] = [];
     aNews: any[] = [];
     categoryList1: any[] = [];
@@ -123,41 +124,7 @@ export class CatalogBusinessModule implements OnInit {
     //         throw new Error(e);
     //     }
     // };
-
-    /**
-     * Функция отфильтрует список бизнеса по фильтрам.
-     * @param viewCode - Код вида бизнеса.
-     * @param categoryCode - Код категории бизнеса.
-     * @param cityCode - Город бизнеса. 
-     * @param minPrice - Цена от.
-     * @param maxPrice - Цена до.
-     */
-    //  public async onFilterFranchisesAsync(form: NgForm) {                
-    //     try {
-    //         let filterInput = new FranchiseInput();
-    //         filterInput.viewCode = form.value.view.viewCode;
-    //         filterInput.cityCode = form.value.city.cityCode;
-    //         filterInput.categoryCode = form.value.category.categoryCode;
-    //         filterInput.minPrice = form.value.minPrice;
-    //         filterInput.maxPrice = form.value.maxPrice;
-
-    //         await this.http.post(API_URL.apiUrl.concat("/main/filter"), filterInput)
-    //             .subscribe({
-    //                 next: (response: any) => {
-    //                     console.log("Отфильтрованный список франшиз:", response);
-    //                     // this.aFranchises = response;
-    //                 },
-
-    //                 error: (err) => {
-    //                     throw new Error(err);
-    //                 }
-    //             });
-    //     }
-
-    //     catch (e: any) {
-    //         throw new Error(e);
-    //     }
-    // };  
+   
 
     /**
      * TODO: Вынести в общий сервис.    
@@ -165,6 +132,7 @@ export class CatalogBusinessModule implements OnInit {
      */
     private async GetBusinessListAsync() {
         try {
+            //TODO: Возможно не используется
             await this.http.post(API_URL.apiUrl.concat("/business/catalog-business"), {})
                 .subscribe({
                     next: (response: any) => {
@@ -256,26 +224,27 @@ export class CatalogBusinessModule implements OnInit {
     };    
 
     public async onPaginationChangeAsync(event: any) {
-        let paginationData = new PaginationInput();
-        paginationData.PageNumber = event.page + 1;
-        paginationData.CountRows = event.rows;
-
         try {
-            await this.http.post(API_URL.apiUrl.concat("/pagination/catalog-business"), paginationData)
-            .subscribe({
-                next: (response: any) => {
-                    console.log("get data pagination", response);
-                    this.countBusinesses = response.countAll;
-                    this.aBusinessList = response.results;
-                    // this.aFranchises = response.results;
-                    // this.router.navigate(['/auction'], {
-                    //     queryParams: {
-                    //         page: paginationData.PageNumber,
-                    //         rows: paginationData.CountRows
-                    //     }
-                    // });
-                },
+            let filterInput = new FilterBusinessWithPaginationInput();                         
+                filterInput.TypeSortPrice = this.selectedSort.value;
+                filterInput.MinProfit = this.minProfit;
+                filterInput.MaxProfit = this.maxProfit;
+                filterInput.City = this.city;
+                filterInput.CategoryCode = this.selectedCategory.categoryCode;
+                filterInput.MinPrice = this.minPrice;
+                filterInput.MaxPrice = this.maxPrice;
+                filterInput.IsGarant = this.isGarant;
+                filterInput.PageNumber = event.page + 1;
+                filterInput.CountRows = event.rows;
 
+            this.selectedCountRows = event.rows;    
+            await this.http.post(API_URL.apiUrl.concat("/business/filter-pagination"), filterInput)
+            .subscribe({
+                next: (response: any) => {                                       
+                    this.aBusinessList = response.results;
+                    this.countBusinesses = response.countAll;
+                    this.countTotalPage = response.countAll;                     
+                },
                 error: (err) => {
                     this.commonService.routeToStart(err);
                     throw new Error(err);
@@ -300,7 +269,8 @@ export class CatalogBusinessModule implements OnInit {
                 next: (response: any) => {
                     console.log("pagination init", response);
                     this.countBusinesses = response.countAll;
-                    this.countTotalPage = response.totalCount;                    
+                    this.aBusinessList = response.results;
+                    this.countTotalPage = response.countAll;                     
                 },
 
                 error: (err) => {
@@ -319,43 +289,61 @@ export class CatalogBusinessModule implements OnInit {
         console.log("onChangeSortPrice", this.selectedSort);
     };
 
-    /**
-     * Функция фильтрует бизнесы по параметрам.
-     * @returns - Список бизнесов после фильтрации.
+     /**
+     * Функция фильтрует бизнесы по параметрам с учётом пагинации.
+     * @returns - Список бизнесов после фильтрации с учётом пагинации.
      */
-    public async onFilterBusinessesAsync() {
-        try {
-            let filterInput = new FilterInput();
-            filterInput.TypeSortPrice = this.selectedSort.value;
-            filterInput.ProfitMinPrice = this.filterMinPrice;
-            filterInput.ProfitMaxPrice = this.filterMaxPrice;
-            // filterInput.ViewCode = this.selectedViewBusiness.viewCode;
-            filterInput.CategoryCode = this.selectedCategory.categoryCode;
-            filterInput.MinPriceInvest = this.minPrice;
-            filterInput.MaxPriceInvest = this.maxPrice;
-            filterInput.IsGarant = this.isGarant;
-
-            await this.http.post(API_URL.apiUrl.concat("/business/filter-businesses"), filterInput)
-            .subscribe({
-                next: (response: any) => {
-                    console.log("Бизнеса после фильтрации:", response);                    
-                    this.aBusinessList = response;
-                },
-
-                error: (err) => {
-                    this.commonService.routeToStart(err);
-                    throw new Error(err);
-                }
-            });
-        }
-
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };
+         public async onFilterBusinessesWithPaginationAsync() {
+            try {                
+                let filterInput = new FilterBusinessWithPaginationInput();                         
+                filterInput.TypeSortPrice = this.selectedSort.value;
+                filterInput.MinProfit = this.minProfit;
+                filterInput.MaxProfit = this.maxProfit;
+                filterInput.City = this.city;
+                filterInput.CategoryCode = this.selectedCategory.categoryCode;
+                filterInput.MinPrice = this.minPrice;
+                filterInput.MaxPrice = this.maxPrice;
+                filterInput.IsGarant = this.isGarant;
+                filterInput.PageNumber = 1;
+                filterInput.CountRows = this.selectedCountRows;
+    
+                await this.http.post(API_URL.apiUrl.concat("/business/filter-pagination"), filterInput)
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Бизнеса после фильтрации:", response);                    
+                        this.aBusinessList = response.results;
+                        this.countBusinesses = response.countAll;
+                        this.countTotalPage = response.countAll;                          
+                    },
+    
+                    error: (err) => {
+                        this.commonService.routeToStart(err);
+                        throw new Error(err);
+                    }
+                });
+            }
+    
+            catch (e: any) {
+                throw new Error(e);
+            }
+        };
 
     public async onClearFilters() {
-        await this.GetBusinessListAsync();
+        //TODO: После сброса числовые значения устанавливаются в ноль: нужно выводить плейсхолдеры вместо нулей 
+        //и запретить пользователю отправлять "пустые" значения цен и прибыли. Этого можно добиться, если сначала ввести
+        // а затем руками стереть значение.
+        
+        this.isGarant = true;
+        this.selectedCategory = "";
+        this.selectedSort = "";
+        this.selectedCity ="";
+        this.maxPrice = 0;
+        this.minPrice = 0;
+        this.minProfit = 0;
+        this.maxProfit = 0;
+        
+        await this.loadPaginationInitAsync();
+        
     };
 
     /**

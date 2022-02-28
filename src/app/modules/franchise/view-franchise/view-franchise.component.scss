@@ -3,6 +3,19 @@
 @import "/src/app/shared/styles/common.scss";
 @import "./../create-franchise/create-franchise.component.scss";
 
+/* Стили для определенного компонента определять внутри хоста */
+:host {
+  .view-franchise {
+    &.title-btn.p-button {
+      width: initial;
+      height: initial;
+      border-radius: initial;
+    }
+  }
+}
+
+
+
 .section-margin {
   margin-bottom: 5rem;
 }

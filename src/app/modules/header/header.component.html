@@ -5,13 +5,15 @@
       <div class="col-12">
         <nav class="d-flex justify-content-end">
           <ul class="list-unstyled d-flex">
-            <li *ngFor="let el of aHeader; let last = last">
-              <span (click)="onGetMenuHeader(el.name)" *ngIf="!last">{{el.name}}</span>
-              <span (click)="onGetMenuHeader(el.name)" *ngIf="last" class="last">
+            <ng-container *ngIf="!!(aHeader$ | async)">
+              <li *ngFor="let el of aHeader$ | async; let last = last">
+                <span (click)="onGetMenuHeader(el.name)" *ngIf="!last">{{el.name}}</span>
+                <span (click)="onGetMenuHeader(el.name)" *ngIf="last" class="last">
                 <span>+</span>
                 <span>{{el.name}}</span>
               </span>
-            </li>
+              </li>
+            </ng-container>
           </ul>
         </nav>
       </div>
@@ -227,7 +229,7 @@
             </li>
 
             <li>
-              <a routerLink="/">
+              <a routerLink="/consulting/start">
                 <img src="../../../assets/images/Logo=Law, Stage=Passive.svg" class="after-search-img" width="44"
                   height="42">
                 <span>Консалтинг</span>
@@ -235,7 +237,7 @@
             </li>
 
             <li>
-              <a routerLink="/">
+              <a routerLink="/franchise/start">
                 <img src="../../../assets/images/Logo=Settings, Stage=Passive.svg" class="after-search-img" width="44"
                   height="42">
                 <span>Упаковка франшиз</span>
@@ -269,7 +271,7 @@
 
     <div class="content">
       <ul>
-        <li *ngFor="let el of aHeader" class="d-flex justify-content-between align-items-center">
+        <li *ngFor="let el of aHeader$ | async" class="d-flex justify-content-between align-items-center">
           <span (click)="onGetMenuHeader(el.name)">{{el.name}}</span>
           <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
         </li>
@@ -303,14 +305,14 @@
         </li>
 
         <li>
-          <a routerLink="/" class="d-flex justify-content-between align-items-center">
+          <a routerLink="/consulting/start" class="d-flex justify-content-between align-items-center">
             <span>Консалтинг</span>
             <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
           </a>
         </li>
 
         <li>
-          <a routerLink="/" class="d-flex justify-content-between align-items-center">
+          <a routerLink="/franchise/start" class="d-flex justify-content-between align-items-center">
             <span>Упаковка франшиз</span>
             <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
           </a>

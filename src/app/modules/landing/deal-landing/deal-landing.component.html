@@ -435,19 +435,25 @@
 
 
 <!-- Популярный бизнес. -->
-<h5 class="garant title-franchise">Популярныe франшизы</h5>
-<div class="d-flex popular-list">
-  <div class="popular-item" *ngFor="let item of aPopularBusiness">
-    <p-card header="{{item.businessName}}" subheader="{{item.text}}" [style]="{width: '100%'}"
-      styleClass="p-card-shadow">
-      <ng-template pTemplate="header">
-        <img [src]="item.url">
-      </ng-template>
-      <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-      <ng-template pTemplate="footer">
+<div class="row section-mb">
+  <div class="col-12">
+    <h5 class="title-franchise">Популярные франшизы</h5>
+  </div>
+  <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aPopularFranchises">
+    <div class="popular-list">
+      <div>
+        <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}"
+          styleClass="p-card-shadow">
+          <ng-template pTemplate="header">
+            <img [src]="item.url">
+          </ng-template>
+          <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+          <ng-template pTemplate="footer">
 
-      </ng-template>
-    </p-card>
+          </ng-template>
+        </p-card>
+      </div>
+    </div>
   </div>
 </div>
 

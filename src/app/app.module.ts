@@ -69,9 +69,9 @@ import { DocumentService } from "./services/garant/document.service";
 import { CreateAdModule } from "./modules/create-ad/create-ad.component";
 import { TableModule } from 'primeng/table';
 import { NgHttpLoaderModule } from 'ng-http-loader';
-import { SESSION_TOKEN } from "./core/session/session.token";
-import { SessionService } from "./core/session/session.service";
 import { GarLibModule } from "./gar-lib/gar-lib.module";
+import { SessionService } from "./core/session/session.service";
+import { SESSION_TOKEN } from "./core/session/session.token";
 
 @NgModule({
   declarations: [

@@ -19,7 +19,7 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
  */
 export class CatalogBusinessModule implements OnInit {
     aPopularBusiness: any[] = [];
-    isGarant: boolean = true;
+    isGarant: boolean = false;
     aCities: any[] = [];
     aBusinessCategories: any[] = [];
     aViewBusiness: any[] = [];

@@ -13,6 +13,10 @@
   font-weight: 500;
 }
 
+.subsection-title {
+  margin-right: 1.5rem;
+}
+
 .main-title {
   font-size: 2rem;
   color: #000;
@@ -342,6 +346,18 @@
         text-align: left;
         color: #646464;
       }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .buttons {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      margin: 0;
     }
   }
 }

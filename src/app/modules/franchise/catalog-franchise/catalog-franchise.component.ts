@@ -19,7 +19,7 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
 export class CatalogFranchiseModule implements OnInit {
     
     aPopularFranchises: any[] = [];
-    isGarant: boolean = true;
+    isGarant: boolean = false;
     aCities: any[] = [];
     aBusinessCategories: any[] = [];
     aViewBusiness: any[] = [];
@@ -336,7 +336,7 @@ export class CatalogFranchiseModule implements OnInit {
 
 
     public async onClearFilters() {
-        this.isGarant = true;
+        this.isGarant = false;
         this.minPrice = 0;
         this.filterMinPrice =0;
         this.maxPrice = 0;

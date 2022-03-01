@@ -4,3 +4,12 @@
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/modules/main-page/main-page.component.scss";
 @import "/src/app/modules/franchise/catalog-franchise/catalog-franchise.component.scss";
+
+body {
+    overflow-x: hidden;
+}
+
+.popular-list {
+    flex-wrap: wrap;
+    width: 100%;
+  }

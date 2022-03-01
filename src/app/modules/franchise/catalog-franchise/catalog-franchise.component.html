@@ -30,17 +30,17 @@
     </div>
 
     <div class="col-12">
-      <form class="franchise-catalog-form" #filterForm="ngForm" novalidate>
+      <form class="" #filterForm="ngForm" novalidate>
         <div class="row">
           <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 franchise-sphere">
             <label>Сфера франшиз</label>
-            <p-dropdown [options]="aViewBusiness" class="catalog-franchises-form-item" optionLabel="viewName"
+            <p-dropdown [options]="aViewBusiness" class="block-sort-by" optionLabel="viewName"
               [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
           </div>
 
           <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 control-quick-search">
             <label>Выбор категории</label>
-            <p-dropdown [options]="aBusinessCategories" class="catalog-franchises-form-item" optionLabel="categoryName"
+            <p-dropdown [options]="aBusinessCategories" class="block-sort-by" optionLabel="categoryName"
               [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
           </div>
 
@@ -77,18 +77,23 @@
           <div class="price-sorter">
             <label class="label-filter">Сортировать по</label>
             <div>
-              <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value"
+              <!-- <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value"
                 name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true"
-                (onChange)="onChangeSortPrice()"></p-dropdown>
+                (onChange)="onChangeSortPrice()"></p-dropdown> -->
+                <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
+        [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
             </div>
           </div>
 
-          <div class="switch-garant d-flex justify-content-between">
-            <label class="label-filter mb-0 d-flex align-items-center">Покупка через гарант</label>
-            <div>
-              <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
-            </div>
+         <div class="d-flex">
+          <div class="">
+            <strong>Покупка через гарант</strong>            
           </div>
+
+          <div>
+            <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
+          </div>
+         </div>
 
           <div class="monthly-income">
             <label class="label-filter">Прибыль в месяц</label>

@@ -49,6 +49,7 @@ export class MainPageModule implements OnInit {
     city: string = "";
     category: string = "";
     aNewBusiness: any[] = [];
+    isHideBusinessWithGarant: boolean = false;
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -427,4 +428,20 @@ export class MainPageModule implements OnInit {
             throw new Error(e);
         }
     };    
+
+    public onRoute(text: string) {
+        if (text == "Продать") {
+            this.router.navigate(["/ad/create"]);  
+            return;
+        }
+
+        if (text == "Начать") {           
+            return;
+        }
+
+        if (text == "Упаковать") {
+            this.router.navigate(["/franchise/start"]);  
+            return;
+        }
+    };
 }

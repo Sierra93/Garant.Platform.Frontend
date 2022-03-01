@@ -42,21 +42,21 @@
 
   <div class="space-top-auth-form form-auth">
     <form class="block-form-auth">
+      <div class="form-close"><img src="../../../assets/images/close.svg" alt="close"></div>
       <h5>Добавить объявление</h5>
-      
-      <div class="space-top-bottom-32">
+                  <div class="space-top-bottom-32">
         <strong class="title-small">Вид бизнеса</strong>
       </div>
 
-      <div class="d-flex justify-content-center">
-        <div>
+      <div class="d-flex justify-content-start">
+        <div class="choice">
           <p-checkbox name="franchise" inputId="franch" [(ngModel)]="isSelectFranch" [binary]="true" (onChange)="onSelectFracnhiseCheck()"></p-checkbox>
           <label for="franch" class="control-label-checkbox">Франшиза</label>
         </div>
 
-        <div class="block-space-check"></div>
+        
 
-        <div>
+        <div class="choice">
           <p-checkbox name="business" inputId="bus" [(ngModel)]="isSelectBus" [binary]="true" (onChange)="onSelectBusinessCheck()"></p-checkbox>
           <label for="bus" class="control-label-checkbox">Готовый бизнес</label>
         </div>           
@@ -67,7 +67,7 @@
           <strong class="title-small">Выбор сферы</strong>
         </div>
 
-        <p-dropdown 
+        <p-dropdown
           [options]="aFranchiseCategories" 
           optionLabel="categoryName" 
           optionCode="categoryCode"
@@ -81,7 +81,7 @@
           *ngIf="isSelectFranch">
       </p-dropdown>
 
-      <p-dropdown 
+      <p-dropdown
           [options]="aBusinessCategories" 
           optionLabel="categoryName" 
           optionCode="categoryCode"
@@ -118,6 +118,7 @@
           [options]="aBusinessSubCategories" 
           optionLabel="subCategoryName" 
           [filter]="true" 
+           dropdownIcon="dropdown-icon"
           name="subCategory" 
           [(ngModel)]="selectedSubCategory"
             optionCode="categoryCode" 
@@ -139,7 +140,7 @@
 
       <div class="d-flex space-top-bottom-32">
         <p-checkbox name="condition" inputId="cond" [(ngModel)]="isSelectGobizy" [binary]="true"></p-checkbox>
-        <label for="cond" class="control-label-checkbox">
+        <label for="cond" class="control-label-checkbox2">
           Согласен с условиями использования<br>
           сервисов GoBizy и обработки персональных<br>
           данных
@@ -148,13 +149,13 @@
 
       <div class="d-flex space-top-bottom-32">
         <p-checkbox name="sell" inputId="sell" [(ngModel)]="isSelectSell" [binary]="true"></p-checkbox>
-        <label for="sell" class="control-label-checkbox">
+        <label for="sell" class="control-label-checkbox2">
           Хочу продать бизнес онлайн
         </label>
       </div>  
 
       <div class="text-center">
-        <button class="btn btn-default btn-code-active" (click)="onContinue(isSelectFranch, isSelectBus, isSelectGobizy, isSelectSell)">Продолжить</button>
+        <button class="btn btn-default btn-code-active text-center-btn" (click)="onContinue(isSelectFranch, isSelectBus, isSelectGobizy, isSelectSell)">Продолжить</button>
       </div>
     </form>
   </div>

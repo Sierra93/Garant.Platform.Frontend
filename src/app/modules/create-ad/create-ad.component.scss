@@ -1,4 +1,4 @@
-@use "/src/app/app.component.scss";  
+@use "/src/app/app.component.scss";
 @use "/src/app/shared/styles/image-space.scss";
 @use "/src/app/shared/styles/media-quaries.scss";
 @use "/src/app/shared/styles/common.scss";
@@ -6,5 +6,79 @@
 @use "/src/app/modules/login/login.component.scss";
 
 .block-space-check {
-    margin: 0 64px;
+  margin: 0 64px;
+}
+.form-auth {
+  border: 1px solid #666666;
+  max-width: 464px;
+  padding: 34px 26px 32px 24px;
+}
+h5 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}
+.form-close {
+  text-align: end;
+  margin-bottom: 12px;
+}
+.control-label-checkbox {
+  width: 129px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.choice {
+  width: 175px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.p-dropdown {
+  width: 416px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #f1f6ff;
+  border-radius: 6px;
+}
+.space-top-bottom-32 {
+  justify-content: space-between;
+  width: 343px;
+  margin-top: 34px;
+}
+.control-label-checkbox2 {
+  width: 293px;
+  height: 48px;
+  left: 50px;
+  font-size: 14px;
+  line-height: 16px;
+}
+.text-center-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 24px 154px;
+  background: #1f75fe;
+  border-radius: 8px;
+  color: #ffffff;
+}
+// .ert {
+//   width: 416px;
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   background: #f1f6ff;
+//   border-radius: 6px;
+// }
+
+::ng-deep .p-dropdown-label,// 
+::ng-deep .p-dropdown .p-dropdown-trigger {
+  background: #f1f6ff !important;
 }

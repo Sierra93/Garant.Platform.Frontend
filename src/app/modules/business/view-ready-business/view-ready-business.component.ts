@@ -99,8 +99,8 @@ export class ViewReadyBusinessModule implements OnInit {
 
     public async ngOnInit() {
         await this.getUserFio();
-        await this.getTransitionAsync();
-    };
+        await this.getTransitionAsync();       
+    }; 
 
     public ngOnAfterViewInit() {
         this.aBusinessPhotos = this.aNamesBusinessPhotos;
@@ -446,5 +446,5 @@ export class ViewReadyBusinessModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    };
+    };   
 }

@@ -39,12 +39,21 @@ export class NotifyService {
    */
   private setSignalrClientMethods() {
     // Функция отображит уведомление, если пользователь не заполнил данные о себе.
-    this.connection.on('SendNotifyEmptyUserInfo', (message: string) => {   
+    this.connection.on('SendNotifyEmptyUserInfo', (message: string) => {
       this.messageService.add({
         severity: 'warn',
         summary: 'Внимание',
         detail: message
-    });    
+      });
+    });
+
+    // Функция отображит уведомление, когда карточка создана и отправлена на модерацию.
+    this.connection.on('SendCardModeration', (message: string) => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Успешно',
+        detail: message
+      });
     });
   };
 }

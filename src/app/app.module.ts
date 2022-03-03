@@ -161,13 +161,13 @@ import { NotifyService } from "./services/notify/notify.service";
     Title,
     MessageService,
     DocumentService,
-    NotifyService,
-  {
-    provide: APP_INITIALIZER,
-    useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
-    deps: [NotifyService],
-    multi: true,
-  }
+  //   NotifyService,
+  // {
+  //   provide: APP_INITIALIZER,
+  //   useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
+  //   deps: [NotifyService],
+  //   multi: true,
+  // }
   ],
 
   bootstrap: [AppComponent]

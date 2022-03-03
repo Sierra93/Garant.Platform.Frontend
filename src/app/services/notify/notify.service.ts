@@ -18,7 +18,10 @@ export class NotifyService {
   public initiateSignalrConnection(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.connection = new signalR.HubConnectionBuilder()
-        .withUrl(API_URL.apiUrl.concat("/notify"))
+        .withUrl(API_URL.apiUrl.concat("/notify"), {
+          skipNegotiation: false,
+          transport: signalR.HttpTransportType.LongPolling
+        })
         .build();
 
       this.setSignalrClientMethods();

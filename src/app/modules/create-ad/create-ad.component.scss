@@ -72,11 +72,15 @@ h5 {
   background: #f1f6ff;
   border-radius: 6px;
 }
+.block-form-auth {
+  width: 100%;
+}
 .space-top-bottom-32 {
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 343px;
   margin-top: 34px;
 }
+
 .control-label-checkbox2 {
   display: flex;
   align-items: center;
@@ -85,6 +89,7 @@ h5 {
   left: 50px;
   font-size: 14px;
   line-height: 16px;
+  margin-left: 5%;
 }
 .checkbox-btn {
   width: 32px;
@@ -121,7 +126,7 @@ h5 {
   justify-content: space-between;
 }
 .wrapper-checkbox-1 {
-  width: 159px;
+  width: 129px;
   height: 40px;
   margin-right: 24px;
 }

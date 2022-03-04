@@ -6,7 +6,12 @@
 
   <!-- Правая часть. -->
   <div class="col-xxl-9 col-xl-9 col-lg-8">
-    <h2 class="profile-title">Чат с {{fio}}</h2>
+    <h2 class="profile-title">
+      <a routerLink="/profile/chat/dialogs" class="me-3">
+        <img src="./../../../../assets/images/back.svg" alt="gobizy icon" />
+      </a>
+      <span>Чат с {{fio}}</span>
+    </h2>
 
     <div class="block-right block-profile">
       <div class="row">

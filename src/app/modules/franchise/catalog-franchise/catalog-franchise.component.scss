@@ -187,6 +187,10 @@
       img {
         width: 100%;
       }
+
+      @media (max-width: 992px) {
+        margin-bottom: 1rem;
+      }
     }
 
     .business-news {

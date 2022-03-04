@@ -28,7 +28,6 @@ export class FooterModule implements OnInit {
 
   public async ngOnInit() {
     await this.initFooter();
-    this.redirectCreateAd();
   }
 
   @HostListener('window:resize', ['$event'])

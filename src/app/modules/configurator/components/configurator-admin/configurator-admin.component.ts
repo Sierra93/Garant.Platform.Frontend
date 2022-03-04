@@ -171,6 +171,7 @@ export class ConfiguratorAdminModule implements OnInit, OnDestroy {
     aBlogArticles: any[] = [];
     selectedBlogArticle: any;
     aNewsActions: any[] = [];
+    aSphereCategoryActions: any[] = [];
     newsFile: any;
     newsTitle: string = "";
     typeNews: any;
@@ -192,9 +193,15 @@ export class ConfiguratorAdminModule implements OnInit, OnDestroy {
     selectedCityName: any;
     aCities: any;
     aBusinessCategories: any;
+    selectedSphereCategoryAction: any;
+    sphereAction: any;
+    sphereName: string = "";
+    sysName: string = "";
+    typeSphere: string = "";
 
     public readonly notAcceptedBusinesses$ = this.configuratorService.notAcceptedBusinesses$;
     private readonly unsub$ = new Subject<void>();
+    public readonly createdSphere$ = this.configuratorService.createdSphere$;
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
@@ -235,6 +242,18 @@ export class ConfiguratorAdminModule implements OnInit, OnDestroy {
             {
                 newsActionSysName: "ChangeNews",
                 newsActionName: "Изменить новость"
+            }
+        ];
+
+        this.aSphereCategoryActions = [
+            {
+                sphereActionSysName: "CreateSphere",
+                sphereActionName: "Создать сферу"
+            },
+
+            {
+                sphereActionSysName: "CreateCategory",
+                sphereActionName: "Создать категорию"
             }
         ];
 
@@ -2155,6 +2174,17 @@ export class ConfiguratorAdminModule implements OnInit, OnDestroy {
         await this.commonService.GetBusinessCitiesListAsync().then((data: any) => {
             console.log("Список городов бизнеса:", data);                
             this.aCities = data;
+        });
+    };
+
+    public onSelectSphereCategory(e: any, flag: boolean) {
+        console.log(e);
+        console.log("sphereActionName", this.sphereAction);
+    };
+    
+    public async onCreateSphere(sphereName: string, sphereType: string, sysName: string) {
+        await this.configuratorService.createSphereAsync(sphereName, sphereType, sysName).then((data: any) => {
+            console.log("Созданная сфера: ", data);                
         });
     };
 }

@@ -64,6 +64,8 @@ export class ViewReadyBusinessModule implements OnInit {
     isHidePeculiarity: boolean = false;
     isUrlVideo: boolean = false;
 
+    // public readonly emptyUserInfoMessage$ = this.notifyService.
+
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private route: ActivatedRoute,
@@ -99,8 +101,8 @@ export class ViewReadyBusinessModule implements OnInit {
 
     public async ngOnInit() {
         await this.getUserFio();
-        await this.getTransitionAsync();
-    };
+        await this.getTransitionAsync();       
+    }; 
 
     public ngOnAfterViewInit() {
         this.aBusinessPhotos = this.aNamesBusinessPhotos;
@@ -426,15 +428,15 @@ export class ViewReadyBusinessModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/request/create-request-business"), requestBusinessInput)
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Заявка успешно создана", response); 
+                        console.log("Статус создания заявки: ", response); 
                         
                         if (response.isSuccessCreatedRequest) {
                             this.messageService.add({
                                 severity: 'success',
-                                summary: 'Успешно!',
+                                summary: 'Успешно',
                                 detail: response.statusText
                             });    
-                        }                                       
+                        }      
                     },
 
                     error: (err) => {
@@ -446,5 +448,5 @@ export class ViewReadyBusinessModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    };
+    };   
 }

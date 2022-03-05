@@ -152,6 +152,12 @@
       color: #646464;
     }
   }
+
+  @media (max-width: 992px) {
+    .block-gallery {
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 .key-finance {

@@ -62,8 +62,11 @@
             <ng-template pTemplate="header">
               <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
             </ng-template>
-            <h5>{{item.subTitle}}</h5>
-            <p>{{item.text}}</p>
+            <h5 class="card-business-title">{{item.subTitle}}</h5>
+            <div class="bisuness-info"><!--я-->
+              <p class="card-business-text">{{item.text}}</p>
+              <img src="../../../assets/images/img-busines1.png" alt="">
+            </div>
             <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
             <ng-template pTemplate="footer">
               <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->

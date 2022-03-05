@@ -59,8 +59,6 @@
               </label>
             </div>  
             
-          <!-- У radio ивент onClick,  а у checkbox onChange -->
-
             <div class="wrapper-checkbox wrapper-checkbox-2">
               <label class="container">
                 <input type="checkbox" checked="checked" (click)="onSelectBusinessCheck()">
@@ -69,7 +67,7 @@
               </label> 
             </div>
               
-                <!--Это было до меня
+                <!--Чекбоксы
                   <div class="choice">
                     <p-checkbox name="franchise" inputId="franch" [(ngModel)]="isSelectFranch" [binary]="true"
                       (onChange)="onSelectFracnhiseCheck()"></p-checkbox>
@@ -86,7 +84,7 @@
 
       
             <div class="wrapper">
-              <div>
+              <div *ngIf="isSelectBus"> <!--скрывает заголовок на стартовой вкладке-->
                 <div class="space-top-bottom-32 title-small2">
                   <strong class="title-small">Выбор сферы</strong>
                 </div>
@@ -110,7 +108,7 @@
                 </p-dropdown> 
               </div>
               
-              <div>
+              <div *ngIf="isSelectBus">
                 <div class="space-top-bottom-32 title-small2">
                   <strong class="title-small">Выбор категории</strong>
                 </div>

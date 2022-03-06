@@ -81,10 +81,10 @@
       <p-card class="business-garanteese">
         <ng-template pTemplate="header">
           <strong>Вы можете приобрести бизнес с гарантиями</strong>
-          <button 
-            type="button" 
-            class="close" 
-            aria-label="Close" 
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
             (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
             <span aria-hidden="true"><img src="../../../assets/images/cross.svg" alt=""></span>
           </button>
@@ -92,14 +92,14 @@
         <p>{{oSuggestion.text}}</p>
         <ng-template pTemplate="footer">
           <div class="d-flex align-items-center">
-            <button 
+            <button
               class="btn btn-dark more-info-btn"
               routerLink="/deal/start">
             {{oSuggestion.button2Text}}
           </button>
 
-            <button 
-              class="btn btn-default btn-show-more" 
+            <button
+              class="btn btn-default btn-show-more"
               (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
               {{oSuggestion.button1Text}}
           </button>
@@ -333,7 +333,10 @@
   <div class="row ready-business-categories section-mb">
     <!-- 1 столбец. -->
     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
-      <h5 class="title-franchise">Категории бизнеса</h5>
+      <h5 class="title-franchise" (click)="showCategoryOnMobile($event)">
+        <span>Категории бизнеса</span>
+        <img src="./../../../assets/images/Arrow 1.png" alt="gobizy arrow icon" />
+      </h5>
       <div>
         <div class="category-item" *ngFor="let item of categoryList1">
           <img class="space-right-image-category" [src]="item.url">
@@ -355,7 +358,10 @@
 
     <!-- 3 столбец. -->
     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
-      <h5 class="title-franchise">Категории франшиз</h5>
+      <h5 class="title-franchise" (click)="showCategoryOnMobile($event)">
+        <span>Категории франшиз</span>
+        <img src="./../../../assets/images/Arrow 1.png" alt="gobizy arrow icon" />
+      </h5>
       <div>
         <div class="category-item" *ngFor="let item of categoryList3">
           <img class="space-right-image-category" [src]="item.url">

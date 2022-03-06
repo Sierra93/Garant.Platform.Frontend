@@ -32,16 +32,16 @@
       </p-carousel>
     </div>
 
-    <div class="col-lg-5 col-md-6 right">
+    <div class="col-lg-5 col-md-6 right right-block">
       <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
-      <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" style="background-color: #F1F1F1"
+      <p-card header="{{}}" subheader="" [style]="{width: '100%'}" style="background-color: #F1F1F1 border: 1px solid black;"
         styleClass="card">
         <ng-template pTemplate="header">
           <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
           <!-- <h5>Покупка бизнеса любого размера онлайн с гарантиями</h5> -->
         </ng-template>
         <!-- <p>{{oTopAction.text}}</p> -->
-        <p>{{oTopAction.text}}</p>
+        <p class="right-text">{{oTopAction.text}}</p>
         <ng-template pTemplate="footer">
           <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
           <button class="btn btn-dark" routerLink="/deal/start">Подробнее</button>

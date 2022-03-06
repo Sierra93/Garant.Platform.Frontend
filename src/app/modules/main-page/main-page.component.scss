@@ -31,7 +31,14 @@
 ::ng-deep .more-articles .p-card {
   background: none;
 }
-
+.right-text {
+  max-width: 333px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+}
 .blog-item {
   max-width: 342px;
 }
@@ -39,17 +46,34 @@
 ::ng-deep .blog-item .p-card-title {
   font-size: 18px;
 }
-
+// ПОкупка бизнеса с гарантиями
+.title-franchise {
+  max-width: 351px;
+  height: 28px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}
+.ng-star-inserted {
+  border: 1px silid #ffffff;
+}
 .wrapper {
   max-width: 1440px;
   margin: 0 auto;
 }
-
+.right-block {
+  max-width: 565px;
+  height: 342px;
+}
 // .btn-dark {
 //   margin-top: 68px;
 //   padding: 16px;
 // }
-
+.card {
+  padding: 0;
+}
 .cards-popup {
   margin: 0 10px;
 }
@@ -440,10 +464,6 @@
   .ready-business-categories {
     [class^="col"] {
       width: 100%;
-    }
-
-    .title-franchise {
-      display: none;
     }
 
     .category-item {

@@ -16,7 +16,7 @@
 
   .product-image {
     // width: 50%;
-    width: 342px;
+    width: 100%;
     height: 162px;
     // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
   }
@@ -428,6 +428,20 @@
   }
 }
 
+@media (max-width: 992px) {
+  .carousel-block {
+    flex-direction: column-reverse;
+
+    .right {
+      margin-bottom: 2.25rem;
+    }
+
+    [class^=col] {
+      width: 100%;
+    }
+  }
+}
+
 @media (max-width: 800px) {
   .p-inputtext {
     max-width: 120px;
@@ -443,6 +457,7 @@
 }
 
 @media (max-width: 768px) {
+<<<<<<< HEAD
   .carousel-block {
     flex-direction: column-reverse;
 
@@ -455,6 +470,8 @@
     }
   }
 
+=======
+>>>>>>> origin/feature/profile
   .baner-img {
     &:first-child {
       margin-bottom: 1.5rem;
@@ -506,11 +523,21 @@
 }
 
 ::ng-deep {
+  @media (max-width: 1080px) {
+    .p-carousel-item {
+      flex: 1 0 70% !important;
+    }
+  }
+
   @media (max-width: 992px) {
     .card-business-holder {
       &:not(:last-child) {
         margin-bottom: 1.5rem;
       }
+    }
+
+    .p-carousel-item {
+      flex: 1 0 80% !important;
     }
   }
 

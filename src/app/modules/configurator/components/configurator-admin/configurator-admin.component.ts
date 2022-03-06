@@ -2182,9 +2182,16 @@ export class ConfiguratorAdminModule implements OnInit, OnDestroy {
         console.log("sphereActionName", this.sphereAction);
     };
     
-    public async onCreateSphere(sphereName: string, sphereType: string, sysName: string) {
+    public async onCreateSphereAsync(sphereName: string, sphereType: string, sysName: string) {
         await this.configuratorService.createSphereAsync(sphereName, sphereType, sysName).then((data: any) => {
             console.log("Созданная сфера: ", data);                
+        });
+    };
+
+    public async onCreateCategoryAsync(category: any, sphereName: string, sphereType: string, sysName: string) {
+        console.log(category);
+        await this.configuratorService.createCategoryAsync(category.categoryCode, sphereName, sphereType, sysName).then((data: any) => {
+            console.log("Созданная категория: ", data);                
         });
     };
 }

@@ -64,8 +64,6 @@ export class ViewReadyBusinessModule implements OnInit {
     isHidePeculiarity: boolean = false;
     isUrlVideo: boolean = false;
 
-    // public readonly emptyUserInfoMessage$ = this.notifyService.
-
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private route: ActivatedRoute,

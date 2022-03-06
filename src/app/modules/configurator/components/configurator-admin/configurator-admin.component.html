@@ -2375,6 +2375,7 @@
           (onChange)="onSelectSphereCategory($event, false)"></p-dropdown>
       </div>
 
+      <!-- Сферы. -->
       <div *ngIf="sphereAction != null && sphereAction.sphereActionSysName == 'CreateSphere'">
         <div>
           <div>
@@ -2393,7 +2394,7 @@
 
           <div>
             <input type="text" class="" [(ngModel)]="sysName">
-            <small class="mt-3">Системное название нужно для идентификации сферы. Указывайте уникальное название на англ. языке. Например, системное название для сферы Авто = 'Auto'</small>
+            <small class="mt-3">Системное название нужно для идентификации сферы. Указывайте уникальное название на англ. языке. Например, системное название Авто = 'Auto'</small>
           </div>
         </div>
 
@@ -2409,11 +2410,64 @@
         </div>
 
         <button pButton type="button" label="Сохранить" class="p-button-outlined mt-3"
-        (click)="onCreateSphere(sphereName, typeSphere, sysName)"></button>
+        (click)="onCreateSphereAsync(sphereName, typeSphere, sysName)"></button>
       </div>
 
+      <!-- Категории. -->
       <div *ngIf="sphereAction != null && sphereAction.sphereActionSysName == 'CreateCategory'">
-        222
+        <div>
+          <div class="space-top-bottom-32">
+            <span class="title-small">Выбор сферы, категорию которой нужно создать</span>
+          </div>
+  
+          <p-dropdown 
+            [options]="aFranchiseCategories" 
+            optionLabel="categoryName" 
+            optionCode="categoryCode"
+            [filter]="true" 
+            name="category" 
+            placeholder="Выберите сферу" 
+            [(ngModel)]="selectedCategory"
+            [showClear]="true"
+            (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
+            (onFilter)="onFilterSphereAsync($event.filter)">
+        </p-dropdown>
+        </div>
+        
+        <div>
+          <div>
+            <label class="mt-3">Название категории</label>
+          </div>
+
+          <div>
+            <input type="text" class="" [(ngModel)]="sphereName">
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Системное название категории</label>
+          </div>
+
+          <div>
+            <input type="text" class="" [(ngModel)]="sysName">
+            <small class="mt-3">Системное название нужно для идентификации категории. Указывайте уникальное название на англ. языке. Например, системное название Авто = 'Auto'</small>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Тип категории</label>
+          </div>
+
+          <div>
+            <input type="text" class="" [(ngModel)]="typeSphere">
+            <small class="mt-3">Тип представляет собой тип категории, которую можно сопоставить. Вводить на англ.языке. Franchise или Business</small>
+          </div>
+        </div>
+
+        <button pButton type="button" label="Сохранить" class="p-button-outlined mt-3"
+        (click)="onCreateCategoryAsync(selectedCategory, sphereName, typeSphere, sysName)"></button>
       </div>
     </div>
 

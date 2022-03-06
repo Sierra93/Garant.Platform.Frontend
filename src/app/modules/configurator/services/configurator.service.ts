@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { API_URL } from 'src/app/core/core-urls/api-url';
+import { CreateCategoryInput } from 'src/app/models/configurator/input/create-category-input';
 import { CreateSphereInput } from 'src/app/models/configurator/input/create-sphere-input';
 
 @Injectable()
@@ -74,4 +75,38 @@ export class ConfiguratorService {
             throw new Error(e);
         }
     };   
+
+    /**
+     * Функция создаст категорию.
+     * @param sphereName 
+     * @param sphereType 
+     * @param sysName 
+     * @returns 
+     */
+     public createCategoryAsync(categoryCode: string, sphereName: string, sphereType: string, sysName: string) {
+        let modelInput = new CreateCategoryInput();
+        modelInput.CategoryName = sphereName;
+        modelInput.CategoryType = sphereType;
+        modelInput.SysName = sysName;
+        modelInput.SphereCode = categoryCode;
+
+        try {
+            return new Promise(async resolve => {
+                return await this.http.post(API_URL.apiUrl + "/configurator/create-category", modelInput)
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };  
 }

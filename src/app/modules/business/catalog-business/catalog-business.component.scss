@@ -15,6 +15,7 @@
 @use "/src/app/modules/main-page/main-page.component.scss";
 @use "../../../../app/shared/styles" as *;
 @use "../../../../app/shared/styles/base" as *;
+@use "/src/app/modules/franchise/catalog-franchise/catalog-franchise.component.scss";
 
 :host {
   strong {

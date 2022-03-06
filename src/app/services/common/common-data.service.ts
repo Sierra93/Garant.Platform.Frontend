@@ -234,6 +234,27 @@ export class CommonDataService {
         }
     };
 
+    public async getPopularBusinessAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/business/popular-business"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
     /**
      * Функция сформирует хлебные крошки страницы.
      * @returns - Список пунктов цепочки хлебных крошек.

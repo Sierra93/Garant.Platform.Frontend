@@ -1,7 +1,7 @@
 <section id="main-page">
   <div class="row carousel-block section-mb">
     <!-- Блок с каруселью. -->
-    <div class="col-lg-7 col-md-6">
+    <div class="col-lg-7">
       <p-carousel [value]="aSlider" [numVisible]="2" [numScroll]="2" [circular]="false"
         [responsiveOptions]="responsiveOptions" [showNavigators]="false">
         <ng-template pTemplate="header">
@@ -32,7 +32,7 @@
       </p-carousel>
     </div>
 
-    <div class="col-lg-5 col-md-6 right">
+    <div class="col-lg-5 right">
       <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
       <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" style="background-color: #F1F1F1"
         styleClass="card">

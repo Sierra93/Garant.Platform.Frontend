@@ -58,5 +58,23 @@ export class NotifyService {
         detail: message
       });
     });
+
+    // Функция уведомления о созданной сфере.
+    this.connection.on('SendCreateSphere', (message: string) => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Успешно',
+        detail: message
+      });
+    });
+
+    // Функция уведомления о созданной категории.
+    this.connection.on('SendCreateCategory', (message: string) => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Успешно',
+        detail: message
+      });
+    });
   };
 }

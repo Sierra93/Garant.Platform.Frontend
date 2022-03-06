@@ -9,9 +9,11 @@
               <li *ngFor="let el of aHeader$ | async; let last = last">
                 <span (click)="onGetMenuHeader(el.name)" *ngIf="!last">{{el.name}}</span>
                 <span (click)="onGetMenuHeader(el.name)" *ngIf="last" class="last">
-                <span>+</span>
-                <span>{{el.name}}</span>
-              </span>
+                  <span>
+                    <span>+</span>
+                    <span>{{el.name}}</span>
+                  </span>
+                </span>
               </li>
             </ng-container>
           </ul>

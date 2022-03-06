@@ -31,6 +31,14 @@
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
       background-color: #555;
     }
+
+    .chat-start-date {
+      top: -2rem;
+      z-index: 1000;
+      background-color: rgb(255, 255, 255);
+      padding: .5rem 0;
+      border-top: 2px solid rgba(218, 218, 218, 0.15);
+    }
 }
 
 .message {
@@ -92,6 +100,16 @@ hr.hr {
           background-color: transparent;
           outline: none;
         }
+
+        svg {
+          path {
+            fill: #DADADA;
+          }
+        }
+      }
+
+      textarea:focus + .reply svg path {
+        fill: #1f75fe;
       }
     }
   }

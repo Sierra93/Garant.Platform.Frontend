@@ -143,6 +143,12 @@
             &.last {
               text-align: right;
             }
+
+            @media (max-width: 768px) {
+              &:first-child {
+                display: none;
+              }
+            }
           }
         }
       }

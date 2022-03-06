@@ -2,7 +2,7 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "popper.js/dist/popper.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
-import { NgModule } from "@angular/core";
+import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { BrowserModule, Title } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -72,6 +72,7 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
 import { GarLibModule } from "./gar-lib/gar-lib.module";
 import { SessionService } from "./core/session/session.service";
 import { SESSION_TOKEN } from "./core/session/session.token";
+import { NotifyService } from "./services/notify/notify.service";
 
 @NgModule({
   declarations: [
@@ -159,7 +160,14 @@ import { SESSION_TOKEN } from "./core/session/session.token";
     DataService,
     Title,
     MessageService,
-    DocumentService
+    DocumentService,
+    NotifyService,
+  {
+    provide: APP_INITIALIZER,
+    useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
+    deps: [NotifyService],
+    multi: true,
+  }
   ],
 
   bootstrap: [AppComponent]

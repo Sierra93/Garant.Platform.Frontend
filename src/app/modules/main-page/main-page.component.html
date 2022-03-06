@@ -44,7 +44,7 @@
         <p>{{oTopAction.text}}</p>
         <ng-template pTemplate="footer">
           <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
-          <button class="btn btn-dark">Подробнее</button>
+          <button class="btn btn-dark" routerLink="/deal/start">Подробнее</button>
           <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
     </p-button> -->
         </ng-template>
@@ -64,7 +64,7 @@
             </ng-template>
             <h5>{{item.subTitle}}</h5>
             <p>{{item.text}}</p>
-            <button class="btn btn-dark">{{item.buttonText}}</button>
+            <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
             <ng-template pTemplate="footer">
               <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
               <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
@@ -76,20 +76,33 @@
     </div>
   </div>
 
-  <div class="row section-mb">
+  <div class="row section-mb" *ngIf="!isHideBusinessWithGarant">
     <div class="col-lg-12 col-xs-12 card-line">
       <p-card class="business-garanteese">
         <ng-template pTemplate="header">
           <strong>Вы можете приобрести бизнес с гарантиями</strong>
-          <button type="button" class="close" aria-label="Close">
+          <button 
+            type="button" 
+            class="close" 
+            aria-label="Close" 
+            (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
             <span aria-hidden="true"><img src="../../../assets/images/cross.svg" alt=""></span>
           </button>
         </ng-template>
         <p>{{oSuggestion.text}}</p>
         <ng-template pTemplate="footer">
           <div class="d-flex align-items-center">
-            <button class="btn btn-dark more-info-btn">{{oSuggestion.button2Text}}</button>
-            <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button>
+            <button 
+              class="btn btn-dark more-info-btn"
+              routerLink="/deal/start">
+            {{oSuggestion.button2Text}}
+          </button>
+
+            <button 
+              class="btn btn-default btn-show-more" 
+              (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
+              {{oSuggestion.button1Text}}
+          </button>
           </div>
         </ng-template>
       </p-card>
@@ -253,7 +266,7 @@
   </div>
 
   <!-- Бизнес блог. -->
-  <div class="row section-mb">
+  <!-- <div class="row section-mb">
     <div class="col-12">
       <h5 class="title-franchise">Бизнес блог</h5>
     </div>
@@ -264,7 +277,6 @@
             <ng-template pTemplate="header">
               <img [src]="item.url">
             </ng-template>
-            <!-- <strong>Сумма сделки: 12 500 000 ₽</strong> -->
             <ng-template pTemplate="footer">
 
             </ng-template>
@@ -277,9 +289,7 @@
       <div class="more-articles">
         <p-card header="" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
           <ng-template pTemplate="header">
-            <!-- <img src="../../../assets/images/Rectangle 20.png"> -->
           </ng-template>
-          <!-- <strong>Сумма сделки: 12 500 000 ₽</strong> -->
           <div class="more-articles-content d-flex align-items-center mt-4">
             <div class="more-articles-content-text">
               <h4>Больше статей</h4>
@@ -294,7 +304,7 @@
         </p-card>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Новости делового мира. -->
   <div class="row section-mb">
@@ -306,7 +316,7 @@
 
     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
       <div class="news-item space-left-item" *ngFor="let item of aNews">
-        <img [src]="item.url">
+        <!-- <img [src]="item.url"> -->
         <strong class="title-news">{{item.name}}</strong>
         <div class="bottom-line">
           <small>{{item.time}}</small>

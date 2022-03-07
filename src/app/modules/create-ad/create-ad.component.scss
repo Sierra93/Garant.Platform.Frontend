@@ -44,7 +44,7 @@ h5 {
   margin-bottom: 32px;
 }
 .control-label-checkbox {
-  width: 129px;
+  // width: 129px;
   font-family: Roboto;
   font-size: 18px;
   font-style: normal;
@@ -52,6 +52,7 @@ h5 {
   line-height: 21px;
   letter-spacing: 0em;
   text-align: left;
+  margin: 0 10px;
 }
 .justify-content-start {
   flex-wrap: wrap;

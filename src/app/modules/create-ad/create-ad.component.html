@@ -50,14 +50,26 @@
 
       <div class="d-flex justify-content-center">
         <div>
-          <p-checkbox name="franchise" inputId="franch" [(ngModel)]="isSelectFranch" [binary]="true" (onChange)="onSelectFracnhiseCheck()"></p-checkbox>
+          <p-radioButton 
+              name="businessType" 
+              inputId="franch" 
+              value="Franchise" 
+              [(ngModel)]="selectedValue" 
+              (onClick)="onSelectCheck()">
+        </p-radioButton>
           <label for="franch" class="control-label-checkbox">Франшиза</label>
         </div>
 
         <div class="block-space-check"></div>
 
         <div>
-          <p-checkbox name="business" inputId="bus" [(ngModel)]="isSelectBus" [binary]="true" (onChange)="onSelectBusinessCheck()"></p-checkbox>
+          <p-radioButton 
+            name="businessType" 
+            inputId="bus" 
+            value="Business" 
+            [(ngModel)]="selectedValue" 
+            (onClick)="onSelectCheck()">
+        </p-radioButton>
           <label for="bus" class="control-label-checkbox">Готовый бизнес</label>
         </div>           
       </div>

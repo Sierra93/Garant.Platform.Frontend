@@ -81,12 +81,12 @@ export class CreateAdModule implements OnInit {
     // };  
 
     public async onSelectFracnhiseCheck() {
-        this.isSelectFranch = !this.isSelectFranch;
         if (this.isSelectFranch) {
             try {
                 await this.commonService.GetFranchiseCategoriesListAsync().then((data: any) => {
                     console.log("Список категорий франшиз:", data);
                     this.aFranchiseCategories = data;
+                    this.isSelectBus = false;
                 });               
             }
     
@@ -103,12 +103,12 @@ export class CreateAdModule implements OnInit {
     };
 
     public async onSelectBusinessCheck() {
-        this.isSelectBus = !this.isSelectBus;
         if (this.isSelectBus) {
             try {
                 await this.commonService.GetBusinessCategoriesListAsync().then((data: any) => {
                     console.log("Список категорий бизнеса:", data);                
                     this.aBusinessCategories = data;
+                    this.isSelectFranch = false;
                 });
 
                 await this.commonService.GetBusinessSubCategoriesListAsync().then((data: any) => {

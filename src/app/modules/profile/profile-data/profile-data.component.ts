@@ -35,6 +35,7 @@ export class ProfileDataModule implements OnInit {
 
     public async ngOnInit() {
         // TODO: переделать на получение заголовка с бэка.
+        this.email  = sessionStorage["user"];
         this.titleService.setTitle("Gobizy: Заполнение информации о себе");
 
         await this.getProfileMenuAsync();

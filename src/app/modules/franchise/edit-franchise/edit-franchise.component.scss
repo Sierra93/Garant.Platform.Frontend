@@ -52,3 +52,14 @@
     }
   }
 }
+
+.level-includes {
+  button {
+    &, &:focus {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+}

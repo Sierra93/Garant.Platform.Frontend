@@ -6,15 +6,24 @@
     <div class="col-12">
       <div class="franchise-logo">
         <div class="d-flex flex-column me-3">
-          <img src="./../../../../assets/images/franchise-pages/franchise-view-header.png"
-            alt="gobizy franchise view header" />
+          <img
+            src="./../../../../assets/images/franchise-pages/franchise-view-header.png"
+            alt="gobizy franchise view header"
+          />
         </div>
 
         <div class="d-flex flex-column">
-          <h1 class="main-title">{{franchiseData.title}}</h1>
+          <h1 class="main-title">{{ franchiseData.title }}</h1>
         </div>
-<!--        TODO: Навешен индивидуальный стиль для кнопки в заголовке карточки, так как перебиваются стили из других компонентов-->
-        <button routerLink="/franchise/edit" [queryParams]="{franchiseId: franchiseData.franchiseId}" class="view-franchise title-btn p-button-outlined mx-2" pButton type="button" label="Изменить"></button>
+        <!--        TODO: Навешен индивидуальный стиль для кнопки в заголовке карточки, так как перебиваются стили из других компонентов-->
+        <button
+          routerLink="/franchise/edit"
+          [queryParams]="{ franchiseId: franchiseData.franchiseId }"
+          class="view-franchise title-btn p-button-outlined mx-2"
+          pButton
+          type="button"
+          label="Изменить"
+        ></button>
       </div>
     </div>
   </div>
@@ -24,16 +33,27 @@
     <div class="col-xxl-8 col-xl-8 col-lg-8">
       <div class="block-gallery">
         <div class="w-100">
-          <span *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</span>
-          <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
-            [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
+          <span *ngIf="!aNamesFranchisePhotos.length"
+            >Фотографии не загружены</span
+          >
+          <p-galleria
+            [(value)]="aNamesFranchisePhotos"
+            [responsiveOptions]="responsiveOptions"
+            [containerStyle]="{ 'max-width': '660px' }"
+            [numVisible]="4"
+            thumbnailsPosition="left"
+          >
             <ng-template pTemplate="item" let-item>
-              <img src="{{item}}" style="width: 700px; display: block;" />
+              <img src="{{ item }}" style="width: 700px; display: block" />
             </ng-template>
 
-            <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
+            <ng-template
+              pTemplate="thumbnail"
+              let-item
+              *ngIf="aNamesFranchisePhotos.length > 1"
+            >
               <div class="p-grid p-nogutter p-justify-center dopni">
-                <img src="{{item}}" />
+                <img src="{{ item }}" />
               </div>
             </ng-template>
           </p-galleria>
@@ -43,17 +63,27 @@
 
     <div class="col-xxl-4 col-xl-4 col-lg-4 photos-contact">
       <div class="franchise-holder">
-        <strong>{{fio}}</strong>
+        <strong>{{ fio }}</strong>
 
         <div>
-          <span>{{franchiseData.status}}</span>
+          <span>{{ franchiseData.status }}</span>
         </div>
 
-        <button class="btn primary-button become-franchiser">Стать франчайзи онлайн через гарант</button>
-        <button class="primary-button"
-          (click)="onRouteFranchiseChatAsync(franchiseData.franchiseId, 'Franchise', franchiseData.userId)">Начать чат
-          с
-          представителем</button>
+        <button class="btn primary-button become-franchiser">
+          Стать франчайзи онлайн через гарант
+        </button>
+        <button
+          class="primary-button"
+          (click)="
+            onRouteFranchiseChatAsync(
+              franchiseData.franchiseId,
+              'Franchise',
+              franchiseData.userId
+            )
+          "
+        >
+          Начать чат с представителем
+        </button>
       </div>
     </div>
   </div>
@@ -65,51 +95,84 @@
       <!-- <span>0 из 6</span> -->
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div
+      class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data"
+    >
       <div class="financial-data-block">
         <strong>Общие инвестиции</strong>
         <span>включая паушальный взнос</span>
-        <span>{{franchiseData.totalInvest}} ₽</span>
+        <span
+          >{{
+            franchiseData.totalInvest | priceFormat: franchiseData.totalInvest
+          }}
+          ₽</span
+        >
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div
+      class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data"
+    >
       <div class="financial-data-block">
         <strong>Паушальный взнос</strong>
         <span>зависит от выбранного пакета</span>
-        <span>{{franchiseData.lumpSumPayment}} ₽</span>
+        <span
+          >{{
+            franchiseData.lumpSumPayment
+              | priceFormat: franchiseData.lumpSumPayment
+          }}
+          ₽</span
+        >
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div
+      class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data"
+    >
       <div class="financial-data-block">
         <strong>Роялти</strong>
         <span>от валовой выручки</span>
-        <span>{{franchiseData.royalty}} ₽</span>
+        <span
+          >{{
+            franchiseData.royalty | priceFormat: franchiseData.royalty
+          }}
+          ₽</span
+        >
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div
+      class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data"
+    >
       <div class="financial-data-block">
         <strong>Окупаемость</strong>
         <span>средняя и планируемая</span>
-        <span>{{franchiseData.payback}} мес.</span>
+        <span>{{ franchiseData.payback }} мес.</span>
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div
+      class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data"
+    >
       <div class="financial-data-block">
         <strong>Месячная прибыль</strong>
         <span>планируемая чистая прибыль</span>
-        <span>{{franchiseData.profitMonth}} ₽</span>
+        <span
+          >{{
+            franchiseData.profitMonth | priceFormat: franchiseData.royalty
+          }}
+          ₽</span
+        >
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div
+      class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data"
+    >
       <div class="financial-data-block">
         <strong>Срок запуска</strong>
         <span>средний срок открытия бизнеса</span>
-        <span>{{franchiseData.launchDate}} дн. </span>
+        <span>{{ franchiseData.launchDate }} дн. </span>
       </div>
     </div>
   </div>
@@ -119,42 +182,50 @@
     <div class="col-xxl-8 col-xl-8">
       <div>
         <h3 class="section-title">Основная информация о компании*</h3>
-        <p class="description">{{franchiseData.activityDetail}}</p>
+        <p class="description">{{ franchiseData.activityDetail }}</p>
       </div>
 
       <!-- Дополнительные факты. -->
       <div>
         <h3 class="section-title">Дополнительные факты*</h3>
         <div class="row">
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom">
+          <div
+            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom"
+          >
             <div class="fact-item">
               <strong>Год основания</strong>
               <span>компании</span>
-              <span>{{franchiseData.baseDate}}</span>
+              <span>{{ franchiseData.baseDate }}</span>
             </div>
           </div>
 
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom">
+          <div
+            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom"
+          >
             <div class="fact-item">
               <strong>Год запуска</strong>
               <span>франчайзинга</span>
-              <span>{{franchiseData.yearStart}}</span>
+              <span>{{ franchiseData.yearStart }}</span>
             </div>
           </div>
 
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom">
+          <div
+            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom"
+          >
             <div class="fact-item">
               <strong>Количество точек</strong>
               <span>в России</span>
-              <span>{{franchiseData.dotCount}}</span>
+              <span>{{ franchiseData.dotCount }}</span>
             </div>
           </div>
 
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom">
+          <div
+            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom"
+          >
             <div class="fact-item">
               <strong>Собственных</strong>
               <span>предприятий</span>
-              <span>{{franchiseData.businessCount}}</span>
+              <span>{{ franchiseData.businessCount }}</span>
             </div>
           </div>
         </div>
@@ -167,12 +238,12 @@
         <div class="invest-block" *ngFor="let item of aInvestInclude">
           <div *ngIf="item.Price > 0">
             <strong class="">Стоимость</strong>
-            <span>{{item.Price}} ₽</span>
+            <span>{{ item.Price | priceFormat: item.Price }} ₽</span>
           </div>
 
           <div>
             <strong class="">Название</strong>
-            <span>{{item.Name}}</span>
+            <span>{{ item.Name }}</span>
           </div>
         </div>
       </div>
@@ -180,17 +251,26 @@
   </div>
 
   <!-- Описание особенности франшизы. -->
-  <div class="row franchise-details section-margin" *ngIf="franchiseData.peculiarity != null">
+  <div
+    class="row franchise-details section-margin"
+    *ngIf="franchiseData.peculiarity != null"
+  >
     <div class="col-12">
       <div class="franchise-details-block">
         <h5 class="subsection-title">Описание особенности франшизы</h5>
 
-        <p class="content">{{franchiseData.peculiarity}}</p>
+        <p class="content">{{ franchiseData.peculiarity }}</p>
 
-        <p class="content">{{franchiseData.nameFinModelFile}}</p>
+        <p class="content">{{ franchiseData.nameFinModelFile }}</p>
 
         <div class="buttons">
-          <button (click)="onDownloadFinModelFileAsync(franchiseData.nameFinModelFile)">Получить финансовую модель</button>
+          <button
+            (click)="
+              onDownloadFinModelFileAsync(franchiseData.nameFinModelFile)
+            "
+          >
+            Получить финансовую модель
+          </button>
           <button>Позднее</button>
         </div>
 
@@ -209,7 +289,7 @@
       <div>
         <h3 class="section-title">Основная информация о франшизе*</h3>
         <div>
-          <p class="description">{{franchiseData.text}}</p>
+          <p class="description">{{ franchiseData.text }}</p>
         </div>
       </div>
     </div>
@@ -220,7 +300,7 @@
     <div class="col-12">
       <div>
         <h3 class="section-title">Пример расчета прибыли*</h3>
-        <p class="description">{{franchiseData.paymentDetail}}</p>
+        <p class="description">{{ franchiseData.paymentDetail }}</p>
       </div>
     </div>
 
@@ -233,14 +313,14 @@
             <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
               <div class="child-block d-flex flex-column">
                 <strong>Средний чек</strong>
-                <span>{{item.Name}}</span>
+                <span>{{ item.Name }}</span>
               </div>
             </div>
 
             <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
               <div class="child-block d-flex flex-column">
                 <strong>Процент или финансы</strong>
-                <span>{{item.Price}}</span>
+                <span>{{ item.Price }}</span>
               </div>
             </div>
           </div>
@@ -260,7 +340,7 @@
     <div class="col-xxl-8 col-xl-8">
       <div>
         <h3 class="section-title">Обучение и поддержка*</h3>
-        <p class="description">{{franchiseData.trainingDetails}}</p>
+        <p class="description">{{ franchiseData.trainingDetails }}</p>
       </div>
     </div>
   </div>
@@ -271,36 +351,48 @@
       <div class="d-flex">
         <!-- <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox> -->
         <h3 class="section-title mb-0">
-          <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
+          <label for="packs" class="control-label-checkbox"
+            >Пакеты франшизы</label
+          >
         </h3>
       </div>
     </div>
 
     <!-- Блок с пакетами франшизы. -->
-    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 package" *ngFor="let item of aPacks">
+    <div
+      class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 package"
+      *ngFor="let item of aPacks"
+    >
       <div class="franchise-packages-block">
         <div class="package-title">
-          <h6>{{item.Name}}</h6>
+          <h6>{{ item.Name }}</h6>
         </div>
 
         <div class="package-description">
-          <p class="content">{{item.Text}}</p>
+          <p class="content">{{ item.Text }}</p>
         </div>
 
         <div class="package-offers">
           <div>
             <strong>Паушальный взнос:</strong>
-            <span>{{item.LumpSumPayment}} ₽</span>
+            <span
+              >{{
+                item.LumpSumPayment | priceFormat: item.LumpSumPayment
+              }}
+              ₽</span
+            >
           </div>
 
           <div>
             <strong>Роялти:</strong>
-            <span>{{item.Royalty}} %</span>
+            <span>{{ item.Royalty }} %</span>
           </div>
 
           <div>
             <strong>Всего инвестиций:</strong>
-            <span>{{item.TotalInvest}} ₽</span>
+            <span
+              >{{ item.TotalInvest | priceFormat: item.LumpSumPayment }} ₽</span
+            >
           </div>
 
           <div class="add-package">
@@ -312,7 +404,10 @@
   </div>
 
   <!-- Видео о франшизе. -->
-  <div class="row franchise-video section-margin" *ngIf="franchiseData.urlVideo != null">
+  <div
+    class="row franchise-video section-margin"
+    *ngIf="franchiseData.urlVideo != null"
+  >
     <div class="col-xxl-8 col-xl-8">
       <div>
         <div class="d-flex">
@@ -323,7 +418,7 @@
         </div>
 
         <div>
-          <p class="description">{{franchiseData.urlVideo}}</p>
+          <p class="description">{{ franchiseData.urlVideo }}</p>
         </div>
       </div>
     </div>
@@ -335,33 +430,68 @@
       <div class="application-form">
         <div>
           <label for="name" class="">Имя</label>
-          <input type="text" class="control-input-filter-price" pInputText placeholder="Имя" name="name"
-            [(ngModel)]="userName" />
+          <input
+            type="text"
+            class="control-input-filter-price"
+            pInputText
+            placeholder="Имя"
+            name="name"
+            [(ngModel)]="userName"
+          />
         </div>
 
         <div>
           <label for="number" class="">Телефон</label>
-          <input type="text" class="control-input-filter-price" pInputText placeholder="Телефон" name="number"
-            [(ngModel)]="number" />
+          <input
+            type="text"
+            class="control-input-filter-price"
+            pInputText
+            placeholder="Телефон"
+            name="number"
+            [(ngModel)]="number"
+          />
         </div>
 
         <div>
           <label for="city" class="">Город</label>
-          <input type="text" class="control-input-filter-price" pInputText placeholder="Город" name="city"
-            [(ngModel)]="city" />
+          <input
+            type="text"
+            class="control-input-filter-price"
+            pInputText
+            placeholder="Город"
+            name="city"
+            [(ngModel)]="city"
+          />
         </div>
 
         <div class="agreement-policy">
           <div>
-            <p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues"></p-checkbox>
+            <p-checkbox
+              name="groupname"
+              value="val1"
+              [(ngModel)]="selectedValues"
+            ></p-checkbox>
           </div>
-          <p class="mb-0">Согласен с условиями использования сервисов GoBizy и обработки персональных данных</p>
+          <p class="mb-0">
+            Согласен с условиями использования сервисов GoBizy и обработки
+            персональных данных
+          </p>
         </div>
 
         <div>
-          <button class="primary-button"
-            (click)="onCreateRequestFranchiseAsync(userName, number, city, franchiseData.franchiseId)">Оставить
-            заявку</button>
+          <button
+            class="primary-button"
+            (click)="
+              onCreateRequestFranchiseAsync(
+                userName,
+                number,
+                city,
+                franchiseData.franchiseId
+              )
+            "
+          >
+            Оставить заявку
+          </button>
         </div>
 
         <!-- <div>

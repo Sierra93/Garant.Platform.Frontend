@@ -19,7 +19,10 @@
             <ng-template pTemplate="header">
               <img [src]="item.url" />
             </ng-template>
-            <strong>{{ item.textDoPrice }} {{ item.price }} ₽</strong>
+            <strong
+              >{{ item.textDoPrice }}
+              {{ item.price | priceFormat: item.price }} ₽</strong
+            >
             <ng-template pTemplate="footer"></ng-template>
           </p-card>
         </div>
@@ -211,7 +214,11 @@
                     <img [src]="item.url" />
                   </ng-template>
                   <strong
-                    >{{ item.textDoPrice }} {{ item.totalInvest }} ₽</strong
+                    >{{ item.textDoPrice }}
+                    {{
+                      item.totalInvest | priceFormat: item.totalInvest
+                    }}
+                    ₽</strong
                   >
                   <ng-template pTemplate="footer">
                     <button
@@ -275,7 +282,11 @@
                       <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
                     </ng-template>
                     <strong
-                      >{{ item.textDoPrice }} {{ item.totalInvest }} ₽</strong
+                      >{{ item.textDoPrice }}
+                      {{
+                        item.totalInvest | priceFormat: item.totalInvest
+                      }}
+                      ₽</strong
                     >
                     <ng-template pTemplate="footer">
                       <!-- <p-button label="Save" icon="pi pi-check"></p-button>
@@ -321,7 +332,8 @@
                   >
                     <ng-template pTemplate="header"> </ng-template>
                     <strong class="franchise-card-price"
-                      >{{ item.textDoPrice }} {{ item.price }} ₽</strong
+                      >{{ item.textDoPrice }}
+                      {{ item.price | priceFormat: item.price }} ₽</strong
                     >
                   </p-card>
                 </div>

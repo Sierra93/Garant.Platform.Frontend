@@ -133,6 +133,7 @@ export class CatalogFranchiseModule implements OnInit {
    * TODO: вынести в общий сервис.
    * Функция получит список франшиз.
    */
+  // не используемый метод
   private async GetFranchisesListAsync() {
     try {
       await this.http
@@ -143,6 +144,7 @@ export class CatalogFranchiseModule implements OnInit {
             this.countTotalPage = response.length;
             console.log('Список франшиз:', response);
             console.log('Кол-во франшиз:', this.countTotalPage);
+            console.log('Не работает список франшиз!!');
           },
 
           error: (err) => {

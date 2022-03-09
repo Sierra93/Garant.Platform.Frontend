@@ -321,6 +321,10 @@
         margin-bottom: 1.5rem;
       }
     }
+
+    .filter-btns {
+      margin: 1.5rem 0;
+    }
   }
 
   @media (max-width: 576px) {
@@ -750,6 +754,14 @@
           }
         }
       }
+    }
+  }
+}
+
+::ng-deep {
+  .franchise-sphere, .category-selection, .investment-amount {
+    .p-dropdown.p-component, .p-inputtext.p-component {
+      width: 100% !important;
     }
   }
 }

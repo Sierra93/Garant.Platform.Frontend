@@ -34,14 +34,19 @@
         <div class="row">
           <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 franchise-sphere">
             <label>Сфера франшиз</label>
-            <p-dropdown [options]="aViewBusiness" class="block-sort-by" optionLabel="viewName"
-              [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
+            <div class="w-100">
+              <p-dropdown [options]="aViewBusiness" class="block-sort-by" optionLabel="viewName"
+                [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view">
+              </p-dropdown>
+            </div>
           </div>
 
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 control-quick-search">
+          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 category-selection control-quick-search">
             <label>Выбор категории</label>
-            <p-dropdown [options]="aBusinessCategories" class="block-sort-by" optionLabel="categoryName"
-              [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
+            <div class="w-100">
+              <p-dropdown [options]="aBusinessCategories" class="block-sort-by" optionLabel="categoryName"
+                [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
+            </div>
           </div>
 
           <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount">
@@ -80,20 +85,21 @@
               <!-- <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value"
                 name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true"
                 (onChange)="onChangeSortPrice()"></p-dropdown> -->
-                <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
-        [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
+              <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value"
+                name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true"
+                (onChange)="onChangeSortPrice()"></p-dropdown>
             </div>
           </div>
 
-         <div class="d-flex">
-          <div class="">
-            <strong>Покупка через гарант</strong>            
-          </div>
+          <div class="d-flex">
+            <div class="">
+              <strong>Покупка через гарант</strong>
+            </div>
 
-          <div>
-            <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
+            <div>
+              <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
+            </div>
           </div>
-         </div>
 
           <div class="monthly-income">
             <label class="label-filter">Прибыль в месяц</label>
@@ -107,11 +113,11 @@
 
           <div class="filter-btns d-flex justify-content-between">
             <button class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control"
-          (click)="onFilterFranchisesWithPaginationAsync()">Применить
-          фильтры</button>
+              (click)="onFilterFranchisesWithPaginationAsync()">Применить
+              фильтры</button>
             <button class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control ml-1"
-          (click)="onClearFilters()">Очистить
-          фильтры</button>
+              (click)="onClearFilters()">Очистить
+              фильтры</button>
           </div>
         </div>
 

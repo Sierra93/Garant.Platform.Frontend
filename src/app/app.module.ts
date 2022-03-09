@@ -73,6 +73,7 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
 import { SessionService } from "./core/session/session.service";
 import { SESSION_TOKEN } from "./core/session/session.token";
 import { NotifyService } from "./services/notify/notify.service";
+import { PriceFormatPipe } from "./core/pipes/priceFormat";
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { NotifyService } from "./services/notify/notify.service";
     DealLandingModule,
     NotificationsModule,
     ConfiguratorAuthModule,
-    CreateAdModule
+    CreateAdModule,
+    PriceFormatPipe
   ],
 
   entryComponents: [],

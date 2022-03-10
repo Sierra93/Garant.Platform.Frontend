@@ -19,7 +19,7 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
  */
 export class CatalogBusinessModule implements OnInit {
     aPopularBusiness: any[] = [];
-    isGarant: boolean = true;
+    isGarant: boolean = false;
     aCities: any[] = [];
     aBusinessCategories: any[] = [];
     aViewBusiness: any[] = [];
@@ -54,6 +54,7 @@ export class CatalogBusinessModule implements OnInit {
     aReviewsFranchises: any[] = [];
     businessId: number = 0;
     routeParam: number;
+    isHideBusinessWithGarant: boolean = false;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
@@ -93,7 +94,7 @@ export class CatalogBusinessModule implements OnInit {
     };
 
     public async ngOnInit() {
-        // await this.getPopularBusinessAsync();
+        await this.getPopularBusinessAsync();
         await this.GetBusinessListAsync();
         await this.loadCitiesFranchisesListAsync();
         await this.loadCategoriesFranchisesListAsync();
@@ -112,18 +113,18 @@ export class CatalogBusinessModule implements OnInit {
      * Функция получит список популярного бизнеса.
      * @returns Список бизнеса.
      */
-    //  private async getPopularBusinessAsync() {        
-    //     try {
-    //         await this.commonService.getPopularBusinessAsync().then((data: any) => {
-    //             console.log("Популярный бизнес:", data);
-    //             this.aPopularBusiness = data;
-    //         });
-    //     }
+     private async getPopularBusinessAsync() {        
+        try {
+            await this.commonService.getPopularBusinessAsync().then((data: any) => {
+                console.log("Популярный бизнес:", data);
+                this.aPopularBusiness = data;
+            });
+        }
 
-    //     catch (e: any) {
-    //         throw new Error(e);
-    //     }
-    // };
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
    
 
     /**

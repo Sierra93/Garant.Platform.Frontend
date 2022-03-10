@@ -11,11 +11,13 @@ export class AppComponent {
   isGarant: boolean = false;
   spinnerStyle = Spinkit;
 
-  ngDoCheck(){
+  constructor() { }
+
+  ngDoCheck() {
     if (window.location.href.includes("stage")) {
       this.isGarant = true;
     } else {
       this.isGarant = false;
     }
-  }
+  };
 }

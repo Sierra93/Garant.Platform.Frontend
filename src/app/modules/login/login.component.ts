@@ -16,7 +16,7 @@ import { SessionItems } from "../../core/session/session-items";
     styleUrls: ["./login.component.scss"]
 })
 
-/** 
+/**
  * Класс модуля авторизации.
  */
 export class LoginModule implements OnInit {
@@ -34,6 +34,8 @@ export class LoginModule implements OnInit {
     time: number = 60;
     interval: any;
     play: boolean = false;
+    isPolicyAgreement: boolean = false;
+    isAdsEmail: boolean = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -102,13 +104,13 @@ export class LoginModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/user/login"), loginInput)
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Авторизация:", response);                        
+                        console.log("Авторизация:", response);
 
                         if (response.token && response.isSuccess) {
                             this._sessionService.setToken({[SessionItems.token]: response.token});
                             sessionStorage["user"] = response.user;
                             sessionStorage["isSuccess"] = response.isSuccess;
-                            document.cookie = "user=" + response.user; 
+                            document.cookie = "user=" + response.user;
                             this.isGetCode = true;
                             this.IsWriteProfileData(response.isWriteProfileData);
                         }
@@ -222,5 +224,13 @@ export class LoginModule implements OnInit {
         }
 
         this.router.navigate(["/profile-data"]);
+    }
+
+    public onToggle(prop: String) {
+        if (prop === `changePolicyAgreement`) {
+            this.isPolicyAgreement = !this.isPolicyAgreement;
+        } else if (prop === `changeAdsEmail`) {
+            this.isAdsEmail = !this.isAdsEmail;
+        }
     }
 }

@@ -7,7 +7,6 @@ import { BreadcrumbInput } from "../../models/header/breadcrumb-input";
 import { MainHeader } from "../../models/header/main-header";
 import { SuggestionInput } from "../../models/suggestion/input/suggestion-input";
 import { TransitionInput } from "../../models/transition/input/transition-input";
-import { ready, type } from "jquery";
 import { SESSION_TOKEN } from "../../core/session/session.token";
 import { SessionService } from "../../core/session/session.service";
 import { SessionItems } from "../../core/session/session-items";
@@ -218,6 +217,27 @@ export class CommonDataService {
         try {
             return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/franchise/main-popular"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async getPopularBusinessAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/business/popular-business"), {})
                     .subscribe({
                         next: (response: any) => {
                             resolve(response);
@@ -616,5 +636,35 @@ export class CommonDataService {
      */
     public TrimSpaceInNumber(value: string) {
         return value.replace(/\s/g, "");
-    }
+    };
+
+    /**
+     * Функция вернет регион пользователя.
+     * @returns - Страна пользователя.
+     */
+    public getUserLocation(): string {
+        return window.navigator.language.substr(0, 2).toLowerCase();
+    };
+
+    public async getNewBusinessAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/business/new-business"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Последние объявления бизнеса:", response);
+                        resolve(response);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
 };

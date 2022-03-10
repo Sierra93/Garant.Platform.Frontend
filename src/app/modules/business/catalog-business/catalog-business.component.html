@@ -1,6 +1,6 @@
 <!-- Популярный бизнес. -->
-<h5 class="garant title-franchise">Популярный бизнес</h5>
-<div class="d-flex popular-list">
+<!-- <h5 class="garant title-franchise">Популярный бизнес</h5> -->
+<!-- <div class="d-flex popular-list">
   <div class="popular-item" *ngFor="let item of aPopularBusiness">
     <p-card header="{{item.businessName}}" subheader="{{item.text}}" [style]="{width: '100%'}"
       styleClass="p-card-shadow">
@@ -13,6 +13,41 @@
       </ng-template>
     </p-card>
   </div>
+</div> -->
+
+<!-- <div class="" *ngFor="let item of aPopularBusiness">
+  <p-card header="{{item.businessName}}" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+      <img [src]="item.url" class="franchise-card-img">
+    </ng-template>
+  </p-card>
+</div> -->
+
+<!-- Бизнес блог. -->
+<div class="row section-mb">
+  <h5 class="garant title-franchise">Популярный бизнес</h5>
+
+  <div class="popular-item blog-item col--xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aPopularBusiness">
+    <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
+      <ng-template pTemplate="header">
+        <img [src]="item.url" class="franchise-card-img">
+      </ng-template>
+    </p-card>
+  </div>
+
+  <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
+    <div class="popular-item more-articles business-blog-video">
+      <p-card header="" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
+        <div class="more-articles-content d-flex align-items-center mt-4">
+          <div class="more-articles-content-text">
+            <h3 class="franchise-card-title">Больше статей</h3>
+            <p class="franchise-card-description">Перейдите в наш блог и найдите там массу полезной информации.</p>
+          </div>
+          <img src="../../../assets/images/Frame 66.png" height="32">
+        </div>
+      </p-card>
+    </div>
+  </div>
 </div>
 
 <div class="garant block-title-franchise">
@@ -23,7 +58,7 @@
 
 <div class="d-flex">
   <div class="business-search">
-    <button type="button" class="btn-close btn-close--top" aria-label="Close" (click)="onClearFilters()"></button>
+    <!-- <button type="button" class="btn-close btn-close--top" aria-label="Close" (click)="onClearFilters()"></button> -->
     <!-- <div>
     <strong>Сфера бизнеса</strong><br>
     <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
@@ -54,7 +89,7 @@
           name="maxPrice" />
       </div>
     </div>
-    <button type="button" class="btn-close btn-close--bottom" aria-label="Close" (click)="onClearFilters()"></button>
+    <!-- <button type="button" class="btn-close btn-close--bottom" aria-label="Close" (click)="onClearFilters()"></button> -->
   </div>
 </div>
 
@@ -212,12 +247,12 @@
 </div>
 </div> -->
 
-<div class="row">
+<div class="row" *ngIf="!isHideBusinessWithGarant">
   <div class="col-lg-12 col-xs-12 garant card-line">
     <p-card class="card-line-wrapper">
       <ng-template pTemplate="header">
         <strong>Вы можете приобрести бизнес с гарантиями</strong>
-        <button type="button" class="close" aria-label="Close">
+        <button type="button" class="close" aria-label="Close"  (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
           <span aria-hidden="true">&times;</span>
         </button>
       </ng-template>
@@ -229,7 +264,7 @@
           </div>
 
           <div>
-            <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button>
+            <button class="btn btn-default btn-show-more"  (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">{{oSuggestion.button1Text}}</button>
           </div>
 
         </div>

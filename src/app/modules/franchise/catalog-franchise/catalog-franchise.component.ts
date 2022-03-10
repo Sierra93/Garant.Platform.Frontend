@@ -3,7 +3,6 @@ import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
-import { FilterInput } from "src/app/models/franchise/input/filter-franchise-input";
 import { FilterFranchiseWithPaginationInput } from "src/app/models/franchise/input/filter-franchise-with-pagination-input";
 import { PaginationInput } from "src/app/models/pagination/input/pagination-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
@@ -20,7 +19,7 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
 export class CatalogFranchiseModule implements OnInit {
     
     aPopularFranchises: any[] = [];
-    isGarant: boolean = true;
+    isGarant: boolean = false;
     aCities: any[] = [];
     aBusinessCategories: any[] = [];
     aViewBusiness: any[] = [];
@@ -337,7 +336,7 @@ export class CatalogFranchiseModule implements OnInit {
 
 
     public async onClearFilters() {
-        this.isGarant = true;
+        this.isGarant = false;
         this.minPrice = 0;
         this.filterMinPrice =0;
         this.maxPrice = 0;

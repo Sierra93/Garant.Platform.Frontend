@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
-import { ConfiguratorAuthInput } from "src/app/models/configurator/configurator-auth-input";
+import { ConfiguratorAuthInput } from "src/app/models/configurator/input/configurator-auth-input";
 
 @Component({
     selector: "configurator-auth",

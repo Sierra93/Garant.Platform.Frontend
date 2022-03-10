@@ -208,7 +208,7 @@
     </p>
     <p class="steps-item__stage">Шаг 1
     </p>
-    <p class="steps-item__text">Воспользуйтесь каталогом для <br> удобного и быстрого поиска <br> по вашим параметрам.
+    <p class="steps-item__text">Воспользуйтесь каталогом для  удобного и быстрого поиска  по вашим параметрам.
     </p>
     <button class="steps-item__button">Начать поиск</button>
   </div>
@@ -220,7 +220,7 @@
     <p class="steps-item__subtitle">на нашем портале</p>
     <p class="steps-item__stage">Шаг 2
     </p>
-    <p class="steps-item__text">Вы можете пройти быструю <br> регистрацию до начала выбора <br> бизнеса или во время.
+    <p class="steps-item__text">Вы можете пройти быструю  регистрацию до начала выбора  бизнеса или во время.
     </p>
     <button class="steps-item__button">Пройти регистрацию</button>
   </div>
@@ -232,7 +232,7 @@
     <p class="steps-item__subtitle">и распланировать этапы сделки</p>
     <p class="steps-item__stage">Шаг 3
     </p>
-    <p class="steps-item__text">Вы сможете распланировать <br> онлайн сделку посредством <br> сервиса гарант.</p>
+    <p class="steps-item__text">Вы сможете распланировать  онлайн сделку посредством  сервиса гарант.</p>
     <button class="steps-item__button">Начать сделку</button>
   </div>
   <div class="steps-item">
@@ -243,7 +243,7 @@
     <p class="steps-item__subtitle">по каждому этапу</p>
     <p class="steps-item__stage">Шаг 4
     </p>
-    <p class="steps-item__text">После оплаты каждого этапа <br> вы становитесь полноправным <br> владельцем бизнеса</p>
+    <p class="steps-item__text">После оплаты каждого этапа вы становитесь полноправным владельцем бизнеса</p>
     <button class="steps-item__button">Получить консультацию</button>
   </div>
 </div>
@@ -435,19 +435,25 @@
 
 
 <!-- Популярный бизнес. -->
-<h5 class="garant title-franchise">Популярныe франшизы</h5>
-<div class="d-flex popular-list">
-  <div class="popular-item" *ngFor="let item of aPopularBusiness">
-    <p-card header="{{item.businessName}}" subheader="{{item.text}}" [style]="{width: '100%'}"
-      styleClass="p-card-shadow">
-      <ng-template pTemplate="header">
-        <img [src]="item.url">
-      </ng-template>
-      <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-      <ng-template pTemplate="footer">
+<div class="row section-mb">
+  <div class="col-12">
+    <h5 class="title-franchise">Популярные франшизы</h5>
+  </div>
+  <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aPopularFranchises">
+    <div class="popular-list">
+      <div>
+        <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}"
+          styleClass="p-card-shadow">
+          <ng-template pTemplate="header">
+            <img [src]="item.url">
+          </ng-template>
+          <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+          <ng-template pTemplate="footer">
 
-      </ng-template>
-    </p-card>
+          </ng-template>
+        </p-card>
+      </div>
+    </div>
   </div>
 </div>
 

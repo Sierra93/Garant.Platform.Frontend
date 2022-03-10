@@ -1,8 +1,13 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MenuItem} from 'primeng/api';
+import { BehaviorSubject, combineLatest, Observable } from "rxjs";
+import { header } from "./header";
+import { SESSION_TOKEN } from "../../core/session/session.token";
+import { SessionService } from "../../core/session/session.service";
+import { filter, map } from "rxjs/operators";
 
 @Component({
     selector: 'header',
@@ -14,7 +19,15 @@ import {MenuItem} from 'primeng/api';
  * Класс модуля хидера.
  */
 export class HeaderModule implements OnInit {
-    aHeader: any[] = [];
+    private _aHeader$ = new BehaviorSubject<header.IItem[] | null>(null);
+    
+    public aHeader$: Observable<header.IItem[] | null> = combineLatest([this._sessionService.isLogin$, this._aHeader$]).pipe(
+        filter(([isLogin, aHeader]) => !!aHeader?.length),
+        map(([isLogin, aHeader]) => {
+            return !isLogin ? aHeader : aHeader!.filter(h => h.name !== 'Вход или регистрация')
+        })
+    )
+    
     aBreadcrumbs: any[] = [];
     routeParam: any;
     searchText: string = "";
@@ -30,10 +43,14 @@ export class HeaderModule implements OnInit {
     isMenuHidden: boolean = true;
     tabletStart: boolean = false;
 
-    constructor(private http: HttpClient,
+    constructor(
+        private http: HttpClient,
         private commonService: CommonDataService,
         private router: Router,
-        private route: ActivatedRoute) {
+        private route: ActivatedRoute,
+        @Inject(SESSION_TOKEN)
+        private _sessionService: SessionService
+    ) {
           this.searchOptions = ["франшиза", "бизнес"];
 
           this.items = [
@@ -43,6 +60,7 @@ export class HeaderModule implements OnInit {
             {label: 'Оплата и исполнение этапов сделки'}
         ];
 
+        this.routeParam = this.route.snapshot.queryParams;
     };
 
     ngDoCheck(){
@@ -96,8 +114,8 @@ export class HeaderModule implements OnInit {
     */
     private async initHeaderAsync() {
         try {
-            await this.commonService.initHeaderAsync("Main").then((data: any) => {
-                this.aHeader = data;
+            await this.commonService.initHeaderAsync("Main").then((data: header.IItem[]) => {
+                this._aHeader$.next(data)
             });
         }
 
@@ -154,8 +172,8 @@ export class HeaderModule implements OnInit {
 
         else if (this.selectedSearchOption == this.searchOptions[1]) {
             type = "business";
-        }
+        }        
 
-        this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });
+        this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });        
     };   
 }

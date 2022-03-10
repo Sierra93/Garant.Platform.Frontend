@@ -16,7 +16,7 @@
 
   .product-image {
     // width: 50%;
-    width: 342px;
+    width: 100%;
     height: 162px;
     // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
   }
@@ -88,7 +88,7 @@
 
 ::ng-deep .business-garanteese .p-card .p-card-header {
   padding-bottom: 0;
-  margin-bottom: 16px;
+  // margin-bottom: 16px;
   font-size: 18px;
 }
 
@@ -352,6 +352,16 @@ only screen and (-webkit-device-pixel-ratio: 3) {
   }
 }
 
+.ready-business-categories .title-franchise {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    display: none;
+  }
+}
+
 
 @media (max-width: 1800px) {
   .three-cards-header {
@@ -391,6 +401,20 @@ only screen and (-webkit-device-pixel-ratio: 3) {
   }
 }
 
+@media (max-width: 992px) {
+  .carousel-block {
+    flex-direction: column-reverse;
+
+    .right {
+      margin-bottom: 2.25rem;
+    }
+
+    [class^=col] {
+      width: 100%;
+    }
+  }
+}
+
 @media (max-width: 800px) {
   .p-inputtext {
     max-width: 120px;
@@ -406,18 +430,6 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 }
 
 @media (max-width: 768px) {
-  .carousel-block {
-    flex-direction: column-reverse;
-
-    .right {
-      margin-bottom: 2.25rem;
-    }
-
-    [class^=col] {
-      width: 100%;
-    }
-  }
-
   .baner-img {
     &:first-child {
       margin-bottom: 1.5rem;
@@ -430,6 +442,17 @@ only screen and (-webkit-device-pixel-ratio: 3) {
     }
 
     .title-franchise {
+      img {
+        display: block;
+
+        &.rotated {
+          transform: rotate(90deg);
+          transition: transform .5s;
+        }
+      }
+    }
+
+    .title-franchise + div {
       display: none;
     }
 
@@ -473,11 +496,21 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 }
 
 ::ng-deep {
+  @media (max-width: 1080px) {
+    .p-carousel-item {
+      flex: 1 0 70% !important;
+    }
+  }
+
   @media (max-width: 992px) {
     .card-business-holder {
       &:not(:last-child) {
         margin-bottom: 1.5rem;
       }
+    }
+
+    .p-carousel-item {
+      flex: 1 0 80% !important;
     }
   }
 

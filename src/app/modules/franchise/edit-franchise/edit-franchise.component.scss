@@ -3,3 +3,63 @@
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/common.scss";
 @import "/src/app/modules/franchise/create-franchise/create-franchise.component.scss";
+
+@media (max-width: 576px) {
+  .sale-through-garant {
+    .switch-garant {
+      > button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .photos {
+    .block-gallery {
+      .p-galleria {
+        &-content {
+          align-items: stretch;
+
+          .p-galleria-thumbnails-left p-galleriaitem {
+            .p-galleria-item-container {
+              display: unset;
+              height: auto !important;
+
+              .p-galleria-item {
+                height: unset;
+
+                img {
+                  height: unset;
+                }
+              }
+            }
+          }
+
+          .p-galleria-thumbnail-container {
+            justify-content: space-between;
+
+            @media (max-width: 576px) {
+              padding: 0 .25rem;
+            }
+          }
+
+          .p-galleria-thumbnail-items-container {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.level-includes {
+  button {
+    &, &:focus {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      padding: 0;
+    }
+  }
+}

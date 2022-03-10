@@ -1,30 +1,30 @@
 <div class="row">
   <!-- Левая часть. -->
-  <div class="col-lg-4">
+  <div class="col-xxl-3 col-xl-3 col-lg-4">
     <manage-account></manage-account>
   </div>
 
   <!-- Правая часть. -->
-  <div class="col-lg-8">
+  <div class="col-xxl-9 col-xl-9 col-lg-8">
     <h2 class="profile-title">Мои сообщения</h2>
 
-    <div class="block-right">
-      <div class="block-chat" *ngFor="let item of aDialogs">
+    <div class="block-right" *ngFor="let item of aDialogs">
+      <div class="block-chat">
         <div class="row block-dialog-line" (click)="onGetDialogMessageAsync(item.dialogId)">
-          <div class="col-lg-3">
+          <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-5 col-sm-4 col-6">
             <div class="dialog-photo">
               <img class="space-intgr mr-16" src="{{item.url}}">
             </div>
           </div>
 
-          <div class="col-lg-9">
-            <div class="h-100">
+          <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-7 col-sm-8 col-6">
+            <div class="h-100 d-flex flex-column justify-content-between">
               <div class="d-flex justify-content-between dialog-top">
                 <span class="dialog-sender">{{item.fullName}}</span>
                 <span class="dialog-date" *ngIf="item.calcShortDate !== null">{{item.calcShortDate}}</span>
                 <span class="dialog-date" *ngIf="item.calcTime !== null">{{item.calcTime}}</span>
               </div>
-              <div class="dialog-content d-flex justify-content-between">
+              <div class="dialog-content d-flex justify-content-between align-items-center">
                 <div>
                   <strong class="dialog-title">Название предмета обсуждения</strong>
                   <p class="dialog-message">{{item.lastMessage}}</p>

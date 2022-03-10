@@ -455,6 +455,38 @@
       </div>
 
       <section id="create-franchise" *ngIf="selectedCardActionSysName == 'CreateFranchise'">
+        <div class="space-top-bottom-32">
+          <strong class="title-small">Выбор сферы</strong>
+        </div>
+
+        <p-dropdown 
+          [options]="aFranchiseCategories" 
+          optionLabel="categoryName" 
+          optionCode="categoryCode"
+          [filter]="true" 
+          name="category" 
+          placeholder="Выберите сферу" 
+          [(ngModel)]="selectedCategory"
+          [showClear]="true"
+          (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
+          (onFilter)="onFilterSphereAsync($event.filter)">
+      </p-dropdown>
+
+      <div class="space-top-bottom-32">
+        <strong class="title-small">Выбор категории</strong>
+      </div>
+
+      <p-dropdown
+        [options]="aFranchiseSubCategories" 
+        optionLabel="subCategoryName" 
+        [filter]="true" 
+        name="subCategory" 
+        [(ngModel)]="selectedSubCategory"
+          optionCode="categoryCode" 
+          placeholder="Выберите категорию" 
+          [showClear]="true" 
+          (onFilter)="onFilterCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)">
+      </p-dropdown>
 
         <h5 class="title-name-logo">Название и логотип*</h5>
 
@@ -502,8 +534,8 @@
                 [(ngModel)]="lead" name="lead" />
             </div>
 
-            <button class="btn btn-link">Стать франчайзи онлайн через гарант</button><br>
-            <button class="control-button-blue">Начать чат с представителем</button>
+            <!-- <button class="btn btn-link">Стать франчайзи онлайн через гарант</button><br>
+            <button class="control-button-blue">Начать чат с представителем</button> -->
           </div>
         </div>
 
@@ -698,41 +730,41 @@
             <div class="d-flex">
               <div class="fin-indicator-first">
                 <small>Например: средний чек</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="finIndicator1" name="finIndicator1" /><br>
 
                 <small>Процент или финансы</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="percentFinancial1" name="" />
               </div>
 
               <div class="fin-indicator">
                 <small>Например: рентабельность</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="finIndicator2" name="finIndicator2" /><br>
 
                 <small>Процент или финансы</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="percentFinancial2" name="percentFinancial2" />
               </div>
 
               <div class="fin-indicator">
                 <small>Например: средняя выручка</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="finIndicator3" name="finIndicator3" /><br>
 
                 <small>Процент или финансы</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="percentFinancial3" name="percentFinancial3" />
               </div>
 
               <div class="fin-indicator">
                 <small>Например: товарная наценка</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="finIndicator4" name="finIndicator4" /><br>
 
                 <small>Процент или финансы</small><br>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="percentFinancial4" name="percentFinancial4" />
               </div>
             </div>
@@ -853,7 +885,7 @@
   <div>
    <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
    <label for="packs" class="control-label-checkbox">Отзывы о франшизе</label>
-  </div>        
+  </div>
 </div>
 
 <div>
@@ -893,8 +925,8 @@
             name="packLumpSumPayment" /> ₽
         </div>
       </div>
-    </div>    
-  </div>  
+    </div>
+  </div>
 
   <div class="block-button-pack">
     <button class="control-button-blue">Добавить отзыв</button>
@@ -1008,12 +1040,12 @@
                   <!-- <span>{{item.status}}</span> -->
                 </div>
 
-                <div class="photos-buttons">
+                <!-- <div class="photos-buttons">
                   <p-button label="Стать франчайзи онлайн через гарант" styleClass="p-button-link" [disabled]="true">
                   </p-button>
                   <p-button label="Начать чат с представителем" styleClass="control-button-blue" [disabled]="true">
                   </p-button>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -1281,14 +1313,14 @@
                     <div class="fin-indicator-first">
                       <div>
                         <label>Например: средний чек</label>
-                        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                        <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                           [(ngModel)]="item.Name" name="finIndicator1" />
                         <!-- <span>{{item.Name}}</span><br> -->
                       </div>
 
                       <div>
                         <label>Процент или финансы</label>
-                        <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                        <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                           [(ngModel)]="item.Price" name="" />
                         <!-- <span>{{item.Price}}</span><br> -->
                       </div>
@@ -1459,7 +1491,7 @@
            <label for="packs" class="control-label-checkbox">Отзывы о франшизе</label>
           </div>
         </div>
-        
+
         <div>
          <small>
           На данный момент доступны только видеоотзывы. Если у вас новая франшиза, то отзывов могло не быть. Однако вы можете добавить отзывы, если они есть или отключить их посредством галочки около названия.
@@ -1477,20 +1509,20 @@
                 <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание" [(ngModel)]="packDetails"
                   name="packDetails" />
               </div>
-        
+
               <div class="block-bottom-pack">
                 <div>
                   <span class="title-small">Паушальный взнос:</span><br>
                   <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
                     name="packLumpSumPayment" /> ₽
                 </div>
-        
+
                 <div>
                   <span class="title-small">Роялти:</span><br>
                   <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
                     name="packLumpSumPayment" /> %
                 </div>
-        
+
                 <div>
                   <span class="title-small">Всего инвестиций:</span><br>
                   <input type="text" class="control-big-input" pInputText [(ngModel)]="packLumpSumPayment"
@@ -1499,7 +1531,7 @@
               </div>
             </div>
           </div>
-        
+
           <div class="block-button-pack">
             <button class="control-button-blue">Добавить отзыв</button>
           </div>
@@ -1515,6 +1547,48 @@
 
       <!-- Создать карточку бизнеса. -->
       <div *ngIf="selectedCardActionSysName == 'CreateBusiness'">
+
+        <div class="space-top-bottom-32">
+          <strong class="title-small">Выбор сферы</strong>
+        </div>
+
+        <p-dropdown 
+          [options]="aBusinessCategories" 
+          optionLabel="categoryName" 
+          optionCode="categoryCode"
+          [filter]="true" 
+          name="category" 
+          placeholder="Выберите сферу" 
+          [(ngModel)]="selectedCategory"
+          [showClear]="true"
+          (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
+          (onFilter)="onFilterSphereAsync($event.filter)">
+      </p-dropdown>
+
+      <div class="space-top-bottom-32">
+        <strong class="title-small">Выбор категории</strong>
+      </div>
+
+      <p-dropdown
+          [options]="aBusinessSubCategories" 
+          optionLabel="subCategoryName" 
+          [filter]="true" 
+          name="subCategory" 
+          [(ngModel)]="selectedSubCategory"
+            optionCode="categoryCode" 
+            placeholder="Выберите категорию" 
+            [showClear]="true" 
+            (onFilter)="onFilterCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)">
+        </p-dropdown>
+
+        <div>
+          <div class="space-top-bottom-32">
+            <strong class="title-small">Выбор города</strong>
+          </div>
+  
+          <p-dropdown [options]="aCities" optionLabel="businessCityName" name="cityName" [(ngModel)]="selectedCityName"
+            placeholder="Выберите город" [showClear]="true"></p-dropdown>
+        </div>
 
         <h5 class="title-name-logo">Название бизнеса*</h5>
 
@@ -2144,5 +2218,306 @@
       </div>
     </div>
 
+    <!-- Таб модерации. -->
+    <div *ngIf="tabIndex == 4">
+      <div>
+        <div>
+          <h5>Панель модератора</h5>
+        </div>
+
+        <!-- Таблица с карточками франшиз, которые требуют согласования. -->
+        <div>        
+          <div class="mt-3 mb-3">
+            <div>
+              <strong style="font-size: 20px;">Франшизы ожидающие согласования</strong>
+            </div>
+  
+             <div>
+              Кол-во: {{aNotAcceptedFranchises.length}}
+             </div>
+           </div>
+
+          <p-table 
+          [value]="aNotAcceptedFranchises" 
+          [scrollable]="true" 
+          scrollHeight="400px">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>ID</th>
+                <th>Изображение</th>
+                <th>Название</th>
+                <th>Дата размещения</th>
+                <th>Просмотр</th>
+                <th>Одобрение</th>
+                <th>Отклонение</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-item let-index="rowIndex">
+              <tr>
+                <td>{{item.franchiseId}}</td>
+                <td>
+                  <img [src]="item.url" />
+                </td>
+                <td>{{item.title}}</td>
+                <td>{{item.dateCreate}}</td>
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Просмотреть" 
+                    class="p-button-outlined p-button-info"
+                    (click)="onViewFranchise(index)">
+                </button>
+                </td>
+
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Одобрить" 
+                    class="p-button-outlined p-button-success"
+                    (click)="onAcceptCardAsync(item.franchiseId, 'Franchise')">
+                </button>
+                </td>
+
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Отклонить" 
+                    class="p-button-outlined p-button-danger"
+                    (click)="onShowRejectFranchiseModal(index)">
+                </button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+
+        <!-- Таблица с карточками бизнеса, которые требуют согласования. -->
+        <div>
+         <div class="mt-3 mb-3">
+          <div>
+            <strong style="font-size: 20px;">Бизнесы ожидающие согласования</strong>
+          </div>
+
+           <div>
+            Кол-во: {{notAcceptedBusinesses$.value.length}}
+           </div>
+         </div>
+
+          <p-table [value]="notAcceptedBusinesses$ | async" [scrollable]="true" scrollHeight="400px">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>ID</th>
+                <th>Изображение</th>
+                <th>Название</th>
+                <th>Дата размещения</th>
+                <th>Просмотр</th>
+                <th>Одобрение</th>
+                <th>Отклонение</th>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-item let-index="rowIndex">
+              <tr>
+                <td>{{item.businessId}}</td>
+                <td>
+                  <img [src]="item.url" />
+                </td>
+                <td>{{item.businessName}}</td>
+                <td>{{item.dateCreate}}</td>
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Просмотреть" 
+                    class="p-button-outlined p-button-info"
+                    (click)="onViewBusiness(index)">
+                </button>
+                </td>
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Одобрить" 
+                    class="p-button-outlined p-button-success"
+                    (click)="onAcceptCardAsync(item.businessId, 'Business')">
+                </button>
+                </td>
+
+                <td>
+                  <button pButton 
+                    type="button" 
+                    label="Отклонить" 
+                    class="p-button-outlined p-button-danger"
+                    (click)="onShowRejectBusinessModal(index)">
+                </button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Таб сферы и категории. -->
+    <div *ngIf="tabIndex == 5">
+      <div>
+        <div>
+          <label class="mt-3">Действия с категориями или сферами</label>
+        </div>
+
+        <p-dropdown class="block-sort-by" 
+          [options]="aSphereCategoryActions" 
+          optionLabel="sphereActionName"
+          optionCode="sphereActionSysName" 
+          name="newsAction" 
+          [(ngModel)]="sphereAction"
+          placeholder="Действие с категориями или сферами" 
+          [showClear]="true"
+          (onChange)="onSelectSphereCategory($event, false)"></p-dropdown>
+      </div>
+
+      <!-- Сферы. -->
+      <div *ngIf="sphereAction != null && sphereAction.sphereActionSysName == 'CreateSphere'">
+        <div>
+          <div>
+            <label class="mt-3">Название сферы</label>
+          </div>
+
+          <div>
+            <input type="text" class="" [(ngModel)]="sphereName">
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Системное название сферы</label>
+          </div>
+
+          <div>
+            <input type="text" class="" [(ngModel)]="sysName">
+            <small class="mt-3">Системное название нужно для идентификации сферы. Указывайте уникальное название на англ. языке. Например, системное название Авто = 'Auto'</small>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Тип сферы</label>
+          </div>
+
+          <div>
+            <input type="text" class="" [(ngModel)]="typeSphere">
+            <small class="mt-3">Тип представляет собой тип сферы, которую можно сопоставить. Вводить на англ.языке. Franchise или Business</small>
+          </div>
+        </div>
+
+        <button pButton type="button" label="Сохранить" class="p-button-outlined mt-3"
+        (click)="onCreateSphereAsync(sphereName, typeSphere, sysName)"></button>
+      </div>
+
+      <!-- Категории. -->
+      <div *ngIf="sphereAction != null && sphereAction.sphereActionSysName == 'CreateCategory'">
+        <div>
+          <div class="space-top-bottom-32">
+            <span class="title-small">Выбор сферы, категорию которой нужно создать</span>
+          </div>
+  
+          <p-dropdown 
+            [options]="aFranchiseCategories" 
+            optionLabel="categoryName" 
+            optionCode="categoryCode"
+            [filter]="true" 
+            name="category" 
+            placeholder="Выберите сферу" 
+            [(ngModel)]="selectedCategory"
+            [showClear]="true"
+            (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
+            (onFilter)="onFilterSphereAsync($event.filter)">
+        </p-dropdown>
+        </div>
+        
+        <div>
+          <div>
+            <label class="mt-3">Название категории</label>
+          </div>
+
+          <div>
+            <input type="text" class="" [(ngModel)]="sphereName">
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Системное название категории</label>
+          </div>
+
+          <div>
+            <input type="text" class="" [(ngModel)]="sysName">
+            <small class="mt-3">Системное название нужно для идентификации категории. Указывайте уникальное название на англ. языке. Например, системное название Авто = 'Auto'</small>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <label class="mt-3">Тип категории</label>
+          </div>
+
+          <div>
+            <input type="text" class="" [(ngModel)]="typeSphere">
+            <small class="mt-3">Тип представляет собой тип категории, которую можно сопоставить. Вводить на англ.языке. Franchise или Business</small>
+          </div>
+        </div>
+
+        <button pButton type="button" label="Сохранить" class="p-button-outlined mt-3"
+        (click)="onCreateCategoryAsync(selectedCategory, sphereName, typeSphere, sysName)"></button>
+      </div>
+    </div>
+
   </p-tabPanel>
 </p-tabView>
+
+<!-- Диалог франшизы. -->
+<p-dialog [(visible)]="isShowRejectFranchiseModal">
+  <ng-template pTemplate="header">
+      Укажите причину отклонения
+  </ng-template>
+  
+  <div>
+    <div>    
+      <span class="title-small">Причина отклонения</span><br>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Укажите причину отклонения" [(ngModel)]="commentRejected"></textarea>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button 
+      pButton type="button" 
+      label="Подтвердить отклонение" 
+      class="p-button-outlined p-button-danger"
+      (click)="onRejectFranchiseCardAsync('Franchise')">
+  </button>
+  </ng-template>
+</p-dialog>
+
+<!-- Диалог бизнеса. -->
+<p-dialog [(visible)]="isShowRejectBusinessModal">
+  <ng-template pTemplate="header">
+      Укажите причину отклонения
+  </ng-template>
+  
+  <div>
+    <div>    
+      <span class="title-small">Причина отклонения</span><br>
+      <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
+        placeholder="Укажите причину отклонения" [(ngModel)]="commentRejected"></textarea>
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button 
+      pButton type="button" 
+      label="Подтвердить отклонение" 
+      class="p-button-outlined p-button-danger"
+      (click)="onRejectBusinessCardAsync('Business')">
+  </button>
+  </ng-template>
+</p-dialog>

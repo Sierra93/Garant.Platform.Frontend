@@ -95,11 +95,13 @@
           </ng-template>
           <strong>{{item.textDoPrice}} {{item.totalInvest}} ₽</strong>
           <ng-template pTemplate="footer">
+           <div class="d-flex">
             <button class="btn btn-default btn-filter"
-              (click)="routeViewFranchiseCardAsync(item.franchiseId)">Подробнее</button>
-            <button class="btn btn-default btn-filter"
-              (click)="onRouteFranchiseChatAsync(item.franchiseId, 'Franchise', item.userId)">Начать чат с
-              продавцом</button>
+            (click)="routeViewFranchiseCardAsync(item.franchiseId)">Подробнее</button>
+          <button class="btn btn-default btn-filter"
+            (click)="onRouteFranchiseChatAsync(item.franchiseId, 'Franchise', item.userId)">Начать чат с
+            продавцом</button>
+           </div>
           </ng-template>
         </p-card>
       </div>
@@ -166,14 +168,14 @@
 
     <div class="d-flex popular-list" *ngIf="isBusiness">
       <div class="popular-item" *ngFor="let item of aResultSearch">
-        <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
+        <p-card class="col-lg-4" header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
           <ng-template pTemplate="header">
             <img [src]="item.url">
           </ng-template>
           <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
           <ng-template pTemplate="footer">
             <button class="btn btn-default btn-filter"
-              (click)="routeViewFranchiseCardAsync(item.businessId)">Подробнее</button>
+              (click)="routeViewBusinessCardAsync(item.businessId)">Подробнее</button>
           </ng-template>
         </p-card>
       </div>

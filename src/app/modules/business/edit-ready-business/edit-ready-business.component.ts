@@ -139,7 +139,10 @@ export class EditReadyBusinessModule implements OnInit {
 
             await this.http.post(API_URL.apiUrl.concat("/business/get-business"), getFranchiseInput)
                 .subscribe({
-                    next: (response: any) => {                        
+                    next: (response: any) => {      
+                        // Уберет пробелы у числа.    
+                        response.price = this.commonService.TrimSpaceInNumber(response.price);    
+                               
                         this.businessData = response;                                                    
                         this.aPriceIn = JSON.parse(response.investPrice);                                                
 

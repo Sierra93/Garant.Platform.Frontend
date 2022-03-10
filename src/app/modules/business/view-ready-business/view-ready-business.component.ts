@@ -61,6 +61,8 @@ export class ViewReadyBusinessModule implements OnInit {
     aBusinessPhotos: any = [];
     userName: string = "";
     number: string = "";
+    isHidePeculiarity: boolean = false;
+    isUrlVideo: boolean = false;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
@@ -97,8 +99,8 @@ export class ViewReadyBusinessModule implements OnInit {
 
     public async ngOnInit() {
         await this.getUserFio();
-        await this.getTransitionAsync();
-    };
+        await this.getTransitionAsync();       
+    }; 
 
     public ngOnAfterViewInit() {
         this.aBusinessPhotos = this.aNamesBusinessPhotos;
@@ -150,6 +152,14 @@ export class ViewReadyBusinessModule implements OnInit {
                         //     this.aNamesBusinessPhotos = item.urlsBusiness;
                         // });
                         this.aNamesBusinessPhotos = response.urlsBusiness.split(",");
+
+                        if (!this.businessData[0].peculiarity) {
+                            this.isHidePeculiarity = true;
+                        }
+
+                        if (!this.businessData[0].urlVideo) {
+                            this.isUrlVideo = true;
+                        }
 
                         console.log("Полученный бизнес:", response);
                         console.log("businessData", this.businessData);      
@@ -416,15 +426,15 @@ export class ViewReadyBusinessModule implements OnInit {
             await this.http.post(API_URL.apiUrl.concat("/request/create-request-business"), requestBusinessInput)
                 .subscribe({
                     next: (response: any) => {
-                        console.log("Заявка успешно создана", response); 
+                        console.log("Статус создания заявки: ", response); 
                         
                         if (response.isSuccessCreatedRequest) {
                             this.messageService.add({
                                 severity: 'success',
-                                summary: 'Успешно!',
+                                summary: 'Успешно',
                                 detail: response.statusText
                             });    
-                        }                                       
+                        }      
                     },
 
                     error: (err) => {
@@ -436,5 +446,5 @@ export class ViewReadyBusinessModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    };
+    };   
 }

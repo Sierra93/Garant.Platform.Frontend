@@ -13,16 +13,18 @@
         <div class="d-flex flex-column">
           <h1 class="main-title">{{franchiseData.title}}</h1>
         </div>
+<!--        TODO: Навешен индивидуальный стиль для кнопки в заголовке карточки, так как перебиваются стили из других компонентов-->
+        <button routerLink="/franchise/edit" [queryParams]="{franchiseId: franchiseData.franchiseId}" class="view-franchise title-btn p-button-outlined mx-2" pButton type="button" label="Изменить"></button>
       </div>
     </div>
   </div>
 
   <!-- Блок с галереей. -->
   <div class="row photos">
-    <div class="col-xxl-8 col-xl-9 col-lg-8 col-md-12">
+    <div class="col-xxl-8 col-xl-8 col-lg-8">
       <div class="block-gallery">
         <div class="w-100">
-          <span *ngIf="!aFranchisePhotos.length">Фотографии не загружены</span>
+          <span *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</span>
           <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
             [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
             <ng-template pTemplate="item" let-item>
@@ -39,7 +41,7 @@
       </div>
     </div>
 
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 photos-contact">
+    <div class="col-xxl-4 col-xl-4 col-lg-4 photos-contact">
       <div class="franchise-holder">
         <strong>{{fio}}</strong>
 
@@ -60,7 +62,7 @@
   <div class="row financial-data">
     <div class="col-12">
       <h5 class="title-strong">Ключевые финансовые данные*</h5>
-      <span>0 из 6</span>
+      <!-- <span>0 из 6</span> -->
     </div>
 
     <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
@@ -164,13 +166,13 @@
         <h3 class="section-title">Входит в инвестиции*</h3>
         <div class="invest-block" *ngFor="let item of aInvestInclude">
           <div *ngIf="item.Price > 0">
-            <strong>{{item.Price}} ₽</strong>
-            <span class="">Стоимость</span>
+            <strong class="">Стоимость</strong>
+            <span>{{item.Price}} ₽</span>
           </div>
 
           <div>
-            <strong>{{item.Name}}</strong>
-            <span class="">Название</span>
+            <strong class="">Название</strong>
+            <span>{{item.Name}}</span>
           </div>
         </div>
       </div>
@@ -178,15 +180,17 @@
   </div>
 
   <!-- Описание особенности франшизы. -->
-  <div class="row franchise-details section-margin">
+  <div class="row franchise-details section-margin" *ngIf="franchiseData.peculiarity != null">
     <div class="col-12">
       <div class="franchise-details-block">
         <h5 class="subsection-title">Описание особенности франшизы</h5>
 
         <p class="content">{{franchiseData.peculiarity}}</p>
 
+        <p class="content">{{franchiseData.nameFinModelFile}}</p>
+
         <div class="buttons">
-          <button>Получить финансовую модель</button>
+          <button (click)="onDownloadFinModelFileAsync(franchiseData.nameFinModelFile)">Получить финансовую модель</button>
           <button>Позднее</button>
         </div>
 
@@ -213,7 +217,7 @@
 
   <!-- Пример расчета прибыли. -->
   <div class="row income-calculation section-margin">
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-10">
+    <div class="col-12">
       <div>
         <h3 class="section-title">Пример расчета прибыли*</h3>
         <p class="description">{{franchiseData.paymentDetail}}</p>
@@ -221,7 +225,7 @@
     </div>
 
     <!-- Ключевые финансовые показатели. -->
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-10">
+    <div class="col-12" *ngIf="isHideIndicators">
       <div class="franchise-details-block">
         <h5 class="subsection-title">Ключевые финансовые показатели</h5>
         <div class="child-blocks-wrapper">
@@ -241,12 +245,6 @@
             </div>
           </div>
         </div>
-
-        <div class="close position-absolute">
-          <button class="close">
-            <img src="../../../assets/images/close.svg" alt="close icon" />
-          </button>
-        </div>
       </div>
     </div>
   </div>
@@ -262,10 +260,10 @@
   </div>
 
   <!-- Пакеты франшизы. -->
-  <div class="row franchise-packages section-margin">
+  <div class="row franchise-packages section-margin" *ngIf="isHidePacks">
     <div class="col-12 mb-3">
       <div class="d-flex">
-        <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+        <!-- <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox> -->
         <h3 class="section-title mb-0">
           <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
         </h3>
@@ -273,7 +271,7 @@
     </div>
 
     <!-- Блок с пакетами франшизы. -->
-    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 package" *ngFor="let item of aPacks">
+    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 package" *ngFor="let item of aPacks">
       <div class="franchise-packages-block">
         <div class="package-title">
           <h6>{{item.Name}}</h6>
@@ -308,13 +306,13 @@
   </div>
 
   <!-- Видео о франшизе. -->
-  <div class="row franchise-video section-margin">
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-7">
+  <div class="row franchise-video section-margin" *ngIf="franchiseData.urlVideo != null">
+    <div class="col-xxl-8 col-xl-8">
       <div>
         <div class="d-flex">
-          <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
+          <!-- <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox> -->
           <h3 class="section-title mb-0">
-            <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
+            <label for="packs">Видео о франшизе</label>
           </h3>
         </div>
 
@@ -324,7 +322,7 @@
       </div>
     </div>
 
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-5">
+    <div class="col-xxl-4 col-xl-4">
       <!-- Форма заявки. -->
       <h3 class="section-title">Оставьте заявку</h3>
 
@@ -351,7 +349,7 @@
           <div>
             <p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues"></p-checkbox>
           </div>
-          <p>Согласен с условиями использования сервисов GoBizy и обработки персональных данных</p>
+          <p class="mb-0">Согласен с условиями использования сервисов GoBizy и обработки персональных данных</p>
         </div>
 
         <div>
@@ -360,9 +358,9 @@
             заявку</button>
         </div>
 
-        <div>
+        <!-- <div>
           <p class="description">Заявку оставляли 5 раз за последний месяц</p>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

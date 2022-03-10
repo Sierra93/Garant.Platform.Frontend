@@ -31,6 +31,14 @@
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
       background-color: #555;
     }
+
+    .chat-start-date {
+      top: -2rem;
+      z-index: 1000;
+      background-color: rgb(255, 255, 255);
+      padding: .5rem 0;
+      border-top: 2px solid rgba(218, 218, 218, 0.15);
+    }
 }
 
 .message {
@@ -92,7 +100,64 @@ hr.hr {
           background-color: transparent;
           outline: none;
         }
+
+        svg {
+          path {
+            fill: #DADADA;
+          }
+        }
       }
+
+      textarea:focus + .reply svg path {
+        fill: #1f75fe;
+      }
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .chat-start-date {
+    display: flex;
+    flex-flow: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-item-name, .chat-start-date {
+    span {
+      font-size: .75rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .chat-item-name, .chat-start-date {
+    flex-direction: row !important;
+  }
+
+  .chat-header-wrapper {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 425px) {
+  .block-profile {
+    .row {
+      > div {
+        width: 100% !important;
+
+        &:first-child {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .message-input {
+    .p-inputtext {
+      width: 100% !important;
     }
   }
 }

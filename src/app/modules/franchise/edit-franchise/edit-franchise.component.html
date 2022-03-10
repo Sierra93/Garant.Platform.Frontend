@@ -36,28 +36,32 @@
     </div>
 
     <div class="col-xxl-8 col-xl-9 col-lg-8 col-md-12">
-      <input type="file" (change)="uploadFranchisePhotosAsync($event)" multiple>
       <div class="block-gallery">
         <div class="w-100">
           <span *ngIf="!aFranchisePhotos.length">Фотографии не загружены</span>
 
-          <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
-            [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
+          <p-galleria [value]="aFranchisePhotos"
+                      [responsiveOptions]="responsiveOptions"
+                      [containerStyle]="{'max-width': '660px'}"
+                      [numVisible]="4" thumbnailsPosition="left">
             <ng-template pTemplate="item" let-item>
               <img src="{{item}}" style="width: 700px; display: block;" />
             </ng-template>
 
-            <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
+            <ng-template pTemplate="thumbnail" let-item *ngIf="aFranchisePhotos.length > 1">
               <div class="p-grid p-nogutter p-justify-center">
                 <img src="{{item}}" />
               </div>
             </ng-template>
           </p-galleria>
+          <gar-img-uploader
+                  (upload)="uploadImages($event)"
+                  [existing]="aFranchisePhotos"></gar-img-uploader>
         </div>
       </div>
     </div>
 
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 photos-contact">
+    <div class="col-xxl-4 col-xl-3 col-lg-4 col-md-12 photos-contact">
       <div>
         <h6>Ваша карточка для связи</h6>
         <strong>Ваше Имя Фамилия Отчество</strong>
@@ -80,7 +84,7 @@
   <div class="row financial-data">
     <div class="col-12">
       <h5 class="title-strong">Ключевые финансовые данные*</h5>
-      <span>0 из 6</span>
+      <!-- <span>0 из 6</span> -->
     </div>
 
     <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
@@ -167,7 +171,7 @@
       <!-- Дополнительные факты. -->
       <div class="additional-facts">
         <h6>Дополнительные факты*</h6>
-        <span>0 из 4</span>
+        <!-- <span>0 из 4</span> -->
         <div class="row">
           <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="additional-facts-block">
@@ -207,17 +211,36 @@
 
     <div class="col-xxl-4 col-xl-4">
       <h6>Входит в инвестиции*</h6>
-      <span>1 из 10</span>
+      <!-- <span>1 из 10</span> -->
       <div class="main-info-form" *ngFor="let item of aInvestInclude">
         <div>
           <label>Стоимость</label><br>
           <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.Price" name="priceInvest" placeholder="- ₽" />
         </div>
 
-        <div>
+        <div class="mb-3">
           <label>Название</label><br>
           <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText
             [(ngModel)]="item.Name" name="nameInvest" />
+        </div>
+
+        <div class="level-includes">
+          <label class="mb-0">Что входит в этап? Укажите список:</label>
+          <div class="d-flex my-3">
+            <input type="text" class="form-control me-2" placeholder="Например: газонокосилка" />
+            <button>
+              <img src="./../../../../assets/images/remove.svg" alt="" />
+            </button>
+          </div>
+          <div class="d-flex">
+            <input type="text" class="form-control" placeholder="Например: газонокосилка" />
+            <button class="mx-2">
+              <img src="./../../../../assets/images/remove.svg" alt="">
+            </button>
+            <button>
+              <img src="./../../../../assets/images/add.svg" alt="">
+            </button>
+          </div>
         </div>
 
         <button class="control-button-blue-small">Добавить пункт</button>
@@ -246,6 +269,7 @@
         <div class="d-flex flex-column">
           <strong>Прикрепить финансовую модель .xlsx</strong>
           <span class="size">до 5 мб</span>
+          <span class="content">{{ modelFile ? modelFile.name : franchiseData.nameFinModelFile}}</span>
           <input type="file" (change)="uploadFinModelAsync($event)" id="attach-file" class="d-none" />
           <label for="attach-file" class="d-flex align-items-center">
             <span class="me-2">
@@ -258,7 +282,7 @@
 
       <div>
         <p>Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать
-          презентацию, просто пропустите данный этап.</p>
+          финансовую модель, просто пропустите данный этап.</p>
       </div>
     </div>
 
@@ -269,7 +293,7 @@
 
   <!-- Основная информация о франшизе. -->
   <div class="row main-franchise-info">
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-6">
+    <div class="col-xxl-8 col-xl-8 col-lg-8">
       <div>
         <h6>Основная информация о франшизе*</h6>
         <span>Описание франшизы</span>
@@ -280,12 +304,13 @@
       </div>
     </div>
 
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+    <div class="col-xxl-4 col-xl-4 col-lg-4">
       <div class="form">
         <h6>Добавить презентацию</h6>
         <div class="block-details-franch d-flex flex-column">
           <strong>Прикрепить документ .pdf</strong>
           <span>до 20 мб</span>
+          <span class="content">{{presentFile ? presentFile.name : franchiseData.namePresentFile}}</span>
           <input type="file" (change)="uploadPresentAsync($event)" id="upload-present-async" class="d-none" />
           <label for="upload-present-async" class="d-flex align-items-center">
             <span class="me-2">
@@ -309,7 +334,7 @@
 
   <!-- Пример расчета прибыли. -->
   <div class="row income-calculation">
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-10">
+    <div class="col-12">
       <div>
         <h6>Пример расчета прибыли*</h6>
         <span>Описание расчета</span>
@@ -319,7 +344,7 @@
     </div>
 
     <!-- Ключевые финансовые показатели. -->
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-10">
+    <div class="col-12">
       <div class="block-details-franch">
         <h6>Ключевые финансовые показатели</h6>
         <div class="top-form d-flex flex-column">
@@ -333,13 +358,13 @@
             <div class="fin-indicator-first">
               <div>
                 <label>Например: средний чек</label>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="item.Name" name="finIndicator1" />
               </div>
 
               <div>
                 <label>Процент или финансы</label>
-                <input type="number" class="control-input-franch-price" placeholder="Название" pInputText
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="item.Price" name="" />
               </div>
             </div>
@@ -391,7 +416,7 @@
         данный раздел галочкой слева от названия.</p>
     </div>
 
-    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 package" *ngFor="let item of aPacks">
+    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 package" *ngFor="let item of aPacks">
       <!-- Блок с пакетами франшизы. -->
       <div class="franchise-packages-block">
         <div class="d-flex">
@@ -402,12 +427,18 @@
                 [(ngModel)]="item.Name" name="packName" />
               </div>
 
-              <div class="d-flex justify-content-between">
-                <span>
-                  <img src="../../../../assets/images/franchise-pages/tick.svg" alt="gobizy tick icon" />
-                </span>
-                <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание"
-                [(ngModel)]="item.Text" name="packDetails" />
+              <div>
+                <div class="d-flex justify-content-between">
+                  <span>
+                    <img src="../../../../assets/images/franchise-pages/tick.svg" alt="gobizy tick icon" />
+                  </span>
+                  <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание"
+                  [(ngModel)]="item.Text" name="packDetails" />
+                </div>
+
+                <div class="mt-3 d-grid">
+                  <button class="btn btn-primary">Добавить пункт</button>
+                </div>
               </div>
             </div>
 

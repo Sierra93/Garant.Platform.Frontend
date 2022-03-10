@@ -179,8 +179,8 @@
 <hr class="hr">
 
 <!-- Описание особенности бизнеса. -->
-<span class="title-strong">Описание особенности готового бизнеса</span><br>
-<div class="block-details-franch" *ngFor="let item of businessData">
+<span [hidden]="isHidePeculiarity" class="title-strong">Описание особенности готового бизнеса</span><br>
+<div class="block-details-franch" [hidden]="isHidePeculiarity" *ngFor="let item of businessData">
   <!-- <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText [(ngModel)]="item.peculiarity" name="peculiarity" /> -->
   <span>{{item.peculiarity}}</span>
   <!-- <span class="text">Прикрепить финансовую модель .xlsx</span> -->
@@ -196,7 +196,7 @@
   </div>
 </div>
 
-<hr class="hr">
+<hr [hidden]="isHidePeculiarity" class="hr">
 
 <!-- Деятельность бизнеса. -->
 <div class="d-flex" *ngFor="let item of businessData">
@@ -271,7 +271,7 @@
  </small>
 </div> -->
 
-<div class="video" *ngFor="let item of businessData">
+<div class="video" [hidden]="isUrlVideo" *ngFor="let item of businessData">
   <!-- <span class="title-small">Ссылка на видео</span><br> -->
   <span class="title-strong">Ссылка на видео</span><br>
   <!-- <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="item.urlVideo"
@@ -311,7 +311,7 @@
         (click)="onCreateRequestBusinessAsync(userName, number, businessData[0].businessId)">Оставить заявку</button>
     </div>
 
-    <span class="confirm__count">Заявку оставляли 5 раз за последний месяц</span>
+    <!-- <span class="confirm__count">Заявку оставляли 5 раз за последний месяц</span> -->
 
     <div class="d-flex">
       <div>

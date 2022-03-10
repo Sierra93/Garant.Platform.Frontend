@@ -4,7 +4,6 @@
 // @import "/src/app/shared/styles/controls.scss";
 // @import "/src/app/shared/styles/common.scss";
 
-
 @use "/src/app/app.component.scss";
 // @import "/src/app/shared/styles/body-margins.scss";
 // @import "/src/app/shared/styles/media-quaries.scss";
@@ -22,7 +21,7 @@
 }
 
 .business-name {
-  margin-left: 0!important;
+  margin-left: 0 !important;
 
   &-label {
     font-family: "Roboto", sans-serif;
@@ -117,7 +116,7 @@
     height: 53px;
     border-radius: 4px;
     padding: 16px;
-    
+
     &::placeholder {
       text-align: center;
     }
@@ -341,7 +340,7 @@
 
 .block-pack {
   margin-top: 56px;
-  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  box-shadow: 0 0 10px rgb(0, 0, 0.5);
   padding: 16px;
 }
 

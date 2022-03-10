@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
-import { FilterInput } from "src/app/models/franchise/input/filter-franchise-input";
+import { FilterFranchiseWithPaginationInput } from "src/app/models/franchise/input/filter-franchise-with-pagination-input";
 import { PaginationInput } from "src/app/models/pagination/input/pagination-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 
@@ -17,6 +17,7 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
  * Класс модуля каталога франшиз.
  */
 export class CatalogFranchiseModule implements OnInit {
+    
     aPopularFranchises: any[] = [];
     isGarant: boolean = false;
     aCities: any[] = [];
@@ -28,14 +29,16 @@ export class CatalogFranchiseModule implements OnInit {
     city: string = "";
     category: string = "";
     selectedCity: string = "";
-    selectedCategory: any;
-    selectedViewBusiness: any;
+    selectedCategory: any = "";
+    selectedViewBusiness: any = "";
     aFranchises: any[] = [];
-    selectedSort: any;
+    selectedSort: any = "";
     aSortPrices: any[] = [];
     filterMinPrice!: number;
     filterMaxPrice!: number;
-    countTotalPage: number = 0;
+    countTotalPage: number = 0;   
+    aRowsPerPageOptions: number[] = [12,21,30];
+    selectedCountRows: number = 12;     
     countFranchises!: number;
     aBlogs: any[] = [];
     aNews: any[] = [];
@@ -94,8 +97,9 @@ export class CatalogFranchiseModule implements OnInit {
         this.titleService.setTitle("Gobizy: Каталог франшиз");
 
         await this.GetPopularAsync();
-        await this.GetFranchisesListAsync();
-        await this.loadCitiesFranchisesListAsync();
+        //TODO: Возможно вызов не нужен, франшизы грузятся при ините пагинации.
+        //await this.GetFranchisesListAsync();        
+        //await this.loadCitiesFranchisesListAsync();
         await this.loadCategoriesFranchisesListAsync();
         await this.loadViewBusinessFranchisesListAsync();
         await this.loadPaginationInitAsync();
@@ -224,25 +228,29 @@ export class CatalogFranchiseModule implements OnInit {
     };    
 
     public async onPaginationChangeAsync(event: any) {
-        let paginationData = new PaginationInput();
-        paginationData.PageNumber = event.page + 1;
-        paginationData.CountRows = event.rows;
-
         try {
-            await this.http.post(API_URL.apiUrl.concat("/pagination/catalog-franchise"), paginationData)
+            let filterInput = new FilterFranchiseWithPaginationInput();            
+            filterInput.TypeSortPrice = this.selectedSort.value;
+            filterInput.MinProfit = this.filterMinPrice;
+            filterInput.MaxProfit = this.filterMaxPrice;
+            filterInput.ViewCode = this.selectedViewBusiness.viewCode;
+            filterInput.CategoryCode = this.selectedCategory.categoryCode;
+            filterInput.MinInvest = this.minPrice;
+            filterInput.MaxInvest = this.maxPrice;
+            filterInput.IsGarant = this.isGarant;
+            filterInput.PageNumber = event.page + 1;
+            filterInput.CountRows = event.rows;
+            this.selectedCountRows = event.rows;
+            console.log("rows", event.rows);  
+            await this.http.post(API_URL.apiUrl.concat("/franchise/filter-pagination"), filterInput)
             .subscribe({
                 next: (response: any) => {
-                    console.log("get data pagination", response);
+                    console.log("Франшизы после фильтрации:", response.results);                    
+                    this.aFranchises = response.results;
                     this.countFranchises = response.countAll;
-                    // this.aFranchises = response.results;
-                    // this.router.navigate(['/auction'], {
-                    //     queryParams: {
-                    //         page: paginationData.PageNumber,
-                    //         rows: paginationData.CountRows
-                    //     }
-                    // });
+                    this.countTotalPage = response.countAll;
+                                        
                 },
-
                 error: (err) => {
                     this.commonService.routeToStart(err);
                     throw new Error(err);
@@ -252,7 +260,7 @@ export class CatalogFranchiseModule implements OnInit {
 
         catch (e: any) {
             throw new Error(e);
-        }
+        }        
     };
 
     private async loadPaginationInitAsync() {
@@ -260,6 +268,7 @@ export class CatalogFranchiseModule implements OnInit {
 
         // TODO: доработать на динамическое получение из роута или как-нибудь еще, чтобы помнить, что выбирал пользователь.
         paginationData.PageNumber = 1;
+        paginationData.CountRows = 12;
 
         try {
             await this.http.post(API_URL.apiUrl.concat("/pagination/init-catalog-franchise"), paginationData)
@@ -267,7 +276,8 @@ export class CatalogFranchiseModule implements OnInit {
                 next: (response: any) => {
                     console.log("pagination init", response);
                     this.countFranchises = response.countAll;
-                    // this.aFranchises = response.results;
+                    this.aFranchises = response.results;
+                    this.countTotalPage = response.countAll;   
                 },
 
                 error: (err) => {
@@ -286,29 +296,32 @@ export class CatalogFranchiseModule implements OnInit {
         console.log("onChangeSortPrice", this.selectedSort);
     };
 
-    /**
-     * Функция фильтрует франшизы по параметрам.
+     /**
+     * Функция фильтрует франшизы по параметрам с учётом пагинации.
      * @returns - Отфильтрованный список франшиз.
      */
-    public async onFilterFranchisesAsync() {
+      public async onFilterFranchisesWithPaginationAsync() {
         try {
-            let filterInput = new FilterInput();
+            let filterInput = new FilterFranchiseWithPaginationInput();            
             filterInput.TypeSortPrice = this.selectedSort.value;
-            filterInput.ProfitMinPrice = this.filterMinPrice;
-            filterInput.ProfitMaxPrice = this.filterMaxPrice;
+            filterInput.MinProfit = this.filterMinPrice;
+            filterInput.MaxProfit = this.filterMaxPrice;
             filterInput.ViewCode = this.selectedViewBusiness.viewCode;
             filterInput.CategoryCode = this.selectedCategory.categoryCode;
-            filterInput.MinPriceInvest = this.minPrice;
-            filterInput.MaxPriceInvest = this.maxPrice;
+            filterInput.MinInvest = this.minPrice;
+            filterInput.MaxInvest = this.maxPrice;
             filterInput.IsGarant = this.isGarant;
-
-            await this.http.post(API_URL.apiUrl.concat("/franchise/filter-franchises"), filterInput)
+            filterInput.PageNumber = 1;
+            filterInput.CountRows = this.selectedCountRows;
+            await this.http.post(API_URL.apiUrl.concat("/franchise/filter-pagination"), filterInput)
             .subscribe({
                 next: (response: any) => {
-                    console.log("Франшизы после фильтрации:", response);                    
-                    this.aFranchises = response;
+                    console.log("Франшизы после фильтрации:", response.results);                    
+                    this.aFranchises = response.results;
+                    this.countFranchises = response.countAll;
+                    this.countTotalPage = response.totalCount; 
+                                     
                 },
-
                 error: (err) => {
                     this.commonService.routeToStart(err);
                     throw new Error(err);
@@ -321,8 +334,17 @@ export class CatalogFranchiseModule implements OnInit {
         }
     };
 
+
     public async onClearFilters() {
-        await this.GetFranchisesListAsync();
+        this.isGarant = false;
+        this.minPrice = 0;
+        this.filterMinPrice =0;
+        this.maxPrice = 0;
+        this.filterMaxPrice =0;
+        this.selectedCategory ="";
+        this.selectedSort="";
+        this.selectedViewBusiness="";
+        await this.loadPaginationInitAsync();
     };
 
     /**

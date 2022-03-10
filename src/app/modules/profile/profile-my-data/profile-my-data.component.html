@@ -2,12 +2,12 @@
 
 <div class="row">
   <!-- Левая часть. -->
-  <div class="col-lg-3">
+  <div class="col-xxl-3 col-xl-3 col-lg-4">
     <manage-account></manage-account>
   </div>
 
   <!-- Правая часть. -->
-  <div class="col-lg-9">
+  <div class="col-xxl-9 col-xl-9 col-lg-8">
     <h2 class="profile-title">Мои данные</h2>
 
     <div class="block-right">
@@ -15,9 +15,9 @@
 
       <form #form="ngForm" class="main-info-form">
         <div class="row form-child-mb">
-          <div class="col-8">
+          <div class="col-xxl-8 col-xl-8">
             <div class="row">
-              <div class="col-4">
+              <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
                 <div class="input-container">
                   <label for="">Фамилия</label>
                   <input type="text" class="control-input-franch-price form-control form-control-lg"
@@ -25,7 +25,7 @@
                 </div>
               </div>
 
-              <div class="col-4">
+              <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
                 <div class="input-container">
                   <label for="">Имя</label>
                   <input type="text" class="control-input-franch-price form-control form-control-lg"
@@ -33,7 +33,7 @@
                 </div>
               </div>
 
-              <div class="col-4">
+              <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
                 <div class="input-container">
                   <label for="">Отчество</label>
                   <input type="text" class="control-input-franch-price form-control form-control-lg" [(ngModel)]="patr"
@@ -43,7 +43,7 @@
             </div>
           </div>
 
-          <div class="col-4">
+          <div class="col-xxl-4 col-xl-4">
             <div class="input-container">
               <label for="">Дата рождения</label>
               <input type="date" class="control-input-franch-price form-control form-control-lg"
@@ -55,16 +55,16 @@
         <h3 class="profile-subtitle">Контактные данные</h3>
 
         <div class="row form-child-mb">
-          <div class="col-8">
+          <div class="col-xxl-8 col-xl-8">
             <div class="row">
-              <div class="col-6">
+              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                 <div class="input-container">
                   <label for="">E-mail</label><br>
                   <input type="email" class="control-input-franch-price form-control form-control-lg"
                     [(ngModel)]="email" name="email" />
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                 <div class="input-container">
                   <label for="">Номер телефона</label><br>
                   <input type="text" class="control-input-franch-price form-control form-control-lg" [(ngModel)]="phone"
@@ -125,7 +125,7 @@
             <p-tabPanel header="Физическо лицо" [selected]="true">
               <h3 class="profile-subtitle">Реквизиты</h3>
               <div class="row">
-                <div class="col-4 mb-4">
+                <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5 mb-4">
                   <div class="input-container">
                     <label for="">ИНН</label>
                     <input type="number" class="control-input-franch-price form-control form-control-lg"
@@ -133,7 +133,7 @@
                   </div>
                 </div>
 
-                <div class="col-8 mb-4">
+                <div class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 mb-4">
                   <div class="input-container">
                     <label for="">Р/С</label>
                     <input type="number" class="control-input-franch-price form-control form-control-lg"
@@ -141,7 +141,7 @@
                   </div>
                 </div>
 
-                <div class="col-4 mb-4">
+                <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5 mb-4">
                   <div class="input-container">
                     <label for="">Bik</label>
                     <input type="number" class="control-input-franch-price form-control form-control-lg"
@@ -149,7 +149,7 @@
                   </div>
                 </div>
 
-                <div class="col-8 mb-4">
+                <div class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 mb-4">
                   <div class="input-container">
                     <label for="">Kpp</label>
                     <input type="number" class="control-input-franch-price form-control form-control-lg"
@@ -157,7 +157,7 @@
                   </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5">
                   <div class="input-container bank-name-select">
                     <label for="">Выберите свой банк</label>
                     <p-dropdown [options]="availableBanks" [(ngModel)]="defaultBankName" optionLabel="value"
@@ -167,7 +167,7 @@
                   </div>
                 </div>
 
-                <div class="col-8 mb-4">
+                <div class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 mb-4">
                   <div class="input-container">
                     <label for="">corrAccountNumber</label>
                     <input type="number" class="control-input-franch-price form-control form-control-lg"
@@ -179,7 +179,7 @@
 
               <h3 class="profile-subtitle">Паспортные данные</h3>
               <div class="row">
-                <div class="col-4 mb-4">
+                <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                   <div class="input-container">
                     <label for="">Серия</label>
                     <input type="number" class="control-input-franch-price form-control form-control-lg"
@@ -187,7 +187,7 @@
                   </div>
                 </div>
 
-                <div class="col-4 mb-4">
+                <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
                   <div class="input-container">
                     <label for="">Номер</label>
                     <input type="number" class="control-input-franch-price form-control form-control-lg"
@@ -195,7 +195,7 @@
                   </div>
                 </div>
 
-                <div class="col-4 mb-4">
+                <div class="col-xxl-4 col-xl-4 col-lg-12 col-md-4 mb-4">
                   <div class="input-container">
                     <label for="">Дата выдачи</label>
                     <input type="date" class="control-input-franch-price form-control form-control-lg"
@@ -203,7 +203,7 @@
                   </div>
                 </div>
 
-                <div class="col-8 mb-4">
+                <div class="col-xxl-8 col-xl-8 col-lg-6 col-md-6 col-sm-6 mb-4">
                   <div class="input-container">
                     <label for="">Выдан</label>
                     <input type="text" class="control-input-franch-price form-control form-control-lg"
@@ -211,7 +211,7 @@
                   </div>
                 </div>
 
-                <div class="col-4 mb-4">
+                <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-4">
                   <div class="input-container">
                     <label for="">Код подразделения</label>
                     <input type="text" class="control-input-franch-price form-control form-control-lg"
@@ -230,7 +230,7 @@
 
               <div>
                 <div class="mb-3">
-                  <input type="file" class="mt-3" (change)="uploadDocumentAsync($event)">
+                  <input type="file" class="mt-3 form-control" (change)="uploadDocumentAsync($event)">
                 </div>
                 <div>
                   <button class="btn-save" (click)="onSaveProfileFormAsync(formReq, 'Requisites')">Сохранить</button>

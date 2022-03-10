@@ -1,12 +1,11 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Input, Output } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { FilterInput } from "src/app/models/franchise/input/filter-franchise-input";
 import { SearchInput } from "src/app/models/search/input/search-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
-import { DataService } from "src/app/services/common/data-service";
 
 @Component({
     selector: "main-search",
@@ -57,8 +56,7 @@ export class MainSearchModule implements OnInit {
         private router: Router,
         private http: HttpClient,
         private titleService: Title,
-        private commonService: CommonDataService,
-        private dataService: DataService) {
+        private commonService: CommonDataService) {
         this.searchType = this.route.snapshot.queryParams.searchType;
         this.searchText = this.route.snapshot.queryParams.searchText;
 
@@ -87,33 +85,36 @@ export class MainSearchModule implements OnInit {
 
         console.log("searchType", this.searchType);
         console.log("searchText", this.searchText);
+
+        router.events.subscribe(async (val) => {
+            if (val instanceof NavigationEnd) {
+                this.searchText = this.route.snapshot.queryParams.searchText;
+                this.searchType = this.route.snapshot.queryParams.searchType;
+                await this.searchAsync(this.searchText, this.searchType);
+            }
+        });
     };
 
     public async ngOnInit() {        
         await this.GetFranchisesListAsync();
         await this.loadCategoriesListAsync();
         await this.loadSingleSuggestionAsync();
-    };
-
-    // public async ngDoCheck() {
-    //     console.log("ngDoCheck");
-    //     // await this.searchAsync();
-    // };
+    };    
 
     /**
      * Функция найдет по параметрам данные.
      * @param searchText Текст поиска.
      */
-    private async searchAsync() {
+    private async searchAsync(searchText: string, searchType: string) {
         try {
             let searchInput = new SearchInput();
-            searchInput.SearchType = this.searchType;
-            searchInput.SearchText = this.searchText;
+            searchInput.SearchType = searchType;
+            searchInput.SearchText = searchText;
 
             await this.http.post(API_URL.apiUrl.concat("/search/search-data"), searchInput)
                 .subscribe({
                     next: (response: any) => {
-                        this.dataService.aResultSearch = response;
+                        this.aResultSearch = response;
 
                         if (this.searchType == "franchise") {
                             // Возьмет 1 изображение.
@@ -124,7 +125,7 @@ export class MainSearchModule implements OnInit {
                             });
                         }
 
-                        if (this.searchType == "business") {                            
+                        if (this.searchType == "business") {                         
                             // Возьмет 1 изображение.
                             this.aBusinesses.forEach((item: any) => {
                                 if (item.url != null && item.url.includes(",")) {
@@ -134,6 +135,14 @@ export class MainSearchModule implements OnInit {
                         }
 
                         console.log("search data: ", response);
+
+                        // this.router.navigate(["/search"], {
+                        //     queryParams:
+                        //     {
+                        //         searchType: searchType, 
+                        //         searchText: searchText
+                        //     }
+                        // });  
                     },
 
                     error: (err) => {
@@ -218,6 +227,11 @@ export class MainSearchModule implements OnInit {
      public async routeViewFranchiseCardAsync(franchiseId: number) {
         await this.setTransitionAsync(franchiseId);
         this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: franchiseId, mode: "ViewFranchise" } });
+    };
+
+    public async routeViewBusinessCardAsync(businessId: number) {
+        await this.setTransitionAsync(businessId);
+        this.router.navigate(["/business/view"], { queryParams: { businessId: businessId, mode: "ViewBusiness" } });
     };
 
     /**

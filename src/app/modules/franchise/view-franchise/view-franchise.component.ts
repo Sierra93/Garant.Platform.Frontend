@@ -35,6 +35,7 @@ export class ViewFranchiseModule implements OnInit {
     city: string = "";
     selectedValues: string[] = [];
     isHideIndicators: boolean = false;
+  presentFile: any;
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
@@ -203,4 +204,11 @@ export class ViewFranchiseModule implements OnInit {
             throw new Error(e);
         }
     }
+  /**
+   * Функция добавит файл презентации.
+   */
+  public uploadPresentAsync(event: any) {
+    console.log("uploadPresentAsync");
+    this.presentFile = event.target.files[0];
+  };
 }

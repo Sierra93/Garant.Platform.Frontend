@@ -213,6 +213,28 @@
         </div>
       </div>
     </div>
+    <div class="col-xxl-4 col-xl-4 col-lg-4">
+      <div class="form">
+        <h6>Добавить презентацию</h6>
+        <div class="block-details-franch d-flex flex-column">
+          <strong>Прикрепить документ .pdf</strong>
+          <span>до 20 мб</span>
+          <span class="content">{{presentFile ? presentFile.name : franchiseData.namePresentFile}}</span>
+          <input type="file" (change)="uploadPresentAsync($event)" id="upload-present-async" class="d-none" />
+          <label for="upload-present-async" class="d-flex align-items-center">
+            <span class="me-2">
+              <img src="../../../../assets/images/franchise-pages/attach.svg" alt="gobizy attach file icon" />
+            </span>
+            <span>Прикрепить</span>
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <p>Загружать презентацию не обязательно. Однако, это способствует повышению конверсии и глубинной
+          заинтересованности в проекте. Если вы не хотите загружать презентацию, просто пропустите данный этап.</p>
+      </div>
+    </div>
   </div>
 
   <!-- Пример расчета прибыли. -->

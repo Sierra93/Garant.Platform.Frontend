@@ -4,6 +4,9 @@
 @import "/src/app/shared/styles/franchuse-styles.scss";
 
 // Карусель.
+.carousel-block {
+  margin: auto;
+}
 .product-item {
   .product-item-content {
     // border: 1px solid var(--surface-d);
@@ -16,7 +19,7 @@
 
   .product-image {
     // width: 50%;
-    width: 342px;
+    width: 100%;
     height: 162px;
     // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
   }
@@ -24,7 +27,7 @@
 
 .more-articles {
   margin: 0;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   height: 208px;
 }
 
@@ -45,11 +48,6 @@
   margin: 0 auto;
 }
 
-// .btn-dark {
-//   margin-top: 68px;
-//   padding: 16px;
-// }
-
 .cards-popup {
   margin: 0 10px;
 }
@@ -67,7 +65,7 @@
 }
 
 ::ng-deep .business-garanteese .p-card {
-  background: #F1F6FF;
+  background: #f1f6ff;
 }
 
 ::ng-deep .business-garanteese .p-card-content {
@@ -75,20 +73,241 @@
 }
 
 ::ng-deep .p-card .p-card-body {
-  margin: 0 auto;
+  margin: 0;
 }
 
 .bg {
   padding: 1rem 1.5rem;
   padding-top: 20px;
-  background: #F1F1F1;
+  background: #f1f1f1;
   width: 100%;
   margin: 20px auto;
 }
+// Покупка бизнеса с гарантиями
+.title-franchise {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}
+.right {
+  width: 100%;
+  height: 342px;
+  padding: 0;
+}
 
+.p-card-title {
+  width: 341px;
+  height: 42px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+}
+.right-text {
+  // width: 341px;
+  width: 90%;
+  height: 96px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 0;
+}
+.right-img {
+  display: flex;
+  width: 41%;
+  height: 100%;
+}
+// .right-block-img {
+//   width: 231px;
+//   height: 275px;
+//   // margin-left: 13px;
+// }
+.btn-dark {
+  width: 156px;
+  height: 53px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  background: #1f75fe;
+}
+.wrapper-container {
+  border: 1px solid black;
+}
+::ng-deep {
+  // весь блок
+  .carousel-block {
+    width: 100%;
+    display: flex;
+    min-height: 342px;
+    margin: 0;
+
+    // карточка название готового бизнеса
+    .product-item {
+      // текст карточки готового бизнеса
+      .product-image {
+        margin-bottom: 16px;
+      }
+      .p-card {
+        height: 127px;
+
+        // Название готового бизнеса
+        &-title {
+          width: 234px;
+          height: 21px;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 21px;
+          margin-bottom: 8px;
+          text-align: left;
+        }
+        &-subtitle {
+          text-align: start;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 12px;
+          line-height: 14px;
+          margin-bottom: 16px;
+        }
+        &-content {
+          padding: 0.5rem;
+          position: static;
+          width: 205px;
+          height: 36px;
+          left: 16px;
+          top: 75px;
+          background: #f1f6ff;
+          border-radius: 4px;
+          color: #1653b4;
+
+          strong {
+            display: inline-block;
+            position: static;
+            width: 185px;
+            height: 16px;
+            margin: auto;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #1653b4;
+          }
+        }
+        &-body {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+::ng-deep {
+  .right {
+    width: 100%;
+    .card-right {
+      // max-width: 565px;
+      // width: 100%;
+      height: 282px !important;
+      background: #f1f6ff;
+    }
+    .p-card {
+      background-color: transparent !important;
+      &-footer {
+        padding: 0;
+      }
+
+      &-content {
+        .right-text {
+          width: 100% !important;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 16px;
+          color: #2c2c2c;
+        }
+      }
+
+      &-title {
+        width: 100% !important;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 21px;
+        color: #2c2c2c;
+      }
+    }
+  }
+}
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 980px) and (max-device-width: 1024px) {
+  /* Styles */
+  // ::ng-deep .app-container {
+  //   width: 1024px !important;
+  // }
+
+  .p-card-title {
+    width: 100px;
+  }
+  .title-franchise {
+    font-size: 21px;
+    background: #2c2c2c;
+  }
+  .right-block-img {
+    display: none;
+  }
+  ::hg-deep {
+    .p-carousel-indicators {
+      display: none;
+    }
+  }
+  ::ng-deep {
+    .right {
+      .card-right {
+        max-width: 413px;
+        background: #2c2c2c;
+      }
+    }
+  }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 979px) {
+  ::ng-deep {
+    // весь блок
+    .carousel-block {
+      display: flex;
+      flex-wrap: wrap-reverse;
+      margin-bottom: 36px !important;
+      .p-carousel-indicators {
+        display: none;
+      }
+    }
+  }
+}
+
+::ng-deep .card1 {
+  border: none !important;
+  background-color: #f1f6ff !important;
+  display: flex;
+  // width: 576px;
+  // height: 292px;
+}
+.p.card .p-card-title {
+  font-size: 18px;
+}
 ::ng-deep .business-garanteese .p-card .p-card-header {
   padding-bottom: 0;
-  margin-bottom: 16px;
+  // margin-bottom: 16px;
   font-size: 18px;
 }
 
@@ -118,7 +337,6 @@
   padding: 16px;
 }
 
-
 ::ng-deep .card-line .p-card-body {
   // background: #F1F6FF;
   padding: 24px 16px 24px 16px;
@@ -145,7 +363,9 @@
 
 ::ng-deep .card {
   border: none !important;
-  background-color: #F1F1F1;
+  background-color: #f1f6ff;
+  width: 342px;
+  height: 282px;
 }
 
 .block-card-item {
@@ -199,63 +419,71 @@
 
 // Медиа-запросы.
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
+  .right-img {
+    display: flex;
+    width: 41%;
+    height: 26%;
+  }
 }
 
 /* Smartphones (landscape) ----------- */
-@media only screen and (min-width : 321px) {
+@media only screen and (min-width: 321px) {
   /* Styles */
 }
 
 /* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
+@media only screen and (max-width: 320px) {
   /* Styles */
 }
 
 /* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-  /* Styles */
-}
+// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+//   /* Styles */
+//   .card {
+//   }
+// }
 
 /* iPads (landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   /* Styles */
 }
 
 /* iPads (portrait) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   /* Styles */
 }
 
 /* Desktops and laptops ----------- */
-@media only screen and (min-width : 1224px) {}
+@media only screen and (min-width: 1224px) {
+}
 
 /* Large screens ----------- */
-@media only screen and (min-width : 1824px) {
+@media only screen and (min-width: 1824px) {
   /* Styles */
 }
 
 /* iPhone 4 - 5s ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
   /* Styles */
 }
 
 /* iPhone 6 ----------- */
 @media only screen and (max-device-width: 667px),
-only screen and (-webkit-device-pixel-ratio: 2) {
+  only screen and (-webkit-device-pixel-ratio: 2) {
   /* Styles */
 }
 
 /* iPhone 6+ ----------- */
-@media only screen and (min-device-width : 414px),
-only screen and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (min-device-width: 414px),
+  only screen and (-webkit-device-pixel-ratio: 3) {
   /*** You've spent way too much on a phone ***/
 }
 
 /* Samsung Galaxy S7 Edge ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi)and (max-width:640px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi) and (max-width: 640px) {
   /* Styles */
 }
 
@@ -263,14 +491,14 @@ only screen and (-webkit-device-pixel-ratio: 3) {
   gap: 16px;
   justify-content: center;
   padding-bottom: 24px;
-  background: #F1F1F1;
+  background: #f1f1f1;
 
   .card-franchise {
     padding: 0;
   }
 
   .block-cards-franchises-content {
-    background: #F1F1F1;
+    background: #f1f1f1;
   }
 }
 
@@ -286,17 +514,17 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 }
 
 ::ng-deep .p-dropdown {
-  background: #F1F6FF;
+  background: #f1f6ff;
 }
 
 ::ng-deep .quick-search .p-inputtext {
-  background: #F1F6FF;
+  background: #f1f6ff;
   width: 149px;
   margin-right: 16px;
 }
 
 ::ng-deep .p-inputswitch .p-inputswitch-slider {
-  background: #C8DBFF;
+  background: #c8dbff;
 }
 
 .block-card-img {
@@ -309,13 +537,6 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 ::ng-deep .p-carousel-item {
   max-width: 365px;
   // grid-gap: 20px !important;
-}
-
-
-::ng-deep {
-  .p-card-body {
-    padding: 1.5rem !important;
-  }
 }
 
 .section-mb {
@@ -333,7 +554,7 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 
   .quick-search-card {
     .p-card-header {
-      padding: 0 .75rem;
+      padding: 0 0.75rem;
     }
   }
 }
@@ -347,12 +568,20 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 }
 
 .quick-search-form {
-  [class^=col] {
+  [class^="col"] {
     margin: 1rem 0;
   }
 }
 
+.ready-business-categories .title-franchise {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
+  img {
+    display: none;
+  }
+}
 @media (max-width: 1800px) {
   .three-cards-header {
     font-size: 1.25rem;
@@ -361,8 +590,9 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 
 @media (min-width: 1400px) and (max-width: 1700px) {
   .quick-search-form {
-    [class^=col] {
-      &:nth-child(1), &:nth-child(2) {
+    [class^="col"] {
+      &:nth-child(1),
+      &:nth-child(2) {
         width: 20%;
       }
       &:nth-child(3) {
@@ -390,6 +620,21 @@ only screen and (-webkit-device-pixel-ratio: 3) {
     font-size: 1rem;
   }
 }
+// Закоментировал 10.03.22
+// @media (max-width: 992px) {
+//   .carousel-block {
+//     flex-direction: column-reverse;
+//     background: #2c2c2c;
+
+//     .right {
+//       margin-bottom: 2.25rem;
+//     }
+
+//     [class^="col"] {
+//       width: 100%;
+//     }
+//   }
+// }
 
 @media (max-width: 800px) {
   .p-inputtext {
@@ -406,18 +651,6 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 }
 
 @media (max-width: 768px) {
-  .carousel-block {
-    flex-direction: column-reverse;
-
-    .right {
-      margin-bottom: 2.25rem;
-    }
-
-    [class^=col] {
-      width: 100%;
-    }
-  }
-
   .baner-img {
     &:first-child {
       margin-bottom: 1.5rem;
@@ -425,11 +658,22 @@ only screen and (-webkit-device-pixel-ratio: 3) {
   }
 
   .ready-business-categories {
-    [class^=col] {
+    [class^="col"] {
       width: 100%;
     }
 
     .title-franchise {
+      img {
+        display: block;
+
+        &.rotated {
+          transform: rotate(90deg);
+          transition: transform 0.5s;
+        }
+      }
+    }
+
+    .title-franchise + div {
       display: none;
     }
 
@@ -473,11 +717,21 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 }
 
 ::ng-deep {
+  @media (max-width: 1080px) {
+    .p-carousel-item {
+      flex: 1 0 70% !important;
+    }
+  }
+
   @media (max-width: 992px) {
     .card-business-holder {
       &:not(:last-child) {
         margin-bottom: 1.5rem;
       }
+    }
+
+    .p-carousel-item {
+      flex: 1 0 80% !important;
     }
   }
 

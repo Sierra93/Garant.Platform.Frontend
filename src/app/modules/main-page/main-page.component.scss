@@ -7,13 +7,11 @@
 .carousel-block {
   margin: auto;
 }
-.product-item {
+.product-item:not(:last-child) {
   .product-item-content {
-    // border: 1px solid var(--surface-d);
     border-radius: 3px;
     margin-right: 20px;
     text-align: center;
-    // padding: 2rem 0;
     padding: 0;
   }
 
@@ -71,7 +69,9 @@
 ::ng-deep .business-garanteese .p-card-content {
   padding: 0;
 }
-
+::ng-deep .p-card-content {
+  padding: 0;
+}
 ::ng-deep .p-card .p-card-body {
   margin: 0;
 }
@@ -84,6 +84,11 @@
   margin: 20px auto;
 }
 // Покупка бизнеса с гарантиями
+::ng-deep {
+  .col-lg-5 {
+    padding: 0;
+  }
+}
 .title-franchise {
   max-width: 341px;
   font-family: Roboto;
@@ -128,7 +133,9 @@
     display: flex;
     min-height: 342px;
     margin: 0;
-
+    .col-lg-7 {
+      padding: 0;
+    }
     // карточка название готового бизнеса
     .product-item {
       // текст карточки готового бизнеса
@@ -160,9 +167,10 @@
           margin-bottom: 16px;
         }
         &-content {
-          padding: 0.5rem;
+          padding: 0;
+          padding-left: 10px;
           position: static;
-          width: 205px;
+          width: 190px;
           height: 36px;
           left: 16px;
           top: 75px;
@@ -180,7 +188,7 @@
             font-style: normal;
             font-weight: normal;
             font-size: 14px;
-            line-height: 16px;
+            line-height: 16.41px;
             color: #1653b4;
           }
         }
@@ -194,7 +202,7 @@
 ::ng-deep {
   .right {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
     width: 100%;
     background: #f1f6ff;
@@ -236,24 +244,25 @@
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 980px) and (max-device-width: 1024px) {
   /* Styles */
-  // ::ng-deep .app-container {
-  //   width: 1024px !important;
-  // }
-
+  ::ng-deep .p-carousel-items-container {
+    width: 587px;
+  }
   .p-card-title {
     width: 100px;
   }
   .title-franchise {
     font-size: 21px;
-    background: #2c2c2c;
   }
-  .right-block-img {
+  .right-images {
     display: none;
   }
   ::hg-deep {
     .p-carousel-indicators {
       display: none;
     }
+  }
+  .wrapper-container {
+    width: 100%;
   }
   ::ng-deep {
     .right {
@@ -275,6 +284,12 @@
         display: none;
       }
     }
+  }
+  .wrapper-container {
+    width: 100%;
+  }
+  .right-images {
+    display: inline-block;
   }
 }
 
@@ -404,10 +419,18 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
-  .right-img {
-    display: flex;
-    width: 41%;
-    height: 26%;
+  ::ng-deep .right {
+    .p-card-title {
+      font-size: 14px !important;
+    }
+  }
+  .right-block-img {
+    width: 61px;
+    height: 91px;
+    margin: 0 20px 0 10px;
+  }
+  .right-images {
+    width: 100%;
   }
 }
 

@@ -85,29 +85,14 @@
 }
 // Покупка бизнеса с гарантиями
 .title-franchise {
+  max-width: 341px;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
   line-height: 28px;
 }
-.right {
-  width: 100%;
-  height: 342px;
-  padding: 0;
-}
-
-.p-card-title {
-  width: 341px;
-  height: 42px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
-}
 .right-text {
-  // width: 341px;
   width: 90%;
   height: 96px;
   font-family: Roboto;
@@ -117,16 +102,10 @@
   line-height: 16px;
   margin-bottom: 0;
 }
-.right-img {
-  display: flex;
-  width: 41%;
-  height: 100%;
+
+.right-block-img {
+  margin: 0 -20px 7px 10px;
 }
-// .right-block-img {
-//   width: 231px;
-//   height: 275px;
-//   // margin-left: 13px;
-// }
 .btn-dark {
   width: 156px;
   height: 53px;
@@ -139,7 +118,8 @@
   background: #1f75fe;
 }
 .wrapper-container {
-  border: 1px solid black;
+  width: 59%;
+  flex-wrap: nowrap;
 }
 ::ng-deep {
   // весь блок
@@ -213,14 +193,17 @@
 }
 ::ng-deep {
   .right {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
+    background: #f1f6ff;
     .card-right {
-      // max-width: 565px;
-      // width: 100%;
       height: 282px !important;
-      background: #f1f6ff;
+      background: #121213;
     }
     .p-card {
+      width: 100%;
       background-color: transparent !important;
       &-footer {
         padding: 0;

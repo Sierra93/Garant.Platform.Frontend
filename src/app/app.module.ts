@@ -73,6 +73,7 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
 import { SessionService } from "./core/session/session.service";
 import { SESSION_TOKEN } from "./core/session/session.token";
 import { NotifyService } from "./services/notify/notify.service";
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   declarations: [
@@ -110,40 +111,41 @@ import { NotifyService } from "./services/notify/notify.service";
 
   entryComponents: [],
 
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    ButtonModule,
-    DialogModule,
-    ConfirmDialogModule,
-    MessagesModule,
-    ToastModule,
-    TabViewModule,
-    PaginatorModule,
-    RadioButtonModule,
-    InputTextModule,
-    AutoCompleteModule,
-    CarouselModule,
-    CardModule,
-    InputSwitchModule,
-    SliderModule,
-    CheckboxModule,
-    BreadcrumbModule,
-    FileUploadModule,
-    GalleriaModule,
-    InputTextareaModule,
-    AvatarModule,
-    AvatarGroupModule,
-    ReactiveFormsModule,
-    TabMenuModule,
-    StepsModule,
-    TableModule,
-    NgHttpLoaderModule.forRoot(),
-    GarLibModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        ButtonModule,
+        DialogModule,
+        ConfirmDialogModule,
+        MessagesModule,
+        ToastModule,
+        TabViewModule,
+        PaginatorModule,
+        RadioButtonModule,
+        InputTextModule,
+        AutoCompleteModule,
+        CarouselModule,
+        CardModule,
+        InputSwitchModule,
+        SliderModule,
+        CheckboxModule,
+        BreadcrumbModule,
+        FileUploadModule,
+        GalleriaModule,
+        InputTextareaModule,
+        AvatarModule,
+        AvatarGroupModule,
+        ReactiveFormsModule,
+        TabMenuModule,
+        StepsModule,
+        TableModule,
+        NgHttpLoaderModule.forRoot(),
+        GarLibModule,
+        PasswordModule
+    ],
 
   providers: [
     {

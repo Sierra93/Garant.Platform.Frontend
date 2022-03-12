@@ -352,6 +352,16 @@ only screen and (-webkit-device-pixel-ratio: 3) {
   }
 }
 
+.ready-business-categories .title-franchise {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    display: none;
+  }
+}
+
 
 @media (max-width: 1800px) {
   .three-cards-header {
@@ -432,6 +442,17 @@ only screen and (-webkit-device-pixel-ratio: 3) {
     }
 
     .title-franchise {
+      img {
+        display: block;
+
+        &.rotated {
+          transform: rotate(90deg);
+          transition: transform .5s;
+        }
+      }
+    }
+
+    .title-franchise + div {
       display: none;
     }
 

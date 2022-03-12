@@ -2,6 +2,7 @@
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/common.scss";
 @import "./../create-franchise/create-franchise.component.scss";
+@import "/src/app/shared/styles/body-margins.scss";
 
 /* Стили для определенного компонента определять внутри хоста */
 :host {
@@ -461,5 +462,44 @@
 
   .financial-data {
     margin-bottom: 0;
+  }
+}
+
+::ng-deep {
+  .photos {
+    .block-gallery {
+      .p-galleria {
+        &-content {
+          align-items: stretch;
+
+          .p-galleria-thumbnails-left p-galleriaitem {
+            .p-galleria-item-container {
+              display: unset;
+              height: auto !important;
+
+              .p-galleria-item {
+                height: unset;
+
+                img {
+                  height: unset;
+                }
+              }
+            }
+          }
+
+          .p-galleria-thumbnail-container {
+            justify-content: space-between;
+
+            @media (max-width: 576px) {
+              padding: 0 .25rem;
+            }
+          }
+
+          .p-galleria-thumbnail-items-container {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }

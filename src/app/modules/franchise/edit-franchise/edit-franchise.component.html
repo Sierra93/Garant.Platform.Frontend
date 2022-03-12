@@ -61,7 +61,7 @@
       </div>
     </div>
 
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 photos-contact">
+    <div class="col-xxl-4 col-xl-3 col-lg-4 col-md-12 photos-contact">
       <div>
         <h6>Ваша карточка для связи</h6>
         <strong>Ваше Имя Фамилия Отчество</strong>
@@ -218,10 +218,29 @@
           <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.Price" name="priceInvest" placeholder="- ₽" />
         </div>
 
-        <div>
+        <div class="mb-3">
           <label>Название</label><br>
           <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText
             [(ngModel)]="item.Name" name="nameInvest" />
+        </div>
+
+        <div class="level-includes">
+          <label class="mb-0">Что входит в этап? Укажите список:</label>
+          <div class="d-flex my-3">
+            <input type="text" class="form-control me-2" placeholder="Например: газонокосилка" />
+            <button>
+              <img src="./../../../../assets/images/remove.svg" alt="" />
+            </button>
+          </div>
+          <div class="d-flex">
+            <input type="text" class="form-control" placeholder="Например: газонокосилка" />
+            <button class="mx-2">
+              <img src="./../../../../assets/images/remove.svg" alt="">
+            </button>
+            <button>
+              <img src="./../../../../assets/images/add.svg" alt="">
+            </button>
+          </div>
         </div>
 
         <button class="control-button-blue-small">Добавить пункт</button>

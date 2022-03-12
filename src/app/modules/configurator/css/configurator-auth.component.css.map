@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../configurator-auth/configurator-auth.component.scss"
+    ],
+    "names": [],
+    "file": "configurator-auth.component.css"
+}

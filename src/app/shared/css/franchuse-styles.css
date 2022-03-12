@@ -1,0 +1,38 @@
+.title-franchise {
+  margin-bottom: 32px;
+}
+
+.popular-list {
+  gap: 24px;
+}
+
+.popular-item {
+  max-width: 331px;
+}
+
+.garant {
+  margin-top: 80px;
+}
+
+.btn-filter {
+  display: inline-block;
+  border: 1px solid;
+}
+
+.three-cards {
+  margin-top: 128px;
+}
+
+.three-cards .three-cards-header {
+  margin-bottom: 32px;
+}
+
+.news-item {
+  border-bottom: 1px solid;
+  border-bottom-color: #C4C4C4;
+}
+
+.space-left-item {
+  margin-left: 24px;
+}
+/*# sourceMappingURL=franchuse-styles.css.map */

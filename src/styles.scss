@@ -1,4 +1,5 @@
-$fa-font-path: "~font-awesome/fonts"; @import '~font-awesome/scss/font-awesome';
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
 
 /* You can add global styles to this file, and also import other style files */
 // общие стили
@@ -23,3 +24,42 @@ $fa-font-path: "~font-awesome/fonts"; @import '~font-awesome/scss/font-awesome';
   }
 }
 // общие стили
+// Блок бизнес с тремя карточками
+.three-cards-header {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 32px;
+}
+
+.card-business {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+}
+.wrapper-business {
+  min-height: 275px;
+  .p-card-body {
+    display: flex;
+    padding: 0;
+    h5 {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 21px;
+      color: #2c2c2c;
+    }
+    p {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+}

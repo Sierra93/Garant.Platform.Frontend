@@ -14,7 +14,7 @@ import { NgForm } from "@angular/forms";
     styleUrls: ['./main-page.component.scss']
 })
 
-/** 
+/**
  * Класс модуля главной страницы.
  */
 export class MainPageModule implements OnInit {
@@ -28,7 +28,7 @@ export class MainPageModule implements OnInit {
     categoryList3: any[] = [];
     categoryList4: any[] = [];
     aSlider: any[] = [];
-    aDataActions: any[] = [];    
+    aDataActions: any[] = [];
     oSuggestion: any = {};
     aPopularFranchises: any[] = [];
     aAds: any[] = [];
@@ -50,8 +50,9 @@ export class MainPageModule implements OnInit {
     category: string = "";
     aNewBusiness: any[] = [];
     isHideBusinessWithGarant: boolean = false;
+    showCategoryMenu: boolean = false;
 
-    constructor(private http: HttpClient, 
+    constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private titleService: Title,
         private route: ActivatedRoute,
@@ -98,12 +99,17 @@ export class MainPageModule implements OnInit {
         await this.loadCitiesFranchisesListAsync();
         await this.loadCategoriesFranchisesListAsync();
         await this.loadViewBusinessFranchisesListAsync();
-    };    
+    };
+
+    public showCategoryOnMobile(e: any) {
+      e.target.closest('.title-franchise').nextElementSibling?.classList.toggle('d-block');
+      e.target.closest('.title-franchise').lastElementChild?.classList.toggle('rotated');
+    }
 
     /**
      * Функция проверит подтверждение почты.
      */
-    private async confirmEmailAsync() {    
+    private async confirmEmailAsync() {
         try {
             let confirmInput = new ConfirmEmailInput();
             confirmInput.code = this.routeParam.code;
@@ -114,7 +120,7 @@ export class MainPageModule implements OnInit {
                         console.log("Подтверждение почты:", response);
 
                         if (response) {
-                            this.router.navigate(["/"]);                            
+                            this.router.navigate(["/"]);
                         }
                     },
 
@@ -205,7 +211,7 @@ export class MainPageModule implements OnInit {
     private async loadSingleSuggestionAsync() {
         try {
             await this.commonService.loadSingleSuggestionAsync().then((data: any) => {
-                this.oSuggestion = data;            
+                this.oSuggestion = data;
             });
         }
 
@@ -218,7 +224,7 @@ export class MainPageModule implements OnInit {
      * Функция получит список популярныз франшиз.
      * @returns Список франшиз.
      */
-    private async getPopularAsync() {        
+    private async getPopularAsync() {
         try {
             await this.commonService.getPopularAsync().then((data: any) => {
                 console.log("Популярные франшизы:", data);
@@ -396,13 +402,13 @@ export class MainPageModule implements OnInit {
      * Функция отфильтрует список франшиз по фильтрам.
      * @param viewCode - Код вида бизнеса.
      * @param categoryCode - Код категории бизнеса.
-     * @param cityCode - Город бизнеса. 
+     * @param cityCode - Город бизнеса.
      * @param minPrice - Цена от.
      * @param maxPrice - Цена до.
      */
     public async onFilterFranchisesAsync(form: NgForm) {
         console.log("onFilterFranchisesAsync", form);
-        
+
         try {
             let filterInput = new FranchiseInput();
             filterInput.viewCode = form.value.view.viewCode;
@@ -427,20 +433,20 @@ export class MainPageModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    };    
+    };
 
     public onRoute(text: string) {
         if (text == "Продать") {
-            this.router.navigate(["/ad/create"]);  
+            this.router.navigate(["/ad/create"]);
             return;
         }
 
-        if (text == "Начать") {           
+        if (text == "Начать") {
             return;
         }
 
         if (text == "Упаковать") {
-            this.router.navigate(["/franchise/start"]);  
+            this.router.navigate(["/franchise/start"]);
             return;
         }
     };

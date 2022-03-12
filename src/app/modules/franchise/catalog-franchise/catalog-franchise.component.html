@@ -43,15 +43,17 @@
             class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 franchise-sphere"
           >
             <label>Сфера франшиз</label>
-            <p-dropdown
-              [options]="aViewBusiness"
-              class="block-sort-by"
-              optionLabel="viewName"
-              [(ngModel)]="selectedViewBusiness"
-              placeholder="Вид бизнеса"
-              [showClear]="true"
-              name="view"
-            ></p-dropdown>
+           <div class="w-100">
+              <p-dropdown
+                [options]="aViewBusiness"
+                class="block-sort-by"
+                optionLabel="viewName"
+                [(ngModel)]="selectedViewBusiness"
+                placeholder="Вид бизнеса"
+                [showClear]="true"
+                name="view"
+              ></p-dropdown>
+            </div>
           </div>
 
           <div
@@ -67,8 +69,7 @@
               [showClear]="true"
               name="category"
             ></p-dropdown>
-          </div>
-
+            
           <div
             class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount"
           >
@@ -119,6 +120,7 @@
               <!-- <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value"
                 name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true"
                 (onChange)="onChangeSortPrice()"></p-dropdown> -->
+              
               <p-dropdown
                 class="block-sort-by"
                 [options]="aSortPrices"

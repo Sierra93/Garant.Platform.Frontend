@@ -225,4 +225,12 @@ export class ViewFranchiseModule implements OnInit {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
+  
+  /**
+   * Функция добавит файл презентации.
+   */
+  public uploadPresentAsync(event: any) {
+    console.log("uploadPresentAsync");
+    this.presentFile = event.target.files[0];
+  };
 }

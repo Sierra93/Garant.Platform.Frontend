@@ -391,6 +391,29 @@ export class CommonDataService {
      * @returns Список категорий.
      */
     public async GetFranchiseCategoriesListAsync() {
+        if (this.router.url === "/ad/create") {
+            try {
+                console.log("currentRoute", this.router.url);
+
+                return new Promise(async resolve => {
+                    await this.http.get(API_URL.apiUrl.concat("/franchise/category-list-auth"))
+                        .subscribe({
+                            next: (response: any) => {
+                                resolve(response);
+                            },
+
+                            error: (err) => {
+                                throw new Error(err);
+                            }
+                        });
+                })
+            }
+
+            catch (e: any) {
+                throw new Error(e);
+            }
+        }
+
         try {
             return new Promise(async resolve => {
                 await this.http.get(API_URL.apiUrl.concat("/franchise/category-list"))

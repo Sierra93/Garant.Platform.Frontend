@@ -204,17 +204,43 @@
   </div>
 
   <!-- Основная информация о франшизе. -->
-  <div class="row franchise-main-info section-margin">
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-9 col-sm-10">
+  <div class="row main-franchise-info">
+    <div class="col-xxl-8 col-xl-8 col-lg-8">
       <div>
-        <h3 class="section-title">Основная информация о франшизе*</h3>
+        <h6>Основная информация о франшизе*</h6>
         <div>
           <p class="description">{{franchiseData.text}}</p>
         </div>
       </div>
     </div>
-  </div>
 
+    <div class="col-xxl-4 col-xl-4 col-lg-4">
+      <div class="form">
+        <h6>Добавить презентацию</h6>
+        <div class="block-details-franch d-flex flex-column">
+          <strong>Прикрепить документ .pdf</strong>
+          <span>до 20 мб</span>
+          <span class="content">{{presentFile ? presentFile.name : franchiseData.namePresentFile}}</span>
+          <input type="file" (change)="uploadPresentAsync($event)" id="upload-present-async" class="d-none" />
+          <label for="upload-present-async" class="d-flex align-items-center">
+            <span class="me-2">
+              <img src="../../../../assets/images/franchise-pages/attach.svg" alt="gobizy attach file icon" />
+            </span>
+            <span>Прикрепить</span>
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <p>Загружать презентацию не обязательно. Однако, это способствует повышению конверсии и глубинной
+          заинтересованности в проекте. Если вы не хотите загружать презентацию, просто пропустите данный этап.</p>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <hr class="hr">
+    </div>
+  </div>
   <!-- Пример расчета прибыли. -->
   <div class="row income-calculation section-margin">
     <div class="col-12">
@@ -255,6 +281,16 @@
       <div>
         <h3 class="section-title">Обучение и поддержка*</h3>
         <p class="description">{{franchiseData.trainingDetails}}</p>
+      </div>
+    </div>
+    <div class="row photos">
+      <div class="col-xxl-8 col-xl-8 col-lg-8">
+        <div class="block-gallery">
+          <div class="w-100">
+            <span *ngIf="!franchiseData.trainingPhotoName">Фотографии не загружены</span>
+            <img src="{{franchiseData.trainingPhotoName}}" style="width: 700px; display: block;" />
+          </div>
+        </div>
       </div>
     </div>
   </div>

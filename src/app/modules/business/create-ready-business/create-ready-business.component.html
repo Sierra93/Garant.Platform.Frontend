@@ -14,7 +14,7 @@
         <hr class="hr">
 
         <span class="title-strong">Фотографии*</span><br>
-        <input type="file" (change)="uploadBusinessPhotosAsync($event)" multiple>
+        <gar-img-uploader (upload)="uploadBusinessPhotosAsync($event)"></gar-img-uploader>
         <div class="block-gallery">
           <div>
             <span *ngIf="!aNamesBusinessPhotos.length">Фотографии не загружены</span>

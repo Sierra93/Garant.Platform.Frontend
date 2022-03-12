@@ -225,7 +225,6 @@ export class ViewFranchiseModule implements OnInit {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
-
   /**
    * Функция добавит файл презентации.
    */

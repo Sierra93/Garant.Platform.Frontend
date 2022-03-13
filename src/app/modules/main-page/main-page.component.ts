@@ -188,7 +188,7 @@ export class MainPageModule implements OnInit {
                         console.log("Блок событий:", response);
                         let actions = response.filter((el:any) => el.isTop == false);
                         this.aDataActions = actions;
-
+                            
                         this.oTopAction = response.filter((el: any) => el.isTop == true)[0];
                         console.log("oTopAction",this.oTopAction);
                     },

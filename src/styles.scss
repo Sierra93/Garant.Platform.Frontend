@@ -25,41 +25,70 @@ $fa-font-path: "~font-awesome/fonts";
 }
 // общие стили
 // Блок бизнес с тремя карточками
-.three-cards-header {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
-  margin-bottom: 32px;
-}
-
-.card-business {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-}
-.wrapper-business {
-  min-height: 275px;
-  .p-card-body {
+.card-business-holder {
+  .p-element {
+    width: 65%;
+  }
+  .three-cards-header {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 32px;
+  }
+  .card {
+    min-height: 100%;
+    padding-left: 24px;
+    background-color: rgba(218, 218, 218, 0.15);
+  }
+  .wrapper-businness {
     display: flex;
+  }
+  .card-business {
+    height: 335px;
+    display: flex;
+    flex-wrap: wrap;
+
     padding: 0;
-    h5 {
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 21px;
-      color: #2c2c2c;
-    }
-    p {
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 16px;
-    }
+  }
+  .card-business-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  h5 {
+    max-width: 353px;
+    min-height: 58px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    color: #2c2c2c;
+    padding-bottom: 16px;
+  }
+  .business-text {
+    font-size: 14px;
+    // padding-bottom: 67px;
+  }
+  .btn-dark {
+    align-items: flex-end;
+    width: 199px;
+    height: 53px;
+    padding: 10px 54px !important;
+    background: #1f75fe;
+  }
+
+  .p-card-body {
+    padding: 0 !important;
+  }
+
+  .image-business-content {
+    min-width: 160px;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(218, 218, 218, 0.15);
   }
 }

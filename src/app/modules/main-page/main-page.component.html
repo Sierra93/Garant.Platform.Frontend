@@ -57,28 +57,30 @@
     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions">
       <div class="card-business">
         <h3 class="three-cards-header">{{item.title}}</h3>
-        <div class="wrapper-business">
-            <p-card [style]="{width: '100%'}" styleClass="card">
-          
-            <div class="card-business-content">
-              <ng-template pTemplate="header">
-                <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-              </ng-template>
-              <h5>{{item.subTitle}}</h5>
-              <p>{{item.text}}</p>
-              <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
-              <ng-template pTemplate="footer">
-                <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-                <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-                          </p-button> -->
-              </ng-template>
+        
+            <div class="wrapper-businness" style="height: 275px;">
+              <p-card [style]="{width: '100%'}" styleClass="card">
+              
+                <div class="card-business-content">
+                  <ng-template pTemplate="header">
+                    <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+                  </ng-template>
+                  <h5>{{item.subTitle}}</h5>
+                  <p class="business-text">{{item.text}}</p>
+                  <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
+                  <ng-template pTemplate="footer">
+                    <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+                    <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+                                        </p-button> -->
+                  </ng-template>
+                </div>
+              </p-card>
+              <div class="image-business-content"><img src="../../../assets/images/img-card-business1 (2).png" alt=""></div>
             </div>
-            </p-card>
-        </div>
-        <img src="../../../assets/images/" alt="" class="card-business">
-      </div>
-      
-    </div>
+            
+            <!-- /.wrapper-businness -->   
+      </div>          
+    </div> 
   </div>
 
   <div class="row section-mb" *ngIf="!isHideBusinessWithGarant">

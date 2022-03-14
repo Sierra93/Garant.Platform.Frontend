@@ -37,13 +37,11 @@
     </div>
 
     <div class="col-12">
-      <form class="" #filterForm="ngForm" novalidate>
+      <form>
         <div class="row">
-          <div
-            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 franchise-sphere"
-          >
+          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 franchise-sphere">
             <label>Сфера франшиз</label>
-           <div class="w-100">
+            <div class="w-100">
               <p-dropdown
                 [options]="aViewBusiness"
                 class="block-sort-by"
@@ -55,24 +53,21 @@
               ></p-dropdown>
             </div>
           </div>
-
-          <div
-            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 control-quick-search"
-          >
+          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 control-quick-search">
             <label>Выбор категории</label>
-            <p-dropdown
-              [options]="aBusinessCategories"
-              class="block-sort-by"
-              optionLabel="categoryName"
-              [(ngModel)]="selectedCategory"
-              placeholder="Категория"
-              [showClear]="true"
-              name="category"
-            ></p-dropdown>
-            
-          <div
-            class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount"
-          >
+            <div class="w-100">
+              <p-dropdown
+                [options]="aBusinessCategories"
+                class="block-sort-by"
+                optionLabel="categoryName"
+                [(ngModel)]="selectedCategory"
+                placeholder="Категория"
+                [showClear]="true"
+                name="category"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount">
             <label>Инвестиции</label>
             <div class="row">
               <div class="col-6 block-price-min">
@@ -100,6 +95,7 @@
           </div>
         </div>
       </form>
+    </div>
     </div>
 
     <div class="col-12 mt-3">
@@ -243,7 +239,6 @@
         </div>
       </div>
     </div>
-  </div>
 
   <!-- Новые франшизы. -->
   <div class="row section-mb">

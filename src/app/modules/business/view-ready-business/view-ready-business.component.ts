@@ -455,7 +455,7 @@ export class ViewReadyBusinessModule implements OnInit {
       throw new Error(e);
     }
   }
-
+  
   private scrollPageToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;

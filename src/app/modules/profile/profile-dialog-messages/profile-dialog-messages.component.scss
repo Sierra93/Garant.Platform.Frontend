@@ -107,10 +107,6 @@ hr.hr {
           }
         }
       }
-
-      textarea:focus + .reply svg path {
-        fill: #1f75fe;
-      }
     }
   }
 }
@@ -160,4 +156,8 @@ hr.hr {
       width: 100% !important;
     }
   }
+}
+
+.is-activated path {
+  fill: #0d6efd !important;
 }

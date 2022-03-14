@@ -40,7 +40,7 @@
       </div>
   </div> -->
 
-  <div class="space-top-auth-form form-auth">
+  <div class="space-top-auth-form form-auth d-flex justify-content-center">
     <form class="block-form-auth">
       <h5>Добавить объявление</h5>
       
@@ -50,14 +50,26 @@
 
       <div class="d-flex justify-content-center">
         <div>
-          <p-checkbox name="franchise" inputId="franch" [(ngModel)]="isSelectFranch" [binary]="true" (onChange)="onSelectFracnhiseCheck()"></p-checkbox>
+          <p-radioButton 
+              name="businessType" 
+              inputId="franch" 
+              value="Franchise" 
+              [(ngModel)]="selectedValue" 
+              (onClick)="onSelectCheck()">
+        </p-radioButton>
           <label for="franch" class="control-label-checkbox">Франшиза</label>
         </div>
 
         <div class="block-space-check"></div>
 
         <div>
-          <p-checkbox name="business" inputId="bus" [(ngModel)]="isSelectBus" [binary]="true" (onChange)="onSelectBusinessCheck()"></p-checkbox>
+          <p-radioButton 
+            name="businessType" 
+            inputId="bus" 
+            value="Business" 
+            [(ngModel)]="selectedValue" 
+            (onClick)="onSelectCheck()">
+        </p-radioButton>
           <label for="bus" class="control-label-checkbox">Готовый бизнес</label>
         </div>           
       </div>
@@ -138,7 +150,14 @@
       </div>
 
       <div class="d-flex space-top-bottom-32">
-        <p-checkbox name="condition" inputId="cond" [(ngModel)]="isSelectGobizy" [binary]="true"></p-checkbox>
+        <p-checkbox 
+            name="condition" 
+            inputId="cond" 
+            [(ngModel)]="isSelectGobizy" 
+            [binary]="true">
+
+        </p-checkbox>
+
         <label for="cond" class="control-label-checkbox">
           Согласен с условиями использования<br>
           сервисов GoBizy и обработки персональных<br>
@@ -147,14 +166,30 @@
       </div>  
 
       <div class="d-flex space-top-bottom-32">
-        <p-checkbox name="sell" inputId="sell" [(ngModel)]="isSelectSell" [binary]="true"></p-checkbox>
+        <p-checkbox 
+            name="sell" 
+            inputId="sell" 
+            [(ngModel)]="isSelectSell"
+            [binary]="true">
+        </p-checkbox>
+
         <label for="sell" class="control-label-checkbox">
           Хочу продать бизнес онлайн
         </label>
       </div>  
 
       <div class="text-center">
-        <button class="btn btn-default btn-code-active" (click)="onContinue(isSelectFranch, isSelectBus, isSelectGobizy, isSelectSell)">Продолжить</button>
+        <!-- <button 
+          class="btn btn-default btn-code-active" 
+          (click)="onContinue(isSelectFranch, isSelectBus, isSelectGobizy, isSelectSell)"
+          (disabled)="isSelectGobizy">
+        Продолжить
+      </button> -->
+      <p-button 
+        label="Продолжить" 
+        [disabled]="!isSelectGobizy || !isSelectSell"
+        (click)="onContinue(isSelectFranch, isSelectBus, isSelectGobizy, isSelectSell)">
+    </p-button>
       </div>
     </form>
   </div>

@@ -26,6 +26,7 @@ export class CreateAdModule implements OnInit {
     isSelectFranch: boolean = true;
     isSelectBus: boolean = false;
     selectedCityName: any;
+    selectedValue: any;
 
     constructor(private http: HttpClient, 
         private commonService: CommonDataService,
@@ -86,6 +87,7 @@ export class CreateAdModule implements OnInit {
                 await this.commonService.GetFranchiseCategoriesListAsync().then((data: any) => {
                     console.log("Список категорий франшиз:", data);
                     this.aFranchiseCategories = data;
+                    this.isSelectBus = false;
                 });               
             }
     
@@ -107,6 +109,7 @@ export class CreateAdModule implements OnInit {
                 await this.commonService.GetBusinessCategoriesListAsync().then((data: any) => {
                     console.log("Список категорий бизнеса:", data);                
                     this.aBusinessCategories = data;
+                    this.isSelectFranch = false;
                 });
 
                 await this.commonService.GetBusinessSubCategoriesListAsync().then((data: any) => {
@@ -185,5 +188,21 @@ export class CreateAdModule implements OnInit {
             console.log("Список подкатегорий сферы:", data);                
             this.aFranchiseSubCategories = data;
         });
+    };
+
+    public async onSelectCheck() {
+        console.log("selectedValue", this.selectedValue);
+
+        if (this.selectedValue == "Franchise") {
+            this.isSelectFranch = true;
+            this.isSelectBus = false;
+            await this.onSelectFracnhiseCheck();
+        }
+
+        if (this.selectedValue == "Business") {
+            this.isSelectFranch = false;
+            this.isSelectBus = true;
+            await this.onSelectBusinessCheck();
+        }
     };
 }

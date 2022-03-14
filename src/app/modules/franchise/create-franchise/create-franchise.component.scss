@@ -1072,8 +1072,13 @@
     }
 
     p-galleriathumbnails {
-      width: 12%;
-      max-width: 12%;
+      width: 7%;
+      max-width: 7%;
+
+      @media (max-width: 576px) {
+        width: 12%;
+        max-width: 12%;
+      }
     }
 
     p-galleriaitem {

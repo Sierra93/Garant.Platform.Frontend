@@ -10,7 +10,10 @@
     <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-5">
       <div class="file-input-wrapper">
         <label class="form-label">Логотип</label>
-        <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" class="form-control" />
+        <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" class="form-control d-none" />
+        <label for="franchise-logo" style="height: 70px; font-size: 2.25rem; border-radius: 10px;" class="form-control d-flex align-items-center justify-content-center">
+          <img src="./../../../../assets/images/plus.svg" alt="gobizy plus icon" />
+        </label>
         <!-- <div class="franchise-logo">
           <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
         </div> -->

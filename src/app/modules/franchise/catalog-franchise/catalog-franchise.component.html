@@ -126,19 +126,19 @@
                 name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true"
                 (onChange)="onChangeSortPrice()"></p-dropdown> -->
 
-            <p-dropdown
-              class="block-sort-by"
-              [options]="aSortPrices"
-              optionLabel="name"
-              optionCode="value"
-              name="price"
-              [(ngModel)]="selectedSort"
-              placeholder="Цена"
-              [showClear]="true"
-              (onChange)="onChangeSortPrice()"
-            ></p-dropdown>
+              <p-dropdown
+                class="block-sort-by"
+                [options]="aSortPrices"
+                optionLabel="name"
+                optionCode="value"
+                name="price"
+                [(ngModel)]="selectedSort"
+                placeholder="Цена"
+                [showClear]="true"
+                (onChange)="onChangeSortPrice()"
+              ></p-dropdown>
+            </div>
           </div>
-        </div>
 
         <div class="d-flex">
           <div class="">
@@ -169,6 +169,19 @@
               [(ngModel)]="filterMaxPrice"
               name="filterMaxPrice"
             />
+          <div class="filter-btns d-flex justify-content-between">
+            <button
+              class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control"
+              (click)="onFilterFranchisesWithPaginationAsync()"
+            >
+              Применить фильтры
+            </button>
+            <button
+              class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control ml-1"
+              (click)="onClearFilters()"
+            >
+              Очистить фильтры
+            </button>
           </div>
         </div>
 

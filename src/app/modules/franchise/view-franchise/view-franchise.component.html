@@ -220,7 +220,7 @@
         <div class="block-details-franch d-flex flex-column">
           <strong>Прикрепить документ .pdf</strong>
           <span>до 20 мб</span>
-          <span class="content">{{presentFile ? presentFile.name : franchiseData.namePresentFile}}</span>
+          <!-- <span class="content">{{presentFile ? presentFile.name : franchiseData.namePresentFile}}</span> -->
           <input type="file" (change)="uploadPresentAsync($event)" id="upload-present-async" class="d-none" />
           <label for="upload-present-async" class="d-flex align-items-center">
             <span class="me-2">

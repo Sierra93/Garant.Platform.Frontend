@@ -19,7 +19,10 @@
             <ng-template pTemplate="header">
               <img [src]="item.url" />
             </ng-template>
-            <strong>{{ item.textDoPrice }} {{ item.price }} ₽</strong>
+            <strong
+              >{{ item.textDoPrice }}
+              {{ item.price | priceFormat: item.price }} ₽
+            </strong>
             <ng-template pTemplate="footer"></ng-template>
           </p-card>
         </div>
@@ -39,7 +42,9 @@
     <div class="col-12">
       <form>
         <div class="row">
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 franchise-sphere">
+          <div
+            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 franchise-sphere"
+          >
             <label>Сфера франшиз</label>
             <div class="w-100">
               <p-dropdown
@@ -53,7 +58,9 @@
               ></p-dropdown>
             </div>
           </div>
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 control-quick-search">
+          <div
+            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 control-quick-search"
+          >
             <label>Выбор категории</label>
             <div class="w-100">
               <p-dropdown
@@ -67,7 +74,9 @@
               ></p-dropdown>
             </div>
           </div>
-          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount">
+          <div
+            class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount"
+          >
             <label>Инвестиции</label>
             <div class="row">
               <div class="col-6 block-price-min">
@@ -96,93 +105,93 @@
         </div>
       </form>
     </div>
-    </div>
+  </div>
 
-    <div class="col-12 mt-3">
-      <hr class="hr" />
-    </div>
+  <div class="col-12 mt-3">
+    <hr class="hr" />
+  </div>
 
-    <div class="col-12 franchise-catalog-form">
-      <div class="row">
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-5">
-          <!-- <div class="d-flex">
+  <div class="col-12 franchise-catalog-form">
+    <div class="row">
+      <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-5">
+        <!-- <div class="d-flex">
             <button class="btn-filter" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
             <button class="btn-filter" (click)="onClearFilters()">Очистить фильтры</button>
           </div> -->
 
-          <div class="price-sorter">
-            <label class="label-filter">Сортировать по</label>
-            <div>
-              <!-- <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value"
+        <div class="price-sorter">
+          <label class="label-filter">Сортировать по</label>
+          <div>
+            <!-- <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value"
                 name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true"
                 (onChange)="onChangeSortPrice()"></p-dropdown> -->
-              
-              <p-dropdown
-                class="block-sort-by"
-                [options]="aSortPrices"
-                optionLabel="name"
-                optionCode="value"
-                name="price"
-                [(ngModel)]="selectedSort"
-                placeholder="Цена"
-                [showClear]="true"
-                (onChange)="onChangeSortPrice()"
-              ></p-dropdown>
-            </div>
-          </div>
 
-          <div class="d-flex">
-            <div class="">
-              <strong>Покупка через гарант</strong>
-            </div>
-
-            <div>
-              <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
-            </div>
-          </div>
-
-          <div class="monthly-income">
-            <label class="label-filter">Прибыль в месяц</label>
-            <div class="d-flex justify-content-between filter-btns-profit">
-              <input
-                type="text"
-                class="control-input-filter-price no-margin"
-                pInputText
-                placeholder="от 100 000 ₽"
-                [(ngModel)]="filterMinPrice"
-                name="filterMinPrice"
-              />
-              <input
-                type="text"
-                class="control-input-filter-price no-margin"
-                pInputText
-                placeholder="до 100 000 000 ₽"
-                [(ngModel)]="filterMaxPrice"
-                name="filterMaxPrice"
-              />
-            </div>
-          </div>
-
-          <div class="filter-btns d-flex justify-content-between">
-            <button
-              class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control"
-              (click)="onFilterFranchisesWithPaginationAsync()"
-            >
-              Применить фильтры
-            </button>
-            <button
-              class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control ml-1"
-              (click)="onClearFilters()"
-            >
-              Очистить фильтры
-            </button>
+            <p-dropdown
+              class="block-sort-by"
+              [options]="aSortPrices"
+              optionLabel="name"
+              optionCode="value"
+              name="price"
+              [(ngModel)]="selectedSort"
+              placeholder="Цена"
+              [showClear]="true"
+              (onChange)="onChangeSortPrice()"
+            ></p-dropdown>
           </div>
         </div>
 
-        <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-7">
-          <div class="franchise-card-container">
-            <div class="row">
-              <!-- <div class="col-12">
+        <div class="d-flex">
+          <div class="">
+            <strong>Покупка через гарант</strong>
+          </div>
+
+          <div>
+            <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
+          </div>
+        </div>
+
+        <div class="monthly-income">
+          <label class="label-filter">Прибыль в месяц</label>
+          <div class="d-flex justify-content-between filter-btns-profit">
+            <input
+              type="text"
+              class="control-input-filter-price no-margin"
+              pInputText
+              placeholder="от 100 000 ₽"
+              [(ngModel)]="filterMinPrice"
+              name="filterMinPrice"
+            />
+            <input
+              type="text"
+              class="control-input-filter-price no-margin"
+              pInputText
+              placeholder="до 100 000 000 ₽"
+              [(ngModel)]="filterMaxPrice"
+              name="filterMaxPrice"
+            />
+          </div>
+        </div>
+
+        <div class="filter-btns d-flex justify-content-between">
+          <button
+            class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control"
+            (click)="onFilterFranchisesWithPaginationAsync()"
+          >
+            Применить фильтры
+          </button>
+          <button
+            class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control ml-1"
+            (click)="onClearFilters()"
+          >
+            Очистить фильтры
+          </button>
+        </div>
+      </div>
+
+      <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-7">
+        <div class="franchise-card-container">
+          <div class="row">
+            <!-- <div class="col-12">
                 <div class="franchise-card">
                   <img src="../../../../assets/images/once-card.png" alt="gobizy franchise card"
                     class="franchise-card-img">
@@ -195,50 +204,51 @@
                 </div>
               </div> -->
 
-              <div
-                class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12"
-                *ngFor="let item of aFranchises"
+            <div
+              class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12"
+              *ngFor="let item of aFranchises"
+            >
+              <p-card
+                header="{{ item.title }}"
+                subheader="{{ item.fullText }}"
+                [style]="{ width: '100%' }"
+                styleClass="p-card-shadow"
               >
-                <p-card
-                  header="{{ item.title }}"
-                  subheader="{{ item.fullText }}"
-                  [style]="{ width: '100%' }"
-                  styleClass="p-card-shadow"
-                >
-                  <ng-template pTemplate="header">
-                    <img [src]="item.url" />
-                  </ng-template>
-                  <strong
-                    >{{ item.textDoPrice }} {{ item.totalInvest }} ₽</strong
+                <ng-template pTemplate="header">
+                  <img [src]="item.url" />
+                </ng-template>
+                <strong>
+                  {{ item.textDoPrice }}
+                  {{ item.totalInvest | priceFormat: item.totalInvest }} ₽
+                </strong>
+                <ng-template pTemplate="footer">
+                  <button
+                    class="btn btn-default btn-filter"
+                    (click)="routeViewFranchiseCardAsync(item.franchiseId)"
                   >
-                  <ng-template pTemplate="footer">
-                    <button
-                      class="btn btn-default btn-filter"
-                      (click)="routeViewFranchiseCardAsync(item.franchiseId)"
-                    >
-                      Подробнее
-                    </button>
-                  </ng-template>
-                </p-card>
-              </div>
+                    Подробнее
+                  </button>
+                </ng-template>
+              </p-card>
+            </div>
 
-              <div class="col-12">
-                <div class="franchise-card-pagination">
-                  <p-paginator
-                    [rows]="12"
-                    [totalRecords]="countTotalPage"
-                    [rowsPerPageOptions]="[12, 21, 30]"
-                    [showCurrentPageReport]="true"
-                    (onPageChange)="onPaginationChangeAsync($event)"
-                  >
-                  </p-paginator>
-                </div>
+            <div class="col-12">
+              <div class="franchise-card-pagination">
+                <p-paginator
+                  [rows]="12"
+                  [totalRecords]="countTotalPage"
+                  [rowsPerPageOptions]="[12, 21, 30]"
+                  [showCurrentPageReport]="true"
+                  (onPageChange)="onPaginationChangeAsync($event)"
+                >
+                </p-paginator>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
   <!-- Новые франшизы. -->
   <div class="row section-mb">
@@ -271,9 +281,11 @@
                     <ng-template pTemplate="header">
                       <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
                     </ng-template>
-                    <strong
-                      >{{ item.textDoPrice }} {{ item.totalInvest }} ₽</strong
-                    >
+                    <strong>
+                      {{ item.textDoPrice }}
+                      {{ item.totalInvest | priceFormat: item.totalInvest }}
+                      ₽
+                    </strong>
                     <ng-template pTemplate="footer">
                       <!-- <p-button label="Save" icon="pi pi-check"></p-button>
                           <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
@@ -318,8 +330,9 @@
                   >
                     <ng-template pTemplate="header"> </ng-template>
                     <strong class="franchise-card-price"
-                      >{{ item.textDoPrice }} {{ item.price }} ₽</strong
-                    >
+                      >{{ item.textDoPrice }}
+                      {{ item.price | priceFormat: item.price }} ₽
+                    </strong>
                   </p-card>
                 </div>
               </div>

@@ -52,67 +52,60 @@
     </div>
   </div>
 
-  <!-- Область с 3 карточками. -->
-  <div class="row section-mb">
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions">
-      <div class="card-business">
-        <h3 class="three-cards-header">{{item.title}}</h3>
-        <div class="wrapper-business">
-            <p-card [style]="{width: '100%'}" styleClass="card">
-          
-            <div class="card-business-content">
-              <ng-template pTemplate="header">
-                <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-              </ng-template>
-              <h5>{{item.subTitle}}</h5>
-              <p>{{item.text}}</p>
-              <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
-              <ng-template pTemplate="footer">
-                <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-                <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-                          </p-button> -->
-              </ng-template>
+<!-- Область с 3 карточками. -->
+<div class="row section-mb">
+  <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder"
+    *ngFor="let item of aDataActions; let i = index">
+    <div class="card-business">
+      <h3 class="three-cards-header">{{item.title}}</h3>
+
+
+            <div class="wrapper-businness">
+              <p-card [style]="{width: '100%'}" styleClass="card">
+
+                <div class="card-business-content">
+                  <ng-template pTemplate="header">
+                  </ng-template>
+                  <h5>{{item.subTitle}}</h5>
+                  <p class="business-text">{{item.text}}</p>
+                  <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
+                  <ng-template pTemplate="footer">
+
+                  </ng-template>
+                </div>
+              </p-card>
+
+              <div class="image-business-content"><img [src]="aDataActionsPictures[i]?.imgUrl" alt=""></div>
             </div>
-            </p-card>
-        </div>
-        <img src="../../../assets/images/" alt="" class="card-business">
-      </div>
-      
     </div>
   </div>
+</div>
 
-  <div class="row section-mb" *ngIf="!isHideBusinessWithGarant">
-    <div class="col-lg-12 col-xs-12 card-line">
-      <p-card class="business-garanteese">
-        <ng-template pTemplate="header">
-          <strong>Вы можете приобрести бизнес с гарантиями</strong>
-          <button
-            type="button"
-            class="close"
-            aria-label="Close"
-            (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
-            <span aria-hidden="true"><img src="../../../assets/images/cross.svg" alt=""></span>
-          </button>
-        </ng-template>
-        <p>{{oSuggestion.text}}</p>
-        <ng-template pTemplate="footer">
-          <div class="d-flex align-items-center">
-            <button
-              class="btn btn-dark more-info-btn"
-              routerLink="/deal/start">
+<div class="row section-mb" *ngIf="!isHideBusinessWithGarant">
+  <div class="col-lg-12 col-xs-12 card-line">
+    <p-card class="business-garanteese">
+      <ng-template pTemplate="header">
+        <strong>Вы можете приобрести бизнес с гарантиями</strong>
+        <button type="button" class="close" aria-label="Close"
+          (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
+          <span aria-hidden="true"><img src="../../../assets/images/cross.svg" alt=""></span>
+        </button>
+      </ng-template>
+      <p>{{oSuggestion.text}}</p>
+      <ng-template pTemplate="footer">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-dark more-info-btn" routerLink="/deal/start">
             {{oSuggestion.button2Text}}
           </button>
 
-            <button
-              class="btn btn-default btn-show-more"
-              (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
-              {{oSuggestion.button1Text}}
+          <button class="btn btn-default btn-show-more" (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
+            {{oSuggestion.button1Text}}
           </button>
-          </div>
-        </ng-template>
-      </p-card>
-    </div>
+        </div>
+      </ng-template>
+    </p-card>
   </div>
+</div>
 
   <!-- Секция быстрого поиска. -->
   <div class="row section-mb gray ">

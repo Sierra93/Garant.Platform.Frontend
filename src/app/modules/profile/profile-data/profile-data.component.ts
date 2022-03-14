@@ -34,6 +34,7 @@ export class ProfileDataModule implements OnInit {
     };
 
     public async ngOnInit() {
+        this.email = sessionStorage["user"];
         // TODO: переделать на получение заголовка с бэка.
         this.titleService.setTitle("Gobizy: Заполнение информации о себе");
 

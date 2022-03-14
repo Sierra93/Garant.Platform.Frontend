@@ -25,6 +25,9 @@ $fa-font-path: "~font-awesome/fonts";
 }
 // общие стили
 // Блок бизнес с тремя карточками
+.section-mb {
+  margin: auto auto 5rem auto !important;
+}
 .card-business-holder {
   .p-element {
     width: 65%;
@@ -33,9 +36,8 @@ $fa-font-path: "~font-awesome/fonts";
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 28px;
-    margin-bottom: 32px;
+    font-size: 1.2rem;
+    line-height: 1rem;
   }
   .card {
     min-height: 100%;
@@ -43,6 +45,7 @@ $fa-font-path: "~font-awesome/fonts";
     background-color: rgba(218, 218, 218, 0.15);
   }
   .wrapper-businness {
+    height: 275px;
     display: flex;
   }
   .card-business {
@@ -58,23 +61,22 @@ $fa-font-path: "~font-awesome/fonts";
     flex-direction: column;
   }
   h5 {
-    max-width: 353px;
+    max-width: 78%;
     min-height: 58px;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 0.9rem;
     line-height: 21px;
     color: #2c2c2c;
-    padding-bottom: 16px;
   }
   .business-text {
-    font-size: 14px;
-    // padding-bottom: 67px;
+    font-size: 0.7rem;
+    height: 84px;
   }
   .btn-dark {
     align-items: flex-end;
-    width: 199px;
+    width: 10rem;
     height: 53px;
     padding: 10px 54px !important;
     background: #1f75fe;
@@ -85,10 +87,67 @@ $fa-font-path: "~font-awesome/fonts";
   }
 
   .image-business-content {
-    min-width: 160px;
+    min-width: 30%;
     height: 100%;
     align-items: center;
     text-align: center;
     background-color: rgba(218, 218, 218, 0.15);
+    img {
+      margin-right: 3px;
+    }
+  }
+
+  @media only screen and (min-device-width: 980px) and (max-device-width: 1200px) {
+    /* Styles */
+
+    .p-element {
+      width: 77%;
+      .business-text {
+        font-size: 0.6rem;
+        height: 84px;
+        padding-right: 45px;
+      }
+    }
+    .card-business {
+      .three-cards-header {
+        font-size: 1.1rem;
+        line-height: 0.9rem;
+      }
+      .wrapper-business {
+        height: 300px;
+      }
+    }
+    .image-business-content {
+      display: none;
+      img {
+        display: none;
+      }
+    }
+  }
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .p-element {
+      width: 80%;
+    }
+    .card-business {
+      .three-cards-header {
+        font-size: 0.9rem;
+      }
+    }
+    h5 {
+      max-width: 99%;
+    }
+    .wrapper-business {
+      height: 305px;
+    }
+    .card {
+      padding-left: 10px;
+    }
+    .p-card-content {
+      padding: 15px 0 8px !important;
+    }
+
+    .business-text {
+      margin-bottom: 50px;
+    }
   }
 }

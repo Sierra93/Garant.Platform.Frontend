@@ -51,7 +51,17 @@ export class MainPageModule implements OnInit {
     aNewBusiness: any[] = [];
     isHideBusinessWithGarant: boolean = false;
     showCategoryMenu: boolean = false;
-
+    aDataActionsPictures = [
+    {
+      imgUrl: 'assets/images/slider__1.svg'
+    },
+    {
+      imgUrl: 'assets/images/slider__2.svg'
+    },
+    {
+      imgUrl: 'assets/images/slider__3.svg'
+    }
+  ]
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private titleService: Title,

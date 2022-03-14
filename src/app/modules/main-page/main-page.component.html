@@ -54,11 +54,11 @@
 
   <!-- Область с 3 карточками. -->
   <div class="row section-mb">
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions">
+    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions; let i = index">
       <div class="card-business">
         <h3 class="three-cards-header">{{item.title}}</h3>
         
-            <div class="wrapper-businness" style="height: 275px;">
+            <div class="wrapper-businness">
               <p-card [style]="{width: '100%'}" styleClass="card">
               
                 <div class="card-business-content">
@@ -75,7 +75,8 @@
                   </ng-template>
                 </div>
               </p-card>
-              <div class="image-business-content"><img src="../../../assets/images/img-card-business1 (2).png" alt=""></div>
+                
+              <div class="image-business-content"><img [src]="aDataActionsPictures[i]?.imgUrl" alt=""></div>
             </div>
             
             <!-- /.wrapper-businness -->   

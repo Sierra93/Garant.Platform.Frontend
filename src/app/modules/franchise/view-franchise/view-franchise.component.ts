@@ -231,6 +231,6 @@ export class ViewFranchiseModule implements OnInit {
    */
   public uploadPresentAsync(event: any) {
     console.log("uploadPresentAsync");
-    this.presentFile = event.target.files[0];
+    //this.presentFile = event.target.files[0];
   };
 }

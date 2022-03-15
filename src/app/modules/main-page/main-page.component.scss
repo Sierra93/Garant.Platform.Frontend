@@ -64,10 +64,19 @@
 
 .more-info-btn {
   margin-right: 16px;
+  width: 138px;
+  height: 53px;
+  align-items: center;
+  background: #1f75fe;
+  border-radius: 4px;
 }
 
-::ng-deep .business-garanteese .p-card {
+::ng-deep .business-garanteese {
+  height: 194px;
   background: #f1f6ff;
+  strong {
+    margin: 24px 0 16px 0;
+  }
 }
 
 ::ng-deep .business-garanteese .p-card-content {
@@ -163,6 +172,7 @@
 .btn-show-more {
   border: 1px solid;
   border-radius: 5px;
+  height: 53px;
 }
 
 .baner {
@@ -200,6 +210,9 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
+  .business-garanteese {
+    min-width: 320px;
+  }
 }
 
 /* Smartphones (landscape) ----------- */

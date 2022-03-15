@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject, forkJoin, Observable } from 'rxjs';
 import { API_URL } from 'src/app/core/core-urls/api-url';
 import { FilterInput } from 'src/app/models/franchise/input/filter-franchise-input';
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
+import { LandingRequestService } from '../services/landing.service';
 
 @Component({
   selector: 'consulting-landing',
@@ -50,14 +52,18 @@ export class ConsultingLandingModule implements OnInit {
   businessId: number = 0;
   routeParam: number;
   isHideBusinessWithGarant: boolean = true;
+  name: string = "";
+  phoneNumber: string = "";
+
+  public landingRequestNotify$ = new BehaviorSubject<any>(undefined);
 
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,
     private titleService: Title,
     private router: Router,
-    private route: ActivatedRoute
-  ) {
+    private route: ActivatedRoute,
+    private requestService: LandingRequestService) {
     // this.aSortPrices = [
     //     {
     //         name: "По убыванию цены",
@@ -516,5 +522,9 @@ export class ConsultingLandingModule implements OnInit {
     this.router.navigate(['/business/view'], {
       queryParams: { businessId: businessId },
     });
-  }
+  };
+
+  public onSendLandingRequestAsync(name: string, phoneNumber: string) {
+    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Консалтинг").subscribe();
+  };
 }

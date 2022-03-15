@@ -116,6 +116,8 @@
   </p-paginator>
 </div> -->
 
+<p-toast [style]="{ marginTop: '80px' }"></p-toast>
+
 <div class="header">
   <div class="header-content">
     <div class="header-content__title">Консультация</div>
@@ -504,6 +506,7 @@
           type="text"
           name="name"
           placeholder="Введите имя"
+          [(ngModel)]="name"
         />
       </label>
       <label class="check-content__label"
@@ -513,10 +516,11 @@
           type="tel"
           name="telephone"
           placeholder="Введите номер телефона"
+          [(ngModel)]="phoneNumber"
         />
       </label>
     </div>
-    <button class="check-content__button">Отправить договор на проверку</button>
+    <button class="check-content__button" (click)="onSendLandingRequestAsync(name, phoneNumber)">Отправить договор на проверку</button>
   </div>
   <div class="check-image">
     <img

@@ -15,7 +15,7 @@
 // импорт стилей сброса
 @use "./shared/styles/base/reset.scss";
 // импорт стилей фонтов
-@use"./shared/styles/base/typography.scss";
+@use "./shared/styles/base/typography.scss";
 
 // импорт стилей компоненты header
 @use "./modules/header/header.component.scss";
@@ -26,8 +26,9 @@
 // импорт стилей страницы каталога франшизы
 @use "./modules/franchise/catalog-franchise/catalog-franchise.component.scss";
 
-
-[hidden] { display: none !important;}
+[hidden] {
+  display: none !important;
+}
 
 .garant-header {
   background-color: #1f75fe;

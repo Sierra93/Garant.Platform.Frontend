@@ -316,7 +316,11 @@
     padding: 1.5rem;
   }
 }
-
+.mb-card {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+}
 // .section-mb {
 //   margin-bottom: 5rem;
 // }
@@ -361,11 +365,11 @@
   }
 }
 
-@media (max-width: 1800px) {
-  .three-cards-header {
-    font-size: 1.25rem;
-  }
-}
+// @media (max-width: 1800px) {
+//   .three-cards-header {
+//     font-size: 1.25rem;
+//   }
+// }
 
 @media (min-width: 1400px) and (max-width: 1700px) {
   .quick-search-form {
@@ -396,7 +400,7 @@
 
 @media (max-width: 1080px) {
   .three-cards-header {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 

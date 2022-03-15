@@ -14,14 +14,16 @@ $fa-font-path: "~font-awesome/fonts";
   }
 
   @media (max-width: 1080px) {
-    width: calc(100% - 10rem);
-    margin: 0 5rem !important;
+    // width: calc(100% - 10rem);
+    // margin: 0 5rem !important;
+    width: 90%;
+    margin: auto !important;
   }
 
-  @media (max-width: 576px) {
-    width: calc(100% - 2.5rem);
-    margin: 0 1.25rem !important;
-  }
+  // @media (max-width: 576px) {
+  //   width: calc(100% - 2.5rem);
+  //   margin: 0 1.25rem !important;
+  // }
 }
 // общие стили
 // Блок бизнес с тремя карточками
@@ -29,9 +31,6 @@ $fa-font-path: "~font-awesome/fonts";
   margin: auto auto 5rem auto !important;
 }
 .card-business-holder {
-  .p-element {
-    width: 65%;
-  }
   .three-cards-header {
     font-family: "Roboto";
     font-style: normal;
@@ -42,11 +41,12 @@ $fa-font-path: "~font-awesome/fonts";
   .card {
     min-height: 100%;
     padding-left: 24px;
-    background-color: rgba(218, 218, 218, 0.15);
+    background-color: inherit;
   }
   .wrapper-businness {
     height: 275px;
     display: flex;
+    background-color: rgba(218, 218, 218, 0.15);
   }
   .card-business {
     height: 335px;
@@ -61,7 +61,6 @@ $fa-font-path: "~font-awesome/fonts";
     flex-direction: column;
   }
   h5 {
-    max-width: 78%;
     min-height: 58px;
     font-family: "Roboto";
     font-style: normal;
@@ -72,49 +71,40 @@ $fa-font-path: "~font-awesome/fonts";
   }
   .business-text {
     font-size: 0.7rem;
-    height: 84px;
+    height: 120px;
+    padding-right: 10px;
   }
   .btn-dark {
     align-items: flex-end;
     width: 10rem;
-    height: 53px;
-    padding: 10px 54px !important;
+    height: 2.5rem !important;
+    padding: 10px 44px !important;
     background: #1f75fe;
   }
-
+  .p-card .p-card-content {
+    padding: 0 !important;
+  }
   .p-card-body {
     padding: 0 !important;
   }
 
   .image-business-content {
-    min-width: 30%;
-    height: 100%;
-    align-items: center;
-    text-align: center;
-    background-color: rgba(218, 218, 218, 0.15);
+    flex-basis: 84%;
+
     img {
       margin-right: 3px;
     }
   }
 
-  @media only screen and (min-device-width: 980px) and (max-device-width: 1200px) {
+  @media only screen and (min-device-width: 981px) and (max-device-width: 1024px) {
     /* Styles */
-
-    .p-element {
-      width: 77%;
-      .business-text {
-        font-size: 0.6rem;
-        height: 84px;
-        padding-right: 45px;
-      }
+    .three-cards-header {
+      font-size: 1rem !important;
+      line-height: 0.9rem;
     }
-    .card-business {
-      .three-cards-header {
-        font-size: 1.1rem;
-        line-height: 0.9rem;
-      }
-      .wrapper-business {
-        height: 300px;
+    .card-business-holder {
+      .p-element {
+        width: 77%;
       }
     }
     .image-business-content {
@@ -122,6 +112,24 @@ $fa-font-path: "~font-awesome/fonts";
       img {
         display: none;
       }
+    }
+  }
+  @media only screen and (min-device-width: 720px) and (max-device-width: 980px) {
+    .three-cards-header {
+      font-size: 1rem;
+    }
+    .image-business-content {
+      display: none;
+      img {
+        display: none;
+      }
+    }
+    .business-text {
+      margin-bottom: 20pxpx;
+      height: 110px;
+    }
+    .card-business-content {
+      padding-top: 15px;
     }
   }
   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -148,6 +156,15 @@ $fa-font-path: "~font-awesome/fonts";
 
     .business-text {
       margin-bottom: 50px;
+      height: 110px;
+    }
+  }
+}
+@media only screen and (min-device-width: 720px) and (max-device-width: 980px) {
+  .card-business-holder {
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+      width: 50%;
     }
   }
 }

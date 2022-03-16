@@ -12,7 +12,10 @@ import { CommonDataService } from 'src/app/services/common/common-data.service';
 @Component({
   selector: 'deal-landing',
   templateUrl: './deal-landing.component.html',
-  styleUrls: ['./deal-landing.component.scss'],
+  styleUrls: [
+    './deal-landing.component.scss',
+    './deal-landing.mobile.scss'
+  ],
 })
 export class DealLandingModule implements OnInit {
   aPopularBusiness: any[] = [];

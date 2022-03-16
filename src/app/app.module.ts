@@ -48,7 +48,9 @@ import { ProfileMyDataModule } from "./modules/profile/profile-my-data/profile-m
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ManageAccountModule } from "./modules/profile/manage-account/manage-account.component";
-import { ProfileDialogMessagesModule } from "./modules/profile/profile-dialog-messages/profile-dialog-messages.component";
+import {
+  ProfileDialogMessagesModule
+} from "./modules/profile/profile-dialog-messages/profile-dialog-messages.component";
 import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/profile-my-dialogs.component";
 import { MainSearchModule } from "./modules/search/main-search/main-search.component";
 import { CatalogBusinessModule } from "./modules/business/catalog-business/catalog-business.component";
@@ -75,6 +77,8 @@ import { SESSION_TOKEN } from "./core/session/session.token";
 import { NotifyService } from "./services/notify/notify.service";
 import { PriceFormatPipe } from './core/pipes/priceFormat.pipe';
 import { LandingRequestService } from "./modules/landing/services/landing.service";
+import { SharedModule } from './shared/shared.module';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
   declarations: [
@@ -145,7 +149,9 @@ import { LandingRequestService } from "./modules/landing/services/landing.servic
     StepsModule,
     TableModule,
     NgHttpLoaderModule.forRoot(),
-    GarLibModule
+    GarLibModule,
+    SharedModule,
+    AngularSvgIconModule.forRoot()
   ],
 
   providers: [
@@ -166,15 +172,16 @@ import { LandingRequestService } from "./modules/landing/services/landing.servic
     DocumentService,
     NotifyService,
     LandingRequestService,
-  {
-    provide: APP_INITIALIZER,
-    useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
-    deps: [NotifyService],
-    multi: true,
-  }
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
+      deps: [NotifyService],
+      multi: true,
+    }
   ],
 
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+}

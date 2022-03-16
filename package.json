@@ -24,6 +24,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "@popperjs/core": "^2.10.2",
+    "angular-svg-icon": "^13.0.0",
     "axios": "^0.21.4",
     "bargz-ng-http-loader": "^0.9.3",
     "bootstrap": "^5.1.3",

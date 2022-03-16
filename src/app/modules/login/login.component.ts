@@ -27,7 +27,7 @@ export class LoginModule implements OnInit {
     isGetCode: boolean = false;
     data: string = "";
     numOrEmail: string = "";
-    pass: string = "";
+  passs: string = "";
     isHideBtnGetCode: boolean = false;
     code: string = "";
     type: string = "";
@@ -71,6 +71,7 @@ export class LoginModule implements OnInit {
 
     public ngOnInit() {
         this.titleService.setTitle("Gobizy: Войти");
+      console.log(123)
     };
 
     /**
@@ -96,10 +97,11 @@ export class LoginModule implements OnInit {
      * Функция авторизует пользователя.
      */
     public async onLoginAsync(getByPassForm: NgForm) {
+      console.log(getByPassForm.value);
         try {
             let loginInput = new LoginInput();
-            loginInput.email = getByPassForm.value.numOrEmail;
-            loginInput.password = getByPassForm.value.pass;
+            loginInput.email = this.numOrEmail;
+            loginInput.password = this.passs;
 
             await this.http.post(API_URL.apiUrl.concat("/user/login"), loginInput)
                 .subscribe({

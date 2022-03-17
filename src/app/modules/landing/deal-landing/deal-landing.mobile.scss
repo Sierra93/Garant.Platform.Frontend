@@ -1,18 +1,93 @@
+.deal {
+  display: flex;
+  border: none;
+  height: fit-content;
+  gap: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  &__header {
+    border: none;
+    background: transparent;
+  }
+  &__description {
+    height: fit-content;
+    padding: 0;
+  }
+  &__title {
+    margin: 0;
+    text-align: center;
+  }
+  &__business {
+    text-align: center;
+    margin-bottom: 0;
+  }
+  &__franchise {
+    text-align: center;
+  }
+  &__btn-action {
+    margin: 0 auto;
+  }
+}
+
+.survey {
+  &__result {
+    display: flex;
+    grid-gap: 0;
+    gap: 0;
+    margin: 0;
+
+    height: fit-content;
+    flex-wrap: wrap;
+  }
+  &__example {
+    background: #f5f8fa;
+    border-radius: 15px;
+    border: none;
+  }
+  &__content {
+    padding-bottom: 26px;
+  }
+}
+
 .consulting {
+  position: relative;
+  height: fit-content;
+  &__content {
+    height: fit-content;
+  }
   &__title {
     color: #fff;
+    padding: 0;
+    background: transparent;
+    border: none;
+    text-align: left;
+    margin: 0;
   }
   &__buying-business {
     color: #fff;
+    padding: 0;
+    background: transparent;
+    border: none;
+    text-align: left;
   }
   &__footnote {
     color: #e9ecef;
+    padding: 0;
+    background: transparent;
+    border: none;
+    text-align: left;
   }
   &__name {
     color: #fff;
   }
   &__phone {
     color: #fff;
+  }
+  &__input-field {
+    border-radius: 7px;
+  }
+  &__assistant {
+    height: fit-content;
   }
 }
 
@@ -22,22 +97,12 @@
   border: none;
 }
 
-.survey {
-  &__result {
-    display: flex;
-    grid-gap: 0;
-    gap: 0;
-    margin: 0;
-  }
-  &__example {
-    background: #f5f8fa;
-    border-radius: 15px;
-  }
-}
-
 .list-action {
+  width: max-content;
   padding: 0;
   &__list {
+    display: flex;
+    flex-wrap: wrap;
     grid-gap: 0;
     gap: 0;
   }
@@ -45,18 +110,29 @@
     border: none;
   }
   &__item {
-    padding: 0;
+    /*padding: 0;*/
+    border-radius: 24px;
   }
   &__image-box {
     padding: 0;
     background: transparent;
     border: none;
   }
-  &__title {
-    font-weight: 600;
-  }
+  &__title,
   &__stage {
     font-weight: 600;
+  }
+  &__title,
+  &__subtitle,
+  &__stage {
+    margin: 0;
+  }
+  &__prompt {
+    line-height: normal;
+    margin: 0;
+  }
+  &__launch {
+    margin: 0;
   }
 }
 
@@ -69,8 +145,11 @@
     background: transparent;
     padding-left: 0;
   }
+  &__service-title {
+    font-weight: 600;
+  }
   &__business-action {
-    background: #dee2e6;
+    background: #e9ecef;
     border-radius: 7px;
   }
   &__subtitle {
@@ -84,51 +163,28 @@
 
 @media only screen and (min-width: 320px) and (max-width: 539px) {
   .deal {
-    display: flex;
-    border: none;
     width: 100%;
-    height: fit-content;
-    gap: 0;
-    justify-content: center;
-    flex-wrap: wrap;
     padding: 32px 16px;
-    &__header {
-      width: 100%;
-      border: none;
-      background: transparent;
-    }
+    &__header,
     &__description {
       width: 100%;
-      height: fit-content;
-      padding: 0;
     }
     &__title {
       width: 100%;
       font-size: 34px; // минимальный размер шрифта
-      margin: 0;
-      text-align: center;
     }
     &__business {
       font-size: 26.5px;
       margin-top: -15px;
-      text-align: center;
-      margin-bottom: 0;
     }
     &__franchise {
-      text-align: center;
       margin-bottom: 25px;
-    }
-    &__btn-action {
-      margin: 0 auto;
     }
   }
 
   .survey {
     &__result {
-      display: flex;
       width: 100%;
-      height: fit-content;
-      flex-wrap: wrap;
     }
     &__item {
       margin-bottom: 17px;
@@ -143,38 +199,25 @@
 
   .consulting {
     width: 100%;
-    height: fit-content;
     padding: 22px 16px 32px;
     &__content {
       width: 100%;
-      height: fit-content;
     }
     &__title {
       width: 100%;
-      padding: 0;
-      background: transparent;
-      border: none;
       font-size: 31px;
-      text-align: left;
-      margin: 0;
       line-height: 58px;
     }
     &__buying-business {
       width: 100%;
-      padding: 0;
-      background: transparent;
-      border: none;
       font-size: 25px;
-      text-align: left;
       line-height: 35px;
     }
     &__footnote {
       width: 100%;
-      padding: 0;
-      background: transparent;
-      border: none;
+
       font-size: 19px;
-      text-align: left;
+
       margin-bottom: 18px;
     }
     &__field {
@@ -183,7 +226,6 @@
     &__input-field {
       width: 100%;
       height: 60px;
-      border-radius: 7px;
     }
     &__btn-submit {
       margin: 0.5rem 0 0 0;
@@ -196,33 +238,41 @@
     }
   }
 
+  .user-action-title {
+    font-size: 22px;
+  }
+
   .list-action {
+    width: fit-content;
     &__list {
       width: 100%;
-      display: flex;
-      flex-wrap: wrap;
     }
     &__item {
       width: 100%;
-      border-radius: 24px;
+    }
+    &__title {
+      margin-bottom: 5px;
+    }
+    &__subtitle {
+      margin-bottom: 9px;
+    }
+    &__stage {
+      margin-bottom: 20px;
+    }
+    &__image-box {
+      width: 88px;
+      margin-right: 0;
     }
     &__image {
-      width: 88px;
-    }
-  }
-
-  .popular-list {
-    width: 100%;
-    padding: 0;
-    &__franchise {
-      position: relative;
       width: 100%;
-      & img {
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: min-content;
-      }
+    }
+    &__prompt {
+      font-size: 20px;
+      line-height: 21px;
+      margin-bottom: 31px;
+    }
+    &__launch {
+      width: 100%;
     }
   }
 
@@ -234,13 +284,26 @@
       text-align: center;
     }
   }
+
+  .selection {
+    width: 100%;
+    &__service-title {
+      font-size: 21px;
+    }
+  }
 }
 
 @media only screen and (min-width: 540px) {
+  .deal {
+    &__title,
+    &__business,
+    &__franchise {
+      text-align: left;
+    }
+  }
   .survey {
     &__result {
       width: 100%;
-      height: fit-content;
     }
     &__example {
       border: none;
@@ -257,40 +320,12 @@
   }
 
   .list-action {
-    width: max-content;
     &__image {
       width: 126px;
     }
   }
 
   .consulting {
-    position: relative;
-    &__content {
-      height: fit-content;
-    }
-    &__title {
-      background: transparent;
-      border: none;
-      padding: 0;
-      text-align: left;
-    }
-    &__buying-business {
-      background: transparent;
-      border: none;
-      padding: 0;
-      text-align: left;
-    }
-    &__footnote {
-      background: transparent;
-      border: none;
-      padding: 0;
-    }
-    &__input-field {
-      border-radius: 7px;
-    }
-    &__assistant {
-      height: fit-content;
-    }
     &__image-wrapper {
       margin-top: 0;
     }
@@ -395,8 +430,13 @@
     }
     &__assistant {
       position: absolute;
-      top: 0;
       right: 0;
+      bottom: 0;
+    }
+    &__submit {
+      display: flex;
+      width: 100%;
+      justify-content: flex-start;
     }
   }
 
@@ -405,8 +445,25 @@
     margin: 0 0 34px 0;
   }
 
+  .list-action {
+    &__title {
+      margin-bottom: 9px;
+    }
+    &__subtitle {
+      margin-bottom: 13px;
+    }
+    &__stage {
+      margin-bottom: 34px;
+    }
+    &__prompt {
+      font-size: 19px;
+      margin: 0 0 26px 0;
+    }
+  }
+
   .garant {
     width: 100%;
+    margin-top: 80px;
     &__title {
       font-size: 18px;
       font-weight: 600;
@@ -446,6 +503,73 @@
     }
     &__btn-action {
       font-size: 17px;
+    }
+  }
+}
+
+@media only screen and (min-width: 981px) and (max-width: 1200px) {
+  .deal {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-flow: row;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    &__header {
+      display: flex;
+      width: 40%;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      border: none;
+      justify-content: center;
+      align-items: center;
+      order: 2;
+    }
+    &__description {
+      width: 60%;
+      height: fit-content;
+      order: 1;
+    }
+    &__title {
+      width: 100%;
+      font-size: 32px;
+      margin: 0;
+    }
+    &__business {
+      font-size: 24px;
+      margin-top: -15px;
+      margin-bottom: 5px;
+    }
+    &__franchise {
+      margin-bottom: 117px;
+    }
+    &__btn-action {
+      width: 100%;
+      padding: 0;
+    }
+    &__img {
+      width: 100% !important;
+      height: fit-content !important;
+    }
+  }
+
+  .consulting {
+    width: 100%;
+    &__title {
+      font-size: 76px;
+      font-weight: 600;
+    }
+    &__buying-business {
+      font-size: 51px;
+      font-weight: 600;
+    }
+    &__footnote {
+      font-size: 29px;
+    }
+    &__input-field {
+      width: 30%;
+      height: 60px;
     }
   }
 }

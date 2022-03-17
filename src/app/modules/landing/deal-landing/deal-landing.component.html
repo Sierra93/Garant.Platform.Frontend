@@ -20,38 +20,56 @@
   </div>
 </div>
 
-<div class="statistics">
-  <div class="statistics-item">
-    <p class="statistics-item__number">10</p>
-    <p class="statistics-item__text">
-      сделок в среднем <br />
-      проходит <br />
-      через сервис гарант
-    </p>
-  </div>
-  <div class="statistics-item">
-    <p class="statistics-item__number">35</p>
-    <p class="statistics-item__text">
-      франшиз <br />
-      были проданы <br />
-      через сервис гарант
-    </p>
-  </div>
-  <div class="statistics-item">
-    <p class="statistics-item__number">105</p>
-    <p class="statistics-item__text">
-      бизнесов уже были <br />
-      проданы через <br />
-      сервис гарант
-    </p>
-  </div>
-  <div class="statistics-item">
-    <p class="statistics-item__number">0,5-3%</p>
-    <p class="statistics-item__text">
-      комиссия <br />
-      за использование <br />
-      сервиса покупки онлайн
-    </p>
+<div class="container survey">
+  <div class="row statistics survey__result">
+    <div class="col-sm-12 col-md-6 survey__item">
+      <div class="card survey__example">
+        <div class="card-body survey__content">
+          <div class="statistics-item__number survey__count">10</div>
+          <div class="statistics-item__text survey__ad">
+            сделок в среднем <br />
+            проходит <br />
+            через сервис гарант
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 survey__item">
+      <div class="card survey__example">
+        <div class="card-body survey__content">
+          <div class="statistics-item__number survey__count">35</div>
+          <div class="statistics-item__text survey__ad">
+            франшиз <br />
+            были проданы <br />
+            через сервис гарант
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 survey__item">
+      <div class="card survey__example">
+        <div class="card-body survey__content">
+          <div class="statistics-item__number survey__count">105</div>
+          <div class="statistics-item__text survey__ad">
+            бизнесов уже были <br />
+            проданы через <br />
+            сервис гарант
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 survey__item">
+      <div class="card survey__example">
+        <div class="card-body survey__content">
+          <div class="statistics-item__number survey__count">0,5-3%</div>
+          <div class="statistics-item__text survey__ad">
+            комиссия <br />
+            за использование <br />
+            сервиса покупки онлайн
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -100,7 +118,9 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+      <div
+        class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 consulting__assistant"
+      >
         <div class="consulting-image consulting__image-wrapper">
           <img
             class="consulting__assistant-img"
@@ -113,112 +133,127 @@
   </div>
 </form>
 
-<!-- <div class="consulting">
-  <div class="consulting-content">
-    <div class="consulting-content__title">Консультация</div>
-    <div class="consulting-content__subtitle">при покупке бизнеса онлайн</div>
-    <div class="consulting-content__text">
-      с юристом и консультантами сервиса
-    </div>
-    <div class="consulting-content__inputs">
-      <label class="consulting-content__label"
-        >Имя
-        <input
-          class="consulting-content__input"
-          type="text"
-          name="name"
-          placeholder="Введите имя"
-        />
-      </label>
-      <label class="consulting-content__label"
-        >Номер телефона
-        <input
-          class="consulting-content__input"
-          type="tel"
-          name="telephone"
-          placeholder="Введите номер телефона"
-        />
-      </label>
-    </div>
-    <button class="consulting-content__button">
-      Обратиться за консультацией
-    </button>
-  </div>
-  <div class="consulting-image">
-    <img
-      src="../../../../assets/images/deal-landing/template_person6 1.png"
-      alt="Фото консультанта"
-    />
-  </div>
-</div> -->
-
-<!-- -->
 <h5 class="steps-header user-action-title alert alert-light">
   4 простых шага для безопасной сделки онлайн
 </h5>
-<div class="steps user-action">
-  <div class="steps-item user-action__item">
-    <div class="steps-item__image user-action__image-wrapper">
-      <img
-        class="user-action__image"
-        src="../../../../assets/images/deal-landing/loupe-clip-art-6 1.png"
-        alt="Лупа"
-      />
+
+<div class="container list-action">
+  <div class="row steps list-action__list">
+    <div
+      class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
+    >
+      <div class="card list-action__card">
+        <div class="card-header steps-item__image list-action__image-box">
+          <img
+            class="card-img-top list-action__image"
+            src="../../../../assets/images/deal-landing/loupe-clip-art-6 1.png"
+            alt="Лупа"
+          />
+        </div>
+        <div class="card-body list-action__step">
+          <div class="steps-item__title list-action__title">Выбрать бизнес</div>
+          <div class="steps-item__subtitle list-action__subtitle">
+            или франшизу
+          </div>
+          <div class="steps-item__stage list-action__stage">Шаг 1</div>
+          <div class="steps-item__text list-action__prompt">
+            Воспользуйтесь каталогом для удобного и быстрого поиска по вашим
+            параметрам.
+          </div>
+          <button class="btn btn-light steps-item__button list-action__launch">
+            Начать поиск
+          </button>
+        </div>
+      </div>
     </div>
-    <p class="steps-item__title">Выбрать бизнес</p>
-    <p class="steps-item__subtitle">или франшизу</p>
-    <p class="steps-item__stage">Шаг 1</p>
-    <p class="steps-item__text">
-      Воспользуйтесь каталогом для удобного и быстрого поиска по вашим
-      параметрам.
-    </p>
-    <button class="steps-item__button">Начать поиск</button>
-  </div>
-  <div class="steps-item">
-    <div class="steps-item__image">
-      <img
-        src="../../../../assets/images/deal-landing/pen-clip-art-6 2.png"
-        alt="Ручка"
-      />
+    <div
+      class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
+    >
+      <div class="card list-action__card">
+        <div class="card-header steps-item__image list-action__image-box">
+          <img
+            class="card-img-top list-action__image"
+            src="../../../../assets/images/deal-landing/pen-clip-art-6 2.png"
+            alt="Ручка"
+          />
+        </div>
+        <div class="card-body list-action__step">
+          <div class="steps-item__title list-action__title">
+            Пройти регистрацию
+          </div>
+          <div class="steps-item__subtitle list-action__subtitle">
+            на нашем портале
+          </div>
+          <div class="steps-item__stage list-action__stage">Шаг 2</div>
+          <div class="steps-item__text list-action__prompt">
+            Вы можете пройти быструю регистрацию до начала выбора бизнеса или во
+            время.
+          </div>
+          <button class="btn btn-light steps-item__button list-action__launch">
+            Пройти регистрацию
+          </button>
+        </div>
+      </div>
     </div>
-    <p class="steps-item__title">Пройти регистрацию</p>
-    <p class="steps-item__subtitle">на нашем портале</p>
-    <p class="steps-item__stage">Шаг 2</p>
-    <p class="steps-item__text">
-      Вы можете пройти быструю регистрацию до начала выбора бизнеса или во
-      время.
-    </p>
-    <button class="steps-item__button">Пройти регистрацию</button>
-  </div>
-  <div class="steps-item">
-    <div class="steps-item__image">
-      <img
-        src="../../../../assets/images/deal-landing/file-clip-art-6 3.png"
-        alt="Папка"
-      />
+    <div
+      class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
+    >
+      <div class="card list-action__card">
+        <div
+          class="card-header steps-item__image user-action__image-wrapper list-action__image-box"
+        >
+          <img
+            class="card-img-top list-action__image"
+            src="../../../../assets/images/deal-landing/file-clip-art-6 3.png"
+            alt="Папка"
+          />
+        </div>
+        <div class="card-body list-action__step">
+          <div class="steps-item__title list-action__title">Начать сделку</div>
+          <div class="steps-item__subtitle list-action__subtitle">
+            и распланировать этапы сделки
+          </div>
+          <div class="steps-item__stage list-action__stage">Шаг 3</div>
+          <div class="steps-item__text list-action__prompt">
+            Вы сможете распланировать онлайн сделку посредством сервиса гарант.
+          </div>
+          <button class="btn btn-light steps-item__button list-action__launch">
+            Начать сделку
+          </button>
+        </div>
+      </div>
     </div>
-    <p class="steps-item__title">Начать сделку</p>
-    <p class="steps-item__subtitle">и распланировать этапы сделки</p>
-    <p class="steps-item__stage">Шаг 3</p>
-    <p class="steps-item__text">
-      Вы сможете распланировать онлайн сделку посредством сервиса гарант.
-    </p>
-    <button class="steps-item__button">Начать сделку</button>
-  </div>
-  <div class="steps-item">
-    <div class="steps-item__image">
-      <img
-        src="../../../../assets/images/deal-landing/credit_card_PNG24 1.png"
-        alt="Кредитная карточка"
-      />
+    <div
+      class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
+    >
+      <div class="card list-action__card">
+        <div
+          class="card-header steps-item__image user-action__image-wrapper list-action__image-box"
+        >
+          <img
+            class="card-img-top list-action__image"
+            src="../../../../assets/images/deal-landing/credit_card_PNG24 1.png"
+            alt="Кредитная карточка"
+          />
+        </div>
+        <div class="card-body list-action__step">
+          <div class="steps-item__title list-action__title">
+            Провести оплату
+          </div>
+          <div class="steps-item__subtitle list-action__subtitle">
+            по каждому этапу
+          </div>
+          <div class="steps-item__stage list-action__stage">Шаг 4</div>
+          <div class="steps-item__text list-action__prompt">
+            После оплаты каждого этапа вы становитесь полноправным владельцем
+            бизнеса
+          </div>
+          <button class="btn btn-light steps-item__button list-action__launch">
+            Получить консультацию
+          </button>
+        </div>
+      </div>
     </div>
-    <p class="steps-item__title">Провести оплату</p>
-    <p class="steps-item__subtitle">по каждому этапу</p>
-    <p class="steps-item__stage">Шаг 4</p>
-    <p class="steps-item__text">
-      После оплаты каждого этапа вы становитесь полноправным владельцем бизнеса
-    </p>
-    <button class="steps-item__button">Получить консультацию</button>
   </div>
 </div>
 
@@ -269,140 +304,6 @@
     </p-card>
   </div>
 </div>
-
-<!-- <h5 class="packs-header">Пакеты юридических услуг</h5>
-<div class="packs">
-  <div class="packs-item"> -->
-<!-- <div class="packs-item__image">
-      <img src="../../../../assets/images/franchise-landing/fast-start 1.png" alt="Пакет из 7 инструментов">
-    </div> -->
-<!-- <button class="packs-item__title">Пакет “Подготовка договора”</button>
-    <div class="packs-item__text">Подготовка договора</div>
-    <ul class="packs-item__list packs-item__list--first">
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Подготовка ключевого договора</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Подготовка актов приема передачи</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Разработка сайта для продажи франшизы (до 10 страниц)</span>
-      </li>     
-    </ul>
-    <div class="packs-item-bottom">
-      <p class="packs-item-bottom__title">Срок: 5 рабочих дней</p>
-           <p class="packs-item-bottom__price">Стоимость пакета: 15 000 ₽</p>
-      <button class="packs-item-bottom__button">Подготовить договор за 15 000 ₽</button>
-    </div>
-  </div> -->
-
-<!-- <div class="packs-item"> -->
-<!-- <div class="packs-item__image">
-      <img src="../../../../assets/images/franchise-landing/fast-start 2.png" alt="Пакет из 15 инструментов">
-    </div> -->
-<!-- <button class="packs-item__title">Пакет “Проверка контрагента”</button>
-    <div class="packs-item__text">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью упакованный бизнес во франшизу</div>
-    <ul class="packs-item__list">
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Аудит бизнеса</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка сайта для продажи франшизы (до 10 страниц)</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Книга продаж Вашей франшизы</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка стратегии: «Каналы продаж франшизы»</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Настройка рекламной кампании, для запуска продаж Вашей франшизы либо размещение в ТОП-овом каталоге франшиз;</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Внедрение системы записи звонков</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Контроль качества звонков менеджера, нашим руководителем отдела продаж</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Совместная обработка звонков и возникающих вопросов у клиента</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Настройка CRM-системы</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Гарантированное сопровождение и доведение до первых продаж франшизы;</span>
-      </li>      
-    </ul>
-    <div class="packs-item-bottom">
-      <p class="packs-item-bottom__title">Срок: 7 рабочих дней</p>
-           <p class="packs-item-bottom__price">Стоимость пакета: 35 000 ₽</p>
-      <button class="packs-item-bottom__button">Проверить контрагента за 35 000 ₽</button>
-    </div>
-  </div> -->
-
-<!-- <div class="packs-item"> -->
-<!-- <div class="packs-item__image">
-      <img src="../../../../assets/images/franchise-landing/fast-start 3.png" alt="Пакет из 25 инструментов">
-    </div> -->
-<!-- <button class="packs-item__title">Пакет “Сопровождение сделки”</button>
-    <div class="packs-item__text">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью упакованный бизнес во франшизу</div>
-    <ul class="packs-item__list packs-item__list--last">
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Аудит бизнеса и анализ конкурентов</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка состава франшизы: определение стоимости франшизы, создание уникального предложения и концепции франшизы</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка пакетов франшизы и определение их стоимости</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Создание финансовой модели франшизы (инвестиции в запуск, доходность и окупаемость)</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Контроль качества звонков менеджера, нашим руководителем отдела продаж</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Совместная обработка звонков и возникающих вопросов у клиента</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Настройка CRM-системы</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Гарантированное сопровождение и доведение до первых продаж франшизы;</span>
-      </li>      
-    </ul>
-    <div class="packs-item-bottom packs-item-bottom--last">
-      <p class="packs-item-bottom__title">Срок: 35 рабочих дней</p>
-      <p class="packs-item-bottom--last__text">Бесплатный бонус: проверка торгового знака + консультирование по окончанию
-        упаковки в течение 6 месяцев + обучение и прокачка Вас и Вашего менеджера;</p>
-      <p class="packs-item-bottom__price">Стоимость пакета: 750 000 ₽</p>
-      <button class="packs-item-bottom__button">Упаковать франшизу за 750 000 ₽</button>
-    </div>
-  </div>
-</div> -->
 
 <!-- Популярный бизнес. -->
 <div class="container">

@@ -76,5 +76,14 @@ export class NotifyService {
         detail: message
       });
     });
+
+    // Функция уведомления о созданной заявке с посадочных страниц.
+    this.connection.on('SendLandingRequestMessage', (message: string) => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Успешно',
+        detail: message
+      });
+    });
   };
 }

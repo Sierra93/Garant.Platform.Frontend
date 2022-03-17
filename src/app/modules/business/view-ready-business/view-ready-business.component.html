@@ -55,21 +55,21 @@
     <span class="title-small invest-item__title">Стоимость</span><br>
     <small class="invest-item__small">полная стоимость бизнеса</small><br>
     <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.price" name="price" /> ₽ -->
-    <span class="invest-item__unit">{{item.price}} ₽</span>
+    <span class="invest-item__unit">{{ item.price | priceFormat: item.price }} ₽</span>
   </div>
 
   <div class="invest-item">
     <span class="title-small invest-item__title">Оборот</span><br>
     <small class="invest-item__small">средняя выручка за месяц</small><br>
     <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.turnPrice" name="turnPrice" /> ₽ -->
-    <span class="invest-item__unit">{{item.turnPrice}} ₽</span>
+    <span class="invest-item__unit">{{ item.turnPrice | priceFormat: item.turnPrice }} ₽</span>
   </div>
 
   <div class="invest-item">
     <span class="title-small invest-item__title">Прибыль</span><br>
     <small class="invest-item__small">чистая прибыль за месяц</small><br>
     <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.profitPrice" name="profitPrice" /> ₽ -->
-    <span class="invest-item__unit">{{item.profitPrice}} ₽</span>
+    <span class="invest-item__unit">{{ item.profitPrice | priceFormat: item.profitPrice }} ₽</span>
   </div>
 
   <div class="invest-item">
@@ -83,7 +83,7 @@
     <span class="title-small invest-item__title">Рентабельность</span><br>
     <small class="invest-item__small">по настоящим данным</small><br>
     <!-- <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="item.profitability" name="profitability" /> ₽ -->
-    <span class="invest-item__unit">{{item.profitability}} ₽</span>
+    <span class="invest-item__unit">{{ item.profitability | priceFormat: item.profitability }} ₽</span>
   </div>
 
   <div class="invest-item invest-item-last">
@@ -155,7 +155,7 @@
       <small class="asset-cost">Стоимость</small><br>
       <!-- <input type="number" class="control-input-franch-price" pInputText *ngIf="item.isHide" [value]="item.Price" name="priceIn" /> 
         <input type="number" class="control-input-franch-price" pInputText *ngIf="!item.isHide" [(ngModel)]="item.Price" name="priceIn" />  -->
-      <span>{{item.Price}}</span>
+      <span>{{ item.Price | priceFormat: item.Price }} ₽</span>
       <br>
 
       <small class="asset-name">Название</small><br>

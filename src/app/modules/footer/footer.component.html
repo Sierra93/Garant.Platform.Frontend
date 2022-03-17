@@ -34,7 +34,8 @@
               <span>{{el.title}}</span>
               <img src="./../../../assets/images/Arrow 1.png" alt="left chevron icon" />
             </h4>
-            <a href="javascript:void()">{{el.name}}</a>
+            <a href="javascript:void()" *ngIf="el.isPlace" (click)="redirectCreateAd()" [ngClass]="{'target-place':el.isPlace}">{{el.name}}</a>
+            <a href="javascript:void()" *ngIf="!el.isPlace" [ngClass]="{'target-place':el.isPlace}">{{el.name}}</a>
           </li>
         </ul>
       </div>

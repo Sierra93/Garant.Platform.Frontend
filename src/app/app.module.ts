@@ -73,6 +73,8 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
 import { SessionService } from "./core/session/session.service";
 import { SESSION_TOKEN } from "./core/session/session.token";
 import { NotifyService } from "./services/notify/notify.service";
+import { PriceFormatPipe } from './core/pipes/priceFormat.pipe';
+import { LandingRequestService } from "./modules/landing/services/landing.service";
 
 @NgModule({
   declarations: [
@@ -105,7 +107,8 @@ import { NotifyService } from "./services/notify/notify.service";
     DealLandingModule,
     NotificationsModule,
     ConfiguratorAuthModule,
-    CreateAdModule
+    CreateAdModule,
+    PriceFormatPipe
   ],
 
   entryComponents: [],
@@ -162,6 +165,7 @@ import { NotifyService } from "./services/notify/notify.service";
     MessageService,
     DocumentService,
     NotifyService,
+    LandingRequestService,
   {
     provide: APP_INITIALIZER,
     useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),

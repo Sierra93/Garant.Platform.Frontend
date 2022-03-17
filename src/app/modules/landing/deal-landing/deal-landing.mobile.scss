@@ -19,9 +19,39 @@
 .user-action-title {
   font-weight: 600;
   background: transparent;
+  border: none;
+}
+
+.survey {
+  &__result {
+    display: flex;
+    grid-gap: 0;
+    gap: 0;
+    margin: 0;
+  }
+  &__example {
+    background: #f5f8fa;
+    border-radius: 15px;
+  }
 }
 
 .list-action {
+  padding: 0;
+  &__list {
+    grid-gap: 0;
+    gap: 0;
+  }
+  &__card {
+    border: none;
+  }
+  &__item {
+    padding: 0;
+  }
+  &__image-box {
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
   &__title {
     font-weight: 600;
   }
@@ -79,7 +109,13 @@
       flex-wrap: wrap;
     }
     &__item {
-        margin-bottom: 17px;
+      margin-bottom: 17px;
+    }
+    &__count {
+      font-size: 53px;
+    }
+    &__ad {
+      font-size: 20px;
     }
   }
 
@@ -93,7 +129,6 @@
     }
     &__title {
       width: 100%;
-      white-space: pre-wrap;
       padding: 0;
       background: transparent;
       border: none;
@@ -104,7 +139,6 @@
     }
     &__buying-business {
       width: 100%;
-      white-space: pre-wrap;
       padding: 0;
       background: transparent;
       border: none;
@@ -114,7 +148,6 @@
     }
     &__footnote {
       width: 100%;
-      white-space: pre-wrap;
       padding: 0;
       background: transparent;
       border: none;
@@ -151,6 +184,9 @@
       width: 100%;
       border-radius: 24px;
     }
+    &__image {
+      width: 88px;
+    }
   }
 
   .popular-list {
@@ -174,6 +210,34 @@
       font-size: 25px;
       white-space: pre-wrap;
       text-align: center;
+    }
+  }
+}
+
+@media only screen and (min-width: 540px) {
+  .survey {
+    &__result {
+      width: 100%;
+      height: fit-content;
+    }
+    &__example {
+      border: none;
+    }
+    &__item:nth-child(odd) {
+      padding-left: 0;
+    }
+    &__item:nth-child(even) {
+      padding: 0;
+    }
+    &__ad {
+      text-align: center;
+    }
+  }
+
+  .list-action {
+    width: max-content;
+    &__image {
+      width: 126px;
     }
   }
 }
@@ -228,32 +292,15 @@
   .survey {
     &__result {
       width: 100%;
-      height: fit-content;
-      display: flex;
-      grid-gap: 0;
-      gap: 0;
-      margin: 0;
-    }
-    &__example {
-        border: none;
-        background: #f5f8fa;
-        border-radius: 15px;
     }
     &__item {
-        margin-bottom: 17px;
-    }
-    &__item:nth-child(odd) {
-        padding-left: 0;
-    }
-    &__item:nth-child(even) {
-        padding: 0;
+      margin-bottom: 17px;
     }
     &__count {
       font-size: 80px;
     }
     &__ad {
       font-size: 20px;
-      text-align: center;
     }
   }
 
@@ -310,29 +357,5 @@
   .user-action-title {
     font-size: 24px;
     margin: 0 0 34px 0;
-    border: none;
-  }
-
-  .list-action {
-    width: max-content;
-    padding: 0;
-    &__list {
-      grid-gap: 0;
-      gap: 0;
-    }
-    &__card {
-      border: none;
-    }
-    &__item {
-      padding: 0;
-    }
-    &__image-box {
-      padding: 0;
-      background: transparent;
-      border: none;
-    }
-    &__image {
-      width: 126px;
-    }
   }
 }

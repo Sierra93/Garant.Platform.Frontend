@@ -624,7 +624,6 @@
 @mixin headerTitle {
   font-family: Oswald;
   font-size: 40px !important;
-  //   color: #FFFFFF;
   color: black;
   text-decoration: none;
 
@@ -644,17 +643,6 @@
   background: none;
   margin: 0;
 }
-
-// @mixin headerText {
-//   font-family: Open Sans;
-//   font-size: 16px!important;
-//   color: #FFFFFF;
-
-//   &:hover {
-//     color: #FFFFFF;
-//     cursor: pointer;
-//   }
-// }
 
 // Кнопка создать задание справа.
 .div-link {
@@ -699,16 +687,11 @@
   .div-link>li {
     margin: 0 10px;
     cursor: pointer;
-    // color: black;
     color: #7A7A7A;
     font-family: Roboto;
     font-size: 12px;
   }
 }
-
-// .container_header {
-//   background-color: #00BCD4;
-// }
 
 .btn-state-left-menu {
   color: white;
@@ -718,10 +701,6 @@
   background-color: #00BCD4 !important;
   color: white;
 }
-
-//   .header-title {
-//     @include headerTitle;
-//   }
 
 .header_nav {
   background: #00BCD4 !important;
@@ -733,20 +712,6 @@
 .header-title {
   @include headerTitle;
 }
-
-//   .price {
-//       color: white;
-//   }
-
-//   .header-text {
-//     @include headerText;
-//   }
-
-// .right-head {
-//   img {
-//     padding: 1%;
-//   }
-// }
 
 .wrapper {
   max-width: 1440px !important;
@@ -893,73 +858,6 @@
   }
 }
 
-// Медиа-запросы.
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-  /* Styles */
-}
-
-/* Smartphones (landscape) ----------- */
-@media only screen and (min-width : 321px) {
-  /* Styles */
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
-  /* Styles */
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-  /* Styles */
-}
-
-/* iPads (landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
-  /* Styles */
-}
-
-/* iPads (portrait) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-  /* Styles */
-}
-
-/* Desktops and laptops ----------- */
-@media only screen and (min-width : 1224px) {
-  body {
-    margin-left: 24px;
-    margin-right: 24px;
-  }
-}
-
-/* Large screens ----------- */
-@media only screen and (min-width : 1824px) {
-  /* Styles */
-}
-
-/* iPhone 4 - 5s ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
-  /* Styles */
-}
-
-/* iPhone 6 ----------- */
-@media only screen and (max-device-width: 667px),
-only screen and (-webkit-device-pixel-ratio: 2) {
-  /* Styles */
-}
-
-/* iPhone 6+ ----------- */
-@media only screen and (min-device-width : 414px),
-only screen and (-webkit-device-pixel-ratio: 3) {
-  /*** You've spent way too much on a phone ***/
-}
-
-/* Samsung Galaxy S7 Edge ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi)and (max-width:640px) {
-  /* Styles */
-}
-
 .header-link {
   cursor: pointer;
 }
@@ -980,5 +878,40 @@ only screen and (-webkit-device-pixel-ratio: 3) {
     button {
       width: 100% !important;
     }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 980px) {
+  .app-container {
+    width: 80%;
+    margin: 0 auto !important;
+  }
+
+  .logo-and-search {
+    display: flex;
+    width: fit-content;
+    flex-flow: row;
+    margin-right: 0;
+  }
+
+  .hamburger {
+    padding: 0;
+    width: fit-content;
+    padding-left: 15px;
+  }
+
+  .item-logo {
+    padding: 0;
+  }
+
+  .item-search {
+    padding: 0;
+    margin-left: 17px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .hamburger {
+    display: none !important;
   }
 }

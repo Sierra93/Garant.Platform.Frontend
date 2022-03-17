@@ -60,6 +60,28 @@
   }
 }
 
+.selection {
+  &__offer {
+    border: none;
+  }
+  &__header-service {
+    border: none;
+    background: transparent;
+    padding-left: 0;
+  }
+  &__business-action {
+    background: #dee2e6;
+    border-radius: 7px;
+  }
+  &__subtitle {
+    font-weight: 600;
+  }
+  &__btn-action {
+    margin: 49px 0 0 0;
+    border-radius: 7px;
+  }
+}
+
 @media only screen and (min-width: 320px) and (max-width: 539px) {
   .deal {
     display: flex;
@@ -240,6 +262,48 @@
       width: 126px;
     }
   }
+
+  .consulting {
+    position: relative;
+    &__content {
+      height: fit-content;
+    }
+    &__title {
+      background: transparent;
+      border: none;
+      padding: 0;
+      text-align: left;
+    }
+    &__buying-business {
+      background: transparent;
+      border: none;
+      padding: 0;
+      text-align: left;
+    }
+    &__footnote {
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+    &__input-field {
+      border-radius: 7px;
+    }
+    &__assistant {
+      height: fit-content;
+    }
+    &__image-wrapper {
+      margin-top: 0;
+    }
+  }
+
+  .selection {
+    &__repeat:nth-child(3) {
+      width: 100%;
+    }
+    &__btn-action {
+      width: 50%;
+    }
+  }
 }
 
 @media only screen and (min-width: 540px) and (max-width: 980px) {
@@ -305,57 +369,83 @@
   }
 
   .consulting {
-    position: relative;
     width: 100%;
     height: 609px;
     margin-bottom: 37px;
     &__content {
       width: 100%;
-      height: fit-content;
     }
     &__title {
-      background: transparent;
-      border: none;
       font-size: 60px;
-      padding: 0;
       line-height: 50px;
       margin-bottom: 33px;
-      text-align: left;
     }
     &__buying-business {
-      background: transparent;
-      border: none;
       font-size: 38px;
-      padding: 0;
-      text-align: left;
       line-height: 41px;
     }
     &__footnote {
-      background: transparent;
-      border: none;
-      padding: 0;
       font-size: 16px;
     }
     &__input-field {
       height: 66px;
-      border-radius: 7px;
     }
     &__field {
       margin-bottom: 30px;
     }
     &__assistant {
-      height: fit-content;
       position: absolute;
       top: 0;
       right: 0;
-    }
-    &__image-wrapper {
-      margin-top: 0;
     }
   }
 
   .user-action-title {
     font-size: 24px;
     margin: 0 0 34px 0;
+  }
+
+  .garant {
+    width: 100%;
+    &__title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    &__description {
+      font-size: 13px;
+    }
+    &__card-template > div.p-card,
+    &__card-template > div.p-card-header {
+      max-width: 100%;
+    }
+    &__close-icon {
+      font-size: 18px !important;
+    }
+    &__btn-clean {
+      border: 1px solid #7a7a7a;
+      background: transparent;
+    }
+  }
+
+  .selection {
+    &__offer.is-alone &__service-text {
+      margin-right: 14px;
+    }
+    &__offer.is-alone &__btn-action {
+      width: 155px;
+    }
+    &__service-title {
+      font-size: 18px;
+    }
+    &__subtitle {
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+    &__service-text {
+      font-size: 12px;
+    }
+    &__btn-action {
+      font-size: 17px;
+    }
   }
 }

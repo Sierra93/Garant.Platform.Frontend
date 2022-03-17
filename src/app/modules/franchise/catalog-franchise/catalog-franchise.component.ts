@@ -3,9 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { API_URL } from 'src/app/core/core-urls/api-url';
-import { FilterFranchiseWithPaginationInput } from 'src/app/models/franchise/input/filter-franchise-with-pagination-input';
+import {
+  FilterFranchiseWithPaginationInput
+} from 'src/app/models/franchise/input/filter-franchise-with-pagination-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
+import { CatalogFranchiseService } from '../../../core/services/catalog-franchise.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'catalog-franchise',
@@ -54,13 +58,17 @@ export class CatalogFranchiseModule implements OnInit {
   franchiseId: number = 0;
   routeParam: number;
   isHideBusinessWithGarant: boolean = true;
+  catFranchPagination: any;
+  pageNumber: number = 1;
+  countRows: number = 12;
 
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,
     private titleService: Title,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private catFranchService: CatalogFranchiseService
   ) {
     // TODO: Переделать на хранение на бэке.
     this.aSortPrices = [
@@ -97,14 +105,14 @@ export class CatalogFranchiseModule implements OnInit {
 
   public async ngOnInit() {
     this.titleService.setTitle('Gobizy: Каталог франшиз');
-
     await this.GetPopularAsync();
     //TODO: Возможно вызов не нужен, франшизы грузятся при ините пагинации.
     //await this.GetFranchisesListAsync();
     //await this.loadCitiesFranchisesListAsync();
     await this.loadCategoriesFranchisesListAsync();
     await this.loadViewBusinessFranchisesListAsync();
-    await this.loadPaginationInitAsync();
+    // await this.loadPaginationInitAsync();
+    this.getCatFranchPagination()
     await this.GetActionsAsync();
     await this.GetBlogsAsync();
     await this.GetNewsTopAsync();
@@ -260,36 +268,45 @@ export class CatalogFranchiseModule implements OnInit {
     }
   }
 
-  private async loadPaginationInitAsync() {
-    let paginationData = new PaginationInput();
-
-    // TODO: доработать на динамическое получение из роута или как-нибудь еще, чтобы помнить, что выбирал пользователь.
-    paginationData.PageNumber = 1;
-    paginationData.CountRows = 12;
-
-    try {
-      await this.http
-        .post(
-          API_URL.apiUrl.concat('/pagination/init-catalog-franchise'),
-          paginationData
-        )
-        .subscribe({
-          next: (response: any) => {
-            console.log('pagination init', response);
-            this.countFranchises = response.countAll;
-            this.aFranchises = response.results;
-            this.countTotalPage = response.countAll;
-          },
-
-          error: (err) => {
-            this.commonService.routeToStart(err);
-            throw new Error(err);
-          },
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
+  getCatFranchPagination(): void {
+    this.catFranchService.getPaginationCatFran(this.pageNumber, this.countRows)
+      .pipe(take(1))
+      .subscribe(res => {
+        this.catFranchPagination = res
+        console.log(this.catFranchPagination)
+      })
   }
+
+  // private async loadPaginationInitAsync() {
+  //   let paginationData = new PaginationInput();
+  //
+  //   // TODO: доработать на динамическое получение из роута или как-нибудь еще, чтобы помнить, что выбирал пользователь.
+  //   paginationData.PageNumber = 1;
+  //   paginationData.CountRows = 12;
+  //
+  //   try {
+  //     await this.http
+  //       .post(
+  //         API_URL.apiUrl.concat('/pagination/init-catalog-franchise'),
+  //         paginationData
+  //       )
+  //       .subscribe({
+  //         next: (response: any) => {
+  //           console.log('pagination init', response);
+  //           this.countFranchises = response.countAll;
+  //           this.aFranchises = response.results;
+  //           this.countTotalPage = response.countAll;
+  //         },
+  //
+  //         error: (err) => {
+  //           this.commonService.routeToStart(err);
+  //           throw new Error(err);
+  //         },
+  //       });
+  //   } catch (e: any) {
+  //     throw new Error(e);
+  //   }
+  // }
 
   public async onChangeSortPrice() {
     console.log('onChangeSortPrice', this.selectedSort);
@@ -343,7 +360,7 @@ export class CatalogFranchiseModule implements OnInit {
     this.selectedCategory = '';
     this.selectedSort = '';
     this.selectedViewBusiness = '';
-    await this.loadPaginationInitAsync();
+    this.getCatFranchPagination();
   }
 
   /**
@@ -511,7 +528,7 @@ export class CatalogFranchiseModule implements OnInit {
   public async routeViewFranchiseCardAsync(franchiseId: number) {
     await this.setTransitionAsync(franchiseId);
     this.router.navigate(['/franchise/view'], {
-      queryParams: { franchiseId: franchiseId },
+      queryParams: {franchiseId: franchiseId},
     });
   }
 }

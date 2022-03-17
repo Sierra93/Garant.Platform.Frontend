@@ -1,192 +1,338 @@
+.consulting {
+  &__title {
+    color: #fff;
+  }
+  &__buying-business {
+    color: #fff;
+  }
+  &__footnote {
+    color: #e9ecef;
+  }
+  &__name {
+    color: #fff;
+  }
+  &__phone {
+    color: #fff;
+  }
+}
+
+.user-action-title {
+  font-weight: 600;
+  background: transparent;
+}
+
+.list-action {
+  &__title {
+    font-weight: 600;
+  }
+  &__stage {
+    font-weight: 600;
+  }
+}
+
 @media only screen and (min-width: 320px) and (max-width: 539px) {
-    .deal {
-        display: flex;
-        border: none;
-        width: 100%;
-        height: fit-content;
-        gap: 0;
-        justify-content: center;
-        flex-wrap: wrap;
-        padding: 32px 16px;
-        &__header {
-            width: 100%;
-            border: none;
-            background: transparent;
-        }
-        &__description {
-            width: 100%;
-            height: fit-content;
-            padding: 0;
-        }
-        &__title {
-            width: 100%;
-            font-size: 34px;// минимальный размер шрифта
-            margin: 0;
-            text-align: center;
-        }
-        &__business {
-            font-size: 26.5px;
-            margin-top: -15px;
-            text-align: center;
-            margin-bottom: 0; 
-        }
-        &__franchise {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        &__btn-action {
-            margin: 0 auto;
-        }
+  .deal {
+    display: flex;
+    border: none;
+    width: 100%;
+    height: fit-content;
+    gap: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 32px 16px;
+    &__header {
+      width: 100%;
+      border: none;
+      background: transparent;
     }
+    &__description {
+      width: 100%;
+      height: fit-content;
+      padding: 0;
+    }
+    &__title {
+      width: 100%;
+      font-size: 34px; // минимальный размер шрифта
+      margin: 0;
+      text-align: center;
+    }
+    &__business {
+      font-size: 26.5px;
+      margin-top: -15px;
+      text-align: center;
+      margin-bottom: 0;
+    }
+    &__franchise {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    &__btn-action {
+      margin: 0 auto;
+    }
+  }
 
-    .statistics {
-        width: 100%;
-        height: fit-content;
-        display: flex;
-        flex-wrap: wrap;
+  .survey {
+    &__result {
+      display: flex;
+      width: 100%;
+      height: fit-content;
+      flex-wrap: wrap;
     }
+    &__item {
+        margin-bottom: 17px;
+    }
+  }
 
-    .consulting {
-        width: 100%;
-        height: fit-content;
-        padding: 22px 16px 32px;
-        &__content {
-            width: 100%;
-            height: fit-content;
-        }
-        &__title {
-            width: 100%;
-            white-space: pre-wrap;
-            padding: 0;
-            background: transparent;
-            border: none;
-            font-size: 31px;
-            text-align: left;
-            margin: 0;
-            line-height: 58px;
-        }
-        &__buying-business {
-            width: 100%;
-            white-space: pre-wrap;
-            padding: 0;
-            background: transparent;
-            border: none;
-            font-size: 25px;
-            text-align: left;
-            line-height: 35px;
-        }
-        &__footnote {
-            width: 100%;
-            white-space: pre-wrap;
-            padding: 0;
-            background: transparent;
-            border: none;
-            font-size: 19px;
-            text-align: left;
-            margin-bottom: 18px;
-        }
-        &__field {
-            margin-bottom: 26px;
-        }
-        &__name {
-            color: #fff;
-        }
-        &__phone {
-            color: #fff;
-        }
-        &__input-field {
-            width: 100%;
-            height: 60px;
-            border-radius: 7px;
-        }
-        &__btn-submit {
-            margin: 0.5rem 0 0 0;
-        }
-        &__submit {
-            width: 100%;
-        }
-        &__image-wrapper {
-            display: none;
-        }
+  .consulting {
+    width: 100%;
+    height: fit-content;
+    padding: 22px 16px 32px;
+    &__content {
+      width: 100%;
+      height: fit-content;
     }
+    &__title {
+      width: 100%;
+      white-space: pre-wrap;
+      padding: 0;
+      background: transparent;
+      border: none;
+      font-size: 31px;
+      text-align: left;
+      margin: 0;
+      line-height: 58px;
+    }
+    &__buying-business {
+      width: 100%;
+      white-space: pre-wrap;
+      padding: 0;
+      background: transparent;
+      border: none;
+      font-size: 25px;
+      text-align: left;
+      line-height: 35px;
+    }
+    &__footnote {
+      width: 100%;
+      white-space: pre-wrap;
+      padding: 0;
+      background: transparent;
+      border: none;
+      font-size: 19px;
+      text-align: left;
+      margin-bottom: 18px;
+    }
+    &__field {
+      margin-bottom: 26px;
+    }
+    &__input-field {
+      width: 100%;
+      height: 60px;
+      border-radius: 7px;
+    }
+    &__btn-submit {
+      margin: 0.5rem 0 0 0;
+    }
+    &__submit {
+      width: 100%;
+    }
+    &__image-wrapper {
+      display: none;
+    }
+  }
 
-    .user-action {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        &__item {
-            width: 100%;
-            border-radius: 24px;
-        }
+  .list-action {
+    &__list {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
     }
-    
-    .popular-list {
-        width: 100%;
-        padding: 0;
-        &__franchise {
-            position: relative;
-            width: 100%;
-            & img {
-                position: absolute;
-                left: 0;
-                right: 0;
-                height: min-content;
-            }
-        }
+    &__item {
+      width: 100%;
+      border-radius: 24px;
     }
+  }
 
-    .garant {
-        &__franchise-list {
-            margin: 0;
-            font-size: 25px;
-            white-space: pre-wrap;
-            text-align: center;
-        }
+  .popular-list {
+    width: 100%;
+    padding: 0;
+    &__franchise {
+      position: relative;
+      width: 100%;
+      & img {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: min-content;
+      }
     }
+  }
+
+  .garant {
+    &__franchise-list {
+      margin: 0;
+      font-size: 25px;
+      white-space: pre-wrap;
+      text-align: center;
+    }
+  }
 }
 
 @media only screen and (min-width: 540px) and (max-width: 980px) {
-    .deal {
-        width: 100%;
-        display: flex;
-        flex-flow: row;
-        border: none;
-        &__header {
-            display: flex;
-            width: 40%;
-            margin: 0;
-            padding: 0;
-            background: transparent;
-            border: none;
-            justify-content: center;
-            align-items: center;
-            order: 2;
-        }
-        &__description {
-            width: 60%;
-            height: fit-content;
-            order: 1;
-        }
-        &__title {
-            width: 100%;
-            font-size: 32px;
-            margin: 0;
-        }
-        &__business {
-            font-size: 24px;
-            margin-top: -15px;
-            margin-bottom: 5px;
-        }
-        &__franchise {
-            margin-bottom: 117px;
-        }
-        &__btn-action {
-            width: 100%;
-            padding: 0;
-        }
-        &__img {
-            width: 100% !important;
-            height: fit-content !important;
-        }
+  .deal {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-flow: row;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    &__header {
+      display: flex;
+      width: 40%;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      border: none;
+      justify-content: center;
+      align-items: center;
+      order: 2;
     }
+    &__description {
+      width: 60%;
+      height: fit-content;
+      order: 1;
+    }
+    &__title {
+      width: 100%;
+      font-size: 32px;
+      margin: 0;
+    }
+    &__business {
+      font-size: 24px;
+      margin-top: -15px;
+      margin-bottom: 5px;
+    }
+    &__franchise {
+      margin-bottom: 117px;
+    }
+    &__btn-action {
+      width: 100%;
+      padding: 0;
+    }
+    &__img {
+      width: 100% !important;
+      height: fit-content !important;
+    }
+  }
+
+  .survey {
+    &__result {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      grid-gap: 0;
+      gap: 0;
+      margin: 0;
+    }
+    &__example {
+        border: none;
+        background: #f5f8fa;
+        border-radius: 15px;
+    }
+    &__item {
+        margin-bottom: 17px;
+    }
+    &__item:nth-child(odd) {
+        padding-left: 0;
+    }
+    &__item:nth-child(even) {
+        padding: 0;
+    }
+    &__count {
+      font-size: 80px;
+    }
+    &__ad {
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+
+  .consulting {
+    position: relative;
+    width: 100%;
+    height: 609px;
+    margin-bottom: 37px;
+    &__content {
+      width: 100%;
+      height: fit-content;
+    }
+    &__title {
+      background: transparent;
+      border: none;
+      font-size: 60px;
+      padding: 0;
+      line-height: 50px;
+      margin-bottom: 33px;
+      text-align: left;
+    }
+    &__buying-business {
+      background: transparent;
+      border: none;
+      font-size: 38px;
+      padding: 0;
+      text-align: left;
+      line-height: 41px;
+    }
+    &__footnote {
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-size: 16px;
+    }
+    &__input-field {
+      height: 66px;
+      border-radius: 7px;
+    }
+    &__field {
+      margin-bottom: 30px;
+    }
+    &__assistant {
+      height: fit-content;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    &__image-wrapper {
+      margin-top: 0;
+    }
+  }
+
+  .user-action-title {
+    font-size: 24px;
+    margin: 0 0 34px 0;
+    border: none;
+  }
+
+  .list-action {
+    width: max-content;
+    padding: 0;
+    &__list {
+      grid-gap: 0;
+      gap: 0;
+    }
+    &__card {
+      border: none;
+    }
+    &__item {
+      padding: 0;
+    }
+    &__image-box {
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+    &__image {
+      width: 126px;
+    }
+  }
 }

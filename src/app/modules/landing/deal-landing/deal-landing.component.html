@@ -72,7 +72,34 @@
     </div>
   </div>
 </div>
-
+<div class="container note">
+  <h5 class="alert alert-light note__title">Покупка бизнеса с гарантиями</h5>
+  <div class="card note__description">
+    <div class="card-header note__buying">
+      <div class="card-title note__buying-title">
+        Покупка бизнеса любого<br>
+        размера онлайн с<br>
+        гарантиями
+      </div>
+      <img class="img-fluid note__img" src="../../../../assets/images/shooting_range.png" alt="Мишень" />
+    </div>
+    <div class="card-body note__content">
+      <div class="card-text note__text-description">
+        Первый в мире сервис с функцией<br />
+        приобретения франшизы или готового<br />
+        бизнеса онлайн. Сервис GoBizy<br />
+        предоставляет возможность купить бизнес<br />
+        в несколько кликов без опасений.
+      </div>
+      <div class="card-text note__text-description">
+        Вы можете воспользоваться сервисом<br />
+        онлайн покупки и консалтингом от нашей<br />
+        компании.
+      </div>
+      <button class="btn btn-primary note__btn-submit">Подробнее</button>
+    </div>
+  </div>
+</div>
 <form class="consulting">
   <div class="container">
     <div class="row">
@@ -507,6 +534,61 @@
   </div>
 </div>
 
+<!-- Новости делового мира, мой вариант -->
+<div class="container news">
+  <h5 class="alert alert-light garant title-franchise news__title">Новости делового мира</h5>
+  <div class="row news__content">
+    <div class="col-6 news__img-box">
+      <img class="img-fluid news__img" src="../../../../assets/images/news_background.png" alt="Илон Маск">
+    </div>
+    <div class="col-6 news__hot-content">
+      <div class="alert alert-primary d-flex align-items-center news__item">
+        <div class="news__icon-box">
+          <img src="../../../../assets/images/fireIcon.png" class="img-fluid news__icon-img" alt="Огонь">
+          <div class="news__img-text">Открывается новая франшиза кофеен при по...</div>
+        </div>
+        <div class="list-group list-group-flush news__list-info" *ngFor="let item of aNews">
+          <small class="list-group-item news__item-info">{{ item.time }}</small>
+          <small class="list-group-item news__item-info">{{ item.date }}</small>
+          <small class="list-group-item news__item-info">{{ item.type }}</small>
+        </div>
+      </div>
+      <div class="alert alert-primary d-flex align-items-center news__item">
+        <div class="news__icon-box">
+          <img src="../../../../assets/images/handWithPen.png" class="img-fluid news__icon-img" alt="Рука">
+          <div class="news__img-text">Федеральная сеть магазинов у дома Красное...</div>
+        </div>
+        <div class="list-group list-group-flush news__list-info" *ngFor="let item of aNews">
+          <small class="list-group-item news__item-info">{{ item.time }}</small>
+          <small class="list-group-item news__item-info">{{ item.date }}</small>
+          <small class="list-group-item news__item-info">{{ item.type }}</small>
+        </div>
+      </div>
+      <div class="alert alert-primary d-flex align-items-center news__item">
+        <div class="news__icon-box">
+          <img src="../../../../assets/images/box.png" class="img-fluid news__icon-img" alt="Куб">
+          <div class="news__img-text">ЕР сохраняет лидерство в 199 одномандатн...</div>
+        </div>
+        <div class="list-group list-group-flush news__list-info" *ngFor="let item of aNews">
+          <small class="list-group-item news__item-info">{{ item.time }}</small>
+          <small class="list-group-item news__item-info">{{ item.date }}</small>
+          <small class="list-group-item news__item-info">{{ item.type }}</small>
+        </div>
+      </div>
+      <div class="alert alert-primary d-flex align-items-center news__item">
+        <div class="news__icon-box">
+          <img src="../../../../assets/images/fireIcon.png" class="img-fluid news__icon-img" alt="Огонь">
+          <div class="news__img-text">Сделка по продаже крупного производства с...</div>
+        </div>
+        <div class="list-group list-group-flush news__list-info" *ngFor="let item of aNews">
+          <small class="list-group-item news__item-info">{{ item.time }}</small>
+          <small class="list-group-item news__item-info">{{ item.date }}</small>
+          <small class="list-group-item news__item-info">{{ item.type }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Новости делового мира. -->
 <div class="container news">
   <h5 class="alert alert-light garant title-franchise news__title">

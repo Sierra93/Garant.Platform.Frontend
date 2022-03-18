@@ -49,6 +49,47 @@
   }
 }
 
+.note {
+  &__title {
+    background: transparent;
+    border: none;
+    color: #000;
+    padding: 0;
+  }
+  &__description {
+    position: relative;
+    background: #f1f6ff;
+    border-radius: 8px;
+    border: none;
+  }
+  &__content {
+    padding-top: 0;
+  }
+  &__buying {
+    display: flex;
+  }
+  &__buying-title {
+    font-weight: 600;
+  }
+  &__buying {
+    background: transparent;
+    border: none;
+    padding-bottom: 0;
+  }
+  &__text-description {
+    color: #7a7a7a;
+    font-size: 14px;
+    line-height: 16.41px;
+  }
+  &__btn-submit {
+    max-width: 115px;
+    height: 51px;
+    padding: 16px;
+    margin-left: 0;
+    border-radius: 4px;
+  }
+}
+
 .consulting {
   position: relative;
   height: fit-content;
@@ -194,6 +235,31 @@
     }
     &__ad {
       font-size: 20px;
+    }
+  }
+
+  .note {
+    &__title {
+      font-size: 19px;
+    }
+    &__buying-title {
+      font-size: 17px;
+      line-height: 19.92px;
+    }
+    &__buying,
+    &__content {
+      padding-left: 8px;
+    }
+    &__text-description:first-child {
+      margin-bottom: 19px;
+    }
+    &__text-description:nth-child(2) {
+      margin-bottom: 24px;
+    }
+    &__img {
+      width: 61px;
+      height: 73px;
+      margin-left: 27px;
     }
   }
 
@@ -403,6 +469,41 @@
     }
   }
 
+  .note {
+    &__title {
+      font-weight: 400;
+    }
+    &__buying-title {
+      font-size: 17px;
+      height: min-content;
+      margin-bottom: 16px;
+    }
+    &__buying-title {
+      & > br {
+        display: none;
+      }
+    }
+    &__text-description {
+      max-width: 70%;
+      & > br {
+        display: none;
+      }
+    }
+    &__text-description:first-child {
+      margin-bottom: 27px;
+    }
+    &__text-description:nth-child(2) {
+      margin-bottom: 60px;
+    }
+    &__img {
+      width: 231px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-height: 100%;
+    }
+  }
+
   .consulting {
     width: 100%;
     height: 609px;
@@ -504,6 +605,12 @@
     &__btn-action {
       font-size: 17px;
     }
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .note {
+    display: none;
   }
 }
 

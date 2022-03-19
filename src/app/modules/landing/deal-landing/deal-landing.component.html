@@ -100,7 +100,7 @@
     </div>
   </div>
 </div>
-<form class="consulting">
+<form class="consulting" [ngClass]="{'is-xl':isXlExtension}">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
@@ -589,54 +589,6 @@
     </div>
   </div>
 </div>
-<!-- Новости делового мира. -->
-<div class="container news">
-  <h5 class="alert alert-light garant title-franchise news__title">
-    Новости делового мира
-  </h5>
-  <div class="news__img-box">
-    <img
-      class="img-fluid"
-      src="../../../assets/images/Frame 31.png"
-      alt="Илон Маск"
-    />
-  </div>
-  <div class="list-group news__list">
-    <div class="list-group-item news__item" *ngFor="let item of aNews">
-      <div class="news__self-news">
-        <div class="news__img">
-          <img [src]="item.url" class="img-fluid" />
-        </div>
-        <div class="news__text">{{ item.name }}</div>
-      </div>
-      <div class="news__publication">
-        <small class="list-group-item">{{ item.time }}</small>
-        <small class="list-group-item">{{ item.date }}</small>
-        <small class="list-group-item">{{ item.type }}</small>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- <h5 class="garant title-franchise">Новости делового мира</h5> -->
-<!-- <div class="d-flex">
-  <div>
-    <img src="../../../assets/images/Frame 31.png" />
-  </div>
-
-  <div>
-    <div class="news-item" *ngFor="let item of aNews">
-      <img [src]="item.url" />
-      <strong class="news-title">{{ item.name }}</strong>
-      <div class="news-bottom-line">
-        <small>{{ item.time }}</small>
-        <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
-        <small>{{ item.date }}</small>
-        <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
-        <small>{{ item.type }}</small>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <!-- Категории готового бизнеса. -->
 <div class="row garant">

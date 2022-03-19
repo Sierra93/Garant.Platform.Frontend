@@ -12,10 +12,7 @@ import { CommonDataService } from 'src/app/services/common/common-data.service';
 @Component({
   selector: 'deal-landing',
   templateUrl: './deal-landing.component.html',
-  styleUrls: [
-    './deal-landing.component.scss',
-    './deal-landing.mobile.scss'
-  ],
+  styleUrls: ['./deal-landing.component.scss', './deal-landing.mobile.scss'],
 })
 export class DealLandingModule implements OnInit, AfterViewInit {
   aPopularBusiness: any[] = [];
@@ -546,8 +543,9 @@ export class DealLandingModule implements OnInit, AfterViewInit {
   }
 
   private defineResize() {
-    if ((this.browserScreenWidth >= 981) && (this.browserScreenWidth <= 1200)) {
+    if (this.browserScreenWidth >= 981 && this.browserScreenWidth <= 1200) {
       this.isXlExtension = true;
-    } else {}
+    } else {
+    }
   }
 }

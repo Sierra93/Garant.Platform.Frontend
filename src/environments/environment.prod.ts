@@ -1,3 +1,7 @@
+import { ENDPOINTS } from '../app/core/endpoints';
+
 export const environment = {
-  production: true
+  production: false,
+  apiUrl: "https://gobizy.online",
+  api: ENDPOINTS
 };

@@ -144,9 +144,9 @@
   width: 336px;
 }
 
-.card-demo-list {
-  margin-top: 24px;
-}
+// .card-demo-list {
+//   margin-top: 24px;
+// }
 
 // .gray {
 //   background: #F1F1F1;
@@ -252,6 +252,7 @@
 }
 
 // Быстрый поиск
+
 .title-franchise-Search {
   font-family: "Roboto";
   font-style: normal;
@@ -275,25 +276,34 @@
     // background: #f1f1f1;
     width: 100%;
   }
+  .control-quick-search {
+    font-size: 18px;
+  }
   .quick-search-form {
     justify-content: space-between;
     [class^="col"] {
       margin: 0px;
-      text-align: center;
+      text-align: start;
     }
   }
   .col-xxl-2 {
     padding: 0;
   }
   .col-xxl-4 {
-    max-width: 314px;
+    max-width: 20rem;
     padding: 0;
+    @media only screen and (min-device-width: 480px) and (max-device-width: 768px) {
+      max-width: 25rem;
+    }
 
     .price-range-input {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
     }
     .wrapper-slider {
+      display: none;
       width: 314px;
       height: 28px;
       margin-top: 16px;
@@ -307,9 +317,9 @@
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
-.card-franchise {
-  height: 375px;
-}
+// .card-franchise {
+//   height: 375px;
+// }
 ::ng-deep .quick-search-card-holder .ng-star-inserted {
   display: flex;
   flex-direction: column;
@@ -320,10 +330,10 @@
   .p-card-body {
     .p-card-title {
       font-size: 18px;
-      background: red;
+      background: #ffffff;
     }
     .p-card-subtitle {
-      background: red;
+      background: #ffffff;
     }
   }
 }
@@ -389,9 +399,16 @@
   background: #f1f6ff;
 }
 
-::ng-deep .quick-search .p-inputtext {
-  background: #f1f6ff;
+::ng-deep .quick-search .price-range-input {
   width: 149px;
+  background: #ffffff;
+  @media (min-width: 992px) and (max-width: 1200px) {
+    width: 24rem;
+    input {
+      max-width: 49%;
+      background: #f1f6ff;
+    }
+  }
 }
 
 ::ng-deep .p-inputswitch .p-inputswitch-slider {
@@ -428,11 +445,35 @@
     }
   }
 }
-
+// Адаптив для блока с поиском
 .p-inputtext {
-  max-width: 150px;
+  max-width: 48%;
+  background: #f1f6ff;
 }
 
+@media (min-width: 1201px) and (max-width: 1440px) {
+  .quick-search-form {
+    justify-content: space-between;
+    [class^="col-xxl-2"] {
+      margin: 0px;
+      text-align: start;
+      width: 10rem !important;
+    }
+
+    .price-range-input {
+      width: 16rem;
+    }
+    .col-xxl-4 {
+      max-width: 17rem;
+    }
+  }
+  .quick-search {
+    border: none;
+  }
+  .quick-search-form:last-child {
+    align-items: end;
+  }
+}
 .ready-business-categories .title-franchise {
   display: flex;
   align-items: center;
@@ -442,14 +483,66 @@
     display: none;
   }
 }
-
+@media (min-width: 992px) and (max-width: 1200px) {
+  .quick-search {
+    .col-lg-4 {
+      border: none;
+    }
+    .col-lg-6 {
+      width: 50%;
+    }
+  }
+  .block-cards-franchises-inner {
+    margin-bottom: 0;
+  }
+  .show-btn {
+    margin-top: 0;
+  }
+  .wrapper-slider {
+    display: none;
+  }
+}
+::ng-deep .p-dropdown-clearable {
+  width: 95%;
+}
 @media (max-width: 1800px) {
   .three-cards-header {
     font-size: 1.25rem;
   }
 }
-
-@media (min-width: 1400px) and (max-width: 1700px) {
+@media only screen and (min-device-width: 489px) and (max-device-width: 768px) {
+  /* Styles */
+  .show-btn {
+    margin-top: 0;
+  }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 488px) {
+  .price-range-input {
+    .p-inputtext {
+      width: 100% !important;
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  .franchise-wraper-btn {
+    display: flex;
+    flex-direction: column;
+  }
+  .btn-dark-left {
+    width: 100% !important;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .btn-dark-right {
+    width: 100% !important;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .show-btn {
+    margin-top: 0;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1700px) {
   .quick-search-form {
     [class^="col"] {
       &:nth-child(1),
@@ -550,7 +643,6 @@
   }
 
   .price-range-input {
-    background: black;
     display: flex;
     justify-content: space-between;
   }

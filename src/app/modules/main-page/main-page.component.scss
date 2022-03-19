@@ -24,7 +24,7 @@
 
 .more-articles {
   margin: 0;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   height: 208px;
 }
 
@@ -67,7 +67,7 @@
 }
 
 ::ng-deep .business-garanteese .p-card {
-  background: #F1F6FF;
+  background: #f1f6ff;
 }
 
 ::ng-deep .business-garanteese .p-card-content {
@@ -76,14 +76,6 @@
 
 ::ng-deep .p-card .p-card-body {
   margin: 0 auto;
-}
-
-.bg {
-  padding: 1rem 1.5rem;
-  padding-top: 20px;
-  background: #F1F1F1;
-  width: 100%;
-  margin: 20px auto;
 }
 
 ::ng-deep .business-garanteese .p-card .p-card-header {
@@ -118,7 +110,6 @@
   padding: 16px;
 }
 
-
 ::ng-deep .card-line .p-card-body {
   // background: #F1F6FF;
   padding: 24px 16px 24px 16px;
@@ -145,7 +136,7 @@
 
 ::ng-deep .card {
   border: none !important;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
 }
 
 .block-card-item {
@@ -199,118 +190,218 @@
 
 // Медиа-запросы.
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
 }
 
 /* Smartphones (landscape) ----------- */
-@media only screen and (min-width : 321px) {
+@media only screen and (min-width: 321px) {
   /* Styles */
 }
 
 /* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
+@media only screen and (max-width: 320px) {
   /* Styles */
 }
 
 /* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* Styles */
 }
 
 /* iPads (landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   /* Styles */
 }
 
 /* iPads (portrait) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   /* Styles */
 }
 
 /* Desktops and laptops ----------- */
-@media only screen and (min-width : 1224px) {}
+@media only screen and (min-width: 1224px) {
+}
 
 /* Large screens ----------- */
-@media only screen and (min-width : 1824px) {
+@media only screen and (min-width: 1824px) {
   /* Styles */
 }
 
 /* iPhone 4 - 5s ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
   /* Styles */
 }
 
 /* iPhone 6 ----------- */
 @media only screen and (max-device-width: 667px),
-only screen and (-webkit-device-pixel-ratio: 2) {
+  only screen and (-webkit-device-pixel-ratio: 2) {
   /* Styles */
 }
 
 /* iPhone 6+ ----------- */
-@media only screen and (min-device-width : 414px),
-only screen and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (min-device-width: 414px),
+  only screen and (-webkit-device-pixel-ratio: 3) {
   /*** You've spent way too much on a phone ***/
 }
 
 /* Samsung Galaxy S7 Edge ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi)and (max-width:640px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi) and (max-width: 640px) {
   /* Styles */
 }
 
-.block-cards-franchises {
-  gap: 16px;
-  justify-content: center;
-  padding-bottom: 24px;
-  background: #F1F1F1;
+// Быстрый поиск
+.title-franchise-Search {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #2c2c2c;
+}
+.quick-search {
+  width: 74rem;
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: static;
+  background: #f1f6ff;
+  border-radius: 8px;
 
-  .card-franchise {
+  .block-cards-franchises-bg {
+    // padding: 1rem 1.5rem;
+    // background: #f1f1f1;
+    width: 100%;
+  }
+  .quick-search-form {
+    justify-content: space-between;
+    [class^="col"] {
+      margin: 0px;
+      text-align: center;
+    }
+  }
+  .col-xxl-2 {
     padding: 0;
   }
+  .col-xxl-4 {
+    max-width: 314px;
+    padding: 0;
 
-  .block-cards-franchises-content {
-    background: #F1F1F1;
+    .price-range-input {
+      display: flex;
+      justify-content: space-between;
+    }
+    .wrapper-slider {
+      width: 314px;
+      height: 28px;
+      margin-top: 16px;
+    }
   }
 }
 
-.card-left-centered {
+// Быстрый поиск блок с картинками.
+.block-cards-franchises-inner {
+  background: #f1f6ff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.card-franchise {
+  height: 375px;
+}
+::ng-deep .quick-search-card-holder .ng-star-inserted {
+  display: flex;
+  flex-direction: column;
+  max-height: 375px;
+}
+::ng-deep .p-card-shadow {
+  padding-top: 12px;
+  .p-card-body {
+    .p-card-title {
+      font-size: 18px;
+      background: red;
+    }
+    .p-card-subtitle {
+      background: red;
+    }
+  }
+}
+::ng-deep .card-left-centered {
   display: flex;
   flex-direction: column;
   align-items: baseline;
 }
-
+.block-card-img {
+  border: 1px solid black;
+  height: 163px;
+  display: block;
+  width: 100%;
+  // margin-top: 12px;
+  margin: 0 auto 12px;
+}
+.franchise-wraper-btn {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: revert;
+}
+.btn-dark-left {
+  width: 45%;
+  padding: 9px 0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  background: #f1f6ff;
+  color: #1f75fe;
+}
+.btn-dark-right {
+  width: 51%;
+  background: #1f75fe;
+  padding: 5px 0;
+  color: #ffffff;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+}
+.show-btn {
+  border: none;
+  border-radius: 43px;
+  margin-top: 3rem;
+  padding: 16px 25px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #ffffff;
+  background: #1f75fe;
+}
 ::ng-deep .p-carousel {
   max-width: calc(100% - 24px);
   // justify-content: space-between;
 }
 
 ::ng-deep .p-dropdown {
-  background: #F1F6FF;
+  background: #f1f6ff;
 }
 
 ::ng-deep .quick-search .p-inputtext {
-  background: #F1F6FF;
+  background: #f1f6ff;
   width: 149px;
-  margin-right: 16px;
 }
 
 ::ng-deep .p-inputswitch .p-inputswitch-slider {
-  background: #C8DBFF;
-}
-
-.block-card-img {
-  display: block;
-  width: 100%;
-  padding-top: 12px;
-  margin: 0 auto;
+  background: #c8dbff;
 }
 
 ::ng-deep .p-carousel-item {
   max-width: 365px;
   // grid-gap: 20px !important;
 }
-
 
 ::ng-deep {
   .p-card-body {
@@ -333,23 +424,13 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 
   .quick-search-card {
     .p-card-header {
-      padding: 0 .75rem;
+      padding: 0 0.75rem;
     }
   }
 }
 
 .p-inputtext {
   max-width: 150px;
-}
-
-.block-cards-franchises-inner {
-  padding: 1.5rem;
-}
-
-.quick-search-form {
-  [class^=col] {
-    margin: 1rem 0;
-  }
 }
 
 .ready-business-categories .title-franchise {
@@ -362,7 +443,6 @@ only screen and (-webkit-device-pixel-ratio: 3) {
   }
 }
 
-
 @media (max-width: 1800px) {
   .three-cards-header {
     font-size: 1.25rem;
@@ -371,8 +451,9 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 
 @media (min-width: 1400px) and (max-width: 1700px) {
   .quick-search-form {
-    [class^=col] {
-      &:nth-child(1), &:nth-child(2) {
+    [class^="col"] {
+      &:nth-child(1),
+      &:nth-child(2) {
         width: 20%;
       }
       &:nth-child(3) {
@@ -409,7 +490,7 @@ only screen and (-webkit-device-pixel-ratio: 3) {
       margin-bottom: 2.25rem;
     }
 
-    [class^=col] {
+    [class^="col"] {
       width: 100%;
     }
   }
@@ -437,7 +518,7 @@ only screen and (-webkit-device-pixel-ratio: 3) {
   }
 
   .ready-business-categories {
-    [class^=col] {
+    [class^="col"] {
       width: 100%;
     }
 
@@ -447,7 +528,7 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 
         &.rotated {
           transform: rotate(90deg);
-          transition: transform .5s;
+          transition: transform 0.5s;
         }
       }
     }
@@ -469,6 +550,7 @@ only screen and (-webkit-device-pixel-ratio: 3) {
   }
 
   .price-range-input {
+    background: black;
     display: flex;
     justify-content: space-between;
   }

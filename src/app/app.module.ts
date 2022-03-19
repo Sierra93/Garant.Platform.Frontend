@@ -76,6 +76,7 @@ import { NotifyService } from "./services/notify/notify.service";
 import { PriceFormatPipe } from './core/pipes/priceFormat.pipe';
 import { LandingRequestService } from "./modules/landing/services/landing.service";
 
+
 @NgModule({
   declarations: [
     AppComponent,

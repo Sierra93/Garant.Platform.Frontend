@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Inject, Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { API_URL } from "../../core/core-urls/api-url";
 import { DialogInput } from "../../models/chat/input/dialog-input";
@@ -7,16 +7,25 @@ import { BreadcrumbInput } from "../../models/header/breadcrumb-input";
 import { MainHeader } from "../../models/header/main-header";
 import { SuggestionInput } from "../../models/suggestion/input/suggestion-input";
 import { TransitionInput } from "../../models/transition/input/transition-input";
+import { SESSION_TOKEN } from "../../core/session/session.token";
+import { SessionService } from "../../core/session/session.service";
+import { SessionItems } from "../../core/session/session-items";
+import { header } from "../../modules/header/header";
 
 /**
  * Сервис общих функций.
  */
 @Injectable()
 export class CommonDataService {
-    constructor(private http: HttpClient, 
-        private router: Router,
-        private route: ActivatedRoute) {
+    currentRoute: any;
 
+    constructor(
+        private http: HttpClient,
+        private router: Router,
+        private route: ActivatedRoute,
+        @Inject(SESSION_TOKEN)
+        private _sessionService: SessionService) {
+            this.currentRoute = this.route.snapshot.queryParams;
     }
 
     // Функция отсчитывает время бездействия юзера, по окончании простоя убивает сессию и перенаправляет на стартовую для авторизации.
@@ -41,6 +50,7 @@ export class CommonDataService {
             idleTime++;
 
             if (idleTime > 19) { // 20 minutes
+                this._sessionService.removeDataItem(SessionItems.token);
                 sessionStorage.clear();
                 localStorage.clear();
                 // $(".right-panel").show();
@@ -52,7 +62,7 @@ export class CommonDataService {
     // Функция обновит токена пользователя.
     public async refreshToken(): Promise<void> {
         setInterval(async () => {
-            if (!sessionStorage.token) {
+            if (!this._sessionService.getDataItem(SessionItems.token)) {
                 // clearInterval(intervalID);
                 clearInterval();
                 return;
@@ -62,7 +72,8 @@ export class CommonDataService {
                 await this.http.get(API_URL.apiUrl.concat("/user/token"))
                     .subscribe({
                         next: (response: any) => {
-                            sessionStorage.token = response.token;
+                            const token = {[SessionItems.token]: response.token}
+                            this._sessionService.setToken(token)
                             console.log("refresh token");
                         },
 
@@ -88,7 +99,7 @@ export class CommonDataService {
         mainPage.Type = type;
 
         try {
-            return new Promise<string>(async resolve => {
+            return new Promise<header.IItem[]>(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/user/init-header"), mainPage)
                     .subscribe({
                         next: (response: any) => {
@@ -110,18 +121,11 @@ export class CommonDataService {
 
     public routeToStart(err: any) {
         if (err.status === 401) {
+            this._sessionService.removeDataItem(SessionItems.token);
             sessionStorage.clear();
-            sessionStorage["role"] = "G";
             
             this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
         }
-
-        // if (typeof(err) === "string") {
-        //     sessionStorage.clear();
-        //     sessionStorage["role"] = "G";
-
-        //     this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
-        // }
     };
 
     /**
@@ -230,6 +234,27 @@ export class CommonDataService {
         }
     };
 
+    public async getPopularBusinessAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/business/popular-business"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
     /**
      * Функция сформирует хлебные крошки страницы.
      * @returns - Список пунктов цепочки хлебных крошек.
@@ -304,8 +329,8 @@ export class CommonDataService {
      * Функция получит переход.
      * @returns Данные перехода.
      */
-     public async getTransitionAsync() {
-        try {
+     public async getTransitionAsync(currentRoute: any) {
+        try {                     
             return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/user/get-transition"), {})
                     .subscribe({
@@ -314,8 +339,14 @@ export class CommonDataService {
                         },
 
                         error: (err) => {
-                            this.routeToStart(err);
-                            throw new Error(err);
+                            console.log("currentRoute", currentRoute);
+
+                            if (currentRoute.mode !== "view") {
+                                this.routeToStart(err);        
+                                throw new Error(err);                       
+                            }                          
+                            
+                           
                         }
                     });
             })
@@ -360,16 +391,38 @@ export class CommonDataService {
      * @returns Список категорий.
      */
     public async GetFranchiseCategoriesListAsync() {
+        if (this.router.url === "/ad/create") {
+            try {
+                console.log("currentRoute", this.router.url);
+
+                return new Promise(async resolve => {
+                    await this.http.get(API_URL.apiUrl.concat("/franchise/category-list-auth"))
+                        .subscribe({
+                            next: (response: any) => {
+                                resolve(response);
+                            },
+
+                            error: (err) => {
+                                throw new Error(err);
+                            }
+                        });
+                })
+            }
+
+            catch (e: any) {
+                throw new Error(e);
+            }
+        }
+
         try {
             return new Promise(async resolve => {
-                await this.http.post(API_URL.apiUrl.concat("/franchise/category-list"), {})
+                await this.http.get(API_URL.apiUrl.concat("/franchise/category-list"))
                     .subscribe({
                         next: (response: any) => {
                             resolve(response);
                         },
 
                         error: (err) => {
-                            this.routeToStart(err);
                             throw new Error(err);
                         }
                     });
@@ -385,17 +438,18 @@ export class CommonDataService {
      * Функция получит список подкатеорий франшиз.
      * @returns Список подкатеорий.
      */
-     public async GetFranchiseSubCategoriesListAsync() {
+     public async GetFranchiseSubCategoriesListAsync(categoryCode: string, categorySysName: string) {
         try {
             return new Promise(async resolve => {
-                await this.http.post(API_URL.apiUrl.concat("/franchise/subcategory-list"), {})
+                await this.http.get(API_URL.apiUrl.concat("/franchise/subcategory-list?categoryCode=" 
+                + categoryCode
+                + "&categorySysName=" + categorySysName))
                     .subscribe({
                         next: (response: any) => {
                             resolve(response);
                         },
 
                         error: (err) => {
-                            this.routeToStart(err);
                             throw new Error(err);
                         }
                     });
@@ -568,6 +622,67 @@ export class CommonDataService {
                             throw new Error(err);
                         }
                     });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onGetBlogsAsync() {
+        try {                                                        
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/blog/get-blogs"), {})
+                    .subscribe({
+                        next: (response: any) => {
+                            resolve(response);
+                        },
+
+                        error: (err) => {
+                            this.routeToStart(err);
+                            throw new Error(err);
+                        }
+                    });
+            })
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };    
+
+    /**
+     * Функция уберет пробелы в числе, которое в строке.
+     * @param value - Входное значение в строке, у которого нужно убрать пробелы.
+     * @returns - Число без пробелов.
+     */
+    public TrimSpaceInNumber(value: string) {
+        return value.replace(/\s/g, "");
+    };
+
+    /**
+     * Функция вернет регион пользователя.
+     * @returns - Страна пользователя.
+     */
+    public getUserLocation(): string {
+        return window.navigator.language.substr(0, 2).toLowerCase();
+    };
+
+    public async getNewBusinessAsync() {
+        try {
+            return new Promise(async resolve => {
+                await this.http.post(API_URL.apiUrl.concat("/business/new-business"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Последние объявления бизнеса:", response);
+                        resolve(response);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
             })
         }
 

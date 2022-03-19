@@ -4,19 +4,20 @@
 @import "/src/app/shared/styles/franchuse-styles.scss";
 
 // Карусель.
-.product-item {
+.carousel-block {
+  margin: auto;
+}
+.product-item:not(:last-child) {
   .product-item-content {
-    // border: 1px solid var(--surface-d);
     border-radius: 3px;
     margin-right: 20px;
     text-align: center;
-    // padding: 2rem 0;
     padding: 0;
   }
 
   .product-image {
     // width: 50%;
-    width: 342px;
+    width: 100%;
     height: 162px;
     // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
   }
@@ -24,11 +25,11 @@
 
 .more-articles {
   margin: 0;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   height: 208px;
 }
 
-::ng-deep .popular-item.more-articles .p-card {
+::ng-deep .more-articles .p-card {
   background: none;
 }
 
@@ -45,21 +46,12 @@
   margin: 0 auto;
 }
 
-// .btn-dark {
-//   margin-top: 68px;
-//   padding: 16px;
-// }
-
-.three-cards {
-  gap: 24px;
-}
-
 .cards-popup {
   margin: 0 10px;
 }
 
 ::ng-deep .card-business {
-  max-width: 464px;
+  max-width: 100%;
 }
 
 .p-carousel-container {
@@ -71,27 +63,249 @@
 }
 
 ::ng-deep .business-garanteese .p-card {
-  background: #F1F6FF;
+  background: #f1f6ff;
 }
 
 ::ng-deep .business-garanteese .p-card-content {
   padding: 0;
 }
-
+::ng-deep .p-card-content {
+  padding: 0;
+}
 ::ng-deep .p-card .p-card-body {
-  margin: 0 auto;
+  margin: 0;
 }
 
 .bg {
+  padding: 1rem 1.5rem;
   padding-top: 20px;
-  background: #F1F1F1;
-  width: 1392px;
+  background: #f1f1f1;
+  width: 100%;
   margin: 20px auto;
 }
+// Покупка бизнеса с гарантиями
+::ng-deep {
+  .col-lg-5 {
+    padding: 0;
+  }
+}
+.title-franchise {
+  max-width: 341px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}
+.right-text {
+  width: 90%;
+  height: 96px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 0;
+}
 
+.right-block-img {
+  margin: 0 -20px 7px 10px;
+}
+.btn-dark {
+  width: 156px;
+  height: 53px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  background: #1f75fe;
+}
+.wrapper-container {
+  width: 59%;
+  flex-wrap: nowrap;
+}
+::ng-deep {
+  // весь блок
+  .carousel-block {
+    width: 100%;
+    display: flex;
+    min-height: 342px;
+    margin: 0;
+    .col-lg-7 {
+      padding: 0;
+    }
+    // карточка название готового бизнеса
+    .product-item {
+      // текст карточки готового бизнеса
+      .product-image {
+        margin-bottom: 16px;
+      }
+      .p-card {
+        height: 127px;
+
+        // Название готового бизнеса
+        &-title {
+          width: 234px;
+          height: 21px;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 21px;
+          margin-bottom: 8px;
+          text-align: left;
+        }
+        &-subtitle {
+          text-align: start;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 12px;
+          line-height: 14px;
+          margin-bottom: 16px;
+        }
+        &-content {
+          padding: 0;
+          padding-left: 10px;
+          position: static;
+          width: 190px;
+          height: 36px;
+          left: 16px;
+          top: 75px;
+          background: #f1f6ff;
+          border-radius: 4px;
+          color: #1653b4;
+
+          strong {
+            display: inline-block;
+            position: static;
+            width: 185px;
+            height: 16px;
+            margin: auto;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16.41px;
+            color: #1653b4;
+          }
+        }
+        &-body {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+::ng-deep {
+  .right {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    background: #f1f6ff;
+    .card-right {
+      height: 282px !important;
+      background: #121213;
+    }
+    .p-card {
+      width: 100%;
+      background-color: transparent !important;
+      &-footer {
+        padding: 0;
+      }
+
+      &-content {
+        .right-text {
+          width: 100% !important;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 16px;
+          color: #2c2c2c;
+        }
+      }
+
+      &-title {
+        width: 100% !important;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 21px;
+        color: #2c2c2c;
+      }
+    }
+  }
+}
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 980px) and (max-device-width: 1024px) {
+  /* Styles */
+  ::ng-deep .p-carousel-items-container {
+    width: 587px;
+  }
+  .p-card-title {
+    width: 100px;
+  }
+  .title-franchise {
+    font-size: 21px;
+  }
+  .right-images {
+    display: none;
+  }
+  ::hg-deep {
+    .p-carousel-indicators {
+      display: none;
+    }
+  }
+  .wrapper-container {
+    width: 100%;
+  }
+  ::ng-deep {
+    .right {
+      .card-right {
+        max-width: 413px;
+        background: #2c2c2c;
+      }
+    }
+  }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 979px) {
+  ::ng-deep {
+    // весь блок
+    .carousel-block {
+      display: flex;
+      flex-wrap: wrap-reverse;
+      margin-bottom: 36px !important;
+      .p-carousel-indicators {
+        display: none;
+      }
+    }
+  }
+  .wrapper-container {
+    width: 100%;
+  }
+  .right-images {
+    display: inline-block;
+  }
+}
+
+::ng-deep .card1 {
+  border: none !important;
+  background-color: #f1f6ff !important;
+  display: flex;
+  // width: 576px;
+  // height: 292px;
+}
+.p.card .p-card-title {
+  font-size: 18px;
+}
 ::ng-deep .business-garanteese .p-card .p-card-header {
   padding-bottom: 0;
-  margin-bottom: 16px;
+  // margin-bottom: 16px;
   font-size: 18px;
 }
 
@@ -114,15 +328,12 @@
 }
 
 ::ng-deep .card-business .btn-dark {
-  margin-top: 68px;
   padding: 16px;
 }
 
 ::ng-deep .right .btn-dark {
-  margin-top: 68px;
   padding: 16px;
 }
-
 
 ::ng-deep .card-line .p-card-body {
   // background: #F1F6FF;
@@ -150,7 +361,9 @@
 
 ::ng-deep .card {
   border: none !important;
-  background-color: #F1F1F1;
+  background-color: #f1f6ff;
+  width: 342px;
+  height: 282px;
 }
 
 .block-card-item {
@@ -172,8 +385,8 @@
 }
 
 .baner {
-  max-width: 708px;
-  height: 272px;
+  width: 100%;
+  height: auto;
 }
 
 .block-baner {
@@ -202,73 +415,81 @@
   margin-bottom: 8px;
 }
 
-.category-block-first {
-  height: 700px;
-}
-
-.category-block-second {
-  height: 700px;
-}
-
 // Медиа-запросы.
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
+  ::ng-deep .right {
+    .p-card-title {
+      font-size: 14px !important;
+    }
+  }
+  .right-block-img {
+    width: 61px;
+    height: 91px;
+    margin: 0 20px 0 10px;
+  }
+  .right-images {
+    width: 100%;
+  }
 }
 
 /* Smartphones (landscape) ----------- */
-@media only screen and (min-width : 321px) {
+@media only screen and (min-width: 321px) {
   /* Styles */
 }
 
 /* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
+@media only screen and (max-width: 320px) {
   /* Styles */
 }
 
 /* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-  /* Styles */
-}
+// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+//   /* Styles */
+//   .card {
+//   }
+// }
 
 /* iPads (landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   /* Styles */
 }
 
 /* iPads (portrait) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   /* Styles */
 }
 
 /* Desktops and laptops ----------- */
-@media only screen and (min-width : 1224px) {}
+@media only screen and (min-width: 1224px) {
+}
 
 /* Large screens ----------- */
-@media only screen and (min-width : 1824px) {
+@media only screen and (min-width: 1824px) {
   /* Styles */
 }
 
 /* iPhone 4 - 5s ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
   /* Styles */
 }
 
 /* iPhone 6 ----------- */
 @media only screen and (max-device-width: 667px),
-only screen and (-webkit-device-pixel-ratio: 2) {
+  only screen and (-webkit-device-pixel-ratio: 2) {
   /* Styles */
 }
 
 /* iPhone 6+ ----------- */
-@media only screen and (min-device-width : 414px),
-only screen and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (min-device-width: 414px),
+  only screen and (-webkit-device-pixel-ratio: 3) {
   /*** You've spent way too much on a phone ***/
 }
 
 /* Samsung Galaxy S7 Edge ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi)and (max-width:640px) {
+@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi) and (max-width: 640px) {
   /* Styles */
 }
 
@@ -276,14 +497,14 @@ only screen and (-webkit-device-pixel-ratio: 3) {
   gap: 16px;
   justify-content: center;
   padding-bottom: 24px;
-  background: #F1F1F1;
+  background: #f1f1f1;
 
   .card-franchise {
     padding: 0;
   }
 
   .block-cards-franchises-content {
-    background: #F1F1F1;
+    background: #f1f1f1;
   }
 }
 
@@ -299,22 +520,22 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 }
 
 ::ng-deep .p-dropdown {
-  background: #F1F6FF;
+  background: #f1f6ff;
 }
 
 ::ng-deep .quick-search .p-inputtext {
-  background: #F1F6FF;
+  background: #f1f6ff;
   width: 149px;
   margin-right: 16px;
 }
 
 ::ng-deep .p-inputswitch .p-inputswitch-slider {
-  background: #C8DBFF;
+  background: #c8dbff;
 }
 
 .block-card-img {
   display: block;
-  width: 312px;
+  width: 100%;
   padding-top: 12px;
   margin: 0 auto;
 }
@@ -322,4 +543,228 @@ only screen and (-webkit-device-pixel-ratio: 3) {
 ::ng-deep .p-carousel-item {
   max-width: 365px;
   // grid-gap: 20px !important;
+}
+
+.section-mb {
+  margin-bottom: 5rem;
+}
+
+.business-world-img img {
+  width: 100%;
+}
+
+::ng-deep {
+  .p-inputtext {
+    width: auto !important;
+  }
+
+  .quick-search-card {
+    .p-card-header {
+      padding: 0 0.75rem;
+    }
+  }
+}
+
+.p-inputtext {
+  max-width: 150px;
+}
+
+.block-cards-franchises-inner {
+  padding: 1.5rem;
+}
+
+.quick-search-form {
+  [class^="col"] {
+    margin: 1rem 0;
+  }
+}
+
+.ready-business-categories .title-franchise {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    display: none;
+  }
+}
+
+@media (max-width: 1800px) {
+  .three-cards-header {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1700px) {
+  .quick-search-form {
+    [class^="col"] {
+      &:nth-child(1),
+      &:nth-child(2) {
+        width: 20%;
+      }
+      &:nth-child(3) {
+        width: 20%;
+      }
+      &:nth-child(4) {
+        width: 40%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .quick-search-card-holder {
+    margin-bottom: 1.5rem;
+
+    img {
+      height: auto;
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .three-cards-header {
+    font-size: 1rem;
+  }
+}
+// Закоментировал 10.03.22
+// @media (max-width: 992px) {
+//   .carousel-block {
+//     flex-direction: column-reverse;
+//     background: #2c2c2c;
+
+//     .right {
+//       margin-bottom: 2.25rem;
+//     }
+
+//     [class^="col"] {
+//       width: 100%;
+//     }
+//   }
+// }
+
+@media (max-width: 992px) {
+  .carousel-block {
+    flex-direction: column-reverse;
+
+    .right {
+      margin-bottom: 2.25rem;
+    }
+
+    [class^="col"] {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .p-inputtext {
+    max-width: 120px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 788px) {
+  .carousel-block {
+    .title-franchise {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .baner-img {
+    &:first-child {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .ready-business-categories {
+    [class^="col"] {
+      width: 100%;
+    }
+
+    .title-franchise {
+      img {
+        display: block;
+
+        &.rotated {
+          transform: rotate(90deg);
+          transition: transform 0.5s;
+        }
+      }
+    }
+
+    .title-franchise + div {
+      display: none;
+    }
+
+    .category-item {
+      position: relative;
+
+      .space-arrow-category {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .price-range-input {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .p-inputtext {
+    max-width: 50%;
+    width: 48% !important;
+    margin: 0;
+  }
+}
+
+@media (max-width: 486px) {
+  .price-range-input {
+    flex-direction: column;
+  }
+
+  .p-inputtext {
+    max-width: 100%;
+    width: 100% !important;
+
+    &:first-child {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+::ng-deep {
+  @media (max-width: 1080px) {
+    .p-carousel-item {
+      flex: 1 0 70% !important;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .card-business-holder {
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .p-carousel-item {
+      flex: 1 0 80% !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .p-carousel {
+      max-width: 100%;
+    }
+
+    .quick-search-form {
+      .p-dropdown {
+        width: 100%;
+      }
+    }
+  }
 }

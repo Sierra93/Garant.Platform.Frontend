@@ -1,43 +1,153 @@
-@import "/src/app/app.component.scss";  
-@import "/src/app/shared/styles/image-space.scss";
-@import "/src/app/shared/styles/media-quaries.scss";
-@import "/src/app/shared/styles/common.scss";
-@import "/src/app/modules/franchise/create-franchise/create-franchise.component.scss";
-@import "/src/app/modules/main-page/main-page.component.scss";
-
-.block-profile {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 100px;
-}
-
-.block-left {
-  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
-  padding: 24px;
-
-  img {
-    height: 140px;
-  }
-
-  .block-fio {
-    margin-left: 16px;
-  }
-
-  .title {
-    color: #646464;
-  }
-}
+@import "./../manage-account/manage-account.component.scss";
 
 .block-right {
-  box-shadow: 0 0 10px rgb(0 0 0 / 50%);
-  padding: 24px;
+  font-family: 'Roboto', sans-serif;
+  padding: 1.5rem;
+  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  border-radius: .5rem;
+  margin-bottom: 5rem;
 }
 
-.suggestion {
-    background-color: #f1f6ff;
+.profile {
+  &-subtitle {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.requisite-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #7a7a7a;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.main-info-form {
+  .input-container {
+    label {
+      font-size: .75rem;
+      color: #646464;
+      margin-bottom: .5rem;
+    }
+
+    input {
+      &, &:focus {
+        height: 69px;
+        font-size: 18px;
+        color: #2c2c2c;
+        padding: 1.5rem 2.5rem 1.5rem 1.5rem;
+        border-radius: .5rem;
+        border: solid 1.5px #2c2c2c;
+      }
+    }
   }
 
-.block-data {
-    margin-top: 128px;
-    margin-bottom: 32px;
+  .form-child-mb {
+    margin-bottom: 2rem;
   }
+
+  .btn-save {
+    &, &:focus {
+      height: 53px;
+      padding: 1rem 3rem;
+      border-radius: .25rem;
+      background-color: #1f75fe;
+      font-size: 18px;
+      color: #fff;
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.second-block {
+  padding: 1.5rem;
+  border-radius: .25rem;
+  background-color: #f1f6ff;
+  margin-bottom: 5rem;
+
+  &-description {
+    width: 419px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #646464;
+    margin-bottom: 2.5rem;
+
+    @media (max-width: 786px) {
+      width: 100%;
+    }
+  }
+
+  &-buttons {
+    button {
+      width: 125px;
+      padding: 16px;
+      border-radius: 4px;
+      font-size: 18px;
+      color: #1f1f1f;
+
+      &.first {
+        background-color: #1f1f1f;
+        color: #fff;
+        margin-right: 1rem;
+      }
+
+      &.last {
+        border: solid 1px #1f1f1f;
+      }
+    }
+
+    @media (max-width: 425px) {
+      flex-direction: column;
+
+      button {
+        width: 100%;
+
+        &:first-child {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .bank-name-select {
+    .p-dropdown {
+      display: flex;
+      align-items: center;
+      height: 69px;
+      border-radius: .5rem;
+      padding: 1.5rem 1rem 1.5rem 1.5rem;
+    }
+  }
+
+  .second-block {
+    .p-card {
+      background-color: transparent;
+
+      &-body {
+        padding: 1.5rem 0 !important;
+      }
+    }
+
+    .remove {
+      button.close {
+        &, &:focus {
+          border: none;
+          outline: none;
+          background-color: transparent;
+          font-size: 16px;
+          color: #646464;
+        }
+      }
+
+      @media (max-width: 576px) {
+        align-items: flex-start !important;
+      }
+    }
+  }
+}

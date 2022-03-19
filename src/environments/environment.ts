@@ -2,8 +2,12 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { ENDPOINTS } from '../app/core/endpoints';
+
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: "https://gobizy.online",
+  api: ENDPOINTS
 };
 
 /*

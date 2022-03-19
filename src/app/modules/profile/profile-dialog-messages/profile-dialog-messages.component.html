@@ -1,59 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="row">
+  <!-- Левая часть. -->
+  <div class="col-xxl-3 col-xl-3 col-lg-4">
+    <manage-account></manage-account>
+  </div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+  <!-- Правая часть. -->
+  <div class="col-xxl-9 col-xl-9 col-lg-8">
+    <h2 class="profile-title">
+      <a routerLink="/profile/chat/dialogs" class="me-3">
+        <img src="./../../../../assets/images/back.svg" alt="gobizy icon" />
+      </a>
+      <span>Чат с {{fio}}</span>
+    </h2>
 
-<body>
-  <div class="block-profile">
-    <!-- Левая часть. -->
-    <div class="col-lg-4">
-      <manage-account></manage-account>
-    </div>
-
-    <!-- Правая часть. -->
-    <div class="col-lg-8">
-      <h5>Чат с {{fio}}</h5>
-      <div class="block-right">
-
-        <div class="d-flex justify-content-between">        
-          <div class="d-flex">
-            <img class="space-intgr mr-16" src="{{chatItemUrl}}">
-            
-            <div>
-              Предмет чата:<br>
-              {{chatItemName}}
-            </div>
-          </div>
-
-          <div>
-            Начало чата: {{dateStartDialog}}
-          </div>
+    <div class="block-right block-profile">
+      <div class="row">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+          <img class="space-intgr w-100" src="{{chatItemUrl}}" />
         </div>
 
-        <hr>
+        <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 d-flex justify-content-between chat-header-wrapper">
+          <div class="chat-item-name d-flex flex-column">
+            <span>Предмет чата:</span>
+            <span>{{chatItemName}}</span>
+          </div>
+        </div>
+      </div>
 
-        <div class="block-chat">
-          <div class="" *ngFor="let item of aMessages">
-            <div class="block-messages">
-              <div class="message" [ngClass]="{messageEnd:item.isMyMessage}">
-                {{item.message}}
-              </div>
+      <hr class="hr">
+
+      <div class="block-chat position-relative" #chatBox>
+        <div class="chat-start-date sticky-top text-center">
+          <span>Начало чата: </span>
+          <span>{{dateStartDialog}}</span>
+        </div>
+
+        <div class="" *ngFor="let item of aMessages">
+          <div class="block-messages">
+            <div class="message" [ngClass]="{messageEnd:item.isMyMessage}">
+              <span>{{item.message}}</span>
             </div>
           </div>
         </div>
+      </div>
 
+      <div class="d-flex align-items-center message-input">
         <div>
-          <textarea class="area-message" rows="2" cols="30" pInputTextarea [autoResize]="true"
-            placeholder="Введите сообщение" [(ngModel)]="message" (keydown.enter)="onSendMessageAsync()"></textarea>
+          <img src="./../../../../assets/images/attach-file.svg" alt="attach file icon gobizy" />
+        </div>
+        <div class="w-100 position-relative">
+          <textarea class="w-100 mb-0" pInputTextarea [autoResize]="true"
+          placeholder="Введите сообщение" [(ngModel)]="message" (keydown.enter)="onSendMessageAsync()"></textarea>
+          <button class="position-absolute reply" (click)="onSendMessageAsync()">
+            <!-- <img src="./../../../../assets/images/reply.svg" alt="reply icon gobizy" /> -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.5005 11.0999L3.60045 2.09993C2.70045 1.69993 1.70045 2.49993 2.10045 3.39993L4.60045 10.0999L16.0004 11.9999L4.60045 13.8999L2.10045 20.5999C1.80045 21.4999 2.70045 22.2999 3.60045 21.7999L21.5005 12.7999C22.2005 12.4999 22.2005 11.4999 21.5005 11.0999Z" />
+              </svg>
+          </button>
         </div>
       </div>
     </div>
   </div>
-
-</body>
-
-</html>
+</div>

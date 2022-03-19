@@ -46,4 +46,16 @@ export class ProfileInput {
 
     // Адрес регистрации.
     AddressRegister: string = "";
+
+    // Банковский идентификационный код.
+    Bik: number = 0;
+
+    // Код причины постановки.
+    Kpp: number = 0;
+
+    // корр. счет.
+    CorrAccountNumber: number = 0;
+
+    // выбранный банк.
+    DefaultBankName: string = '';
 }

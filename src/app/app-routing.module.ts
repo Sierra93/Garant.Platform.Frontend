@@ -10,7 +10,6 @@ import { ViewFranchiseModule } from './modules/franchise/view-franchise/view-fra
 import { CreateReadyBusinessModule } from './modules/business/create-ready-business/create-ready-business.component';
 import { ViewReadyBusinessModule } from './modules/business/view-ready-business/view-ready-business.component';
 import { EditReadyBusinessModule } from './modules/business/edit-ready-business/edit-ready-business.component';
-import { CreateAdModule } from './modules/ad/create-ad/create-ad.component';
 import { ProfileMyDataModule } from './modules/profile/profile-my-data/profile-my-data.component';
 import { ProfileMyMessagesModule } from './modules/profile/profile-my-dialogs/profile-my-dialogs.component';
 import { ProfileDialogMessagesModule } from './modules/profile/profile-dialog-messages/profile-dialog-messages.component';
@@ -24,7 +23,9 @@ import { GarantAcceptPaymentModule } from './modules/garant/garant-accept-paymen
 import { FranchiseLandingModule } from './modules/landing/franchise-landing/franchise-landing.component';
 import { ConsultingLandingModule } from './modules/landing/consulting-landing/consulting-landing.component';
 import { DealLandingModule } from './modules/landing/deal-landing/deal-landing.component';
-
+import { ConfiguratorAuthModule } from './modules/configurator/configurator-auth/configurator-auth.component';
+import { NotificationsModule } from './modules/profile/profile-requests/notifications.component';
+import { CreateAdModule } from './modules/create-ad/create-ad.component';
 
 const routes: Routes = [
   {
@@ -144,6 +145,26 @@ const routes: Routes = [
   {
     path: "deal/start",
     component: DealLandingModule
+  },
+
+  {
+    path: "profile/notifications",
+    component: NotificationsModule,
+  },
+
+  {
+    path: "configurator/auth",
+    component: ConfiguratorAuthModule
+  },
+
+  // {
+  //   path: "configurator/admin",
+  //   component: ConfiguratorAdminModule
+  // }
+
+  {
+    path: "configurator/admin",
+    loadChildren: () => import('./modules/configurator/configurator.module').then(m => m.ConfiguratorModule)
   }
 ];
 

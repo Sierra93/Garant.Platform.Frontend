@@ -1,22 +1,26 @@
-<div class="card header deal">
-  <div class="card-header header-image deal__header">
-    <img
-      class="card-img-top deal__img"
-      src="../../../../assets/images/deal-landing/shield.png"
-      alt="Изображение щита"
-    />
-  </div>
-  <div class="card-body header-content deal__description">
-    <h5 class="card-title header-content__title deal__title">Онлайн сделка</h5>
-    <div class="card-text header-content__subtitle deal__business">
-      по покупке бизнеса
+<div class="container">
+  <div class="card header deal">
+    <div class="card-header header-image deal__header">
+      <img
+        class="card-img-top deal__img"
+        src="../../../../assets/images/deal-landing/shield.png"
+        alt="Изображение щита"
+      />
     </div>
-    <div class="card-text header-content__text deal__franchise">
-      или франшизы
+    <div class="card-body header-content deal__description">
+      <h5 class="card-title header-content__title deal__title">
+        Онлайн сделка
+      </h5>
+      <div class="card-text header-content__subtitle deal__business">
+        по покупке бизнеса
+      </div>
+      <div class="card-text header-content__text deal__franchise">
+        или франшизы
+      </div>
+      <button class="btn btn-light header-content__button deal__btn-action">
+        Как начать сделку?
+      </button>
     </div>
-    <button class="btn btn-light header-content__button deal__btn-action">
-      Как начать сделку?
-    </button>
   </div>
 </div>
 
@@ -72,16 +76,20 @@
     </div>
   </div>
 </div>
-<div class="container note" [ngClass]="{'is-xl':isXlExtension}">
+<div class="container note" [ngClass]="{ 'is-xl': isXlExtension }">
   <h5 class="alert alert-light note__title">Покупка бизнеса с гарантиями</h5>
   <div class="card note__description">
     <div class="card-header note__buying">
       <div class="card-title note__buying-title">
-        Покупка бизнеса любого<br>
-        размера онлайн с<br>
+        Покупка бизнеса любого<br />
+        размера онлайн с<br />
         гарантиями
       </div>
-      <img class="img-fluid note__img" src="../../../../assets/images/shooting_range.png" alt="Мишень" />
+      <img
+        class="img-fluid note__img"
+        src="../../../../assets/images/shooting_range.png"
+        alt="Мишень"
+      />
     </div>
     <div class="card-body note__content">
       <div class="card-text note__text-description">
@@ -96,195 +104,300 @@
         онлайн покупки и консалтингом от нашей<br />
         компании.
       </div>
-      <button class="btn btn-primary note__btn-submit">Подробнее</button>
+      <button
+        class="btn btn-primary note__btn-submit"
+        routerLink="/catalog-business"
+      >
+        Подробнее
+      </button>
     </div>
   </div>
 </div>
-<form class="consulting" [ngClass]="{'is-xl':isXlExtension}">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-        <div class="consulting-content consulting__content">
-          <div class="alert alert-light consulting__title">Консультация</div>
-          <div class="alert alert-light consulting__buying-business">
-            при покупке бизнеса онлайн
+<div class="container">
+  <form class="consulting" [ngClass]="{ 'is-xl': isXlExtension }">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+          <div class="consulting-content consulting__content">
+            <div class="alert alert-light consulting__title">Консультация</div>
+            <div class="alert alert-light consulting__buying-business">
+              при покупке бизнеса онлайн
+            </div>
+            <div class="alert alert-light consulting__footnote">
+              с юристом и консультантами сервиса
+            </div>
+            <div class="mb-3 consulting__field">
+              <label for="userName" class="form-label consulting__name"
+                >Имя</label
+              >
+              <input
+                type="text"
+                class="form-control consulting__input-field"
+                id="userName"
+                placeholder="Введите имя"
+                name="name"
+              />
+            </div>
+            <div class="consulting__field">
+              <label for="userPhone" class="form-label consulting__phone"
+                >Номер телефона</label
+              >
+              <input
+                type="tel"
+                class="form-control consulting__input-field"
+                id="userPhone"
+                placeholder="Введите номер телефона"
+                name="telephone"
+              />
+            </div>
+            <div class="consulting__btn-submit">
+              <input
+                type="submit"
+                class="consulting-content__button consulting__submit"
+                value="Обратиться за консультацией"
+              />
+            </div>
           </div>
-          <div class="alert alert-light consulting__footnote">
-            с юристом и консультантами сервиса
+        </div>
+        <div
+          class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 consulting__assistant"
+        >
+          <div class="consulting-image consulting__image-wrapper">
+            <img
+              class="consulting__assistant-img"
+              src="../../../../assets/images/deal-landing/template_person6 1.png"
+              alt="Фото консультанта"
+            />
           </div>
-          <div class="mb-3 consulting__field">
-            <label for="userName" class="form-label consulting__name"
-              >Имя</label
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="container">
+  <h5
+    class="steps-header user-action-title alert alert-light"
+    [ngClass]="{ 'is-xl': isXlExtension }"
+  >
+    4 простых шага для безопасной сделки онлайн
+  </h5>
+  <div class="container list-action" [ngClass]="{ 'is-xl': isXlExtension }">
+    <div class="row steps list-action__list">
+      <div
+        class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
+      >
+        <div class="card list-action__card">
+          <div class="card-header steps-item__image list-action__image-box">
+            <img
+              class="card-img-top list-action__image"
+              src="../../../../assets/images/deal-landing/loupe-clip-art-6 1.png"
+              alt="Лупа"
+            />
+          </div>
+          <div class="card-body list-action__step">
+            <div class="steps-item__title list-action__title">
+              Выбрать бизнес
+            </div>
+            <div class="steps-item__subtitle list-action__subtitle">
+              или франшизу
+            </div>
+            <div class="steps-item__stage list-action__stage">Шаг 1</div>
+            <div class="steps-item__text list-action__prompt">
+              Воспользуйтесь каталогом для удобного и быстрого поиска по вашим
+              параметрам.
+            </div>
+            <button
+              class="btn btn-light steps-item__button list-action__launch"
             >
-            <input
-              type="text"
-              class="form-control consulting__input-field"
-              id="userName"
-              placeholder="Введите имя"
-              name="name"
-            />
-          </div>
-          <div class="consulting__field">
-            <label for="userPhone" class="form-label consulting__phone"
-              >Номер телефона</label
-            >
-            <input
-              type="tel"
-              class="form-control consulting__input-field"
-              id="userPhone"
-              placeholder="Введите номер телефона"
-              name="telephone"
-            />
-          </div>
-          <div class="consulting__btn-submit">
-            <input
-              type="submit"
-              class="consulting-content__button consulting__submit"
-              value="Обратиться за консультацией"
-            />
+              Начать поиск
+            </button>
           </div>
         </div>
       </div>
       <div
-        class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 consulting__assistant"
+        class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
       >
-        <div class="consulting-image consulting__image-wrapper">
-          <img
-            class="consulting__assistant-img"
-            src="../../../../assets/images/deal-landing/template_person6 1.png"
-            alt="Фото консультанта"
-          />
+        <div class="card list-action__card">
+          <div class="card-header steps-item__image list-action__image-box">
+            <img
+              class="card-img-top list-action__image"
+              src="../../../../assets/images/deal-landing/pen-clip-art-6 2.png"
+              alt="Ручка"
+            />
+          </div>
+          <div class="card-body list-action__step">
+            <div class="steps-item__title list-action__title">
+              Пройти регистрацию
+            </div>
+            <div class="steps-item__subtitle list-action__subtitle">
+              на нашем портале
+            </div>
+            <div class="steps-item__stage list-action__stage">Шаг 2</div>
+            <div class="steps-item__text list-action__prompt">
+              Вы можете пройти быструю регистрацию до начала выбора бизнеса или
+              во время.
+            </div>
+            <button
+              class="btn btn-light steps-item__button list-action__launch"
+            >
+              Пройти регистрацию
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</form>
-
-<h5 class="steps-header user-action-title alert alert-light" [ngClass]="{'is-xl':isXlExtension}">
-  4 простых шага для безопасной сделки онлайн
-</h5>
-
-<div class="container list-action" [ngClass]="{'is-xl':isXlExtension}">
-  <div class="row steps list-action__list">
-    <div
-      class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
-    >
-      <div class="card list-action__card">
-        <div class="card-header steps-item__image list-action__image-box">
-          <img
-            class="card-img-top list-action__image"
-            src="../../../../assets/images/deal-landing/loupe-clip-art-6 1.png"
-            alt="Лупа"
-          />
-        </div>
-        <div class="card-body list-action__step">
-          <div class="steps-item__title list-action__title">Выбрать бизнес</div>
-          <div class="steps-item__subtitle list-action__subtitle">
-            или франшизу
+      <div
+        class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
+      >
+        <div class="card list-action__card">
+          <div
+            class="card-header steps-item__image user-action__image-wrapper list-action__image-box"
+          >
+            <img
+              class="card-img-top list-action__image"
+              src="../../../../assets/images/deal-landing/file-clip-art-6 3.png"
+              alt="Папка"
+            />
           </div>
-          <div class="steps-item__stage list-action__stage">Шаг 1</div>
-          <div class="steps-item__text list-action__prompt">
-            Воспользуйтесь каталогом для удобного и быстрого поиска по вашим
-            параметрам.
+          <div class="card-body list-action__step">
+            <div class="steps-item__title list-action__title">
+              Начать сделку
+            </div>
+            <div class="steps-item__subtitle list-action__subtitle">
+              и распланировать этапы сделки
+            </div>
+            <div class="steps-item__stage list-action__stage">Шаг 3</div>
+            <div class="steps-item__text list-action__prompt">
+              Вы сможете распланировать онлайн сделку посредством сервиса
+              гарант.
+            </div>
+            <button
+              class="btn btn-light steps-item__button list-action__launch"
+            >
+              Начать сделку
+            </button>
           </div>
-          <button class="btn btn-light steps-item__button list-action__launch">
-            Начать поиск
-          </button>
         </div>
       </div>
-    </div>
-    <div
-      class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
-    >
-      <div class="card list-action__card">
-        <div class="card-header steps-item__image list-action__image-box">
-          <img
-            class="card-img-top list-action__image"
-            src="../../../../assets/images/deal-landing/pen-clip-art-6 2.png"
-            alt="Ручка"
-          />
-        </div>
-        <div class="card-body list-action__step">
-          <div class="steps-item__title list-action__title">
-            Пройти регистрацию
+      <div
+        class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
+      >
+        <div class="card list-action__card">
+          <div
+            class="card-header steps-item__image user-action__image-wrapper list-action__image-box"
+          >
+            <img
+              class="card-img-top list-action__image"
+              src="../../../../assets/images/deal-landing/credit_card_PNG24 1.png"
+              alt="Кредитная карточка"
+            />
           </div>
-          <div class="steps-item__subtitle list-action__subtitle">
-            на нашем портале
+          <div class="card-body list-action__step">
+            <div class="steps-item__title list-action__title">
+              Провести оплату
+            </div>
+            <div class="steps-item__subtitle list-action__subtitle">
+              по каждому этапу
+            </div>
+            <div class="steps-item__stage list-action__stage">Шаг 4</div>
+            <div class="steps-item__text list-action__prompt">
+              После оплаты каждого этапа вы становитесь полноправным владельцем
+              бизнеса
+            </div>
+            <button
+              class="btn btn-light steps-item__button list-action__launch"
+            >
+              Получить консультацию
+            </button>
           </div>
-          <div class="steps-item__stage list-action__stage">Шаг 2</div>
-          <div class="steps-item__text list-action__prompt">
-            Вы можете пройти быструю регистрацию до начала выбора бизнеса или во
-            время.
-          </div>
-          <button class="btn btn-light steps-item__button list-action__launch">
-            Пройти регистрацию
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
-    >
-      <div class="card list-action__card">
-        <div
-          class="card-header steps-item__image user-action__image-wrapper list-action__image-box"
-        >
-          <img
-            class="card-img-top list-action__image"
-            src="../../../../assets/images/deal-landing/file-clip-art-6 3.png"
-            alt="Папка"
-          />
-        </div>
-        <div class="card-body list-action__step">
-          <div class="steps-item__title list-action__title">Начать сделку</div>
-          <div class="steps-item__subtitle list-action__subtitle">
-            и распланировать этапы сделки
-          </div>
-          <div class="steps-item__stage list-action__stage">Шаг 3</div>
-          <div class="steps-item__text list-action__prompt">
-            Вы сможете распланировать онлайн сделку посредством сервиса гарант.
-          </div>
-          <button class="btn btn-light steps-item__button list-action__launch">
-            Начать сделку
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
-    >
-      <div class="card list-action__card">
-        <div
-          class="card-header steps-item__image user-action__image-wrapper list-action__image-box"
-        >
-          <img
-            class="card-img-top list-action__image"
-            src="../../../../assets/images/deal-landing/credit_card_PNG24 1.png"
-            alt="Кредитная карточка"
-          />
-        </div>
-        <div class="card-body list-action__step">
-          <div class="steps-item__title list-action__title">
-            Провести оплату
-          </div>
-          <div class="steps-item__subtitle list-action__subtitle">
-            по каждому этапу
-          </div>
-          <div class="steps-item__stage list-action__stage">Шаг 4</div>
-          <div class="steps-item__text list-action__prompt">
-            После оплаты каждого этапа вы становитесь полноправным владельцем
-            бизнеса
-          </div>
-          <button class="btn btn-light steps-item__button list-action__launch">
-            Получить консультацию
-          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="garant card-line" *ngIf="isHideBusinessWithGarant" [ngClass]="{'is-xl':isXlExtension}">
+<div class="container">
+  <div
+    class="card garant card-line"
+    *ngIf="isHideBusinessWithGarant"
+    [ngClass]="{ 'is-xl': isXlExtension }"
+  >
+    <div class="card-header garant__header">
+      <div class="card-title garant__title">
+        Вы можете приобрести бизнес с гарантиями
+      </div>
+      <div class="garant__btn-close-box">
+        <button class="close btn-close garant__btn-close"></button>
+      </div>
+    </div>
+    <div class="card-body garant__content">
+      <div class="card-text garant__description">{{ oSuggestion.text }}</div>
+      <div class="btn-group garant__btn-group">
+        <button
+          class="btn btn-primary garant__btn-business"
+          routerLink="/catalog-business"
+        >
+          {{ oSuggestion.button2Text }}
+        </button>
+        <button
+          class="btn btn-light btn-show-more garant__btn-clean"
+          (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
+        >
+          {{ oSuggestion.button1Text }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container compilation-business">
+  <h5 class="alert alert-light compilation-business__title">Подберите подходящий бизнес</h5>
+  <div class="card compilation-business__content">
+    <div class="card-header compilation-business__header">
+      <div class="card-title compilation-business__card-title">Получите подборку подходящих бизнесов</div>
+      <img src="" class="img-fluid compilation-business__img" alt="Мишень" />
+    </div>
+    <div class="card-body compilation-business__description">
+      <div class="card-text compilation-business__text">
+        Пройдите краткий опрос, на основе вашего опыта, навыков и знаний мы
+        предложим вам подходящий бизнес в форме готового бизнеса или франшиз.
+      </div>
+      <button class="btn btn-primary compilation-business__catalog" routerLink="/catalog-business">Получить подборку</button>
+    </div>
+  </div>
+</div>
+<div class="container sale-business">
+  <h5 class="alert alert-light sale-business__title">Продайте свой бизнес</h5>
+  <div class="card sale-business__content">
+    <div class="card-header sale-business__header">
+      <div class="card-title sale-business__card-title">Вы можете продать свой бизнес</div>
+      <img src="" class="img-fluid sale-business__img" alt="Денежный мешок" />
+    </div>
+    <div class="card-body sale-business__description">
+      <div class="card-text sale-business__text">
+        Все что вам нужно - выложить объявление в нашем каталоге, после проверки
+        модераторами мы выложим его в общий доступ.
+      </div>
+      <button class="btn btn-primary sale-business__action" routerLink="/catalog-business">Продать бизнес</button>
+    </div>
+  </div>
+</div>
+<div class="container creation-business">
+  <h5 class="alert alert-light creation-business__title">Создайте свою франшизу</h5>
+  <div class="card creation-business__content">
+    <div class="card-header creation-business__header">
+      <div class="card-title creation-business__card-title">Закажите упаковку франшизы у нас</div>
+      <img src="" class="img-fluid creation-business__img" alt="Анкета" />
+    </div>
+    <div class="card-body creation-business__description">
+      <div class="card-text creation-business__text">
+        Если ваш готовый бизнес уже имеет открытые филиалы или вы собираетесь
+        заводить таковые, то вы с уверенностью можете оставлять заявку.
+      </div>
+      <button class="btn btn-primary creation-business__creation">Упаковать франшизу</button>
+    </div>
+  </div>
+</div>
+<!-- <div class="garant card-line" *ngIf="isHideBusinessWithGarant" [ngClass]="{'is-xl':isXlExtension}">
   <p-card class="card-line-wrapper garant__card-template">
     <ng-template pTemplate="header">
       <div class="garant__title">Вы можете приобрести бизнес с гарантиями</div>
@@ -314,7 +427,7 @@
       </div>
     </ng-template>
   </p-card>
-</div>
+</div> -->
 
 <div class="container three-cards selection">
   <div class="row selection__repeat-box">
@@ -535,19 +648,34 @@
 </div>
 
 <!-- Новости делового мира, мой вариант -->
-<div class="container news" [ngClass]="{'is-xl':isXlExtension}">
-  <h5 class="alert alert-light garant title-franchise news__title">Новости делового мира</h5>
+<div class="container news" [ngClass]="{ 'is-xl': isXlExtension }">
+  <h5 class="alert alert-light garant title-franchise news__title">
+    Новости делового мира
+  </h5>
   <div class="row news__content">
     <div class="col-6 news__img-box">
-      <img class="img-fluid news__img" src="../../../../assets/images/news_background.png" alt="Илон Маск">
+      <img
+        class="img-fluid news__img"
+        src="../../../../assets/images/news_background.png"
+        alt="Илон Маск"
+      />
     </div>
     <div class="col-6 news__hot-content">
       <div class="alert alert-primary d-flex align-items-center news__item">
         <div class="news__icon-box">
-          <img src="../../../../assets/images/fireIcon.png" class="img-fluid news__icon-img" alt="Огонь">
-          <div class="news__img-text">Открывается новая франшиза кофеен при по...</div>
+          <img
+            src="../../../../assets/images/fireIcon.png"
+            class="img-fluid news__icon-img"
+            alt="Огонь"
+          />
+          <div class="news__img-text">
+            Открывается новая франшиза кофеен при по...
+          </div>
         </div>
-        <div class="list-group list-group-flush news__list-info" *ngFor="let item of aNews">
+        <div
+          class="list-group list-group-flush news__list-info"
+          *ngFor="let item of aNews"
+        >
           <small class="list-group-item news__item-info">{{ item.time }}</small>
           <small class="list-group-item news__item-info">{{ item.date }}</small>
           <small class="list-group-item news__item-info">{{ item.type }}</small>
@@ -555,10 +683,19 @@
       </div>
       <div class="alert alert-primary d-flex align-items-center news__item">
         <div class="news__icon-box">
-          <img src="../../../../assets/images/handWithPen.png" class="img-fluid news__icon-img" alt="Рука">
-          <div class="news__img-text">Федеральная сеть магазинов у дома Красное...</div>
+          <img
+            src="../../../../assets/images/handWithPen.png"
+            class="img-fluid news__icon-img"
+            alt="Рука"
+          />
+          <div class="news__img-text">
+            Федеральная сеть магазинов у дома Красное...
+          </div>
         </div>
-        <div class="list-group list-group-flush news__list-info" *ngFor="let item of aNews">
+        <div
+          class="list-group list-group-flush news__list-info"
+          *ngFor="let item of aNews"
+        >
           <small class="list-group-item news__item-info">{{ item.time }}</small>
           <small class="list-group-item news__item-info">{{ item.date }}</small>
           <small class="list-group-item news__item-info">{{ item.type }}</small>
@@ -566,10 +703,19 @@
       </div>
       <div class="alert alert-primary d-flex align-items-center news__item">
         <div class="news__icon-box">
-          <img src="../../../../assets/images/box.png" class="img-fluid news__icon-img" alt="Куб">
-          <div class="news__img-text">ЕР сохраняет лидерство в 199 одномандатн...</div>
+          <img
+            src="../../../../assets/images/box.png"
+            class="img-fluid news__icon-img"
+            alt="Куб"
+          />
+          <div class="news__img-text">
+            ЕР сохраняет лидерство в 199 одномандатн...
+          </div>
         </div>
-        <div class="list-group list-group-flush news__list-info" *ngFor="let item of aNews">
+        <div
+          class="list-group list-group-flush news__list-info"
+          *ngFor="let item of aNews"
+        >
           <small class="list-group-item news__item-info">{{ item.time }}</small>
           <small class="list-group-item news__item-info">{{ item.date }}</small>
           <small class="list-group-item news__item-info">{{ item.type }}</small>
@@ -577,10 +723,19 @@
       </div>
       <div class="alert alert-primary d-flex align-items-center news__item">
         <div class="news__icon-box">
-          <img src="../../../../assets/images/fireIcon.png" class="img-fluid news__icon-img" alt="Огонь">
-          <div class="news__img-text">Сделка по продаже крупного производства с...</div>
+          <img
+            src="../../../../assets/images/fireIcon.png"
+            class="img-fluid news__icon-img"
+            alt="Огонь"
+          />
+          <div class="news__img-text">
+            Сделка по продаже крупного производства с...
+          </div>
         </div>
-        <div class="list-group list-group-flush news__list-info" *ngFor="let item of aNews">
+        <div
+          class="list-group list-group-flush news__list-info"
+          *ngFor="let item of aNews"
+        >
           <small class="list-group-item news__item-info">{{ item.time }}</small>
           <small class="list-group-item news__item-info">{{ item.date }}</small>
           <small class="list-group-item news__item-info">{{ item.type }}</small>

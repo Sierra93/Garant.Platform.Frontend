@@ -100,6 +100,7 @@ export class LoginModule implements OnInit {
             let loginInput = new LoginInput();
             loginInput.email = getByPassForm.value.numOrEmail;
             loginInput.password = getByPassForm.value.pass;
+          console.log(this.pass)
 
             await this.http.post(API_URL.apiUrl.concat("/user/login"), loginInput)
                 .subscribe({

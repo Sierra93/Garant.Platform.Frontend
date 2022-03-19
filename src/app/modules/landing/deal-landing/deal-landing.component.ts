@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,7 +17,7 @@ import { CommonDataService } from 'src/app/services/common/common-data.service';
     './deal-landing.mobile.scss'
   ],
 })
-export class DealLandingModule implements OnInit {
+export class DealLandingModule implements OnInit, AfterViewInit {
   aPopularBusiness: any[] = [];
   // isGarant: boolean = false;
   // aCities: any[] = [];
@@ -54,6 +54,9 @@ export class DealLandingModule implements OnInit {
   routeParam: number;
   aPopularFranchises: any[] = [];
   isHideBusinessWithGarant: boolean = true;
+  isXlExtension: boolean = false;
+  isXxlExtension: boolean = false;
+  browserScreenWidth: number = window.screen.width;
 
   constructor(
     private http: HttpClient,
@@ -109,6 +112,10 @@ export class DealLandingModule implements OnInit {
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
     await this.getPopularAsync();
+  }
+
+  public ngAfterViewInit(): void {
+    this.defineResize();
   }
 
   /**
@@ -536,5 +543,11 @@ export class DealLandingModule implements OnInit {
     } catch (e: any) {
       throw new Error(e);
     }
+  }
+
+  private defineResize() {
+    if ((this.browserScreenWidth >= 981) && (this.browserScreenWidth <= 1200)) {
+      this.isXlExtension = true;
+    } else {}
   }
 }

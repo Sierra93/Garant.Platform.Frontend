@@ -608,75 +608,72 @@
   }
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
+.consulting {
+  &.is-xl {
+    width: 100%;
+    height: 522.5px;
+    border-radius: 24px;
+    padding: 44px;
+    margin: 80px auto 64px;
+  }
+  &.is-xl &__title  {
+    font-size: 64px;
+    line-height: 75px;
+    margin-bottom: 16px;
+  }
+  &.is-xl &__buying-business {
+    font-size: 44px;
+    line-height: 51.56px;
+    margin-bottom: 16px;
+  }
+  &.is-xl &__footnote {
+    font-size: 24px;
+    line-height: 28.13px;
+    margin-bottom: 48px;
+    color: #dadada;
+  }
+  &.is-xl &__name,
+  &.is-xl &__phone {
+    font-size: 12px;
+    line-height: 14.06px;
+  }
+  &.is-xl &__field {
+    display: inline-block;
+    margin-bottom: 0 !important;
+  }
+  &.is-xl &__field:nth-child(5) > &__input-field {
+    margin-left: 16px;
+  }
+  &.is-xl &__input-field {
+    display: inline-block;
+    width: 100%;
+    height: 69px;
+    max-width: 291px;
+    padding: 24px 40px 24px 24px;
+    border-radius: 8px;
+  }
+  &.is-xl &__assistant {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: -180px;
+    padding: 0;
+    pointer-events: none;
+  }
+  &.is-xl &__image-wrapper {
+    width: 530px;
+    height: 476px;
+  }
+  &.is-xl &__assistant-img {
+    width: 100%;
+  }
+  &.is-xl &__submit {
+    margin-top: 32px;
+  }
+}
+
+/*@media only screen and (min-width: 981px) and (max-width: 1200px) {
   .note {
     display: none;
   }
-}
-
-@media only screen and (min-width: 981px) and (max-width: 1200px) {
-  .deal {
-    width: calc(100% - 20px);
-    display: flex;
-    flex-flow: row;
-    border: none;
-    margin-left: auto;
-    margin-right: auto;
-    &__header {
-      display: flex;
-      width: 40%;
-      margin: 0;
-      padding: 0;
-      background: transparent;
-      border: none;
-      justify-content: center;
-      align-items: center;
-      order: 2;
-    }
-    &__description {
-      width: 60%;
-      height: fit-content;
-      order: 1;
-    }
-    &__title {
-      width: 100%;
-      font-size: 32px;
-      margin: 0;
-    }
-    &__business {
-      font-size: 24px;
-      margin-top: -15px;
-      margin-bottom: 5px;
-    }
-    &__franchise {
-      margin-bottom: 117px;
-    }
-    &__btn-action {
-      width: 100%;
-      padding: 0;
-    }
-    &__img {
-      width: 100% !important;
-      height: fit-content !important;
-    }
-  }
-
-  .consulting {
-    width: 100%;
-    &__title {
-      font-size: 76px;
-      font-weight: 600;
-    }
-    &__buying-business {
-      font-size: 51px;
-      font-weight: 600;
-    }
-    &__footnote {
-      font-size: 29px;
-    }
-    &__input-field {
-      width: 30%;
-      height: 60px;
-    }
-  }
-}
+}*/

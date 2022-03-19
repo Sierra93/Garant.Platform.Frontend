@@ -19,7 +19,7 @@
                   <ng-template pTemplate="header">
                     <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
                   </ng-template>
-                  <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+                  <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
                   <ng-template pTemplate="footer">
                     <!-- <p-button label="Save" icon="pi pi-check"></p-button>
                     <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
@@ -32,24 +32,41 @@
       </p-carousel>
     </div>
 
-    <div class="col-lg-5 right">
+    <div class="col-lg-5">
       <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
-      <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" style="background-color: #F1F1F1"
-        styleClass="card">
-        <ng-template pTemplate="header">
-          <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-          <!-- <h5>Покупка бизнеса любого размера онлайн с гарантиями</h5> -->
-        </ng-template>
-        <!-- <p>{{oTopAction.text}}</p> -->
-        <p>{{oTopAction.text}}</p>
-        <ng-template pTemplate="footer">
-          <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
-          <button class="btn btn-dark" routerLink="/deal/start">Подробнее</button>
-          <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-    </p-button> -->
-        </ng-template>
-      </p-card>
+      <div class="right">
+    
+        <div class="wrapper-container">
+    
+          <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" style="background-color: #F1F1F1"
+            styleClass="card">
+    
+            <ng-template pTemplate="header">
+              <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+              <!-- <h5>Покупка бизнеса любого размера онлайн с гарантиями</h5> -->
+            </ng-template>
+            <!-- <p>{{oTopAction.text}}</p> -->
+            <p class="right-text">{{oTopAction.text}}</p>
+            <ng-template pTemplate="footer">
+    
+              <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
+              <button class="btn btn-dark" routerLink="/deal/start">Подробнее</button>
+    
+              <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+                              </p-button> -->
+            </ng-template>
+    
+          </p-card>
+        </div>
+        <div class="right-block-img">
+          <img class="right-images" src="../../../assets/images/right-img.png" alt="картинка правого блока">
+    
+        </div>
+      </div>
     </div>
+    
+    
+    
   </div>
 
   <!-- Область с 3 карточками. -->
@@ -186,7 +203,7 @@
                       <ng-template pTemplate="header">
                         <img class="block-card-img" [src]="item.url">
                       </ng-template>
-                      <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+                      <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
                       <ng-template pTemplate="footer">
                         <button class="btn btn-dark">Подробнее</button>
                       </ng-template>
@@ -232,7 +249,7 @@
             <ng-template pTemplate="header">
               <img [src]="item.url">
             </ng-template>
-            <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+            <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
             <ng-template pTemplate="footer">
 
             </ng-template>
@@ -255,7 +272,7 @@
             <ng-template pTemplate="header">
               <img [src]="item.url">
             </ng-template>
-            <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+            <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
             <ng-template pTemplate="footer">
 
             </ng-template>

@@ -8,7 +8,7 @@
           <label class="form-label">Email или телефон</label>
 
           <input type="text" class="form-control input-auth" placeholder="Введите номер или почту" name="data"
-            [(ngModel)]="data" *ngIf="!isGetCode">
+            [(ngModel)]="data" *ngIf="!isGetCode" autocomplete="off">
           <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите код"
             name="code" [(ngModel)]="code" *ngIf="isGetCode">
         </div>

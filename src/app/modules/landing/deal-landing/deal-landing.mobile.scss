@@ -1,3 +1,4 @@
+// глобальные стили
 .deal {
   display: flex;
   border: none;
@@ -202,6 +203,147 @@
   }
 }
 
+// стили для пк 1024 (1200)
+.note {
+  &.is-xl {
+    display: none;
+  }
+}
+
+.consulting {
+  &.is-xl {
+    width: 100%;
+    height: 522.5px;
+    border-radius: 24px;
+    padding: 44px;
+    margin: 80px auto 64px;
+  }
+  &.is-xl &__title {
+    font-size: 64px;
+    line-height: 75px;
+    margin-bottom: 16px;
+  }
+  &.is-xl &__buying-business {
+    font-size: 44px;
+    line-height: 51.56px;
+    margin-bottom: 16px;
+  }
+  &.is-xl &__footnote {
+    font-size: 24px;
+    line-height: 28.13px;
+    margin-bottom: 48px;
+    color: #dadada;
+  }
+  &.is-xl &__name,
+  &.is-xl &__phone {
+    font-size: 12px;
+    line-height: 14.06px;
+  }
+  &.is-xl &__field {
+    display: inline-block;
+    margin-bottom: 0 !important;
+  }
+  &.is-xl &__field:nth-child(5) > &__input-field {
+    margin-left: 16px;
+  }
+  &.is-xl &__input-field {
+    display: inline-block;
+    width: 100%;
+    height: 69px;
+    max-width: 291px;
+    padding: 24px 40px 24px 24px;
+    border-radius: 8px;
+  }
+  &.is-xl &__assistant {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: -180px;
+    padding: 0;
+    pointer-events: none;
+  }
+  &.is-xl &__image-wrapper {
+    width: 530px;
+    height: 476px;
+  }
+  &.is-xl &__assistant-img {
+    width: 100%;
+  }
+  &.is-xl &__submit {
+    margin-top: 32px;
+  }
+}
+
+.user-action-title.is-xl {
+  font-size: 32px;
+  line-height: 37.5px;
+  margin-bottom: 31.97px;
+}
+
+.list-action {
+  &.is-xl  {
+    height: 850px;
+  }
+  &.is-xl &__list {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &.is-xl &__item {
+    max-width: 500px;
+  }
+  &.is-xl &__image-box {
+    width: 127px;
+    height: 102px;
+  }
+  &.is-xl &__image {
+    width: 100%;
+  }
+  &.is-xl &__title {
+    font-size: 24px;
+    line-height: 28.13px;
+    margin-bottom: 4px;
+  }
+  &.is-xl &__subtitle {
+    font-size: 12px;
+    line-height: 14.06px;
+    margin-bottom: 8px;
+  }
+  &.is-xl &__stage {
+    font-size: 18px;
+    line-height: 21.09px;
+    margin-bottom: 24px;
+  }
+  &.is-xl &__prompt {
+    width: 452px;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 24px;
+  }
+}
+
+.garant {
+  &.is-xl {
+    margin-top: 88px;
+  }
+  &.is-xl &__card-template.card-line-wrapper > .p-card { // переделать шаблон ???
+    width: 100% !important;
+    max-width: 1024px !important;
+  }
+}
+
+.selection {
+  &.is-xl &__service-title {
+    font-size: 21px;
+    line-height: 24.61px;
+    margin-bottom: 24px;
+  }
+  &.is-xl &__business-action {
+    border-radius: 8px;
+
+  }
+}
+
+// стили для смартфонов
 @media only screen and (min-width: 320px) and (max-width: 539px) {
   .deal {
     width: 100%;
@@ -359,6 +501,7 @@
   }
 }
 
+// стили для планшета общие
 @media only screen and (min-width: 540px) {
   .deal {
     &__title,
@@ -398,15 +541,13 @@
   }
 
   .selection {
-    &__repeat:nth-child(3) {
-      width: 100%;
-    }
     &__btn-action {
       width: 50%;
     }
   }
 }
 
+// стили для планшетов
 @media only screen and (min-width: 540px) and (max-width: 980px) {
   .deal {
     width: calc(100% - 20px);
@@ -586,6 +727,9 @@
   }
 
   .selection {
+    &__repeat:nth-child(3) {
+      width: 100%;
+    }
     &__offer.is-alone &__service-text {
       margin-right: 14px;
     }
@@ -608,72 +752,105 @@
   }
 }
 
-.consulting {
-  &.is-xl {
-    width: 100%;
-    height: 522.5px;
-    border-radius: 24px;
-    padding: 44px;
-    margin: 80px auto 64px;
-  }
-  &.is-xl &__title  {
-    font-size: 64px;
-    line-height: 75px;
-    margin-bottom: 16px;
-  }
-  &.is-xl &__buying-business {
-    font-size: 44px;
-    line-height: 51.56px;
-    margin-bottom: 16px;
-  }
-  &.is-xl &__footnote {
+// стили для компонента Новости Делового Мира
+.news {
+  &__title {
     font-size: 24px;
     line-height: 28.13px;
-    margin-bottom: 48px;
-    color: #dadada;
+    background: transparent;
+    border: none;
   }
-  &.is-xl &__name,
-  &.is-xl &__phone {
-    font-size: 12px;
-    line-height: 14.06px;
+  &__item {
+    display: flex;
+    background: #fff;
+    border: none;
+    flex-flow: column;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
   }
-  &.is-xl &__field {
-    display: inline-block;
-    margin-bottom: 0 !important;
+  &__icon-box {
+    display: flex;
+    width: 100%;
+    margin-bottom: 9.5px;
   }
-  &.is-xl &__field:nth-child(5) > &__input-field {
-    margin-left: 16px;
+  &__img-text {
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+    font-weight: 600;
+    padding-left: 8px;
   }
-  &.is-xl &__input-field {
+  &__list-info {
     display: inline-block;
     width: 100%;
-    height: 69px;
-    max-width: 291px;
-    padding: 24px 40px 24px 24px;
-    border-radius: 8px;
+    text-align: left;
   }
-  &.is-xl &__assistant {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin-right: -180px;
-    padding: 0;
-    pointer-events: none;
+  &__item-info {
+    display: inline-block;
+    border-bottom: none;
+    padding: 0 16px 0 0;
   }
-  &.is-xl &__image-wrapper {
-    width: 530px;
-    height: 476px;
-  }
-  &.is-xl &__assistant-img {
-    width: 100%;
-  }
-  &.is-xl &__submit {
-    margin-top: 32px;
+  &__item-info:last-child {
+    padding-right: 0;
   }
 }
 
-/*@media only screen and (min-width: 981px) and (max-width: 1200px) {
-  .note {
-    display: none;
+@media only screen and (max-width: 980px) {
+  .news {
+    &__title {
+      font-size: 19px;
+      line-height: 22.27px;
+      padding-top: 0;
+      padding-right: 0;
+      padding-bottom: 0;
+      margin: 0 0 16px 0;
+    }
+    &__icon-img {
+      width: 24px;
+      height: 24px;
+    }
+    &__img-box,
+    &__hot-content {
+      width: 100%;
+    }
+    &__item {
+      padding: 0;
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    &__list-info {
+      margin-top: -33px;
+      margin-bottom: 25px;
+    }
+    &__item-info {
+      font-size: 12px;
+      line-height: 14px;
+    }
+    &__content {
+      display: flex;
+      flex-flow: column;
+    }
   }
-}*/
+}
+
+@media only screen and (min-width: 540px) and (max-width: 980px) {
+  .news {
+    &__img-box {
+      margin-bottom: 16px;
+    }
+    &__img-text {
+      font-size: 18px;
+      line-height: 21px;
+    }
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 539px) {
+  .news {
+    &__img-text {
+      font-size: 17px;
+      line-height: 19.92px;
+    }
+  }
+}

@@ -2,6 +2,7 @@
 .deal {
   display: flex;
   border: none;
+  height: -moz-fit-content;
   height: fit-content;
   gap: 0;
   justify-content: center;
@@ -11,6 +12,7 @@
     background: transparent;
   }
   &__description {
+    height: -moz-fit-content;
     height: fit-content;
     padding: 0;
   }
@@ -36,7 +38,7 @@
     grid-gap: 0;
     gap: 0;
     margin: 0;
-
+    height: -moz-fit-content;
     height: fit-content;
     flex-wrap: wrap;
   }
@@ -93,8 +95,10 @@
 
 .consulting {
   position: relative;
+  height: -moz-fit-content;
   height: fit-content;
   &__content {
+    height: -moz-fit-content;
     height: fit-content;
   }
   &__title {
@@ -129,6 +133,7 @@
     border-radius: 7px;
   }
   &__assistant {
+    height: -moz-fit-content;
     height: fit-content;
   }
 }
@@ -175,6 +180,128 @@
   }
   &__launch {
     margin: 0;
+  }
+}
+
+.garant {
+  background: #f1f6ff;
+  border: none;
+  border-radius: 8px;
+  &__header {
+    display: flex;
+    background: transparent;
+    border: none;
+    padding-bottom: 0;
+  }
+  &__title {
+    margin-bottom: 0;
+  }
+  &__btn-close-box {
+    height: min-content;
+  }
+  &__content {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  &__description {
+    color: #7a7a7a;
+  }
+  &__btn-business {
+    margin-left: 0;
+  }
+  &__btn-clean {
+    color: #7a7a7a;
+    border: 1px solid #7a7a7a;
+  }
+}
+
+.compilation-business {
+  &__content {
+    background: rgba(218, 218, 218, 0.15);
+    border-radius: 8px;
+    border: none;
+  }
+  &__header {
+    display: flex;
+    background: transparent;
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 16px;
+  }
+  &__card-title {
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  &__description {
+    padding-top: 0;
+  }
+  &__text {
+    color: #7a7a7a;
+  }
+  &__catalog {
+    margin-top: 24px;
+    margin-left: 0;
+    border-radius: 4px;
+  }
+}
+
+.sale-business {
+  &__content {
+    background: rgba(218, 218, 218, 0.15);
+    border-radius: 8px;
+    border: none;
+  }
+  &__header {
+    display: flex;
+    background: transparent;
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 16px;
+  }
+  &__card-title {
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  &__description {
+    padding-top: 0;
+  }
+  &__text {
+    color: #7a7a7a;
+  }
+  &__action {
+    margin-top: 24px;
+    margin-left: 0;
+    border-radius: 4px;
+  }
+}
+
+.creation-business {
+  &__content {
+    background: rgba(218, 218, 218, 0.15);
+    border-radius: 8px;
+    border: none;
+  }
+  &__header {
+    display: flex;
+    background: transparent;
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 16px;
+  }
+  &__card-title {
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  &__description {
+    padding-top: 0;
+  }
+  &__text {
+    color: #7a7a7a;
+  }
+  &__creation {
+    margin-top: 24px;
+    margin-left: 0;
+    border-radius: 4px;
   }
 }
 
@@ -451,9 +578,11 @@
   }
 
   .list-action {
+    width: -moz-fit-content;
     width: fit-content;
     &__list {
       width: 100%;
+      height: max-content;
     }
     &__item {
       width: 100%;
@@ -485,11 +614,84 @@
   }
 
   .garant {
-    &__franchise-list {
-      margin: 0;
-      font-size: 25px;
-      white-space: pre-wrap;
-      text-align: center;
+    &__header {
+      margin-bottom: 16px;
+    }
+    &__title {
+      font-size: 17px;
+      line-height: 19.92px;
+    }
+    &__btn-close-box {
+      width: 16px;
+    }
+    &__btn-close {
+      width: 8px;
+      height: 16px;
+    }
+    &__btn-group {
+      margin: 40px 0 8px;
+    }
+    &__btn-business,
+    &__btn-clean {
+      border-radius: 4px !important;
+    }
+    &__btn-business {
+      width: 100%;
+      max-width: 116px;
+    }
+    &__btn-clean {
+      margin-left: 20px !important;
+    }
+  }
+
+  .compilation-business {
+    margin-top: 24px;
+    &__title {
+      font-size: 19px;
+      line-height: 22px;
+      margin-bottom: 16px;
+    }
+    &__card-title {
+      font-size: 17px;
+      line-height: 20px;
+    }
+    &__text {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  .sale-business {
+    margin-top: 24px;
+    &__title {
+      font-size: 19px;
+      line-height: 22px;
+      margin-bottom: 16px;
+    }
+    &__card-title {
+      font-size: 17px;
+      line-height: 20px;
+    }
+    &__text {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  .creation-business {
+    margin-top: 24px;
+    &__title {
+      font-size: 19px;
+      line-height: 22px;
+      margin-bottom: 16px;
+    }
+    &__card-title {
+      font-size: 17px;
+      line-height: 20px;
+    }
+    &__text {
+      font-size: 14px;
+      line-height: 16px;
     }
   }
 
@@ -569,6 +771,7 @@
     }
     &__description {
       width: 60%;
+      height: -moz-fit-content;
       height: fit-content;
       order: 1;
     }
@@ -591,6 +794,7 @@
     }
     &__img {
       width: 100% !important;
+      height: -moz-fit-content !important;
       height: fit-content !important;
     }
   }
@@ -713,10 +917,6 @@
     &__description {
       font-size: 13px;
     }
-    &__card-template > div.p-card,
-    &__card-template > div.p-card-header {
-      max-width: 100%;
-    }
     &__close-icon {
       font-size: 18px !important;
     }
@@ -724,6 +924,12 @@
       border: 1px solid #7a7a7a;
       background: transparent;
     }
+  }
+
+  .compilation-business,
+  .sale-business,
+  .creation-business {
+    display: none;
   }
 
   .selection {

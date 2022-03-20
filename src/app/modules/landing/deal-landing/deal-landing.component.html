@@ -1,5 +1,8 @@
 <div class="container">
-  <div class="card header deal">
+  <div
+    class="card header deal"
+    [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
+  >
     <div class="card-header header-image deal__header">
       <img
         class="card-img-top deal__img"
@@ -24,9 +27,12 @@
   </div>
 </div>
 
-<div class="container survey">
+<div
+  class="container survey"
+  [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
+>
   <div class="row statistics survey__result">
-    <div class="col-sm-12 col-md-6 survey__item">
+    <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 survey__item">
       <div class="card survey__example">
         <div class="card-body survey__content">
           <div class="statistics-item__number survey__count">10</div>
@@ -38,7 +44,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-6 survey__item">
+    <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 survey__item">
       <div class="card survey__example">
         <div class="card-body survey__content">
           <div class="statistics-item__number survey__count">35</div>
@@ -50,7 +56,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-6 survey__item">
+    <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 survey__item">
       <div class="card survey__example">
         <div class="card-body survey__content">
           <div class="statistics-item__number survey__count">105</div>
@@ -62,7 +68,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-6 survey__item">
+    <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 survey__item">
       <div class="card survey__example">
         <div class="card-body survey__content">
           <div class="statistics-item__number survey__count">0,5-3%</div>
@@ -76,7 +82,10 @@
     </div>
   </div>
 </div>
-<div class="container note" [ngClass]="{ 'is-xl': isXlExtension }">
+<div
+  class="container note"
+  [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
+>
   <h5 class="alert alert-light note__title">Покупка бизнеса с гарантиями</h5>
   <div class="card note__description">
     <div class="card-header note__buying">
@@ -114,7 +123,10 @@
   </div>
 </div>
 <div class="container">
-  <form class="consulting" [ngClass]="{ 'is-xl': isXlExtension }">
+  <form
+    class="consulting"
+    [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
+  >
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
@@ -177,11 +189,14 @@
 <div class="container">
   <h5
     class="steps-header user-action-title alert alert-light"
-    [ngClass]="{ 'is-xl': isXlExtension }"
+    [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
   >
     4 простых шага для безопасной сделки онлайн
   </h5>
-  <div class="container list-action" [ngClass]="{ 'is-xl': isXlExtension }">
+  <div
+    class="container list-action"
+    [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
+  >
     <div class="row steps list-action__list">
       <div
         class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 list-action__item"
@@ -319,7 +334,7 @@
   <div
     class="card garant card-line"
     *ngIf="isHideBusinessWithGarant"
-    [ngClass]="{ 'is-xl': isXlExtension }"
+    [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
   >
     <div class="card-header garant__header">
       <div class="card-title garant__title">
@@ -349,11 +364,18 @@
   </div>
 </div>
 
-<div class="container compilation-business">
-  <h5 class="alert alert-light compilation-business__title">Подберите подходящий бизнес</h5>
+<div
+  class="container compilation-business"
+  [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
+>
+  <h5 class="alert alert-light compilation-business__title">
+    Подберите подходящий бизнес
+  </h5>
   <div class="card compilation-business__content">
     <div class="card-header compilation-business__header">
-      <div class="card-title compilation-business__card-title">Получите подборку подходящих бизнесов</div>
+      <div class="card-title compilation-business__card-title">
+        Получите подборку подходящих бизнесов
+      </div>
       <img src="" class="img-fluid compilation-business__img" alt="Мишень" />
     </div>
     <div class="card-body compilation-business__description">
@@ -361,15 +383,25 @@
         Пройдите краткий опрос, на основе вашего опыта, навыков и знаний мы
         предложим вам подходящий бизнес в форме готового бизнеса или франшиз.
       </div>
-      <button class="btn btn-primary compilation-business__catalog" routerLink="/catalog-business">Получить подборку</button>
+      <button
+        class="btn btn-primary compilation-business__catalog"
+        routerLink="/catalog-business"
+      >
+        Получить подборку
+      </button>
     </div>
   </div>
 </div>
-<div class="container sale-business">
+<div
+  class="container sale-business"
+  [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
+>
   <h5 class="alert alert-light sale-business__title">Продайте свой бизнес</h5>
   <div class="card sale-business__content">
     <div class="card-header sale-business__header">
-      <div class="card-title sale-business__card-title">Вы можете продать свой бизнес</div>
+      <div class="card-title sale-business__card-title">
+        Вы можете продать свой бизнес
+      </div>
       <img src="" class="img-fluid sale-business__img" alt="Денежный мешок" />
     </div>
     <div class="card-body sale-business__description">
@@ -377,15 +409,27 @@
         Все что вам нужно - выложить объявление в нашем каталоге, после проверки
         модераторами мы выложим его в общий доступ.
       </div>
-      <button class="btn btn-primary sale-business__action" routerLink="/catalog-business">Продать бизнес</button>
+      <button
+        class="btn btn-primary sale-business__action"
+        routerLink="/catalog-business"
+      >
+        Продать бизнес
+      </button>
     </div>
   </div>
 </div>
-<div class="container creation-business">
-  <h5 class="alert alert-light creation-business__title">Создайте свою франшизу</h5>
+<div
+  class="container creation-business"
+  [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
+>
+  <h5 class="alert alert-light creation-business__title">
+    Создайте свою франшизу
+  </h5>
   <div class="card creation-business__content">
     <div class="card-header creation-business__header">
-      <div class="card-title creation-business__card-title">Закажите упаковку франшизы у нас</div>
+      <div class="card-title creation-business__card-title">
+        Закажите упаковку франшизы у нас
+      </div>
       <img src="" class="img-fluid creation-business__img" alt="Анкета" />
     </div>
     <div class="card-body creation-business__description">
@@ -393,7 +437,9 @@
         Если ваш готовый бизнес уже имеет открытые филиалы или вы собираетесь
         заводить таковые, то вы с уверенностью можете оставлять заявку.
       </div>
-      <button class="btn btn-primary creation-business__creation">Упаковать франшизу</button>
+      <button class="btn btn-primary creation-business__creation">
+        Упаковать франшизу
+      </button>
     </div>
   </div>
 </div>

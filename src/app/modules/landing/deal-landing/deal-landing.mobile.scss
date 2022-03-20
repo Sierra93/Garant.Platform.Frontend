@@ -331,6 +331,65 @@
 }
 
 // стили для пк 1024 (1200)
+.deal {
+  &.is-xl {
+    display: flex;
+    width: 100%;
+    flex-flow: row;
+    border-radius: 24px;
+  }
+  &.is-xl &__header {
+    max-width: 220.34px;
+    order: 2;
+  }
+  &.is-xl &__description {
+    order: 1;
+  }
+  &.is-xl &__title {
+    font-size: 64px;
+    line-height: 75px;
+    margin-bottom: 8px;
+  }
+  &.is-xl &__img {
+    width: 100%;
+  }
+  &.is-xl &__business {
+    font-size: 44px;
+    line-height: 51.56px;
+    margin-bottom: 16px;
+  }
+  &.is-xl &__franchise {
+    font-size: 24px;
+    line-height: 28.13px;
+  }
+  &.is-xl &__btn-action {
+    margin: 0 !important;
+    border-radius: 4px;
+  }
+}
+
+.survey {
+  &.is-xl &__example {
+    height: 301px;
+    border-radius: 24px;
+  }
+  &.is-xl &__count {
+    font-size: 96px;
+    line-height: 112.5px;
+    margin-bottom: 16px;
+  }
+  &.is-xl &__item:nth-child(odd) {
+    padding-right: 12px;
+  }
+  &.is-xl &__item:nth-child(even) {
+    padding-left: 12px !important;
+  }
+  &.is-xl &__item:first-child,
+  &.is-xl &__item:nth-child(2) {
+    margin-bottom: 16px;
+  }
+}
+
 .note {
   &.is-xl {
     display: none;
@@ -408,7 +467,7 @@
 }
 
 .list-action {
-  &.is-xl  {
+  &.is-xl {
     height: 850px;
   }
   &.is-xl &__list {
@@ -452,9 +511,51 @@
   &.is-xl {
     margin-top: 88px;
   }
-  &.is-xl &__card-template.card-line-wrapper > .p-card { // переделать шаблон ???
-    width: 100% !important;
-    max-width: 1024px !important;
+  &.is-xl &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+  &.is-xl &__title {
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 16px;
+  }
+  &.is-xl &__description {
+    font-size: 14px;
+    line-height: 16.41px;
+    margin-bottom: 40px;
+  }
+  &.is-xl &__btn-business {
+    width: 100%;
+    max-width: 136px;
+    border-radius: 4px !important;
+    margin-right: 20px;
+  }
+  &.is-xl &__btn-clean {
+    width: 150px;
+    border-radius: 4px;
+  }
+  &.is-xl &__btn-business,
+  &.is-xl &__btn-clean {
+    margin-bottom: 24px;
+  }
+}
+
+.compilation-business {
+  &.is-xl {
+    display: none;
+  }
+}
+
+.sale-business {
+  &.is-xl {
+    display: none;
+  }
+}
+
+.creation-business {
+  &.is-xl {
+    display: none;
   }
 }
 
@@ -466,9 +567,149 @@
   }
   &.is-xl &__business-action {
     border-radius: 8px;
-
   }
 }
+
+// стили для пк 1440
+.deal {
+  &.is-xxl {
+    display: flex;
+    width: 100%;
+    flex-flow: row;
+    border-radius: 24px;
+  }
+  &.is-xxl &__header {
+    order: 2;
+  }
+  &.is-xxl &__description {
+    order: 1;
+  }
+  &.is-xxl &__title {
+    font-size: 96px;
+    line-height: 112.5px;
+    margin-bottom: 8px;
+  }
+  &.is-xll &__business {
+    font-size: 64px;
+    line-height: 75px;
+    margin-bottom: 16px;
+  }
+  &.is-xxl &__franchise {
+    font-size: 24px;
+    line-height: 28.13px;
+  }
+  &.is-xxl &__btn-action {
+    margin: 0 !important;
+    border-radius: 4px;
+  }
+}
+
+.survey {
+  &.is-xxl &__item {
+    padding-right: 8px;
+  }
+  &.is-xxl &__example {
+    height: 341px;
+    border-radius: 24px;
+  }
+  &.is-xxl &__count {
+    font-size: 89px;
+    line-height: 112.5px;
+    margin-bottom: 16px;
+  }
+  &.is-xxl &__ad {
+    font-size: 24px;
+    line-height: 28.13px;
+  }
+}
+
+.consulting {
+  &.is-xxl {
+    width: 100%;
+    margin-top: 74px;
+  }
+  &.is-xxl &__title {
+    font-size: 96px;
+    line-height: 112.5px;
+    margin-bottom: 16px;
+  }
+  &.is-xxl &__buying-business {
+    font-size: 64px;
+    line-height: 75px;
+    margin-bottom: 16px;
+  }
+  &.is-xxl &__footnote {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 48px;
+  }
+  &.is-xll &__name,
+  &.is-xxl &__phone {
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 8px;
+  }
+  &.is-xxl &__field {
+    display: inline-block;
+  }
+  &.is-xxl &__field:nth-child(4) {
+    margin-right: 16px;
+    margin-bottom: 0 !important;
+  }
+  &.is-xxl &__input-field {
+    width: 291px;
+    height: 69px;
+  }
+  &.is-xxl &__assistant {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 622px;
+    margin-right: -10%;
+  }
+  &.is-xxl &__btn-submit {
+    margin-top: 32px;
+  }
+}
+
+.user-action-title.is-xxl {
+  font-size: 32px;
+  line-height: 37.5px;
+}
+
+.list-action {
+  &.is-xxl &__list {
+    height: max-content;
+  }
+  &.is-xxl &__title {
+    font-size: 24px;
+    line-height: 28.13px;
+  }
+  &.is-xxl &__subtitle {
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 8px;
+  }
+  &.is-xxl &__stage,
+  &.is-xxl &__prompt {
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 24px;
+  }
+}
+
+.note {
+  &.is-xxl {
+    display: none;
+  }
+}
+
+// Больше 981px не обрабатывает запросы
+/*@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .note {
+    display: none;
+  }
+}*/
 
 // стили для смартфонов
 @media only screen and (min-width: 320px) and (max-width: 539px) {

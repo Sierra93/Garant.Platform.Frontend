@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { CommonDataService } from 'src/app/services/common/common-data.service';
   templateUrl: './deal-landing.component.html',
   styleUrls: ['./deal-landing.component.scss', './deal-landing.mobile.scss'],
 })
-export class DealLandingModule implements OnInit, AfterViewInit {
+export class DealLandingModule implements OnInit, DoCheck {
   aPopularBusiness: any[] = [];
   // isGarant: boolean = false;
   // aCities: any[] = [];
@@ -50,9 +50,9 @@ export class DealLandingModule implements OnInit, AfterViewInit {
   routeParam: number;
   aPopularFranchises: any[] = [];
   isHideBusinessWithGarant: boolean = true;
-  isXlExtension: boolean = false;
-  isXxlExtension: boolean = false;
-  browserScreenWidth: number = window.screen.width;
+  isXlExtension!: boolean;
+  isXxlExtension!: boolean;
+  browserScreenWidth!: number;
 
   constructor(
     private http: HttpClient,
@@ -94,6 +94,9 @@ export class DealLandingModule implements OnInit, AfterViewInit {
   }
 
   public async ngOnInit() {
+    this.isXlExtension = false;
+    this.isXxlExtension = false;
+    this.browserScreenWidth = window.screen.width;
     // await this.getPopularBusinessAsync();
     await this.GetBusinessListAsync();
     await this.loadCitiesFranchisesListAsync();
@@ -109,7 +112,7 @@ export class DealLandingModule implements OnInit, AfterViewInit {
     await this.getPopularAsync();
   }
 
-  public ngAfterViewInit(): void {
+  public ngDoCheck(): void {
     this.defineResize();
   }
 
@@ -517,10 +520,17 @@ export class DealLandingModule implements OnInit, AfterViewInit {
     }
   }
 
+  @HostListener('window:resize', ['$event'])
   private defineResize() {
-    if (this.browserScreenWidth >= 981 && this.browserScreenWidth <= 1200) {
+    this.browserScreenWidth = window.screen.width;
+    if (this.browserScreenWidth >= 981 && this.browserScreenWidth <= 1400) {
       this.isXlExtension = true;
+    } else if (this.browserScreenWidth > 1400) {
+      this.isXxlExtension = true;
     } else {
+      this.isXlExtension = false;
+      this.isXxlExtension = false;
     }
+    console.log('Ширина окна: ', this.browserScreenWidth);
   }
 }

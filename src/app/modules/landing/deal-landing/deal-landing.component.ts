@@ -523,7 +523,7 @@ export class DealLandingModule implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth >= 981 && this.browserScreenWidth <= 1400) {
+    if (this.browserScreenWidth >= 785 && this.browserScreenWidth <= 1400) {
       this.isXlExtension = true;
     } else if (this.browserScreenWidth > 1400) {
       this.isXxlExtension = true;

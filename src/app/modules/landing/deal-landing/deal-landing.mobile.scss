@@ -374,9 +374,12 @@
     border-radius: 24px;
   }
   &.is-xl &__count {
-    font-size: 96px;
+    font-size: calc((100vw - 320px) / (1920 - 320) * (89 - 32) + 32px);
     line-height: 112.5px;
     margin-bottom: 16px;
+  }
+  &.is-xl &__ad {
+    font-size: calc((100vw - 320) / (1920 - 320) * (24 - 16) + 16px);
   }
   &.is-xl &__item:nth-child(odd) {
     padding-right: 12px;
@@ -420,6 +423,9 @@
     margin-bottom: 48px;
     color: #dadada;
   }
+  &.is-xl &__content {
+    width: 100%;
+  }
   &.is-xl &__name,
   &.is-xl &__phone {
     font-size: 12px;
@@ -449,8 +455,8 @@
     pointer-events: none;
   }
   &.is-xl &__image-wrapper {
-    width: 530px;
-    height: 476px;
+    width: 100%;
+    height: 559px;
   }
   &.is-xl &__assistant-img {
     width: 100%;
@@ -613,12 +619,12 @@
     border-radius: 24px;
   }
   &.is-xxl &__count {
-    font-size: 89px;
+    font-size: 4.64vw;
     line-height: 112.5px;
     margin-bottom: 16px;
   }
   &.is-xxl &__ad {
-    font-size: 24px;
+    font-size: calc((100vw - 320) / (1920 - 320) * (24 - 16) + 16px);
     line-height: 28.13px;
   }
 }
@@ -712,7 +718,7 @@
 }*/
 
 // стили для смартфонов
-@media only screen and (min-width: 320px) and (max-width: 539px) {
+@media only screen and (min-width: 320px) and (max-width: 610px) {
   .deal {
     width: 100%;
     padding: 32px 16px;
@@ -722,7 +728,7 @@
     }
     &__title {
       width: 100%;
-      font-size: 34px; // минимальный размер шрифта
+      font-size: 34px;
     }
     &__business {
       font-size: 26.5px;
@@ -771,6 +777,10 @@
       height: 73px;
       margin-left: 27px;
     }
+    &__btn-submit {
+      width: 50%;
+      max-width: none;
+    }
   }
 
   .consulting {
@@ -808,6 +818,7 @@
     }
     &__submit {
       width: 100%;
+      font-size: 16px;
     }
     &__image-wrapper {
       display: none;
@@ -877,8 +888,7 @@
       border-radius: 4px !important;
     }
     &__btn-business {
-      width: 100%;
-      max-width: 116px;
+      width: 50%;
     }
     &__btn-clean {
       margin-left: 20px !important;
@@ -945,7 +955,7 @@
 }
 
 // стили для планшета общие
-@media only screen and (min-width: 540px) {
+@media only screen and (min-width: 611px) {
   .deal {
     &__title,
     &__business,
@@ -991,7 +1001,7 @@
 }
 
 // стили для планшетов
-@media only screen and (min-width: 540px) and (max-width: 980px) {
+@media only screen and (min-width: 611px) and (max-width: 980px) {
   .deal {
     width: calc(100% - 20px);
     display: flex;

@@ -75,6 +75,7 @@ import { SESSION_TOKEN } from "./core/session/session.token";
 import { NotifyService } from "./services/notify/notify.service";
 import { PriceFormatPipe } from './core/pipes/priceFormat.pipe';
 import { LandingRequestService } from "./modules/landing/services/landing.service";
+import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { LandingRequestService } from "./modules/landing/services/landing.servic
     NotificationsModule,
     ConfiguratorAuthModule,
     CreateAdModule,
-    PriceFormatPipe
+    PriceFormatPipe,
+    NewsComponent
   ],
 
   entryComponents: [],

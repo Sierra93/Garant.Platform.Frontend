@@ -1,0 +1,97 @@
+<!-- Новости делового мира, мой вариант -->
+<div class="container news">
+    <h5 class="alert alert-light garant title-franchise news__title">
+      Новости делового мира
+    </h5>
+    <div class="row news__content">
+      <div class="col-6 news__img-box">
+        <img
+          class="img-fluid news__img"
+          src="../../../../assets/images/news_background.png"
+          alt="Илон Маск"
+        />
+      </div>
+      <div class="col-6 news__hot-content">
+        <div class="alert alert-primary d-flex align-items-center news__item">
+          <div class="news__icon-box">
+            <img
+              src="../../../../assets/images/fireIcon.png"
+              class="img-fluid news__icon-img"
+              alt="Огонь"
+            />
+            <div class="news__img-text">
+              Открывается новая франшиза кофеен при по...
+            </div>
+          </div>
+          <div
+            class="list-group list-group-flush news__list-info"
+            *ngFor="let item of aNews"
+          >
+            <small class="list-group-item news__item-info">{{ item.time }}</small>
+            <small class="list-group-item news__item-info">{{ item.date }}</small>
+            <small class="list-group-item news__item-info">{{ item.type }}</small>
+          </div>
+        </div>
+        <div class="alert alert-primary d-flex align-items-center news__item">
+          <div class="news__icon-box">
+            <img
+              src="../../../../assets/images/handWithPen.png"
+              class="img-fluid news__icon-img"
+              alt="Рука"
+            />
+            <div class="news__img-text">
+              Федеральная сеть магазинов у дома Красное...
+            </div>
+          </div>
+          <div
+            class="list-group list-group-flush news__list-info"
+            *ngFor="let item of aNews"
+          >
+            <small class="list-group-item news__item-info">{{ item.time }}</small>
+            <small class="list-group-item news__item-info">{{ item.date }}</small>
+            <small class="list-group-item news__item-info">{{ item.type }}</small>
+          </div>
+        </div>
+        <div class="alert alert-primary d-flex align-items-center news__item">
+          <div class="news__icon-box">
+            <img
+              src="../../../../assets/images/box.png"
+              class="img-fluid news__icon-img"
+              alt="Куб"
+            />
+            <div class="news__img-text">
+              ЕР сохраняет лидерство в 199 одномандатн...
+            </div>
+          </div>
+          <div
+            class="list-group list-group-flush news__list-info"
+            *ngFor="let item of aNews"
+          >
+            <small class="list-group-item news__item-info">{{ item.time }}</small>
+            <small class="list-group-item news__item-info">{{ item.date }}</small>
+            <small class="list-group-item news__item-info">{{ item.type }}</small>
+          </div>
+        </div>
+        <div class="alert alert-primary d-flex align-items-center news__item">
+          <div class="news__icon-box">
+            <img
+              src="../../../../assets/images/fireIcon.png"
+              class="img-fluid news__icon-img"
+              alt="Огонь"
+            />
+            <div class="news__img-text">
+              Сделка по продаже крупного производства с...
+            </div>
+          </div>
+          <div
+            class="list-group list-group-flush news__list-info"
+            *ngFor="let item of aNews"
+          >
+            <small class="list-group-item news__item-info">{{ item.time }}</small>
+            <small class="list-group-item news__item-info">{{ item.date }}</small>
+            <small class="list-group-item news__item-info">{{ item.type }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

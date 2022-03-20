@@ -35,8 +35,8 @@
     <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 survey__item">
       <div class="card survey__example">
         <div class="card-body survey__content">
-          <div class="statistics-item__number survey__count">10</div>
-          <div class="statistics-item__text survey__ad">
+          <div class="card-title text-break statistics-item__number survey__count">10</div>
+          <div class="card-text text-break statistics-item__text survey__ad">
             сделок в среднем <br />
             проходит <br />
             через сервис гарант
@@ -47,8 +47,8 @@
     <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 survey__item">
       <div class="card survey__example">
         <div class="card-body survey__content">
-          <div class="statistics-item__number survey__count">35</div>
-          <div class="statistics-item__text survey__ad">
+          <div class="card-title text-break statistics-item__number survey__count">35</div>
+          <div class="card-text text-break statistics-item__text survey__ad">
             франшиз <br />
             были проданы <br />
             через сервис гарант
@@ -59,8 +59,8 @@
     <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 survey__item">
       <div class="card survey__example">
         <div class="card-body survey__content">
-          <div class="statistics-item__number survey__count">105</div>
-          <div class="statistics-item__text survey__ad">
+          <div class="card-title text-break statistics-item__number survey__count">105</div>
+          <div class="card-text text-break statistics-item__text survey__ad">
             бизнесов уже были <br />
             проданы через <br />
             сервис гарант
@@ -71,8 +71,9 @@
     <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 survey__item">
       <div class="card survey__example">
         <div class="card-body survey__content">
-          <div class="statistics-item__number survey__count">0,5-3%</div>
-          <div class="statistics-item__text survey__ad">
+          <!-- Проценты разваливаются на ширине 1545px-->
+          <div class="card-title text-break statistics-item__number survey__count">0,5-3%</div>
+          <div class="card-text text-break statistics-item__text survey__ad">
             комиссия <br />
             за использование <br />
             сервиса покупки онлайн
@@ -86,10 +87,10 @@
   class="container note"
   [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
 >
-  <h5 class="alert alert-light note__title">Покупка бизнеса с гарантиями</h5>
+  <h5 class="alert alert-light text-break note__title">Покупка бизнеса с гарантиями</h5>
   <div class="card note__description">
     <div class="card-header note__buying">
-      <div class="card-title note__buying-title">
+      <div class="card-title text-break note__buying-title">
         Покупка бизнеса любого<br />
         размера онлайн с<br />
         гарантиями
@@ -101,20 +102,20 @@
       />
     </div>
     <div class="card-body note__content">
-      <div class="card-text note__text-description">
+      <div class="card-text text-break note__text-description">
         Первый в мире сервис с функцией<br />
         приобретения франшизы или готового<br />
         бизнеса онлайн. Сервис GoBizy<br />
         предоставляет возможность купить бизнес<br />
         в несколько кликов без опасений.
       </div>
-      <div class="card-text note__text-description">
+      <div class="card-text text-break note__text-description">
         Вы можете воспользоваться сервисом<br />
         онлайн покупки и консалтингом от нашей<br />
         компании.
       </div>
       <button
-        class="btn btn-primary note__btn-submit"
+        class="btn btn-primary text-break note__btn-submit"
         routerLink="/catalog-business"
       >
         Подробнее
@@ -129,17 +130,17 @@
   >
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
           <div class="consulting-content consulting__content">
-            <div class="alert alert-light consulting__title">Консультация</div>
+            <div class="alert alert-light text-break consulting__title">Консультация</div>
             <div class="alert alert-light consulting__buying-business">
               при покупке бизнеса онлайн
             </div>
-            <div class="alert alert-light consulting__footnote">
+            <div class="alert alert-light text-break consulting__footnote">
               с юристом и консультантами сервиса
             </div>
             <div class="mb-3 consulting__field">
-              <label for="userName" class="form-label consulting__name"
+              <label for="userName" class="form-label text-break consulting__name"
                 >Имя</label
               >
               <input
@@ -151,7 +152,7 @@
               />
             </div>
             <div class="consulting__field">
-              <label for="userPhone" class="form-label consulting__phone"
+              <label for="userPhone" class="form-label text-break consulting__phone"
                 >Номер телефона</label
               >
               <input
@@ -172,14 +173,16 @@
           </div>
         </div>
         <div
-          class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 consulting__assistant"
+          class="col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2"
         >
-          <div class="consulting-image consulting__image-wrapper">
-            <img
-              class="consulting__assistant-img"
-              src="../../../../assets/images/deal-landing/template_person6 1.png"
-              alt="Фото консультанта"
-            />
+          <div class="consulting__assistant">
+            <div class="container consulting-image consulting__image-wrapper">
+              <img
+                class="img-fluid consulting__assistant-img"
+                src="../../../../assets/images/deal-landing/template_person6 1.png"
+                alt="Фото консультанта"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -188,7 +191,7 @@
 </div>
 <div class="container">
   <h5
-    class="steps-header user-action-title alert alert-light"
+    class="alert alert-light text-break steps-header user-action-title"
     [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
   >
     4 простых шага для безопасной сделки онлайн
@@ -210,19 +213,19 @@
             />
           </div>
           <div class="card-body list-action__step">
-            <div class="steps-item__title list-action__title">
+            <div class="card-text text-break steps-item__title list-action__title">
               Выбрать бизнес
             </div>
-            <div class="steps-item__subtitle list-action__subtitle">
+            <div class="card-text text-break steps-item__subtitle list-action__subtitle">
               или франшизу
             </div>
-            <div class="steps-item__stage list-action__stage">Шаг 1</div>
-            <div class="steps-item__text list-action__prompt">
+            <div class="card-text text-break steps-item__stage list-action__stage">Шаг 1</div>
+            <div class="card-text text-break steps-item__text list-action__prompt">
               Воспользуйтесь каталогом для удобного и быстрого поиска по вашим
               параметрам.
             </div>
             <button
-              class="btn btn-light steps-item__button list-action__launch"
+              class="btn btn-light text-break steps-item__button list-action__launch"
             >
               Начать поиск
             </button>
@@ -241,19 +244,19 @@
             />
           </div>
           <div class="card-body list-action__step">
-            <div class="steps-item__title list-action__title">
+            <div class="card-text text-break steps-item__title list-action__title">
               Пройти регистрацию
             </div>
-            <div class="steps-item__subtitle list-action__subtitle">
+            <div class="card-text text-break steps-item__subtitle list-action__subtitle">
               на нашем портале
             </div>
-            <div class="steps-item__stage list-action__stage">Шаг 2</div>
-            <div class="steps-item__text list-action__prompt">
+            <div class="card-text text-break steps-item__stage list-action__stage">Шаг 2</div>
+            <div class="card-text text-break steps-item__text list-action__prompt">
               Вы можете пройти быструю регистрацию до начала выбора бизнеса или
               во время.
             </div>
             <button
-              class="btn btn-light steps-item__button list-action__launch"
+              class="btn btn-light text-break steps-item__button list-action__launch"
             >
               Пройти регистрацию
             </button>
@@ -274,19 +277,19 @@
             />
           </div>
           <div class="card-body list-action__step">
-            <div class="steps-item__title list-action__title">
+            <div class="card-text text-break steps-item__title list-action__title">
               Начать сделку
             </div>
-            <div class="steps-item__subtitle list-action__subtitle">
+            <div class="card-text text-break steps-item__subtitle list-action__subtitle">
               и распланировать этапы сделки
             </div>
-            <div class="steps-item__stage list-action__stage">Шаг 3</div>
-            <div class="steps-item__text list-action__prompt">
+            <div class="card-text text-break steps-item__stage list-action__stage">Шаг 3</div>
+            <div class="card-text text-break steps-item__text list-action__prompt">
               Вы сможете распланировать онлайн сделку посредством сервиса
               гарант.
             </div>
             <button
-              class="btn btn-light steps-item__button list-action__launch"
+              class="btn btn-light text-break steps-item__button list-action__launch"
             >
               Начать сделку
             </button>
@@ -307,19 +310,19 @@
             />
           </div>
           <div class="card-body list-action__step">
-            <div class="steps-item__title list-action__title">
+            <div class="card-text text-break steps-item__title list-action__title">
               Провести оплату
             </div>
-            <div class="steps-item__subtitle list-action__subtitle">
+            <div class="card-text text-break steps-item__subtitle list-action__subtitle">
               по каждому этапу
             </div>
-            <div class="steps-item__stage list-action__stage">Шаг 4</div>
-            <div class="steps-item__text list-action__prompt">
+            <div class="card-text text-break steps-item__stage list-action__stage">Шаг 4</div>
+            <div class="card-text text-break steps-item__text list-action__prompt">
               После оплаты каждого этапа вы становитесь полноправным владельцем
               бизнеса
             </div>
             <button
-              class="btn btn-light steps-item__button list-action__launch"
+              class="btn btn-light text-break steps-item__button list-action__launch"
             >
               Получить консультацию
             </button>
@@ -337,7 +340,7 @@
     [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
   >
     <div class="card-header garant__header">
-      <div class="card-title garant__title">
+      <div class="card-title text-break garant__title">
         Вы можете приобрести бизнес с гарантиями
       </div>
       <div class="garant__btn-close-box">
@@ -345,16 +348,16 @@
       </div>
     </div>
     <div class="card-body garant__content">
-      <div class="card-text garant__description">{{ oSuggestion.text }}</div>
+      <div class="card-text text-break garant__description">{{ oSuggestion.text }}</div>
       <div class="btn-group garant__btn-group">
         <button
-          class="btn btn-primary garant__btn-business"
+          class="btn btn-primary text-break garant__btn-business"
           routerLink="/catalog-business"
         >
           {{ oSuggestion.button2Text }}
         </button>
         <button
-          class="btn btn-light btn-show-more garant__btn-clean"
+          class="btn btn-light text-break btn-show-more garant__btn-clean"
           (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
         >
           {{ oSuggestion.button1Text }}
@@ -368,23 +371,23 @@
   class="container compilation-business"
   [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
 >
-  <h5 class="alert alert-light compilation-business__title">
+  <h5 class="alert alert-light text-break compilation-business__title">
     Подберите подходящий бизнес
   </h5>
   <div class="card compilation-business__content">
     <div class="card-header compilation-business__header">
-      <div class="card-title compilation-business__card-title">
+      <div class="card-title text-break compilation-business__card-title">
         Получите подборку подходящих бизнесов
       </div>
       <img src="" class="img-fluid compilation-business__img" alt="Мишень" />
     </div>
     <div class="card-body compilation-business__description">
-      <div class="card-text compilation-business__text">
+      <div class="card-text text-break compilation-business__text">
         Пройдите краткий опрос, на основе вашего опыта, навыков и знаний мы
         предложим вам подходящий бизнес в форме готового бизнеса или франшиз.
       </div>
       <button
-        class="btn btn-primary compilation-business__catalog"
+        class="btn btn-primary text-break compilation-business__catalog"
         routerLink="/catalog-business"
       >
         Получить подборку
@@ -396,21 +399,21 @@
   class="container sale-business"
   [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
 >
-  <h5 class="alert alert-light sale-business__title">Продайте свой бизнес</h5>
+  <h5 class="alert alert-light text-break sale-business__title">Продайте свой бизнес</h5>
   <div class="card sale-business__content">
     <div class="card-header sale-business__header">
-      <div class="card-title sale-business__card-title">
+      <div class="card-title text-break sale-business__card-title">
         Вы можете продать свой бизнес
       </div>
       <img src="" class="img-fluid sale-business__img" alt="Денежный мешок" />
     </div>
     <div class="card-body sale-business__description">
-      <div class="card-text sale-business__text">
+      <div class="card-text text-break sale-business__text">
         Все что вам нужно - выложить объявление в нашем каталоге, после проверки
         модераторами мы выложим его в общий доступ.
       </div>
       <button
-        class="btn btn-primary sale-business__action"
+        class="btn btn-primary text-break sale-business__action"
         routerLink="/catalog-business"
       >
         Продать бизнес
@@ -422,22 +425,22 @@
   class="container creation-business"
   [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
 >
-  <h5 class="alert alert-light creation-business__title">
+  <h5 class="alert alert-light text-break creation-business__title">
     Создайте свою франшизу
   </h5>
   <div class="card creation-business__content">
     <div class="card-header creation-business__header">
-      <div class="card-title creation-business__card-title">
+      <div class="card-title text-break creation-business__card-title">
         Закажите упаковку франшизы у нас
       </div>
       <img src="" class="img-fluid creation-business__img" alt="Анкета" />
     </div>
     <div class="card-body creation-business__description">
-      <div class="card-text creation-business__text">
+      <div class="card-text text-break creation-business__text">
         Если ваш готовый бизнес уже имеет открытые филиалы или вы собираетесь
         заводить таковые, то вы с уверенностью можете оставлять заявку.
       </div>
-      <button class="btn btn-primary creation-business__creation">
+      <button class="btn btn-primary text-break creation-business__creation">
         Упаковать франшизу
       </button>
     </div>
@@ -487,14 +490,14 @@
         [ngClass]="{ 'is-alone': i >= 2 }"
       >
         <div class="card-header selection__header-service">
-          <div class="card-title selection__service-title">
+          <div class="card-title text-break selection__service-title">
             {{ item.title }}
           </div>
         </div>
         <div class="card-body selection__business-action">
-          <div class="card-text selection__subtitle">{{ item.subTitle }}</div>
-          <div class="card-text selection__service-text">{{ item.text }}</div>
-          <button class="btn btn-primary selection__btn-action">
+          <div class="card-text text-break selection__subtitle">{{ item.subTitle }}</div>
+          <div class="card-text text-break selection__service-text">{{ item.text }}</div>
+          <button class="btn btn-primary text-break selection__btn-action">
             {{ item.buttonText }}
           </button>
         </div>
@@ -506,7 +509,7 @@
 <!-- Популярные франшизы -->
 <!-- Нужно узнать, как создать карусель на Ангуляр -->
 <div class="container popular-franchise">
-  <h5 class="alert alert-light popular-franchise__title">
+  <h5 class="alert alert-light text-break popular-franchise__title">
     Популярные франшизы
   </h5>
   <div class="row section-mb">

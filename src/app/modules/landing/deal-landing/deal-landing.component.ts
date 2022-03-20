@@ -134,7 +134,7 @@ export class DealLandingModule implements OnInit, AfterViewInit {
 
   /**
    * Функция отфильтрует список бизнеса по фильтрам.
-   * @param viewCode - Код вида бизнеса.
+   * @ploram viewCode - Код вида бизнеса.
    * @param categoryCode - Код категории бизнеса.
    * @param cityCode - Город бизнеса.
    * @param minPrice - Цена от.

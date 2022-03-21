@@ -1,5 +1,5 @@
 export const API_URL = {
-     // apiUrl: "http://localhost:9991",
-    apiUrl: "https://gobizy.online" 
-     //apiUrl: "https://gobizy.space" 
-}; 
+    // apiUrl: "http://localhost:9991",
+    apiUrl: "https://gobizy.online"  
+//     apiUrl: "https://gobizy.space" 
+};

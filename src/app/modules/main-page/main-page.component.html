@@ -12,12 +12,17 @@
             <div class="product-item-content">
               <div class="p-mb-3">
                 <img [src]="item.url" class="product-image">
+                <!-- <button class="carousel-button--prev">
+                  <img src="../../../assets/images/arrow-prev.svg" alt="">
+                </button>
+                <button class="carousel-button--next">
+                  <img src="../../../assets/images/arrow-next.svg" alt="">
+                </button> -->
               </div>
               <div>
                 <p-card header="{{item.name}}" subheader="{{item.text}}" [style]="{width: '100%'}"
                   styleClass="p-card-shadow">
                   <ng-template pTemplate="header">
-                    <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
                   </ng-template>
                   <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
                   <ng-template pTemplate="footer">

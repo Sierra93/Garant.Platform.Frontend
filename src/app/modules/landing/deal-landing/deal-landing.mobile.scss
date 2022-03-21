@@ -85,7 +85,7 @@
     line-height: 16.41px;
   }
   &__btn-submit {
-    max-width: 115px;
+    max-width: 50%;
     height: 51px;
     padding: 16px;
     margin-left: 0;
@@ -314,18 +314,12 @@
     border-radius: 24px;
   }
   &.is-xl &__count {
-    font-size: calc((100vw - 320px) / (1920 - 320) * (89 - 32) + 32px);
+    font-size: 4.38vw;
     line-height: 112.5px;
     margin-bottom: 16px;
   }
   &.is-xl &__ad {
     font-size: calc((100vw - 320) / (1920 - 320) * (24 - 16) + 16px);
-  }
-  &.is-xl &__item:nth-child(odd) {
-    padding-right: 12px;
-  }
-  &.is-xl &__item:nth-child(even) {
-    padding-left: 12px !important;
   }
   &.is-xl &__item:first-child,
   &.is-xl &__item:nth-child(2) {
@@ -342,7 +336,7 @@
 .consulting {
   &.is-xl {
     width: 100%;
-    height: 522.5px;
+    height: max-content;
     border-radius: 24px;
     padding: 44px;
     margin: 80px auto 64px;
@@ -364,7 +358,7 @@
     color: #dadada;
   }
   &.is-xl &__content {
-    width: 100%;
+    width: max-content;
   }
   &.is-xl &__name,
   &.is-xl &__phone {
@@ -396,13 +390,15 @@
   }
   &.is-xl &__image-wrapper {
     width: 100%;
-    height: 559px;
+    height: max-content;
   }
   &.is-xl &__assistant-img {
     width: 100%;
   }
   &.is-xl &__submit {
+    width: 398px;
     margin-top: 32px;
+    font-size: 18px;
   }
 }
 
@@ -552,7 +548,7 @@
     border-radius: 24px;
   }
   &.is-xxl &__count {
-    font-size: 86px;
+    font-size: 83px;
     line-height: 112.5px;
     margin-bottom: 16px;
   }
@@ -633,6 +629,9 @@
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 8px;
+  }
+  &.is-xl &__item {
+    width: 50%;
   }
   &.is-xxl &__item &__card {
     background: #f5f8fa;
@@ -903,12 +902,6 @@
     &__example {
       border: none;
     }
-    &__item:nth-child(odd) {
-      padding-left: 0;
-    }
-    &__item:nth-child(even) {
-      padding: 0;
-    }
     &__ad {
       text-align: center;
     }
@@ -924,6 +917,9 @@
     &__image-wrapper {
       margin-top: 0;
     }
+    &__assistant-image {
+      height: auto;
+    }
   }
 
   .selection {
@@ -932,6 +928,8 @@
     }
   }
 }
+
+
 
 // стили для планшетов
 @media only screen and (min-width: 611px) and (max-width: 980px) {
@@ -1038,7 +1036,7 @@
     height: 609px;
     margin-bottom: 37px;
     &__content {
-      width: 100%;
+      width: 429px;
     }
     &__title {
       font-size: 60px;
@@ -1056,17 +1054,20 @@
       height: 66px;
     }
     &__field {
+      width: 50%;
       margin-bottom: 30px;
     }
     &__assistant {
       position: absolute;
       right: 0;
       bottom: 0;
+      margin-right: -130px;
     }
     &__submit {
       display: flex;
-      width: 100%;
+      width: 50%;
       justify-content: flex-start;
+      font-size: 14px;
     }
   }
 

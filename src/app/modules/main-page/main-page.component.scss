@@ -4,13 +4,14 @@
 @import "/src/app/shared/styles/franchuse-styles.scss";
 
 // Карусель.
-.product-item {
+.carousel-block {
+  margin: auto;
+}
+.product-item:not(:last-child) {
   .product-item-content {
-    // border: 1px solid var(--surface-d);
     border-radius: 3px;
     margin-right: 20px;
     text-align: center;
-    // padding: 2rem 0;
     padding: 0;
   }
 
@@ -45,11 +46,6 @@
   margin: 0 auto;
 }
 
-// .btn-dark {
-//   margin-top: 68px;
-//   padding: 16px;
-// }
-
 .cards-popup {
   margin: 0 10px;
 }
@@ -73,9 +69,11 @@
 ::ng-deep .business-garanteese .p-card-content {
   padding: 0;
 }
-
+::ng-deep .p-card-content {
+  padding: 0;
+}
 ::ng-deep .p-card .p-card-body {
-  margin: 0 auto;
+  margin: 0;
 }
 
 ::ng-deep .business-garanteese .p-card .p-card-header {
@@ -192,6 +190,19 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
+  ::ng-deep .right {
+    .p-card-title {
+      font-size: 14px !important;
+    }
+  }
+  .right-block-img {
+    width: 61px;
+    height: 91px;
+    margin: 0 20px 0 10px;
+  }
+  .right-images {
+    width: 100%;
+  }
 }
 
 /* Smartphones (landscape) ----------- */
@@ -574,6 +585,21 @@
     font-size: 1rem;
   }
 }
+// Закоментировал 10.03.22
+// @media (max-width: 992px) {
+//   .carousel-block {
+//     flex-direction: column-reverse;
+//     background: #2c2c2c;
+
+//     .right {
+//       margin-bottom: 2.25rem;
+//     }
+
+//     [class^="col"] {
+//       width: 100%;
+//     }
+//   }
+// }
 
 @media (max-width: 992px) {
   .carousel-block {

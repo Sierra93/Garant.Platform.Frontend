@@ -215,7 +215,7 @@
   }
 }
 
-.compilation-business {
+.choice-action {
   &__content {
     background: rgba(218, 218, 218, 0.15);
     border-radius: 8px;
@@ -239,66 +239,6 @@
     color: #7a7a7a;
   }
   &__catalog {
-    margin-top: 24px;
-    margin-left: 0;
-    border-radius: 4px;
-  }
-}
-
-.sale-business {
-  &__content {
-    background: rgba(218, 218, 218, 0.15);
-    border-radius: 8px;
-    border: none;
-  }
-  &__header {
-    display: flex;
-    background: transparent;
-    border: none;
-    padding-bottom: 0;
-    margin-bottom: 16px;
-  }
-  &__card-title {
-    font-weight: 600;
-    margin-bottom: 0;
-  }
-  &__description {
-    padding-top: 0;
-  }
-  &__text {
-    color: #7a7a7a;
-  }
-  &__action {
-    margin-top: 24px;
-    margin-left: 0;
-    border-radius: 4px;
-  }
-}
-
-.creation-business {
-  &__content {
-    background: rgba(218, 218, 218, 0.15);
-    border-radius: 8px;
-    border: none;
-  }
-  &__header {
-    display: flex;
-    background: transparent;
-    border: none;
-    padding-bottom: 0;
-    margin-bottom: 16px;
-  }
-  &__card-title {
-    font-weight: 600;
-    margin-bottom: 0;
-  }
-  &__description {
-    padding-top: 0;
-  }
-  &__text {
-    color: #7a7a7a;
-  }
-  &__creation {
     margin-top: 24px;
     margin-left: 0;
     border-radius: 4px;
@@ -473,8 +413,11 @@
 }
 
 .list-action {
+  &.is-xl &__step {
+    padding-bottom: 24px;
+  }
   &.is-xl {
-    height: 850px;
+    height: 845px;
   }
   &.is-xl &__list {
     margin-left: auto;
@@ -482,6 +425,9 @@
   }
   &.is-xl &__item {
     max-width: 500px;
+  }
+  &.is-xl &__item:first-child &__card {
+    background: #f5f8fa;
   }
   &.is-xl &__image-box {
     width: 127px;
@@ -506,7 +452,7 @@
     margin-bottom: 24px;
   }
   &.is-xl &__prompt {
-    width: 452px;
+    width: auto;
     font-size: 18px;
     line-height: 21px;
     margin-bottom: 24px;
@@ -515,7 +461,7 @@
 
 .garant {
   &.is-xl {
-    margin-top: 88px;
+    margin-top: 74px;
   }
   &.is-xl &__header {
     display: flex;
@@ -547,32 +493,19 @@
   }
 }
 
-.compilation-business {
-  &.is-xl {
-    display: none;
-  }
-}
-
-.sale-business {
-  &.is-xl {
-    display: none;
-  }
-}
-
-.creation-business {
-  &.is-xl {
-    display: none;
-  }
-}
-
-.selection {
-  &.is-xl &__service-title {
+.choice-action {
+  &__title {
+    padding-left: 0;
+    padding-bottom: 0;
     font-size: 21px;
     line-height: 24.61px;
     margin-bottom: 24px;
   }
-  &.is-xl &__business-action {
-    border-radius: 8px;
+}
+
+.selection {
+  &.is-xl {
+    display: none;
   }
 }
 
@@ -619,7 +552,7 @@
     border-radius: 24px;
   }
   &.is-xxl &__count {
-    font-size: 4.64vw;
+    font-size: 86px;
     line-height: 112.5px;
     margin-bottom: 16px;
   }
@@ -667,11 +600,13 @@
     height: 69px;
   }
   &.is-xxl &__assistant {
+    position: static;
+  }
+  &.is-xxl &__assistant-img {
     position: absolute;
-    right: 0;
     bottom: 0;
-    max-width: 622px;
-    margin-right: -10%;
+    right: 0;
+    margin-right: -150px;
   }
   &.is-xxl &__btn-submit {
     margin-top: 32px;
@@ -684,6 +619,9 @@
 }
 
 .list-action {
+  &.is-xxl &__step {
+    padding-bottom: 24px;
+  }
   &.is-xxl &__list {
     height: max-content;
   }
@@ -695,6 +633,9 @@
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 8px;
+  }
+  &.is-xxl &__item &__card {
+    background: #f5f8fa;
   }
   &.is-xxl &__stage,
   &.is-xxl &__prompt {
@@ -710,11 +651,37 @@
   }
 }
 
-// Больше 981px не обрабатывает запросы
-/*@media screen and (min-width: 992px) and (max-width: 1200px) {
-  .note {
+.selection {
+  &.is-xxl {
     display: none;
   }
+}
+
+.choice-action {
+  &.is-xxl &__title {
+    padding-left: 0;
+    padding-bottom: 0;
+    font-size: 24px;
+    line-height: 28.13px;
+    margin-bottom: 32px;
+  }
+  &.is-xxl &__card-title {
+    font-size: 18px;
+    line-height: 21.09px;
+    margin-bottom: 16px;
+  }
+  &.is-xxl &__text {
+    font-size: 14px;
+    line-height: 16.41px;
+    margin-bottom: 51px;
+  }
+}
+
+// Больше 981px не обрабатывает запросы
+/*@media screen and (min-width: 992px) and (max-width: 1200px) {
+.note {
+  display: none;
+}
 }*/
 
 // стили для смартфонов
@@ -895,41 +862,7 @@
     }
   }
 
-  .compilation-business {
-    margin-top: 24px;
-    &__title {
-      font-size: 19px;
-      line-height: 22px;
-      margin-bottom: 16px;
-    }
-    &__card-title {
-      font-size: 17px;
-      line-height: 20px;
-    }
-    &__text {
-      font-size: 14px;
-      line-height: 16px;
-    }
-  }
-
-  .sale-business {
-    margin-top: 24px;
-    &__title {
-      font-size: 19px;
-      line-height: 22px;
-      margin-bottom: 16px;
-    }
-    &__card-title {
-      font-size: 17px;
-      line-height: 20px;
-    }
-    &__text {
-      font-size: 14px;
-      line-height: 16px;
-    }
-  }
-
-  .creation-business {
+  .choice-action {
     margin-top: 24px;
     &__title {
       font-size: 19px;
@@ -1177,9 +1110,7 @@
     }
   }
 
-  .compilation-business,
-  .sale-business,
-  .creation-business {
+  .choice-action {
     display: none;
   }
 

@@ -525,12 +525,13 @@ export class DealLandingModule implements OnInit, DoCheck {
     this.browserScreenWidth = window.screen.width;
     if (this.browserScreenWidth >= 785 && this.browserScreenWidth <= 1400) {
       this.isXlExtension = true;
+      this.isXxlExtension = false;
     } else if (this.browserScreenWidth > 1400) {
       this.isXxlExtension = true;
+      this.isXlExtension = false;
     } else {
       this.isXlExtension = false;
       this.isXxlExtension = false;
     }
-    console.log('Ширина окна: ', this.browserScreenWidth);
   }
 }

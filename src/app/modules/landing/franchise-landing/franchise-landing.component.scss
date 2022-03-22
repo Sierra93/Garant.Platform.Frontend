@@ -1,13 +1,4 @@
-// @import "/src/app/shared/styles/franchuse-styles.scss";
-// @import "/src/app/app.component.scss";
-// @import "/src/app/shared/styles/image-space.scss";
-// @import "/src/app/shared/styles/common.scss";
-// @import "/src/app/shared/styles/media-quaries.scss";
-// @import "/src/app/modules/main-page/main-page.component.scss";
-
 @use "/src/app/app.component.scss";
-// @import "/src/app/shared/styles/image-space.scss";
-// @import "/src/app/shared/styles/common.scss";
 @use "/src/app/modules/main-page/main-page.component.scss";
 @use "../../../../app/shared/styles" as *;
 @use "../../../../app/shared/styles/base" as *;
@@ -527,157 +518,6 @@ strong {
   color: #2c2c2c;
 }
 
-// .count-franchise {
-//   display: block;
-//   font-family: "Roboto", sans-serif;
-//   font-size: 0.875rem;
-//   font-weight: 400;
-//   color: #7a7a7a;
-//   text-align: end;
-// }
-
-// .business-search {
-//   display: flex;
-//   gap: 24px;
-// }
-
-// .franchise-list {
-//   flex-wrap: wrap;
-// }
-
-// .block-catalog {
-//   padding-top: 64px;
-// }
-
-// .catalog-item {
-//   padding-top: 24px;
-// }
-
-// .control-filter-franchise {
-//   width: 160px;
-// }
-
-// .switch-garant {
-//   padding-top: 50px;
-// }
-
-// .control-input-filter-price {
-//   width: 160px;
-//   margin: 0px 10px 0 0;
-// }
-
-// .control-input-price {
-//   display: block;
-//   width: 342px;
-//   height: 48px;
-//   padding: 16px;
-//   border: none;
-//   border-radius: 6px;
-//   background-color: #f1f6ff;
-//   font-family: "Roboto", sans-serif;
-//   font-size: 0.875rem;
-//   font-weight: 400;
-//   // margin: 0 24px 0 0;
-// }
-
-// .block-title-franchise {
-//   display: flex;
-//   justify-content: space-between;
-// }
-
-// ::ng-deep .p-dropdown {
-//   display: block;
-//   width: 342px;
-//   height: 48px;
-//   // padding: 16px;
-//   border-radius: 6px;
-//   background-color: #f1f6ff;
-//   border: none;
-
-//   &-label {
-//     display: inline-block;
-//     width: 288px;
-//     font-family: "Roboto", sans-serif;
-//     font-size: 0.875rem;
-//     font-weight: 400;
-//     margin: 16px 10px 16px 16px !important;
-//     padding: 0 !important;
-//     line-height: 16px !important;
-//     // margin-right: 10px !important;
-//   }
-
-//   &-clear-icon {
-//     display: none;
-//   }
-
-//   &-trigger {
-//     position: absolute !important;
-//     top: 18px !important;
-//     display: inline-block !important;
-//     // display: flex !important;
-//     // justify-content: center !important;
-//     // align-items: center !important;
-//     margin: 0 !important;
-//     padding: 0 !important;
-//     width: 12px !important;
-//     height: 12px !important;
-//     border: none !important;
-
-//     &-icon {
-//       position: absolute !important;
-//       display: inline-block;
-//       // position: relative !important;
-//       // display: flex !important;
-//       // justify-content: center !important;
-//       // align-items: center !important;
-//       width: 12px !important;
-//       height: 12px !important;
-//       font-size: 12px !important;
-//       border: none !important;
-//       // margin: 0 !important;
-//       // padding: 0 !important;
-//       color: #2c2c2c !important;
-//     }
-//   }
-// }
-
-// ::ng-deep .block-sort-by .p-dropdown {
-//   background-color: white !important;
-// }
-
-// .garant-buy {
-//   display: flex;
-//   align-items: center;
-// }
-
-// .flag-garant {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   // margin-left: 380px;
-//   margin-left: 16px;
-//   margin-bottom: 16px;
-//   width: 79px;
-//   height: 46px;
-//   padding: 2px;
-//   border-radius: 47px;
-// }
-
-// .control-input-filter-price {
-//   display: block;
-//   width: 163px;
-//   height: 48px;
-//   margin: 0;
-//   padding: 16px;
-//   border: none;
-//   border-radius: 6px;
-//   background-color: #f1f6ff;
-//   font-family: "Roboto", sans-serif;
-//   font-size: 0.875rem;
-//   font-weight: 400;
-//   // margin: 0 24px 0 0;
-// }
-
 .popular-list {
   flex-wrap: wrap;
   width: 1074px;
@@ -685,12 +525,12 @@ strong {
 }
 
 ::ng-deep .p-card {
-  width: 331.33px !important;
-  height: 359px !important;
-  border-radius: 4px !important;
+  width: 331.33px;
+  height: 359px;
+  border-radius: 4px;
 
   &-header {
-    width: 331.33px !important;
+    width: 331.33px;
     height: 162px;
     margin-bottom: 24px;
 
@@ -701,105 +541,105 @@ strong {
   }
 
   &-body {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
   }
 
   &-title {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 1.125rem !important;
-    font-weight: 500 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    margin-left: 8px !important;
-    margin-bottom: 8px !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    margin-left: 8px;
+    margin-bottom: 8px;
   }
 
   &-subtitle {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 0.75rem !important;
-    font-weight: 400 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    margin-left: 8px !important;
-    margin-bottom: 24px !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    margin-left: 8px;
+    margin-bottom: 24px;
     line-height: 14px;
   }
 
   &-content {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 1.125rem !important;
-    font-weight: 400 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    margin-left: 8px !important;
-    margin-bottom: 24px !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    margin-left: 8px;
+    margin-bottom: 24px;
     line-height: 21px;
   }
 
   &-footer {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
   }
 }
 
 ::ng-deep .card-line-wrapper .p-card {
-  width: 1440px !important;
-  height: 194.5px !important;
-  border-radius: 4px !important;
+  width: 1440px;
+  height: 194.5px;
+  border-radius: 4px;
   padding: 24px;
-  background-color: #f1f6ff !important;
+  background-color: #f1f6ff;
 
   &-header {
-    position: relative !important;
-    display: block !important;
-    width: 1392px !important;
-    font-family: "Roboto", sans-serif !important;
-    font-size: 1.125rem !important;
-    font-weight: 400 !important;
+    position: relative;
+    display: block;
+    width: 1392px;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
     height: 21px;
-    margin: 0 !important;
-    padding: 0 !important;
-    margin-bottom: 16px !important;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 16px;
 
     strong {
       color: #000000;
     }
 
     .close {
-      position: absolute !important;
-      right: 2px !important;
-      top: -2px !important;
-      width: 16px !important;
-      height: 16px !important;
-      color: #646464 !important;
-      font-size: 16px !important;
+      position: absolute;
+      right: 2px;
+      top: -2px;
+      width: 16px;
+      height: 16px;
+      color: #646464;
+      font-size: 16px;
 
       span {
-        display: block !important;
-        width: 16px !important;
-        height: 16px !important;
-        color: #646464 !important;
-        font-size: 16px !important;
-        line-height: 16px !important;
+        display: block;
+        width: 16px;
+        height: 16px;
+        color: #646464;
+        font-size: 16px;
+        line-height: 16px;
       }
     }
   }
 
   &-content {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 0.875rem !important;
-    font-weight: 400 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    // margin-left: 8px !important;
-    margin-bottom: 40px !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    // margin-left: 8px;
+    margin-bottom: 40px;
     line-height: 16px;
   }
 
   &-footer {
     .btn {
-      margin: 0 !important;
+      margin: 0;
 
       &-dark {
         background-color: #1f1f1f;
@@ -1061,60 +901,60 @@ strong {
 }
 
 ::ng-deep .three-cards-wrapper .p-card {
-  width: 464px !important;
-  height: 335px !important;
+  width: 464px;
+  height: 335px;
   background-color: white;
-  // border-radius: 4px !important;
+  // border-radius: 4px;
   // padding: 24px;
 
   &-body {
-    width: 464px !important;
-    height: 335px !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    width: 464px;
+    height: 335px;
+    margin: 0;
+    padding: 0;
   }
 
   &-header {
-    display: none !important;
+    display: none;
   }
 
   &-title {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 1.5rem !important;
-    font-weight: 400 !important;
-    color: #2c2c2c !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    margin-bottom: 32px !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #2c2c2c;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 32px;
   }
 
   &-subtitle {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 1.125rem !important;
-    font-weight: 400 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    padding-left: 24px !important;
-    padding-top: 24px !important;
-    padding-bottom: 16px !important;
-    line-height: 21px !important;
-    background-color: #f1f1f1 !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    padding-left: 24px;
+    padding-top: 24px;
+    padding-bottom: 16px;
+    line-height: 21px;
+    background-color: #f1f1f1;
   }
 
   &-content {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 0.875rem !important;
-    font-weight: 400 !important;
-    // width: 342.8px !important;
-    min-height: 48px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    padding-left: 24px !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    // width: 342.8px;
+    min-height: 48px;
+    margin: 0;
+    padding: 0;
+    padding-left: 24px;
 
-    // margin-left: 8px !important;
-    padding-bottom: 68px !important;
+    // margin-left: 8px;
+    padding-bottom: 68px;
     // line-height: 16px;
-    background-color: #f1f1f1 !important;
+    background-color: #f1f1f1;
 
     p {
       padding-right: 97.19px;
@@ -1123,8 +963,8 @@ strong {
   }
 
   &-footer {
-    background-color: #f1f1f1 !important;
-    padding-bottom: 44.78px !important;
+    background-color: #f1f1f1;
+    padding-bottom: 44.78px;
 
     .btn {
       margin-left: 24px;
@@ -1144,12 +984,12 @@ strong {
 }
 
 ::ng-deep .popular-item-blog-wrapper1 .p-card {
-  width: 342px !important;
-  height: 208px !important;
-  border-radius: 0 !important;
+  width: 342px;
+  height: 208px;
+  border-radius: 0;
 
   &-header {
-    width: 342px !important;
+    width: 342px;
     height: 162px;
     margin-bottom: 25px;
 
@@ -1160,13 +1000,13 @@ strong {
   }
 
   &-title {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 1.125rem !important;
-    font-weight: 400 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    color: #2c2c2c !important;
-    line-height: 21px !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    color: #2c2c2c;
+    line-height: 21px;
   }
 
   &-content {
@@ -1175,37 +1015,37 @@ strong {
 }
 
 ::ng-deep .popular-item-blog-wrapper2 .p-card {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 342px !important;
-  height: 208px !important;
-  border-radius: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 342px;
+  height: 208px;
+  border-radius: 0;
   padding: 24px;
   background-color: #f1f1f1;
 
   &-header {
-    display: none !important;
+    display: none;
   }
 
   &-title {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 1.125rem !important;
-    font-weight: 400 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    margin-bottom: 16px !important;
-    color: #2c2c2c !important;
-    line-height: 21px !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 16px;
+    color: #2c2c2c;
+    line-height: 21px;
   }
 
   &-content {
-    font-family: "Roboto", sans-serif !important;
-    font-size: 0.875rem !important;
-    font-weight: 400 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    color: #646464 !important;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    color: #646464;
 
     .d-flex {
       gap: 10px;

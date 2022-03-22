@@ -28,7 +28,7 @@
   <h5 class="garant title-franchise">Популярный бизнес</h5>
 
   <div
-    class="popular-item blog-item col--xxl-3 col-xl-3 col-lg-6 col-md-6"
+    class="catalog-business__header-card popular-item blog-item col--xxl-3 col-xl-3 col-lg-6 col-md-6"
     *ngFor="let item of aPopularBusiness"
   >
     <p-card
@@ -213,7 +213,7 @@
   </div>
 </div> -->
 
-  <div class="d-flex popular-list">
+  <div class="catalog-business__body-card d-flex popular-list">
     <div class="popular-item" *ngFor="let item of aBusinessList">
       <p-card
         header="{{ item.title }}"
@@ -225,12 +225,17 @@
           <img [src]="item.url" />
         </ng-template>
         <strong>{{ item.textDoPrice }} {{ item.price | priceFormat:item.price }} ₽</strong>
-        <ng-template pTemplate="footer">
+        <ng-template pTemplate="footer" class="d-flex">
           <button
-            class="btn btn-default btn-filter"
+            class="catalog-business-btn btn btn-default btn-filter"
             (click)="routeViewFranchiseCardAsync(item.businessId)"
           >
             Подробнее
+          </button>
+          <button
+            class="catalog-business-btn1 btn btn-default btn-filter"
+          >
+            Купить онлайн
           </button>
         </ng-template>
       </p-card>
@@ -309,7 +314,7 @@
                   <p-card header="Название готового бизнеса" subheader="{{item.fullText}}"
                     [style]="{width: '100%'}" styleClass="p-card-shadow">
                     <ng-template pTemplate="header">
-                      
+
                     </ng-template>
                     <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
                     <ng-template pTemplate="footer">
@@ -324,7 +329,7 @@
 </div>
 
 <div class="col-lg-4">
-  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5> 
+  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
   <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" styleClass="card">
     <ng-template pTemplate="header">
 

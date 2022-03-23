@@ -29,6 +29,7 @@ export class ProfileDialogMessagesModule implements OnInit, AfterViewChecked {
     dialogId: number = 0;
     chatItemUrl: string = "";
     routeParam: any;
+    isControlActivated: boolean = false;
 
     @ViewChild('chatBox') private chatBoxScroll!: ElementRef<HTMLDivElement>;
 
@@ -100,10 +101,18 @@ export class ProfileDialogMessagesModule implements OnInit, AfterViewChecked {
         }
     };
 
+    public onReadySendMessage(ev: any) {
+        console.log(ev.target.value);
+        if (ev.target.value !== '') {
+            this.isControlActivated = true;
+        } else {
+            this.isControlActivated = false;
+        }
+    }
+
     // TODO: Вынести в общий сервис сообщений, как только он будет создан.
     public async onSendMessageAsync() {
         console.log("Сообщение", this.message);
-
         try {
             await this.http.post(API_URL.apiUrl.concat("/chat/send-message"), {
                 Message: this.message,

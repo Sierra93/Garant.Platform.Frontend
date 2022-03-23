@@ -80,11 +80,8 @@
     *ngFor="let item of aDataActions; let i = index">
     <div class="card-business">
       <h3 class="three-cards-header">{{item.title}}</h3>
-
-
             <div class="wrapper-businness">
               <p-card [style]="{width: '100%'}" styleClass="card">
-
                 <div class="card-business-content">
                   <ng-template pTemplate="header">
                   </ng-template>
@@ -92,17 +89,14 @@
                   <p class="business-text">{{item.text}}</p>
                   <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
                   <ng-template pTemplate="footer">
-
                   </ng-template>
                 </div>
               </p-card>
-
               <div class="image-business-content"><img [src]="aDataActionsPictures[i]?.imgUrl" alt=""></div>
             </div>
     </div>
   </div>
 </div>
-
 <div class="row section-mb" *ngIf="!isHideBusinessWithGarant">
   <div class="col-lg-12 col-xs-12 card-line">
     <p-card class="business-garanteese">

@@ -3,7 +3,6 @@
 @use "../../../../app/shared/styles" as *;
 @use "../../../../app/shared/styles/base" as *;
 @import "/src/app/shared/styles/media-quaries.scss";*/
-
 .deal {
   border: none;
   background: #f5f8fa;
@@ -16,72 +15,108 @@
     margin-top: 67px;
   }
   &__title {
-    font-size: 96px;
+    font-size: 5vw;
     line-height: 112.5px;
     margin-bottom: 8px;
   }
   &__business {
-    font-size: 64px;
+    font-size: 3.33vw;
     line-height: 75px;
     margin-bottom: 16px;
   }
   &__franchise {
-    font-size: 24px;
+    font-size: 1.25vw;
     line-height: 28px;
     margin-bottom: 52px;
+    color: #7a7a7a;
   }
   &__btn-action {
-    font-size: 24px;
+    font-size: 1.25vw;
     line-height: 28px;
     padding: 24px 32px;
     border-radius: 4px;
   }
 }
 
-.survey {
-  margin-top: 16px;
-  &__example {
-    border: none;
-    border-radius: 24px;
-    background: #f8f5fa;
-    padding: 64px 22.5px;
-  }
-  &__item:first-child,
-  &__item:nth-child(2),
-  &__item:nth-child(3) {
-    padding-right: 0;
-  }
-  &__item:nth-child(2),
-  &__item:nth-child(3),
-  &__item:last-child {
-    padding-left: 16px;
-  }
-  &__content {
-    padding: 0;
-  }
-  &__count {
-    font-weight: 600;
-    text-align: center;
-    color: #2c2c2c;
-    font-size: 4.02vw;
-    line-height: 112px;
-  }
-  &__ad {
-    text-align: center;
-    font-size: 1.15vw;
-    line-height: 28px;
-    margin-top: 16px;
-    color: #7a7a7a;
-    font-weight: 600;
+::ng-deep {
+  @media all and (min-width: 1401px) {
+    .deal {
+      &.is-xxl &__title {
+        font-size: 96px;
+        line-height: 112px;
+      }
+      &.is-xxl &__business {
+        font-size: 64px;
+        line-height: 75px;
+      }
+      &.is-xxl &__franchise {
+        font-size: 24px;
+        line-height: 28px;
+      }
+    }
   }
 }
+
+
+.survey {
+  margin-top: 16px;
+  &__item {
+    & ::ng-deep .p-panel {
+      & .p-panel-header {
+        justify-content: center;
+        border: none;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        background: #f5f8fa;
+        padding-top: 64px;
+        padding-bottom: 16px;
+        & .p-panel-title {
+          font-size: 4.32vw;
+        }
+      }
+      & .p-panel-content {
+        border: none;
+        font-size: 1.25vw;
+        text-align: center;
+        background: #f5f8fa;
+        border-bottom-left-radius: 24px;
+        border-bottom-right-radius: 24px;
+        color: #7a7a7a;
+        padding-top: 0;
+        padding-bottom: 64px;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 1401px) {
+    .survey {
+      &.is-xxl &__item {
+        & ::ng-deep .p-panel {
+          & .p-panel-header {
+            & .p-panel-title {
+              font-size: 3.62vw;
+            }
+          }
+          & .p-panel-content {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 .note {
   &__title {
     background: transparent;
     border: none;
     padding-left: 0;
-    font-size: 24px;
+    padding-bottom: 0;
+    margin-bottom: 32px;
+    font-size: 1.25vw;
     line-height: 28px;
     color: #2c2c2c;
   }
@@ -97,7 +132,7 @@
     width: 70%;
     background: transparent;
     border: none;
-    padding-bottom: 16px;
+    padding-bottom: 0;
   }
   &__content {
     padding-top: 0;
@@ -110,22 +145,45 @@
     flex-flow: row-reverse;
   }
   &__text-title {
-    font-size: 18px;
+    font-size: 0.94vw;
     line-height: 21px;
     font-weight: 500;
+    margin-bottom: 16px;
   }
   &__content-item {
-    font-size: 14px;
+    font-size: 0.73vw;
     line-height: 16px;
   }
   &__img-box {
     padding-right: 0;
   }
   &__redirect-catalog {
-    font-size: 18px;
+    font-size: 0.94vw;
     line-height: 21px;
     border-radius: 4px;
     padding: 16px;
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 1401px) {
+    .note {
+      &.is-xxl &__title {
+        font-size: 24px;
+        line-height: 28px;
+      }
+      &.is-xxl &__text-title {
+        font-size: 18px;
+        line-height: 21px;
+      }
+      &.is-xxl &__content-item {
+        font-size: 14px;
+        line-height: 16px;
+      }
+      &.is-xxl &__content-item:first-child {
+        margin-bottom: 17px;
+      }
+    }
   }
 }
 
@@ -144,19 +202,21 @@
     padding: 0;
   }
   &__title {
-    font-size: 96px;
+    font-size: 5vw;
     line-height: 112px;
     color: #fff;
     margin-bottom: 16px;
+    font-weight: 700;
   }
   &__subtitle {
-    font-size: 61px;
+    font-size: 3.18vw;
     line-height: 75px;
     color: #fff;
     margin-bottom: 16px;
+    font-weight: 700;
   }
   &__note {
-    font-size: 24px;
+    font-size: 1.25vw;
     line-height: 28px;
     color: #dadada;
     margin-bottom: 48px;
@@ -166,13 +226,13 @@
   }
   &__input-text {
     color: #dadada;
-    font-size: 12px;
+    font-size: 0.63vw;
     line-height: 14px;
   }
   &__input {
     padding: 24px 40px 24px 24px;
     border-radius: 8px;
-    font-size: 18px;
+    font-size: 0.94vw;
     line-height: 21px;
   }
   &__assistant {
@@ -184,40 +244,70 @@
   }
 }
 
+::ng-deep {
+  @media all and (min-width: 1401px) {
+    .consulting {
+      &.is-xxl &__title {
+        font-size: 96px;
+        line-height: 112px;
+      }
+      &.is-xxl &__subtitle {
+        font-size: 60px;
+        line-height: 75px;
+      }
+      &.is-xxl &__note {
+        font-size: 24px;
+        line-height: 28px;
+      }
+      &.is-xxl &__input-field {
+        max-width: 295px;
+      }
+      &.is-xxl &__input-text {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+  }
+}
+
+
 .checklist {
   &__head {
     background: transparent;
     border: none;
     padding: 0;
-    font-size: 32px;
+    font-size: 1.67vw;
     line-height: 38px;
     margin: 74px 0 32px;
   }
   &__header {
     background: transparent;
     border: none;
+    padding-bottom: 0;
   }
   &__title {
-    font-size: 24px;
+    font-size: 1.25vw;
     line-height: 28px;
     margin-top: 25px;
     margin-bottom: 4px;
   }
   &__subtitle {
-    font-size: 12px;
+    font-size: 0.63vw;
     line-height: 14px;
     color: #646464;
     margin-bottom: 8px;
   }
   &__step {
-    font-size: 18px;
+    font-size: 0.94vw;
     line-height: 12px;
     margin-bottom: 24px;
+    padding-top: 0;
   }
   &__description {
-    font-size: 17px;
+    font-size: 0.89vw;
     line-height: 17px;
     margin-bottom: 24px;
+    height: 63px;
   }
   &__item:first-child &__content {
     background: #f5f8fa;
@@ -230,7 +320,140 @@
     height: 102px;
   }
   &__action {
-    font-size: 18px;
+    font-size: 0.94vw;
+    line-height: 21px;
+    padding: 16px;
+    border-radius: 4px;
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 1401px) {
+    .checklist {
+      &.is-xxl &__head {
+        font-size: 48px;
+        line-height: 56px;
+      }
+      &.is-xxl &__title {
+        font-size: 24px;
+        line-height: 28px;
+      }
+      &.is-xxl &__subtitle {
+        font-size: 12px;
+        line-height: 14px;
+      }
+      &.is-xxl &__step,
+      &.is-xxl &__description,
+      &.is-xxl &__action {
+        font-size: 18px;
+        line-height: 21px;
+      }
+    }
+  }
+}
+
+.garant {
+  border: none;
+  border-radius: 8px;
+  background: #f1f6ff;
+  margin-top: 74px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    border: none;
+    background: transparent;
+    margin-bottom: 16px;
+  }
+  &__title {
+    font-size: 0.94vw;
+    line-height: 21px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  &__close {
+    width: 16px;
+    height: 16px;
+  }
+  &__description {
+    font-size: 0.73vw;
+    line-height: 16.41px;
+    color: #7a7a7a;
+    margin-bottom: 40px;
+  }
+  &__business {
+    font-size: 0.94vw;
+    line-height: 21px;
+    font-weight: 600;
+    border-radius: 4px !important;
+    padding: 16px;
+    margin-right: 22px;
+  }
+  &__clean {
+    font-size: 0.94vw;
+    line-height: 21px;
+    font-weight: 600;
+    border-radius: 4px !important;
+    padding: 16px;
+    border: 1px solid #7a7a7a;
+    color: #7a7a7a;
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 1401px) {
+    .garant {
+      &.is-xxl &__title {
+        font-size: 18px;
+        line-height: 21px;
+      }
+      &.is-xxl &__description {
+        font-size: 14px;
+        line-height: 16px;
+      }
+      &.is-xxl &__business,
+      &.is-xxl &__clean {
+        font-size: 18px;
+        line-height: 21px;
+      }
+    }
+  }
+}
+
+.choice {
+  margin-top: 74px;
+  &__card {
+    font-size: 1.25vw;
+    margin-bottom: 0;
+    color: #2c2c2c;
+  }
+  &__subtitle {
+    font-size: 0.94vw;
+    color: #2c2c2c;
+    font-weight: 600;
+    line-height: 21px;
+    margin-bottom: 16px;
+    height: 42px;
+  }
+  &__offer {
+    border: none;
+  }
+  &__service-item {
+    background: transparent;
+    padding-top: 0;
+    padding-bottom: 16px;
+  }
+  &__business-action {
+    padding-top: 0;
+    padding-bottom: 25px;
+  }
+  &__text {
+    font-size: 0.73vw;
+    line-height: 21px;
+    margin-bottom: 51px;
+  }
+  &__submit {
+    font-size: 0.94vw;
     line-height: 21px;
     padding: 16px;
     border-radius: 4px;

@@ -226,3 +226,91 @@
     border-radius: 4px;
   }
 }
+// гарант
+.garant {
+  border: none;
+  border-radius: 8px;
+  background: #f1f6ff;
+  margin-top: 74px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    border: none;
+    background: transparent;
+    margin-bottom: 16px;
+  }
+  &__title {
+    font-size: 0.94vw;
+    line-height: 21px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  &__close {
+    width: 16px;
+    height: 16px;
+  }
+  &__description {
+    font-size: 0.73vw;
+    line-height: 16.41px;
+    color: #7a7a7a;
+    margin-bottom: 40px;
+  }
+  &__business {
+    font-size: 0.94vw;
+    line-height: 21px;
+    font-weight: 600;
+    border-radius: 4px !important;
+    padding: 16px;
+    margin-right: 22px;
+  }
+  &__clean {
+    font-size: 0.94vw;
+    line-height: 21px;
+    font-weight: 600;
+    border-radius: 4px !important;
+    padding: 16px;
+    border: 1px solid #7a7a7a;
+    color: #7a7a7a;
+  }
+}
+
+.choice {
+  margin-top: 74px;
+  &__card {
+    font-size: 1.25vw;
+    margin-bottom: 0;
+    color: #2c2c2c;
+  }
+  &__subtitle {
+    font-size: 0.94vw;
+    color: #2c2c2c;
+    font-weight: 600;
+    line-height: 21px;
+    margin-bottom: 16px;
+    height: 42px;
+  }
+  &__offer {
+    border: none;
+  }
+  &__service-item {
+    background: transparent;
+    padding-top: 0;
+    padding-bottom: 16px;
+  }
+  &__business-action {
+    padding-top: 0;
+    padding-bottom: 25px;
+  }
+  &__text {
+    font-size: 0.73vw;
+    line-height: 21px;
+    margin-bottom: 51px;
+  }
+  &__submit {
+    font-size: 0.94vw;
+    line-height: 21px;
+    padding: 16px;
+    border-radius: 4px;
+  }
+}

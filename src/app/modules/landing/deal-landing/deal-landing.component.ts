@@ -12,7 +12,7 @@ import { CommonDataService } from 'src/app/services/common/common-data.service';
 @Component({
   selector: 'deal-landing',
   templateUrl: './deal-landing.component.html',
-  styleUrls: ['./deal-landing.component.scss', './deal-landing.mobile.scss'],
+  styleUrls: ['./deal-landing.component.scss'],
 })
 export class DealLandingModule implements OnInit, DoCheck {
   aPopularBusiness: any[] = [];
@@ -50,8 +50,7 @@ export class DealLandingModule implements OnInit, DoCheck {
   routeParam: number;
   aPopularFranchises: any[] = [];
   isHideBusinessWithGarant: boolean = true;
-  isXlExtension!: boolean;
-  isXxlExtension!: boolean;
+  isXxl!: boolean;
   browserScreenWidth!: number;
 
   constructor(
@@ -94,8 +93,7 @@ export class DealLandingModule implements OnInit, DoCheck {
   }
 
   public async ngOnInit() {
-    this.isXlExtension = false;
-    this.isXxlExtension = false;
+    this.isXxl = false;
     this.browserScreenWidth = window.screen.width;
     // await this.getPopularBusinessAsync();
     await this.GetBusinessListAsync();
@@ -523,15 +521,10 @@ export class DealLandingModule implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth >= 785 && this.browserScreenWidth <= 1400) {
-      this.isXlExtension = true;
-      this.isXxlExtension = false;
-    } else if (this.browserScreenWidth > 1400) {
-      this.isXxlExtension = true;
-      this.isXlExtension = false;
+    if (this.browserScreenWidth > 1400) {
+      this.isXxl = true;
     } else {
-      this.isXlExtension = false;
-      this.isXxlExtension = false;
+      this.isXxl = false;
     }
   }
 }

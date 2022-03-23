@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card deal">
+  <div class="card deal" [ngClass]="{'is-xxl': isXxl}">
     <div class="container">
       <div class="row deal__location">
         <div class="col-lg-3 col-xl-3 col-xxl-3">
@@ -23,55 +23,43 @@
     </div>
   </div>
 </div>
-<div class="container survey">
+<div class="container survey" [ngClass]="{'is-xxl': isXxl}">
   <div class="row survey__result">
     <div class="col-lg-3 col-xl-3 col-xxl-3 survey__item">
-      <div class="card survey__example">
-        <div class="card-body survey__content">
-          <div class="card-text survey__count">10</div>
-          <div class="card-text survey__ad">
-            сделок в среднем <br />
-            проходит <br />
-            через сервис гарант
-          </div>
+      <p-panel #pnl header="35" styleClass="p-mt-4">
+        <div>
+          сделок в среднем <br />
+          проходит <br />
+          через сервис гарант
         </div>
-      </div>
+      </p-panel>
     </div>
     <div class="col-lg-3 col-xl-3 col-xxl-3 survey__item">
-      <div class="card survey__example">
-        <div class="card-body survey__content">
-          <div class="card-text survey__count">35</div>
-          <div class="card-text survey__ad">
-            франшиз <br />
-            были проданы <br />
-            через сервис гарант
-          </div>
+      <p-panel #pnl header="35" styleClass="p-mt-4">
+        <div>
+          франшиз <br />
+          были проданы <br />
+          через сервис гарант
         </div>
-      </div>
+      </p-panel>
     </div>
     <div class="col-lg-3 col-xl-3 col-xxl-3 survey__item">
-      <div class="card survey__example">
-        <div class="card-body survey__content">
-          <div class="card-text survey__count">105</div>
-          <div class="card-text survey__ad">
-            бизнесов уже были <br />
-            проданы через <br />
-            сервис гарант
-          </div>
+      <p-panel #pnl header="105" styleClass="p-mt-4">
+        <div>
+          бизнесов уже были <br />
+          проданы через <br />
+          сервис гарант
         </div>
-      </div>
+      </p-panel>
     </div>
     <div class="col-lg-3 col-xl-3 col-xxl-3 survey__item">
-      <div class="card survey__example">
-        <div class="card-body survey__content">
-          <div class="card-text survey__count">0,5-3%</div>
-          <div class="card-text survey__ad">
-            комиссия <br />
-            за использование <br />
-            сервиса покупки онлайн
-          </div>
+      <p-panel #pnl header="0.5-3%" styleClass="p-mt-4">
+        <div>
+          комиссия <br />
+          за использование <br />
+          сервиса покупки онлайн
         </div>
-      </div>
+      </p-panel>
     </div>
   </div>
 </div>
@@ -80,7 +68,7 @@
     <div class="col-xl-7 col-xxl-7">
       <h5 class="alert alert-light">Недавно приобрели</h5>
     </div>
-    <div class="col-xl-5 col-xxl-5 note">
+    <div class="col-xl-5 col-xxl-5 note" [ngClass]="{'is-xxl': isXxl}">
       <h5 class="alert alert-light note__title">
         Покупка бизнеса с гарантиями
       </h5>
@@ -127,7 +115,7 @@
     </div>
   </div>
 </div>
-<div class="container consulting">
+<div class="container consulting" [ngClass]="{'is-xxl': isXxl}">
   <form class="bg-primary consulting__request">
     <div class="container">
       <div class="row">
@@ -175,8 +163,10 @@
     </div>
   </form>
 </div>
-<div class="container checklist">
-  <h5 class="alert alert-light checklist__head">4 простых шага для безопасной сделки онлайн</h5>
+<div class="container checklist" [ngClass]="{'is-xxl': isXxl}">
+  <h5 class="alert alert-light checklist__head">
+    4 простых шага для безопасной сделки онлайн
+  </h5>
   <div class="row">
     <div class="col-lg-3 col-xl-3 col-xxl-3 checklist__item">
       <div class="card checklist__content">
@@ -195,7 +185,12 @@
             Воспользуйтесь каталогом для удобного и быстрого поиска по вашим
             параметрам.
           </div>
-          <button class="btn btn-dark checklist__action" routerLink="/catalog-business">Начать поиск</button>
+          <button
+            class="btn btn-dark checklist__action"
+            routerLink="/catalog-business"
+          >
+            Начать поиск
+          </button>
         </div>
       </div>
     </div>
@@ -216,7 +211,12 @@
             Вы можете пройти быструю регистрацию до начала выбора бизнеса или во
             время.
           </div>
-          <button class="btn btn-dark checklist__action" routerLink="/catalog-business">Пройти регистрацию</button>
+          <button
+            class="btn btn-dark checklist__action"
+            routerLink="/catalog-business"
+          >
+            Пройти регистрацию
+          </button>
         </div>
       </div>
     </div>
@@ -231,7 +231,9 @@
         </div>
         <div class="card-body checklist__step">
           <div class="card-text checklist__title">Начать сделку</div>
-          <div class="card-text checklist__subtitle">и распланировать этапы сделки</div>
+          <div class="card-text checklist__subtitle">
+            и распланировать этапы сделки
+          </div>
           <div class="card-text checklist__step">Шаг 3</div>
           <div class="card-text checklist__description">
             Вы сможете распланировать онлайн сделку посредством сервиса гарант.
@@ -257,25 +259,22 @@
             После оплаты каждого этапа вы становитесь полноправным владельцем
             бизнеса
           </div>
-          <button class="btn btn-dark checklist__action">Получить консультацию</button>
+          <button class="btn btn-dark checklist__action">
+            Получить консультацию
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="container">
-  <div
-    class="card garant card-line"
-    *ngIf="isHideBusinessWithGarant"
-    [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
-  >
+  <div class="card garant" *ngIf="isHideBusinessWithGarant" [ngClass]="{'is-xl': isXxl}">
     <div class="card-header garant__header">
       <div class="card-title text-break garant__title">
         Вы можете приобрести бизнес с гарантиями
       </div>
-      <div class="garant__btn-close-box">
-        <button class="close btn-close garant__btn-close"></button>
+      <div class="garant__btn-close">
+        <button class="close btn-close garant__close"></button>
       </div>
     </div>
     <div class="card-body garant__content">
@@ -284,13 +283,13 @@
       </div>
       <div class="btn-group garant__btn-group">
         <button
-          class="btn btn-primary text-break garant__btn-business"
+          class="btn btn-primary text-break garant__business"
           routerLink="/catalog-business"
         >
           {{ oSuggestion.button2Text }}
         </button>
         <button
-          class="btn btn-light text-break btn-show-more garant__btn-clean"
+          class="btn btn-light text-break garant__clean"
           (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
         >
           {{ oSuggestion.button1Text }}
@@ -299,35 +298,28 @@
     </div>
   </div>
 </div>
-
-<div
-  class="container choice-action"
-  [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
->
-  <div class="row choice-action__gallery">
-    <div class="col-sm-12 col-xl-4 col-xxl-4" *ngFor="let item of aDataActions">
-      <div class="choice-action__choice-action">
-        <h5 class="alert alert-light text-break choice-action__title">
-          {{ item.title }}
-        </h5>
-        <div class="card choice-action__content">
-          <div class="card-header choice-action__header">
-            <div class="card-title text-break choice-action__card-title">
-              {{ item.subTitle }}
-            </div>
-            <img src="" class="img-fluid choice-action__img" />
+<div class="container choice">
+  <div class="row choice__repeat">
+    <div
+      class="col-lg-4 col-xl-4 col-xxl-4 choice__list"
+      *ngFor="let item of aDataActions; let i = index"
+    >
+      <div class="card choice__offer" [ngClass]="{ 'is-alone': i >= 2 }">
+        <div class="card-header choice__service-item">
+          <div class="card-title text-break choice__card">
+            {{ item.title }}
           </div>
-          <div class="card-body choice-action__description">
-            <div class="card-text text-break choice-action__text">
-              {{ item.text }}
-            </div>
-            <button
-              class="btn btn-primary text-break choice-action__catalog"
-              routerLink="/catalog-business"
-            >
-              {{ item.buttonText }}
-            </button>
+        </div>
+        <div class="card-body choice__business-action">
+          <div class="card-text text-break choice__subtitle">
+            {{ item.subTitle }}
           </div>
+          <div class="card-text text-break choice__text">
+            {{ item.text }}
+          </div>
+          <button class="btn btn-primary text-break choice__submit">
+            {{ item.buttonText }}
+          </button>
         </div>
       </div>
     </div>
@@ -364,41 +356,6 @@
     </ng-template>
   </p-card>
 </div> -->
-
-<div
-  class="container three-cards selection"
-  [ngClass]="{ 'is-xl': isXlExtension, 'is-xxl': isXxlExtension }"
->
-  <div class="row selection__repeat-box">
-    <div
-      class="col-sm-12 col-md-6 col-xl-4 col-xxl-4 col-lg-4 card-business selection__repeat"
-      *ngFor="let item of aDataActions; let i = index"
-    >
-      <div
-        class="card selection__offer"
-        [ngStyle]="{ width: '100%' }"
-        [ngClass]="{ 'is-alone': i >= 2 }"
-      >
-        <div class="card-header selection__header-service">
-          <div class="card-title text-break selection__service-title">
-            {{ item.title }}
-          </div>
-        </div>
-        <div class="card-body selection__business-action">
-          <div class="card-text text-break selection__subtitle">
-            {{ item.subTitle }}
-          </div>
-          <div class="card-text text-break selection__service-text">
-            {{ item.text }}
-          </div>
-          <button class="btn btn-primary text-break selection__btn-action">
-            {{ item.buttonText }}
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Популярные франшизы -->
 <!-- Нужно узнать, как создать карусель на Ангуляр -->

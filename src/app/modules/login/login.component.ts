@@ -130,8 +130,6 @@ export class LoginModule implements OnInit {
    */
   public async onGetCodeAsync(form: NgForm) {
     console.log("data", form.value.data);
-    this.startTimer();
-
     try {
       let inputData = new CheckCodeInput();
       inputData.data = form.value.data;

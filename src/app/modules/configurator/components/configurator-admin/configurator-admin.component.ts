@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
@@ -13,18 +13,20 @@ import { FinData } from "src/app/shared/classes/fin-data";
 import { FORM_ERRORS, FORM_PLACEHOLDERS, FORM_SUCCESS, FORM_VALIDATION_MESSAGES } from "src/app/shared/classes/form-data";
 import { sumValidator } from "src/app/shared/classes/custom-validators";
 import { Router } from "@angular/router";
+import { ConfiguratorService } from "../../services/configurator.service";
+import { forkJoin, Subject } from "rxjs";
 
 @Component({
     selector: "configurator-admin",
     templateUrl: "./configurator-admin.component.html",
     styleUrls: ["./configurator-admin.component.scss"],
-    providers: [ConfirmationService, MessageService]
+    providers: [ConfirmationService, MessageService]    
 })
 
 /** 
  * Класс модуля конфигуратора (панель).
  */
-export class ConfiguratorAdminModule implements OnInit {
+export class ConfiguratorAdminModule implements OnInit, OnDestroy {
     aMenuList: any[] = [];
     tabIndex: number = 0;
     selectedBlogAction: any;
@@ -144,6 +146,8 @@ export class ConfiguratorAdminModule implements OnInit {
     filesTextBusiness: any;
     filesBusiness: any;
     routeParamCity: any;
+    selectedRowIndexFranchise: number = 0;
+    selectedRowIndexBusiness: number = 0;
 
     // formLabels = FORM_LABELS;
     formPlaceholders = FORM_PLACEHOLDERS;
@@ -167,6 +171,7 @@ export class ConfiguratorAdminModule implements OnInit {
     aBlogArticles: any[] = [];
     selectedBlogArticle: any;
     aNewsActions: any[] = [];
+    aSphereCategoryActions: any[] = [];
     newsFile: any;
     newsTitle: string = "";
     typeNews: any;
@@ -175,12 +180,36 @@ export class ConfiguratorAdminModule implements OnInit {
     selectedNews: any;
     aNews: any[] = [];
     selectedCardActionSysName: any;
+    aNotAcceptedFranchises: any[] = [];
+    franchiseRowIndex: number = 0;
+    isShowRejectFranchiseModal: boolean = false;
+    isShowRejectBusinessModal: boolean = false;
+    commentRejected: string = "";
+    aFranchiseCategories: any;
+    aFranchiseSubCategories: any;
+    selectedCategory: any;
+    aBusinessSubCategories: any;
+    selectedSubCategory: any;
+    selectedCityName: any;
+    aCities: any;
+    aBusinessCategories: any;
+    selectedSphereCategoryAction: any;
+    sphereAction: any;
+    sphereName: string = "";
+    sysName: string = "";
+    typeSphere: string = "";
+
+    public readonly notAcceptedBusinesses$ = this.configuratorService.notAcceptedBusinesses$;
+    private readonly unsub$ = new Subject<void>();
+    public readonly createdSphere$ = this.configuratorService.createdSphere$;
 
     constructor(private http: HttpClient, 
         private messageService: MessageService,
         private commonService: CommonDataService,
         private formBuilder: FormBuilder,
-        private router: Router) {
+        private router: Router,
+        private readonly configuratorService: ConfiguratorService) {
+            
         // TODO: переделать на вывод с бэка.
         this.aCardActions = [
             {
@@ -213,6 +242,18 @@ export class ConfiguratorAdminModule implements OnInit {
             {
                 newsActionSysName: "ChangeNews",
                 newsActionName: "Изменить новость"
+            }
+        ];
+
+        this.aSphereCategoryActions = [
+            {
+                sphereActionSysName: "CreateSphere",
+                sphereActionName: "Создать сферу"
+            },
+
+            {
+                sphereActionSysName: "CreateCategory",
+                sphereActionName: "Создать категорию"
             }
         ];
 
@@ -268,6 +309,15 @@ export class ConfiguratorAdminModule implements OnInit {
         await this.loadMenuItemsAsync();      
         // await this.getUserFio();  
         this.buildForm();
+        await this.getNotAcceptedFranchisesAsync();
+
+        forkJoin([
+            this.configuratorService.getNotAcceptedBusinesses(),
+        ]).subscribe();
+        console.log("notAcceptedBusinesses$",this.notAcceptedBusinesses$);
+        await this.GetFranchiseCategoriesListAsync();
+        await this.getBusinessDataAsync();
+        await this.getCitiesAsync();
     };
 
     public ngOnAfterViewInit() {
@@ -724,6 +774,51 @@ export class ConfiguratorAdminModule implements OnInit {
                 }
             ];
 
+            // Если не добавляли записи и осталась лежать одна пустая.
+            if (!this.ainvestIn[0].Name || !this.ainvestIn[0].Price) {                  
+                this.ainvestIn[0].Name = this.nameInvest;
+                this.ainvestIn[0].Price = this.priceInvest;
+            }
+
+            else {
+                this.ainvestIn.push({
+                    Name: this.nameInvest,
+                    Price: this.priceInvest
+                });
+            }
+
+             // Уберет пустые записи.
+            this.ainvestIn = this.ainvestIn.filter((item: any) => item.Name !== "" && item.Price !== "");
+
+            if (!this.aPacks[0].Name
+                || !this.aPacks[0].Text
+                || !this.aPacks[0].LumpSumPayment
+                || !this.aPacks[0].Royalty
+                || !this.aPacks[0].TotalInvest) {
+                this.aPacks[0].Name = this.packName;
+                this.aPacks[0].Text = this.packDetails;
+                this.aPacks[0].LumpSumPayment = this.packLumpSumPayment;
+                this.aPacks[0].Royalty = this.royaltyPack;
+                this.aPacks[0].TotalInvest = this.totalInvest;
+            }
+
+            else {
+                this.aPacks.push({
+                    Name: this.packName,
+                    Text: this.packDetails,
+                    LumpSumPayment: this.packLumpSumPayment,
+                    Royalty: this.royaltyPack,
+                    TotalInvest: this.totalInvest
+                });
+            }
+
+            // Уберет пустые записи.
+            this.aPacks = this.aPacks.filter((item: any) => item.Name !== ""
+                && item.Text !== ""
+                && item.LumpSumPayment !== ""
+                && item.Royalty !== ""
+                && item.TotalInvest !== "");
+
             // Уберет ключи флагов.
             let newainvestIn = this.ainvestIn.map((item: any) => ({
                 Name: item.Name,
@@ -768,16 +863,17 @@ export class ConfiguratorAdminModule implements OnInit {
             createUpdateFranchiseInput.IsNew = true;
             createUpdateFranchiseInput.Title = logoName;
             createUpdateFranchiseInput.TrainingDetails = educationDetails;
-            createUpdateFranchiseInput.Category = this.routeParamCategory;
+            createUpdateFranchiseInput.Category = this.selectedCategory;
+            createUpdateFranchiseInput.SubCategory = this.selectedSubCategory;
+
+            // TODO: тут сделать выбор сферы и катеории из списков.
             createUpdateFranchiseInput.SubCategory = this.routeParamSubCategory;
             createUpdateFranchiseInput.UrlsFranchise = this.aNamesFranchisePhotos;
-            createUpdateFranchiseInput.Category = "Тестовая категория";
-            createUpdateFranchiseInput.SubCategory = "Тестовая подкатегория";
 
             let sendFormData = new FormData();
             sendFormData.append("franchiseDataInput", JSON.stringify(createUpdateFranchiseInput));
             sendFormData.append("filesLogo", this.fileLogoFormData);
-            // sendFormData.append("urlsDetails", this.franchisePhotos);
+            sendFormData.append("urlsDetails", this.franchisePhotos);
             sendFormData.append("trainingPhoto", this.fileEducationFormData);
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("presentFile", this.presentFile);
@@ -1374,17 +1470,34 @@ export class ConfiguratorAdminModule implements OnInit {
             let assets = this.assets;
             let reasonsSale = this.reasonsSale;
             let address = this.address;
+  
+              // Если не добавляли записи и осталась лежать одна пустая.
+              if (!this.aPriceIn[0].Name || !this.aPriceIn[0].Price) {
+                  this.aPriceIn[0].Name = this.nameIn;
+                  this.aPriceIn[0].Price = this.priceIn;
+              }
+  
+              else {
+                  this.aPriceIn.push({
+                      Name: this.nameIn,
+                      Price: this.priceIn
+                  });
+              }
+  
+              // Уберет пустые записи.
+              this.aPriceIn = this.aPriceIn.filter((item: any) => item.Name !== "" && item.Price !== "");
+  
             let aPriceInData = this.aPriceIn;
             let aNamesBusinessPhotos = this.aNamesBusinessPhotos;
-
+             
             // Уберет флаги видимости.
             let newPriceInJson = aPriceInData.map((item: any) => ({
                 Price: item.Price,
                 Name: item.Name
-            }));
-
+            }));         
+  
             let priceInJson = JSON.stringify(newPriceInJson);
-
+  
             createUpdateBusinessInput.Status = lead;
             createUpdateBusinessInput.Payback = payback;
             createUpdateBusinessInput.ActivityDetail = activityDetail;            
@@ -1408,12 +1521,11 @@ export class ConfiguratorAdminModule implements OnInit {
             createUpdateBusinessInput.ReasonsSale = reasonsSale;
             createUpdateBusinessInput.Address = address;
             createUpdateBusinessInput.InvestPrice = priceInJson;            
-            createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;         
-            // createUpdateBusinessInput.Category = this.routeParamCategory;
-            // createUpdateBusinessInput.SubCategory = this.routeParamSubCategory;
-            createUpdateBusinessInput.Category = "Тестовая категория";
-            createUpdateBusinessInput.SubCategory = "Тестовая подкатегория";
-
+            createUpdateBusinessInput.UrlsBusiness = aNamesBusinessPhotos;             
+            createUpdateBusinessInput.Category = this.selectedCategory;
+            createUpdateBusinessInput.SubCategory = this.selectedSubCategory;
+            createUpdateBusinessInput.BusinessCity = this.selectedCityName;
+  
             let sendFormData = new FormData();
             sendFormData.append("businessDataInput", JSON.stringify(createUpdateBusinessInput));
             sendFormData.append("filesAssets", this.filesAssets);
@@ -1815,5 +1927,271 @@ export class ConfiguratorAdminModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
+    };
+
+    /**
+     * Функция получит список франшиз, которые ожидают согласования.
+     * @returns - Список франшиз.
+     */
+    private async getNotAcceptedFranchisesAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/configurator/franchises-not-accepted"), {})
+            .subscribe({
+                next: (response: any) => {
+                    console.log("Список франшиз ожидающих согласования: ", response);
+                    this.aNotAcceptedFranchises = response;
+                },
+
+                error: (err) => {
+                    throw new Error(err);
+                }
+            });          
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public onViewFranchise(index: number) {
+        console.log("index", this.aNotAcceptedFranchises[index].franchiseId);
+        this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: this.aNotAcceptedFranchises[index].franchiseId, mode: "view" } });
+    };
+
+    public onViewBusiness(index: number) {
+        console.log("index", this.notAcceptedBusinesses$.value[index].businessId);
+        this.router.navigate(["/business/view"], { queryParams: { businessId: this.notAcceptedBusinesses$.value[index].businessId, mode: "view" } });
+    };
+
+    /**
+     * Функция одобрит карточку. Далее карточка попадет в каталоги.
+     * @param cardId - Id карточки.
+     * @param cardType - Тип карточки.
+     * @returns - Статус одобрения.
+     */
+    public async onAcceptCardAsync(cardId: number, cardType: string) {
+        try {
+            await this.http.get(API_URL.apiUrl.concat("/configurator/accept-card?cardId=" + cardId + "&cardType=" + cardType))
+            .subscribe({
+                next: async (response: any) => {
+                    console.log("Одобрение карточки: ", response);
+
+                    if (cardType == "Franchise") {
+                        await this.getNotAcceptedFranchisesAsync();
+                    }
+
+                    if (cardType == "Business") {
+                        this.configuratorService.getNotAcceptedBusinesses().subscribe();                   
+                    }
+
+                    
+                    this.messageService.add({
+                        severity: 'success',
+                        summary: 'Успешно',
+                        detail: 'Карточка успешно одобрена'
+                    });
+                },
+
+                error: (err) => {
+                    this.messageService.add({
+                        severity: 'error',
+                        summary: 'Ошибка',
+                        detail: 'Ошибка при одобрении карточки'
+                    });
+                    throw new Error(err);
+                }
+            });          
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public onShowRejectFranchiseModal(index: number) {
+        this.isShowRejectFranchiseModal = true;
+        this.selectedRowIndexFranchise = index;
+    };
+
+    public onShowRejectBusinessModal(index: number) {
+        this.isShowRejectBusinessModal = true;
+        this.selectedRowIndexFranchise = index;
+    };
+
+    /**
+     * Функция отклонит карточку франшизы.
+     * @param cardType 
+     */
+    public async onRejectFranchiseCardAsync(cardType: string) {
+        let i = this.selectedRowIndexFranchise; 
+
+        await this.configuratorService.onRejectCardAsync(this.aNotAcceptedFranchises[i].franchiseId, cardType, this.commentRejected).then(async (response: any) => {
+            if (response) {
+                this.messageService.add({
+                    severity: 'success',
+                    summary: 'Успешно',
+                    detail: 'Карточка успешно отклонена'
+                });
+
+                await this.getNotAcceptedFranchisesAsync();
+
+                this.isShowRejectFranchiseModal = false;
+            }
+        });                
+    };
+
+    public async onRejectBusinessCardAsync(cardType: string) {
+        let i = this.selectedRowIndexBusiness;
+
+        await this.configuratorService.onRejectCardAsync(this.notAcceptedBusinesses$.value[i].businessId, cardType, this.commentRejected).then((response: any) => {
+            if (response) {
+                this.messageService.add({
+                    severity: 'success',
+                    summary: 'Успешно',
+                    detail: 'Карточка успешно отклонена'
+                });
+
+                this.configuratorService.getNotAcceptedBusinesses().subscribe();  
+
+                this.isShowRejectBusinessModal = false;
+            }
+        });
+    };
+
+    /**
+     * Функция получит список бизнесов, которые ожидают согласования.
+     * @returns - Список бизнесов.
+     */
+    //  private async getNotAcceptedBusinessesAsync() {
+    //     try {
+    //         await this.http.post(API_URL.apiUrl.concat("/configurator/businesses-not-accepted"), {})
+    //         .subscribe({
+    //             next: (response: any) => {
+    //                 console.log("Список бизнесов ожидающих согласования: ", response);
+    //                 this.aNotAcceptedBusinesses = response;
+    //             },
+
+    //             error: (err) => {
+    //                 throw new Error(err);
+    //             }
+    //         });          
+    //     }
+
+    //     catch (e: any) {
+    //         throw new Error(e);
+    //     }
+    // };
+
+    ngOnDestroy(): void {
+        this.unsub$.next();
+    };
+
+    private async GetFranchiseCategoriesListAsync() {
+        try {
+            await this.commonService.GetFranchiseCategoriesListAsync().then((data: any) => {
+                console.log("Список категорий франшиз:", data);
+                this.aFranchiseCategories = data;
+            });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };  
+
+    public async getBusinessDataAsync() {
+        try {
+            await this.commonService.GetBusinessCategoriesListAsync().then((data: any) => {
+                console.log("Список категорий бизнеса:", data);                
+                this.aBusinessCategories = data;
+            });
+
+            await this.commonService.GetBusinessSubCategoriesListAsync().then((data: any) => {
+                console.log("Список подкатегорий бизнеса:", data);                
+                this.aBusinessSubCategories = data;
+            });                
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onChangeValueSphereAsync(categoryCode: string, categorySysName: string) {
+        await this.commonService.GetFranchiseSubCategoriesListAsync(categoryCode, categorySysName).then((data: any) => {
+            console.log("Список подкатегорий сферы:", data);                
+            this.aFranchiseSubCategories = data;
+        });
+    };
+
+    /**
+     * Функция фильтрует список сфер в зависимости от поискового запроса.
+     * @param searchText - Поисковый запрос.
+     * @returns - Список сфер.
+     */
+     public async onFilterSphereAsync(searchText: string) {
+        try {
+            await this.http.get(API_URL.apiUrl.concat("/franchise/search-sphere?searchText=" + searchText))
+                .subscribe({
+                    next: (response: any) => {                        
+                        console.log("Список сфер :", response);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    public async onFilterCategoryAsync(searchText: string, categoryCode: string, categorySysName: string) {
+        try {
+            await this.http.get(API_URL.apiUrl.concat("/franchise/search-category?searchText=" 
+            + searchText
+            + "&categoryCode=" + categoryCode
+            + "&categorySysName=" + categorySysName))
+                .subscribe({
+                    next: (response: any) => {                        
+                        console.log("Список категорий сферы :", response);
+                    },
+
+                    error: (err) => {
+                        throw new Error(err);
+                    }
+                });
+        }
+
+        catch (e: any) {
+            throw new Error(e);
+        }
+    };
+
+    private async getCitiesAsync() {
+        await this.commonService.GetBusinessCitiesListAsync().then((data: any) => {
+            console.log("Список городов бизнеса:", data);                
+            this.aCities = data;
+        });
+    };
+
+    public onSelectSphereCategory(e: any, flag: boolean) {
+        console.log(e);
+        console.log("sphereActionName", this.sphereAction);
+    };
+    
+    public async onCreateSphereAsync(sphereName: string, sphereType: string, sysName: string) {
+        await this.configuratorService.createSphereAsync(sphereName, sphereType, sysName).then((data: any) => {
+            console.log("Созданная сфера: ", data);                
+        });
+    };
+
+    public async onCreateCategoryAsync(category: any, sphereName: string, sphereType: string, sysName: string) {
+        console.log(category);
+        await this.configuratorService.createCategoryAsync(category.categoryCode, sphereName, sphereType, sysName).then((data: any) => {
+            console.log("Созданная категория: ", data);                
+        });
     };
 }

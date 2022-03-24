@@ -8,7 +8,7 @@
           <label class="form-label">Email или телефон</label>
 
           <input type="text" class="form-control input-auth" placeholder="Введите номер или почту" name="data"
-            [(ngModel)]="data" *ngIf="!isGetCode">
+            [(ngModel)]="data" *ngIf="!isGetCode" autocomplete="off">
           <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите код"
             name="code" [(ngModel)]="code" *ngIf="isGetCode">
         </div>
@@ -21,19 +21,23 @@
 
         <div class="agreements mb-3">
           <div class="checkbox">
-            <input type="checkbox" id="policyAgreement" name="policyAgreement" />
-            <span></span>
-            <label for="policyAgreement">Согласен с условиями использования сервисов GoBizy и обработки персональных данных</label>
+            <input type="checkbox" id="policyAgreement" name="policyAgreement" [checked]="isPolicyAgreement"/>
+            <span (click)="onToggle('changePolicyAgreement')"></span>
+            <label for="policyAgreement">Согласен с условиями использования сервисов GoBizy и обработки персональных
+              данных</label>
           </div>
           <div class="checkbox">
-            <input type="checkbox" id="getEmail" name="getEmail" />
-            <span></span>
+            <input type="checkbox" id="getEmail" name="getEmail" [checked]="isAdsEmail" />
+            <span (click)="onToggle('changeAdsEmail')"></span>
             <label for="getEmail">Хочу получать сообщения рекламного и информационного характера</label>
+          </div>
+          <div class="checkbox">
+            <small>Если код не пришел вам на п</small>
           </div>
         </div>
 
         <button class="btn btn-default btn-code-active main-btn" (click)="onGetCodeAsync(getCodeForm)"
-          *ngIf="!isHideBtnGetCode">Получить код</button>
+          *ngIf="!isHideBtnGetCode" [disabled]="!isPolicyAgreement">Получить код</button>
         <button class="btn btn-default btn-code-active main-btn" (click)="onCheckCodeAsync(getCodeForm)"
           *ngIf="isHideBtnGetCode">Проверить код</button>
         <div class="text-center my-3">
@@ -110,7 +114,8 @@
       <div class="mb-3">
         <label class="form-label text-lbl" name="pass" [(ngModel)]="pass">Пароль</label>
 
-        <input type="password" class="form-control input-auth" name="pass" [(ngModel)]="pass" placeholder="Введите пароль">
+        <input type="password" class="form-control input-auth" name="pass" [(ngModel)]="pass"
+          placeholder="Введите пароль">
       </div>
 
       <div>

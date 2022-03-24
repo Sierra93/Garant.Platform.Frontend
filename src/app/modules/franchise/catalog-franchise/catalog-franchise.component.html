@@ -5,14 +5,24 @@
       <h2 class="franchise-title">Популярные франшизы</h2>
     </div>
 
-    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 popular-franchises" *ngFor="let item of aPopularFranchises">
+    <div
+      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 popular-franchises"
+      *ngFor="let item of aPopularFranchises"
+    >
       <div class="d-flex">
         <div class="popular-franchises-block">
-          <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}">
+          <p-card
+            header="{{ item.title }}"
+            subheader="{{ item.text }}"
+            [style]="{ width: '100%' }"
+          >
             <ng-template pTemplate="header">
-              <img [src]="item.url">
+              <img [src]="item.url" />
             </ng-template>
-            <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+            <strong
+              >{{ item.textDoPrice }}
+              {{ item.price | priceFormat: item.price }} ₽
+            </strong>
             <ng-template pTemplate="footer"></ng-template>
           </p-card>
         </div>
@@ -25,95 +35,163 @@
     <div class="col-12">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="franchise-title mb-0">Каталог франшиз</h2>
-        <span class="franchise-count">Всего {{countFranchises}} франшиз</span>
+        <span class="franchise-count">Всего {{ countFranchises }} франшиз</span>
       </div>
     </div>
 
     <div class="col-12">
-      <form class="franchise-catalog-form" #filterForm="ngForm" novalidate>
+      <form>
         <div class="row">
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 franchise-sphere">
+          <div
+            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 franchise-sphere"
+          >
             <label>Сфера франшиз</label>
-            <p-dropdown [options]="aViewBusiness" class="catalog-franchises-form-item" optionLabel="viewName"
-              [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
+            <div class="w-100">
+              <p-dropdown
+                [options]="aViewBusiness"
+                class="block-sort-by"
+                optionLabel="viewName"
+                [(ngModel)]="selectedViewBusiness"
+                placeholder="Вид бизнеса"
+                [showClear]="true"
+                name="view"
+              ></p-dropdown>
+            </div>
           </div>
-
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 control-quick-search">
+          <div
+            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 control-quick-search"
+          >
             <label>Выбор категории</label>
-            <p-dropdown [options]="aBusinessCategories" class="catalog-franchises-form-item" optionLabel="categoryName"
-              [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
+            <div class="w-100">
+              <p-dropdown
+                [options]="aBusinessCategories"
+                class="block-sort-by"
+                optionLabel="categoryName"
+                [(ngModel)]="selectedCategory"
+                placeholder="Категория"
+                [showClear]="true"
+                name="category"
+              ></p-dropdown>
+            </div>
           </div>
-
-          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount">
+          <div
+            class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount"
+          >
             <label>Инвестиции</label>
             <div class="row">
               <div class="col-6 block-price-min">
-                <input type="text" class="control-input-price min-price" pInputText placeholder="от 100 000 ₽"
-                  [(ngModel)]="minPrice" name="minPrice" />
+                <input
+                  type="text"
+                  class="control-input-price min-price"
+                  pInputText
+                  placeholder="от 100 000 ₽"
+                  [(ngModel)]="minPrice"
+                  name="minPrice"
+                />
               </div>
 
               <div class="col-6 block-price-max">
-                <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽"
-                  [(ngModel)]="maxPrice" name="maxPrice" />
+                <input
+                  type="text"
+                  class="control-input-price"
+                  pInputText
+                  placeholder="до 100 000 000 ₽"
+                  [(ngModel)]="maxPrice"
+                  name="maxPrice"
+                />
               </div>
             </div>
           </div>
         </div>
       </form>
     </div>
+  </div>
 
-    <div class="col-12 mt-3">
-      <hr class="hr">
-    </div>
+  <div class="col-12 mt-3">
+    <hr class="hr" />
+  </div>
 
-    <div class="col-12 franchise-catalog-form">
-      <div class="row">
-        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-5">
-          <!-- <div class="d-flex">
+  <div class="col-12 franchise-catalog-form">
+    <div class="row">
+      <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-5">
+        <!-- <div class="d-flex">
             <button class="btn-filter" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
             <button class="btn-filter" (click)="onClearFilters()">Очистить фильтры</button>
           </div> -->
 
-          <div class="price-sorter">
-            <label class="label-filter">Сортировать по</label>
-            <div>
-              <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value"
+        <div class="price-sorter">
+          <label class="label-filter">Сортировать по</label>
+          <div>
+            <!-- <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value"
                 name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true"
-                (onChange)="onChangeSortPrice()"></p-dropdown>
+                (onChange)="onChangeSortPrice()"></p-dropdown> -->
+
+              <p-dropdown
+                class="block-sort-by"
+                [options]="aSortPrices"
+                optionLabel="name"
+                optionCode="value"
+                name="price"
+                [(ngModel)]="selectedSort"
+                placeholder="Цена"
+                [showClear]="true"
+                (onChange)="onChangeSortPrice()"
+              ></p-dropdown>
             </div>
           </div>
 
-          <div class="switch-garant d-flex justify-content-between">
-            <label class="label-filter mb-0 d-flex align-items-center">Покупка через гарант</label>
-            <div>
-              <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
-            </div>
+        <div class="d-flex">
+          <div class="">
+            <strong>Покупка через гарант</strong>
           </div>
 
-          <div class="monthly-income">
-            <label class="label-filter">Прибыль в месяц</label>
-            <div class="d-flex justify-content-between filter-btns-profit">
-              <input type="text" class="control-input-filter-price no-margin" pInputText placeholder="от 100 000 ₽"
-                [(ngModel)]="filterMinPrice" name="filterMinPrice" />
-              <input type="text" class="control-input-filter-price no-margin" pInputText placeholder="до 100 000 000 ₽"
-                [(ngModel)]="filterMaxPrice" name="filterMaxPrice" />
-            </div>
-          </div>
-
-          <div class="filter-btns d-flex justify-content-between">
-            <button class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control"
-          (click)="onFilterFranchisesAsync()">Применить
-          фильтры</button>
-            <button class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control ml-1"
-          (click)="onClearFilters()">Очистить
-          фильтры</button>
+          <div>
+            <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
           </div>
         </div>
 
-        <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-7">
-          <div class="franchise-card-container">
-            <div class="row">
-              <!-- <div class="col-12">
+        <div class="monthly-income">
+          <label class="label-filter">Прибыль в месяц</label>
+          <div class="d-flex justify-content-between filter-btns-profit">
+            <input
+              type="text"
+              class="control-input-filter-price no-margin"
+              pInputText
+              placeholder="от 100 000 ₽"
+              [(ngModel)]="filterMinPrice"
+              name="filterMinPrice"
+            />
+            <input
+              type="text"
+              class="control-input-filter-price no-margin"
+              pInputText
+              placeholder="до 100 000 000 ₽"
+              [(ngModel)]="filterMaxPrice"
+              name="filterMaxPrice"
+            />
+          </div>
+        </div>
+
+        <div class="filter-btns d-flex justify-content-between">
+          <button
+            class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control"
+            (click)="onFilterFranchisesWithPaginationAsync()"
+          >
+            Применить фильтры
+          </button>
+          <button
+            class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control ml-1"
+            (click)="onClearFilters()"
+          >
+            Очистить фильтры
+          </button>
+        </div>
+      </div>
+
+      <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-7">
+        <div class="franchise-card-container">
+          <div class="row">
+            <!-- <div class="col-12">
                 <div class="franchise-card">
                   <img src="../../../../assets/images/once-card.png" alt="gobizy franchise card"
                     class="franchise-card-img">
@@ -126,26 +204,44 @@
                 </div>
               </div> -->
 
-              <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12" *ngFor="let item of aFranchises">
-                <p-card header="{{item.title}}" subheader="{{item.fullText}}" [style]="{width: '100%'}"
-                  styleClass="p-card-shadow">
-                  <ng-template pTemplate="header">
-                    <img [src]="item.url">
-                  </ng-template>
-                  <strong>{{item.textDoPrice}} {{item.totalInvest}} ₽</strong>
-                  <ng-template pTemplate="footer">
-                    <button class="btn btn-default btn-filter"
-                      (click)="routeViewFranchiseCardAsync(item.franchiseId)">Подробнее</button>
-                  </ng-template>
-                </p-card>
-              </div>
+            <div
+              class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12"
+              *ngFor="let item of aFranchises"
+            >
+              <p-card
+                header="{{ item.title }}"
+                subheader="{{ item.fullText }}"
+                [style]="{ width: '100%' }"
+                styleClass="p-card-shadow"
+              >
+                <ng-template pTemplate="header">
+                  <img [src]="item.url" />
+                </ng-template>
+                <strong>
+                  {{ item.textDoPrice }}
+                  {{ item.totalInvest | priceFormat: item.totalInvest }} ₽
+                </strong>
+                <ng-template pTemplate="footer">
+                  <button
+                    class="btn btn-default btn-filter"
+                    (click)="routeViewFranchiseCardAsync(item.franchiseId)"
+                  >
+                    Подробнее
+                  </button>
+                </ng-template>
+              </p-card>
+            </div>
 
-              <div class="col-12">
-                <div class="franchise-card-pagination">
-                  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
-                    [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
-                  </p-paginator>
-                </div>
+            <div class="col-12">
+              <div class="franchise-card-pagination">
+                <p-paginator
+                  [rows]="12"
+                  [totalRecords]="countFranchises"
+                  [rowsPerPageOptions]="[12, 21, 30]"
+                  [showCurrentPageReport]="true"
+                  (onPageChange)="onPaginationChangeAsync($event)"
+                >
+                </p-paginator>
               </div>
             </div>
           </div>
@@ -158,8 +254,14 @@
   <div class="row section-mb">
     <div class="col-12">
       <div class="garant">
-        <p-carousel [value]="aNewFranchises" [numVisible]="4" [numScroll]="4" [circular]="false"
-          [responsiveOptions]="responsiveOptions" [showNavigators]="false">
+        <p-carousel
+          [value]="aNewFranchises"
+          [numVisible]="4"
+          [numScroll]="4"
+          [circular]="false"
+          [responsiveOptions]="responsiveOptions"
+          [showNavigators]="false"
+        >
           <ng-template pTemplate="header">
             <h5 class="title-franchise">Новые франшизы</h5>
           </ng-template>
@@ -167,15 +269,23 @@
             <div class="product-item">
               <div class="product-item-content">
                 <div class="p-mb-3">
-                  <img [src]="item.url" class="product-image">
+                  <img [src]="item.url" class="product-image" />
                 </div>
                 <div>
-                  <p-card header="Название готового бизнеса" subheader="{{item.fullText}}" [style]="{width: '100%'}"
-                    styleClass="p-card-shadow">
+                  <p-card
+                    header="Название готового бизнеса"
+                    subheader="{{ item.fullText }}"
+                    [style]="{ width: '100%' }"
+                    styleClass="p-card-shadow"
+                  >
                     <ng-template pTemplate="header">
                       <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
                     </ng-template>
-                    <strong>{{item.textDoPrice}} {{item.totalInvest}} ₽</strong>
+                    <strong>
+                      {{ item.textDoPrice }}
+                      {{ item.totalInvest | priceFormat: item.totalInvest }}
+                      ₽
+                    </strong>
                     <ng-template pTemplate="footer">
                       <!-- <p-button label="Save" icon="pi pi-check"></p-button>
                           <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
@@ -194,8 +304,14 @@
   <div class="row carousel-block section-mb">
     <div class="col-lg-7 col-md-6">
       <div class="franchise-feedbacks">
-        <p-carousel [value]="aReviewsFranchises" [numVisible]="2" [numScroll]="2" [circular]="false"
-          [responsiveOptions]="responsiveOptions" [showNavigators]="false">
+        <p-carousel
+          [value]="aReviewsFranchises"
+          [numVisible]="2"
+          [numScroll]="2"
+          [circular]="false"
+          [responsiveOptions]="responsiveOptions"
+          [showNavigators]="false"
+        >
           <ng-template pTemplate="header">
             <h5 class="franchise-title">Отзывы о франшизах</h5>
           </ng-template>
@@ -203,15 +319,20 @@
             <div class="product-item">
               <div class="product-item-content">
                 <div class="p-mb-3">
-                  <img [src]="item.url" class="franchise-card-img">
+                  <img [src]="item.url" class="franchise-card-img" />
                 </div>
                 <div>
-                  <p-card header="Название готового бизнеса" subheader="{{item.fullText}}" [style]="{width: '100%'}"
-                    styleClass="franchise-card-description">
-                    <ng-template pTemplate="header">
-
-                    </ng-template>
-                    <strong class="franchise-card-price">{{item.textDoPrice}} {{item.price}} ₽</strong>
+                  <p-card
+                    header="Название готового бизнеса"
+                    subheader="{{ item.fullText }}"
+                    [style]="{ width: '100%' }"
+                    styleClass="franchise-card-description"
+                  >
+                    <ng-template pTemplate="header"> </ng-template>
+                    <strong class="franchise-card-price"
+                      >{{ item.textDoPrice }}
+                      {{ item.price | priceFormat: item.price }} ₽
+                    </strong>
                   </p-card>
                 </div>
               </div>
@@ -225,11 +346,20 @@
       <div class="h-100">
         <h5 class="franchise-title">Покупка франшиз с гарантиями</h5>
         <div class="franchise-sale">
-          <p-card header="Покупка бизнеса любого размера онлайн с гарантиями" subheader="" [style]="{width: '100%'}"
-            styleClass="card">
-            <p>Первый в мире сервис с функцией приобретитения франшизы или готового бизнеса онлайн и без опасений</p>
+          <p-card
+            header="Покупка бизнеса любого размера онлайн с гарантиями"
+            subheader=""
+            [style]="{ width: '100%' }"
+            styleClass="card"
+          >
+            <p>
+              Первый в мире сервис с функцией приобретитения франшизы или
+              готового бизнеса онлайн и без опасений
+            </p>
             <ng-template pTemplate="footer">
-              <button class="btn btn-dark">Подробнее</button>
+              <button class="btn btn-dark" routerLink="/catalog-business">
+                Подробнее
+              </button>
             </ng-template>
           </p-card>
         </div>
@@ -237,21 +367,33 @@
     </div>
   </div>
 
-  <div class="row section-mb">
+  <div class="row section-mb" *ngIf="isHideBusinessWithGarant">
     <div class="col-12">
       <div class="franchise-business-creation">
         <p-card>
           <ng-template pTemplate="header">
             <h5>Вы можете приобрести бизнес с гарантиями</h5>
             <button type="button" class="close" aria-label="Close">
-              <span aria-hidden="true"><img src="../../../assets/images/cross.svg" alt=""></span>
+              <span aria-hidden="true"
+                ><img src="../../../assets/images/cross.svg" alt=""
+              /></span>
             </button>
           </ng-template>
-          <p>{{oSuggestion.text}}</p>
+          <p>{{ oSuggestion.text }}</p>
           <ng-template pTemplate="footer">
             <div class="d-flex align-items-center">
-              <button class="btn btn-dark more-info-btn">{{oSuggestion.button2Text}}</button>
-              <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button>
+              <button
+                class="btn btn-dark more-info-btn"
+                routerLink="/deal/start"
+              >
+                {{ oSuggestion.button2Text }}
+              </button>
+              <button
+                class="btn btn-default btn-show-more"
+                (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
+              >
+                {{ oSuggestion.button1Text }}
+              </button>
             </div>
           </ng-template>
         </p-card>
@@ -261,31 +403,40 @@
 
   <!-- Область с банерами (2 картинки). -->
   <div class="row section-mb">
-    <div class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+    <div
+      class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"
+    >
       <div class="franchise-banner">
-        <img class="baner" src="../../../assets/images/Rectangle 13.png">
+        <img class="baner" src="../../../assets/images/Rectangle 13.png" />
       </div>
     </div>
-    <div class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+    <div
+      class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"
+    >
       <div class="franchise-banner">
-        <img class="baner" src="../../../assets/images/Rectangle 14.png">
+        <img class="baner" src="../../../assets/images/Rectangle 14.png" />
       </div>
     </div>
   </div>
 
   <!-- Область с 3 карточками. -->
   <div class="row section-mb">
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions">
-      <h3 class="franchise-title">{{item.title}}</h3>
+    <div
+      class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder"
+      *ngFor="let item of aDataActions"
+    >
+      <h3 class="franchise-title">{{ item.title }}</h3>
       <div class="franchise-three-cards">
-        <p-card [style]="{width: '100%'}" styleClass="card">
+        <p-card [style]="{ width: '100%' }" styleClass="card">
           <div class="card-business-content">
             <ng-template pTemplate="header">
               <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
             </ng-template>
-            <h5 class="franchise-subtitle">{{item.subTitle}}</h5>
-            <p class="franchise-description-small">{{item.text}}</p>
-            <button class="three-card-btn btn btn-dark">{{item.buttonText}}</button>
+            <h5 class="franchise-subtitle">{{ item.subTitle }}</h5>
+            <p class="franchise-description-small">{{ item.text }}</p>
+            <button class="three-card-btn btn btn-dark">
+              {{ item.buttonText }}
+            </button>
             <ng-template pTemplate="footer">
               <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
               <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
@@ -301,23 +452,38 @@
   <div class="row section-mb">
     <h5 class="franchise-title">Бизнес блог</h5>
 
-    <div class="popular-item blog-item col--xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aBlogs">
-      <p-card header="{{item.title}}" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
+    <div
+      class="popular-item blog-item col--xxl-3 col-xl-3 col-lg-6 col-md-6"
+      *ngFor="let item of aBlogs"
+    >
+      <p-card
+        header="{{ item.title }}"
+        subheader=""
+        [style]="{ width: '100%' }"
+        styleClass="p-card-shadow"
+      >
         <ng-template pTemplate="header">
-          <img [src]="item.url" class="franchise-card-img">
+          <img [src]="item.url" class="franchise-card-img" />
         </ng-template>
       </p-card>
     </div>
 
     <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
       <div class="popular-item more-articles business-blog-video">
-        <p-card header="" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
+        <p-card
+          header=""
+          subheader=""
+          [style]="{ width: '100%' }"
+          styleClass="p-card-shadow"
+        >
           <div class="more-articles-content d-flex align-items-center mt-4">
             <div class="more-articles-content-text">
               <h3 class="franchise-card-title">Больше статей</h3>
-              <p class="franchise-card-description">Перейдите в наш блог и найдите там массу полезной информации.</p>
+              <p class="franchise-card-description">
+                Перейдите в наш блог и найдите там массу полезной информации.
+              </p>
             </div>
-            <img src="../../../assets/images/Frame 66.png" height="32">
+            <img src="../../../assets/images/Frame 66.png" height="32" />
           </div>
         </p-card>
       </div>
@@ -328,25 +494,31 @@
   <div class="row section-mb">
     <h2 class="franchise-title">Новости делового мира</h2>
 
-    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
       <div class="business-world-news">
-        <img src="../../../assets/images/Frame 31.png">
+        <img src="../../../assets/images/Frame 31.png" />
       </div>
     </div>
 
-    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-      <div class="news-item space-left-item business-news" *ngFor="let item of aNews">
+    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
+      <div
+        class="news-item space-left-item business-news"
+        *ngFor="let item of aNews"
+      >
         <div class="top">
-          <img [src]="item.url">
-          <strong class="title-news">{{item.name}}</strong>
-          <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+          <img [src]="item.url" />
+          <strong class="title-news">{{ item.name }}</strong>
+          <img
+            class="space-right-image-category space-arrow-category"
+            src="../../../assets/images/Arrow 1.png"
+          />
         </div>
         <div class="bottom">
-          <span>{{item.time}}</span>
-          <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
-          <span>{{item.date}}</span>
-          <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
-          <span>{{item.type}}</span>
+          <span>{{ item.time }}</span>
+          <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
+          <span>{{ item.date }}</span>
+          <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
+          <span>{{ item.type }}</span>
         </div>
       </div>
     </div>
@@ -359,38 +531,62 @@
     </div>
 
     <!-- 1 столбец. -->
-    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12" *ngFor="let item of categoryList1">
+    <div
+      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12"
+      *ngFor="let item of categoryList1"
+    >
       <div class="category-item">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+        <img class="space-right-image-category" [src]="item.url" />
+        <span>{{ item.name }}</span>
+        <img
+          class="space-right-image-category space-arrow-category"
+          src="../../../assets/images/Arrow 1.png"
+        />
       </div>
     </div>
 
     <!-- 2 столбец -->
-    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12" *ngFor="let item of categoryList2">
+    <div
+      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12"
+      *ngFor="let item of categoryList2"
+    >
       <div class="category-item">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+        <img class="space-right-image-category" [src]="item.url" />
+        <span>{{ item.name }}</span>
+        <img
+          class="space-right-image-category space-arrow-category"
+          src="../../../assets/images/Arrow 1.png"
+        />
       </div>
     </div>
 
     <!-- 3 столбец. -->
-    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12" *ngFor="let item of categoryList3">
+    <div
+      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12"
+      *ngFor="let item of categoryList3"
+    >
       <div class="category-item">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+        <img class="space-right-image-category" [src]="item.url" />
+        <span>{{ item.name }}</span>
+        <img
+          class="space-right-image-category space-arrow-category"
+          src="../../../assets/images/Arrow 1.png"
+        />
       </div>
     </div>
 
     <!-- 4 столбец -->
-    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12" *ngFor="let item of categoryList4">
+    <div
+      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12"
+      *ngFor="let item of categoryList4"
+    >
       <div class="category-item">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+        <img class="space-right-image-category" [src]="item.url" />
+        <span>{{ item.name }}</span>
+        <img
+          class="space-right-image-category space-arrow-category"
+          src="../../../assets/images/Arrow 1.png"
+        />
       </div>
     </div>
   </div>

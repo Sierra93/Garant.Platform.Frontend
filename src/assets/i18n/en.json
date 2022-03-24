@@ -1,0 +1,24 @@
+{
+	"COMMON": {
+		"HEADER": "Ngx Translate Application Usage in Angular"
+	},
+
+	"LANGUAGES": {
+		"EN": "English",
+		"RU": "Russian",
+		"TITLE": "Language"        
+	},
+
+    "oTopAction": {
+		"text": "The first service in the world with the function of purchasing a franchise or a ready-made business online and without fear"
+	},
+
+    "Detail": {
+        "Details": "More"
+    },
+
+    "RecentlyPurchased": {
+        "RecentlyPurchasedBlockName": "Recently purchased",
+        "Name": "Name of business"
+    }
+}

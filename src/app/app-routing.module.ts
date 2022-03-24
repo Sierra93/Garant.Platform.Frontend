@@ -24,8 +24,8 @@ import { FranchiseLandingModule } from './modules/landing/franchise-landing/fran
 import { ConsultingLandingModule } from './modules/landing/consulting-landing/consulting-landing.component';
 import { DealLandingModule } from './modules/landing/deal-landing/deal-landing.component';
 import { ConfiguratorAuthModule } from './modules/configurator/configurator-auth/configurator-auth.component';
-import { ConfiguratorAdminModule } from './modules/configurator/configurator-admin/configurator-admin.component';
 import { NotificationsModule } from './modules/profile/profile-requests/notifications.component';
+import { CreateAdModule } from './modules/create-ad/create-ad.component';
 
 const routes: Routes = [
   {
@@ -80,7 +80,7 @@ const routes: Routes = [
 
   {
     path: "ad/create",
-    loadChildren: () => import('./modules/ad/ad.module').then(m => m.AdModule)
+    component: CreateAdModule
   },
 
   {
@@ -157,9 +157,14 @@ const routes: Routes = [
     component: ConfiguratorAuthModule
   },
 
+  // {
+  //   path: "configurator/admin",
+  //   component: ConfiguratorAdminModule
+  // }
+
   {
     path: "configurator/admin",
-    component: ConfiguratorAdminModule
+    loadChildren: () => import('./modules/configurator/configurator.module').then(m => m.ConfiguratorModule)
   }
 ];
 

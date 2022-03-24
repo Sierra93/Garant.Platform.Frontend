@@ -1,18 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { Title } from "@angular/platform-browser";
-import { ActivatedRoute, Router } from "@angular/router";
-import { API_URL } from "src/app/core/core-urls/api-url";
-import { FilterInput } from "src/app/models/franchise/input/filter-franchise-input";
-import { FranchiseInput } from "src/app/models/franchise/input/franchise-input";
-import { PaginationInput } from "src/app/models/pagination/input/pagination-input";
-import { CommonDataService } from "src/app/services/common/common-data.service";
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+import { API_URL } from 'src/app/core/core-urls/api-url';
+import { FilterBusinessWithPaginationInput } from 'src/app/models/business/input/filter-business-with-pagination-input';
+import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
+import { CommonDataService } from 'src/app/services/common/common-data.service';
 
 @Component({
-  selector: "catalog-business",
-  templateUrl: "./catalog-business.component.html",
-  styleUrls: ["./catalog-business.component.scss"]
+    selector: "catalog-business",
+    templateUrl: "./catalog-business.component.html",
+    styleUrls: ["./catalog-business.component.scss"]
 })
 
 /**
@@ -26,19 +25,21 @@ export class CatalogBusinessModule implements OnInit {
   aViewBusiness: any[] = [];
   minPrice!: number;
   maxPrice!: number;
-  view: string = "";
-  city: string = "";
-  category: string = "";
-  selectedCity: string = "";
-  selectedCategory: any;
+  view: string = '';
+  city: string = '';
+  category: string = '';
+  selectedCity: string = '';
+  selectedCategory: any = '';
   selectedViewBusiness: any;
   aBusinessList: any[] = [];
-  selectedSort: any;
+  selectedSort: any = '';
   aSortPrices: any[] = [];
   filterMinPrice!: number;
   filterMaxPrice!: number;
   countTotalPage!: number;
   countBusinesses!: number;
+  aRowsPerPageOptions: number[] = [10, 20, 30];
+  selectedCountRows: number = 10;
   aBlogs: any[] = [];
   aNews: any[] = [];
   categoryList1: any[] = [];
@@ -53,48 +54,51 @@ export class CatalogBusinessModule implements OnInit {
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
+  isHideBusinessWithGarant: boolean = true;
   filterRang: number[] = [20, 80];
   rangValue: number[] = [20, 80];
 
-  constructor(private http: HttpClient,
-              private commonService: CommonDataService,
-              private titleService: Title,
-              private router: Router,
-              private route: ActivatedRoute) {
+  constructor(
+    private http: HttpClient,
+    private commonService: CommonDataService,
+    private titleService: Title,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     this.aSortPrices = [
       {
-        name: "По убыванию цены",
-        value: "Desc"
+        name: 'По убыванию цены',
+        value: 'Desc',
       },
       {
-        name: "По возрастанию цены",
-        value: "Asc"
-      }
+        name: 'По возрастанию цены',
+        value: 'Asc',
+      },
     ];
 
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
         numVisible: 3,
-        numScroll: 3
+        numScroll: 3,
       },
       {
         breakpoint: '768px',
         numVisible: 2,
-        numScroll: 2
+        numScroll: 2,
       },
       {
         breakpoint: '560px',
         numVisible: 1,
-        numScroll: 1
-      }
+        numScroll: 1,
+      },
     ];
 
     this.routeParam = this.route.snapshot.queryParams.businessId;
-  };
+  }
 
   public async ngOnInit() {
-    // await this.getPopularBusinessAsync();
+    await this.getPopularBusinessAsync();
     await this.GetBusinessListAsync();
     await this.loadCitiesFranchisesListAsync();
     await this.loadCategoriesFranchisesListAsync();
@@ -107,59 +111,22 @@ export class CatalogBusinessModule implements OnInit {
     await this.loadSingleSuggestionAsync();
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
-  };
+  }
 
   /**
    * Функция получит список популярного бизнеса.
    * @returns Список бизнеса.
    */
-  //  private async getPopularBusinessAsync() {
-  //     try {
-  //         await this.commonService.getPopularBusinessAsync().then((data: any) => {
-  //             console.log("Популярный бизнес:", data);
-  //             this.aPopularBusiness = data;
-  //         });
-  //     }
-
-  //     catch (e: any) {
-  //         throw new Error(e);
-  //     }
-  // };
-
-  /**
-   * Функция отфильтрует список бизнеса по фильтрам.
-   * @param viewCode - Код вида бизнеса.
-   * @param categoryCode - Код категории бизнеса.
-   * @param cityCode - Город бизнеса.
-   * @param minPrice - Цена от.
-   * @param maxPrice - Цена до.
-   */
-  //  public async onFilterFranchisesAsync(form: NgForm) {
-  //     try {
-  //         let filterInput = new FranchiseInput();
-  //         filterInput.viewCode = form.value.view.viewCode;
-  //         filterInput.cityCode = form.value.city.cityCode;
-  //         filterInput.categoryCode = form.value.category.categoryCode;
-  //         filterInput.minPrice = form.value.minPrice;
-  //         filterInput.maxPrice = form.value.maxPrice;
-
-  //         await this.http.post(API_URL.apiUrl.concat("/main/filter"), filterInput)
-  //             .subscribe({
-  //                 next: (response: any) => {
-  //                     console.log("Отфильтрованный список франшиз:", response);
-  //                     // this.aFranchises = response;
-  //                 },
-
-  //                 error: (err) => {
-  //                     throw new Error(err);
-  //                 }
-  //             });
-  //     }
-
-  //     catch (e: any) {
-  //         throw new Error(e);
-  //     }
-  // };
+  private async getPopularBusinessAsync() {
+    try {
+      await this.commonService.getPopularBusinessAsync().then((data: any) => {
+        console.log('Популярный бизнес:', data);
+        this.aPopularBusiness = data;
+      });
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  }
 
   /**
    * TODO: Вынести в общий сервис.
@@ -167,21 +134,23 @@ export class CatalogBusinessModule implements OnInit {
    */
   private async GetBusinessListAsync() {
     try {
-      await this.http.post(API_URL.apiUrl.concat("/business/catalog-business"), {})
+      //TODO: Возможно не используется
+      await this.http
+        .post(API_URL.apiUrl.concat('/business/catalog-business'), {})
         .subscribe({
           next: (response: any) => {
-            console.log("Список бизнеса:", response);
+            console.log('Список бизнеса:', response);
             this.aBusinessList = response;
           },
 
           error: (err) => {
             throw new Error(err);
-          }
+          },
         });
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   /**
    * TODO: Вынести в общий сервис.
@@ -189,21 +158,22 @@ export class CatalogBusinessModule implements OnInit {
    */
   private async loadCitiesFranchisesListAsync() {
     try {
-      await this.http.post(API_URL.apiUrl.concat("/business/cities-list"), {})
+      await this.http
+        .post(API_URL.apiUrl.concat('/business/cities-list'), {})
         .subscribe({
           next: (response: any) => {
-            console.log("Список городов:", response);
+            console.log('Список городов:', response);
             this.aCities = response;
           },
 
           error: (err) => {
             throw new Error(err);
-          }
+          },
         });
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   /**
    * TODO: Вынести в общий сервис.
@@ -211,21 +181,22 @@ export class CatalogBusinessModule implements OnInit {
    */
   private async loadCategoriesFranchisesListAsync() {
     try {
-      await this.http.post(API_URL.apiUrl.concat("/business/category-list"), {})
+      await this.http
+        .post(API_URL.apiUrl.concat('/business/category-list'), {})
         .subscribe({
           next: (response: any) => {
-            console.log("Список категорий бизнеса:", response);
+            console.log('Список категорий бизнеса:', response);
             this.aBusinessCategories = response;
           },
 
           error: (err) => {
             throw new Error(err);
-          }
+          },
         });
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   /**
    * TODO: Вынести в общий сервис.
@@ -233,129 +204,155 @@ export class CatalogBusinessModule implements OnInit {
    */
   private async loadViewBusinessFranchisesListAsync() {
     try {
-      await this.http.post(API_URL.apiUrl.concat("/main/business-list"), {})
+      await this.http
+        .post(API_URL.apiUrl.concat('/main/business-list'), {})
         .subscribe({
           next: (response: any) => {
-            console.log("Список видов бизнеса:", response);
+            console.log('Список видов бизнеса:', response);
             this.aViewBusiness = response;
           },
 
           error: (err) => {
             throw new Error(err);
-          }
+          },
         });
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   public async onPaginationChangeAsync(event: any) {
-    let paginationData = new PaginationInput();
-    paginationData.PageNumber = event.page + 1;
-    paginationData.CountRows = event.rows;
-
     try {
-      await this.http.post(API_URL.apiUrl.concat("/pagination/catalog-business"), paginationData)
+      let filterInput = new FilterBusinessWithPaginationInput();
+      filterInput.TypeSortPrice = this.selectedSort.value;
+      filterInput.MinProfit = this.minProfit;
+      filterInput.MaxProfit = this.maxProfit;
+      filterInput.City = this.city;
+      filterInput.CategoryCode = this.selectedCategory.categoryCode;
+      filterInput.MinPrice = this.minPrice;
+      filterInput.MaxPrice = this.maxPrice;
+      filterInput.IsGarant = this.isGarant;
+      filterInput.PageNumber = event.page + 1;
+      filterInput.CountRows = event.rows;
+
+      this.selectedCountRows = event.rows;
+      await this.http
+        .post(API_URL.apiUrl.concat('/business/filter-pagination'), filterInput)
         .subscribe({
           next: (response: any) => {
-            console.log("get data pagination", response);
+            this.aBusinessList = response.results;
+            this.countBusinesses = response.countAll;
+            this.countTotalPage = response.countAll;
+          },
+          error: (err) => {
+            this.commonService.routeToStart(err);
+            throw new Error(err);
+          },
+        });
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  }
+
+    private async loadPaginationInitAsync() {
+        let paginationData = new PaginationInput();
+
+        // TODO: доработать на динамическое получение из роута или как-нибудь еще, чтобы помнить, что выбирал пользователь.
+        paginationData.PageNumber = 1;
+
+    try {
+      await this.http
+        .post(
+          API_URL.apiUrl.concat('/pagination/init-catalog-business'),
+          paginationData
+        )
+        .subscribe({
+          next: (response: any) => {
+            console.log('pagination init', response);
             this.countBusinesses = response.countAll;
             this.aBusinessList = response.results;
-            // this.aFranchises = response.results;
-            // this.router.navigate(['/auction'], {
-            //     queryParams: {
-            //         page: paginationData.PageNumber,
-            //         rows: paginationData.CountRows
-            //     }
-            // });
+            this.countTotalPage = response.countAll;
           },
 
           error: (err) => {
             this.commonService.routeToStart(err);
             throw new Error(err);
-          }
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  };
-
-  private async loadPaginationInitAsync() {
-    let paginationData = new PaginationInput();
-
-    // TODO: доработать на динамическое получение из роута или как-нибудь еще, чтобы помнить, что выбирал пользователь.
-    paginationData.PageNumber = 1;
-
-    try {
-      await this.http.post(API_URL.apiUrl.concat("/pagination/init-catalog-business"), paginationData)
-        .subscribe({
-          next: (response: any) => {
-            console.log("pagination init", response);
-            this.countBusinesses = response.countAll;
-            this.countTotalPage = response.totalCount;
           },
-
-          error: (err) => {
-            this.commonService.routeToStart(err);
-            throw new Error(err);
-          }
         });
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   public async onChangeSortPrice() {
-    console.log("onChangeSortPrice", this.selectedSort);
-  };
+    console.log('onChangeSortPrice', this.selectedSort);
+  }
 
   /**
-   * Функция фильтрует бизнесы по параметрам.
-   * @returns - Список бизнесов после фильтрации.
+   * Функция фильтрует бизнесы по параметрам с учётом пагинации.
+   * @returns - Список бизнесов после фильтрации с учётом пагинации.
    */
-  public async onFilterBusinessesAsync() {
+  public async onFilterBusinessesWithPaginationAsync() {
     try {
-      let filterInput = new FilterInput();
+      let filterInput = new FilterBusinessWithPaginationInput();
       filterInput.TypeSortPrice = this.selectedSort.value;
-      filterInput.ProfitMinPrice = this.filterMinPrice;
-      filterInput.ProfitMaxPrice = this.filterMaxPrice;
-      // filterInput.ViewCode = this.selectedViewBusiness.viewCode;
+      filterInput.MinProfit = this.minProfit;
+      filterInput.MaxProfit = this.maxProfit;
+      filterInput.City = this.city;
       filterInput.CategoryCode = this.selectedCategory.categoryCode;
-      filterInput.MinPriceInvest = this.minPrice;
-      filterInput.MaxPriceInvest = this.maxPrice;
+      filterInput.MinPrice = this.minPrice;
+      filterInput.MaxPrice = this.maxPrice;
       filterInput.IsGarant = this.isGarant;
+      filterInput.PageNumber = 1;
+      filterInput.CountRows = this.selectedCountRows;
 
-      await this.http.post(API_URL.apiUrl.concat("/business/filter-businesses"), filterInput)
+      await this.http
+        .post(API_URL.apiUrl.concat('/business/filter-pagination'), filterInput)
         .subscribe({
           next: (response: any) => {
-            console.log("Бизнеса после фильтрации:", response);
-            this.aBusinessList = response;
+            console.log('Бизнеса после фильтрации:', response);
+            this.aBusinessList = response.results;
+            this.countBusinesses = response.countAll;
+            this.countTotalPage = response.countAll;
           },
 
           error: (err) => {
             this.commonService.routeToStart(err);
             throw new Error(err);
-          }
+          },
         });
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   public async onClearFilters() {
-    await this.GetBusinessListAsync();
-  };
+    //TODO: После сброса числовые значения устанавливаются в ноль: нужно выводить плейсхолдеры вместо нулей
+    //и запретить пользователю отправлять "пустые" значения цен и прибыли. Этого можно добиться, если сначала ввести
+    // а затем руками стереть значение.
 
-  /**
-   * Функция получит данные для блока событий.
-   */
-  private async GetActionsAsync() {
-    try {
-      await this.http.post(API_URL.apiUrl.concat("/main/actions"), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log("Блок событий:", response);
-            this.aDataActions = response.filter((el: any) => el.isTop == false);
+    this.isGarant = true;
+    this.selectedCategory = '';
+    this.selectedSort = '';
+    this.selectedCity = '';
+    this.maxPrice = 0;
+    this.minPrice = 0;
+    this.minProfit = 0;
+    this.maxProfit = 0;
+
+    await this.loadPaginationInitAsync();
+  }
+
+    /**
+     * Функция получит данные для блока событий.
+     */
+     private async GetActionsAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/main/actions"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Блок событий:", response);
+                        this.aDataActions = response.filter((el: any) => el.isTop == false);
 
             // this.oTopAction = this.aDataActions.filter(el => el.isTop == true)[0];
             // console.log("oTopAction",this.oTopAction);
@@ -363,12 +360,12 @@ export class CatalogBusinessModule implements OnInit {
 
           error: (err) => {
             throw new Error(err);
-          }
+          },
         });
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   /**
    * Функция получит список блогов.
@@ -376,21 +373,22 @@ export class CatalogBusinessModule implements OnInit {
    */
   private async GetBlogsAsync() {
     try {
-      await this.http.post(API_URL.apiUrl.concat("/blog/main-blogs"), {})
+      await this.http
+        .post(API_URL.apiUrl.concat('/blog/main-blogs'), {})
         .subscribe({
           next: (response: any) => {
-            console.log("Список блогов:", response);
+            console.log('Список блогов:', response);
             this.aBlogs = response;
           },
 
           error: (err) => {
             throw new Error(err);
-          }
+          },
         });
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   /**
    * Функция получит список проплаченных новостей.
@@ -398,21 +396,22 @@ export class CatalogBusinessModule implements OnInit {
    */
   private async GetNewsTopAsync() {
     try {
-      await this.http.post(API_URL.apiUrl.concat("/blog/get-news"), {})
+      await this.http
+        .post(API_URL.apiUrl.concat('/blog/get-news'), {})
         .subscribe({
           next: (response: any) => {
-            console.log("Список новостей:", response);
+            console.log('Список новостей:', response);
             this.aNews = response;
           },
 
           error: (err) => {
             throw new Error(err);
-          }
+          },
         });
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   /**
    * Функция получит список категорий.
@@ -429,7 +428,7 @@ export class CatalogBusinessModule implements OnInit {
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   /**
    * Функция получит одно предложение с флагом IsSingle.
@@ -443,7 +442,7 @@ export class CatalogBusinessModule implements OnInit {
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   /**
    * Функция получит список новых франшиз.
@@ -451,21 +450,22 @@ export class CatalogBusinessModule implements OnInit {
    */
   private async GetNewFranchisesListAsync() {
     try {
-      await this.http.post(API_URL.apiUrl.concat("/franchise/new-franchise"), {})
+      await this.http
+        .post(API_URL.apiUrl.concat('/franchise/new-franchise'), {})
         .subscribe({
           next: (response: any) => {
-            console.log("Список новых франшиз:", response);
+            console.log('Список новых франшиз:', response);
             this.aNewFranchises = response;
           },
 
           error: (err) => {
             throw new Error(err);
-          }
+          },
         });
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   // private async GetReviewsFranchisesAsync() {
   //     try {
@@ -492,19 +492,23 @@ export class CatalogBusinessModule implements OnInit {
    */
   private async setTransitionAsync(businessId: number) {
     try {
-      await this.commonService.setTransitionAsync(businessId, "Business", "", "").then((data: any) => {
-        console.log("Переход записан:", data);
-      });
+      await this.commonService
+        .setTransitionAsync(businessId, 'Business', '', '')
+        .then((data: any) => {
+          console.log('Переход записан:', data);
+        });
     } catch (e: any) {
       throw new Error(e);
     }
-  };
+  }
 
   /**
    * Функция перейдет к просмотру карточки бизнеса.
    */
   public async routeViewFranchiseCardAsync(businessId: number) {
     await this.setTransitionAsync(businessId);
-    this.router.navigate(["/business/view"], {queryParams: {businessId: businessId}});
-  };
+    this.router.navigate(['/business/view'], {
+      queryParams: { businessId: businessId },
+    });
+  }
 }

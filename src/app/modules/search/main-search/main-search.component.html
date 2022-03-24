@@ -88,18 +88,18 @@
         </div>
       </div>
       <div class="popular-item catalog-item col-lg-4" *ngFor="let item of aResultSearch">
-        <p-card header="{{item.title}}" subheader="{{item.fullText}}" [style]="{width: '100%'}"
+        <p-card header="{{item?.title}}" subheader="{{item?.fullText}}" [style]="{width: '100%'}"
           styleClass="p-card-shadow">
           <ng-template pTemplate="header">
             <img [src]="item.url">
           </ng-template>
-          <strong>{{item.textDoPrice}} {{item.totalInvest}} ₽</strong>
+          <strong>{{item?.textDoPrice}} {{item?.totalInvest}} ₽</strong>
           <ng-template pTemplate="footer">
            <div class="d-flex">
             <button class="btn btn-default btn-filter"
-            (click)="routeViewFranchiseCardAsync(item.franchiseId)">Подробнее</button>
+            (click)="routeViewFranchiseCardAsync(item?.franchiseId)">Подробнее</button>
           <button class="btn btn-default btn-filter"
-            (click)="onRouteFranchiseChatAsync(item.franchiseId, 'Franchise', item.userId)">Начать чат с
+            (click)="onRouteFranchiseChatAsync(item?.franchiseId, 'Franchise', item?.userId)">Начать чат с
             продавцом</button>
            </div>
           </ng-template>
@@ -168,14 +168,14 @@
 
     <div class="d-flex popular-list" *ngIf="isBusiness">
       <div class="popular-item" *ngFor="let item of aResultSearch">
-        <p-card class="col-lg-4" header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
+        <p-card class="col-lg-4" header="{{item?.title}}" subheader="{{item?.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
           <ng-template pTemplate="header">
-            <img [src]="item.url">
+            <img [src]="item?.url">
           </ng-template>
-          <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+          <strong>{{item?.textDoPrice}} {{item?.price}} ₽</strong>
           <ng-template pTemplate="footer">
             <button class="btn btn-default btn-filter"
-              (click)="routeViewBusinessCardAsync(item.businessId)">Подробнее</button>
+              (click)="routeViewBusinessCardAsync(item?.businessId)">Подробнее</button>
           </ng-template>
         </p-card>
       </div>
@@ -193,15 +193,15 @@
         <div class="product-item">
           <div class="product-item-content">
             <div class="p-mb-3">
-              <img [src]="item.url" class="product-image">
+              <img [src]="item?.url" class="product-image">
             </div>
             <div>
-              <p-card header="Название готового бизнеса" subheader="{{item.fullText}}" [style]="{width: '100%'}"
+              <p-card header="Название готового бизнеса" subheader="{{item?.fullText}}" [style]="{width: '100%'}"
                 styleClass="p-card-shadow">
                 <ng-template pTemplate="header">
                   <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
                 </ng-template>
-                <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+                <strong>{{item?.textDoPrice}} {{item?.price}} ₽</strong>
                 <ng-template pTemplate="footer">
                   <!-- <p-button label="Save" icon="pi pi-check"></p-button>
                         <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
@@ -271,11 +271,11 @@
       <ng-template pTemplate="footer">
         <div class="d-flex">
           <div>
-            <button class="btn btn-default btn-show-more">{{oSuggestion.button1Text}}</button>
+            <button class="btn btn-default btn-show-more">{{oSuggestion?.button1Text}}</button>
           </div>
 
           <div class="ml-1">
-            <button class="btn btn-dark">{{oSuggestion.button2Text}}</button>
+            <button class="btn btn-dark">{{oSuggestion?.button2Text}}</button>
           </div>
         </div>
       </ng-template>
@@ -291,14 +291,14 @@
   <!-- Область с 3 карточками. -->
   <div class="d-flex three-cards">
     <div class="col-lg-4 card-business" *ngFor="let item of aDataActions">
-      <p-card header="{{item.title}}" subheader="{{item.subTitle}}" [style]="{width: '100%'}" styleClass="card">
+      <p-card header="{{item?.title}}" subheader="{{item?.subTitle}}" [style]="{width: '100%'}" styleClass="card">
         <ng-template pTemplate="header">
           <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
         </ng-template>
-        <p>{{item.text}}</p>
+        <p>{{item?.text}}</p>
         <ng-template pTemplate="footer">
           <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-          <button class="btn btn-dark">{{item.buttonText}}</button>
+          <button class="btn btn-dark">{{item?.buttonText}}</button>
           <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
       </p-button> -->
         </ng-template>
@@ -350,14 +350,14 @@
 
     <div>
       <div class="news-item space-left-item" *ngFor="let item of aNews">
-        <img [src]="item.url">
-        <strong class="title-news">{{item.name}}</strong>
+        <img [src]="item?.url">
+        <strong class="title-news">{{item?.name}}</strong>
         <div class="bottom-line">
-          <small>{{item.time}}</small>
+          <small>{{item?.time}}</small>
           <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
-          <small>{{item.date}}</small>
+          <small>{{item?.date}}</small>
           <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
-          <small>{{item.type}}</small>
+          <small>{{item?.type}}</small>
         </div>
       </div>
     </div>
@@ -371,8 +371,8 @@
         <h5 class="garant title-franchise">Категории готового бизнеса</h5>
         <div class="category-block-first">
           <div class="category-item" *ngFor="let item of categoryList1">
-            <img class="space-right-image-category" [src]="item.url">
-            <span>{{item.name}}</span>
+            <img class="space-right-image-category" [src]="item?.url">
+            <span>{{item?.name}}</span>
             <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
           </div>
         </div>
@@ -382,8 +382,8 @@
       <div class="col-lg-3">
         <div class="garant">&nbsp;</div>
         <div class="category-item" *ngFor="let item of categoryList2">
-          <img class="space-right-image-category" [src]="item.url">
-          <span>{{item.name}}</span>
+          <img class="space-right-image-category" [src]="item?.url">
+          <span>{{item?.name}}</span>
           <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
         </div>
       </div>
@@ -393,8 +393,8 @@
         <h5 class="garant title-franchise">Категории франшиз</h5>
         <div class="category-block-second">
           <div class="category-item" *ngFor="let item of categoryList3">
-            <img class="space-right-image-category" [src]="item.url">
-            <span>{{item.name}}</span>
+            <img class="space-right-image-category" [src]="item?.url">
+            <span>{{item?.name}}</span>
             <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
           </div>
         </div>
@@ -404,8 +404,8 @@
       <div class="col-lg-3">
         <div class="garant">&nbsp;</div>
         <div class="category-item" *ngFor="let item of categoryList4">
-          <img class="space-right-image-category" [src]="item.url">
-          <span>{{item.name}}</span>
+          <img class="space-right-image-category" [src]="item?.url">
+          <span>{{item?.name}}</span>
           <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
         </div>
       </div>

@@ -5,9 +5,9 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { API_URL } from 'src/app/core/core-urls/api-url';
 import { FilterInput } from 'src/app/models/franchise/input/filter-franchise-input';
+import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
-import { CommonDataService } from 'src/app/services/common/common-data.service';
 
 @Component({
   selector: 'deal-landing',
@@ -42,14 +42,12 @@ export class DealLandingModule implements OnInit, DoCheck {
   categoryList4: any[] = [];
   aDataActions: any[] = [];
   oTopAction: any = {};
-  oSuggestion: any = {};
   aNewFranchises: any[] = [];
   responsiveOptions: any[] = [];
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
   aPopularFranchises: any[] = [];
-  isHideBusinessWithGarant: boolean = true;
   isXxl!: boolean;
   browserScreenWidth!: number;
 
@@ -104,7 +102,6 @@ export class DealLandingModule implements OnInit, DoCheck {
     await this.GetActionsAsync();
     await this.GetBlogsAsync();
     await this.loadCategoriesListAsync();
-    await this.loadSingleSuggestionAsync();
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
     await this.getPopularAsync();
@@ -415,20 +412,6 @@ export class DealLandingModule implements OnInit, DoCheck {
         this.categoryList2 = data.resultCol2;
         this.categoryList3 = data.resultCol3;
         this.categoryList4 = data.resultCol4;
-      });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
-
-  /**
-   * Функция получит одно предложение с флагом IsSingle.
-   * @returns данные предложения.
-   */
-  private async loadSingleSuggestionAsync() {
-    try {
-      await this.commonService.loadSingleSuggestionAsync().then((data: any) => {
-        this.oSuggestion = data;
       });
     } catch (e: any) {
       throw new Error(e);

@@ -25,6 +25,8 @@ export class CatalogBusinessModule implements OnInit {
   aViewBusiness: any[] = [];
   minPrice!: number;
   maxPrice!: number;
+  minProfit!: number;
+  maxProfit!: number;
   view: string = '';
   city: string = '';
   category: string = '';

@@ -1,149 +1,133 @@
-<!-- <div class="garant block-title-franchise">
-  <h5 class="title-franchise">Каталог бизнеса</h5>
-  <span class="count-franchise">Всего {{countBusinesses}} бизнесов</span>
-</div> -->
-
-<!-- <form class="d-flex" #filterForm="ngForm" novalidate>
-  <div class="business-search"> -->
-<!-- <div>
-    <strong>Сфера бизнеса</strong><br>
-    <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
-  </div> -->
-
-<!-- <div class="">
-      <strong>Выбор категории</strong><br>
-      <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory"
-        placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
-    </div> -->
-
-<!-- <div class="control-quick-search">
-      <strong>Выбор города</strong><br>
-      <p-dropdown [options]="aCities" optionLabel="businessCityName" name="city" [(ngModel)]="selectedCity"
-        placeholder="Город" [showClear]="true"></p-dropdown>
-    </div> -->
-
-<!-- <div class="d-flex">
-      <div class="control-quick-search block-price-min">
-        <strong>Стоимость</strong><br>
-        <input type="text" class="control-input-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice"
-          name="minPrice" />
-      </div>
-
-      <div class="block-price-max">
-        <strong></strong><br>
-        <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice"
-          name="maxPrice" />
+<div class="container">
+  <div class="card creation-franchise">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-xl-6 col-xxl-6">
+          <img
+            src="../../../../assets/images/franchise-landing/desk.png"
+            class="img-fluid creation-franchise__img"
+            alt="Стол"
+          />
+        </div>
+        <div class="col-lg-6 col-xl-6 col-xxl-6">
+          <div class="card-body creation-franchise__description">
+            <div class="card-title creation-franchise__title">Создание</div>
+            <div class="card-text creation-francise__subtitle">
+              и упаковка франшиз
+            </div>
+            <div class="card-text creation-franchise__text">
+              с бесплатным размещением в каталоге
+            </div>
+            <button class="btn btn-primary creation-franchise__getting-advice">
+              Бесплатная консультация
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div> -->
-
-<!-- </form> -->
-
-<!-- <div class="btn-wrapper">
-  <button class="btn btn--aside btn-default mt-3 btn-sm btn-filter"
-    (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
-  <button class="btn btn--aside btn-default btn-sm mt-3 ml-1 btn-filter" (click)="onClearFilters()">Очистить
-    фильтры</button>
-</div> -->
-
-<!-- <div class="block-catalog d-flex">
-  <div class=""> -->
-<!-- <div>
-      <strong>Сортировать по</strong><br>
-      <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
-        [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
-    </div>  -->
-
-<!-- <div class="switch-garant garant-buy">
-      <strong>Покупка через гарант</strong>
-      <p-inputSwitch class="flag-garant" [(ngModel)]="isGarant"></p-inputSwitch>
-    </div> -->
-
-<!-- <div class="switch-garant">
-      <strong>Прибыль в месяц</strong><br> -->
-<!-- <div class="d-flex d-flex--short">
-        <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽"
-          [(ngModel)]="filterMinPrice" name="filterMinPrice" />
-        <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽"
-          [(ngModel)]="filterMaxPrice" name="filterMaxPrice" />
-      </div> -->
-<!-- </div> -->
-<!-- <div class="btn-wrapper">
-      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter" (click)="FilterFranchisesAsync()">Применить
-        фильтры</button>
-      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">Очистить
-        фильтры</button>
-    </div> -->
-
-<!-- </div> -->
-
-<!-- Список бизнеса. -->
-<!-- <div class="d-flex popular-list franchise-list">
-  <div class="popular-item catalog-item col-lg-4" *ngFor="let item of aBusinessList">
-    <p-card header="{{item.title}}" subheader="{{item.text}}"
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img [src]="item.url">
-    </ng-template>
-    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-    <ng-template pTemplate="footer">
-      <button class="btn btn-default btn-filter" (click)="routeViewFranchiseCardAsync(item.franchiseId)">Подробнее</button>
-    </ng-template>
-  </p-card>
-  </div>
-</div> -->
-
-<!-- <div class="d-flex popular-list">
-    <div class="popular-item" *ngFor="let item of aBusinessList">
-      <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
-        <ng-template pTemplate="header">
-          <img [src]="item.url">
-        </ng-template>
-        <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-        <ng-template pTemplate="footer">
-          <button class="btn btn-default btn-filter"
-            (click)="routeViewFranchiseCardAsync(item.businessId)">Подробнее</button>
-        </ng-template>
-      </p-card>
-    </div>
-  </div> -->
-<!-- </div> -->
-
-<!-- Пагинация. -->
-<!-- <div class="mt-5">
-  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
-    [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
-  </p-paginator>
-</div> -->
-
-<div class="header">
-  <div class="header-content">
-    <div class="header-content__title">Создание</div>
-    <div class="header-content__subtitle">и упаковка франшиз</div>
-    <div class="header-content__text">с бесплатным размещением в каталоге</div>
-    <button class="header-content__button">Бесплатная консультация</button>
-  </div>
-  <div class="header-image">
-    <img
-      src="../../../../assets/images/franchise-landing/desk.png"
-      alt="Изображение стола, монеты и %"
-    />
-  </div>
-  <div class="header-image1">
-    <img
-      src="../../../../assets/images/franchise-landing/desk1.png"
-      alt="Изображение стола, монеты и %"
-    />
-  </div>
-  <div class="header-image2">
-    <img
-      src="../../../../assets/images/franchise-landing/desk2.png"
-      alt="Изображение стола, монеты и %"
-    />
   </div>
 </div>
+<div class="container service">
+  <div class="row service__catalog">
+    <div class="col-lg-3 col-xl-3 col-xxl-3 service__item">
+      <p-panel #pnl header="80" styleClass="p-mt-4">
+        <div>
+          франшиз <br />
+          упаковали <br />
+          и создали с нуля
+        </div>
+      </p-panel>
+    </div>
+    <div class="col-lg-3 col-xl-3 col-xxl-3 service__item">
+      <p-panel #pnl header="25" styleClass="p-mt-4">
+        <div>
+          сфер бизнеса <br />
+          проработано <br />
+          за время работы
+        </div>
+      </p-panel>
+    </div>
+    <div class="col-lg-3 col-xl-3 col-xxl-3 service__item">
+      <div class="card service__cell">
+        <div class="card-header service__header">
+          <span class="service__count">60</span>
+          <span class="service__currency">млн</span>
+        </div>
+        <p-panel #pnl>
+          <div>
+            заработали <br />
+            клиентам после <br />
+            создания франшиз
+          </div>
+        </p-panel>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xl-3 col-xxl-3 service__item">
+      <p-panel #pnl header="14" styleClass="p-mt-4">
+        <div>
+          человек будут <br />
+          работать над вашим <br />
+          проектом
+        </div>
+      </p-panel>
+    </div>
+  </div>
+</div>
+<div class="container responsibility">
+  <form class="bg-primary responsibility__request">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-xl-9 col-xxl-9">
+          <div class="alert alert-light bg-dark responsibility__title">
+            Азамат Булатов
+          </div>
+          <div class="alert alert-light bg-dark responsibility__subtitle">
+            сооснователь проекта
+          </div>
+          <div class="alert alert-light bg-dark responsibility__note">
+            Лично ответственный за каждую упакованную франшизу
+          </div>
+          <div class="row">
+            <div class="col-6 responsibility__field">
+              <label for="userName" class="form-label responsibility__tooltip"
+                >Имя</label
+              >
+              <input
+                type="text"
+                class="form-control responsibility__control"
+                id="userName"
+                placeholder="Введите имя"
+                name="name"
+              />
+            </div>
+            <div class="col-6 consulting__input-field">
+              <label for="userPhone" class="form-label responsibility__tooltip"
+                >Номер телефона</label
+              >
+              <input
+                type="tel"
+                class="form-control responsibility__control"
+                id="userPhone"
+                placeholder="Введите номер телефона"
+                name="telephone"
+              />
+            </div>
+            <div class="col-8 responsibility__action">
+              <button class="btn btn-primary responsibility__submit">Обратиться за консультацией</button>
+            </div>
+          </div>
+        </div>
+        <img
+          class="img-fluid responsibility__headmaster"
+          src="../../../../assets/images/franchise-landing/template_person6 1.png"
+          alt="Сооснователь"
+        />
+      </div>
+    </div>
+  </form>
+</div>
 
-<div class="statistics">
+<!-- <div class="statistics">
   <div class="statistics-item">
     <p class="statistics-item__number">80</p>
     <p class="statistics-item__text">
@@ -178,9 +162,9 @@
       проектом
     </p>
   </div>
-</div>
+</div> -->
 
-<div class="founder">
+<!-- <div class="founder">
   <div class="founder-content">
     <div class="founder-content__title">Азамат Булатов</div>
     <div class="founder-content__subtitle">сооснователь проекта</div>
@@ -215,7 +199,7 @@
       alt="Фото сооснователя"
     />
   </div>
-</div>
+</div> -->
 
 <h5 class="bonuses-header">Бонусы от GoBizy</h5>
 <div class="bonuses">

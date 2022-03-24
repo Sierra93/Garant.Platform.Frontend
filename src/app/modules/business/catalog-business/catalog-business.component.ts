@@ -9,9 +9,9 @@ import { PaginationInput } from 'src/app/models/pagination/input/pagination-inpu
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 
 @Component({
-  selector: 'catalog-business',
-  templateUrl: './catalog-business.component.html',
-  styleUrls: ['./catalog-business.component.scss'],
+    selector: "catalog-business",
+    templateUrl: "./catalog-business.component.html",
+    styleUrls: ["./catalog-business.component.scss"]
 })
 
 /**
@@ -25,6 +25,8 @@ export class CatalogBusinessModule implements OnInit {
   aViewBusiness: any[] = [];
   minPrice!: number;
   maxPrice!: number;
+  minProfit!: number;
+  maxProfit!: number;
   view: string = '';
   city: string = '';
   category: string = '';
@@ -34,8 +36,8 @@ export class CatalogBusinessModule implements OnInit {
   aBusinessList: any[] = [];
   selectedSort: any = '';
   aSortPrices: any[] = [];
-  minProfit!: number;
-  maxProfit!: number;
+  filterMinPrice!: number;
+  filterMaxPrice!: number;
   countTotalPage!: number;
   countBusinesses!: number;
   aRowsPerPageOptions: number[] = [10, 20, 30];
@@ -55,6 +57,8 @@ export class CatalogBusinessModule implements OnInit {
   businessId: number = 0;
   routeParam: number;
   isHideBusinessWithGarant: boolean = true;
+  filterRang: number[] = [20, 80];
+  rangValue: number[] = [20, 80];
 
   constructor(
     private http: HttpClient,
@@ -252,11 +256,11 @@ export class CatalogBusinessModule implements OnInit {
     }
   }
 
-  private async loadPaginationInitAsync() {
-    let paginationData = new PaginationInput();
+    private async loadPaginationInitAsync() {
+        let paginationData = new PaginationInput();
 
-    // TODO: доработать на динамическое получение из роута или как-нибудь еще, чтобы помнить, что выбирал пользователь.
-    paginationData.PageNumber = 1;
+        // TODO: доработать на динамическое получение из роута или как-нибудь еще, чтобы помнить, что выбирал пользователь.
+        paginationData.PageNumber = 1;
 
     try {
       await this.http
@@ -341,17 +345,16 @@ export class CatalogBusinessModule implements OnInit {
     await this.loadPaginationInitAsync();
   }
 
-  /**
-   * Функция получит данные для блока событий.
-   */
-  private async GetActionsAsync() {
-    try {
-      await this.http
-        .post(API_URL.apiUrl.concat('/main/actions'), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log('Блок событий:', response);
-            this.aDataActions = response.filter((el: any) => el.isTop == false);
+    /**
+     * Функция получит данные для блока событий.
+     */
+     private async GetActionsAsync() {
+        try {
+            await this.http.post(API_URL.apiUrl.concat("/main/actions"), {})
+                .subscribe({
+                    next: (response: any) => {
+                        console.log("Блок событий:", response);
+                        this.aDataActions = response.filter((el: any) => el.isTop == false);
 
             // this.oTopAction = this.aDataActions.filter(el => el.isTop == true)[0];
             // console.log("oTopAction",this.oTopAction);

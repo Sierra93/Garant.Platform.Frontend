@@ -76,6 +76,7 @@ import { NotifyService } from "./services/notify/notify.service";
 import { PriceFormatPipe } from './core/pipes/priceFormat.pipe';
 import { LandingRequestService } from "./modules/landing/services/landing.service";
 import { PasswordModule } from 'primeng/password';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   declarations: [
@@ -114,41 +115,42 @@ import { PasswordModule } from 'primeng/password';
 
   entryComponents: [],
 
-    imports: [
-        BrowserModule,
-        FormsModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        ButtonModule,
-        DialogModule,
-        ConfirmDialogModule,
-        MessagesModule,
-        ToastModule,
-        TabViewModule,
-        PaginatorModule,
-        RadioButtonModule,
-        InputTextModule,
-        AutoCompleteModule,
-        CarouselModule,
-        CardModule,
-        InputSwitchModule,
-        SliderModule,
-        CheckboxModule,
-        BreadcrumbModule,
-        FileUploadModule,
-        GalleriaModule,
-        InputTextareaModule,
-        AvatarModule,
-        AvatarGroupModule,
-        ReactiveFormsModule,
-        TabMenuModule,
-        StepsModule,
-        TableModule,
-        NgHttpLoaderModule.forRoot(),
-        GarLibModule,
-        PasswordModule
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    DialogModule,
+    ConfirmDialogModule,
+    MessagesModule,
+    ToastModule,
+    TabViewModule,
+    PaginatorModule,
+    RadioButtonModule,
+    InputTextModule,
+    AutoCompleteModule,
+    CarouselModule,
+    CardModule,
+    InputSwitchModule,
+    SliderModule,
+    CheckboxModule,
+    BreadcrumbModule,
+    FileUploadModule,
+    GalleriaModule,
+    InputTextareaModule,
+    AvatarModule,
+    AvatarGroupModule,
+    ReactiveFormsModule,
+    TabMenuModule,
+    StepsModule,
+    TableModule,
+    NgHttpLoaderModule.forRoot(),
+    GarLibModule,
+    InputMaskModule,
+    PasswordModule
+  ],
 
   providers: [
     {

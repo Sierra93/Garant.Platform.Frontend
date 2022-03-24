@@ -8,7 +8,7 @@ import {
 } from 'src/app/models/franchise/input/filter-franchise-with-pagination-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
-import { CatalogFranchiseService } from '../../../core/services/catalog-franchise.service';
+// import { CatalogFranchiseService } from '../../../core/services/catalog-franchise.service';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -67,8 +67,7 @@ export class CatalogFranchiseModule implements OnInit {
     private commonService: CommonDataService,
     private titleService: Title,
     private router: Router,
-    private route: ActivatedRoute,
-    private catFranchService: CatalogFranchiseService
+    private route: ActivatedRoute
   ) {
     // TODO: Переделать на хранение на бэке.
     this.aSortPrices = [
@@ -111,8 +110,8 @@ export class CatalogFranchiseModule implements OnInit {
     //await this.loadCitiesFranchisesListAsync();
     await this.loadCategoriesFranchisesListAsync();
     await this.loadViewBusinessFranchisesListAsync();
-    // await this.loadPaginationInitAsync();
-    this.getCatFranchPagination()
+    await this.loadPaginationInitAsync();
+    // this.getCatFranchPagination()
     await this.GetActionsAsync();
     await this.GetBlogsAsync();
     await this.GetNewsTopAsync();
@@ -268,45 +267,45 @@ export class CatalogFranchiseModule implements OnInit {
     }
   }
 
-  getCatFranchPagination(): void {
-    this.catFranchService.getPaginationCatFran(this.pageNumber, this.countRows)
-      .pipe(take(1))
-      .subscribe(res => {
-        this.catFranchPagination = res
-        console.log(this.catFranchPagination)
-      })
-  }
-
-  // private async loadPaginationInitAsync() {
-  //   let paginationData = new PaginationInput();
-  //
-  //   // TODO: доработать на динамическое получение из роута или как-нибудь еще, чтобы помнить, что выбирал пользователь.
-  //   paginationData.PageNumber = 1;
-  //   paginationData.CountRows = 12;
-  //
-  //   try {
-  //     await this.http
-  //       .post(
-  //         API_URL.apiUrl.concat('/pagination/init-catalog-franchise'),
-  //         paginationData
-  //       )
-  //       .subscribe({
-  //         next: (response: any) => {
-  //           console.log('pagination init', response);
-  //           this.countFranchises = response.countAll;
-  //           this.aFranchises = response.results;
-  //           this.countTotalPage = response.countAll;
-  //         },
-  //
-  //         error: (err) => {
-  //           this.commonService.routeToStart(err);
-  //           throw new Error(err);
-  //         },
-  //       });
-  //   } catch (e: any) {
-  //     throw new Error(e);
-  //   }
+  // getCatFranchPagination(): void {
+  //   this.catFranchService.getPaginationCatFran(this.pageNumber, this.countRows)
+  //     .pipe(take(1))
+  //     .subscribe(res => {
+  //       this.catFranchPagination = res
+  //       console.log(this.catFranchPagination)
+  //     })
   // }
+
+  private async loadPaginationInitAsync() {
+    let paginationData = new PaginationInput();
+  
+    // TODO: доработать на динамическое получение из роута или как-нибудь еще, чтобы помнить, что выбирал пользователь.
+    paginationData.PageNumber = 1;
+    paginationData.CountRows = 12;
+  
+    try {
+      await this.http
+        .post(
+          API_URL.apiUrl.concat('/pagination/init-catalog-franchise'),
+          paginationData
+        )
+        .subscribe({
+          next: (response: any) => {
+            console.log('pagination init', response);
+            this.countFranchises = response.countAll;
+            this.aFranchises = response.results;
+            this.countTotalPage = response.countAll;
+          },
+  
+          error: (err) => {
+            this.commonService.routeToStart(err);
+            throw new Error(err);
+          },
+        });
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  }
 
   public async onChangeSortPrice() {
     console.log('onChangeSortPrice', this.selectedSort);
@@ -360,7 +359,8 @@ export class CatalogFranchiseModule implements OnInit {
     this.selectedCategory = '';
     this.selectedSort = '';
     this.selectedViewBusiness = '';
-    this.getCatFranchPagination();
+    // this.getCatFranchPagination();
+    await this.loadPaginationInitAsync();
   }
 
   /**

@@ -1,4 +1,4 @@
-export const ENDPOINTS = {
-  pagination: 'pagination',
-  initCatalogFranchise: 'init-catalog-franchise',
-}
+// export const ENDPOINTS = {
+//   pagination: 'pagination',
+//   initCatalogFranchise: 'init-catalog-franchise',
+// }

@@ -82,6 +82,8 @@ import { LandingRequestService } from './modules/landing/services/landing.servic
 import { NewsComponent } from './components/news/news.component';
 import { BlockUIModule } from 'primeng/blockui';
 import { PanelModule } from 'primeng/panel';
+import { BusinessListComponent } from './components/business-list/business-list.component';
+import { GarantComponent } from './components/garant/garant.component';
 
 @NgModule({
   declarations: [
@@ -117,6 +119,8 @@ import { PanelModule } from 'primeng/panel';
     CreateAdModule,
     PriceFormatPipe,
     NewsComponent,
+    BusinessListComponent,
+    GarantComponent,
   ],
 
   entryComponents: [],

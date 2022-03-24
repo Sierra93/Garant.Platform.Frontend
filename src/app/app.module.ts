@@ -79,6 +79,7 @@ import { PriceFormatPipe } from './core/pipes/priceFormat.pipe';
 import { LandingRequestService } from "./modules/landing/services/landing.service";
 import { SharedModule } from './shared/shared.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   declarations: [
@@ -152,6 +153,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     GarLibModule,
     SharedModule,
     AngularSvgIconModule.forRoot()
+    GarLibModule,
+    InputMaskModule
   ],
 
   providers: [

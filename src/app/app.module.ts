@@ -152,7 +152,7 @@ import { InputMaskModule } from 'primeng/inputmask';
     NgHttpLoaderModule.forRoot(),
     GarLibModule,
     SharedModule,
-    AngularSvgIconModule.forRoot()
+    AngularSvgIconModule.forRoot(),
     GarLibModule,
     InputMaskModule
   ],

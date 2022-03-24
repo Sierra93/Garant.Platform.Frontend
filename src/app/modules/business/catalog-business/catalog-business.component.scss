@@ -120,7 +120,8 @@ strong {
 
 .control-input-price {
   display: block;
-  width: 342px;
+  width: 100%;
+  max-width: 220px;
   height: 48px;
   padding: 16px;
   border: none;
@@ -130,11 +131,66 @@ strong {
   font-size: 0.875rem;
   font-weight: 400;
   // margin: 0 24px 0 0;
+  .p-inputtext::placeholder {
+    color: green;
+  }
+}
+::ng-deep.p-inputnumber-input {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  height: 48px;
+  padding: 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f1f6ff;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  // margin: 0 24px 0 0;
+  .p-inputtext::placeholder {
+    color: green;
+  }
 }
 
 .block-title-franchise {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 32px;
+}
+.catalog-business__filter{
+  background: #FFFFFF;
+  box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  height: 160px;
+  padding: 16px;
+  &-title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    color: #2C2C2C;
+    margin-bottom: 16px;
+  }
+  ::ng-deep.p-dropdown .p-dropdown-label.p-placeholder {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+  }
+  .price-slider{
+    ::ng-deep.p-slider.p-slider-horizontal {
+      margin-top: 20px;
+    }
+  }
+}
+.price-slider{
+  ::ng-deep.p-slider.p-slider-horizontal {
+    margin-top: 20px;
+  }
 }
 
 ::ng-deep .p-dropdown {
@@ -188,13 +244,12 @@ strong {
       border: none !important;
       // margin: 0 !important;
       // padding: 0 !important;
-      color: #2c2c2c !important;
+      color: #1F75FE;
     }
   }
 }
 
 ::ng-deep .block-sort-by .p-dropdown {
-  background-color: white !important;
 
   &-label {
     text-decoration: underline;
@@ -238,20 +293,34 @@ strong {
   flex-wrap: wrap;
   width: 1074px;
   padding: 16px;
-  background-color: #f1f6ff;
+  background: #F1F6FF;
+  border-radius: 4px;
+  .popular-item {
+    width: 100%;
+    max-width: 331px;
+    background: #FFFFFF;
+    border: 1px solid #F1F6FF;
+    box-sizing: border-box;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
 }
 
 ::ng-deep .p-card {
-  width: 331.33px !important;
-  height: 359px !important;
-  border-radius: 4px !important;
+  //width: 331.33px !important;
+  //height: 359px !important;
+  //border-radius: 4px !important;
+  box-shadow: none;
 
   &-header {
-    width: 331.33px !important;
+    //width: 331.33px !important;
     height: 162px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 
     img {
+      border-radius: 4px;
       height: 100%;
       object-fit: cover;
     }

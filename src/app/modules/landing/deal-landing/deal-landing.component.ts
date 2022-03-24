@@ -540,7 +540,7 @@ export class DealLandingModule implements OnInit {
   }
 
   public onSendLandingRequestAsync(name: string, phoneNumber: string) {
-    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Упаковка франшиз").subscribe(()=> {
+    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Покупка через гарант").subscribe(()=> {
       this.name = '';
       this.phoneNumber = ''
     });

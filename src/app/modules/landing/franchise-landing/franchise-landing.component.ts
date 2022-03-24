@@ -523,7 +523,7 @@ export class FranchiseLandingModule implements OnInit {
   }
 
  public onSendLandingRequestAsync(name: string, phoneNumber: string) {
-    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Покупка через гарант").subscribe(() => {
+    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Упаковка франшиз").subscribe(() => {
       this.name = '';
       this.phoneNumber = ''
     });

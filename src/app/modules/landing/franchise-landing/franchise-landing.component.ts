@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { CommonDataService } from 'src/app/services/common/common-data.service';
   templateUrl: './franchise-landing.component.html',
   styleUrls: ['./franchise-landing.component.scss'],
 })
-export class FranchiseLandingModule implements OnInit {
+export class FranchiseLandingModule implements OnInit, DoCheck {
   aPopularBusiness: any[] = [];
   // isGarant: boolean = false;
   // aCities: any[] = [];
@@ -41,7 +41,7 @@ export class FranchiseLandingModule implements OnInit {
   categoryList2: any[] = [];
   categoryList3: any[] = [];
   categoryList4: any[] = [];
-  aDataActions: any[] = [];
+  
   oTopAction: any = {};
   oSuggestion: any = {};
   aNewFranchises: any[] = [];
@@ -49,7 +49,8 @@ export class FranchiseLandingModule implements OnInit {
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
-  isHideBusinessWithGarant: boolean = true;
+  isXxl!: boolean;
+  browserScreenWidth!: number;
 
   constructor(
     private http: HttpClient,
@@ -91,19 +92,24 @@ export class FranchiseLandingModule implements OnInit {
   }
 
   public async ngOnInit() {
+    this.isXxl = false;
+    this.browserScreenWidth = window.screen.width;
     // await this.getPopularBusinessAsync();
     await this.GetBusinessListAsync();
     await this.loadCitiesFranchisesListAsync();
     await this.loadCategoriesFranchisesListAsync();
     await this.loadViewBusinessFranchisesListAsync();
     await this.loadPaginationInitAsync();
-    await this.GetActionsAsync();
     await this.GetBlogsAsync();
     await this.GetNewsTopAsync();
     await this.loadCategoriesListAsync();
     await this.loadSingleSuggestionAsync();
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
+  }
+
+  public ngDoCheck(): void {
+    this.defineResize();
   }
 
   /**
@@ -348,30 +354,7 @@ export class FranchiseLandingModule implements OnInit {
     await this.GetBusinessListAsync();
   }
 
-  /**
-   * Функция получит данные для блока событий.
-   */
-  private async GetActionsAsync() {
-    try {
-      await this.http
-        .post(API_URL.apiUrl.concat('/main/actions'), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log('Блок событий:', response);
-            this.aDataActions = response.filter((el: any) => el.isTop == false);
-
-            // this.oTopAction = this.aDataActions.filter(el => el.isTop == true)[0];
-            // console.log("oTopAction",this.oTopAction);
-          },
-
-          error: (err) => {
-            throw new Error(err);
-          },
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
+  
 
   /**
    * Функция получит список блогов.
@@ -516,5 +499,15 @@ export class FranchiseLandingModule implements OnInit {
     this.router.navigate(['/business/view'], {
       queryParams: { businessId: businessId },
     });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  private defineResize() {
+    this.browserScreenWidth = window.screen.width;
+    if (this.browserScreenWidth > 1400) {
+      this.isXxl = true;
+    } else {
+      this.isXxl = false;
+    }
   }
 }

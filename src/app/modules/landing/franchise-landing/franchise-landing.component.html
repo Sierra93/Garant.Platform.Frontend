@@ -195,19 +195,24 @@
           type="text"
           name="name"
           placeholder="Введите имя"
+          [(ngModel)]="name"
         />
       </label>
-      <label class="founder-content__label"
-        >Номер телефона
-        <input
-          class="founder-content__input"
-          type="tel"
-          name="telephone"
-          placeholder="Введите номер телефона"
-        />
-      </label>
+<!--      <label class="founder-content__label"-->
+<!--        >Номер телефона-->
+<!--        <input-->
+<!--          class="founder-content__input"-->
+<!--          type="tel"-->
+<!--          name="telephone"-->
+<!--          placeholder="Введите номер телефона"-->
+<!--        />-->
+<!--      </label>-->
+      <div>
+        <label class="founder-content__label">Номер телефона</label>
+        <p-inputMask  mask="+7(999) 999-99-99" [(ngModel)]="phoneNumber" placeholder="Введите номер телефона"></p-inputMask>
+      </div>
     </div>
-    <button class="founder-content__button">Обратиться за консультацией</button>
+    <button class="founder-content__button" (click)="onSendLandingRequestAsync(name,phoneNumber)">Обратиться за консультацией</button>
   </div>
   <div class="founder-image">
     <img
@@ -904,7 +909,7 @@
                   <p-card header="Название готового бизнеса" subheader="{{item.fullText}}"
                     [style]="{width: '100%'}" styleClass="p-card-shadow">
                     <ng-template pTemplate="header">
-                      
+
                     </ng-template>
                     <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
                     <ng-template pTemplate="footer">
@@ -919,7 +924,7 @@
 </div>
 
 <div class="col-lg-4">
-  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5> 
+  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
   <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" styleClass="card">
     <ng-template pTemplate="header">
 

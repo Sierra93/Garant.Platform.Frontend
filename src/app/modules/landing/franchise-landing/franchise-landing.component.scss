@@ -386,7 +386,7 @@ strong {
       gap: 16px;
       margin-bottom: 32px;
     }
-    ::ng-deep.p-inputtext{
+    ::ng-deep.p-inputtext {
       display: block;
       font-family: "Roboto", sans-serif;
       font-size: 1.125rem;
@@ -536,16 +536,6 @@ strong {
 }
 
 ::ng-deep .p-card {
-<<<<<<< HEAD
-  // width: 331.33px !important;
-  // height: 359px !important;
-  border-radius: 4px !important;
-
-  &-header {
-    width: 331.33px !important;
-    // height: 162px;
-    // margin-bottom: 24px;
-=======
   width: 331.33px;
   height: 359px;
   border-radius: 4px;
@@ -554,29 +544,13 @@ strong {
     width: 331.33px;
     height: 162px;
     margin-bottom: 24px;
->>>>>>> fb4776f2e24d343864d2f2141262d5755efa401a
 
     img {
       height: 100%;
       object-fit: cover;
     }
   }
-
   &-body {
-<<<<<<< HEAD
-    margin: 0 !important;
-    // padding: 0 !important;
-  }
-
-  &-title {
-    font-family: "Roboto", sans-serif !important;
-    // font-size: 1.125rem !important;
-    font-weight: 500 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    margin-left: 8px !important;
-    margin-bottom: 8px !important;
-=======
     margin: 0;
     padding: 0;
   }
@@ -589,7 +563,6 @@ strong {
     padding: 0;
     margin-left: 8px;
     margin-bottom: 8px;
->>>>>>> fb4776f2e24d343864d2f2141262d5755efa401a
   }
 
   &-subtitle {

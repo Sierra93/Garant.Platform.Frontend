@@ -859,7 +859,7 @@ strong {
 
   &-title {
     font-family: "Roboto", sans-serif !important;
-    font-size: 1.125rem !important;
+    font-size: 1.125rem;
     font-weight: 500 !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -883,7 +883,7 @@ strong {
     font-size: 1.125rem !important;
     font-weight: 400 !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0;
     margin-left: 8px !important;
     margin-bottom: 24px !important;
     line-height: 21px;

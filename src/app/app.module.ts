@@ -75,6 +75,7 @@ import { SESSION_TOKEN } from "./core/session/session.token";
 import { NotifyService } from "./services/notify/notify.service";
 import { PriceFormatPipe } from './core/pipes/priceFormat.pipe';
 import { LandingRequestService } from "./modules/landing/services/landing.service";
+import { InputMaskModule } from 'primeng/inputmask';
 
 
 @NgModule({
@@ -146,7 +147,8 @@ import { LandingRequestService } from "./modules/landing/services/landing.servic
     StepsModule,
     TableModule,
     NgHttpLoaderModule.forRoot(),
-    GarLibModule
+    GarLibModule,
+    InputMaskModule
   ],
 
   providers: [

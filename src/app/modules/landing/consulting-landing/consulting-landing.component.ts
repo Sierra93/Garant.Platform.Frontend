@@ -10,6 +10,7 @@ import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { LandingRequestService } from '../services/landing.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'consulting-landing',
@@ -520,11 +521,14 @@ export class ConsultingLandingModule implements OnInit {
   public async routeViewFranchiseCardAsync(businessId: number) {
     await this.setTransitionAsync(businessId);
     this.router.navigate(['/business/view'], {
-      queryParams: { businessId: businessId },
+      queryParams: {businessId: businessId},
     });
   };
 
   public onSendLandingRequestAsync(name: string, phoneNumber: string) {
-    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Консалтинг").subscribe();
+    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Консалтинг").subscribe(()=> {
+      this.name = '';
+      this.phoneNumber = ''
+    });
   };
 }

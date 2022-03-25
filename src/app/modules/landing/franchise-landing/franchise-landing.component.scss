@@ -685,14 +685,14 @@ strong {
 }
 
 ::ng-deep .p-card {
-  width: 331.33px !important;
-  height: 359px !important;
+  // width: 331.33px !important;
+  // height: 359px !important;
   border-radius: 4px !important;
 
   &-header {
-    width: 331.33px !important;
-    height: 162px;
-    margin-bottom: 24px;
+    // width: 331.33px !important;
+    // height: 162px;
+    // margin-bottom: 24px;
 
     img {
       height: 100%;
@@ -702,7 +702,7 @@ strong {
 
   &-body {
     margin: 0 !important;
-    padding: 0 !important;
+    // padding: 0 !important;
   }
 
   &-title {

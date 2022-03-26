@@ -50,14 +50,11 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
-<<<<<<< HEAD
   isXxl!: boolean;
   browserScreenWidth!: number;
-=======
   isHideBusinessWithGarant: boolean = true;
   name: string = '';
   phoneNumber: string = '';
->>>>>>> develop
 
   constructor(
     private http: HttpClient,

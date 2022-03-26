@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 /*@use "/src/app/app.component.scss";
-=======
-@use "/src/app/app.component.scss";
->>>>>>> develop
 @use "/src/app/modules/main-page/main-page.component.scss";
 @use "../../../../app/shared/styles" as *;
 @use "../../../../app/shared/styles/base" as *;
@@ -176,7 +172,6 @@
   &__header {
     display: flex;
     align-items: center;
-<<<<<<< HEAD
     background: transparent;
     border: none;
     padding-bottom: 0;
@@ -193,163 +188,6 @@
     line-height: 14px;
     color: #646464;
     margin-bottom: 8px;
-=======
-    width: 348px;
-    height: 341px;
-    border-radius: 24px;
-    // padding: 64px;
-    background-color: #f5f8fa;
-
-    &__number {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: "Roboto", sans-serif;
-      font-size: 6rem;
-      font-weight: 700;
-      color: #2c2c2c;
-      height: 113px;
-      text-align: center;
-      align-self: center;
-    }
-
-    &__text {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: #7a7a7a;
-      text-align: center;
-      height: 84px;
-    }
-
-    &__unit {
-      font-size: 2.5rem;
-      margin-left: 1rem;
-      height: 24px;
-    }
-  }
-}
-
-.founder {
-  display: flex;
-  gap: 32px;
-  width: 1440px;
-  height: 623px;
-  border-radius: 24px;
-  padding: 64px 0 64px 64px;
-  background-color: #1b1b1b;
-
-  &-content {
-    width: 730px;
-    height: 495px;
-
-    &__title {
-      font-family: "Roboto", sans-serif;
-      font-size: 6rem;
-      font-weight: 700;
-      color: #ffffff;
-      width: 730px;
-      line-height: 113px;
-      margin-bottom: 16px;
-    }
-
-    &__subtitle {
-      font-family: "Roboto", sans-serif;
-      font-size: 4rem;
-      font-weight: 700;
-      color: #ffffff;
-      width: 730px;
-      line-height: 75px;
-      margin-bottom: 16px;
-    }
-
-    &__text {
-      font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: #7a7a7a;
-      width: 730px;
-      line-height: 28px;
-      margin-bottom: 48px;
-    }
-
-    &__inputs {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-    ::ng-deep.p-inputtext{
-      display: block;
-      font-family: "Roboto", sans-serif;
-      font-size: 1.125rem;
-      font-weight: 400;
-      color: #7a7a7a;
-      width: 291px;
-      height: 69px;
-      border: 1.5px solid #dadada;
-      border-radius: 8px;
-      padding: 24px 40px 24px 24px;
-    }
-    &__label {
-      display: block;
-      font-family: "Roboto", sans-serif;
-      font-size: 0.875rem;
-      font-weight: 400;
-      color: #dadada;
-      //margin-bottom: 8px;
-    }
-
-    &__input {
-      display: block;
-      font-family: "Roboto", sans-serif;
-      font-size: 1.125rem;
-      font-weight: 400;
-      color: #7a7a7a;
-      width: 291px;
-      height: 69px;
-      border: 1.5px solid #dadada;
-      border-radius: 8px;
-      padding: 24px 40px 24px 24px;
-      // margin-bottom: 32px;
-    }
-
-    &__button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: #ffffff;
-      line-height: 28px;
-      width: 398px;
-      height: 76px;
-      border: none;
-      border-radius: 4px;
-      padding: 24px 28px;
-      margin: 0;
-      background-color: #1f75fe;
-    }
-  }
-}
-
-.bonuses {
-  display: flex;
-  gap: 24px;
-  width: 1440px;
-  height: 427px;
-
-  &-header {
-    font-family: "Roboto", sans-serif;
-    font-size: 3rem;
-    font-weight: 500;
-    color: #000000;
-    margin-top: 80px;
-    margin-bottom: 32px;
->>>>>>> develop
   }
   &__step {
     font-size: 0.94vw;
@@ -357,39 +195,10 @@
     margin-bottom: 24px;
     padding-top: 0;
   }
-<<<<<<< HEAD
   &__description {
     font-size: 0.89vw;
     line-height: 17px;
-=======
-}
-
-.title-franchise {
-  font-family: "Roboto", sans-serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #2c2c2c;
-}
-
-.popular-list {
-  flex-wrap: wrap;
-  width: 1074px;
-  padding: 16px;
-}
-
-::ng-deep .p-card {
-  width: 331.33px;
-  height: 359px;
-  border-radius: 4px;
-
-  &-header {
-    width: 331.33px;
-    height: 162px;
->>>>>>> develop
-    margin-bottom: 24px;
-    height: 63px;
   }
-<<<<<<< HEAD
   &__item:first-child &__content {
     background: #f5f8fa;
   }
@@ -417,112 +226,6 @@
       &.is-xxl &__title {
         font-size: 22px;
         line-height: 28px;
-=======
-
-  &-body {
-    margin: 0;
-    padding: 0;
-  }
-
-  &-title {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.125rem;
-    font-weight: 500;
-    margin: 0;
-    padding: 0;
-    margin-left: 8px;
-    margin-bottom: 8px;
-  }
-
-  &-subtitle {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.75rem;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
-    margin-left: 8px;
-    margin-bottom: 24px;
-    line-height: 14px;
-  }
-
-  &-content {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.125rem;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
-    margin-left: 8px;
-    margin-bottom: 24px;
-    line-height: 21px;
-  }
-
-  &-footer {
-    margin: 0;
-    padding: 0;
-  }
-}
-
-::ng-deep .card-line-wrapper .p-card {
-  width: 1440px;
-  height: 194.5px;
-  border-radius: 4px;
-  padding: 24px;
-  background-color: #f1f6ff;
-
-  &-header {
-    position: relative;
-    display: block;
-    width: 1392px;
-    font-family: "Roboto", sans-serif;
-    font-size: 1.125rem;
-    font-weight: 400;
-    height: 21px;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 16px;
-
-    strong {
-      color: #000000;
-    }
-
-    .close {
-      position: absolute;
-      right: 2px;
-      top: -2px;
-      width: 16px;
-      height: 16px;
-      color: #646464;
-      font-size: 16px;
-
-      span {
-        display: block;
-        width: 16px;
-        height: 16px;
-        color: #646464;
-        font-size: 16px;
-        line-height: 16px;
-      }
-    }
-  }
-
-  &-content {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.875rem;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
-    // margin-left: 8px;
-    margin-bottom: 40px;
-    line-height: 16px;
-  }
-
-  &-footer {
-    .btn {
-      margin: 0;
-
-      &-dark {
-        background-color: #1f1f1f;
->>>>>>> develop
       }
       &.is-xxl &__subtitle {
         font-size: 12px;
@@ -531,6 +234,74 @@
       &.is-xxl &__step,
       &.is-xxl &__description,
       &.is-xxl &__action {
+        font-size: 18px;
+        line-height: 21px;
+      }
+    }
+  }
+}
+
+.garant {
+  border: none;
+  border-radius: 8px;
+  background: #f1f6ff;
+  margin-top: 74px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    border: none;
+    background: transparent;
+    margin-bottom: 16px;
+  }
+  &__title {
+    font-size: 0.94vw;
+    line-height: 21px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  &__close {
+    width: 16px;
+    height: 16px;
+  }
+  &__description {
+    font-size: 0.73vw;
+    line-height: 16.41px;
+    color: #7a7a7a;
+    margin-bottom: 40px;
+  }
+  &__business {
+    font-size: 0.94vw;
+    line-height: 21px;
+    font-weight: 600;
+    border-radius: 4px !important;
+    padding: 16px;
+    margin-right: 22px;
+  }
+  &__clean {
+    font-size: 0.94vw;
+    line-height: 21px;
+    font-weight: 600;
+    border-radius: 4px !important;
+    padding: 16px;
+    border: 1px solid #7a7a7a;
+    color: #7a7a7a;
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 1401px) {
+    .garant {
+      &.is-xxl &__title {
+        font-size: 18px;
+        line-height: 21px;
+      }
+      &.is-xxl &__description {
+        font-size: 14px;
+        line-height: 16px;
+      }
+      &.is-xxl &__business,
+      &.is-xxl &__clean {
         font-size: 18px;
         line-height: 21px;
       }

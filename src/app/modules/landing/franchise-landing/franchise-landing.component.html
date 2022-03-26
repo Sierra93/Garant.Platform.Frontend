@@ -27,7 +27,8 @@
     </div>
   </div>
 </div>
-<div class="container service" [ngClass]="{'is-xxl': isXxl}">
+<!-- В доработке -->
+<!-- <div class="container service" [ngClass]="{'is-xxl': isXxl}">
   <div class="row service__catalog">
     <div class="col-lg-3 col-xl-3 col-xxl-3 service__item">
       <p-panel #pnl header="80" styleClass="p-mt-4">
@@ -72,7 +73,7 @@
       </p-panel>
     </div>
   </div>
-</div>
+</div> -->
 <div class="container responsibility" [ngClass]="{'is-xxl': isXxl}">
   <form class="bg-dark responsibility__request">
     <div class="container">
@@ -265,7 +266,6 @@
 <div class="container">
   <app-garant></app-garant>
 </div>
-
 <div class="container">
   <h5 class="packs-header">Пакеты на создание франшиз упаковки</h5>
   <div class="packs">
@@ -739,25 +739,8 @@
     </div>
   </div>
 </div>
-
-<!-- Популярный бизнес. -->
-<h5 class="garant title-franchise">Популярныe франшизы</h5>
-<div class="d-flex popular-list">
-  <div class="popular-item" *ngFor="let item of aPopularBusiness">
-    <p-card
-      header="{{ item.businessName }}"
-      subheader="{{ item.text }}"
-      [style]="{ width: '100%' }"
-      styleClass="p-card-shadow"
-    >
-      <ng-template pTemplate="header">
-        <img [src]="item.url" />
-      </ng-template>
-      <strong>{{ item.textDoPrice }} {{ item.price }} ₽</strong>
-      <ng-template pTemplate="footer"> </ng-template>
-    </p-card>
-  </div>
-</div>
+<!-- Популярные франшизы -->
+<app-franchise-list></app-franchise-list>
 
 <!-- Новый бизнес. -->
 <div class="garant">

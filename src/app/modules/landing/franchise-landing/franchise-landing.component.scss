@@ -224,7 +224,7 @@
         line-height: 56px;
       }
       &.is-xxl &__title {
-        font-size: 22px;
+        font-size: 21px;
         line-height: 28px;
       }
       &.is-xxl &__subtitle {
@@ -241,7 +241,7 @@
   }
 }
 
-.garant {
+/*.garant {
   border: none;
   border-radius: 8px;
   background: #f1f6ff;
@@ -287,9 +287,9 @@
     border: 1px solid #7a7a7a;
     color: #7a7a7a;
   }
-}
+}*/
 
-::ng-deep {
+/*::ng-deep {
   @media all and (min-width: 1401px) {
     .garant {
       &.is-xxl &__title {
@@ -307,7 +307,7 @@
       }
     }
   }
-}
+} */
 
 .packs {
   display: flex;

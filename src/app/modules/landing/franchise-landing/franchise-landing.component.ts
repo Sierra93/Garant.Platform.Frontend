@@ -42,7 +42,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   categoryList2: any[] = [];
   categoryList3: any[] = [];
   categoryList4: any[] = [];
-  
+
   oTopAction: any = {};
   oSuggestion: any = {};
   aNewFranchises: any[] = [];
@@ -359,8 +359,6 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
     await this.GetBusinessListAsync();
   }
 
-  
-
   /**
    * Функция получит список блогов.
    * @returns Список блогов.
@@ -502,15 +500,17 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   public async routeViewFranchiseCardAsync(businessId: number) {
     await this.setTransitionAsync(businessId);
     this.router.navigate(['/business/view'], {
-      queryParams: {businessId: businessId},
+      queryParams: { businessId: businessId },
     });
   }
 
- public onSendLandingRequestAsync(name: string, phoneNumber: string) {
-    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Упаковка франшиз").subscribe(() => {
-      this.name = '';
-      this.phoneNumber = ''
-    });
+  public onSendLandingRequestAsync(name: string, phoneNumber: string) {
+    this.requestService
+      .sendLandingRequestAsync(name, phoneNumber, 'Упаковка франшиз')
+      .subscribe(() => {
+        this.name = '';
+        this.phoneNumber = '';
+      });
   }
 
   @HostListener('window:resize', ['$event'])

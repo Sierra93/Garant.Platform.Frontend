@@ -83,7 +83,6 @@ import { NewsComponent } from './components/news/news.component';
 import { BlockUIModule } from 'primeng/blockui';
 import { PanelModule } from 'primeng/panel';
 import { BusinessListComponent } from './components/business-list/business-list.component';
-import { GarantComponent } from './components/garant/garant.component';
 import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
@@ -121,7 +120,6 @@ import { InputMaskModule } from 'primeng/inputmask';
     PriceFormatPipe,
     NewsComponent,
     BusinessListComponent,
-    GarantComponent,
   ],
 
   entryComponents: [],

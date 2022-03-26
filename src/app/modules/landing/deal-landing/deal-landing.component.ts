@@ -51,8 +51,6 @@ export class DealLandingModule implements OnInit, DoCheck {
   routeParam: number;
   responsiveOptions: any[] = [];
   aPopularFranchises: any[] = [];
-  isXxl!: boolean;
-  browserScreenWidth!: number;
   isHideBusinessWithGarant: boolean = true;
   name: string = "";
   phoneNumber: string = "";

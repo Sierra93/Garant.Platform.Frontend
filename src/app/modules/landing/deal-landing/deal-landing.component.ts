@@ -49,9 +49,13 @@ export class DealLandingModule implements OnInit, DoCheck {
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
-  name: string = '';
-  phoneNumber: string = '';
   responsiveOptions: any[] = [];
+  aPopularFranchises: any[] = [];
+  isXxl!: boolean;
+  browserScreenWidth!: number;
+  isHideBusinessWithGarant: boolean = true;
+  name: string = "";
+  phoneNumber: string = "";
 
   constructor(
     private http: HttpClient,
@@ -485,7 +489,6 @@ export class DealLandingModule implements OnInit, DoCheck {
       queryParams: { businessId: businessId },
     });
   }
-
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;

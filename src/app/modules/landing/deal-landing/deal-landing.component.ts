@@ -17,6 +17,10 @@ import { LandingRequestService } from '../services/landing.service';
 })
 export class DealLandingModule implements OnInit, DoCheck {
   aPopularBusiness: any[] = [];
+  oSuggestion: any = {};
+  isHideBusinessWithGarant: boolean = true;
+  isXxl!: boolean;
+  browserScreenWidth!: number;
   // isGarant: boolean = false;
   // aCities: any[] = [];
   // aBusinessCategories: any[] = [];
@@ -49,8 +53,6 @@ export class DealLandingModule implements OnInit, DoCheck {
   businessId: number = 0;
   routeParam: number;
   aPopularFranchises: any[] = [];
-  isXxl!: boolean;
-  browserScreenWidth!: number;
   name: string = '';
   phoneNumber: string = '';
 
@@ -60,7 +62,7 @@ export class DealLandingModule implements OnInit, DoCheck {
     private titleService: Title,
     private router: Router,
     private route: ActivatedRoute,
-    private requestService: LandingRequestService
+    private requestService: LandingRequestService,
   ) {
     // this.aSortPrices = [
     //     {
@@ -97,6 +99,8 @@ export class DealLandingModule implements OnInit, DoCheck {
   public async ngOnInit() {
     this.isXxl = false;
     this.browserScreenWidth = window.screen.width;
+
+    await this.loadSingleSuggestionAsync();
     // await this.getPopularBusinessAsync();
     await this.GetBusinessListAsync();
     await this.loadCitiesFranchisesListAsync();
@@ -166,6 +170,19 @@ export class DealLandingModule implements OnInit, DoCheck {
     }
   }
 
+  /**
+   * Функция получит одно предложение с флагом IsSingle.
+   * @returns данные предложения.
+   */
+   private async loadSingleSuggestionAsync() {
+    try {
+      await this.commonService.loadSingleSuggestionAsync().then((data: any) => {
+        this.oSuggestion = data;
+      });
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  }
   /**
    * Функция получит список бизнеса.
    */

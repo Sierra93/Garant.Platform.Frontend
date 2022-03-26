@@ -62,21 +62,20 @@
 
   .catalog-business-btn {
     display: inline-block;
-    background: #F1F6FF;
+    background: #f1f6ff;
     border-radius: 4px;
-    color: #1F75FE;
+    color: #1f75fe;
     min-width: 125px;
     height: 53px;
     padding: 15px;
     margin-left: 0;
     font-size: 1rem;
-
   }
 
   .catalog-business-btn1 {
     display: inline-block;
-    color: #FFFFFF;
-    background: #1F75FE;
+    color: #ffffff;
+    background: #1f75fe;
     border-radius: 4px;
     min-width: 125px;
     height: 53px;
@@ -175,24 +174,24 @@
 
   .catalog-business__filter {
     width: 100%;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
     height: 160px;
     padding: 16px;
 
     &-title {
-      font-family: 'Roboto';
+      font-family: "Roboto";
       font-style: normal;
       font-weight: 600;
       font-size: 18px;
       line-height: 21px;
-      color: #2C2C2C;
+      color: #2c2c2c;
       margin-bottom: 16px;
     }
 
     ::ng-deep.p-dropdown .p-dropdown-label.p-placeholder {
-      font-family: 'Roboto';
+      font-family: "Roboto";
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -264,13 +263,12 @@
         border: none !important;
         // margin: 0 !important;
         // padding: 0 !important;
-        color: #1F75FE !important;
+        color: #1f75fe !important;
       }
     }
   }
 
   ::ng-deep .block-sort-by .p-dropdown {
-
     &-label {
       text-decoration: underline;
     }
@@ -313,20 +311,19 @@
     flex-wrap: wrap;
     width: 1074px;
     padding: 16px;
-    background: #F1F6FF;
+    background: #f1f6ff;
     border-radius: 4px;
 
     .popular-item {
       width: 100%;
       max-width: 331px;
-      background: #FFFFFF;
-      border: 1px solid #F1F6FF;
+      background: #ffffff;
+      border: 1px solid #f1f6ff;
       box-sizing: border-box;
       box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
       border-radius: 8px;
       padding: 16px;
     }
-
   }
 
   ::ng-deep .p-card {
@@ -439,7 +436,6 @@
     &-footer {
       .btn {
         margin: 0 !important;
-
 
         &-dark {
           background-color: #1f1f1f;

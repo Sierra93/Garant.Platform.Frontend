@@ -85,6 +85,7 @@ import { PanelModule } from 'primeng/panel';
 import { BusinessListComponent } from './components/business-list/business-list.component';
 import { InputMaskModule } from 'primeng/inputmask';
 import { GarantComponent } from './components/garant/garant.component';
+import { FranchiseListComponent } from './components/franchise-list/franchise-list.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +123,7 @@ import { GarantComponent } from './components/garant/garant.component';
     NewsComponent,
     BusinessListComponent,
     GarantComponent,
+    FranchiseListComponent,
   ],
 
   entryComponents: [],

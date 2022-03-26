@@ -79,19 +79,19 @@
     <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
   </div> -->
 
-    <div class="">
+    <div class="control-quick-search-one">
       <div class="catalog-business__filter-title">Выбор категории</div>
       <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory"
         placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
     </div>
 
-    <div class="control-quick-search">
+    <div class="control-quick-search-two">
       <div class="catalog-business__filter-title">Выбор города</div>
       <p-dropdown [options]="aCities" optionLabel="businessCityName" name="city" [(ngModel)]="selectedCity"
         placeholder="Город" [showClear]="true"></p-dropdown>
     </div>
 
-    <div class="d-flex">
+    <div class="d-flex control-quick-search-three">
       <div class="control-quick-search block-price-min">
         <div class="catalog-business__filter-title">Инвестиции</div>
         <div class="d-flex">
@@ -118,18 +118,31 @@
 </div> -->
 
 <div class="block-catalog d-flex">
-  <div class="">
+  <div class="switch-garant-sorting">
     <div>
       <div class="catalog-business__filter-title">Сортировать по</div>
       <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
         [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
     </div>
-
+  <div class="line"></div>
     <div class="switch-garant garant-buy">
       <div class="catalog-business__filter-title">Покупка через гарант</div>
       <p-inputSwitch class="flag-garant" [(ngModel)]="isGarant"></p-inputSwitch>
     </div>
-
+    <div class="line"></div>
+      <div class="wrapper-business">
+        <div class="catalog-business__filter-title">Подборка готового бизнеса</div>
+        <button pButton type="button" label="Со скидкой" class="p-button-text button-business"></button>
+        <button pButton type="button" label="Популярные" class="p-button-text button-business"></button>
+        <button pButton type="button" label="С быстрой окупаемостью" class="p-button-text button-business"></button>
+        <button pButton type="button" label="Для женщин" class="p-button-text button-business"></button>
+        <button pButton type="button" label="Без паушального взноса" class="p-button-text button-business"></button>
+        <button pButton type="button" label="Новинки" class="p-button-text button-business"></button>
+        <button pButton type="button" label=" Для маленького города" class="p-button-text button-business"></button>
+        <button pButton type="button" label=" Без роялти" class="p-button-text button-business"></button>
+       
+      </div>
+      <div class="line"></div>
     <div class="switch-garant">
       <div class="catalog-business__filter-title">Прибыль в месяц</div>
       <div class="d-flex d-flex--short">
@@ -156,8 +169,17 @@
         Очистить фильтры
       </button>
     </div>
+    <div class="line"></div>
+    <div class="wrapper-business">
+      <div class="catalog-business__filter-title">Срок окупаемости</div>
+      <button pButton type="button" label="До 3 месяцев" class="p-button-text button-business"></button>
+      <button pButton type="button" label="До полугода" class="p-button-text button-business"></button>
+      <button pButton type="button" label="До года" class="p-button-text button-business"></button>
+      <button pButton type="button" label="От 1 до 3 лет" class="p-button-text button-business"></button>
+    
+    </div>
   </div>
-
+      
   <!-- Список бизнеса. -->
   <!-- <div class="d-flex popular-list franchise-list">
   <div class="popular-item catalog-item col-lg-4" *ngFor="let item of aBusinessList">
@@ -342,8 +364,8 @@
 
 <!-- Область с банерами (2 картинки). -->
 <div class="d-flex block-baner garant">
-  <img class="baner" src="../../../assets/images/Rectangle 13.png" />
-  <img class="baner" src="../../../assets/images/Rectangle 14.png" />
+  <img class="baner" src="../../../../assets/images/img-baner_garant.svg" />
+  <img class="baner" src="../../../../assets/images/img-baner_garant.svg" />
 </div>
 
 <!-- Область с 3 карточками. -->

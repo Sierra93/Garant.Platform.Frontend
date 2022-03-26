@@ -8,6 +8,8 @@ import { FilterInput } from 'src/app/models/franchise/input/filter-franchise-inp
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
+import { CommonDataService } from 'src/app/services/common/common-data.service';
+import { LandingRequestService } from '../services/landing.service';
 
 @Component({
   selector: 'deal-landing',
@@ -50,13 +52,17 @@ export class DealLandingModule implements OnInit, DoCheck {
   aPopularFranchises: any[] = [];
   isXxl!: boolean;
   browserScreenWidth!: number;
+  isHideBusinessWithGarant: boolean = true;
+  name: string = "";
+  phoneNumber: string = "";
 
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,
     private titleService: Title,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private requestService: LandingRequestService
   ) {
     // this.aSortPrices = [
     //     {
@@ -509,5 +515,10 @@ export class DealLandingModule implements OnInit, DoCheck {
     } else {
       this.isXxl = false;
     }
+  public onSendLandingRequestAsync(name: string, phoneNumber: string) {
+    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Покупка через гарант").subscribe(()=> {
+      this.name = '';
+      this.phoneNumber = ''
+    });
   }
 }

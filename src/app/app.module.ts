@@ -84,6 +84,8 @@ import { BlockUIModule } from 'primeng/blockui';
 import { PanelModule } from 'primeng/panel';
 import { BusinessListComponent } from './components/business-list/business-list.component';
 import { GarantComponent } from './components/garant/garant.component';
+import { InputMaskModule } from 'primeng/inputmask';
+
 
 @NgModule({
   declarations: [
@@ -160,6 +162,8 @@ import { GarantComponent } from './components/garant/garant.component';
     GarLibModule,
     BlockUIModule,
     PanelModule,
+    InputMaskModule
+
   ],
 
   providers: [

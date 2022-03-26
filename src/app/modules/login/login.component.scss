@@ -40,11 +40,36 @@
         height: 69px;
         padding: 1.5rem 1rem;
         border-radius: 8px;
-        background-color: #dadada;
+        background-color: #1f75fe;
         color: #fff;
         font-family: 'Roboto', sans-serif;
         font-size: 18px;
         font-weight: 500;
+      }
+      &.main-btn:disabled {
+        background-color: #dadada;
+      }
+      &.codeBtn{
+        border: none;
+        text-align: left;
+        background-color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+        font-family: 'Roboto', sans-serif;
+        color: #1f75fe;
+      }
+      &.codeBtn:disabled {
+        color: #dadada;
+        &.codeBtn:hover {
+          background-color: #ffffff;
+          color: #dadada;
+          transition: all .5s;
+        }
+      }
+      &.codeBtn:hover {
+        background-color: #ffffff;
+        color: #1f75fe;
+        transition: all .5s;
       }
 
       &.secondary {
@@ -66,6 +91,7 @@
     }
 
     .agreements {
+
       .checkbox {
         display: flex;
         align-items: flex-start;

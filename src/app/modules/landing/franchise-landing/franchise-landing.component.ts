@@ -8,6 +8,7 @@ import { FilterInput } from 'src/app/models/franchise/input/filter-franchise-inp
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
+import { LandingRequestService } from '../services/landing.service';
 
 @Component({
   selector: 'franchise-landing',
@@ -51,13 +52,17 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   routeParam: number;
   isXxl!: boolean;
   browserScreenWidth!: number;
+  isHideBusinessWithGarant: boolean = true;
+  name: string = '';
+  phoneNumber: string = '';
 
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,
     private titleService: Title,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private requestService: LandingRequestService
   ) {
     // this.aSortPrices = [
     //     {
@@ -497,7 +502,14 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   public async routeViewFranchiseCardAsync(businessId: number) {
     await this.setTransitionAsync(businessId);
     this.router.navigate(['/business/view'], {
-      queryParams: { businessId: businessId },
+      queryParams: {businessId: businessId},
+    });
+  }
+
+ public onSendLandingRequestAsync(name: string, phoneNumber: string) {
+    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Упаковка франшиз").subscribe(() => {
+      this.name = '';
+      this.phoneNumber = ''
     });
   }
 

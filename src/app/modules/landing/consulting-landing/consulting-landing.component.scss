@@ -1313,10 +1313,8 @@ strong {
       display: inline-block;
       width: 56px;
       height: 56px;
-      background: url(../../../../assets/images/consulting-landing/yes2.png)
-          center no-repeat,
-        url(../../../../assets/images/consulting-landing/yes1.png) center
-          no-repeat;
+      background: url(../../../../assets/images/consulting-landing/yes2.png) center no-repeat,
+      url(../../../../assets/images/consulting-landing/yes1.png) center no-repeat;
 
       @include xl-lg {
         width: 44px;
@@ -1329,10 +1327,8 @@ strong {
       display: inline-block;
       width: 56px;
       height: 56px;
-      background: url(../../../../assets/images/consulting-landing/no2.png)
-          center no-repeat,
-        url(../../../../assets/images/consulting-landing/no1.png) center
-          no-repeat;
+      background: url(../../../../assets/images/consulting-landing/no2.png) center no-repeat,
+      url(../../../../assets/images/consulting-landing/no1.png) center no-repeat;
 
       @include xl-lg {
         width: 44px;
@@ -1676,6 +1672,19 @@ strong {
       gap: 16px;
       margin-bottom: 32px;
 
+      ::ng-deep.p-inputtext {
+        display: block;
+        font-family: "Roboto", sans-serif;
+        font-size: 1.125rem;
+        font-weight: 400;
+        color: #7a7a7a;
+        width: 291px;
+        height: 69px;
+        border: 1.5px solid #dadada;
+        border-radius: 8px;
+        padding: 24px 40px 24px 24px;
+      }
+
       @include lg-md {
         flex-direction: column;
       }
@@ -1693,7 +1702,7 @@ strong {
       line-height: 14px;
       font-weight: 400;
       color: #dadada;
-      margin-bottom: 8px;
+      //margin-bottom: 8px;
 
       @include lg-md {
         margin-bottom: 0;

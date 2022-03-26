@@ -82,6 +82,7 @@ import { LandingRequestService } from './modules/landing/services/landing.servic
 import { NewsComponent } from './components/news/news.component';
 import { BlockUIModule } from 'primeng/blockui';
 import { PanelModule } from 'primeng/panel';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   declarations: [
@@ -156,6 +157,7 @@ import { PanelModule } from 'primeng/panel';
     GarLibModule,
     BlockUIModule,
     PanelModule,
+    InputMaskModule
   ],
 
   providers: [

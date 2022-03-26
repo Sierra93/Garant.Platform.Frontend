@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card deal" [ngClass]="{ 'is-xxl': isXxl }">
+  <div class="card deal" [ngClass]="{'is-xxl': isXxl }">
     <div class="container">
       <div class="row deal__location">
         <div class="col-lg-3 col-xl-3 col-xxl-3">
@@ -23,7 +23,7 @@
     </div>
   </div>
 </div>
-<div class="container survey" [ngClass]="{ 'is-xxl': isXxl }">
+<div class="container survey" [ngClass]="{'is-xxl': isXxl }">
   <div class="row survey__result">
     <div class="col-lg-3 col-xl-3 col-xxl-3 survey__item">
       <p-panel #pnl header="35" styleClass="p-mt-4">
@@ -115,7 +115,7 @@
     </div>
   </div>
 </div>
-<div class="container consulting" [ngClass]="{ 'is-xxl': isXxl }">
+<div class="container consulting" [ngClass]="{'is-xxl': isXxl}">
   <form class="bg-primary consulting__request">
     <div class="container">
       <div class="row">
@@ -267,9 +267,7 @@
 <div class="container">
   <app-garant></app-garant>
 </div>
-<<<<<<< HEAD
 <app-business-list></app-business-list>
-=======
 <!-- <div class="garant card-line" *ngIf="isHideBusinessWithGarant" [ngClass]="{'is-xl':isXlExtension}">
   <p-card class="card-line-wrapper garant__card-template">
     <ng-template pTemplate="header">
@@ -744,7 +742,6 @@
                     </div>
                   </div>
                 </div>
-<<<<<<< HEAD
               </div>
             </div>
           </div>
@@ -785,46 +782,14 @@
                       <span>{{ item.price | priceFormat: item.price }} ₽</span>
                     </div>
                   </div>
-=======
-                <div>
-                  <p-card header="Название готового бизнеса" subheader="{{item.fullText}}"
-                    [style]="{width: '100%'}" styleClass="p-card-shadow">
-                    <ng-template pTemplate="header">
-
-                    </ng-template>
-                    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-                    <ng-template pTemplate="footer">
-
-                    </ng-template>
-                  </p-card>
->>>>>>> develop
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
           </div>
         </ng-template>
       </p-carousel>
     </div>
   </div>
-=======
-        </div>
-    </ng-template>
-</p-carousel>
-</div>
-
-<div class="col-lg-4">
-  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
-  <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" styleClass="card">
-    <ng-template pTemplate="header">
-
-    </ng-template>
-    <p>{{oTopAction.text}}</p>
-    <ng-template pTemplate="footer">
-      <button class="btn btn-dark">Подробнее</button>
-    </ng-template>
-  </p-card>
->>>>>>> develop
 </div>
 <!-- Бизнес блог. -->
 <div class="container business-blog">

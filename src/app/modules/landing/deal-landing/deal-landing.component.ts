@@ -28,7 +28,7 @@ export class DealLandingModule implements OnInit, DoCheck {
   selectedCity: string = '';
   // selectedCategory: string = "";
   selectedViewBusiness: string = '';
-  // aBusinessList: any[] = [];
+  aBusinessList: any[] = [];
   selectedSort: any;
   // aSortPrices: any[] = [];
   // filterMinPrice!: number;
@@ -172,7 +172,7 @@ export class DealLandingModule implements OnInit, DoCheck {
         .subscribe({
           next: (response: any) => {
             console.log('Список бизнеса:', response);
-            // this.aBusinessList = response;
+            this.aBusinessList = response;
           },
 
           error: (err) => {

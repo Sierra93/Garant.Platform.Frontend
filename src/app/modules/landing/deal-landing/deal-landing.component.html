@@ -372,10 +372,8 @@
                       <span>{{ item.text }}</span>
                     </div>
                     <div class="card-text franchise__tooltip">
-                      <span>
-                        {{ item.countDays }}
-                        {{ item.dayDeclination }} назад
-                      </span>
+                      <span>{{ item.countDays }}</span>
+                      <span>{{ item.dayDeclination }} назад</span>
                     </div>
                     <div class="card-text franchise__price">
                       <span>от {{ item.price | priceFormat: item.price }} ₽</span>
@@ -410,10 +408,8 @@
                       <span>{{ item.text }}</span>
                     </div>
                     <div class="card-text franchise__tooltip">
-                      <span>
-                        {{ item.countDays }}
-                        {{ item.dayDeclination }} назад
-                      </span>
+                      <span>{{ item.countDays }}</span>
+                      <span>{{ item.dayDeclination }} назад</span>
                     </div>
                     <div class="card-text franchise__price">
                       <span>от {{ item.price | priceFormat: item.price }} ₽</span>
@@ -430,8 +426,8 @@
 </div>
 
 <!-- Новые объявления готового бизнеса -->
-<div class="container">
-  <h5 class="alert alert-light">Новые объявления готового бизнеса</h5>
+<div class="container business-ad">
+  <h5 class="alert alert-light business-ad__title" style="padding-left: 0; padding-bottom: 0; background: transparent; border: none;">Новые объявления готового бизнеса</h5>
   <div class="row">
     <div class="col-lg-3 col-xl-3 col-xxl-3">
       <p-carousel
@@ -442,25 +438,25 @@
         [responsiveOptions]="responsiveOptions"
       >
         <ng-template let-item pTemplate="item">
-          <div class="product-item">
-            <div class="product-item-content">
+          <div class="product-item business-ad__item">
+            <div class="product-item-content business-ad__content">
               <div class="p-mb-3">
                 <img
                   [src]="item.url"
-                  class="img-fluid"
+                  class="img-fluid business-ad__picture"
                   [alt]="item.businessName"
                 />
               </div>
-              <div>
-                <div class="card">
-                  <div class="card-body">
-                    <div class="card-title">{{ item.businessName }}</div>
-                    <div class="card-text">
+              <div class="business-ad__detail">
+                <div class="card business-ad__data">
+                  <div class="card-body business-ad__description">
+                    <div class="card-title business-ad__data-title">{{ item.businessName }}</div>
+                    <div class="card-text business-ad__tooltip">
                       <span>{{ item.text }}</span>
-                      <span
-                        >{{ item.countDays }}
-                        {{ item.dayDeclination }} назад</span
-                      >
+                    </div>
+                    <div class="card-text business-ad__title">
+                      <span>{{ item.countDays }}</span>
+                      <span>{{ item.dayDeclination }} назад</span>
                     </div>
                     <div class="card-text">
                       <span>{{ item.textDoPrice }}</span>

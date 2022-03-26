@@ -141,7 +141,7 @@
               />
             </div>
             <div class="col-6 consulting__input-field">
-              <label class="consulting-content__label">Номер телефона</label>
+              <label class="form-label consulting__input-text">Номер телефона</label>
               <p-inputMask
                 mask="+7(999) 999-99-99"
                 [(ngModel)]="phoneNumber"
@@ -150,7 +150,7 @@
             </div>
             <div class="col-8">
               <button
-                class="consulting-content__button"
+                class="btn btn-light"
                 (click)="onSendLandingRequestAsync(name, phoneNumber)"
               >
                 Обратиться за консультацией
@@ -276,192 +276,7 @@
 </div>
 <app-business-list></app-business-list>
 <!-- Популярные франшизы -->
-<div class="container franchise">
-  <h5 class="alert alert-light text-break franchise__title">
-    Популярные франшизы
-  </h5>
-  <div class="row">
-    <div class="col-lg-3 col-xl-3 col-xxl-3">
-      <p-carousel
-        [value]="aPopularFranchises"
-        [numVisible]="1"
-        [numScroll]="3"
-        [circular]="true"
-        [responsiveOptions]="responsiveOptions"
-      >
-        <ng-template let-item pTemplate="item">
-          <div class="product-item franchise__item">
-            <div class="product-item-content franchise__content">
-              <div class="p-mb-3 franchise__franchise-img">
-                <img
-                  [src]="item.url"
-                  class="img-fluid franchise__img"
-                  [alt]="item.title"
-                />
-              </div>
-              <div class="franchise__detail">
-                <div class="card franchise__data">
-                  <div class="card-body franchise__description">
-                    <div class="card-title franchise__data-title">
-                      {{ item.title }}
-                    </div>
-                    <div class="card-text franchise__tooltip">
-                      <span>{{ item.text }}</span>
-                    </div>
-                    <div class="card-text franchise__tooltip">
-                      <span>{{ item.countDays }}</span>
-                      <span>{{ item.dayDeclination }} назад</span>
-                    </div>
-                    <div class="card-text franchise__price">
-                      <span
-                        >от {{ item.price | priceFormat: item.price }} ₽</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </p-carousel>
-    </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3">
-      <p-carousel
-        [value]="aPopularFranchises"
-        [numVisible]="1"
-        [numScroll]="3"
-        [circular]="true"
-        [responsiveOptions]="responsiveOptions"
-      >
-        <ng-template let-item pTemplate="item">
-          <div class="product-item franchise__item">
-            <div class="product-item-content franchise__content">
-              <div class="p-mb-3 franchise__franchise-img">
-                <img
-                  [src]="item.url"
-                  class="img-fluid franchise__img"
-                  [alt]="item.title"
-                />
-              </div>
-              <div class="franchise__detail">
-                <div class="card franchise__data">
-                  <div class="card-body franchise__description">
-                    <div class="card-title franchise__data-title">
-                      {{ item.title }}
-                    </div>
-                    <div class="card-text franchise__tooltip">
-                      <span>{{ item.text }}</span>
-                    </div>
-                    <div class="card-text franchise__tooltip">
-                      <span>
-                        {{ item.countDays }}
-                        {{ item.dayDeclination }} назад
-                      </span>
-                    </div>
-                    <div class="card-text franchise__price">
-                      <span
-                        >от {{ item.price | priceFormat: item.price }} ₽</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </p-carousel>
-    </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3">
-      <p-carousel
-        [value]="aPopularFranchises"
-        [numVisible]="1"
-        [numScroll]="3"
-        [circular]="true"
-        [responsiveOptions]="responsiveOptions"
-      >
-        <ng-template let-item pTemplate="item">
-          <div class="product-item franchise__item">
-            <div class="product-item-content franchise__content">
-              <div class="p-mb-3">
-                <img
-                  [src]="item.url"
-                  class="img-fluid franchise__franchise-img"
-                  [alt]="item.title"
-                />
-              </div>
-              <div class="franchise__detail">
-                <div class="card franchise__data">
-                  <div class="card-body franchise__description">
-                    <div class="card-title franchise__data-title">
-                      {{ item.title }}
-                    </div>
-                    <div class="card-text franchise__tooltip">
-                      <span>{{ item.text }}</span>
-                    </div>
-                    <div class="card-text franchise__tooltip">
-                      <span>{{ item.countDays }}</span>
-                      <span>{{ item.dayDeclination }} назад</span>
-                    </div>
-                    <div class="card-text franchise__price">
-                      <span
-                        >от {{ item.price | priceFormat: item.price }} ₽</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </p-carousel>
-    </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3">
-      <p-carousel
-        [value]="aPopularFranchises"
-        [numVisible]="1"
-        [numScroll]="3"
-        [circular]="true"
-        [responsiveOptions]="responsiveOptions"
-      >
-        <ng-template let-item pTemplate="item">
-          <div class="product-item franchise__item">
-            <div class="product-item-content franchise__content">
-              <div class="p-mb-3">
-                <img
-                  [src]="item.url"
-                  class="img-fluid franchise__franchise-img"
-                  [alt]="item.title"
-                />
-              </div>
-              <div class="franchise__detail">
-                <div class="card franchise__data">
-                  <div class="card-body franchise__description">
-                    <div class="card-title franchise__data-title">
-                      {{ item.title }}
-                    </div>
-                    <div class="card-text franchise__tooltip">
-                      <span>{{ item.text }}</span>
-                    </div>
-                    <div class="card-text franchise__tooltip">
-                      <span>{{ item.countDays }}</span>
-                      <span>{{ item.dayDeclination }} назад</span>
-                    </div>
-                    <div class="card-text franchise__price">
-                      <span
-                        >от {{ item.price | priceFormat: item.price }} ₽</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </p-carousel>
-    </div>
-  </div>
-</div>
-
+<app-franchise-list></app-franchise-list>
 <!-- Новые объявления готового бизнеса -->
 <div class="container business-ad">
   <h5

@@ -99,7 +99,7 @@
             }
           }
           & .p-panel-content {
-            font-size: 24px;
+            font-size: 23px;
           }
         }
       }
@@ -242,6 +242,13 @@
   }
 }
 
+::ng-deep .p-element .p-inputtext {
+  padding: 24px 40px 24px 24px;
+  font-size: 0.92vw;
+  line-height: 21px;
+  border-radius: 8px;
+}
+
 ::ng-deep {
   @media all and (min-width: 1401px) {
     .consulting {
@@ -348,76 +355,6 @@
     }
   }
 }
-
-.garant {
-  border: none;
-  border-radius: 8px;
-  background: #f1f6ff;
-  margin-top: 74px;
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 0;
-    border: none;
-    background: transparent;
-    margin-bottom: 16px;
-  }
-  &__title {
-    font-size: 0.94vw;
-    line-height: 21px;
-    font-weight: 600;
-    margin-bottom: 0;
-  }
-  &__close {
-    width: 16px;
-    height: 16px;
-  }
-  &__description {
-    font-size: 0.73vw;
-    line-height: 16.41px;
-    color: #7a7a7a;
-    margin-bottom: 40px;
-  }
-  &__business {
-    font-size: 0.94vw;
-    line-height: 21px;
-    font-weight: 600;
-    border-radius: 4px !important;
-    padding: 16px;
-    margin-right: 22px;
-  }
-  &__clean {
-    font-size: 0.94vw;
-    line-height: 21px;
-    font-weight: 600;
-    border-radius: 4px !important;
-    padding: 16px;
-    border: 1px solid #7a7a7a;
-    color: #7a7a7a;
-  }
-}
-
-::ng-deep {
-  @media all and (min-width: 1401px) {
-    .garant {
-      &.is-xxl &__title {
-        font-size: 18px;
-        line-height: 21px;
-      }
-      &.is-xxl &__description {
-        font-size: 14px;
-        line-height: 16px;
-      }
-      &.is-xxl &__business,
-      &.is-xxl &__clean {
-        font-size: 18px;
-        line-height: 21px;
-      }
-    }
-  }
-}
-
-
 .choice {
   margin-top: 74px;
   &__card {
@@ -458,75 +395,3 @@
   }
 }
 
-.franchise {
-  &__title {
-    font-size: 24px;
-    line-height: 28px;
-    color: #000;
-    padding-left: 0;
-    padding-bottom: 0;
-    margin-bottom: 32px;
-    background: transparent;
-    border: none;
-  }
-  &__data {
-    border: none;
-  }
-  &__data-title {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 21px;
-    color: #2c2c2c;
-    margin-bottom: 8px;
-  }
-  &__tooltip {
-    display: inline-block;
-    color: #7a7a7a;
-    font-size: 12px;
-    line-height: 14px;
-    margin-bottom: 20px;
-  }
-  &__tooltip:nth-child(2) {
-    margin-right: 20px;
-    margin-bottom: 0;
-  }
-  &__price {
-    color: #2c2c2c;
-    font-size: 18px;
-    line-height: 21px;
-    font-weight: 600;
-  }
-}
-
-// Кастомизация слайдера под дизайн
-::ng-deep .p-element .p-carousel-content {
-  position: relative;
-}
-
-::ng-deep .p-element .p-carousel-prev {
-  display: none;
-}
-
-::ng-deep .p-element .p-carousel-next {
-  position: absolute;
-  right: 0;
-  margin-top: 85px !important;
-}
-
-::ng-deep .p-element .p-carousel-next .pi-chevron-right::before {
-  display: block;
-  content: "\e900";
-  color: #c4c4c4;
-  font-size: 15px;
-  font-weight: 600;
-  transform: rotate(180deg);
-}
-
-::ng-deep .p-element .p-carousel-indicators {
-  display: none;
-}
-
-::ng-deep .p-carousel-items-content {
-  border-radius: 8px;
-  box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
-}

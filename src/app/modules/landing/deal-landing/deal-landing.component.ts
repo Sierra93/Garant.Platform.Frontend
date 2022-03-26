@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
+import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { API_URL } from 'src/app/core/core-urls/api-url';
 import { FilterInput } from 'src/app/models/franchise/input/filter-franchise-input';
-import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { LandingRequestService } from '../services/landing.service';
@@ -17,8 +17,6 @@ import { LandingRequestService } from '../services/landing.service';
 })
 export class DealLandingModule implements OnInit, DoCheck {
   aPopularBusiness: any[] = [];
-  oSuggestion: any = {};
-  isHideBusinessWithGarant: boolean = true;
   isXxl!: boolean;
   browserScreenWidth!: number;
   // isGarant: boolean = false;
@@ -48,21 +46,20 @@ export class DealLandingModule implements OnInit, DoCheck {
   aDataActions: any[] = [];
   oTopAction: any = {};
   aNewFranchises: any[] = [];
-  responsiveOptions: any[] = [];
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
-  aPopularFranchises: any[] = [];
   name: string = '';
   phoneNumber: string = '';
+  responsiveOptions: any[] = [];
 
   constructor(
     private http: HttpClient,
-    private commonService: CommonDataService,
     private titleService: Title,
     private router: Router,
     private route: ActivatedRoute,
     private requestService: LandingRequestService,
+    private commonService: CommonDataService
   ) {
     // this.aSortPrices = [
     //     {
@@ -74,7 +71,6 @@ export class DealLandingModule implements OnInit, DoCheck {
     //         value: "Asc"
     //     }
     // ];
-
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -92,15 +88,12 @@ export class DealLandingModule implements OnInit, DoCheck {
         numScroll: 1,
       },
     ];
-
     this.routeParam = this.route.snapshot.queryParams.businessId;
   }
 
   public async ngOnInit() {
     this.isXxl = false;
     this.browserScreenWidth = window.screen.width;
-
-    await this.loadSingleSuggestionAsync();
     // await this.getPopularBusinessAsync();
     await this.GetBusinessListAsync();
     await this.loadCitiesFranchisesListAsync();
@@ -112,7 +105,6 @@ export class DealLandingModule implements OnInit, DoCheck {
     await this.loadCategoriesListAsync();
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
-    await this.getPopularAsync();
   }
 
   public ngDoCheck(): void {
@@ -170,19 +162,6 @@ export class DealLandingModule implements OnInit, DoCheck {
     }
   }
 
-  /**
-   * Функция получит одно предложение с флагом IsSingle.
-   * @returns данные предложения.
-   */
-   private async loadSingleSuggestionAsync() {
-    try {
-      await this.commonService.loadSingleSuggestionAsync().then((data: any) => {
-        this.oSuggestion = data;
-      });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
   /**
    * Функция получит список бизнеса.
    */
@@ -505,21 +484,6 @@ export class DealLandingModule implements OnInit, DoCheck {
     this.router.navigate(['/business/view'], {
       queryParams: { businessId: businessId },
     });
-  }
-
-  /**
-   * Функция получит список популярныз франшиз.
-   * @returns Список франшиз.
-   */
-  private async getPopularAsync() {
-    try {
-      await this.commonService.getPopularAsync().then((data: any) => {
-        console.log('Популярные франшизы:', data);
-        this.aPopularFranchises = data;
-      });
-    } catch (e: any) {
-      throw new Error(e);
-    }
   }
 
   @HostListener('window:resize', ['$event'])

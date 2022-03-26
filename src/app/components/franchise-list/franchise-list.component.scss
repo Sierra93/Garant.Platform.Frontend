@@ -1,0 +1,73 @@
+.franchise {
+    &__title {
+      font-size: 24px;
+      line-height: 28px;
+      color: #000;
+      padding-left: 0;
+      padding-bottom: 0;
+      margin-bottom: 32px;
+      background: transparent;
+      border: none;
+    }
+    &__data {
+      border: none;
+    }
+    &__data-title {
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 21px;
+      color: #2c2c2c;
+      margin-bottom: 8px;
+    }
+    &__tooltip {
+      display: inline-block;
+      color: #7a7a7a;
+      font-size: 12px;
+      line-height: 14px;
+      margin-bottom: 20px;
+    }
+    &__tooltip:nth-child(2) {
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
+    &__price {
+      color: #2c2c2c;
+      font-size: 18px;
+      line-height: 21px;
+      font-weight: 600;
+    }
+  }
+  
+  // Кастомизация слайдера под дизайн
+  ::ng-deep .p-element .p-carousel-content {
+    position: relative;
+  }
+  
+  ::ng-deep .p-element .p-carousel-prev {
+    display: none;
+  }
+  
+  ::ng-deep .p-element .p-carousel-next {
+    position: absolute;
+    right: 0;
+    margin-top: 85px !important;
+  }
+  
+  ::ng-deep .p-element .p-carousel-next .pi-chevron-right::before {
+    display: block;
+    content: "\e900";
+    color: #c4c4c4;
+    font-size: 15px;
+    font-weight: 600;
+    transform: rotate(180deg);
+  }
+  
+  ::ng-deep .p-element .p-carousel-indicators {
+    display: none;
+  }
+  
+  ::ng-deep .p-carousel-items-content {
+    border-radius: 8px;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+  }
+  

@@ -240,6 +240,15 @@
     bottom: 0;
     margin-right: -140px;
   }
+  &__submit {
+    padding: 24px 40px 24px 24px;
+    border-radius: 8px;
+    margin-top: 32px;
+    width: 100%;
+    font-size: 0.92vw;
+    line-height: 21px;
+    border: 1px solid #fff;
+  }
 }
 
 ::ng-deep .p-element .p-inputtext {

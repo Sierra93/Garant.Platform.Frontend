@@ -23,6 +23,7 @@
     </div>
   </div>
 </div>
+<<<<<<< HEAD
 <div class="container service" [ngClass]="{ 'is-xxl': isXxl }">
   <div class="row service__catalog">
     <div class="col-lg-3 col-xl-3 col-xxl-3 service__item">
@@ -33,6 +34,96 @@
           и создали с нуля
         </div>
       </p-panel>
+=======
+
+<div class="statistics">
+  <div class="statistics-item">
+    <p class="statistics-item__number">80</p>
+    <p class="statistics-item__text">
+      франшиз <br />
+      упаковали <br />
+      и создали с нуля
+    </p>
+  </div>
+  <div class="statistics-item">
+    <p class="statistics-item__number">25</p>
+    <p class="statistics-item__text">
+      сфер бизнеса <br />
+      проработано <br />
+      за время работы
+    </p>
+  </div>
+  <div class="statistics-item">
+    <p class="statistics-item__number">
+      60 <span class="statistics-item__unit">млн</span>
+    </p>
+    <p class="statistics-item__text">
+      заработали <br />
+      клиентам после <br />
+      создания франшиз
+    </p>
+  </div>
+  <div class="statistics-item">
+    <p class="statistics-item__number">14</p>
+    <p class="statistics-item__text">
+      человек будут <br />
+      работать над вашим <br />
+      проектом
+    </p>
+  </div>
+</div>
+
+<div class="founder">
+  <div class="founder-content">
+    <div class="founder-content__title">Азамат Булатов</div>
+    <div class="founder-content__subtitle">сооснователь проекта</div>
+    <div class="founder-content__text">
+      Лично ответственный за каждую упакованную франшизу
+    </div>
+    <div class="founder-content__inputs">
+      <label class="founder-content__label"
+        >Имя
+        <input
+          class="founder-content__input"
+          type="text"
+          name="name"
+          placeholder="Введите имя"
+          [(ngModel)]="name"
+        />
+      </label>
+<!--      <label class="founder-content__label"-->
+<!--        >Номер телефона-->
+<!--        <input-->
+<!--          class="founder-content__input"-->
+<!--          type="tel"-->
+<!--          name="telephone"-->
+<!--          placeholder="Введите номер телефона"-->
+<!--        />-->
+<!--      </label>-->
+      <div>
+        <label class="founder-content__label">Номер телефона</label>
+        <p-inputMask  mask="+7(999) 999-99-99" [(ngModel)]="phoneNumber" placeholder="Введите номер телефона"></p-inputMask>
+      </div>
+    </div>
+    <button class="founder-content__button" (click)="onSendLandingRequestAsync(name,phoneNumber)">Обратиться за консультацией</button>
+  </div>
+  <div class="founder-image">
+    <img
+      src="../../../../assets/images/franchise-landing/template_person6 1.png"
+      alt="Фото сооснователя"
+    />
+  </div>
+</div>
+
+<h5 class="bonuses-header">Бонусы от GoBizy</h5>
+<div class="bonuses">
+  <div class="bonuses-item">
+    <div class="bonuses-item__image">
+      <img
+        src="../../../../assets/images/franchise-landing/loupe-clip-art-6 1.png"
+        alt="Лупа"
+      />
+>>>>>>> develop
     </div>
     <div class="col-lg-3 col-xl-3 col-xxl-3 service__item">
       <p-panel #pnl header="25" styleClass="p-mt-4">
@@ -797,6 +888,60 @@
   </p-carousel>
 </div>
 
+<<<<<<< HEAD
+=======
+<!-- Отзывы о франшизах -->
+<!-- <div class="d-flex garant">
+<div class="col-lg-8">
+  <p-carousel [value]="aReviewsFranchises" [numVisible]="2" [numScroll]="2" [circular]="false" [responsiveOptions]="responsiveOptions" [showNavigators]="false">
+    <ng-template pTemplate="header">
+      <h5 class="title-franchise">Отзывы о франшизах</h5>
+    </ng-template>
+    <ng-template let-item pTemplate="item">
+        <div class="product-item">
+            <div class="product-item-content">
+                <div class="p-mb-3">
+                    <img [src]="item.url" class="product-image">
+                </div>
+                <div>
+                  <p-card header="Название готового бизнеса" subheader="{{item.fullText}}"
+                    [style]="{width: '100%'}" styleClass="p-card-shadow">
+                    <ng-template pTemplate="header">
+
+                    </ng-template>
+                    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+                    <ng-template pTemplate="footer">
+
+                    </ng-template>
+                  </p-card>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+</div>
+
+<div class="col-lg-4">
+  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
+  <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" styleClass="card">
+    <ng-template pTemplate="header">
+
+    </ng-template>
+    <p>{{oTopAction.text}}</p>
+    <ng-template pTemplate="footer">
+      <button class="btn btn-dark">Подробнее</button>
+    </ng-template>
+  </p-card>
+</div>
+</div> -->
+
+<!-- Область с банерами (2 картинки). -->
+<!-- <div class="d-flex block-baner garant">
+  <img class="baner" src="../../../assets/images/Rectangle 13.png">
+  <img class="baner" src="../../../assets/images/Rectangle 14.png">
+</div> -->
+
+>>>>>>> develop
 <!-- Бизнес блог. -->
 <h5 class="garant title-franchise">Бизнес блог</h5>
 <div class="d-flex popular-list-blog">

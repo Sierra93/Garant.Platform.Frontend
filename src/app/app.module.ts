@@ -82,8 +82,12 @@ import { LandingRequestService } from './modules/landing/services/landing.servic
 import { NewsComponent } from './components/news/news.component';
 import { BlockUIModule } from 'primeng/blockui';
 import { PanelModule } from 'primeng/panel';
+<<<<<<< HEAD
 import { BusinessListComponent } from './components/business-list/business-list.component';
 import { GarantComponent } from './components/garant/garant.component';
+=======
+import { InputMaskModule } from 'primeng/inputmask';
+>>>>>>> develop
 
 @NgModule({
   declarations: [
@@ -160,6 +164,7 @@ import { GarantComponent } from './components/garant/garant.component';
     GarLibModule,
     BlockUIModule,
     PanelModule,
+    InputMaskModule
   ],
 
   providers: [

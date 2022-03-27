@@ -205,22 +205,6 @@
     &-content {
       width: 864px;
       height: 495px;
-
-      // @include xl-lg {
-      //   width: 598px;
-      //   height: 434px;
-      // }
-
-      // @include lg-md {
-      //   width: 429px;
-      //   height: 593px;
-      // }
-
-      // @include md {
-      //   width: 272px;
-      //   height: 480px;
-      // }
-
       &__title {
         font-family: "Roboto", sans-serif;
         font-size: 6rem;
@@ -229,25 +213,6 @@
         width: 864px;
         line-height: 112px;
         margin-bottom: 16px;
-
-        // @include xl-lg {
-        //   font-size: 4rem;
-        //   width: 598px;
-        //   line-height: 75px;
-        // }
-
-        // @include lg-md {
-        //   font-size: 4rem;
-        //   width: 429px;
-        //   line-height: 75px;
-        // }
-
-        // @include md {
-        //   font-size: 2rem;
-        //   width: 272px;
-        //   line-height: 38px;
-        //   margin-bottom: 8px;
-        // }
       }
 
       &__subtitle {
@@ -258,24 +223,6 @@
         width: 864px;
         line-height: 75px;
         margin-bottom: 16px;
-
-        // @include xl-lg {
-        //   font-size: 2.75rem;
-        //   width: 598px;
-        //   line-height: 52px;
-        // }
-
-        // @include lg-md {
-        //   font-size: 2.75rem;
-        //   width: 429px;
-        //   line-height: 52px;
-        // }
-
-        // @include md {
-        //   font-size: 1.5rem;
-        //   width: 272px;
-        //   line-height: 28px;
-        // }
       }
 
       &__text {
@@ -286,21 +233,6 @@
         width: 864px;
         line-height: 28px;
         margin-bottom: 48px;
-
-        // @include xl-lg {
-        //   width: 598px;
-        // }
-
-        // @include lg-md {
-        //   width: 429px;
-        // }
-
-        // @include md {
-        //   font-size: 1rem;
-        //   width: 272px;
-        //   line-height: 19px;
-        //   margin-bottom: 24px;
-        // }
       }
 
       &__inputs {
@@ -320,14 +252,6 @@
           border-radius: 8px;
           padding: 24px 40px 24px 24px;
         }
-        // @include lg-md {
-        //   flex-direction: column;
-        // }
-
-        // @include md {
-        //   flex-direction: column;
-        //   margin-bottom: 24px;
-        // }
       }
 
       &__label {
@@ -338,14 +262,6 @@
         font-weight: 400;
         color: #dadada;
         //margin-bottom: 8px;
-
-        // @include lg-md {
-        //   margin-bottom: 0;
-        // }
-
-        // @include md {
-        //   margin-bottom: 0;
-        // }
       }
 
       &__input {
@@ -359,15 +275,6 @@
         border: 1.5px solid #dadada;
         border-radius: 8px;
         padding: 24px 40px 24px 24px;
-
-        // @include lg-md {
-        //   margin-top: 8px;
-        // }
-
-        // @include md {
-        //   width: 272px;
-        //   margin-top: 8px;
-        // }
       }
 
       &__button {
@@ -386,22 +293,6 @@
         padding: 24px 29.5px;
         margin: 0;
         background-color: #ffffff;
-
-        // @include lg-md {
-        //   font-size: 1.1875rem;
-        //   line-height: 22px;
-        //   width: 291px;
-        //   height: 70px;
-        //   padding: 24px 11px;
-        // }
-
-        // @include md {
-        //   font-size: 1rem;
-        //   line-height: 19px;
-        //   width: 272px;
-        //   height: 67px;
-        //   padding: 24px 22.5px;
-        // }
       }
       &__input {
         padding: 24px 40px 24px 24px;

@@ -43,9 +43,31 @@
     </p-card>
   </div>
 
-  <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
-    <div class="popular-item more-articles business-blog-video">
-      <p-card
+      <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 wrapper-business-blog" >
+        
+        <div class="business-blog-images">
+         <div class="image-blog"> 
+          <img style="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
+            <div class="image-blog-text">
+            <div class="text-blog">Как понять франчайзинг?</div>
+            <div class="subtitle-text">читать ~5 минут &bull; опубликовано 3 февраля</div>
+            </div> 
+          </div>
+         <div class="image-blog"> 
+                  <img style="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
+                  <div class="image-blog-text">
+                  <div class="text-blog">Бизнес или работа на “дядю”?</div>
+                <div class="subtitle-text">читать ~7 минут &bull; опубликовано 20 февраля</div>
+          </div>
+          </div>
+          <div class="image-blog"> <img style="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
+                  <div class="image-blog-text"><div class="text-blog">Так ли жестока налоговая?</div>
+                  <div class="subtitle-text">читать ~11 минут &bull; опубликовано 25 февраля</div>
+                </div>
+          </div>
+        </div>
+          <div class="popular-item more-articles business-blog-video">
+              <p-card
         header=""
         subheader=""
         [style]="{ width: '100%' }"
@@ -58,11 +80,12 @@
               Перейдите в наш блог и найдите там массу полезной информации.
             </p>
           </div>
-          <img src="../../../assets/images/Frame 66.png" height="32" />
+          <img src="../../../assets/images/Frame 66.png" height="32">
         </div>
-      </p-card>
-    </div>
-  </div>
+            </p-card>
+          </div>
+          </div>
+     
 </div>
 
 <div class="garant block-title-franchise">
@@ -239,45 +262,38 @@
 </div>
 
 <!-- Новый бизнес. -->
-<div class="garant">
-  <p-carousel
-    [value]="aNewFranchises"
-    [numVisible]="4"
-    [numScroll]="4"
-    [circular]="false"
-    [responsiveOptions]="responsiveOptions"
-    [showNavigators]="false"
-  >
-    <ng-template pTemplate="header">
-      <h5 class="title-franchise">Новый бизнес</h5>
-    </ng-template>
-    <ng-template let-item pTemplate="item">
-      <div class="product-item">
-        <div class="product-item-content">
-          <div class="p-mb-3">
-            <img [src]="item.url" class="product-image" />
-          </div>
-          <div>
-            <p-card
-              header="Название готового бизнеса"
-              subheader="{{ item.fullText }}"
-              [style]="{ width: '100%' }"
-              styleClass="p-card-shadow"
-            >
-              <ng-template pTemplate="header">
-                <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-              </ng-template>
-              <strong>{{ item.textDoPrice }} {{ item.price | priceFormat: item.price }} ₽</strong>
-              <ng-template pTemplate="footer">
-                <!-- <p-button label="Save" icon="pi pi-check"></p-button>
-                          <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
-              </ng-template>
-            </p-card>
+<div class="garant New-business">
+  <div class="garant">
+    <p-carousel [value]="aNewFranchises" [numVisible]="4" [numScroll]="4" [circular]="false"
+      [responsiveOptions]="responsiveOptions" [showNavigators]="false">
+      <ng-template pTemplate="header">
+        <h5 class="title-franchise">Новый бизнес</h5>
+      </ng-template>
+      <ng-template let-item pTemplate="item">
+        <div class="product-item">
+          <div class="product-item-content">
+            <div class="p-mb-3">
+              <img [src]="item.url" class="product-image">
+            </div>
+            <div>
+              <p-card header="Название готового бизнеса" subheader="{{item.fullText}}" [style]="{width: '100%'}"
+                styleClass="p-card-shadow">
+                <ng-template pTemplate="header">
+                  <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+                </ng-template>
+                <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+                <ng-template pTemplate="footer">
+                  <!-- <p-button label="Save" icon="pi pi-check"></p-button>
+                            <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
+                </ng-template>
+              </p-card>
+            </div>
           </div>
         </div>
-      </div>
-    </ng-template>
-  </p-carousel>
+      </ng-template>
+    </p-carousel>
+  </div>
+
 </div>
 
 <!-- Отзывы о франшизах -->

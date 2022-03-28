@@ -29,7 +29,7 @@ import { CreateAdModule } from './modules/create-ad/create-ad.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: "main",
     component: MainPageModule
   },
 

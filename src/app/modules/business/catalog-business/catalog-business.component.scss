@@ -660,12 +660,7 @@
   margin-top: 0;
 }
 
-.popular-item-blog {
-  width: 342px;
-  height: 208px;
-}
-
-::ng-deep .popular-item-blog-wrapper1 .p-card {
+::ng-deep .popular-item-blog-wrapper1 {
   width: 342px !important;
   height: 208px !important;
   border-radius: 0 !important;
@@ -696,7 +691,7 @@
   }
 }
 
-::ng-deep .popular-item-blog-wrapper2 .p-card {
+::ng-deep .popular-item-blog-wrapper2 {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -705,6 +700,7 @@
   border-radius: 0 !important;
   padding: 24px;
   background-color: #f1f1f1;
+  border: 1px solid black !important;
 
   &-header {
     display: none !important;
@@ -735,7 +731,6 @@
       .image {
         position: relative;
         width: 32px;
-
         img {
           position: absolute;
           right: 0;
@@ -906,4 +901,29 @@
   width: 100%;
   margin-top: 40px;
   border: 1px solid black;
+}
+
+::ng-deep .more-articles {
+  background: #f1f6ff;
+  padding-top: 30px;
+  border-radius: 8px;
+  .p-card-body {
+    background: #f1f6ff;
+    .franchise-card-title {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 21px;
+      color: #2c2c2c;
+    }
+    .franchise-card-description {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: #7a7a7a;
+    }
+  }
 }

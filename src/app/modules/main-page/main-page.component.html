@@ -163,12 +163,12 @@
                   
                 </div>
 
-                <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
+                <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12 price-range-wrapper">
                   <div>
                     <p class="d-inline-block"><strong>Стоимость</strong></p>
                   </div>
                   <div class="price-range-input">
-                    <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
+                    <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" style="width: 48%;" />
 
                     <input type="text" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice"
                       name="maxPrice" />
@@ -179,8 +179,8 @@
                   </div>
                 </div>
 
-                <div class="col-xxl-2 col-xl-6 col-lg-6 col-md-12">
-                  <div class="control-quick-search">
+                <div class="col-xxl-2 col-xl-6 col-lg-6 col-md-12 quick-search5">
+                  <div class="control-quick-search control-quick-search2 ">
                     <p><strong>Покупка через гарант</strong></p>
                     <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
                   </div>
@@ -189,7 +189,7 @@
             </form>
            
             <ng-template pTemplate="footer">
-              <button class="btn btn-dark" (click)="onFilterFranchisesAsync(filterForm)" style="background: #1F75FE; width: 160px;" >Найти</button>
+              <button class="btn btn-dark btn-dark-search" (click)="onFilterFranchisesAsync(filterForm)" style="background: #1F75FE; width: 160px; margin-left: -13px;" >Найти</button>
             </ng-template>
           </p-card>
           <!-- </div> -->

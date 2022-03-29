@@ -103,11 +103,11 @@
 ::ng-deep .card-business .btn-dark {
   padding: 16px;
 }
-
-// ::ng-deep .right .btn-dark {
-//   padding: 16px;
-// }
-
+.block-cards-franchises {
+  &:p-card-footer {
+    background: #1f75fe;
+  }
+}
 ::ng-deep .card-line .p-card-body {
   // background: #F1F6FF;
   padding: 24px 16px 24px 16px;
@@ -141,14 +141,6 @@
   // background: white;
   width: 336px;
 }
-
-// .card-demo-list {
-//   margin-top: 24px;
-// }
-
-// .gray {
-//   background: #F1F1F1;
-// }
 
 .btn-show-more {
   border: 1px solid;
@@ -283,8 +275,6 @@
   border-radius: 8px;
 
   .block-cards-franchises-bg {
-    // padding: 1rem 1.5rem;
-    // background: #f1f1f1;
     width: 100%;
   }
   .control-quick-search {
@@ -294,6 +284,7 @@
     justify-content: space-between;
     [class^="col"] {
       margin: 0px;
+      font-size: 18px;
       text-align: start;
     }
   }
@@ -301,12 +292,8 @@
     padding: 0;
   }
   .col-xxl-4 {
-    max-width: 20rem;
+    max-width: 22rem;
     padding: 0;
-    @media only screen and (min-device-width: 480px) and (max-device-width: 768px) {
-      max-width: 25rem;
-    }
-
     .price-range-input {
       display: flex;
       justify-content: space-between;
@@ -417,7 +404,6 @@
     width: 24rem;
     input {
       max-width: 49%;
-      background: #f1f6ff;
     }
   }
 }
@@ -433,7 +419,7 @@
 
 ::ng-deep {
   .p-card-body {
-    padding: 1.5rem !important;
+    padding: 1.5rem;
   }
 }
 
@@ -446,9 +432,9 @@
 }
 
 ::ng-deep {
-  .p-inputtext {
-    width: auto !important;
-  }
+  // .p-inputtext {
+  //   width: auto !important;
+  // }
 
   .quick-search-card {
     .p-card-header {
@@ -466,9 +452,9 @@
   .quick-search-form {
     justify-content: space-between;
     [class^="col-xxl-2"] {
-      margin: 0px;
+      margin: 0px 0 0 40px;
       text-align: start;
-      width: 10rem !important;
+      max-width: 199px;
     }
 
     .price-range-input {
@@ -482,7 +468,9 @@
     border: none;
   }
   .quick-search-form:last-child {
-    align-items: end;
+    .control-quick-search {
+      text-align: center;
+    }
   }
 }
 .ready-business-categories .title-franchise {
@@ -499,9 +487,16 @@
     .col-lg-4 {
       border: none;
     }
-    .col-lg-6 {
-      width: 50%;
+    .col-xxl-4 {
+      max-width: 35rem;
     }
+  }
+  .control-quick-search2 {
+    max-width: 75%;
+  }
+  .price-range-wrapper {
+    width: 65%;
+    max-width: 65%;
   }
   .block-cards-franchises-inner {
     margin-bottom: 0;
@@ -511,6 +506,9 @@
   }
   .wrapper-slider {
     display: none;
+  }
+  .quick-search5 {
+    width: 30%;
   }
 }
 ::ng-deep .p-dropdown-clearable {
@@ -585,21 +583,6 @@
     font-size: 1rem;
   }
 }
-// Закоментировал 10.03.22
-// @media (max-width: 992px) {
-//   .carousel-block {
-//     flex-direction: column-reverse;
-//     background: #2c2c2c;
-
-//     .right {
-//       margin-bottom: 2.25rem;
-//     }
-
-//     [class^="col"] {
-//       width: 100%;
-//     }
-//   }
-// }
 
 @media (max-width: 992px) {
   .carousel-block {

@@ -15,24 +15,25 @@
 
   .d-flex {
     display: flex;
-    gap: 24px;
-
-    &--short {
-      gap: 16px;
-    }
+    justify-content: space-between;
+    // gap: 24px;
   }
-
-  .btn {
+  .wrapper-business {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Roboto", sans-serif;
-    font-size: 1.125rem;
-    margin-left: 8px;
-    min-width: 125px;
-    height: 53px;
-    padding: 15px;
-    border-radius: 12px;
+    flex-direction: column;
+  }
+  .btn {
+    position: static;
+    width: 157px;
+    height: 16px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #2c2c2c;
+    background: rgba(218, 218, 218, 0.25);
+    border-radius: 14px;
 
     &-wrapper {
       display: flex;
@@ -70,6 +71,10 @@
     padding: 15px;
     margin-left: 0;
     font-size: 1rem;
+    width: 47%;
+    font-size: 18px;
+    height: 53px;
+    margin-right: 4%;
   }
 
   .catalog-business-btn1 {
@@ -77,10 +82,10 @@
     color: #ffffff;
     background: #1f75fe;
     border-radius: 4px;
-    min-width: 125px;
+    width: 47%;
     height: 53px;
-    padding: 15px;
-    font-size: 1rem;
+    font-size: 18px;
+    padding: 5px;
   }
 
   .title-franchise {
@@ -173,11 +178,13 @@
   }
 
   .catalog-business__filter {
+    justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
     background: #ffffff;
     box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
-    height: 160px;
+    min-height: 160px;
     padding: 16px;
 
     &-title {
@@ -214,7 +221,8 @@
 
   ::ng-deep .p-dropdown {
     display: block;
-    width: 342px;
+    // width: 342px;
+    width: 100%;
     height: 48px;
     // padding: 16px;
     border-radius: 6px;
@@ -223,7 +231,8 @@
 
     &-label {
       display: inline-block;
-      width: 288px;
+      // width: 288px;
+      width: 85%;
       font-family: "Roboto", sans-serif;
       font-size: 0.875rem;
       font-weight: 400;
@@ -270,7 +279,7 @@
 
   ::ng-deep .block-sort-by .p-dropdown {
     &-label {
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
 
@@ -311,11 +320,14 @@
     flex-wrap: wrap;
     width: 1074px;
     padding: 16px;
+    // width: 1074px;
+    // padding: 16px;
     background: #f1f6ff;
     border-radius: 4px;
+    padding: 15px;
 
     .popular-item {
-      width: 100%;
+      // width: 100%;
       max-width: 331px;
       background: #ffffff;
       border: 1px solid #f1f6ff;
@@ -323,6 +335,7 @@
       box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
       border-radius: 8px;
       padding: 16px;
+      margin: 6px 3px 8px 3px;
     }
   }
 
@@ -495,8 +508,7 @@
     }
 
     &-footer {
-      margin: 0 !important;
-      padding: 0 !important;
+      display: flex;
     }
   }
 
@@ -655,12 +667,7 @@
   margin-top: 0;
 }
 
-.popular-item-blog {
-  width: 342px;
-  height: 208px;
-}
-
-::ng-deep .popular-item-blog-wrapper1 .p-card {
+::ng-deep .popular-item-blog-wrapper1 {
   width: 342px !important;
   height: 208px !important;
   border-radius: 0 !important;
@@ -691,7 +698,7 @@
   }
 }
 
-::ng-deep .popular-item-blog-wrapper2 .p-card {
+::ng-deep .popular-item-blog-wrapper2 {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -700,6 +707,7 @@
   border-radius: 0 !important;
   padding: 24px;
   background-color: #f1f1f1;
+  border: 1px solid black !important;
 
   &-header {
     display: none !important;
@@ -730,7 +738,6 @@
       .image {
         position: relative;
         width: 32px;
-
         img {
           position: absolute;
           right: 0;
@@ -764,10 +771,166 @@
     margin-bottom: 25px;
   }
 }
-
+// Популярный бизнес
+.wrapper-business-blog {
+  width: 100%;
+  min-height: 246px;
+  display: flex;
+  justify-content: space-between;
+}
+.business-blog-images {
+  display: flex;
+  justify-content: space-between;
+}
+.image-blog {
+  width: 342px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  margin: 10px 10px 0 10px;
+  align-items: flex-start;
+}
+.image-blog-img {
+  height: 162px;
+}
+.image-blog-text {
+  height: 59px;
+  align-items: flex-start;
+}
+.text-blog {
+  height: 37px;
+  background: #ffdf37;
+  margin-bottom: 8px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #2c2c2c;
+  border-radius: 4px;
+  padding-top: 10px;
+}
+.subtitle-text {
+  width: 100%;
+  height: 14px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #646464;
+  text-align: start;
+  margin: 0;
+}
+.more-articles-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1f75fe;
+}
+// Каталог бизнеса
 .category-text {
   font-family: "Roboto", sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   color: #2c2c2c;
+}
+.switch-garant-sorting {
+  min-width: 23.8%;
+  min-height: 558px;
+  padding: 0 16px 16px;
+  margin-right: 24px;
+  box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.08);
+}
+.control-quick-search-one {
+  width: 25%;
+}
+.control-quick-search-two {
+  width: 33%;
+}
+.control-quick-search-three {
+  width: 37%;
+  .control-quick-search {
+    width: 88%;
+  }
+}
+.p-dropdown-clearable {
+  width: 100%;
+}
+.button-business {
+  text-align: start;
+  height: 48px;
+  background: rgba(218, 218, 218, 0.25);
+  border-radius: 14px;
+  border: none;
+  margin-bottom: 16px;
+  width: max-content;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #2c2c2c;
+}
+
+.line {
+  border-bottom: 2px solid #d7dfee;
+  margin: 24px 0;
+}
+.block-baner {
+  display: flex;
+  flex-wrap: wrap;
+}
+.baner {
+  width: 708px;
+  height: 272px;
+}
+// Пагинация
+::ng-deep .p-paginator {
+  .p-paginator-current {
+    background: #f1f6ff;
+    border-radius: 8%;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 100%;
+    line-height: 16px;
+    color: #2c2c2c;
+  }
+  .p-paginator-rpp-options {
+    padding-left: 10px;
+  }
+}
+// Новый бизнесс
+.New-business {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  border: 1px solid black;
+}
+
+::ng-deep .more-articles {
+  background: #f1f6ff;
+  padding-top: 30px;
+  border-radius: 8px;
+  .p-card-body {
+    background: #f1f6ff;
+    .franchise-card-title {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 21px;
+      color: #2c2c2c;
+    }
+    .franchise-card-description {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: #7a7a7a;
+    }
+  }
 }

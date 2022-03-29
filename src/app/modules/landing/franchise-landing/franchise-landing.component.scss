@@ -536,14 +536,14 @@ strong {
 }
 
 ::ng-deep .p-card {
-  // width: 331.33px !important;
-  // height: 359px !important;
-  border-radius: 4px !important;
+  // width: 331.33px;
+  // max-height: 359px;
+  // border-radius: 4px;
 
   &-header {
-    // width: 331.33px !important;
+    // width: 331.33px;
     // height: 162px;
-    // margin-bottom: 24px;
+    margin-bottom: 24px;
 
     img {
       height: 100%;

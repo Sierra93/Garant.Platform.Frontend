@@ -44,11 +44,6 @@ $fa-font-path: "~font-awesome/fonts";
     padding-left: 24px;
     background-color: rgba(218, 218, 218, 0.15);
   }
-  // .p-card .p-card-content {
-  //   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  //     padding: 0;
-  //   }
-  // }
   .wrapper-businness {
     display: flex;
   }
@@ -76,7 +71,7 @@ $fa-font-path: "~font-awesome/fonts";
   }
   .business-text {
     font-size: 0.7rem;
-    min-height: 84px;
+    // height: 84px;
   }
   .btn-dark {
     align-items: flex-end;

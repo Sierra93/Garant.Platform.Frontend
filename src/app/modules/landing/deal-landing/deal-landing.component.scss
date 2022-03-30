@@ -220,6 +220,8 @@
     margin-bottom: 48px;
   }
   &__input-field {
+    display: flex;
+    flex-direction: column;
     max-width: 291px;
   }
   &__input-text {
@@ -230,8 +232,9 @@
   &__input {
     padding: 24px 40px 24px 24px;
     border-radius: 8px;
-    font-size: 0.94vw;
+    font-size: 0.92vw;
     line-height: 21px;
+    color: #7a7a7a;
   }
   &__assistant {
     position: absolute;
@@ -249,14 +252,21 @@
     line-height: 21px;
     border: 1px solid #fff;
   }
+  & ::ng-deep .p-element .p-inputtext {
+    width: 100%;
+    padding: 24px 40px 24px 24px;
+    font-size: 0.92vw;
+    line-height: 21px;
+    border-radius: 8px;
+  }
 }
 
-::ng-deep .p-element .p-inputtext {
+/*::ng-deep .p-element .p-inputtext {
   padding: 24px 40px 24px 24px;
   font-size: 0.92vw;
   line-height: 21px;
   border-radius: 8px;
-}
+}*/
 
 ::ng-deep {
   @media all and (min-width: 1401px) {
@@ -364,43 +374,80 @@
     }
   }
 }
-.choice {
-  margin-top: 74px;
-  &__card {
-    font-size: 1.25vw;
-    margin-bottom: 0;
+
+.business-ad {
+  margin-bottom: 74px;
+  &__title {
+    padding-left: 0;
+    padding-bottom: 0;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    line-height: 28px;
     color: #2c2c2c;
+    margin-bottom: 32px;
   }
-  &__subtitle {
-    font-size: 0.94vw;
-    color: #2c2c2c;
-    font-weight: 600;
-    line-height: 21px;
-    margin-bottom: 16px;
-    height: 42px;
+  &__picture {
+    width: 100%;
   }
-  &__offer {
+  &__detail {
     border: none;
   }
-  &__service-item {
-    background: transparent;
-    padding-top: 0;
-    padding-bottom: 16px;
-  }
-  &__business-action {
-    padding-top: 0;
-    padding-bottom: 25px;
-  }
-  &__text {
-    font-size: 0.73vw;
+  &__description {
+    font-size: 18px;
     line-height: 21px;
-    margin-bottom: 51px;
+    color: #2c2c2c;
   }
-  &__submit {
-    font-size: 0.94vw;
+  &__tooltip {
+    font-size: 12px;
+    line-height: 14px;
+    color: #7a7a7a;
+  }
+  &__data-title {
+    margin-bottom: 20px;
+  }
+  &__price {
+    font-weight: 600;
+    font-size: 18px;
     line-height: 21px;
-    padding: 16px;
-    border-radius: 4px;
+    color: #2c2c2c;
   }
 }
 
+.business-blog {
+  &__title {
+    background: transparent;
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+    font-size: 24px;
+    line-height: 28px;
+    color: #2c2c2c;
+  }
+  &__content {
+    border: none;
+  }
+  &__blog-img {
+    padding: 0;
+    border: none;
+  }
+  &__img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  &__blog-title {
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    background: #ffdf37;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+  }
+  &__note {
+    font-size: 12px;
+    line-height: 14px;
+    color: #646464;
+  }
+}

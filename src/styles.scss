@@ -60,7 +60,7 @@ $fa-font-path: "~font-awesome/fonts";
     flex-direction: column;
   }
   h5 {
-    max-width: 78%;
+    // max-width: 78%;
     min-height: 58px;
     font-family: "Roboto";
     font-style: normal;
@@ -71,13 +71,13 @@ $fa-font-path: "~font-awesome/fonts";
   }
   .business-text {
     font-size: 0.7rem;
-    height: 84px;
+    // height: 84px;
   }
   .btn-dark {
     align-items: flex-end;
     width: 10rem;
     height: 53px;
-    padding: 10px 20px !important;
+    padding: 10px 24px !important;
     background: #1f75fe;
   }
 
@@ -88,6 +88,7 @@ $fa-font-path: "~font-awesome/fonts";
   .image-business-content {
     min-width: 30%;
     height: 100%;
+    padding-top: 10px;
     align-items: center;
     text-align: center;
     background-color: rgba(218, 218, 218, 0.15);

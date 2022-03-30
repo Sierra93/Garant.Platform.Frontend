@@ -1,17 +1,4 @@
-// @import "/src/app/shared/styles/franchuse-styles.scss";
-// @import "/src/app/app.component.scss";
-// @import "/src/app/shared/styles/image-space.scss";
-// @import "/src/app/shared/styles/common.scss";
-// @import "/src/app/shared/styles/media-quaries.scss";
-// @import "/src/app/modules/main-page/main-page.component.scss";
-
-
-
-// @import "/src/app/shared/styles/franchuse-styles.scss";
 @use "/src/app/app.component.scss";
-// @import "/src/app/shared/styles/image-space.scss";
-// @import "/src/app/shared/styles/common.scss";
-// @import "/src/app/shared/styles/media-quaries.scss";
 @use "/src/app/modules/main-page/main-page.component.scss";
 @use "../../../../app/shared/styles" as *;
 @use "../../../../app/shared/styles/base" as *;
@@ -28,24 +15,25 @@
 
   .d-flex {
     display: flex;
-    gap: 24px;
-
-    &--short {
-      gap: 16px;
-    }
+    justify-content: space-between;
+    // gap: 24px;
   }
-
-  .btn {
+  .wrapper-business {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Roboto", sans-serif;
-    font-size: 1.125rem;
-    margin-left: 8px;
-    min-width: 125px;
-    height: 53px;
-    padding: 15px;
-    border-radius: 12px;
+    flex-direction: column;
+  }
+  .btn {
+    position: static;
+    width: 157px;
+    height: 16px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #2c2c2c;
+    background: rgba(218, 218, 218, 0.25);
+    border-radius: 14px;
 
     &-wrapper {
       display: flex;
@@ -71,6 +59,33 @@
         top: 90px;
       }
     }
+  }
+
+  .catalog-business-btn {
+    display: inline-block;
+    background: #f1f6ff;
+    border-radius: 4px;
+    color: #1f75fe;
+    min-width: 125px;
+    height: 53px;
+    padding: 15px;
+    margin-left: 0;
+    font-size: 1rem;
+    width: 47%;
+    font-size: 18px;
+    height: 53px;
+    margin-right: 4%;
+  }
+
+  .catalog-business-btn1 {
+    display: inline-block;
+    color: #ffffff;
+    background: #1f75fe;
+    border-radius: 4px;
+    width: 47%;
+    height: 53px;
+    font-size: 18px;
+    padding: 5px;
   }
 
   .title-franchise {
@@ -122,7 +137,8 @@
 
   .control-input-price {
     display: block;
-    width: 342px;
+    width: 100%;
+    max-width: 220px;
     height: 48px;
     padding: 16px;
     border: none;
@@ -132,16 +148,81 @@
     font-size: 0.875rem;
     font-weight: 400;
     // margin: 0 24px 0 0;
+    .p-inputtext::placeholder {
+      color: green;
+    }
+  }
+
+  ::ng-deep.p-inputnumber-input {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    height: 48px;
+    padding: 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #f1f6ff;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    // margin: 0 24px 0 0;
+    .p-inputtext::placeholder {
+      color: green;
+    }
   }
 
   .block-title-franchise {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  .catalog-business__filter {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    min-height: 160px;
+    padding: 16px;
+
+    &-title {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 21px;
+      color: #2c2c2c;
+      margin-bottom: 16px;
+    }
+
+    ::ng-deep.p-dropdown .p-dropdown-label.p-placeholder {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: #000000;
+    }
+
+    .price-slider {
+      ::ng-deep.p-slider.p-slider-horizontal {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .price-slider {
+    ::ng-deep.p-slider.p-slider-horizontal {
+      margin-top: 20px;
+    }
   }
 
   ::ng-deep .p-dropdown {
     display: block;
-    width: 342px;
+    // width: 342px;
+    width: 100%;
     height: 48px;
     // padding: 16px;
     border-radius: 6px;
@@ -150,7 +231,8 @@
 
     &-label {
       display: inline-block;
-      width: 288px;
+      // width: 288px;
+      width: 85%;
       font-family: "Roboto", sans-serif;
       font-size: 0.875rem;
       font-weight: 400;
@@ -190,16 +272,14 @@
         border: none !important;
         // margin: 0 !important;
         // padding: 0 !important;
-        color: #2c2c2c !important;
+        color: #1f75fe !important;
       }
     }
   }
 
   ::ng-deep .block-sort-by .p-dropdown {
-    background-color: white !important;
-
     &-label {
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
 
@@ -240,20 +320,38 @@
     flex-wrap: wrap;
     width: 1074px;
     padding: 16px;
-    background-color: #f1f6ff;
+    // width: 1074px;
+    // padding: 16px;
+    background: #f1f6ff;
+    border-radius: 4px;
+    padding: 15px;
+
+    .popular-item {
+      // width: 100%;
+      max-width: 331px;
+      background: #ffffff;
+      border: 1px solid #f1f6ff;
+      box-sizing: border-box;
+      box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 6px 3px 8px 3px;
+    }
   }
 
   ::ng-deep .p-card {
-    width: 331.33px !important;
-    height: 359px !important;
-    border-radius: 4px !important;
+    //width: 331.33px !important;
+    //height: 359px !important;
+    //border-radius: 4px !important;
+    box-shadow: none;
 
     &-header {
-      width: 331.33px !important;
+      //width: 331.33px !important;
       height: 162px;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
 
       img {
+        border-radius: 4px;
         height: 100%;
         object-fit: cover;
       }
@@ -261,27 +359,19 @@
 
     &-body {
       margin: 0 !important;
-      padding: 0 !important;
+      padding: 16px !important;
     }
 
     &-title {
       font-family: "Roboto", sans-serif !important;
       font-size: 1.125rem !important;
       font-weight: 500 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      margin-left: 8px !important;
-      margin-bottom: 8px !important;
     }
 
     &-subtitle {
       font-family: "Roboto", sans-serif !important;
       font-size: 0.75rem !important;
       font-weight: 400 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      margin-left: 8px !important;
-      margin-bottom: 24px !important;
       line-height: 14px;
     }
 
@@ -300,6 +390,10 @@
       margin: 0 !important;
       padding: 0 !important;
     }
+  }
+
+  ::ng-deep .p-card:last-child {
+    margin-right: 0;
   }
 
   ::ng-deep .card-line-wrapper .p-card {
@@ -366,151 +460,99 @@
       }
     }
   }
+}
 
-  .three-cards {
-    margin-top: 80px;
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  ::ng-deep .three-cards-wrapper .p-card {
-    width: 464px !important;
-    height: 335px !important;
-    background-color: white;
-    // border-radius: 4px !important;
-    // padding: 24px;
-
-    &-body {
-      width: 464px !important;
-      height: 335px !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
+.catalog-business__body-card {
+  ::ng-deep .p-card {
+    //width: 331.33px !important;
+    //height: 375px !important;
+    //border-radius: 8px !important;
+    margin-right: 24px;
+    //padding: 16px;
 
     &-header {
-      display: none !important;
-    }
-
-    &-title {
-      font-family: "Roboto", sans-serif !important;
-      font-size: 1.5rem !important;
-      font-weight: 400 !important;
-      color: #2c2c2c !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      margin-bottom: 32px !important;
-    }
-
-    &-subtitle {
-      font-family: "Roboto", sans-serif !important;
-      font-size: 1.125rem !important;
-      font-weight: 400 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      padding-left: 24px !important;
-      padding-top: 24px !important;
-      padding-bottom: 16px !important;
-      line-height: 21px !important;
-      background-color: #f1f1f1 !important;
-    }
-
-    &-content {
-      font-family: "Roboto", sans-serif !important;
-      font-size: 0.875rem !important;
-      font-weight: 400 !important;
-      // width: 342.8px !important;
-      min-height: 48px !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      padding-left: 24px !important;
-
-      // margin-left: 8px !important;
-      padding-bottom: 68px !important;
-      // line-height: 16px;
-      background-color: #f1f1f1 !important;
-
-      p {
-        padding-right: 97.19px;
-        line-height: 16.41px;
-      }
-    }
-
-    &-footer {
-      background-color: #f1f1f1 !important;
-      padding-bottom: 44.78px !important;
-
-      .btn {
-        margin-left: 24px;
-        min-width: 93px;
-        background-color: #1f1f1f;
-      }
-    }
-  }
-
-  .card-business .btn-dark {
-    margin-top: 0;
-  }
-
-  .popular-item-blog {
-    width: 342px;
-    height: 208px;
-  }
-
-  ::ng-deep .popular-item-blog-wrapper1 .p-card {
-    width: 342px !important;
-    height: 208px !important;
-    border-radius: 0 !important;
-
-    &-header {
-      width: 342px !important;
+      width: 331.33px !important;
       height: 162px;
-      margin-bottom: 25px;
 
       img {
+        border-radius: 4px;
+        max-width: 300px;
         height: 100%;
         object-fit: cover;
       }
     }
 
+    &-body {
+      margin: 0 !important;
+      padding: 16px 0 0 0 !important;
+    }
+
     &-title {
       font-family: "Roboto", sans-serif !important;
       font-size: 1.125rem !important;
+      font-weight: 500 !important;
+    }
+
+    &-subtitle {
+      font-family: "Roboto", sans-serif !important;
+      font-size: 0.75rem !important;
       font-weight: 400 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      color: #2c2c2c !important;
-      line-height: 21px !important;
+      line-height: 14px;
     }
 
     &-content {
-      display: none;
-    }
-  }
-
-  ::ng-deep .popular-item-blog-wrapper2 .p-card {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 342px !important;
-    height: 208px !important;
-    border-radius: 0 !important;
-    padding: 24px;
-    background-color: #f1f1f1;
-
-    &-header {
-      display: none !important;
-    }
-
-    &-title {
       font-family: "Roboto", sans-serif !important;
       font-size: 1.125rem !important;
       font-weight: 400 !important;
+      line-height: 21px;
+    }
+
+    &-footer {
+      display: flex;
+    }
+  }
+
+  ::ng-deep .p-card:last-child {
+    margin-right: 0;
+  }
+
+  ::ng-deep .card-line-wrapper .p-card {
+    width: 1440px !important;
+    height: 194.5px !important;
+    border-radius: 4px !important;
+    padding: 24px;
+    background-color: #f1f6ff !important;
+
+    &-header {
+      position: relative !important;
+      display: block !important;
+      width: 1392px !important;
+      font-family: "Roboto", sans-serif !important;
+      font-size: 1.125rem !important;
+      font-weight: 400 !important;
+      height: 21px;
       margin: 0 !important;
       padding: 0 !important;
       margin-bottom: 16px !important;
-      color: #2c2c2c !important;
-      line-height: 21px !important;
+
+      .close {
+        position: absolute !important;
+        right: 2px !important;
+        top: -2px !important;
+        width: 16px !important;
+        height: 16px !important;
+        color: #646464 !important;
+        font-size: 16px !important;
+
+        span {
+          display: block !important;
+          width: 16px !important;
+          height: 16px !important;
+          color: #646464 !important;
+          font-size: 16px !important;
+          line-height: 16px !important;
+        }
+      }
     }
 
     &-content {
@@ -519,53 +561,376 @@
       font-weight: 400 !important;
       margin: 0 !important;
       padding: 0 !important;
-      color: #646464 !important;
+      // margin-left: 8px !important;
+      margin-bottom: 40px !important;
+      line-height: 16px;
+    }
 
-      .d-flex {
-        gap: 10px;
+    &-footer {
+      .btn {
+        margin: 0 !important;
 
-        .image {
-          position: relative;
-          width: 32px;
+        &-dark {
+          background-color: #1f1f1f;
+        }
 
-          img {
-            position: absolute;
-            right: 0;
-            top: -16px;
-          }
+        &-default {
+          width: 147px;
         }
       }
     }
   }
+}
 
-  .news {
-    &-item {
-      margin-bottom: 25px;
-      border-bottom: 0.5px solid #c4c4c4;
+.three-cards {
+  margin-top: 80px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
 
-      img {
-        margin-right: 8px;
-      }
-    }
+::ng-deep .three-cards-wrapper .p-card {
+  width: 464px !important;
+  height: 335px !important;
+  background-color: white;
+  // border-radius: 4px !important;
+  // padding: 24px;
 
-    &-title {
-      font-weight: 400;
-      margin-bottom: 9.5px;
-    }
+  &-body {
+    width: 464px !important;
+    height: 335px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 
-    &-bottom-line {
-      font-family: "Roboto", sans-serif;
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: #646464;
-      margin-bottom: 25px;
+  &-header {
+    display: none !important;
+  }
+
+  &-title {
+    font-family: "Roboto", sans-serif !important;
+    font-size: 1.5rem !important;
+    font-weight: 400 !important;
+    color: #2c2c2c !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 32px !important;
+  }
+
+  &-subtitle {
+    font-family: "Roboto", sans-serif !important;
+    font-size: 1.125rem !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-left: 24px !important;
+    padding-top: 24px !important;
+    padding-bottom: 16px !important;
+    line-height: 21px !important;
+    background-color: #f1f1f1 !important;
+  }
+
+  &-content {
+    font-family: "Roboto", sans-serif !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    // width: 342.8px !important;
+    min-height: 48px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-left: 24px !important;
+
+    // margin-left: 8px !important;
+    padding-bottom: 68px !important;
+    // line-height: 16px;
+    background-color: #f1f1f1 !important;
+
+    p {
+      padding-right: 97.19px;
+      line-height: 16.41px;
     }
   }
 
-  .category-text {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.125rem;
+  &-footer {
+    background-color: #f1f1f1 !important;
+    padding-bottom: 44.78px !important;
+
+    .btn {
+      margin-left: 24px;
+      min-width: 93px;
+      background-color: #1f1f1f;
+    }
+  }
+}
+
+.card-business .btn-dark {
+  margin-top: 0;
+}
+
+::ng-deep .popular-item-blog-wrapper1 {
+  width: 342px !important;
+  height: 208px !important;
+  border-radius: 0 !important;
+
+  &-header {
+    width: 342px !important;
+    height: 162px;
+    margin-bottom: 25px;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-title {
+    font-family: "Roboto", sans-serif !important;
+    font-size: 1.125rem !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #2c2c2c !important;
+    line-height: 21px !important;
+  }
+
+  &-content {
+    display: none;
+  }
+}
+
+::ng-deep .popular-item-blog-wrapper2 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 342px !important;
+  height: 208px !important;
+  border-radius: 0 !important;
+  padding: 24px;
+  background-color: #f1f1f1;
+  border: 1px solid black !important;
+
+  &-header {
+    display: none !important;
+  }
+
+  &-title {
+    font-family: "Roboto", sans-serif !important;
+    font-size: 1.125rem !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 16px !important;
+    color: #2c2c2c !important;
+    line-height: 21px !important;
+  }
+
+  &-content {
+    font-family: "Roboto", sans-serif !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #646464 !important;
+
+    .d-flex {
+      gap: 10px;
+
+      .image {
+        position: relative;
+        width: 32px;
+        img {
+          position: absolute;
+          right: 0;
+          top: -16px;
+        }
+      }
+    }
+  }
+}
+
+.news {
+  &-item {
+    margin-bottom: 25px;
+    border-bottom: 0.5px solid #c4c4c4;
+
+    img {
+      margin-right: 8px;
+    }
+  }
+
+  &-title {
     font-weight: 400;
+    margin-bottom: 9.5px;
+  }
+
+  &-bottom-line {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #646464;
+    margin-bottom: 25px;
+  }
+}
+// Популярный бизнес
+.wrapper-business-blog {
+  width: 100%;
+  min-height: 246px;
+  display: flex;
+  justify-content: space-between;
+}
+.business-blog-images {
+  display: flex;
+  justify-content: space-between;
+}
+.image-blog {
+  width: 342px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  margin: 10px 10px 0 10px;
+  align-items: flex-start;
+}
+.image-blog-img {
+  height: 162px;
+}
+.image-blog-text {
+  height: 59px;
+  align-items: flex-start;
+}
+.text-blog {
+  height: 37px;
+  background: #ffdf37;
+  margin-bottom: 8px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #2c2c2c;
+  border-radius: 4px;
+  padding-top: 10px;
+}
+.subtitle-text {
+  width: 100%;
+  height: 14px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #646464;
+  text-align: start;
+  margin: 0;
+}
+.more-articles-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1f75fe;
+}
+// Каталог бизнеса
+.category-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #2c2c2c;
+}
+.switch-garant-sorting {
+  min-width: 23.8%;
+  min-height: 558px;
+  padding: 0 16px 16px;
+  margin-right: 24px;
+  box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.08);
+}
+.control-quick-search-one {
+  width: 25%;
+}
+.control-quick-search-two {
+  width: 33%;
+}
+.control-quick-search-three {
+  width: 37%;
+  .control-quick-search {
+    width: 88%;
+  }
+}
+.p-dropdown-clearable {
+  width: 100%;
+}
+.button-business {
+  text-align: start;
+  height: 48px;
+  background: rgba(218, 218, 218, 0.25);
+  border-radius: 14px;
+  border: none;
+  margin-bottom: 16px;
+  width: max-content;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #2c2c2c;
+}
+
+.line {
+  border-bottom: 2px solid #d7dfee;
+  margin: 24px 0;
+}
+.block-baner {
+  display: flex;
+  flex-wrap: wrap;
+}
+.baner {
+  width: 708px;
+  height: 272px;
+}
+// Пагинация
+::ng-deep .p-paginator {
+  .p-paginator-current {
+    background: #f1f6ff;
+    border-radius: 8%;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 100%;
+    line-height: 16px;
     color: #2c2c2c;
+  }
+  .p-paginator-rpp-options {
+    padding-left: 10px;
+  }
+}
+// Новый бизнесс
+.New-business {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  border: 1px solid black;
+}
+
+::ng-deep .more-articles {
+  background: #f1f6ff;
+  padding-top: 30px;
+  border-radius: 8px;
+  .p-card-body {
+    background: #f1f6ff;
+    .franchise-card-title {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 21px;
+      color: #2c2c2c;
+    }
+    .franchise-card-description {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: #7a7a7a;
+    }
   }
 }

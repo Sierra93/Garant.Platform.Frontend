@@ -387,7 +387,7 @@ export class DealLandingModule implements OnInit, DoCheck {
   private async GetBlogsAsync() {
     try {
       await this.http
-        .post(API_URL.apiUrl.concat('/blog/main-blogs'), {})
+        .post(API_URL.apiUrl.concat('/blog/get-blogs'), {})
         .subscribe({
           next: (response: any) => {
             console.log('Список блогов:', response);

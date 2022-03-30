@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card deal" [ngClass]="{'is-xxl': isXxl}">
+  <div class="card deal" [ngClass]="{ 'is-xxl': isXxl }">
     <div class="container">
       <div class="row deal__location">
         <div class="col-lg-3 col-xl-3 col-xxl-3">
@@ -23,7 +23,7 @@
     </div>
   </div>
 </div>
-<div class="container survey" [ngClass]="{'is-xxl': isXxl}">
+<div class="container survey" [ngClass]="{ 'is-xxl': isXxl }">
   <div class="row survey__result">
     <div class="col-lg-3 col-xl-3 col-xxl-3 survey__item">
       <p-panel #pnl header="35" styleClass="p-mt-4">
@@ -68,7 +68,7 @@
     <div class="col-xl-7 col-xxl-7">
       <h5 class="alert alert-light">Недавно приобрели</h5>
     </div>
-    <div class="col-xl-5 col-xxl-5 note" [ngClass]="{'is-xxl': isXxl}">
+    <div class="col-xl-5 col-xxl-5 note" [ngClass]="{ 'is-xxl': isXxl }">
       <h5 class="alert alert-light note__title">
         Покупка бизнеса с гарантиями
       </h5>
@@ -115,7 +115,7 @@
     </div>
   </div>
 </div>
-<div class="container consulting" [ngClass]="{'is-xxl': isXxl}">
+<div class="container consulting" [ngClass]="{ 'is-xxl': isXxl }">
   <form class="bg-primary consulting__request">
     <div class="container">
       <div class="row">
@@ -141,7 +141,9 @@
               />
             </div>
             <div class="col-6 consulting__input-field">
-              <label class="form-label consulting__input-text">Номер телефона</label>
+              <label class="form-label consulting__input-text"
+                >Номер телефона</label
+              >
               <p-inputMask
                 mask="+7(999) 999-99-99"
                 [(ngModel)]="phoneNumber"
@@ -167,7 +169,7 @@
     </div>
   </form>
 </div>
-<div class="container checklist" [ngClass]="{'is-xxl': isXxl}">
+<div class="container checklist" [ngClass]="{ 'is-xxl': isXxl }">
   <h5 class="alert alert-light checklist__head">
     4 простых шага для безопасной сделки онлайн
   </h5>
@@ -280,15 +282,7 @@
 
 <!-- Новые объявления готового бизнеса -->
 <div class="container business-ad">
-  <h5
-    class="alert alert-light business-ad__title"
-    style="
-      padding-left: 0;
-      padding-bottom: 0;
-      background: transparent;
-      border: none;
-    "
-  >
+  <h5 class="alert alert-light business-ad__title">
     Новые объявления готового бизнеса
   </h5>
   <div class="row">
@@ -310,20 +304,20 @@
                   [alt]="item.businessName"
                 />
               </div>
-              <div class="business-ad__detail">
-                <div class="card business-ad__data">
-                  <div class="card-body business-ad__description">
-                    <div class="card-title business-ad__data-title">
+              <div>
+                <div class="card business-ad__detail">
+                  <div class="card-body business-ad__data">
+                    <div class="card-title business-ad__description">
                       {{ item.businessName }}
                     </div>
-                    <div class="card-text business-ad__tooltip">
-                      <span>{{ item.text }}</span>
+                    <div class="card-text business-ad__data-title">
+                      <span class="business-ad__tooltip">{{ item.text }}</span>
+                      <span class="business-ad__tooltip"
+                        >{{ item.countDays }}
+                        {{ item.dayDeclination }} назад</span
+                      >
                     </div>
-                    <div class="card-text business-ad__title">
-                      <span>{{ item.countDays }}</span>
-                      <span>{{ item.dayDeclination }} назад</span>
-                    </div>
-                    <div class="card-text">
+                    <div class="card-text business-ad__price">
                       <span>{{ item.textDoPrice }}</span>
                       <span>{{ item.price | priceFormat: item.price }} ₽</span>
                     </div>
@@ -344,27 +338,29 @@
         [responsiveOptions]="responsiveOptions"
       >
         <ng-template let-item pTemplate="item">
-          <div class="product-item">
-            <div class="product-item-content">
+          <div class="product-item business-ad__item">
+            <div class="product-item-content business-ad__content">
               <div class="p-mb-3">
                 <img
                   [src]="item.url"
-                  class="img-fluid"
+                  class="img-fluid business-ad__picture"
                   [alt]="item.businessName"
                 />
               </div>
               <div>
-                <div class="card">
-                  <div class="card-body">
-                    <div class="card-title">{{ item.businessName }}</div>
-                    <div class="card-text">
-                      <span>{{ item.text }}</span>
-                      <span
+                <div class="card business-ad__detail">
+                  <div class="card-body business-ad__data">
+                    <div class="card-title business-ad__description">
+                      {{ item.businessName }}
+                    </div>
+                    <div class="card-text business-ad__data-title">
+                      <span class="business-ad__tooltip">{{ item.text }}</span>
+                      <span class="business-ad__tooltip"
                         >{{ item.countDays }}
                         {{ item.dayDeclination }} назад</span
                       >
                     </div>
-                    <div class="card-text">
+                    <div class="card-text business-ad__price">
                       <span>{{ item.textDoPrice }}</span>
                       <span>{{ item.price | priceFormat: item.price }} ₽</span>
                     </div>
@@ -385,27 +381,29 @@
         [responsiveOptions]="responsiveOptions"
       >
         <ng-template let-item pTemplate="item">
-          <div class="product-item">
-            <div class="product-item-content">
+          <div class="product-item business-ad__item">
+            <div class="product-item-content business-ad__content">
               <div class="p-mb-3">
                 <img
                   [src]="item.url"
-                  class="img-fluid"
+                  class="img-fluid business-ad__picture"
                   [alt]="item.businessName"
                 />
               </div>
               <div>
-                <div class="card">
-                  <div class="card-body">
-                    <div class="card-title">{{ item.businessName }}</div>
-                    <div class="card-text">
-                      <span>{{ item.text }}</span>
-                      <span
+                <div class="card business-ad__detail">
+                  <div class="card-body business-ad__data">
+                    <div class="card-title business-ad__description">
+                      {{ item.businessName }}
+                    </div>
+                    <div class="card-text business-ad__data-title">
+                      <span class="business-ad__tooltip">{{ item.text }}</span>
+                      <span class="business-ad__tooltip"
                         >{{ item.countDays }}
                         {{ item.dayDeclination }} назад</span
                       >
                     </div>
-                    <div class="card-text">
+                    <div class="card-text business-ad__price">
                       <span>{{ item.textDoPrice }}</span>
                       <span>{{ item.price | priceFormat: item.price }} ₽</span>
                     </div>
@@ -426,27 +424,29 @@
         [responsiveOptions]="responsiveOptions"
       >
         <ng-template let-item pTemplate="item">
-          <div class="product-item">
-            <div class="product-item-content">
+          <div class="product-item business-ad__item">
+            <div class="product-item-content business-ad__content">
               <div class="p-mb-3">
                 <img
                   [src]="item.url"
-                  class="img-fluid"
+                  class="img-fluid business-ad__picture"
                   [alt]="item.businessName"
                 />
               </div>
               <div>
-                <div class="card">
-                  <div class="card-body">
-                    <div class="card-title">{{ item.businessName }}</div>
-                    <div class="card-text">
-                      <span>{{ item.text }}</span>
-                      <span
+                <div class="card business-ad__detail">
+                  <div class="card-body business-ad__data">
+                    <div class="card-title business-ad__description">
+                      {{ item.businessName }}
+                    </div>
+                    <div class="card-text business-ad__data-title">
+                      <span class="business-ad__tooltip">{{ item.text }}</span>
+                      <span class="business-ad__tooltip"
                         >{{ item.countDays }}
                         {{ item.dayDeclination }} назад</span
                       >
                     </div>
-                    <div class="card-text">
+                    <div class="card-text business-ad__price">
                       <span>{{ item.textDoPrice }}</span>
                       <span>{{ item.price | priceFormat: item.price }} ₽</span>
                     </div>
@@ -462,57 +462,30 @@
 </div>
 <!-- Бизнес блог. -->
 <div class="container business-blog">
-  <h5 class="alert alert-light garant title-franchise business-blog__title">
-    Бизнес блог
-  </h5>
-  <div class="row popular-list-blog business-blog__list">
+  <h5 class="alert alert-light business-blog__title">Бизнес блог</h5>
+  <div class="row">
     <div
-      class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6 popular-item-blog business-blog__item"
+      class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3"
       *ngFor="let item of aBlogs"
     >
-      <p-card
-        class="popular-item-blog-wrapper1 business-blog__description"
-        header="{{ item.title }}"
-        subheader=""
-        [style]="{ width: '100%' }"
-        styleClass="p-card-shadow"
-      >
-        <div class="card business-blog__content">
-          <div class="card-header business-blog__img-box">
-            <ng-template pTemplate="header">
-              <img class="img-fluid business-blog__img" [src]="item.url" />
-            </ng-template>
-          </div>
-          <div class="card-body business-blog__info"></div>
-          <!-- ??? -->
-          <div class="card-footer business-blog__tooltip">
-            <ng-template pTemplate="footer"> </ng-template>
-          </div>
+      <div class="card business-blog__content">
+        <div class="card-header business-blog__blog-img">
+          <img
+            [src]="item.url"
+            class="img-fluid business-blog__img"
+            [alt]="item.title"
+          />
         </div>
-      </p-card>
-      <p-card
-        class="popular-item-blog-wrapper2"
-        header="Больше статей"
-        subheader=""
-        [style]="{ width: '100%' }"
-        styleClass="p-card-shadow"
-      >
-        <div class="card business-blog__content">
-          <div class="card-header business-blog__img-box">
-            <img
-              class="img-fluid business-blog__img"
-              src="../../../assets/images/Frame 66.png"
-            />
+        <div class="card-body business-blog__description">
+          <div class="card-title business-blog__blog-title">
+            {{ item.title }}
           </div>
-          <div class="card-body business-blog__info">
-            Перейдите в наш блог и найдите <br />
-            там массу полезной информации.
-          </div>
-          <div class="card footer business-blog__tooltip">
-            <ng-template pTemplate="footer"> </ng-template>
-          </div>
+          <div class="card-text business-blog__text"></div>
+          <span class="business-blog__note"
+            >читать ~{{ item.position }} минут</span
+          >
         </div>
-      </p-card>
+      </div>
     </div>
   </div>
 </div>

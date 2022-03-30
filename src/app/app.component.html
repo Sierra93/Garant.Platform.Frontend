@@ -1,15 +1,16 @@
 <p-toast [style]="{ marginTop: '80px' }"></p-toast>
-<header class="{{ isGarant ? 'garant-header' : '' }}"></header>
-<main class="app-container">  
-  <ng-http-loader 
+<header class="{{ isGarant ? 'garant-header' : '' }} app__header"></header>
+<main class="app-container app__container">
+  <ng-http-loader
     [backdrop]="true"
     [backgroundColor]="'blue'"
     [debounceDelay]="100"
     [extraDuration]="300"
     [minDuration]="300"
-    [spinner]="spinnerStyle.skSpinnerPulse">
-</ng-http-loader>
+    [spinner]="spinnerStyle.skSpinnerPulse"
+  >
+  </ng-http-loader>
 
-  <router-outlet></router-outlet>  
+  <router-outlet></router-outlet>
 </main>
-<footer></footer>
+<footer class="app__footer"></footer>

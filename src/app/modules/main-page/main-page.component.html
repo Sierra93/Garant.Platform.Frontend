@@ -12,12 +12,17 @@
             <div class="product-item-content">
               <div class="p-mb-3">
                 <img [src]="item.url" class="product-image">
+                <!-- <button class="carousel-button--prev">
+                  <img src="../../../assets/images/arrow-prev.svg" alt="">
+                </button>
+                <button class="carousel-button--next">
+                  <img src="../../../assets/images/arrow-next.svg" alt="">
+                </button> -->
               </div>
               <div>
                 <p-card header="{{item.name}}" subheader="{{item.text}}" [style]="{width: '100%'}"
                   styleClass="p-card-shadow">
                   <ng-template pTemplate="header">
-                    <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
                   </ng-template>
                   <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
                   <ng-template pTemplate="footer">
@@ -58,10 +63,10 @@
     
           </p-card>
         </div>
-        <div class="right-block-img">
+        <!-- <div class="right-block-img">
           <img class="right-images" src="../../../assets/images/right-img.png" alt="картинка правого блока">
     
-        </div>
+        </div> -->
       </div>
     </div>
     
@@ -69,70 +74,62 @@
     
   </div>
 
-  <!-- Область с 3 карточками. -->
-  <div class="row section-mb">
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions">
-      <div class="card-business">
-        <h3 class="three-cards-header">{{item.title}}</h3>
-        <p-card [style]="{width: '100%'}" styleClass="card">
-          <div class="card-business-content">
-            <ng-template pTemplate="header">
-              <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-            </ng-template>
-            <h5>{{item.subTitle}}</h5>
-            <p>{{item.text}}</p>
-            <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
-            <ng-template pTemplate="footer">
-              <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-              <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button> -->
-            </ng-template>
-          </div>
-        </p-card>
-      </div>
+<!-- Область с 3 карточками. -->
+<div class="row section-mb">
+  <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder"
+    *ngFor="let item of aDataActions; let i = index">
+    <div class="card-business">
+      <h3 class="three-cards-header">{{item.title}}</h3>
+            <div class="wrapper-businness">
+              <p-card [style]="{width: '100%'}" styleClass="card">
+                <div class="card-business-content">
+                  <ng-template pTemplate="header">
+                  </ng-template>
+                  <h5>{{item.subTitle}}</h5>
+                  <p class="business-text">{{item.text}}</p>
+                  <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
+                  <ng-template pTemplate="footer">
+                  </ng-template>
+                </div>
+              </p-card>
+              <div class="image-business-content"><img [src]="aDataActionsPictures[i]?.imgUrl" alt=""></div>
+            </div>
     </div>
   </div>
-
-  <div class="row section-mb" *ngIf="!isHideBusinessWithGarant">
-    <div class="col-lg-12 col-xs-12 card-line">
-      <p-card class="business-garanteese">
-        <ng-template pTemplate="header">
-          <strong>Вы можете приобрести бизнес с гарантиями</strong>
-          <button
-            type="button"
-            class="close"
-            aria-label="Close"
-            (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
-            <span aria-hidden="true"><img src="../../../assets/images/cross.svg" alt=""></span>
-          </button>
-        </ng-template>
-        <p>{{oSuggestion.text}}</p>
-        <ng-template pTemplate="footer">
-          <div class="d-flex align-items-center">
-            <button
-              class="btn btn-dark more-info-btn"
-              routerLink="/deal/start">
+</div>
+<div class="row section-mb" *ngIf="!isHideBusinessWithGarant">
+  <div class="col-lg-12 col-xs-12 card-line">
+    <p-card class="business-garanteese">
+      <ng-template pTemplate="header">
+        <strong>Вы можете приобрести бизнес с гарантиями</strong>
+        <button type="button" class="close" aria-label="Close"
+          (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
+          <span aria-hidden="true"><img src="../../../assets/images/cross.svg" alt=""></span>
+        </button>
+      </ng-template>
+      <p>{{oSuggestion.text}}</p>
+      <ng-template pTemplate="footer">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-dark more-info-btn" routerLink="/deal/start">
             {{oSuggestion.button2Text}}
           </button>
 
-            <button
-              class="btn btn-default btn-show-more"
-              (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
-              {{oSuggestion.button1Text}}
+          <button class="btn btn-default btn-show-more" (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
+            {{oSuggestion.button1Text}}
           </button>
-          </div>
-        </ng-template>
-      </p-card>
-    </div>
+        </div>
+      </ng-template>
+    </p-card>
   </div>
+</div>
 
   <!-- Секция быстрого поиска. -->
-  <div class="row section-mb gray quick-search">
-    <div class="col-12">
-      <h5 class="title-franchise">Быстрый поиск</h5>
+  <div class="row section-mb gray ">
+    <div class="col-12 ">
+      <h5 class="title-franchise-Searc title-franchise-Search">Быстрый поиск</h5>
     </div>
 
-    <div class="col-12">
+    <div class="col-12 quick-search">
       <div class="block-cards-franchises block-cards-franchises-bg">
         <div class="bg">
           <p-card>
@@ -163,31 +160,36 @@
                     <p-dropdown [options]="aCities" optionLabel="cityName" name="city" [(ngModel)]="selectedCity"
                       placeholder="Город" [showClear]="true"></p-dropdown>
                   </div>
+                  
                 </div>
 
-                <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
+                <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12 price-range-wrapper">
                   <div>
                     <p class="d-inline-block"><strong>Стоимость</strong></p>
                   </div>
                   <div class="price-range-input">
-                    <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
+                    <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" style="width: 48%;" />
 
                     <input type="text" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice"
                       name="maxPrice" />
                   </div>
+                  <div class="wrapper-slider">
+                    <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
+                   
+                  </div>
                 </div>
 
-                <div class="col-xxl-2 col-xl-6 col-lg-6 col-md-12">
-                  <div class="control-quick-search">
+                <div class="col-xxl-2 col-xl-6 col-lg-6 col-md-12 quick-search5">
+                  <div class="control-quick-search control-quick-search2 ">
                     <p><strong>Покупка через гарант</strong></p>
                     <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
                   </div>
                 </div>
               </div>
             </form>
-
+           
             <ng-template pTemplate="footer">
-              <button class="btn btn-dark" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
+              <button class="btn btn-dark btn-dark-search" (click)="onFilterFranchisesAsync(filterForm)" style="background: #1F75FE; width: 160px; margin-left: -13px;" >Найти</button>
             </ng-template>
           </p-card>
           <!-- </div> -->
@@ -195,17 +197,22 @@
 
         <div class="block-cards-franchises-inner">
           <div class="col-12">
-            <div class="row">
+            <div class="row" >
               <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 quick-search-card-holder" *ngFor="let item of aFranchises">
                 <div class="card-franchise">
                   <div class="quick-search-card">
                     <p-card header="{{item.title}}" subheader="{{item.text}}" styleClass="p-card-shadow" class="card-item">
                       <ng-template pTemplate="header">
-                        <img class="block-card-img" [src]="item.url">
+                        <!-- <img class="block-card-img" [src]="item.url"> -->
+                        <img src="../../../assets/images/Rectangle 24.png" alt="">
+                        
                       </ng-template>
                       <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
                       <ng-template pTemplate="footer">
-                        <button class="btn btn-dark">Подробнее</button>
+                        <div class="franchise-wraper-btn">
+                          <button class="btn btn-dark-left">Подробнее</button>
+                          <button class="btn btn-dark-right">купить онлайн</button>
+                        </div>
                       </ng-template>
                     </p-card>
                   </div>
@@ -216,7 +223,8 @@
         </div>
 
         <div class="col-lg-12 col-xs-12 d-flex justify-content-center card-demo-list">
-          <button class="btn btn-default text-center btn-show-more">Показать ещё</button>
+          <button class="btn btn-default text-center btn-show-more show-btn">Показать ещё</button>
+          
         </div>
       </div>
     </div>

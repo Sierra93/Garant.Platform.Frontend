@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,IAAI,CAAJ,6BAAI;AACJ,IAAI,CAAJ,2CAAI;AACJ,IAAI,CAAJ,oCAAI;AACJ,IAAI,CAAJ,6EAAI;AACJ,IAAI,CAAJ,yEAAI;AACJ,IAAI,CAAJ,sFAAI",
+    "sources": [
+        "../configurator-admin/configurator-admin.component.scss"
+    ],
+    "names": [],
+    "file": "configurator-admin.component.css"
+}

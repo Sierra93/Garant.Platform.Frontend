@@ -1,0 +1,7 @@
+@use "/src/app/app.component.scss";
+@use "/src/app/shared/styles/media-quaries.scss";
+@use "/src/app/shared/styles/common.scss";
+@use "/src/app/modules/franchise/create-franchise/create-franchise.component.scss";
+@use "/src/app/modules/franchise/edit-franchise/edit-franchise.component.scss";
+@use "/src/app/modules/business/create-ready-business/create-ready-business.component.scss";
+/*# sourceMappingURL=configurator-admin.component.css.map */

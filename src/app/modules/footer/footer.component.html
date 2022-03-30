@@ -1,80 +1,133 @@
-<div class="app-container footer">
+<div class="container footer" [ngClass]="{'is-xxl': isXxl}">
   <div class="row mb-5">
-    <div class="col-xxl-6 col-xl-6 col-lg-6 {{ tabletStart ? 'col-md-12' : 'col-md-6' }} col-sm-12 col-12">
-      <div>
-        <img src="../../../assets/images/search_logo.svg" alt="gobizy logo" />
-      </div>
+    <div
+      class="col-sm-12 col-lg-6 col-xl-6 col-xxl-6"
+      [ngClass]="{ 'col-md-12': tabletStart, 'col-md-6': !tabletStart }"
+    >
+      <img
+        class="img-fluid footer__logo"
+        src="../../../assets/images/search_logo.svg"
+        alt="gobizy logo"
+      />
     </div>
-    <div class="col-xxl-6 col-xl-6 col-lg-6 {{ tabletStart ? 'col-md-12' : 'col-md-6' }} col-sm-12 col-12 social d-flex justify-content-end">
-      <div class="social-contacts">
-        <ul class="list-unstyled d-flex">
-          <li>
-            <img src="../../../assets/images/footer-icons/telegram.svg" alt="gobizy telegram channel" />
-          </li>
-          <li>
-            <img src="../../../assets/images/footer-icons/facebook.svg" alt="gobizy facebook page" />
-          </li>
-          <li>
-            <img src="../../../assets/images/footer-icons/instagram.svg" alt="gobizy instagram channel" />
-          </li>
-          <li>
-            <img src="../../../assets/images/footer-icons/youtube.svg" alt="gobizy youtube channel" />
-          </li>
-        </ul>
+    <div
+      class="col-sm-12 col-lg-6 col-xl-6 col-xxl-6 d-flex justify-content-end"
+    >
+      <div class="list-group list-group-horizontal footer__group-icon">
+        <div class="list-group-item footer__group-item">
+          <img
+            class="img-fluid footer__channel-icon"
+            src="../../../assets/images/footer-icons/telegram.svg"
+            alt="gobizy telegram channel"
+          />
+        </div>
+        <div class="list-group-item footer__group-item">
+          <img
+            class="img-fluid footer__channel-icon"
+            src="../../../assets/images/footer-icons/facebook.svg"
+            alt="gobizy facebook page"
+          />
+        </div>
+        <div class="list-group-item footer__group-item">
+          <img
+            class="img-fluid footer__channel-icon"
+            src="../../../assets/images/footer-icons/instagram.svg"
+            alt="gobizy instagram channel"
+          />
+        </div>
+        <div class="list-group-item footer__group-item">
+          <img
+            class="img-fluid footer__channel-icon"
+            src="../../../assets/images/footer-icons/youtube.svg"
+            alt="gobizy youtube channel"
+          />
+        </div>
       </div>
     </div>
   </div>
 
-  <nav>
-    <div class="row">
-      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
-        <ul class="list-unstyled">
-          <li *ngFor="let el of aFooterColumn1; let first = first">
-            <h4 *ngIf="first" (click)="openNextElements($event)">
-              <span>{{el.title}}</span>
-              <img src="./../../../assets/images/Arrow 1.png" alt="left chevron icon" />
-            </h4>
-            <a href="javascript:void()" *ngIf="el.isPlace" (click)="redirectCreateAd()" [ngClass]="{'target-place':el.isPlace}">{{el.name}}</a>
-            <a href="javascript:void()" *ngIf="!el.isPlace" [ngClass]="{'target-place':el.isPlace}">{{el.name}}</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 d-flex justify-content-center">
-        <ul class="list-unstyled">
-          <li *ngFor="let el of aFooterColumn2; let first = first">
-            <h4 *ngIf="first" (click)="openNextElements($event)">
-              <span>{{el.title}}</span>
-              <img src="./../../../assets/images/Arrow 1.png" alt="left chevron icon" />
-            </h4>
-            <a href="javascript:void()">{{el.name}}</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 d-flex justify-content-center">
-        <ul class="list-unstyled">
-          <li *ngFor="let el of aFooterColumn3; let first = first">
-            <h4 *ngIf="first" (click)="openNextElements($event)">
-              <span>{{el.title}}</span>
-              <img src="./../../../assets/images/Arrow 1.png" alt="left chevron icon" />
-            </h4>
-            <a href="javascript:void()">{{el.name}}</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 d-flex justify-content-end">
-        <ul class="list-unstyled">
-          <li *ngFor="let el of aFooterColumn4; let first = first">
-            <h4 *ngIf="first" (click)="openNextElements($event)">
-              <span>{{el.title}}</span>
-              <img src="./../../../assets/images/Arrow 1.png" alt="left chevron icon" />
-            </h4>
-            <a href="javascript:void()">{{el.name}}</a>
-          </li>
-        </ul>
-      </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 footer__column">
+      <ul class="list-group footer__list">
+        <li
+          class="list-group-item footer__item"
+          *ngFor="let item of aFooterColumn1; let first = first"
+        >
+          <h5
+            class="footer__title"
+            *ngIf="first"
+            (click)="openNextElements($event)"
+          >
+            {{ item.title }}
+          </h5>
+          <div class="footer__target" *ngIf="!first">
+            <span
+              class="footer__text"
+              *ngIf="item.isPlace"
+              (click)="redirectCreateAd()"
+              [ngClass]="{ 'target-place': item.isPlace }"
+              >{{ item.name }}</span
+            >
+            <span
+              class="footer__text"
+              *ngIf="!item.isPlace"
+              [ngClass]="{ 'target-place': item.isPlace }"
+              >{{ item.name }}</span
+            >
+          </div>
+        </li>
+      </ul>
     </div>
-  </nav>
+    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 footer__column">
+      <ul class="list-group footer__list">
+        <li
+          class="list-group-item footer__item"
+          *ngFor="let item of aFooterColumn2; let first = first"
+        >
+          <h5
+            class="footer__title"
+            *ngIf="first"
+            (click)="openNextElements($event)"
+          >
+            {{ item.title }}
+          </h5>
+          <span class="footer__text" *ngIf="!first">{{ item.name }}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 footer__column">
+      <ul class="list-group footer__list">
+        <li
+          class="list-group-item footer__item"
+          *ngFor="let item of aFooterColumn3; let first = first"
+        >
+          <div
+            class="footer__title"
+            *ngIf="first"
+            (click)="openNextElements($event)"
+          >
+            {{ item.title }}
+          </div>
+          <span class="footer__text" *ngIf="!first">{{ item.name }}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 col-xxl-3 footer__column">
+      <ul class="list-group footer__list">
+        <li
+          class="list-group-item footer__item"
+          *ngFor="let item of aFooterColumn4; let first = first"
+        >
+          <div
+            class="footer__title"
+            *ngIf="first"
+            (click)="openNextElements($event)"
+          >
+            {{ item.title }}
+          </div>
+          <span class="footer__text" *ngIf="!first">{{ item.name }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

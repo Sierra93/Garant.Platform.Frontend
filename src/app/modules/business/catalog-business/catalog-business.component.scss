@@ -792,6 +792,7 @@
   align-items: flex-start;
 }
 .image-blog-img {
+  width: 100%;
   height: 162px;
 }
 .image-blog-text {
@@ -911,6 +912,7 @@
 }
 
 ::ng-deep .more-articles {
+  width: 24.3%;
   background: #f1f6ff;
   padding-top: 30px;
   border-radius: 8px;

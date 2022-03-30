@@ -7,6 +7,7 @@ import { API_URL } from 'src/app/core/core-urls/api-url';
 import { ConfirmEmailInput } from 'src/app/models/register/input/confirm-email-input';
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { NgForm } from "@angular/forms";
+ 
 
 @Component({
     selector: 'main-page',

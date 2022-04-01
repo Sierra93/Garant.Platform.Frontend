@@ -281,7 +281,7 @@
 <app-franchise-list></app-franchise-list>
 
 <!-- Новые объявления готового бизнеса -->
-<div class="container business-ad">
+<div class="container business-ad" [ngClass]="{ 'is-xxl': isXxl }">
   <h5 class="alert alert-light business-ad__title">
     Новые объявления готового бизнеса
   </h5>
@@ -461,7 +461,7 @@
   </div>
 </div>
 <!-- Бизнес блог. -->
-<div class="container business-blog">
+<div class="container business-blog" [ngClass]="{ 'is-xxl': isXxl }">
   <h5 class="alert alert-light business-blog__title">Бизнес блог</h5>
   <div class="row">
     <div
@@ -491,73 +491,110 @@
 </div>
 <!-- Компонент Новости -->
 <app-news></app-news>
-<!-- Категории готового бизнеса. -->
-<div class="row garant">
-  <!-- <div class="d-flex"> -->
-  <div class="col-6">
-    <h5 class="title-franchise">Категории готового бизнеса</h5>
-    <div class="row">
-      <!-- 1 столбец. -->
-      <div class="col-6">
-        <!-- <div class="category-block-first"> -->
-        <div>
-          <div class="category-item" *ngFor="let item of categoryList1">
-            <img class="space-right-image-category" [src]="item.url" />
-            <span class="category-text">{{ item.name }}</span>
-            <img
-              class="space-right-image-category space-arrow-category"
-              src="../../../assets/images/Arrow 1.png"
-            />
+<!-- Списки категорий -->
+<div class="container category">
+  <div class="row">
+    <div class="col-lg-6 col-xl-6 col-xxl-6 category__category-item">
+      <div class="container-fluid">
+        <div class="alert alert-light category__category-title">
+          Категории готового бизнеса
+        </div>
+        <div class="row">
+          <div
+            class="col-lg-6 col-xl-6 col-xxl-6"
+            *ngFor="let item of this.aBusinessCategories"
+          >
+            <div class="alert alert-light category__category-detail">
+              <span class="category__category-name">{{
+                item.categoryName
+              }}</span>
+              <svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-chevron-right category__list-icon"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-6 col-xxl-6">
+            <div class="btn btn-outline-primary category__redirect">
+              <span class="category__redirect-text">Весь готовый бизнес</span>
+              <span class="category__redirect-attr">
+                <svg
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 16 16"
+                  class="bi bi-caret-right-fill category__redirect-icon"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                  />
+                </svg>
+              </span>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- 2 столбец -->
-      <div class="col-6">
-        <!-- <div class="garant">&nbsp;</div> -->
-        <div class="category-item" *ngFor="let item of categoryList2">
-          <img class="space-right-image-category" [src]="item.url" />
-          <span class="category-text">{{ item.name }}</span>
-          <img
-            class="space-right-image-category space-arrow-category"
-            src="../../../assets/images/Arrow 1.png"
-          />
+    </div>
+    <div class="col-lg-6 col-xl-6 col-xxl-6">
+      <div class="container-fluid">
+        <div class="alert alert-light category__category-title">
+          Категории франшиз
+        </div>
+        <div class="row">
+          <div
+            class="col-lg-6 col-xl-6 col-xxl-6"
+            *ngFor="let item of this.aFranchiseCategories"
+          >
+            <div class="alert alert-light category__category-detail">
+              <span class="category__category-name">{{
+                item.categoryName
+              }}</span>
+              <svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-chevron-right category__list-icon"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="col-lg-6 col-xl-6 col-xxl-6">
+            <div class="btn btn-outline-primary category__redirect">
+              <span class="category__redirect-text">Все франшизы</span>
+              <span class="category__redirect-attr">
+                <svg
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 16 16"
+                  class="bi bi-caret-right-fill category__redirect-icon"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="col-6">
-    <h5 class="title-franchise">Категории франшиз</h5>
-    <div class="row">
-      <!-- 3 столбец. -->
-      <div class="col-6">
-        <!-- <div class="category-block-second"> -->
-        <div>
-          <div class="category-item" *ngFor="let item of categoryList3">
-            <img class="space-right-image-category" [src]="item.url" />
-            <span class="category-text">{{ item.name }}</span>
-            <img
-              class="space-right-image-category space-arrow-category"
-              src="../../../assets/images/Arrow 1.png"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- 4 столбец -->
-      <div class="col-6">
-        <!-- <div class="garant">&nbsp;</div> -->
-        <div class="category-item" *ngFor="let item of categoryList4">
-          <img class="space-right-image-category" [src]="item.url" />
-          <span class="category-text">{{ item.name }}</span>
-          <img
-            class="space-right-image-category space-arrow-category"
-            src="../../../assets/images/Arrow 1.png"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- </div> -->
 </div>

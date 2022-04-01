@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from 'src/app/core/core-urls/api-url';
 
@@ -7,12 +7,22 @@ import { API_URL } from 'src/app/core/core-urls/api-url';
   templateUrl: './business-list.component.html',
   styleUrls: ['./business-list.component.scss']
 })
-export class BusinessListComponent implements OnInit {
+export class BusinessListComponent implements OnInit, DoCheck {
   aDataActions: any[] = [];
+  isXxl!: boolean;
+  browserScreenWidth!: number;
+
   constructor(private http: HttpClient) { }
 
   public async ngOnInit(): Promise<void> {
+    this.isXxl = false;
+    this.browserScreenWidth = window.screen.width;
+
     await this.GetActionsAsync();
+  }
+
+  public ngDoCheck(): void {
+    this.defineResize();
   }
 
   /**
@@ -37,6 +47,16 @@ export class BusinessListComponent implements OnInit {
         });
     } catch (e: any) {
       throw new Error(e);
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  private defineResize() {
+    this.browserScreenWidth = window.screen.width;
+    if (this.browserScreenWidth > 1400) {
+      this.isXxl = true;
+    } else {
+      this.isXxl = false;
     }
   }
 

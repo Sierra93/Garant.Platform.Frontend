@@ -11,6 +11,9 @@
     display: flex;
     flex-flow: row-reverse;
   }
+  &__description {
+    padding-bottom: 0;
+  }
   &__img {
     margin-top: 67px;
   }
@@ -35,6 +38,7 @@
     line-height: 28px;
     padding: 24px 32px;
     border-radius: 4px;
+    margin-bottom: 64px;
   }
 }
 

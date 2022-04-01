@@ -1,10 +1,12 @@
 .franchise {
     &__title {
-      font-size: 24px;
+      font-size: 1.67vw;
       line-height: 28px;
       color: #000;
+      padding-top: 0;
       padding-left: 0;
       padding-bottom: 0;
+      margin-top: 74px;
       margin-bottom: 32px;
       background: transparent;
       border: none;
@@ -14,7 +16,7 @@
     }
     &__data-title {
       font-weight: 600;
-      font-size: 18px;
+      font-size: 1.25vw;
       line-height: 21px;
       color: #2c2c2c;
       margin-bottom: 8px;
@@ -22,7 +24,7 @@
     &__tooltip {
       display: inline-block;
       color: #7a7a7a;
-      font-size: 12px;
+      font-size: 0.83vw;
       line-height: 14px;
       margin-bottom: 20px;
     }
@@ -32,9 +34,19 @@
     }
     &__price {
       color: #2c2c2c;
-      font-size: 18px;
+      font-size: 1.25vw;
       line-height: 21px;
       font-weight: 600;
+    }
+    &__franchise-img {
+      width: 100%;
+    }
+    & ::ng-deep .p-element .p-carousel-next {
+      position: absolute;
+      top: 30%;
+      right: 0;
+      border-radius: 0 !important;
+      background: #fff !important;
     }
   }
   
@@ -45,12 +57,6 @@
   
   ::ng-deep .p-element .p-carousel-prev {
     display: none;
-  }
-  
-  ::ng-deep .p-element .p-carousel-next {
-    position: absolute;
-    right: 0;
-    margin-top: 85px !important;
   }
   
   ::ng-deep .p-element .p-carousel-next .pi-chevron-right::before {
@@ -71,3 +77,22 @@
     box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
   }
   
+
+  ::ng-deep {
+    @media all and (min-width: 1401px) {
+      .franchise {
+        .is-xxl &__title {
+          font-size: 24px;
+        }
+        &.is-xxl &__data-title {
+          font-size: 18px;
+        }
+        &.is-xxl &__tooltip {
+          font-size: 12px;
+        }
+        &.is-xxl &__price {
+          font-size: 18px;
+        }
+      }
+    }
+  }

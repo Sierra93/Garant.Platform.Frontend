@@ -412,6 +412,13 @@
     line-height: 21px;
     color: #2c2c2c;
   }
+  & ::ng-deep .p-element .p-carousel-next {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    border-radius: 0 !important;
+    background: #fff !important;
+  }
 }
 
 ::ng-deep {

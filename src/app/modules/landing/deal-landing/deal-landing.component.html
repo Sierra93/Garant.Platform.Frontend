@@ -1,29 +1,27 @@
-<div class="container">
-  <div class="card deal" [ngClass]="{ 'is-xxl': isXxl }">
-    <div class="container">
-      <div class="row deal__location">
-        <div class="col-lg-3 col-xl-3 col-xxl-3">
-          <img
-            class="img-fluid deal__img"
-            src="../../../../assets/images/deal-landing/shield.png"
-            alt="Изображение щита"
-          />
-        </div>
-        <div class="col-lg-9 col-xl-9 col-xxl-9">
-          <div class="card-body deal__description">
-            <h5 class="card-title deal__title">Онлайн сделка</h5>
-            <div class="card-text deal__business">по покупке бизнеса</div>
-            <div class="card-text deal__franchise">или франшизы</div>
-            <button class="btn btn-primary deal__btn-action">
-              Как начать сделку?
-            </button>
-          </div>
+<section class="card deal" [ngClass]="{ 'is-xxl': isXxl }">
+  <div class="container">
+    <div class="row deal__location">
+      <div class="col-lg-3 col-xl-3 col-xxl-3">
+        <img
+          class="img-fluid deal__img"
+          src="../../../../assets/images/deal-landing/shield.png"
+          alt="Изображение щита"
+        />
+      </div>
+      <div class="col-lg-9 col-xl-9 col-xxl-9">
+        <div class="card-body deal__description">
+          <h5 class="card-title deal__title">Онлайн сделка</h5>
+          <div class="card-text deal__business">по покупке бизнеса</div>
+          <div class="card-text deal__franchise">или франшизы</div>
+          <button class="btn btn-primary deal__btn-action">
+            Как начать сделку?
+          </button>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="container survey" [ngClass]="{ 'is-xxl': isXxl }">
+</section>
+<section class="survey" [ngClass]="{ 'is-xxl': isXxl }">
   <div class="row survey__result">
     <div class="col-lg-3 col-xl-3 col-xxl-3 survey__item">
       <p-panel #pnl header="35" styleClass="p-mt-4">
@@ -62,60 +60,56 @@
       </p-panel>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-xl-7 col-xxl-7">
-      <h5 class="alert alert-light">Недавно приобрели</h5>
-    </div>
-    <div class="col-xl-5 col-xxl-5 note" [ngClass]="{ 'is-xxl': isXxl }">
-      <h5 class="alert alert-light note__title">
-        Покупка бизнеса с гарантиями
-      </h5>
-      <div class="card note__description">
-        <div class="card-header note__buying">
-          <div class="card-title note__text-title">
-            Покупка бизнеса любого размера онлайн c гарантиями
-          </div>
-        </div>
-        <div class="card-body note__content">
-          <div class="container note__wrapper">
-            <div class="row note__location">
-              <div class="col-xl-4 col-xxl-4 note__img-box">
-                <img
-                  src="../../../../assets/images/shooting_range.png"
-                  class="img-fluid note__img"
-                  alt="Мишень"
-                />
+</section>
+<section class="row">
+  <div class="col-lg-7 col-xl-7 col-xxl-7">
+    <h5 class="alert alert-light">Недавно приобрели</h5>
+  </div>
+  <div class="col-lg-5 col-xl-5 col-xxl-5 note" [ngClass]="{ 'is-xxl': isXxl }">
+    <h5 class="alert alert-light note__title">
+      Покупка бизнеса с гарантиями
+    </h5>
+    <div class="card note__description">
+      <div class="card-body note__content">
+        <div class="note__wrapper">
+          <div class="note__location">
+            <div class="note__img-box">
+              <img
+                src="../../../../assets/images/shooting_range.png"
+                class="img-fluid note__img"
+                alt="Мишень"
+              />
+            </div>
+            <div class="note__content">
+              <div class="card-title note__text-title">
+                Покупка бизнеса любого размера онлайн c гарантиями
               </div>
-              <div class="col-xl-8 col-xxl-8 note__content">
-                <div class="card-text note__content-item">
-                  Первый в мире сервис с функцией<br />
-                  приобретения франшизы или готового<br />
-                  бизнеса онлайн. Сервис GoBizy<br />
-                  предоставляет возможность купить бизнес<br />
-                  в несколько кликов без опасений.
-                </div>
-                <div class="card-text note__content-item">
-                  Вы можете воспользоваться сервисом<br />
-                  онлайн покупки и консалтингом от нашей<br />
-                  компании.
-                </div>
+              <div class="card-text note__content-item">
+                Первый в мире сервис с функцией<br />
+                приобретения франшизы или готового<br />
+                бизнеса онлайн. Сервис GoBizy<br />
+                предоставляет возможность купить бизнес<br />
+                в несколько кликов без опасений.
+              </div>
+              <div class="card-text note__content-item">
+                Вы можете воспользоваться сервисом<br />
+                онлайн покупки и консалтингом от нашей<br />
+                компании.
               </div>
             </div>
           </div>
-          <button
-            class="btn btn-primary note__redirect-catalog"
-            routerLink="/catalog-business"
-          >
-            Подробнее
-          </button>
         </div>
+        <button
+          class="btn btn-primary note__redirect-catalog"
+          routerLink="/catalog-business"
+        >
+          Подробнее
+        </button>
       </div>
     </div>
   </div>
-</div>
-<div class="container consulting" [ngClass]="{ 'is-xxl': isXxl }">
+</section>
+<div class="consulting" [ngClass]="{ 'is-xxl': isXxl }">
   <form class="bg-primary consulting__request">
     <div class="container">
       <div class="row">
@@ -169,12 +163,12 @@
     </div>
   </form>
 </div>
-<div class="container checklist" [ngClass]="{ 'is-xxl': isXxl }">
+<div class="checklist" [ngClass]="{ 'is-xxl': isXxl }">
   <h5 class="alert alert-light checklist__head">
     4 простых шага для безопасной сделки онлайн
   </h5>
   <div class="row">
-    <div class="col-lg-3 col-xl-3 col-xxl-3 checklist__item">
+    <div class="col-lg-6 col-xl-6 col-xxl-3 checklist__item">
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img
@@ -200,7 +194,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3 checklist__item">
+    <div class="col-lg-6 col-xl-6 col-xxl-3 checklist__item">
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img
@@ -226,7 +220,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3 checklist__item">
+    <div class="col-lg-6 col-xl-6 col-xxl-3 checklist__item">
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img
@@ -248,7 +242,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3 checklist__item">
+    <div class="col-lg-6 col-xl-6 col-xxl-3 checklist__item">
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img
@@ -273,15 +267,12 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <app-garant></app-garant>
-</div>
+<app-garant></app-garant>
 <app-business-list></app-business-list>
 <!-- Популярные франшизы -->
 <app-franchise-list></app-franchise-list>
-
 <!-- Новые объявления готового бизнеса -->
-<div class="container business-ad" [ngClass]="{ 'is-xxl': isXxl }">
+<div class="business-ad" [ngClass]="{ 'is-xxl': isXxl }">
   <h5 class="alert alert-light business-ad__title">
     Новые объявления готового бизнеса
   </h5>
@@ -461,7 +452,7 @@
   </div>
 </div>
 <!-- Бизнес блог. -->
-<div class="container business-blog" [ngClass]="{ 'is-xxl': isXxl }">
+<div class="business-blog" [ngClass]="{ 'is-xxl': isXxl }">
   <h5 class="alert alert-light business-blog__title">Бизнес блог</h5>
   <div class="row">
     <div
@@ -492,7 +483,7 @@
 <!-- Компонент Новости -->
 <app-news></app-news>
 <!-- Списки категорий -->
-<div class="container category">
+<div class="category">
   <div class="row">
     <div class="col-lg-6 col-xl-6 col-xxl-6 category__category-item">
       <div class="container-fluid">

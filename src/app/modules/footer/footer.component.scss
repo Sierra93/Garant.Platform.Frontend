@@ -2,8 +2,10 @@ footer {
   background-color: #1f75fe;
 }
 .footer {
-  padding-top: 67px;
-  padding-bottom: 64px;
+  width: 80%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 67px 0 64px;
   &__group-item {
     display: flex;
     align-items: center;

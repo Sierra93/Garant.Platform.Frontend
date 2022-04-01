@@ -134,13 +134,15 @@
   }
   &__content {
     padding-top: 0;
-  }
-  &__wrapper {
-    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
   }
   &__location {
     display: flex;
     flex-flow: row-reverse;
+  }
+  &__img-box {
+    margin: 0 -20px 7px 10px;
   }
   &__text-title {
     font-size: 0.94vw;
@@ -151,9 +153,6 @@
   &__content-item {
     font-size: 0.73vw;
     line-height: 16px;
-  }
-  &__img-box {
-    padding-right: 0;
   }
   &__redirect-catalog {
     font-size: 0.94vw;
@@ -245,7 +244,9 @@
   }
   &__submit {
     padding: 24px 40px 24px 24px;
-    border-radius: 8px;
+    border-radius: 4px;
+    background: #fff;
+    color: #1f75fe;
     margin-top: 32px;
     width: 100%;
     font-size: 0.92vw;
@@ -416,7 +417,7 @@
     position: absolute;
     top: 30%;
     right: 0;
-    border-radius: 0 !important;
+    border-radius: 8px !important;
     background: #fff !important;
   }
 }

@@ -43,6 +43,8 @@ export class DealLandingModule implements OnInit, DoCheck {
   categoryList2: any[] = [];
   categoryList3: any[] = [];
   categoryList4: any[] = [];
+  aFranchiseCategories: any[] = [];
+  aBusinessCategories: any[] = [];
   aDataActions: any[] = [];
   oTopAction: any = {};
   aNewFranchises: any[] = [];
@@ -104,6 +106,8 @@ export class DealLandingModule implements OnInit, DoCheck {
     await this.loadPaginationInitAsync();
     await this.GetActionsAsync();
     await this.GetBlogsAsync();
+    await this.GetFranchiseCategoriesAsync();
+    await this.GetBusinessCategoriesAsync();
     await this.loadCategoriesListAsync();
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
@@ -220,7 +224,7 @@ export class DealLandingModule implements OnInit, DoCheck {
         .subscribe({
           next: (response: any) => {
             console.log('Список категорий бизнеса:', response);
-            // this.aBusinessCategories = response;
+            this.aBusinessCategories = response;
           },
 
           error: (err) => {
@@ -392,6 +396,51 @@ export class DealLandingModule implements OnInit, DoCheck {
           next: (response: any) => {
             console.log('Список блогов:', response);
             this.aBlogs = response;
+          },
+
+          error: (err) => {
+            throw new Error(err);
+          },
+        });
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+   * Функция получит список франшиз.
+   * @returns Список франшиз.
+   */
+   private async GetFranchiseCategoriesAsync() {
+    try {
+      await this.http
+        .get(API_URL.apiUrl.concat('/franchise/category-list'), {})
+        .subscribe({
+          next: (response: any) => {
+            console.log('Список категорий франшиз', response);
+            this.aFranchiseCategories = response;
+          },
+
+          error: (err) => {
+            throw new Error(err);
+          },
+        });
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  }
+  /**
+   * Функция получит список франшиз.
+   * @returns Список франшиз.
+   */
+   private async GetBusinessCategoriesAsync() {
+    try {
+      await this.http
+        .post(API_URL.apiUrl.concat('/main/business-categories-list'), {})
+        .subscribe({
+          next: (response: any) => {
+            console.log('Список категорий бизнеса, мой вариант', response);
+            this.aBusinessCategories = response;
           },
 
           error: (err) => {

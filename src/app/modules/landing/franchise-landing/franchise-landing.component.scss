@@ -3,17 +3,28 @@
 @use "../../../../app/shared/styles" as *;
 @use "../../../../app/shared/styles/base" as *;
 @import "/src/app/shared/styles/media-quaries.scss";*/
-
-.creation-franchise {
+.deal {
   border: none;
   background: #f5f8fa;
   border-radius: 24px;
+  padding-top: 64px;
+  padding-bottom: 64px;
   &__location {
     display: flex;
     flex-flow: row-reverse;
   }
-  &__img {
-    margin-top: 67px;
+  &__img-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &__content {
+    padding-left: 100px;
+    padding-right: 0;
+  }
+  &__description {
+    padding: 0;
   }
   &__title {
     font-size: 5vw;
@@ -40,8 +51,8 @@
 }
 
 ::ng-deep {
-  @media all and (min-width: 1401px) {
-    .creation-franchise {
+  @media all and (min-width: 1201px) {
+    .deal {
       &.is-xxl &__title {
         font-size: 96px;
         line-height: 112px;
@@ -58,81 +69,137 @@
   }
 }
 
-.responsibility {
+.survey {
+  margin-top: 16px;
+  &__item {
+    & ::ng-deep .p-panel {
+      & .p-panel-header {
+        justify-content: center;
+        border: none;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        background: #f5f8fa;
+        padding-top: 64px;
+        padding-bottom: 16px;
+        & .p-panel-title {
+          font-size: 4.32vw;
+        }
+      }
+      & .p-panel-content {
+        border: none;
+        font-size: 1.25vw;
+        text-align: center;
+        background: #f5f8fa;
+        border-bottom-left-radius: 24px;
+        border-bottom-right-radius: 24px;
+        color: #7a7a7a;
+        padding-top: 0;
+        padding-bottom: 64px;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 1401px) {
+    .survey {
+      &.is-xxl &__item {
+        & ::ng-deep .p-panel {
+          & .p-panel-header {
+            & .p-panel-title {
+              font-size: 3.62vw;
+            }
+          }
+          & .p-panel-content {
+            font-size: 23px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.consulting {
   position: relative;
   margin-top: 74px;
   &__request {
+    padding: 64px;
     border-radius: 24px;
-    padding-top: 64px;
-    padding-left: 64px;
-    padding-bottom: 64px;
   }
   &__title,
   &__subtitle,
   &__note {
+    background: transparent;
     border: none;
-    color: #fff;
     padding: 0;
   }
   &__title {
     font-size: 5vw;
     line-height: 112px;
+    color: #fff;
     margin-bottom: 16px;
     font-weight: 700;
   }
   &__subtitle {
     font-size: 3.18vw;
     line-height: 75px;
+    color: #fff;
     margin-bottom: 16px;
     font-weight: 700;
   }
   &__note {
     font-size: 1.25vw;
     line-height: 28px;
+    color: #dadada;
     margin-bottom: 48px;
   }
-  &__tooltip {
+  &__input-field {
+    display: flex;
+    flex-direction: column;
+    max-width: 291px;
+  }
+  &__input-text {
     color: #dadada;
-    font-size: 0.83vw;
+    font-size: 0.63vw;
     line-height: 14px;
   }
-  &__field {
-    width: 291px;
-    padding-left: 0;
-    padding-right: 16px;
-    margin-bottom: 32px;
-  }
-  &__field:last-child {
-    padding-right: 0;
-  }
-  &__control {
+  &__input {
     padding: 24px 40px 24px 24px;
     border-radius: 8px;
-    max-height: 69px;
-    font-size: 1.25vw;
+    font-size: 0.92vw;
     line-height: 21px;
+    color: #7a7a7a;
   }
-  &__headmaster {
+  &__assistant {
     position: absolute;
     width: 622px;
     right: 0;
     bottom: 0;
     margin-right: -140px;
   }
-  &__action {
-    padding-left: 0;
-  }
   &__submit {
+    padding: 24px 40px 24px 24px;
     border-radius: 4px;
-    padding: 24px 32px;
-    font-size: 1.67vw;
-    line-height: 28px;
+    background: #fff;
+    color: #1f75fe;
+    margin-top: 32px;
+    width: 100%;
+    font-size: 0.92vw;
+    line-height: 21px;
+    border: 1px solid #fff;
+  }
+  & ::ng-deep .p-element .p-inputtext {
+    width: 100%;
+    padding: 24px 40px 24px 24px;
+    font-size: 0.92vw;
+    line-height: 21px;
+    border-radius: 8px;
   }
 }
 
 ::ng-deep {
   @media all and (min-width: 1401px) {
-    .responsibility {
+    .consulting {
       &.is-xxl &__title {
         font-size: 96px;
         line-height: 112px;
@@ -152,15 +219,11 @@
         font-size: 12px;
         line-height: 14px;
       }
-      &.is-xxl &__submit {
-        font-size: 24px;
-        line-height: 28px;
-      }
     }
   }
 }
 
-.bonuses-list {
+.checklist {
   &__head {
     background: transparent;
     border: none;
@@ -170,15 +233,12 @@
     margin: 74px 0 32px;
   }
   &__header {
-    display: flex;
-    align-items: center;
     background: transparent;
     border: none;
     padding-bottom: 0;
-    height: 102px;
   }
   &__title {
-    font-size: 1.05vw;
+    font-size: 1.25vw;
     line-height: 28px;
     margin-top: 25px;
     margin-bottom: 4px;
@@ -198,6 +258,8 @@
   &__description {
     font-size: 0.89vw;
     line-height: 17px;
+    margin-bottom: 24px;
+    height: 63px;
   }
   &__item:first-child &__content {
     background: #f5f8fa;
@@ -207,6 +269,7 @@
   }
   &__img {
     width: 127px;
+    height: 102px;
   }
   &__action {
     font-size: 0.94vw;
@@ -214,20 +277,17 @@
     padding: 16px;
     border-radius: 4px;
   }
-  &__description {
-    margin-bottom: 24px;
-  }
 }
 
 ::ng-deep {
   @media all and (min-width: 1401px) {
-    .bonuses-list {
+    .checklist {
       &.is-xxl &__head {
         font-size: 48px;
         line-height: 56px;
       }
       &.is-xxl &__title {
-        font-size: 21px;
+        font-size: 24px;
         line-height: 28px;
       }
       &.is-xxl &__subtitle {
@@ -239,10 +299,6 @@
       &.is-xxl &__action {
         font-size: 18px;
         line-height: 21px;
-      }
-      &.is-xxl &__description {
-        font-size: 17px;
-        height: 69px;
       }
     }
   }
@@ -461,7 +517,6 @@
       border: 1.5px solid #dadada;
       border-radius: 8px;
       padding: 24px 40px 24px 24px;
-      // margin-bottom: 32px;
     }
 
     &__button {
@@ -484,204 +539,121 @@
   }
 }
 
-.three-cards {
-  margin-top: 80px;
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-::ng-deep .three-cards-wrapper .p-card {
-  width: 464px;
-  height: 335px;
-  background-color: white;
-  // border-radius: 4px;
-  // padding: 24px;
-
-  &-body {
-    width: 464px;
-    height: 335px;
-    margin: 0;
-    padding: 0;
-  }
-
-  &-header {
-    display: none;
-  }
-
-  &-title {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.5rem;
-    font-weight: 400;
+.business-ad {
+  margin-bottom: 74px;
+  &__title {
+    padding-left: 0;
+    padding-bottom: 0;
+    background: transparent;
+    border: none;
+    font-size: 1.67vw;
+    line-height: 28px;
     color: #2c2c2c;
-    margin: 0;
-    padding: 0;
     margin-bottom: 32px;
   }
-
-  &-subtitle {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.125rem;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
-    padding-left: 24px;
-    padding-top: 24px;
-    padding-bottom: 16px;
+  &__picture {
+    width: 100%;
+  }
+  &__detail {
+    border: none;
+  }
+  &__description {
+    font-size: 1.25vw;
     line-height: 21px;
-    background-color: #f1f1f1;
-  }
-
-  &-content {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.875rem;
-    font-weight: 400;
-    // width: 342.8px;
-    min-height: 48px;
-    margin: 0;
-    padding: 0;
-    padding-left: 24px;
-
-    // margin-left: 8px;
-    padding-bottom: 68px;
-    // line-height: 16px;
-    background-color: #f1f1f1;
-
-    p {
-      padding-right: 97.19px;
-      line-height: 16.41px;
-    }
-  }
-
-  &-footer {
-    background-color: #f1f1f1;
-    padding-bottom: 44.78px;
-
-    .btn {
-      margin-left: 24px;
-      min-width: 93px;
-      background-color: #1f1f1f;
-    }
-  }
-}
-
-.card-business .btn-dark {
-  margin-top: 0;
-}
-
-.popular-item-blog {
-  width: 342px;
-  height: 208px;
-}
-
-::ng-deep .popular-item-blog-wrapper1 .p-card {
-  width: 342px;
-  height: 208px;
-  border-radius: 0;
-
-  &-header {
-    width: 342px;
-    height: 162px;
-    margin-bottom: 25px;
-
-    img {
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  &-title {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.125rem;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
     color: #2c2c2c;
-    line-height: 21px;
   }
-
-  &-content {
-    display: none;
+  &__tooltip {
+    font-size: 0.83vw;
+    line-height: 14px;
+    color: #7a7a7a;
+  }
+  &__data-title {
+    margin-bottom: 20px;
+  }
+  &__price {
+    font-weight: 600;
+    font-size: 1.25vw;
+    line-height: 21px;
+    color: #2c2c2c;
+  }
+  & ::ng-deep .p-element .p-carousel-next {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    border-radius: 8px !important;
+    background: #fff !important;
   }
 }
 
-::ng-deep .popular-item-blog-wrapper2 .p-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 342px;
-  height: 208px;
-  border-radius: 0;
-  padding: 24px;
-  background-color: #f1f1f1;
-
-  &-header {
-    display: none;
-  }
-
-  &-title {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.125rem;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 16px;
-    color: #2c2c2c;
-    line-height: 21px;
-  }
-
-  &-content {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.875rem;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
-    color: #646464;
-
-    .d-flex {
-      gap: 10px;
-
-      .image {
-        position: relative;
-        width: 32px;
-
-        img {
-          position: absolute;
-          right: 0;
-          top: -16px;
-        }
+::ng-deep {
+  @media all and (min-width: 1401px) {
+    .business-ad {
+      &.is-xxl &__title {
+        font-size: 24px;
+      }
+      &.is-xxl &__description {
+        font-size: 18px;
+      }
+      &.is-xxl &__tooltip {
+        font-size: 12px;
+      }
+      &.is-xxl &__price {
+        font-size: 18px;
       }
     }
   }
 }
 
-.news {
-  &-item {
-    margin-bottom: 25px;
-    border-bottom: 0.5px solid #c4c4c4;
-
-    img {
-      margin-right: 8px;
-    }
+.business-blog {
+  &__title {
+    background: transparent;
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+    font-size: 1.67vw;
+    line-height: 28px;
+    color: #2c2c2c;
   }
-
-  &-title {
-    font-weight: 400;
-    margin-bottom: 9.5px;
+  &__content {
+    border: none;
   }
-
-  &-bottom-line {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.75rem;
-    font-weight: 400;
+  &__blog-img {
+    padding: 0;
+    border: none;
+  }
+  &__img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  &__blog-title {
+    font-size: 1.25vw;
+    line-height: 21px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    background: #ffdf37;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+  }
+  &__note {
+    font-size: 0.83vw;
+    line-height: 14px;
     color: #646464;
-    margin-bottom: 25px;
   }
 }
 
-.category-text {
-  font-family: "Roboto", sans-serif;
-  font-size: 1.125rem;
-  font-weight: 400;
-  color: #2c2c2c;
+::ng-deep {
+  @media all and (min-width: 1401px) {
+    .business-blog {
+      &.is-xxl &__title {
+        font-size: 24px;
+      }
+      &.is-xxl &__blog-title {
+        font-size: 18px;
+      }
+      &.is-xxl &__note {
+        font-size: 12px;
+      }
+    }
+  }
 }

@@ -21,6 +21,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   // aCities: any[] = [];
   // aBusinessCategories: any[] = [];
   aViewBusiness: any[] = [];
+  aBusinessList: any[] = [];
   minPrice!: number;
   maxPrice!: number;
   view: string = '';
@@ -169,28 +170,6 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   }
 
   /**
-   * Функция получит список бизнеса.
-   */
-  private async GetBusinessListAsync() {
-    try {
-      await this.http
-        .post(API_URL.apiUrl.concat('/business/catalog-business'), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log('Список бизнеса:', response);
-            // this.aBusinessList = response;
-          },
-
-          error: (err) => {
-            throw new Error(err);
-          },
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
-
-  /**
    * TODO: Вынести в общий сервис.
    * Функция получит список городов бизнеса.
    */
@@ -258,6 +237,29 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
       throw new Error(e);
     }
   }
+
+    /**
+   * Функция получит список блогов.
+   * @returns Список блогов.
+   */
+     private async GetBlogsAsync() {
+      try {
+        await this.http
+          .post(API_URL.apiUrl.concat('/blog/get-blogs'), {})
+          .subscribe({
+            next: (response: any) => {
+              console.log('Список блогов:', response);
+              this.aBlogs = response;
+            },
+  
+            error: (err) => {
+              throw new Error(err);
+            },
+          });
+      } catch (e: any) {
+        throw new Error(e);
+      }
+    }
 
   public async onPaginationChangeAsync(event: any) {
     let paginationData = new PaginationInput();
@@ -360,29 +362,6 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   }
 
   /**
-   * Функция получит список блогов.
-   * @returns Список блогов.
-   */
-  private async GetBlogsAsync() {
-    try {
-      await this.http
-        .post(API_URL.apiUrl.concat('/blog/main-blogs'), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log('Список блогов:', response);
-            this.aBlogs = response;
-          },
-
-          error: (err) => {
-            throw new Error(err);
-          },
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
-
-  /**
    * Функция получит список проплаченных новостей.
    * @returns Список новостей.
    */
@@ -448,6 +427,28 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
           next: (response: any) => {
             console.log('Список новых франшиз:', response);
             this.aNewFranchises = response;
+          },
+
+          error: (err) => {
+            throw new Error(err);
+          },
+        });
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+   * Функция получит список бизнеса.
+   */
+   private async GetBusinessListAsync() {
+    try {
+      await this.http
+        .post(API_URL.apiUrl.concat('/business/catalog-business'), {})
+        .subscribe({
+          next: (response: any) => {
+            console.log('Список бизнеса:', response);
+            this.aBusinessList = response;
           },
 
           error: (err) => {

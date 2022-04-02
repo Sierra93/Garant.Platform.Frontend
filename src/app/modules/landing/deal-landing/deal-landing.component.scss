@@ -7,15 +7,24 @@
   border: none;
   background: #f5f8fa;
   border-radius: 24px;
+  padding-top: 64px;
+  padding-bottom: 64px;
   &__location {
     display: flex;
     flex-flow: row-reverse;
   }
-  &__description {
-    padding-bottom: 0;
+  &__img-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 0;
+    padding-right: 0;
   }
-  &__img {
-    margin-top: 67px;
+  &__content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &__description {
+    padding: 0;
   }
   &__title {
     font-size: 5vw;
@@ -38,12 +47,11 @@
     line-height: 28px;
     padding: 24px 32px;
     border-radius: 4px;
-    margin-bottom: 64px;
   }
 }
 
 ::ng-deep {
-  @media all and (min-width: 1401px) {
+  @media all and (min-width: 1201px) {
     .deal {
       &.is-xxl &__title {
         font-size: 96px;
@@ -93,7 +101,7 @@
 }
 
 ::ng-deep {
-  @media all and (min-width: 1401px) {
+  @media all and (min-width: 1201px) {
     .survey {
       &.is-xxl &__item {
         & ::ng-deep .p-panel {
@@ -167,7 +175,7 @@
 }
 
 ::ng-deep {
-  @media all and (min-width: 1401px) {
+  @media all and (min-width: 1201px) {
     .note {
       &.is-xxl &__title {
         font-size: 24px;
@@ -266,15 +274,8 @@
   }
 }
 
-/*::ng-deep .p-element .p-inputtext {
-  padding: 24px 40px 24px 24px;
-  font-size: 0.92vw;
-  line-height: 21px;
-  border-radius: 8px;
-}*/
-
 ::ng-deep {
-  @media all and (min-width: 1401px) {
+  @media all and (min-width: 1201px) {
     .consulting {
       &.is-xxl &__title {
         font-size: 96px;
@@ -356,7 +357,7 @@
 }
 
 ::ng-deep {
-  @media all and (min-width: 1401px) {
+  @media all and (min-width: 1201px) {
     .checklist {
       &.is-xxl &__head {
         font-size: 48px;
@@ -427,7 +428,7 @@
 }
 
 ::ng-deep {
-  @media all and (min-width: 1401px) {
+  @media all and (min-width: 1201px) {
     .business-ad {
       &.is-xxl &__title {
         font-size: 24px;
@@ -484,7 +485,7 @@
 }
 
 ::ng-deep {
-  @media all and (min-width: 1401px) {
+  @media all and (min-width: 1201px) {
     .business-blog {
       &.is-xxl &__title {
         font-size: 24px;

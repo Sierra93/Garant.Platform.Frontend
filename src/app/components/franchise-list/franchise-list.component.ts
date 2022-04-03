@@ -61,7 +61,7 @@ export class FranchiseListComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth > 1400) {
+    if (this.browserScreenWidth > 1200) {
       this.isXxl = true;
     } else {
       this.isXxl = false;

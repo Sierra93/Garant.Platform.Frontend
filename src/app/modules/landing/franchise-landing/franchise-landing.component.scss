@@ -93,15 +93,14 @@
         border-bottom-left-radius: 24px;
         border-bottom-right-radius: 24px;
         color: #7a7a7a;
-        padding-top: 0;
-        padding-bottom: 64px;
+        padding: 0 22% 64px;
       }
     }
   }
 }
 
 ::ng-deep {
-  @media all and (min-width: 1401px) {
+  @media all and (min-width: 1201px) {
     .survey {
       &.is-xxl &__item {
         & ::ng-deep .p-panel {
@@ -111,113 +110,9 @@
             }
           }
           & .p-panel-content {
-            font-size: 23px;
+            font-size: 21px;
           }
         }
-      }
-    }
-  }
-}
-
-.consulting {
-  position: relative;
-  margin-top: 74px;
-  &__request {
-    padding: 64px;
-    border-radius: 24px;
-  }
-  &__title,
-  &__subtitle,
-  &__note {
-    background: transparent;
-    border: none;
-    padding: 0;
-  }
-  &__title {
-    font-size: 5vw;
-    line-height: 112px;
-    color: #fff;
-    margin-bottom: 16px;
-    font-weight: 700;
-  }
-  &__subtitle {
-    font-size: 3.18vw;
-    line-height: 75px;
-    color: #fff;
-    margin-bottom: 16px;
-    font-weight: 700;
-  }
-  &__note {
-    font-size: 1.25vw;
-    line-height: 28px;
-    color: #dadada;
-    margin-bottom: 48px;
-  }
-  &__input-field {
-    display: flex;
-    flex-direction: column;
-    max-width: 291px;
-  }
-  &__input-text {
-    color: #dadada;
-    font-size: 0.63vw;
-    line-height: 14px;
-  }
-  &__input {
-    padding: 24px 40px 24px 24px;
-    border-radius: 8px;
-    font-size: 0.92vw;
-    line-height: 21px;
-    color: #7a7a7a;
-  }
-  &__assistant {
-    position: absolute;
-    width: 622px;
-    right: 0;
-    bottom: 0;
-    margin-right: -140px;
-  }
-  &__submit {
-    padding: 24px 40px 24px 24px;
-    border-radius: 4px;
-    background: #fff;
-    color: #1f75fe;
-    margin-top: 32px;
-    width: 100%;
-    font-size: 0.92vw;
-    line-height: 21px;
-    border: 1px solid #fff;
-  }
-  & ::ng-deep .p-element .p-inputtext {
-    width: 100%;
-    padding: 24px 40px 24px 24px;
-    font-size: 0.92vw;
-    line-height: 21px;
-    border-radius: 8px;
-  }
-}
-
-::ng-deep {
-  @media all and (min-width: 1401px) {
-    .consulting {
-      &.is-xxl &__title {
-        font-size: 96px;
-        line-height: 112px;
-      }
-      &.is-xxl &__subtitle {
-        font-size: 60px;
-        line-height: 75px;
-      }
-      &.is-xxl &__note {
-        font-size: 24px;
-        line-height: 28px;
-      }
-      &.is-xxl &__input-field {
-        max-width: 295px;
-      }
-      &.is-xxl &__input-text {
-        font-size: 12px;
-        line-height: 14px;
       }
     }
   }
@@ -280,7 +175,7 @@
 }
 
 ::ng-deep {
-  @media all and (min-width: 1401px) {
+  @media all and (min-width: 1201px) {
     .checklist {
       &.is-xxl &__head {
         font-size: 48px;
@@ -586,7 +481,7 @@
 }
 
 ::ng-deep {
-  @media all and (min-width: 1401px) {
+  @media all and (min-width: 1201px) {
     .business-ad {
       &.is-xxl &__title {
         font-size: 24px;
@@ -599,60 +494,6 @@
       }
       &.is-xxl &__price {
         font-size: 18px;
-      }
-    }
-  }
-}
-
-.business-blog {
-  &__title {
-    background: transparent;
-    padding-top: 0;
-    padding-left: 0;
-    padding-bottom: 0;
-    font-size: 1.67vw;
-    line-height: 28px;
-    color: #2c2c2c;
-  }
-  &__content {
-    border: none;
-  }
-  &__blog-img {
-    padding: 0;
-    border: none;
-  }
-  &__img {
-    width: 100%;
-    border-radius: 8px;
-  }
-  &__blog-title {
-    font-size: 1.25vw;
-    line-height: 21px;
-    margin-bottom: 16px;
-    font-weight: 600;
-    background: #ffdf37;
-    padding: 8px;
-    border-radius: 4px;
-    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
-  }
-  &__note {
-    font-size: 0.83vw;
-    line-height: 14px;
-    color: #646464;
-  }
-}
-
-::ng-deep {
-  @media all and (min-width: 1401px) {
-    .business-blog {
-      &.is-xxl &__title {
-        font-size: 24px;
-      }
-      &.is-xxl &__blog-title {
-        font-size: 18px;
-      }
-      &.is-xxl &__note {
-        font-size: 12px;
       }
     }
   }

@@ -20,6 +20,8 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   // isGarant: boolean = false;
   // aCities: any[] = [];
   // aBusinessCategories: any[] = [];
+  title: string = '';
+  text: string = '';
   aViewBusiness: any[] = [];
   aBusinessList: any[] = [];
   minPrice!: number;
@@ -37,7 +39,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   // filterMaxPrice!: number;
   countTotalPage!: number;
   // countBusinesses!: number;
-  aBlogs: any[] = [];
+  aBlogs: any[] = []; //
   aNews: any[] = [];
   categoryList1: any[] = [];
   categoryList2: any[] = [];
@@ -48,14 +50,18 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   oSuggestion: any = {};
   aNewFranchises: any[] = [];
   responsiveOptions: any[] = [];
+  aSurveyPosts: any[] = [];
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
   isXxl!: boolean;
   browserScreenWidth!: number;
   isHideBusinessWithGarant: boolean = true;
-  name: string = '';
-  phoneNumber: string = '';
+  feedbackTitle: string = 'Азамат Булатов';
+  feedbackSubtitle: string = 'сооснователь проекта';
+  feedbackNote: string = 'Лично ответственный за каждую упакованную франшизу';
+  feedbackImgPath: string = '../../../../assets/images/franchise-landing/template_person6 1.png';
+  feedbackTheme: boolean = true;
 
   constructor(
     private http: HttpClient,
@@ -94,6 +100,25 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
       },
     ];
 
+    this.aSurveyPosts = [
+      {
+        title: '80',
+        text: 'франшиз упаковали и создали с нуля',
+      },
+      {
+        title: '25',
+        text: 'сфер бизнеса проработано за время работы',
+      },
+      {
+        title: '65 млн',
+        text: 'заработали клиентам после создания франшиз',
+      },
+      {
+        title: '14',
+        text: 'человек будут работать над вашим проектом',
+      },
+    ];
+
     this.routeParam = this.route.snapshot.queryParams.businessId;
   }
 
@@ -106,7 +131,6 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
     await this.loadCategoriesFranchisesListAsync();
     await this.loadViewBusinessFranchisesListAsync();
     await this.loadPaginationInitAsync();
-    await this.GetBlogsAsync();
     await this.GetNewsTopAsync();
     await this.loadCategoriesListAsync();
     await this.loadSingleSuggestionAsync();
@@ -237,29 +261,6 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
       throw new Error(e);
     }
   }
-
-    /**
-   * Функция получит список блогов.
-   * @returns Список блогов.
-   */
-     private async GetBlogsAsync() {
-      try {
-        await this.http
-          .post(API_URL.apiUrl.concat('/blog/get-blogs'), {})
-          .subscribe({
-            next: (response: any) => {
-              console.log('Список блогов:', response);
-              this.aBlogs = response;
-            },
-  
-            error: (err) => {
-              throw new Error(err);
-            },
-          });
-      } catch (e: any) {
-        throw new Error(e);
-      }
-    }
 
   public async onPaginationChangeAsync(event: any) {
     let paginationData = new PaginationInput();
@@ -441,7 +442,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   /**
    * Функция получит список бизнеса.
    */
-   private async GetBusinessListAsync() {
+  private async GetBusinessListAsync() {
     try {
       await this.http
         .post(API_URL.apiUrl.concat('/business/catalog-business'), {})
@@ -494,7 +495,6 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
       throw new Error(e);
     }
   }
-
   /**
    * Функция перейдет к просмотру карточки бизнеса.
    */
@@ -505,19 +505,10 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
     });
   }
 
-  public onSendLandingRequestAsync(name: string, phoneNumber: string) {
-    this.requestService
-      .sendLandingRequestAsync(name, phoneNumber, 'Упаковка франшиз')
-      .subscribe(() => {
-        this.name = '';
-        this.phoneNumber = '';
-      });
-  }
-
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth > 1400) {
+    if (this.browserScreenWidth > 1200) {
       this.isXxl = true;
     } else {
       this.isXxl = false;

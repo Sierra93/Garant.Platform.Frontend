@@ -60,6 +60,18 @@ export class CatalogBusinessModule implements OnInit {
   filterRang: number[] = [20, 80];
   rangValue: number[] = [20, 80];
 
+  aDataActionsPictures = [
+    {
+      imgUrl: 'assets/images/slider__1.svg'
+    },
+    {
+      imgUrl: 'assets/images/slider__2.svg'
+    },
+    {
+      imgUrl: 'assets/images/slider__3.svg'
+    }
+  ]
+
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,
@@ -513,4 +525,20 @@ export class CatalogBusinessModule implements OnInit {
       queryParams: { businessId: businessId },
     });
   }
+
+  public onRoute(text: string) {
+        if (text == "Продать") {
+            this.router.navigate(["/ad/create"]);
+            return;
+        }
+
+        if (text == "Начать") {
+            return;
+        }
+
+        if (text == "Упаковать") {
+            this.router.navigate(["/franchise/start"]);
+            return;
+        }
+    };
 }

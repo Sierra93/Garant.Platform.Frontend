@@ -45,7 +45,7 @@
 
       <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 wrapper-business-blog" >
         
-        <div class="business-blog-images">
+        <!-- <div class="business-blog-images"> -->
          <div class="image-blog"> 
           <img class="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
             <div class="image-blog-text">
@@ -60,12 +60,12 @@
                 <div class="subtitle-text">читать ~7 минут &bull; опубликовано 20 февраля</div>
           </div>
           </div>
-          <div class="image-blog"> <img class="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
+          <div class="image-blog image-blog-three"> <img class="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
                   <div class="image-blog-text"><div class="text-blog">Так ли жестока налоговая?</div>
                   <div class="subtitle-text">читать ~11 минут &bull; опубликовано 25 февраля</div>
                 </div>
           </div>
-        </div>
+        <!-- </div> -->
           <div class="popular-item more-articles business-blog-video">
               <p-card
         header=""
@@ -160,9 +160,9 @@
         <button pButton type="button" label="С быстрой окупаемостью" class="p-button-text button-business"></button>
         <button pButton type="button" label="Для женщин" class="p-button-text button-business"></button>
         <button pButton type="button" label="Без паушального взноса" class="p-button-text button-business"></button>
-        <button pButton type="button" label="Новинки" class="p-button-text button-business"></button>
-        <button pButton type="button" label=" Для маленького города" class="p-button-text button-business"></button>
-        <button pButton type="button" label=" Без роялти" class="p-button-text button-business"></button>
+        <button pButton type="button" label="Новинки" class="p-button-text button-business button-business-extra"></button>
+        <button pButton type="button" label=" Для маленького города" class="p-button-text button-business button-business-extra"></button>
+        <button pButton type="button" label=" Без роялти" class="p-button-text button-business button-business-extra"></button>
        
       </div>
       <div class="line"></div>
@@ -346,20 +346,22 @@
     <p-card class="card-line-wrapper">
       <ng-template pTemplate="header">
         <strong>Вы можете приобрести бизнес с гарантиями</strong>
+        
         <button
           type="button"
           class="close"
           aria-label="Close"
           (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
         >
-          <span aria-hidden="true">&times;</span>
+        <i class="pi pi-times"></i>
+          <!-- <span aria-hidden="true">&times;</span> -->
         </button>
       </ng-template>
       <p>{{ oSuggestion.text }}</p>
       <ng-template pTemplate="footer">
         <div class="d-flex">
           <div class="ml-1">
-            <button class="btn btn-dark" routerLink="/deal/start">
+            <button class="btn btn-dark btn-dark-card" routerLink="/deal/start">
               {{ oSuggestion.button2Text }}
             </button>
           </div>
@@ -379,13 +381,36 @@
 </div>
 
 <!-- Область с банерами (2 картинки). -->
-<div class="d-flex block-baner garant">
-  <img class="baner" src="../../../../assets/images/img-baner_garant.svg" />
-  <img class="baner" src="../../../../assets/images/img-baner_garant.svg" />
+<div class="block-baner garant">
+  <div class="block-baner-img"><img class="baner" src="../../../../assets/images/Rectangle 13.png" /></div>
+  <div class="block-baner-img"><img class="baner" src="../../../../assets/images/Rectangle 13.png" /></div>
 </div>
-
+<!-- 3 card -->
+<div class="row section-mb">
+  <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder"
+    *ngFor="let item of aDataActions; let i = index">
+    <div class="card-business">
+      <h3 class="three-cards-header">{{item.title}}</h3>
+      <div class="wrapper-businness">
+        <p-card [style]="{width: '100%'}" styleClass="card">
+          <div class="card-business-content">
+            <ng-template pTemplate="header">
+            </ng-template>
+            <h5>{{item.subTitle}}</h5>
+            <p class="business-text">{{item.text}}</p>
+            <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
+            <ng-template pTemplate="footer">
+            </ng-template>
+          </div>
+        </p-card>
+        <div class="image-business-content"><img [src]="aDataActionsPictures[i]?.imgUrl" alt=""></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /3card -->
 <!-- Область с 3 карточками. -->
-<div class="d-flex three-cards">
+<!-- <div class="d-flex three-cards">
   <div class="col-lg-4 card-business" *ngFor="let item of aDataActions">
     <p-card
       class="three-cards-wrapper"
@@ -395,21 +420,20 @@
       styleClass="card"
     >
       <ng-template pTemplate="header">
-        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+  
       </ng-template>
       <p>{{ item.text }}</p>
       <ng-template pTemplate="footer">
-        <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+
         <button class="btn btn-dark">{{ item.buttonText }}</button>
-        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button> -->
+       
       </ng-template>
     </p-card>
   </div>
-</div>
+</div> -->
 
 <!-- Бизнес блог. -->
-<h5 class="garant title-franchise">Бизнес блог</h5>
+<!-- <h5 class="garant title-franchise">Бизнес блог</h5>
 <div class="d-flex popular-list-blog">
   <div class="popular-item-blog" *ngFor="let item of aBlogs">
     <p-card
@@ -443,33 +467,35 @@
           там массу полезной информации.
         </p>
         
-        <!-- <div class="image"> -->
-        
-          <!-- <img src="../../../assets/images/Frame 66.png" height="32" /> -->
-        <!-- </div> -->
+ 
       </div>
       <ng-template pTemplate="footer"> </ng-template>
     </p-card>
   </div>
-</div>
+</div> -->
 
 <!-- Новости делового мира. -->
-<h5 class="garant title-franchise">Новости делового мира</h5>
-<div class="d-flex">
-  <div>
-    <img src="../../../assets/images/Frame 31.png" />
-  </div>
-
-  <div>
-    <div class="news-item" *ngFor="let item of aNews">
-      <img [src]="item.url" />
-      <strong class="news-title">{{ item.name }}</strong>
-      <div class="news-bottom-line">
-        <small>{{ item.time }}</small>
-        <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
-        <small>{{ item.date }}</small>
-        <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
-        <small>{{ item.type }}</small>
+<div class="wrapper-garant">
+  <h5 class="garant title-franchise">Новости делового мира</h5>
+  <div class="d-flex">
+    <div class="garant-pfoto">
+      <img src="../../../../assets/images/Frame__31.jpg" class="garant-img" />
+      <p class="garant-photo-text"></p>
+    </div>
+  
+    <div>
+      <div class="news-item" *ngFor="let item of aNews">
+        <img [src]="item.url" />
+        <strong class="news-title">{{ item.name }}</strong>
+        <div class="news-bottom-line">
+          <small>{{ item.time }}</small>
+          <!-- <img class="ellipse" src="../../../assets/images/Ellipse 13.png" /> -->
+       
+          <small>{{ item.date }}</small>
+          <!-- <img class="ellipse" src="../../../assets/images/Ellipse 13.png" /> -->
+          
+          <small>{{ item.type }}</small>
+        </div>
       </div>
     </div>
   </div>

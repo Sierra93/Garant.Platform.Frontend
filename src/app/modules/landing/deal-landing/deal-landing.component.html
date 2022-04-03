@@ -109,60 +109,13 @@
     </div>
   </div>
 </section>
-<div class="consulting" [ngClass]="{ 'is-xxl': isXxl }">
-  <form class="bg-primary consulting__request">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-9 col-xl-9 col-xxl-9">
-          <div class="alert alert-light consulting__title">Консультация</div>
-          <div class="alert alert-light consulting__subtitle">
-            при покупке бизнеса онлайн
-          </div>
-          <div class="alert alert-light consulting__note">
-            с юристом и консультантами сервиса
-          </div>
-          <div class="mb-3 row">
-            <div class="col-6 consulting__input-field">
-              <label for="userName" class="form-label consulting__input-text"
-                >Имя</label
-              >
-              <input
-                type="text"
-                class="form-control consulting__input"
-                id="userName"
-                placeholder="Введите имя"
-                name="name"
-              />
-            </div>
-            <div class="col-6 consulting__input-field">
-              <label class="form-label consulting__input-text"
-                >Номер телефона</label
-              >
-              <p-inputMask
-                mask="+7(999) 999-99-99"
-                [(ngModel)]="phoneNumber"
-                placeholder="Введите номер телефона"
-              ></p-inputMask>
-            </div>
-            <div class="col-6">
-              <button
-                class="btn btn-primary consulting__submit"
-                (click)="onSendLandingRequestAsync(name, phoneNumber)"
-              >
-                Обратиться за консультацией
-              </button>
-            </div>
-          </div>
-        </div>
-        <img
-          class="img-fluid consulting__assistant"
-          src="../../../../assets/images/deal-landing/template_person6 1.png"
-          alt="Фото консультанта"
-        />
-      </div>
-    </div>
-  </form>
-</div>
+<app-feedback
+  [title]="feedbackTitle"
+  [subtitle]="feedbackSubtitle"
+  [tooltip]="feedbackNote"
+  [imagePath]="feedbackImgPath"
+  [isModify]="feedbackTheme"
+></app-feedback>
 <div class="checklist" [ngClass]="{ 'is-xxl': isXxl }">
   <h5 class="alert alert-light checklist__head">
     4 простых шага для безопасной сделки онлайн
@@ -267,7 +220,9 @@
     </div>
   </div>
 </div>
+<!-- Гарант -->
 <app-garant></app-garant>
+<!-- Наше предложение-->
 <app-business-list></app-business-list>
 <!-- Популярные франшизы -->
 <app-franchise-list></app-franchise-list>
@@ -452,34 +407,7 @@
   </div>
 </div>
 <!-- Бизнес блог. -->
-<div class="business-blog" [ngClass]="{ 'is-xxl': isXxl }">
-  <h5 class="alert alert-light business-blog__title">Бизнес блог</h5>
-  <div class="row">
-    <div
-      class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3"
-      *ngFor="let item of aBlogs"
-    >
-      <div class="card business-blog__content">
-        <div class="card-header business-blog__blog-img">
-          <img
-            [src]="item.url"
-            class="img-fluid business-blog__img"
-            [alt]="item.title"
-          />
-        </div>
-        <div class="card-body business-blog__description">
-          <div class="card-title business-blog__blog-title">
-            {{ item.title }}
-          </div>
-          <div class="card-text business-blog__text"></div>
-          <span class="business-blog__note"
-            >читать ~{{ item.position }} минут</span
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<app-business-blog></app-business-blog>
 <!-- Компонент Новости -->
 <app-news></app-news>
 <!-- Списки категорий -->

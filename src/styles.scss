@@ -58,6 +58,7 @@ $fa-font-path: "~font-awesome/fonts";
     width: 100%;
     display: flex;
     flex-direction: column;
+    padding-top: 10px;
   }
   h5 {
     // max-width: 78%;
@@ -71,7 +72,7 @@ $fa-font-path: "~font-awesome/fonts";
   }
   .business-text {
     font-size: 0.7rem;
-    // height: 84px;
+    height: 84px;
   }
   .btn-dark {
     align-items: flex-end;

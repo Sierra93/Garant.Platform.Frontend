@@ -2,6 +2,7 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "popper.js/dist/popper.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
+import { NgScrollbarModule } from 'ngx-scrollbar-v8';
 import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { BrowserModule, Title } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
@@ -121,6 +122,7 @@ import { PanelModule } from 'primeng/panel';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    NgScrollbarModule,
     BrowserAnimationsModule,
     ButtonModule,
     DialogModule,
@@ -150,7 +152,8 @@ import { PanelModule } from 'primeng/panel';
     NgHttpLoaderModule.forRoot(),
     GarLibModule,
     BlockUIModule,
-    PanelModule
+    PanelModule,
+
   ],
 
   providers: [

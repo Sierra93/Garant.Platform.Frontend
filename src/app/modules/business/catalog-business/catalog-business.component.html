@@ -475,29 +475,42 @@
 </div> -->
 
 <!-- Новости делового мира. -->
-<div class="wrapper-garant">
-  <h5 class="garant title-franchise">Новости делового мира</h5>
-  <div class="d-flex">
-    <div class="garant-pfoto">
+<div class="business__news">
+  <h5 class="business__news-title">Новости делового мира</h5>
+  <div class="left__news">
+    <div class="business__news-photo">
       <img src="../../../../assets/images/Frame__31.jpg" class="garant-img" />
       <p class="garant-photo-text"></p>
     </div>
-  
-    <div>
-      <div class="news-item" *ngFor="let item of aNews">
-        <img [src]="item.url" />
-        <strong class="news-title">{{ item.name }}</strong>
-        <div class="news-bottom-line">
-          <small>{{ item.time }}</small>
-          <!-- <img class="ellipse" src="../../../assets/images/Ellipse 13.png" /> -->
-       
-          <small>{{ item.date }}</small>
-          <!-- <img class="ellipse" src="../../../assets/images/Ellipse 13.png" /> -->
-          
-          <small>{{ item.type }}</small>
+    
+  </div>
+
+  <div class="right__news">
+      <ng-scrollbar>
+      <div class="right_news-text">
+        <div class="ad">
+          <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
+          <p class="ad-text">Открывается новая франшиза кофеен при поддержке СберБанка.</p>
+          <p class="ad-subtitle">12:51 . сегодня . франчайзинг</p>
+        </div>
+        <div class="ad">
+          <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
+          <p class="ad-text">Федеральная сеть магазинов у дома Красное & Белое выходит на IPO.</p>
+          <p class="ad-subtitle">12:51 . сегодня . франчайзинг</p>
+        </div>
+        <div class="ad">
+          <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
+          <p class="ad-text">ЕР сохраняет лидерство в 199 одномандатных округах.</p>
+          <p class="ad-subtitle">12:51 . сегодня . франчайзинг</p>
+        </div>
+        <div class="ad">
+          <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
+          <p class="ad-text">Открывается новая франшиза кофеен при поддержке СберБанка.</p>
+          <p class="ad-subtitle">12:51 . сегодня . франчайзинг</p>
         </div>
       </div>
-    </div>
+     </ng-scrollbar>
+   
   </div>
 </div>
 

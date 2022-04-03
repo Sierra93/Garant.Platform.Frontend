@@ -8,6 +8,7 @@ import { FilterBusinessWithPaginationInput } from 'src/app/models/business/input
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 
+
 @Component({
     selector: "catalog-business",
     templateUrl: "./catalog-business.component.html",
@@ -71,7 +72,7 @@ export class CatalogBusinessModule implements OnInit {
       imgUrl: 'assets/images/slider__3.svg'
     }
   ]
-
+  
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,
@@ -540,5 +541,5 @@ export class CatalogBusinessModule implements OnInit {
             this.router.navigate(["/franchise/start"]);
             return;
         }
-    };
+    };  
 }

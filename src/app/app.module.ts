@@ -86,6 +86,11 @@ import { BusinessListComponent } from './components/business-list/business-list.
 import { InputMaskModule } from 'primeng/inputmask';
 import { GarantComponent } from './components/garant/garant.component';
 import { FranchiseListComponent } from './components/franchise-list/franchise-list.component';
+import { SimpleCardComponent } from './components/simple-card/simple-card.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { BusinessBlogComponent } from './components/business-blog/business-blog.component';
+import { BusinessAdComponent } from './components/business-ad/business-ad.component';
 
 @NgModule({
   declarations: [
@@ -124,6 +129,11 @@ import { FranchiseListComponent } from './components/franchise-list/franchise-li
     BusinessListComponent,
     GarantComponent,
     FranchiseListComponent,
+    SimpleCardComponent,
+    FeedbackComponent,
+    CategoryListComponent,
+    BusinessBlogComponent,
+    BusinessAdComponent,
   ],
 
   entryComponents: [],

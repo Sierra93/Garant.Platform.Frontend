@@ -38,7 +38,6 @@ export class DealLandingModule implements OnInit, DoCheck {
   // filterMaxPrice!: number;
   countTotalPage!: number;
   // countBusinesses!: number;
-  aBlogs: any[] = [];
   categoryList1: any[] = [];
   categoryList2: any[] = [];
   categoryList3: any[] = [];
@@ -54,8 +53,11 @@ export class DealLandingModule implements OnInit, DoCheck {
   responsiveOptions: any[] = [];
   aPopularFranchises: any[] = [];
   isHideBusinessWithGarant: boolean = true;
-  name: string = "";
-  phoneNumber: string = "";
+  feedbackTitle: string = 'Консультация';
+  feedbackSubtitle: string = 'при покупке бизнеса онлайн';
+  feedbackNote: string = 'с юристом и консультантами сервиса';
+  feedbackImgPath: string = '../../../../assets/images/deal-landing/template_person6 1.png';
+  feedbackTheme: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -105,7 +107,6 @@ export class DealLandingModule implements OnInit, DoCheck {
     await this.loadViewBusinessFranchisesListAsync();
     await this.loadPaginationInitAsync();
     await this.GetActionsAsync();
-    await this.GetBlogsAsync();
     await this.GetFranchiseCategoriesAsync();
     await this.GetBusinessCategoriesAsync();
     await this.loadCategoriesListAsync();
@@ -385,29 +386,6 @@ export class DealLandingModule implements OnInit, DoCheck {
   }
 
   /**
-   * Функция получит список блогов.
-   * @returns Список блогов.
-   */
-  private async GetBlogsAsync() {
-    try {
-      await this.http
-        .post(API_URL.apiUrl.concat('/blog/get-blogs'), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log('Список блогов:', response);
-            this.aBlogs = response;
-          },
-
-          error: (err) => {
-            throw new Error(err);
-          },
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
-
-  /**
    * Функция получит список франшиз.
    * @returns Список франшиз.
    */
@@ -539,19 +517,10 @@ export class DealLandingModule implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth > 1400) {
+    if (this.browserScreenWidth > 1200) {
       this.isXxl = true;
     } else {
       this.isXxl = false;
     }
-  }
-
-  public onSendLandingRequestAsync(name: string, phoneNumber: string) {
-    this.requestService
-      .sendLandingRequestAsync(name, phoneNumber, 'Покупка через гарант')
-      .subscribe(() => {
-        this.name = '';
-        this.phoneNumber = '';
-      });
   }
 }

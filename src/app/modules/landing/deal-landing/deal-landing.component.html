@@ -109,6 +109,7 @@
     </div>
   </div>
 </section>
+<!-- Компонент с формой обратной связи -->
 <app-feedback
   [title]="feedbackTitle"
   [subtitle]="feedbackSubtitle"
@@ -116,7 +117,8 @@
   [imagePath]="feedbackImgPath"
   [isModify]="feedbackTheme"
 ></app-feedback>
-<div class="checklist" [ngClass]="{ 'is-xxl': isXxl }">
+<!-- Секция шаги совершения безопасной сделки -->
+<section class="checklist" [ngClass]="{ 'is-xxl': isXxl }">
   <h5 class="alert alert-light checklist__head">
     4 простых шага для безопасной сделки онлайн
   </h5>
@@ -219,7 +221,7 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 <!-- Гарант -->
 <app-garant></app-garant>
 <!-- Наше предложение-->

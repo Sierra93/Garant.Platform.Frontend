@@ -1,0 +1,30 @@
+@import '~normalize.css';
+@import 'fonts';
+@import 'design';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+
+  font-family: Roboto, -apple-system, sans-serif;
+}
+
+.app-container {
+  padding: 0 20px;
+
+ @include tablet-small {
+   width: 768px;
+   padding: 0 24px;
+   margin: auto;
+ }
+
+  @include tablet {
+    width: 1072px;
+  }
+
+  @include desktop {
+    width: 1482px;
+  }
+}

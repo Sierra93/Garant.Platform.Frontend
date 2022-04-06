@@ -173,7 +173,6 @@
     padding: 16px;
   }
 }
-
 ::ng-deep {
   @media all and (min-width: 1201px) {
     .note {
@@ -195,7 +194,6 @@
     }
   }
 }
-
 .consulting {
   position: relative;
   margin-top: 74px;
@@ -273,7 +271,6 @@
     border-radius: 8px;
   }
 }
-
 ::ng-deep {
   @media all and (min-width: 1201px) {
     .consulting {
@@ -299,7 +296,6 @@
     }
   }
 }
-
 .checklist {
   &__head {
     background: transparent;
@@ -355,7 +351,6 @@
     border-radius: 4px;
   }
 }
-
 ::ng-deep {
   @media all and (min-width: 1201px) {
     .checklist {
@@ -378,71 +373,5 @@
         line-height: 21px;
       }
     }
-  }
-}
-
-.category {
-  &__category-item {
-    margin-bottom: 43px;
-  }
-  &__category-title {
-    color: #2c2c2c;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 28px;
-    background: transparent;
-    padding: 0;
-    margin-bottom: 41px;
-    border: none;
-  }
-  &__category-detail {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 18px;
-    color: #2c2c2c;
-    line-height: 21px;
-    background: transparent;
-    padding: 0;
-    margin-bottom: 0;
-    height: 87px;
-    border: none;
-  }
-  &__list-icon {
-    color: #c4c4c4;
-    font-size: 18px;
-    line-height: 21px;
-  }
-  &__redirect {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px;
-    border-radius: 67px;
-    width: 100%;
-    &:hover {
-      background: none;
-    }
-  }
-  &__redirect-text {
-    font-size: 18px;
-    line-height: 21px;
-    color: #1f75fe;
-  }
-  &__redirect-attr {
-    position: relative;
-    display: inline-block;
-    background: #1f75fe;
-    width: 32px;
-    height: 32px;
-    border-radius: 40px;
-  }
-  &__redirect-icon {
-    position: absolute;
-    left: 0;
-    margin-left: 4px;
-    width: 25px;
-    height: 32px;
-    fill: #fff;
   }
 }

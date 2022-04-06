@@ -8,9 +8,10 @@ import { Component, OnInit, DoCheck, HostListener } from '@angular/core';
   styleUrls: ['./business-blog.component.scss']
 })
 export class BusinessBlogComponent implements OnInit, DoCheck {
+  aBlogs: any[] = [];
+
   isXxl!: boolean;
   browserScreenWidth!: number;
-  aBlogs: any[] = [];
 
   constructor(private http: HttpClient) { }
 

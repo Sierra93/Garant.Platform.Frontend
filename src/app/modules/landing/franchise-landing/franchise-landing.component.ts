@@ -23,7 +23,6 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   title: string = '';
   text: string = '';
   aViewBusiness: any[] = [];
-  aBusinessList: any[] = [];
   minPrice!: number;
   maxPrice!: number;
   view: string = '';
@@ -45,7 +44,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   categoryList2: any[] = [];
   categoryList3: any[] = [];
   categoryList4: any[] = [];
-
+  aBusinessList: any[] = [];
   oTopAction: any = {};
   oSuggestion: any = {};
   aNewFranchises: any[] = [];
@@ -126,7 +125,6 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
     this.isXxl = false;
     this.browserScreenWidth = window.screen.width;
     // await this.getPopularBusinessAsync();
-    await this.GetBusinessListAsync();
     await this.loadCitiesFranchisesListAsync();
     await this.loadCategoriesFranchisesListAsync();
     await this.loadViewBusinessFranchisesListAsync();
@@ -363,6 +361,28 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   }
 
   /**
+   * Функция получит список бизнеса.
+   */
+   private async GetBusinessListAsync() {
+    try {
+      await this.http
+        .post(API_URL.apiUrl.concat('/business/catalog-business'), {})
+        .subscribe({
+          next: (response: any) => {
+            console.log('Список бизнеса:', response);
+            this.aBusinessList = response;
+          },
+
+          error: (err) => {
+            throw new Error(err);
+          },
+        });
+    } catch (e: any) {
+      throw new Error(e);
+    }
+  }
+
+  /**
    * Функция получит список проплаченных новостей.
    * @returns Список новостей.
    */
@@ -439,27 +459,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
     }
   }
 
-  /**
-   * Функция получит список бизнеса.
-   */
-  private async GetBusinessListAsync() {
-    try {
-      await this.http
-        .post(API_URL.apiUrl.concat('/business/catalog-business'), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log('Список бизнеса:', response);
-            this.aBusinessList = response;
-          },
-
-          error: (err) => {
-            throw new Error(err);
-          },
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
+  
 
   // private async GetReviewsFranchisesAsync() {
   //     try {

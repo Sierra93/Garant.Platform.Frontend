@@ -8,9 +8,10 @@ import { CommonDataService } from 'src/app/services/common/common-data.service';
 })
 export class FranchiseListComponent implements OnInit {
   aPopularFranchises: any[] = [];
+  responsiveOptions: any[] = [];
+  
   isXxl!: boolean;
   browserScreenWidth!: number;
-  responsiveOptions: any[] = [];
 
   constructor(private commonService: CommonDataService) {
     this.responsiveOptions = [

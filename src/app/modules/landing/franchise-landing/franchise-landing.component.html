@@ -23,16 +23,32 @@
     </div>
   </div>
 </section>
-<section class="survey" [ngClass]="{ 'is-xxl': isXxl }">
-  <div class="row survey__result">
-    <div
-      class="col-lg-3 col-xl-3 col-xxl-3 survey__item"
-      *ngFor="let item of aSurveyPosts"
-    >
-      <app-simple-card
-        [pTitle]="item.title"
-        [pText]="item.text"
-      ></app-simple-card>
+<!-- Секция статистика по достигнутым результатам -->
+<section class="statistics" [ngClass]="{ 'is-xxl': isXxl }">
+  <div class="row statistics__gallery">
+    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+      <app-statistics-card
+        [pTitle]="'80'"
+        [pText]="'франшиз упаковали и создали с нуля'"
+      ></app-statistics-card>
+    </div>
+    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+      <app-statistics-card
+        [pTitle]="'25'"
+        [pText]="'сфер бизнеса проработано за время работы'"
+      ></app-statistics-card>
+    </div>
+    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+      <app-statistics-card
+        [pTitle]="'65 млн'"
+        [pText]="'заработали клиентам после создания франшиз'"
+      ></app-statistics-card>
+    </div>
+    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+      <app-statistics-card
+        [pTitle]="'14'"
+        [pText]="'человек будут работать над вашим проектом'"
+      ></app-statistics-card>
     </div>
   </div>
 </section>

@@ -1,0 +1,56 @@
+<section class="feedback" [ngClass]="{ 'is-xxl': isXxl }">
+  <form
+    class="bg-primary feedback__request"
+    [ngClass]="{ 'bg-dark': isModify }"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-xl-9 col-xxl-9">
+          <div class="alert alert-light feedback__title">{{ title }}</div>
+          <div class="alert alert-light feedback__subtitle">
+            {{ subtitle }}
+          </div>
+          <div class="alert alert-light feedback__note">{{ tooltip }}</div>
+          <div class="mb-3 row">
+            <div class="col-6 feedback__input-field">
+              <label for="userName" class="form-label feedback__input-text"
+                >Имя</label
+              >
+              <input
+                type="text"
+                class="form-control feedback__input"
+                id="userName"
+                placeholder="Введите имя"
+                name="name"
+              />
+            </div>
+            <div class="col-6 feedback__input-field">
+              <label class="form-label feedback__input-text"
+                >Номер телефона</label
+              >
+              <p-inputMask
+                mask="+7(999) 999-99-99"
+                [(ngModel)]="phoneNumber"
+                placeholder="Введите номер телефона"
+              ></p-inputMask>
+            </div>
+            <div class="col-6">
+              <button
+                [ngClass]="{ 'is-prime': isModify }"
+                class="btn btn-primary feedback__submit"
+                (click)="onSendLandingRequestAsync(name, phoneNumber)"
+              >
+                Обратиться за консультацией
+              </button>
+            </div>
+          </div>
+        </div>
+        <img
+          class="img-fluid feedback__assistant"
+          [src]="imagePath"
+          alt="Сооснователь"
+        />
+      </div>
+    </div>
+  </form>
+</section>

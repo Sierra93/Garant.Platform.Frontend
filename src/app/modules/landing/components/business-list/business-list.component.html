@@ -1,0 +1,25 @@
+<div class="choice" [ngClass]="{ 'is-xxl': isXxl }">
+  <div class="row choice__repeat">
+    <div
+      class="col-lg-4 col-xl-4 col-xxl-4 choice__list"
+      *ngFor="let item of aDataActions; let i = index"
+    >
+      <div class="card choice__offer" [ngClass]="{ 'is-alone': i >= 2 }">
+        <div class="card-header choice__service-item">
+          <div class="card-title text-break choice__card">{{ item.title }}</div>
+        </div>
+        <div class="card-body choice__business-action">
+          <div class="card-text text-break choice__subtitle">
+            {{ item.subTitle }}
+          </div>
+          <div class="card-text text-break choice__text">
+            {{ item.text }}
+          </div>
+          <button class="btn btn-primary text-break choice__submit">
+            {{ item.buttonText }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

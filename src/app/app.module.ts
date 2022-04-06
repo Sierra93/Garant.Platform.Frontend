@@ -79,18 +79,18 @@ import { SESSION_TOKEN } from './core/session/session.token';
 import { NotifyService } from './services/notify/notify.service';
 import { PriceFormatPipe } from './core/pipes/priceFormat.pipe';
 import { LandingRequestService } from './modules/landing/services/landing.service';
-import { NewsComponent } from './components/news/news.component';
 import { BlockUIModule } from 'primeng/blockui';
 import { PanelModule } from 'primeng/panel';
-import { BusinessListComponent } from './components/business-list/business-list.component';
 import { InputMaskModule } from 'primeng/inputmask';
-import { GarantComponent } from './components/garant/garant.component';
-import { FranchiseListComponent } from './components/franchise-list/franchise-list.component';
-import { SimpleCardComponent } from './components/simple-card/simple-card.component';
-import { FeedbackComponent } from './components/feedback/feedback.component';
-import { CategoryListComponent } from './components/category-list/category-list.component';
-import { BusinessBlogComponent } from './components/business-blog/business-blog.component';
-import { BusinessAdComponent } from './components/business-ad/business-ad.component';
+import { BusinessAdComponent } from './modules/landing/components/business-ad/business-ad.component';
+import { BusinessBlogComponent } from './modules/landing/components/business-blog/business-blog.component';
+import { BusinessListComponent } from './modules/landing/components/business-list/business-list.component';
+import { CategoryListComponent } from './modules/landing/components/category-list/category-list.component';
+import { FranchiseListComponent } from './modules/landing/components/franchise-list/franchise-list.component';
+import { GarantComponent } from './modules/landing/components/garant/garant.component';
+import { FeedbackComponent } from './modules/landing/components/feedback/feedback.component';
+import { NewsComponent } from './modules/landing/components/news/news.component';
+import { StatisticsCardComponent } from './modules/landing/components/statistics-card/statistics-card.component';
 
 @NgModule({
   declarations: [
@@ -125,15 +125,15 @@ import { BusinessAdComponent } from './components/business-ad/business-ad.compon
     ConfiguratorAuthModule,
     CreateAdModule,
     PriceFormatPipe,
-    NewsComponent,
-    BusinessListComponent,
-    GarantComponent,
-    FranchiseListComponent,
-    SimpleCardComponent,
-    FeedbackComponent,
-    CategoryListComponent,
-    BusinessBlogComponent,
     BusinessAdComponent,
+    BusinessBlogComponent,
+    BusinessListComponent,
+    CategoryListComponent,
+    FranchiseListComponent,
+    GarantComponent,
+    FeedbackComponent,
+    NewsComponent,
+    StatisticsCardComponent
   ],
 
   entryComponents: [],

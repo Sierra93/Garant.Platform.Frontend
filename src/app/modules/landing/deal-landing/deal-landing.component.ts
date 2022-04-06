@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
+import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,7 +8,6 @@ import { API_URL } from 'src/app/core/core-urls/api-url';
 import { FilterInput } from 'src/app/models/franchise/input/filter-franchise-input';
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
-import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { LandingRequestService } from '../services/landing.service';
 
 @Component({
@@ -15,12 +15,15 @@ import { LandingRequestService } from '../services/landing.service';
   templateUrl: './deal-landing.component.html',
   styleUrls: ['./deal-landing.component.scss'],
 })
-export class DealLandingModule implements OnInit {
+export class DealLandingModule implements OnInit, DoCheck {
   aPopularBusiness: any[] = [];
+  isXxl!: boolean;
+  browserScreenWidth!: number;
   // isGarant: boolean = false;
   // aCities: any[] = [];
   // aBusinessCategories: any[] = [];
   aViewBusiness: any[] = [];
+  aBusinessCategories: any[] = [];
   minPrice!: number;
   maxPrice!: number;
   view: string = '';
@@ -29,39 +32,40 @@ export class DealLandingModule implements OnInit {
   selectedCity: string = '';
   // selectedCategory: string = "";
   selectedViewBusiness: string = '';
-  // aBusinessList: any[] = [];
+  aBusinessList: any[] = [];
   selectedSort: any;
   // aSortPrices: any[] = [];
   // filterMinPrice!: number;
   // filterMaxPrice!: number;
   countTotalPage!: number;
   // countBusinesses!: number;
-  aBlogs: any[] = [];
-  aNews: any[] = [];
   categoryList1: any[] = [];
   categoryList2: any[] = [];
   categoryList3: any[] = [];
   categoryList4: any[] = [];
+  aFranchiseCategories: any[] = [];
   aDataActions: any[] = [];
   oTopAction: any = {};
-  oSuggestion: any = {};
   aNewFranchises: any[] = [];
-  responsiveOptions: any[] = [];
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
+  responsiveOptions: any[] = [];
   aPopularFranchises: any[] = [];
   isHideBusinessWithGarant: boolean = true;
-  name: string = "";
-  phoneNumber: string = "";
+  feedbackTitle: string = 'Консультация';
+  feedbackSubtitle: string = 'при покупке бизнеса онлайн';
+  feedbackNote: string = 'с юристом и консультантами сервиса';
+  feedbackImgPath: string = '../../../../assets/images/deal-landing/template_person6 1.png';
+  feedbackTheme: boolean = false;
 
   constructor(
     private http: HttpClient,
-    private commonService: CommonDataService,
     private titleService: Title,
     private router: Router,
     private route: ActivatedRoute,
-    private requestService: LandingRequestService
+    private requestService: LandingRequestService,
+    private commonService: CommonDataService
   ) {
     // this.aSortPrices = [
     //     {
@@ -73,7 +77,6 @@ export class DealLandingModule implements OnInit {
     //         value: "Asc"
     //     }
     // ];
-
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -91,11 +94,12 @@ export class DealLandingModule implements OnInit {
         numScroll: 1,
       },
     ];
-
     this.routeParam = this.route.snapshot.queryParams.businessId;
   }
 
-  public async ngOnInit() {
+  public async ngOnInit(): Promise<void> {
+    this.isXxl = false;
+    this.browserScreenWidth = window.screen.width;
     // await this.getPopularBusinessAsync();
     await this.GetBusinessListAsync();
     await this.loadCitiesFranchisesListAsync();
@@ -103,13 +107,13 @@ export class DealLandingModule implements OnInit {
     await this.loadViewBusinessFranchisesListAsync();
     await this.loadPaginationInitAsync();
     await this.GetActionsAsync();
-    await this.GetBlogsAsync();
-    await this.GetNewsTopAsync();
     await this.loadCategoriesListAsync();
-    await this.loadSingleSuggestionAsync();
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
-    await this.getPopularAsync();
+  }
+
+  public ngDoCheck(): void {
+    this.defineResize();
   }
 
   /**
@@ -131,7 +135,7 @@ export class DealLandingModule implements OnInit {
 
   /**
    * Функция отфильтрует список бизнеса по фильтрам.
-   * @param viewCode - Код вида бизнеса.
+   * @ploram viewCode - Код вида бизнеса.
    * @param categoryCode - Код категории бизнеса.
    * @param cityCode - Город бизнеса.
    * @param minPrice - Цена от.
@@ -173,7 +177,7 @@ export class DealLandingModule implements OnInit {
         .subscribe({
           next: (response: any) => {
             console.log('Список бизнеса:', response);
-            // this.aBusinessList = response;
+            this.aBusinessList = response;
           },
 
           error: (err) => {
@@ -219,7 +223,7 @@ export class DealLandingModule implements OnInit {
         .subscribe({
           next: (response: any) => {
             console.log('Список категорий бизнеса:', response);
-            // this.aBusinessCategories = response;
+            this.aBusinessCategories = response;
           },
 
           error: (err) => {
@@ -353,7 +357,6 @@ export class DealLandingModule implements OnInit {
   public async onClearFilters() {
     await this.GetBusinessListAsync();
   }
-
   /**
    * Функция получит данные для блока событий.
    */
@@ -378,53 +381,6 @@ export class DealLandingModule implements OnInit {
       throw new Error(e);
     }
   }
-
-  /**
-   * Функция получит список блогов.
-   * @returns Список блогов.
-   */
-  private async GetBlogsAsync() {
-    try {
-      await this.http
-        .post(API_URL.apiUrl.concat('/blog/main-blogs'), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log('Список блогов:', response);
-            this.aBlogs = response;
-          },
-
-          error: (err) => {
-            throw new Error(err);
-          },
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
-
-  /**
-   * Функция получит список проплаченных новостей.
-   * @returns Список новостей.
-   */
-  private async GetNewsTopAsync() {
-    try {
-      await this.http
-        .post(API_URL.apiUrl.concat('/blog/get-news'), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log('Список новостей:', response);
-            this.aNews = response;
-          },
-
-          error: (err) => {
-            throw new Error(err);
-          },
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
-
   /**
    * Функция получит список категорий.
    * @returns Список категорий.
@@ -436,20 +392,6 @@ export class DealLandingModule implements OnInit {
         this.categoryList2 = data.resultCol2;
         this.categoryList3 = data.resultCol3;
         this.categoryList4 = data.resultCol4;
-      });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
-
-  /**
-   * Функция получит одно предложение с флагом IsSingle.
-   * @returns данные предложения.
-   */
-  private async loadSingleSuggestionAsync() {
-    try {
-      await this.commonService.loadSingleSuggestionAsync().then((data: any) => {
-        this.oSuggestion = data;
       });
     } catch (e: any) {
       throw new Error(e);
@@ -523,26 +465,13 @@ export class DealLandingModule implements OnInit {
       queryParams: { businessId: businessId },
     });
   }
-
-  /**
-   * Функция получит список популярныз франшиз.
-   * @returns Список франшиз.
-   */
-  private async getPopularAsync() {
-    try {
-      await this.commonService.getPopularAsync().then((data: any) => {
-        console.log('Популярные франшизы:', data);
-        this.aPopularFranchises = data;
-      });
-    } catch (e: any) {
-      throw new Error(e);
+  @HostListener('window:resize', ['$event'])
+  private defineResize() {
+    this.browserScreenWidth = window.screen.width;
+    if (this.browserScreenWidth > 1200) {
+      this.isXxl = true;
+    } else {
+      this.isXxl = false;
     }
-  }
-
-  public onSendLandingRequestAsync(name: string, phoneNumber: string) {
-    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Покупка через гарант").subscribe(()=> {
-      this.name = '';
-      this.phoneNumber = ''
-    });
   }
 }

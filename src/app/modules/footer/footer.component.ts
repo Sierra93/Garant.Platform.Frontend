@@ -19,6 +19,8 @@ export class FooterModule implements OnInit {
   aFooterColumn3: any[] = [];
   aFooterColumn4: any[] = [];
   tabletStart: boolean = false;
+  isXxl!: boolean;
+  browserScreenWidth!: number;
 
   constructor(
     private router: Router,
@@ -29,6 +31,9 @@ export class FooterModule implements OnInit {
   public async ngOnInit() {
     await this.initFooter();
   }
+  public ngDoCheck(): void {
+    this.defineResize();
+  }
 
   @HostListener('window:resize', ['$event'])
   @HostListener('window:load', ['$event'])
@@ -37,6 +42,16 @@ export class FooterModule implements OnInit {
       this.tabletStart = true;
     } else {
       this.tabletStart = false;
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  private defineResize() {
+    this.browserScreenWidth = window.screen.width;
+    if (this.browserScreenWidth > 1400) {
+      this.isXxl = true;
+    } else {
+      this.isXxl = false;
     }
   }
 

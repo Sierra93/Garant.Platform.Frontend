@@ -1,0 +1,53 @@
+.business-blog {
+  &__title {
+    background: transparent;
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+    font-size: 1.67vw;
+    line-height: 28px;
+    color: #2c2c2c;
+  }
+  &__content {
+    border: none;
+  }
+  &__blog-img {
+    padding: 0;
+    border: none;
+  }
+  &__img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  &__blog-title {
+    font-size: 1.25vw;
+    line-height: 21px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    background: #ffdf37;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+  }
+  &__note {
+    font-size: 0.83vw;
+    line-height: 14px;
+    color: #646464;
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 1201px) {
+    .business-blog {
+      &.is-xxl &__title {
+        font-size: 24px;
+      }
+      &.is-xxl &__blog-title {
+        font-size: 18px;
+      }
+      &.is-xxl &__note {
+        font-size: 12px;
+      }
+    }
+  }
+}

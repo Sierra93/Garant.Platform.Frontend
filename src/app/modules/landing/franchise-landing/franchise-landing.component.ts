@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, HostListener, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,11 +15,13 @@ import { LandingRequestService } from '../services/landing.service';
   templateUrl: './franchise-landing.component.html',
   styleUrls: ['./franchise-landing.component.scss'],
 })
-export class FranchiseLandingModule implements OnInit {
+export class FranchiseLandingModule implements OnInit, DoCheck {
   aPopularBusiness: any[] = [];
   // isGarant: boolean = false;
   // aCities: any[] = [];
   // aBusinessCategories: any[] = [];
+  title: string = '';
+  text: string = '';
   aViewBusiness: any[] = [];
   minPrice!: number;
   maxPrice!: number;
@@ -36,23 +38,29 @@ export class FranchiseLandingModule implements OnInit {
   // filterMaxPrice!: number;
   countTotalPage!: number;
   // countBusinesses!: number;
-  aBlogs: any[] = [];
+  aBlogs: any[] = []; //
   aNews: any[] = [];
   categoryList1: any[] = [];
   categoryList2: any[] = [];
   categoryList3: any[] = [];
   categoryList4: any[] = [];
-  aDataActions: any[] = [];
+  aBusinessList: any[] = [];
   oTopAction: any = {};
   oSuggestion: any = {};
   aNewFranchises: any[] = [];
   responsiveOptions: any[] = [];
+  aSurveyPosts: any[] = [];
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
+  isXxl!: boolean;
+  browserScreenWidth!: number;
   isHideBusinessWithGarant: boolean = true;
-  name: string = '';
-  phoneNumber: string = '';
+  feedbackTitle: string = 'Азамат Булатов';
+  feedbackSubtitle: string = 'сооснователь проекта';
+  feedbackNote: string = 'Лично ответственный за каждую упакованную франшизу';
+  feedbackImgPath: string = '../../../../assets/images/franchise-landing/template_person6 1.png';
+  feedbackTheme: boolean = true;
 
   constructor(
     private http: HttpClient,
@@ -91,23 +99,45 @@ export class FranchiseLandingModule implements OnInit {
       },
     ];
 
+    this.aSurveyPosts = [
+      {
+        title: '80',
+        text: 'франшиз упаковали и создали с нуля',
+      },
+      {
+        title: '25',
+        text: 'сфер бизнеса проработано за время работы',
+      },
+      {
+        title: '65 млн',
+        text: 'заработали клиентам после создания франшиз',
+      },
+      {
+        title: '14',
+        text: 'человек будут работать над вашим проектом',
+      },
+    ];
+
     this.routeParam = this.route.snapshot.queryParams.businessId;
   }
 
   public async ngOnInit() {
+    this.isXxl = false;
+    this.browserScreenWidth = window.screen.width;
     // await this.getPopularBusinessAsync();
-    await this.GetBusinessListAsync();
     await this.loadCitiesFranchisesListAsync();
     await this.loadCategoriesFranchisesListAsync();
     await this.loadViewBusinessFranchisesListAsync();
     await this.loadPaginationInitAsync();
-    await this.GetActionsAsync();
-    await this.GetBlogsAsync();
     await this.GetNewsTopAsync();
     await this.loadCategoriesListAsync();
     await this.loadSingleSuggestionAsync();
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
+  }
+
+  public ngDoCheck(): void {
+    this.defineResize();
   }
 
   /**
@@ -150,28 +180,6 @@ export class FranchiseLandingModule implements OnInit {
           next: (response: any) => {
             console.log('Отфильтрованный список франшиз:', response);
             // this.aFranchises = response;
-          },
-
-          error: (err) => {
-            throw new Error(err);
-          },
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
-
-  /**
-   * Функция получит список бизнеса.
-   */
-  private async GetBusinessListAsync() {
-    try {
-      await this.http
-        .post(API_URL.apiUrl.concat('/business/catalog-business'), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log('Список бизнеса:', response);
-            // this.aBusinessList = response;
           },
 
           error: (err) => {
@@ -353,42 +361,16 @@ export class FranchiseLandingModule implements OnInit {
   }
 
   /**
-   * Функция получит данные для блока событий.
+   * Функция получит список бизнеса.
    */
-  private async GetActionsAsync() {
+   private async GetBusinessListAsync() {
     try {
       await this.http
-        .post(API_URL.apiUrl.concat('/main/actions'), {})
+        .post(API_URL.apiUrl.concat('/business/catalog-business'), {})
         .subscribe({
           next: (response: any) => {
-            console.log('Блок событий:', response);
-            this.aDataActions = response.filter((el: any) => el.isTop == false);
-
-            // this.oTopAction = this.aDataActions.filter(el => el.isTop == true)[0];
-            // console.log("oTopAction",this.oTopAction);
-          },
-
-          error: (err) => {
-            throw new Error(err);
-          },
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
-
-  /**
-   * Функция получит список блогов.
-   * @returns Список блогов.
-   */
-  private async GetBlogsAsync() {
-    try {
-      await this.http
-        .post(API_URL.apiUrl.concat('/blog/main-blogs'), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log('Список блогов:', response);
-            this.aBlogs = response;
+            console.log('Список бизнеса:', response);
+            this.aBusinessList = response;
           },
 
           error: (err) => {
@@ -477,6 +459,8 @@ export class FranchiseLandingModule implements OnInit {
     }
   }
 
+  
+
   // private async GetReviewsFranchisesAsync() {
   //     try {
   //         await this.http.post(API_URL.apiUrl.concat("/franchise/review"), {})
@@ -511,21 +495,23 @@ export class FranchiseLandingModule implements OnInit {
       throw new Error(e);
     }
   }
-
   /**
    * Функция перейдет к просмотру карточки бизнеса.
    */
   public async routeViewFranchiseCardAsync(businessId: number) {
     await this.setTransitionAsync(businessId);
     this.router.navigate(['/business/view'], {
-      queryParams: {businessId: businessId},
+      queryParams: { businessId: businessId },
     });
   }
 
- public onSendLandingRequestAsync(name: string, phoneNumber: string) {
-    this.requestService.sendLandingRequestAsync(name, phoneNumber, "Упаковка франшиз").subscribe(() => {
-      this.name = '';
-      this.phoneNumber = ''
-    });
+  @HostListener('window:resize', ['$event'])
+  private defineResize() {
+    this.browserScreenWidth = window.screen.width;
+    if (this.browserScreenWidth > 1200) {
+      this.isXxl = true;
+    } else {
+      this.isXxl = false;
+    }
   }
 }

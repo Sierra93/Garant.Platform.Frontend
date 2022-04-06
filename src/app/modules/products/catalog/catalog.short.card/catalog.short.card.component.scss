@@ -1,0 +1,19 @@
+@import 'design';
+
+:host {
+  .image-container {
+    height: 162px;
+    display: flex;
+    > img {
+      width: 100%;
+      //TODO: уточнить, как картинку вмещать, или резиновый контейнер
+      object-fit: cover;
+      border-radius: #{$border-radius-card}px #{$border-radius-card}px 0 0;
+    }
+  }
+  & gar-icon {
+    fill: $clrMidGray;
+    height: 16px;
+    width: 8px;
+  }
+}

@@ -43,7 +43,7 @@ export class FooterModule implements OnInit {
   @HostListener('window:load', ['$event'])
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.isMobile = window.innerWidth < 768 ? true : false;
+    this.isMobile = window.innerWidth < 768;
   }
 
 

@@ -1,13 +1,13 @@
 .choice {
   margin-top: 74px;
   &__card {
-    font-size: 1.25vw;
+    font-size: 24px;
     line-height: 28px;
     margin-bottom: 0;
     color: #2c2c2c;
   }
   &__subtitle {
-    font-size: 0.94vw;
+    font-size: 18px;
     color: #2c2c2c;
     font-weight: 600;
     line-height: 21px;
@@ -32,35 +32,16 @@
     border-radius: 8px;
   }
   &__text {
-    font-size: 0.73vw;
+    font-size: 14px;
     line-height: 16px;
     margin-bottom: 51px;
     color: #7a7a7a;
     height: 68px;
   }
   &__submit {
-    font-size: 0.94vw;
+    font-size: 18px;
     line-height: 21px;
     padding: 16px;
     border-radius: 4px;
-  }
-}
-
-::ng-deep {
-  @media all and (min-width: 1201px) {
-    .choice {
-      &.is-xxl &__card {
-        font-size: 24px;
-      }
-      &.is-xxl &__subtitle {
-        font-size: 18px;
-      }
-      &.is-xxl &__text {
-        font-size: 14px;
-      }
-      &.is-xxl &__submit {
-        font-size: 18px;
-      }
-    }
   }
 }

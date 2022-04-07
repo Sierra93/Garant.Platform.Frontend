@@ -4,7 +4,7 @@
     padding-top: 0;
     padding-left: 0;
     padding-bottom: 0;
-    font-size: 1.67vw;
+    font-size: 24px;
     line-height: 28px;
     color: #2c2c2c;
   }
@@ -20,7 +20,7 @@
     border-radius: 8px;
   }
   &__blog-title {
-    font-size: 1.25vw;
+    font-size: 18px;
     line-height: 21px;
     margin-bottom: 16px;
     font-weight: 600;
@@ -30,24 +30,8 @@
     box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
   }
   &__note {
-    font-size: 0.83vw;
+    font-size: 12px;
     line-height: 14px;
     color: #646464;
-  }
-}
-
-::ng-deep {
-  @media all and (min-width: 1201px) {
-    .business-blog {
-      &.is-xxl &__title {
-        font-size: 24px;
-      }
-      &.is-xxl &__blog-title {
-        font-size: 18px;
-      }
-      &.is-xxl &__note {
-        font-size: 12px;
-      }
-    }
   }
 }

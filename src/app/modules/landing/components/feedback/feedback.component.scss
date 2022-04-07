@@ -13,21 +13,21 @@
     padding: 0;
   }
   &__title {
-    font-size: 5vw;
+    font-size: 96px;
     line-height: 112px;
     color: #fff;
     margin-bottom: 16px;
     font-weight: 700;
   }
   &__subtitle {
-    font-size: 3.18vw;
+    font-size: 60px;
     line-height: 75px;
     color: #fff;
     margin-bottom: 16px;
     font-weight: 700;
   }
   &__note {
-    font-size: 1.25vw;
+    font-size: 24px;
     line-height: 28px;
     color: #dadada;
     margin-bottom: 48px;
@@ -39,7 +39,7 @@
   }
   &__input-text {
     color: #dadada;
-    font-size: 0.63vw;
+    font-size: 12px;
     line-height: 14px;
   }
   &__input {
@@ -84,24 +84,8 @@
 ::ng-deep {
   @media all and (min-width: 1201px) {
     .feedback {
-      &.is-xxl &__title {
-        font-size: 96px;
-        line-height: 112px;
-      }
-      &.is-xxl &__subtitle {
-        font-size: 60px;
-        line-height: 75px;
-      }
-      &.is-xxl &__note {
-        font-size: 24px;
-        line-height: 28px;
-      }
       &.is-xxl &__input-field {
         max-width: 295px;
-      }
-      &.is-xxl &__input-text {
-        font-size: 12px;
-        line-height: 14px;
       }
     }
   }

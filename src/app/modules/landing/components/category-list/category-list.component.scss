@@ -61,20 +61,6 @@
     width: 25px;
     height: 32px;
     fill: #fff;
-  }
-}
-
-::ng-deep {
-  @media all and (min-width: 1201px) {
-    .category {
-      &.is-xxl &__category-title {
-        font-size: 24px;
-      }
-      &.is-xxl &__category-detail,
-      &.is-xxl &__list-icon,
-      &.is-xxl &__redirect-icon {
-        font-size: 18px;
-      }
-    }
+    font-size: 18px;
   }
 }

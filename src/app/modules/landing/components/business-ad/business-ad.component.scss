@@ -1,7 +1,7 @@
 .business-ad {
   margin-bottom: 74px;
   &__title {
-    font-size: 1.67vw;
+    font-size: 24px;
     line-height: 28px;
     color: #000;
     padding-top: 0;
@@ -53,7 +53,7 @@
   }
   &__text {
     font-weight: 600;
-    font-size: 1.25vw;
+    font-size: 18px;
     line-height: 21px;
     color: #2c2c2c;
     margin-bottom: 8px;
@@ -61,7 +61,7 @@
   &__tooltip {
     display: inline-block;
     color: #7a7a7a;
-    font-size: 0.83vw;
+    font-size: 12px;
     line-height: 14px;
     margin-bottom: 20px;
   }
@@ -71,27 +71,8 @@
   }
   &__price {
     color: #2c2c2c;
-    font-size: 1.25vw;
+    font-size: 18px;
     line-height: 21px;
     font-weight: 600;
-  }
-}
-
-::ng-deep {
-  @media all and (min-width: 1201px) {
-    .business-ad {
-      &.is-xxl &__title {
-        font-size: 24px;
-      }
-      &.is-xxl &__text {
-        font-size: 18px;
-      }
-      &.is-xxl &__tooltip {
-        font-size: 12px;
-      }
-      &.is-xxl &__price {
-        font-size: 18px;
-      }
-    }
   }
 }

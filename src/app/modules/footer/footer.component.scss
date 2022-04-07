@@ -28,8 +28,6 @@
         display: block;
         width: $logoWidth;
         height: $logoHeight;
-        // remove after sprite loader ready
-        background-color: $clrMidGray;
 
         &-pic {
             width: $logoWidth;
@@ -59,8 +57,6 @@
             width: 40px;
             height: 40px;
             fill: $clrMidGray;
-            // remove after sprite loader ready
-            background-color: $clrMidGray;
 
             &_telegram {
                 &:hover {
@@ -181,8 +177,6 @@
                 width: 9px;
                 height: 16px;
 
-                fill: $clrMidGray;
-                // remove when sprites ready
                 background-color: $clrMidGray;
                 transform: translateY(-50%);
 

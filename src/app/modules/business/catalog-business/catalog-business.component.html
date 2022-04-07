@@ -50,19 +50,19 @@
           <img class="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
             <div class="image-blog-text">
             <div class="text-blog">Как понять франчайзинг?</div>
-            <div class="subtitle-text">читать ~5 минут &bull; опубликовано 3 февраля</div>
+            <div class="subtitle-text">читать ~5 минут <div class="d1"></div> опубликовано 3 февраля</div>
             </div> 
           </div>
          <div class="image-blog"> 
                   <img class="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
                   <div class="image-blog-text">
                   <div class="text-blog">Бизнес или работа на “дядю”?</div>
-                <div class="subtitle-text">читать ~7 минут &bull; опубликовано 20 февраля</div>
+                <div class="subtitle-text">читать ~7 минут <div class="d1"></div> опубликовано 20 февраля</div>
           </div>
           </div>
           <div class="image-blog image-blog-three"> <img class="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
                   <div class="image-blog-text"><div class="text-blog">Так ли жестока налоговая?</div>
-                  <div class="subtitle-text">читать ~11 минут &bull; опубликовано 25 февраля</div>
+                  <div class="subtitle-text">читать ~11 минут <div class="d1"></div> опубликовано 25 февраля</div>
                 </div>
           </div>
         <!-- </div> -->
@@ -480,34 +480,61 @@
   <div class="left__news">
     <div class="business__news-photo">
       <img src="../../../../assets/images/Frame__31.jpg" class="garant-img" />
-      <p class="garant-photo-text"></p>
+      <button pButton pRipple type="button" label="Рекламный блок" class="news-photo-btn" ></button>
+      <p class="news__photo-text">Здесь может быть реклама или блок с вложенностью актуальных бизнесов,
+      например. Также может быть “новость - хедлайнер” с фотографией на фоне</p>
     </div>
     
   </div>
 
   <div class="right__news">
-      <ng-scrollbar>
+      <ng-scrollbar [invertY]="true" barClass="scrollbar" thumbClass="scrollbar-thumbs">
       <div class="right_news-text">
-        <div class="ad">
-          <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
-          <p class="ad-text">Открывается новая франшиза кофеен при поддержке СберБанка.</p>
-          <p class="ad-subtitle">12:51 . сегодня . франчайзинг</p>
+        <div class="ad-block">
+            <div class="ad-block-row"><img src="../../../../assets/images/business_news-fire (2).svg" alt="">
+              <p class="ad-text">Открывается новая франшиза кофеен при поддержке СберБанка.</p>
+              <p-button styleClass="p-button-link"><img src="../../../../assets/images/arrow-detail.svg" alt=""></p-button>
+            </div>
+              <span class="ad-subtitle">12:51 <div class="d1"></div> сегодня <div class="d1"></div> франчайзинг</span>
         </div>
-        <div class="ad">
-          <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
-          <p class="ad-text">Федеральная сеть магазинов у дома Красное & Белое выходит на IPO.</p>
-          <p class="ad-subtitle">12:51 . сегодня . франчайзинг</p>
+        <hr>
+        <div class="ad-block">
+           <div class="ad-block-row">
+            <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
+            <h4 class="ad-text">Федеральная сеть магазинов у дома Красное & Белое выходит на IPO.</h4>
+            <p-button styleClass="p-button-link"><img src="../../../../assets/images/arrow-detail.svg" alt=""></p-button>
+           </div>
+          <span class="ad-subtitle">19:30 <div class="d1"></div> сегодня <div class="d1"></div> инвестиции</span>
         </div>
-        <div class="ad">
-          <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
-          <p class="ad-text">ЕР сохраняет лидерство в 199 одномандатных округах.</p>
-          <p class="ad-subtitle">12:51 . сегодня . франчайзинг</p>
+        <hr>
+        <div class="ad-block">
+          <div class="ad-block-row">
+            <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
+            <h4 class="ad-text">ЕР сохраняет лидерство в 199 одномандатных округах.</h4>
+            <p-button styleClass="p-button-link"><img src="../../../../assets/images/arrow-detail.svg" alt=""></p-button>
+          </div>
+          <span class="ad-subtitle">08:44 <div class="d1"></div>сегодня <div class="d1"></div> правительство</span  >
         </div>
-        <div class="ad">
-          <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
-          <p class="ad-text">Открывается новая франшиза кофеен при поддержке СберБанка.</p>
-          <p class="ad-subtitle">12:51 . сегодня . франчайзинг</p>
+        <hr>
+        <div class="ad-block">
+          <div class="ad-block-row">
+            <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
+            <h4 class="ad-text">Открывается новая франшиза кофеен при поддержке СберБанка.</h4>
+            <p-button styleClass="p-button-link"><img src="../../../../assets/images/arrow-detail.svg" alt=""></p-button>
+          </div>
+          <span class="ad-subtitle">21:32 <div class="d1"></div> вчера <div class="d1"></div> бизнес</span>
         </div>
+        <hr>
+
+          <div class="ad-block">
+            <div class="ad-block-row">
+              <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
+              <h4 class="ad-text">Открывается новая франшиза кофеен при поддержке СберБанка.</h4>
+              <p-button styleClass="p-button-link"><img src="../../../../assets/images/arrow-detail.svg" alt=""></p-button>
+            </div>
+            <span class="ad-subtitle">12:51 <div class="d1"></div> сегодня <div class="d1"></div> франчайзинг</span>
+          </div>
+
       </div>
      </ng-scrollbar>
    
@@ -537,7 +564,7 @@
 
       <!-- 2 столбец -->
       <div class="col-6">
-        <!-- <div class="garant">&nbsp;</div> -->
+    
         <div class="category-item" *ngFor="let item of categoryList2">
           <img class="space-right-image-category" [src]="item.url" />
           <span class="category-text">{{ item.name }}</span>
@@ -570,7 +597,6 @@
 
       <!-- 4 столбец -->
       <div class="col-6">
-        <!-- <div class="garant">&nbsp;</div> -->
         <div class="category-item" *ngFor="let item of categoryList4">
           <img class="space-right-image-category" [src]="item.url" />
           <span class="category-text">{{ item.name }}</span>

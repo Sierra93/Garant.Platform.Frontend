@@ -18,11 +18,11 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
-    color: #7a7a7a;
+    // color: #7a7a7a;
   }
   .d-flex {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     // gap: 24px;
   }
   .wrapper-business {
@@ -93,7 +93,54 @@
     font-size: 15px;
     padding: 5px;
   }
-
+  
+  .right_news-text {
+    padding: 0;
+    margin: 0;
+    max-height: 391px;
+  }
+  .ad-block {
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-between;
+  
+  }
+  .ad-block-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+  .ad-text {
+    display: flex;
+    align-items: center;
+    flex-grow: 2;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000; 
+   margin-left: 8px;
+  }
+  .arrow-detail {
+    width: 2px;
+  }
+  .ad-subtitle {
+    display: flex;
+    width: 100%;
+    padding-left: 3px;
+    margin-top: -8px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;   
+    color: #646464;
+  }
   .title-franchise {
     font-family: "Roboto", sans-serif;
     font-size: 1.5rem;
@@ -352,15 +399,12 @@
   }
 
   ::ng-deep .p-card {
-    //width: 331.33px !important;
-    //height: 359px !important;
-    //border-radius: 4px !important;
+
     box-shadow: none;
     border:none;
 
     &-header {
-      //width: 331.33px !important;
-      // height: 162px;
+
       margin-bottom: 16px;
 
       img {
@@ -419,7 +463,7 @@
     &-header {
       position: relative !important;
       display: block !important;
-      width: 1392px !important;
+      max-width: 1392px !important;
       font-family: "Roboto", sans-serif !important;
       // font-size: 1.125rem !important;
       font-weight: 400 !important;
@@ -826,6 +870,7 @@
   padding-top: 10px;
 }
 .subtitle-text {
+  display: flex;
   width: 100%;
   height: 14px;
   font-family: "Roboto";
@@ -868,6 +913,7 @@
   .control-quick-search {
     width: 88%;
   }
+
 }
 .p-dropdown-clearable {
   width: 100%;
@@ -931,6 +977,7 @@
 
 ::ng-deep .more-articles {
   width: 25%;
+  padding: 10px;
   background: #f1f6ff;
   padding-top: 30px;
   border-radius: 8px;
@@ -989,8 +1036,8 @@
   border: none;
   background-color: #F1F6FF;
 }
+// Новости бизнесса 
 .business__news {
-  border: 1px solid black;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -1000,6 +1047,7 @@
   &-photo {
     position: relative;
     width: 100%;
+    height: 100%;
   }
 }
 .left__news {
@@ -1007,21 +1055,59 @@
   margin-right: 10p47
 }
 .right__news {
+  display: flex;
   width: 49%;
   background: #FFFFFF;
   box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
-  height: 200px;
+  
+ 
 }
 .garant-img {
   width: 100%;
+  border-radius: 5px;
+  object-fit: revert;
+  height: 100%;
+}
+.news__photo-text {
+  position: absolute;
+  max-width: 618px;
+  height: 48.19px;
+  left: 0px;
+  top: 83%;
+  background: rgba(44, 44, 44, 0.85);
+  border-radius: 4px;
+  margin-left: 24px;
+  padding: 8px;
+  color: #FFFFFF;
+}
+.news-photo-btn {
+  position: absolute;
+  width: 180px;
+  height: 40px;
+  margin-left: 24px;
+  left: 0px;
+  top: 70%;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
 }
 .business_news-title
 .more-articles-content {
   padding: 10px;
-
+ 
 }
-
+@media (min-width: 1201px) and (max-width: 1440px) {
+  .news-photo-btn {
+    top: 270px;
+  }  
+  .news__photo-text {
+    top: 330px;
+  }
+}
 
 @media (min-width: 981px) and (max-width: 1200px) {
 .block-catalog {
@@ -1040,6 +1126,7 @@
 .image-blog {
   width: 32%;
   margin: 0;
+  margin-right: 24px;
   .image-blog-img {
     object-fit: cover;
     border-radius: 4px;
@@ -1057,17 +1144,55 @@
 .text-blog {
   font-size: 16px;
 }
+
 }
-@media (min-width: 460px) and (max-width: 980px) {
+@media (min-width: 360px) and (max-width: 980px) {
+.app-container {
+  width: 90%;
+  margin: auto;
+}
 .block-catalog {
   .popular-list {
     .popular-item {
-      width: 49%;
+      width: 33%;
       padding: 16px 11px;
     }
   }
 }
 
+.left__news {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.left__news {
+  min-height: 402px;
+}
+.garant-img {
+  object-fit: cover;
+}
+.news-photo-btn {
+  top: 63%;
+}
+.right__news {
+  width: 100%;
+}
+.news__photo-text {
+  max-width: 312px;
+  height: 81.19px;
+  left: 0px;
+  top: 76%;
+}
+// @media (max-width: 459px) {
+  
+//   .left__news {
+//     width: 100%;
+//     margin-bottom: 16px;
+//   }
+  
+//   .right__news {
+//     width: 100%;
+//   }
+// }
 .d-flex {
   .catalog-business__filter {
 
@@ -1110,6 +1235,7 @@
     border-radius: 4px;
   }
 }
+
 .more-articles {
   width: 22%;
 
@@ -1143,3 +1269,26 @@
   display: none;
 }
 }
+.d1 {
+  width: 4px;
+  height: 4px;
+  background: #83A7C9;
+  border-radius: 50%;
+  margin: auto 5px;
+}
+::ng-deep {
+  ng-scrollbar.scrollbar {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+  }
+
+  ng-scrollbar.scrollbar-thumbs {
+    background-color: rgba(161, 27, 27, 0.4);
+
+    &:hover,
+    &:active {
+      background-color: #ffffff;
+    }
+  }
+}
+

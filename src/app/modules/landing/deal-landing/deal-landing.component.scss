@@ -27,17 +27,17 @@
     padding: 0;
   }
   &__title {
-    font-size: 5vw;
+    font-size: 96px;
     line-height: 112.5px;
     margin-bottom: 8px;
   }
   &__business {
-    font-size: 3.33vw;
+    font-size: 64px;
     line-height: 75px;
     margin-bottom: 16px;
   }
   &__franchise {
-    font-size: 1.25vw;
+    font-size: 24px;
     line-height: 28px;
     margin-bottom: 52px;
     color: #7a7a7a;
@@ -50,26 +50,7 @@
   }
 }
 
-::ng-deep {
-  @media all and (min-width: 1201px) {
-    .deal {
-      &.is-xxl &__title {
-        font-size: 96px;
-        line-height: 112px;
-      }
-      &.is-xxl &__business {
-        font-size: 64px;
-        line-height: 75px;
-      }
-      &.is-xxl &__franchise {
-        font-size: 24px;
-        line-height: 28px;
-      }
-    }
-  }
-}
-
-.survey {
+.statistics {
   margin-top: 16px;
   &__item {
     & ::ng-deep .p-panel {
@@ -82,38 +63,16 @@
         padding-top: 64px;
         padding-bottom: 16px;
         & .p-panel-title {
-          font-size: 4.32vw;
+          font-size: 3.62vw;
         }
       }
       & .p-panel-content {
         border: none;
-        font-size: 1.25vw;
         text-align: center;
         background: #f5f8fa;
         border-bottom-left-radius: 24px;
         border-bottom-right-radius: 24px;
-        color: #7a7a7a;
-        padding-top: 0;
-        padding-bottom: 64px;
-      }
-    }
-  }
-}
-
-::ng-deep {
-  @media all and (min-width: 1201px) {
-    .survey {
-      &.is-xxl &__item {
-        & ::ng-deep .p-panel {
-          & .p-panel-header {
-            & .p-panel-title {
-              font-size: 3.62vw;
-            }
-          }
-          & .p-panel-content {
-            font-size: 21px;
-          }
-        }
+        padding: 0 0 64px;
       }
     }
   }
@@ -126,7 +85,7 @@
     padding-left: 0;
     padding-bottom: 0;
     margin-bottom: 32px;
-    font-size: 1.25vw;
+    font-size: 24px;
     line-height: 28px;
     color: #2c2c2c;
   }
@@ -157,13 +116,13 @@
     margin: 0 -20px 7px 10px;
   }
   &__text-title {
-    font-size: 0.94vw;
+    font-size: 18px;
     line-height: 21px;
     font-weight: 500;
     margin-bottom: 16px;
   }
   &__content-item {
-    font-size: 0.73vw;
+    font-size: 14px;
     line-height: 16px;
   }
   &__redirect-catalog {
@@ -176,132 +135,19 @@
 ::ng-deep {
   @media all and (min-width: 1201px) {
     .note {
-      &.is-xxl &__title {
-        font-size: 24px;
-        line-height: 28px;
-      }
-      &.is-xxl &__text-title {
-        font-size: 18px;
-        line-height: 21px;
-      }
-      &.is-xxl &__content-item {
-        font-size: 14px;
-        line-height: 16px;
-      }
       &.is-xxl &__content-item:first-child {
         margin-bottom: 17px;
       }
     }
   }
 }
-.consulting {
-  position: relative;
-  margin-top: 74px;
-  &__request {
-    padding: 64px;
-    border-radius: 24px;
-  }
-  &__title,
-  &__subtitle,
-  &__note {
-    background: transparent;
-    border: none;
-    padding: 0;
-  }
-  &__title {
-    font-size: 5vw;
-    line-height: 112px;
-    color: #fff;
-    margin-bottom: 16px;
-    font-weight: 700;
-  }
-  &__subtitle {
-    font-size: 3.18vw;
-    line-height: 75px;
-    color: #fff;
-    margin-bottom: 16px;
-    font-weight: 700;
-  }
-  &__note {
-    font-size: 1.25vw;
-    line-height: 28px;
-    color: #dadada;
-    margin-bottom: 48px;
-  }
-  &__input-field {
-    display: flex;
-    flex-direction: column;
-    max-width: 291px;
-  }
-  &__input-text {
-    color: #dadada;
-    font-size: 0.63vw;
-    line-height: 14px;
-  }
-  &__input {
-    padding: 24px 40px 24px 24px;
-    border-radius: 8px;
-    font-size: 0.92vw;
-    line-height: 21px;
-    color: #7a7a7a;
-  }
-  &__assistant {
-    position: absolute;
-    width: 622px;
-    right: 0;
-    bottom: 0;
-    margin-right: -140px;
-  }
-  &__submit {
-    padding: 24px 40px 24px 24px;
-    border-radius: 4px;
-    background: #fff;
-    color: #1f75fe;
-    margin-top: 32px;
-    width: 100%;
-    font-size: 0.92vw;
-    line-height: 21px;
-    border: 1px solid #fff;
-  }
-  & ::ng-deep .p-element .p-inputtext {
-    width: 100%;
-    padding: 24px 40px 24px 24px;
-    font-size: 0.92vw;
-    line-height: 21px;
-    border-radius: 8px;
-  }
-}
-::ng-deep {
-  @media all and (min-width: 1201px) {
-    .consulting {
-      &.is-xxl &__title {
-        font-size: 96px;
-        line-height: 112px;
-      }
-      &.is-xxl &__subtitle {
-        font-size: 60px;
-        line-height: 75px;
-      }
-      &.is-xxl &__note {
-        font-size: 24px;
-        line-height: 28px;
-      }
-      &.is-xxl &__input-field {
-        max-width: 295px;
-      }
-      &.is-xxl &__input-text {
-        font-size: 12px;
-        line-height: 14px;
-      }
-    }
-  }
-}
+
 .checklist {
   &__head {
     background: transparent;
     border: none;
     padding: 0;
-    font-size: 1.67vw;
+    font-size: 48px;
     line-height: 38px;
     margin: 74px 0 32px;
   }
@@ -311,25 +157,25 @@
     padding-bottom: 0;
   }
   &__title {
-    font-size: 1.25vw;
+    font-size: 24px;
     line-height: 28px;
     margin-top: 25px;
     margin-bottom: 4px;
   }
   &__subtitle {
-    font-size: 0.63vw;
+    font-size: 12px;
     line-height: 14px;
     color: #646464;
     margin-bottom: 8px;
   }
   &__step {
-    font-size: 0.94vw;
+    font-size: 18px;
     line-height: 12px;
     margin-bottom: 24px;
     padding-top: 0;
   }
   &__description {
-    font-size: 0.89vw;
+    font-size: 18px;
     line-height: 17px;
     margin-bottom: 24px;
     height: 63px;
@@ -345,33 +191,9 @@
     height: 102px;
   }
   &__action {
-    font-size: 0.94vw;
+    font-size: 18px;
     line-height: 21px;
     padding: 16px;
     border-radius: 4px;
-  }
-}
-::ng-deep {
-  @media all and (min-width: 1201px) {
-    .checklist {
-      &.is-xxl &__head {
-        font-size: 48px;
-        line-height: 56px;
-      }
-      &.is-xxl &__title {
-        font-size: 24px;
-        line-height: 28px;
-      }
-      &.is-xxl &__subtitle {
-        font-size: 12px;
-        line-height: 14px;
-      }
-      &.is-xxl &__step,
-      &.is-xxl &__description,
-      &.is-xxl &__action {
-        font-size: 18px;
-        line-height: 21px;
-      }
-    }
   }
 }

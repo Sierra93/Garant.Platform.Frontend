@@ -59,15 +59,14 @@ body {
 
 /* Строка являющая заголовком */
 .gar-row.title {
-  font-size: #{$font-size-title}px;
-  font-weight: $font-weight-title;
+  @include typo("title-item");
+
   /* Отступ у строки, если она не является последней */
   &:not(:last-child) {
     margin-bottom: #{$gar-row-between-vertical-margin}px;
   }
   & .sub-title {
-    font-size: #{$font-size-sub-title}px;
-    font-weight: 400;
+    @include typo("description");
     color: $font-color-sub-title;
   }
   /* стили для вложенного элемента в title */

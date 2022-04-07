@@ -1,117 +1,219 @@
-footer {
-  background-color: #f9f9f9;
-}
+@import 'design';
 
 .footer {
-  padding: 65px 0;
+    background-color: $clrFooter;
+    padding: 24px 0;
 
-  .social-contacts {
-    ul {
-      margin-bottom: 0;
+    @include tablet {
+        padding: 32px 0;
+    }
 
-      li {
-        height: 54px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    @include desktop {
+        padding: 64px 0;
+    }
 
-        &:not(:last-child) {
-          margin-right: 2.5rem;
-
-          @media (max-width: 576px) {
-            margin-right: 1.5rem;
-          }
+    &-main {
+        @include tablet-small {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: "logo social" "nav nav";
         }
-      }
-    }
-  }
-
-  nav {
-    h4 {
-      font-size: 1.5rem;
-      color: #2c2c2c;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 500;
-
-      img {
-        display: none;
-      }
     }
 
-    a {
-      text-decoration: none;
-      color: #7a7a7a;
-      font-size: 14px;
-      font-family: 'Roboto', sans-serif;
-      display: inline-block;
-      margin-bottom: 1.5rem;
-    }
+    &-logo {
+        $logoWidth: 128px;
+        $logoHeight: 48px;
 
-    @media (max-width: 768px) {
-      margin-bottom: 1.5rem;
+        grid-area: logo;
+        display: block;
+        width: $logoWidth;
+        height: $logoHeight;
+        // remove after sprite loader ready
+        background-color: $clrMidGray;
 
-      .row {
-        > div {
-          &.d-flex {
-            justify-content: flex-start !important;
-          }
+        &-pic {
+            width: $logoWidth;
+            height: $logoHeight;
         }
-      }
-
-      h4 {
-        font-size: 18px;
-      }
-
-      a {
-        font-size: .75rem;
-      }
     }
 
-    @media (max-width: 576px) {
-      .row {
-        > .d-flex {
-          display: block !important;
-        }
-      }
+    &-social {
+        grid-area: social;
 
-      a {
-        display: none;
-      }
-
-      h4 {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
 
-        img {
-          display: block;
-          transition: transform .3s;
-        }
-      }
+        margin-top: 12px;
 
-      ul.open {
-        h4 {
-          img {
-            transform: rotate(90deg);
-          }
+        @include tablet-small {
+            gap: 24px;
+            justify-content: flex-end;
         }
 
-        a {
-          display: block;
+        &-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+            width: 40px;
+            height: 40px;
+            fill: $clrMidGray;
+            // remove after sprite loader ready
+            background-color: $clrMidGray;
+
+            &_telegram {
+                &:hover {
+                    fill: $clrTelegram;
+                }
+            }
+
+            &_facebook {
+                &:hover {
+                    fill: $clrFacebook;
+                }
+            }
+
+            &_instagram {
+                &:hover {
+                    fill: $clrInstagram;
+                }
+            }
+
+            &_youtube {
+                &:hover {
+                    fill: $clrYoutube;
+                }
+            }
+
+            &-icon {
+                width: 100%;
+                height: 100%;
+            }
         }
-      }
+
+        &-link {
+            position: absolute;
+            inset: 0;
+        }
     }
-  }
 
-  @media (max-width: 768px) {
-    .social {
-      justify-content: flex-start !important;
-      margin-top: 18px;
+    &-nav {
+        grid-area: nav;
+
+        @include tablet-small {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(92px, 212px));
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        @include tablet {
+            margin-top: 40px;
+        }
+
+        @include desktop {
+            margin-top: 64px;
+        }
+
+        &-col {
+            border-bottom: 1px solid rgba($clrMidGray, .55);
+
+            @include tablet-small {
+                border-bottom: none;
+            }
+        }
+
+        &-item {
+            &-title {
+                @include typo('regular-bold');
+
+                position: relative;
+                padding: 16px 0;
+                list-style: none;
+
+                &::marker,
+                &::-webkit-details-marker {
+                    display: none;
+                }
+
+                @include tablet-small {
+                    padding: 0;
+                    cursor: default;
+                    pointer-events: none;
+                }
+
+                @include tablet {
+                    @include typo('texthead-bold');
+                }
+            }
+
+            &-link {
+                @include tablet-small {
+                    margin: 24px 0;
+                }
+
+                &:last-child {
+                    margin-bottom: 16px;
+                }
+
+                a {
+                    @include typo('description');
+
+                    color: $clrDarkGray;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+
+                    @include tablet {
+                        @include typo('secondary');
+                    }
+                }
+            }
+
+            &-arrow {
+                position: absolute;
+                top: 50%;
+                right: 0;
+
+                width: 9px;
+                height: 16px;
+
+                fill: $clrMidGray;
+                // remove when sprites ready
+                background-color: $clrMidGray;
+                transform: translateY(-50%);
+
+                @include tablet-small {
+                    display: none;
+                }
+
+                &-pic {
+                    width: 9px;
+                    height: 16px;
+                }
+            }
+        }
     }
-  }
-}
 
-.target-place {
-  color: #1f75fe !important;
+    &-add {
+        margin-top: 24px;
+
+        @include tablet-small {
+            margin-top: 0;
+        }
+
+        &-link {
+            @include typo('secondary');
+
+            color: $clrBlue;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
 }

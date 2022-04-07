@@ -18,7 +18,14 @@ export class FooterModule implements OnInit {
   aFooterColumn2: any[] = [];
   aFooterColumn3: any[] = [];
   aFooterColumn4: any[] = [];
-  tabletStart: boolean = false;
+  isMobile: boolean = false;
+
+  socialItems: any[] = [
+    { name: 'telegram', link: '#' },
+    { name: 'facebook', link: '#' },
+    { name: 'instagram', link: '#' },
+    { name: 'youtube', link: '#' }
+  ];
 
   constructor(
     private router: Router,
@@ -28,17 +35,17 @@ export class FooterModule implements OnInit {
 
   public async ngOnInit() {
     await this.initFooter();
-  }
-
-  @HostListener('window:resize', ['$event'])
-  @HostListener('window:load', ['$event'])
-  onResize() {
-    if (window.innerWidth === 768) {
-      this.tabletStart = true;
-    } else {
-      this.tabletStart = false;
+    if(window.innerWidth < 768) {
+      this.isMobile = true;
     }
   }
+
+  @HostListener('window:load', ['$event'])
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.isMobile = window.innerWidth < 768 ? true : false;
+  }
+
 
   /**
    * Функция получит поля футера.
@@ -58,6 +65,11 @@ export class FooterModule implements OnInit {
             this.aFooterColumn4.push(item);
           }
         });
+
+        this.aFooter.push(this.aFooterColumn1);
+        this.aFooter.push(this.aFooterColumn2);
+        this.aFooter.push(this.aFooterColumn3);
+        this.aFooter.push(this.aFooterColumn4);
       });
     } catch (e: any) {
       throw new Error(e);
@@ -84,9 +96,5 @@ export class FooterModule implements OnInit {
     //         this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
     //         break;
     // }
-  }
-
-  openNextElements(e: any) {
-    e.path[3].classList.toggle('open');
   }
 }

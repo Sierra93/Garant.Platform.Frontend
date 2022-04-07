@@ -13,6 +13,15 @@ body {
   line-height: $line-height!important;
 }
 
+a {
+  color: $clrBlue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .app-container {
   padding: 0 20px;
 

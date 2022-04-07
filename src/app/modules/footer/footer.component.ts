@@ -35,9 +35,7 @@ export class FooterModule implements OnInit {
 
   public async ngOnInit() {
     await this.initFooter();
-    if(window.innerWidth < 768) {
-      this.isMobile = true;
-    }
+    this.isMobile = window.innerWidth < 768;
   }
 
   @HostListener('window:load', ['$event'])
@@ -66,10 +64,7 @@ export class FooterModule implements OnInit {
           }
         });
 
-        this.aFooter.push(this.aFooterColumn1);
-        this.aFooter.push(this.aFooterColumn2);
-        this.aFooter.push(this.aFooterColumn3);
-        this.aFooter.push(this.aFooterColumn4);
+        this.aFooter.push(this.aFooterColumn1, this.aFooterColumn2, this.aFooterColumn3, this.aFooterColumn4);
       });
     } catch (e: any) {
       throw new Error(e);

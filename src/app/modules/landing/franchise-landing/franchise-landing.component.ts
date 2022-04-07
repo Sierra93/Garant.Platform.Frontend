@@ -99,25 +99,6 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
       },
     ];
 
-    this.aSurveyPosts = [
-      {
-        title: '80',
-        text: 'франшиз упаковали и создали с нуля',
-      },
-      {
-        title: '25',
-        text: 'сфер бизнеса проработано за время работы',
-      },
-      {
-        title: '65 млн',
-        text: 'заработали клиентам после создания франшиз',
-      },
-      {
-        title: '14',
-        text: 'человек будут работать над вашим проектом',
-      },
-    ];
-
     this.routeParam = this.route.snapshot.queryParams.businessId;
   }
 

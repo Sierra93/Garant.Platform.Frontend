@@ -3,13 +3,13 @@
         <img src="{{product.url}}" alt="{{product.title}}" title="{{product.title}}"/>
     </div>
     <div class="gar-card">
-        <div class="gar-row title">
+        <div class="gar-row title item">
             <div class="gar-row-item">
                 <span class="gar-row">{{product.title || ''}}</span>
                 <span class="gar-row sub-title">{{product.text || ''}}</span>
             </div>
             <gar-icon class="gar-row-item right" name="arrow_right" [routerLink]="path"></gar-icon>
         </div>
-        <div class="gar-row title">{{ product.textDoPrice }}{{ product.price }} ₽</div>
+        <div class="gar-row title item">{{ product.textDoPrice }}{{ product.price }} ₽</div>
     </div>
 </ng-container>

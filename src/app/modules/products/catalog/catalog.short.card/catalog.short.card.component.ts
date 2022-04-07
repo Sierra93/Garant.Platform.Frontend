@@ -15,7 +15,7 @@ import { CatalogBaseCardComponent } from "../catalog.base.card/catalog.base.card
   templateUrl: './catalog.short.card.component.html',
   styleUrls: ['./catalog.short.card.component.scss'],
   host: {
-    class: 'gar-card'
+    class: 'gar-card secondary'
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })

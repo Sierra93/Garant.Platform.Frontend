@@ -21,46 +21,36 @@
     </div>
   </div>
 </section>
-<section class="survey" [ngClass]="{ 'is-xxl': isXxl }">
-  <div class="row survey__result">
-    <div class="col-lg-3 col-xl-3 col-xxl-3 survey__item">
-      <p-panel #pnl header="35" styleClass="p-mt-4">
-        <div>
-          сделок в среднем <br />
-          проходит <br />
-          через сервис гарант
-        </div>
-      </p-panel>
+<!-- Секция статистика по достигнутым результатам -->
+<section class="statistics" [ngClass]="{ 'is-xxl': isXxl }">
+  <div class="row statistics__gallery">
+    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+      <app-statistics-card
+        [pTitle]="'10'"
+        [pText]="'сделок в среднем проходит через сервис гарант'"
+      ></app-statistics-card>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3 survey__item">
-      <p-panel #pnl header="35" styleClass="p-mt-4">
-        <div>
-          франшиз <br />
-          были проданы <br />
-          через сервис гарант
-        </div>
-      </p-panel>
+    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+      <app-statistics-card
+        [pTitle]="'35'"
+        [pText]="'франшиз были проданы через сервис гарант'"
+      ></app-statistics-card>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3 survey__item">
-      <p-panel #pnl header="105" styleClass="p-mt-4">
-        <div>
-          бизнесов уже были <br />
-          проданы через <br />
-          сервис гарант
-        </div>
-      </p-panel>
+    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+      <app-statistics-card
+        [pTitle]="'105'"
+        [pText]="'бизнесов уже были проданы через сервис гарант'"
+      ></app-statistics-card>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3 survey__item">
-      <p-panel #pnl header="0.5-3%" styleClass="p-mt-4">
-        <div>
-          комиссия <br />
-          за использование <br />
-          сервиса покупки онлайн
-        </div>
-      </p-panel>
+    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+      <app-statistics-card
+        [pTitle]="'0.5-3%'"
+        [pText]="'комиссия за использование сервиса покупки онлайн'"
+      ></app-statistics-card>
     </div>
   </div>
 </section>
+<!-- Секция недавно приобретенных услуг -->
 <section class="row">
   <div class="col-lg-7 col-xl-7 col-xxl-7">
     <h5 class="alert alert-light">Недавно приобрели</h5>

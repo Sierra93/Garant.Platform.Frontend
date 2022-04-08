@@ -1300,6 +1300,8 @@
 }
 
 .card-business-holder {
+ 
+
   .p-element {
     width: 100%;
 
@@ -1380,13 +1382,13 @@
     // background-color: rgba(218, 218, 218, 0.15);
   }
 
-  @media only screen and (min-device-width: 980px) and (max-device-width: 1200px) {
+  @media only screen and (min-device-width: 981px) and (max-device-width: 1200px) {
 
     /* Styles */
     .card-business {
       .three-cards-header {
-        font-size: 1.1rem;
-        line-height: 0.9rem;
+        font-size: 0.9rem;
+        line-height: 0.8rem;
       }
 
       .wrapper-business {
@@ -1411,5 +1413,14 @@
         display: none;
       }
     }
+  }
+}
+@media only screen and (min-device-width: 981px) and (max-device-width: 1200px) {
+  .franchise-card-title {
+  
+    font-size: 14px;
+  }
+  .text-blog {
+    font-size: 16px;
   }
 }

@@ -63,12 +63,18 @@ a {
   > .gar-row-item {
     display: flex;
     flex-direction: column;
+    /* элемент строки является карточкой */
+    &.gar-card {
+      &:not(:first-child) {
+        margin-left: #{$gar-card-between-horizontal-margin}px;
+      }
+    }
   }
 }
 
 /* Строка являющая заголовком */
 .gar-row.title {
-  @include typo("title-item");
+  @include typo("title");
 
   /* Отступ у строки, если она не является последней */
   &:not(:last-child) {
@@ -84,16 +90,32 @@ a {
       margin-bottom: #{$gar-row-between-vertical-margin / 3}px;
     }
   }
+  /* Модификатор, указывающий на то, что элемент публикуется, как основной на странице */
+  &.page {
+    @include typo("title-page");
+    &:not(:last-child) {
+      margin-bottom: #{$gar-row-between-vertical-margin - 3}px;
+    }
+  }
+  /* Модификатор, указывающий на то, что заголовок публикуется внутри других элементов */
+  &.item {
+    @include typo("title-item");
+  }
 }
 
 /* Стиль описывающий элемент карточка */
 .gar-card {
   display: flex;
   flex-direction: column;
+  width: 100%;
   border-radius: #{$border-radius-card}px;
+  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  &:not(.secondary) {
+    padding: #{$card-padding}px;
+  }
 
   /* карточка внутри карточки */
   & .gar-card {
-    padding: #{$card-padding}px;
+    box-shadow: none;
   }
 }

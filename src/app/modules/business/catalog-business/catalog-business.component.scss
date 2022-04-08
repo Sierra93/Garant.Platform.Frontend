@@ -417,6 +417,7 @@
     &-body {
       margin: 0 !important;
       padding: 0 !important;
+      background-color: rgba(218, 218, 218, 0.15);
     }
 
     &-title {
@@ -437,10 +438,11 @@
       font-size: 1.125rem !important;
       font-weight: 400 !important;
       margin: 0 !important;
-      padding: 0 !important;
+      padding: 5 !important;
       // margin-left: 8px !important;
       margin-bottom: 24px !important;
       line-height: 21px;
+
     }
 
     &-footer {
@@ -1300,6 +1302,7 @@
 .card-business-holder {
   .p-element {
     width: 100%;
+
   }
 
   .three-cards-header {
@@ -1318,14 +1321,15 @@
 
   .wrapper-businness {
     display: flex;
+   
   }
 
   .card-business {
     height: 335px;
     display: flex;
     flex-wrap: wrap;
-
-    padding: 0;
+    background-color: rgba(218, 218, 218, 0.15);
+    padding: 10px;
   }
 
   .card-business-content {
@@ -1333,6 +1337,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 10px;
+    
   }
 
   h5 {
@@ -1361,7 +1366,8 @@
   }
 
   .p-card-body {
-    padding: 0 !important;
+    padding: 0;
+    background-color: rgba(218, 218, 218, 0.15);
   }
 
   .image-business-content {
@@ -1370,7 +1376,7 @@
     padding-top: 10px;
     align-items: center;
     text-align: center;
-    background-color: rgba(218, 218, 218, 0.15);
+    // background-color: rgba(218, 218, 218, 0.15);
   }
 
   @media only screen and (min-device-width: 980px) and (max-device-width: 1200px) {

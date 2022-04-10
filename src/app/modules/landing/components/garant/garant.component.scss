@@ -68,3 +68,21 @@
     }
   }
 }
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .garant {
+      &.is-laptop &__description {
+        max-width: 691px;
+      }
+    }
+  }
+
+  @media all and (min-width: 1200px) {
+    .garant {
+      &.is-hd &__description {
+        max-width: 946px;
+      }
+    }
+  }
+}

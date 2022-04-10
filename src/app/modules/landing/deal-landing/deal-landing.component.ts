@@ -17,7 +17,9 @@ import { LandingRequestService } from '../services/landing.service';
 })
 export class DealLandingModule implements OnInit, DoCheck {
   aPopularBusiness: any[] = [];
-  isXxl!: boolean;
+  isHD!: boolean;
+  isRestrictHD!: boolean;
+  isLaptop!: boolean;
   browserScreenWidth!: number;
   // isGarant: boolean = false;
   // aCities: any[] = [];
@@ -56,7 +58,8 @@ export class DealLandingModule implements OnInit, DoCheck {
   feedbackTitle: string = 'Консультация';
   feedbackSubtitle: string = 'при покупке бизнеса онлайн';
   feedbackNote: string = 'с юристом и консультантами сервиса';
-  feedbackImgPath: string = '../../../../assets/images/deal-landing/template_person6 1.png';
+  feedbackImgPath: string =
+    '../../../../assets/images/deal-landing/template_person6 1.png';
   feedbackTheme: boolean = false;
 
   constructor(
@@ -98,7 +101,9 @@ export class DealLandingModule implements OnInit, DoCheck {
   }
 
   public async ngOnInit(): Promise<void> {
-    this.isXxl = false;
+    this.isHD = false;
+    this.isRestrictHD = false;
+    this.isLaptop = false;
     this.browserScreenWidth = window.screen.width;
     // await this.getPopularBusinessAsync();
     await this.GetBusinessListAsync();
@@ -468,10 +473,24 @@ export class DealLandingModule implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth > 1200) {
-      this.isXxl = true;
+
+    if (this.browserScreenWidth >= 1200) {
+      this.isHD = true;
+      this.isRestrictHD = true;
+      console.log(this.isRestrictHD);
+      
+      if (this.browserScreenWidth < 1400) {
+        this.isRestrictHD = false;
+      } else {
+      }
     } else {
-      this.isXxl = false;
+      this.isHD = false;
+    }
+
+    if (this.browserScreenWidth >= 992 && this.browserScreenWidth < 1199) {
+      this.isLaptop = true;
+    } else {
+      this.isLaptop = false;
     }
   }
 }

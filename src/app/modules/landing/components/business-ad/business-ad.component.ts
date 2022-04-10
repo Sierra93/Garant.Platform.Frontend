@@ -15,7 +15,7 @@ export class BusinessAdComponent implements OnInit, DoCheck {
   slideCount: number = 3;
   infiniteScroll: boolean = true;
 
-  isXxl!: boolean;
+  isLaptop!: boolean;
   browserScreenWidth!: number;
 
   constructor(private http: HttpClient) {
@@ -39,7 +39,7 @@ export class BusinessAdComponent implements OnInit, DoCheck {
   }
 
   public async ngOnInit(): Promise<void> {
-    this.isXxl = false;
+    this.isLaptop = false;
     this.browserScreenWidth = window.screen.width;
 
     await this.GetBusinessListAsync();
@@ -75,10 +75,10 @@ export class BusinessAdComponent implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth > 1200) {
-      this.isXxl = true;
+    if ((this.browserScreenWidth >= 992) && (this.browserScreenWidth < 1199)) {
+      this.isLaptop = true;
     } else {
-      this.isXxl = false;
+      this.isLaptop = false;
     }
   }
 }

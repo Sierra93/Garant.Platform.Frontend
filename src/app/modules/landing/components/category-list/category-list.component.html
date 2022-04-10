@@ -1,13 +1,16 @@
-<div class="category" [ngClass]="{ 'is-xxl': isXxl }">
+<div class="category" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
   <div class="row">
-    <div class="col-lg-6 col-xl-6 col-xxl-6 category__category-item">
+    <div
+      class="category__category-item"
+      [ngClass]="{ 'col-lg-12': isLaptop, 'col-xl-6': isHD }"
+    >
       <div class="alert alert-light category__category-title">
         Категории готового бизнеса
       </div>
       <div class="row">
         <div
-          class="col-lg-6 col-xl-6 col-xxl-6"
           *ngFor="let item of this.aBusinessCategories"
+          [ngClass]="{ 'col-lg-4': isLaptop, 'col-xl-6': isHD }"
         >
           <div class="alert alert-light category__category-detail">
             <span class="category__category-name">{{ item.categoryName }}</span>
@@ -26,7 +29,7 @@
             </svg>
           </div>
         </div>
-        <div class="col-lg-6 col-xl-6 col-xxl-6">
+        <div [ngClass]="{ 'col-lg-4': isLaptop, 'col-xl-6': isHD }">
           <div class="btn btn-outline-primary category__redirect">
             <span class="category__redirect-text">Весь готовый бизнес</span>
             <span class="category__redirect-attr">
@@ -47,14 +50,17 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-6 col-xl-6 col-xxl-6">
+    <div
+      class="category__category-item"
+      [ngClass]="{ 'col-lg-12': isLaptop, 'col-xl-6': isHD }"
+    >
       <div class="alert alert-light category__category-title">
         Категории франшиз
       </div>
       <div class="row">
         <div
-          class="col-lg-6 col-xl-6 col-xxl-6"
           *ngFor="let item of this.aFranchiseCategories"
+          [ngClass]="{ 'col-lg-4': isLaptop, 'col-xl-6': isHD }"
         >
           <div class="alert alert-light category__category-detail">
             <span class="category__category-name">{{ item.categoryName }}</span>
@@ -73,7 +79,7 @@
             </svg>
           </div>
         </div>
-        <div class="col-lg-6 col-xl-6 col-xxl-6">
+        <div [ngClass]="{ 'col-lg-4': isLaptop, 'col-xl-6': isHD }">
           <div class="btn btn-outline-primary category__redirect">
             <span class="category__redirect-text">Все франшизы</span>
             <span class="category__redirect-attr">

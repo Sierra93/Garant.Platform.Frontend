@@ -9,12 +9,17 @@ import { CommonDataService } from 'src/app/services/common/common-data.service';
 export class GarantComponent implements OnInit, DoCheck {
   oSuggestion: any = {};
   isHideBusinessWithGarant: boolean = true;
-  isXxl!: boolean;
+  isLaptop!: boolean;
+  isHD!: boolean;
   browserScreenWidth!: number;
 
   constructor(private commonService: CommonDataService) {}
 
   public async ngOnInit(): Promise<void> {
+    this.isLaptop = false;
+    this.isHD = false;
+    this.browserScreenWidth = window.screen.width;
+
     await this.loadSingleSuggestionAsync();
   }
 
@@ -39,10 +44,16 @@ export class GarantComponent implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth > 1400) {
-      this.isXxl = true;
+    if (this.browserScreenWidth >= 1200) {
+      this.isHD = true;
     } else {
-      this.isXxl = false;
+      this.isHD = false;
+    }
+
+    if ((this.browserScreenWidth >= 992) && (this.browserScreenWidth < 1199)) {
+      this.isLaptop = true;
+    } else {
+      this.isLaptop = false;
     }
   }
 }

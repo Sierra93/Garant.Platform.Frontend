@@ -1,4 +1,4 @@
-:host .franchise {
+.franchise {
   margin-top: 74px;
   &__title {
     font-size: 24px;
@@ -79,7 +79,7 @@
 }
 
 @media all and (max-width: 576px) {
-  :host .franchise {
+  .franchise {
     margin-top: 24px;
     &__title {
       font-size: 19px;
@@ -97,6 +97,19 @@
     &__price {
       font-size: 17px;
       line-height: 20px;
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .franchise {
+      &.is-laptop {
+        margin-top: 36px;
+      }
+      &.is-laptop &__title {
+        margin-bottom: 20px;
+      }
     }
   }
 }

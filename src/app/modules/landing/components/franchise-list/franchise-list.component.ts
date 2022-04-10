@@ -10,7 +10,7 @@ export class FranchiseListComponent implements OnInit, DoCheck {
   aPopularFranchises: any[] = [];
   responsiveOptions: any[] = [];
 
-  isXxl!: boolean;
+  isLaptop!: boolean;
   browserScreenWidth!: number;
 
   constructor(private commonService: CommonDataService) {
@@ -34,7 +34,7 @@ export class FranchiseListComponent implements OnInit, DoCheck {
   }
 
   public async ngOnInit(): Promise<void> {
-    this.isXxl = false;
+    this.isLaptop = false;
     this.browserScreenWidth = window.screen.width;
 
     await this.getPopularAsync();
@@ -62,10 +62,10 @@ export class FranchiseListComponent implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth > 1200) {
-      this.isXxl = true;
+    if ((this.browserScreenWidth >= 992) && (this.browserScreenWidth < 1199)) {
+      this.isLaptop = true;
     } else {
-      this.isXxl = false;
+      this.isLaptop = false;
     }
   }
 }

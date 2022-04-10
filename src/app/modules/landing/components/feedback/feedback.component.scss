@@ -49,6 +49,10 @@
     line-height: 21px;
     color: #7a7a7a;
     text-align: left;
+    padding-left: 24px;
+  }
+  & ::ng-deep .p-element.ng-valid {
+    display: flex;
   }
   & ::ng-deep .p-element .p-inputtext {
     width: 100%;
@@ -57,13 +61,16 @@
     line-height: 21px;
     border-radius: 8px;
     text-align: left;
+    padding-left: 24px;
+  }
+  &__submit-request {
+    margin-top: 32px;
   }
   &__submit {
     height: 67px;
     border-radius: 4px;
     background: #fff;
     color: #1f75fe;
-    margin-top: 32px;
     width: 100%;
     font-size: 0.92vw;
     line-height: 21px;
@@ -130,6 +137,36 @@
 }
 
 ::ng-deep {
+  @media all and (min-width: 992px) {
+    .feedback {
+      &.is-laptop {
+        font-size: 64px;
+        line-height: 75px;
+      }
+      &.is-laptop &__title {
+        font-size: 64px;
+        line-height: 75px;
+      }
+      &.is-laptop &__subtitle {
+        font-size: 44px;
+        line-height: 52px;
+        max-width: 423px;
+      }
+      &.is-laptop &__field-orientation {
+        display: block;
+      }
+      &.is-laptop &__input-field:first-child {
+        margin-bottom: 16px;
+      }
+      &.is-laptop &__submit {
+        font-size: 19px;
+        line-height: 22px;
+      }
+    }
+  }
+}
+
+/*::ng-deep {
   @media all and (min-width: 1201px) {
     .feedback {
       &.is-xxl &__input-field {
@@ -137,4 +174,4 @@
       }
     }
   }
-}
+}*/

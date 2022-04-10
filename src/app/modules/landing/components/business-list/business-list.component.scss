@@ -1,6 +1,6 @@
 .choice {
   margin-top: 74px;
-  &__card {
+  &__item-title {
     font-size: 24px;
     line-height: 28px;
     margin-bottom: 0;
@@ -15,23 +15,17 @@
     height: 42px;
     max-width: 290px;
   }
-  &__list:nth-child(2) &__subtitle,
-  &__list:nth-child(3) &__subtitle {
-    padding-right: 17px;
-  }
   &__offer {
     border: none;
   }
   &__service-item {
     background: transparent;
     border: none;
-    padding-top: 0;
-    padding-left: 0;
-    padding-bottom: 16px;
+    padding: 0;
+    margin-bottom: 16px;
   }
   &__business-action {
-    padding-top: 0;
-    padding-bottom: 25px;
+    padding: 24px 21px 24.5px 24px;
     background: rgba(218, 218, 218, 0.15);
     border-radius: 8px;
   }
@@ -48,15 +42,14 @@
     line-height: 21px;
     padding: 16px;
     border-radius: 4px;
-    min-width: max-content;
-    max-width: 280px;
+    width: 280px;
   }
 }
 
 @media all and (max-width: 576px) {
   .choice {
     margin-top: 24px;
-    &__card {
+    &__item-title {
       font-size: 19px;
       line-height: 22px;
     }
@@ -64,9 +57,6 @@
       font-size: 17px;
       line-height: 20px;
       max-width: 210px;
-    }
-    &__list &__subtitle {
-      padding-right: 0;
     }
     &__text {
       font-size: 14px;
@@ -77,10 +67,62 @@
     &__submit {
       font-size: 16px;
       line-height: 19px;
-      max-width: 210px;
+      width: 210px;
     }
   }
 }
-@media all and (min-width: 577px) and (max-width: 768px) {
-  
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .choice {
+      &.is-laptop &__list.is-alone {
+        width: 100%;
+      }
+      &.is-laptop &__list.is-alone &__text {
+        max-width: 100%;
+      }
+      &.is-laptop &__service-item {
+        margin-bottom: 20px;
+      }
+      &.is-laptop &__item-title {
+        font-size: 21px;
+        line-height: 22px;
+      }
+      &.is-laptop &__business-action {
+        padding: 16px;
+      }
+      &.is-laptop &__subtitle {
+        font-size: 20px;
+        line-height: 20px;
+        max-width: 100%;
+      }
+      &.is-laptop &__text {
+        font-size: 17px;
+        line-height: 16px;
+        max-width: 410px;
+      }
+      &.is-laptop &__submit {
+        width: 210px;
+        font-size: 18px;
+        line-height: 18.5px;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 1200px) {
+    .choice {
+      &.is-hd &__service-item {
+        margin-bottom: 24px;
+      }
+      &.is-hd &__item-title {
+        font-size: 21px;
+        line-height: 24px;
+      }
+      &.is-hd &__submit {
+        width: 200px;
+      }
+    }
+  }
 }

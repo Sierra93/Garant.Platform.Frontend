@@ -1,15 +1,25 @@
-<div class="choice" [ngClass]="{ 'is-xxl': isXxl }">
+<div class="choice" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
   <div class="row choice__repeat">
     <div
-      class="col-lg-4 col-xl-4 col-xxl-4 choice__list"
+      class="choice__list"
       *ngFor="let item of aDataActions; let i = index"
+      [ngClass]="{
+        'col-lg-6': isLaptop,
+        'col-xl-4': isHD,
+        'is-alone': i >= 2 && isLaptop
+      }"
     >
-      <div class="card choice__offer" [ngClass]="{ 'is-alone': i >= 2 }">
+      <div class="card choice__offer">
         <div class="card-header choice__service-item">
-          <div class="card-title text-break choice__card">{{ item.title }}</div>
+          <div class="card-title text-break choice__item-title">
+            {{ item.title }}
+          </div>
         </div>
         <div class="card-body choice__business-action">
-          <div class="card-text text-break choice__subtitle">
+          <div
+            class="card-text text-break choice__subtitle"
+            [ngClass]="{ 'pe-3': i >= 1 && isHD }"
+          >
             {{ item.subTitle }}
           </div>
           <div class="card-text text-break choice__text">

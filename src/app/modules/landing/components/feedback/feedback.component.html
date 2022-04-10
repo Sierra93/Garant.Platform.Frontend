@@ -1,18 +1,21 @@
-<section class="feedback" [ngClass]="{ 'is-xxl': isXxl }">
+<section class="feedback" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
   <form
     class="bg-primary feedback__request"
     [ngClass]="{ 'bg-dark': isModify }"
   >
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-lg-9 col-xl-9 col-xxl-9">
+        <div [ngClass]="{ 'col-lg-9': isLaptop, 'col-xl-9': isHD }">
           <div class="alert alert-light feedback__title">{{ title }}</div>
           <div class="alert alert-light feedback__subtitle">
             {{ subtitle }}
           </div>
           <div class="alert alert-light feedback__note">{{ tooltip }}</div>
-          <div class="mb-3 row">
-            <div class="col-6 feedback__input-field">
+          <div class="mb-3 row feedback__field-orientation">
+            <div
+              class="feedback__input-field"
+              [ngClass]="{ 'col-xl-4': isHD, 'col-lg-5': isLaptop }"
+            >
               <label for="userName" class="form-label feedback__input-text"
                 >Имя</label
               >
@@ -24,7 +27,10 @@
                 name="name"
               />
             </div>
-            <div class="col-6 feedback__input-field">
+            <div
+              class="feedback__input-field"
+              [ngClass]="{ 'col-xl-4': isHD, 'col-lg-5': isLaptop }"
+            >
               <label class="form-label feedback__input-text"
                 >Номер телефона</label
               >
@@ -34,7 +40,10 @@
                 placeholder="Введите номер телефона"
               ></p-inputMask>
             </div>
-            <div class="col-6 feedback__submit-request">
+            <div
+              class="feedback__submit-request"
+              [ngClass]="{ 'col-xl-6': isHD, 'col-lg-5': isLaptop }"
+            >
               <button
                 [ngClass]="{ 'is-prime': isModify }"
                 class="btn btn-primary feedback__submit"

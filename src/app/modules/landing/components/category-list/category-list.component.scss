@@ -84,3 +84,27 @@
     }
   }
 }
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .category {
+      &.is-laptop &__category-title {
+        font-size: 19px;
+        line-height: 22px;
+      }
+      &.is-laptop &__category-detail {
+        font-size: 16px;
+        line-height: 18px;
+      }
+      &.is-laptop &__redirect {
+        text-align: left;
+        max-width: 243px;
+      }
+      &.is-laptop &__redirect-text {
+        font-size: 16px;
+        line-height: 18px;
+        max-width: 147px;
+      }
+    }
+  }
+}

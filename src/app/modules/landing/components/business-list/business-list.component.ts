@@ -9,13 +9,15 @@ import { API_URL } from 'src/app/core/core-urls/api-url';
 })
 export class BusinessListComponent implements OnInit, DoCheck {
   aDataActions: any[] = [];
-  isXxl!: boolean;
+  isLaptop!: boolean;
+  isHD!:  boolean;
   browserScreenWidth!: number;
 
   constructor(private http: HttpClient) {}
 
   public async ngOnInit(): Promise<void> {
-    this.isXxl = false;
+    this.isLaptop = false;
+    this.isHD = false;
     this.browserScreenWidth = window.screen.width;
 
     await this.GetActionsAsync();
@@ -53,10 +55,16 @@ export class BusinessListComponent implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth > 1400) {
-      this.isXxl = true;
+    if (this.browserScreenWidth >= 1200) {
+      this.isHD = true;
     } else {
-      this.isXxl = false;
+      this.isHD = false;
+    }
+
+    if ((this.browserScreenWidth >= 992) && (this.browserScreenWidth < 1199)) {
+      this.isLaptop = true;
+    } else {
+      this.isLaptop = false;
     }
   }
 }

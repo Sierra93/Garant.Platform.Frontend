@@ -13,7 +13,8 @@ export class FeedbackComponent implements OnInit, DoCheck {
   @Input() imagePath: string = '';
   @Input() isModify: boolean = false;
 
-  isXxl!: boolean;
+  isLaptop!: boolean;
+  isHD!: boolean;
   browserScreenWidth!: number;
   name: string = '';
   phoneNumber: string = '';
@@ -21,7 +22,8 @@ export class FeedbackComponent implements OnInit, DoCheck {
   constructor(private requestService: LandingRequestService) {}
 
   public ngOnInit(): void {
-    this.isXxl = false;
+    this.isLaptop = false;
+    this.isHD = false;
     this.browserScreenWidth = window.screen.width;
   }
   public ngDoCheck(): void {
@@ -40,10 +42,16 @@ export class FeedbackComponent implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth > 1200) {
-      this.isXxl = true;
+    if (this.browserScreenWidth >= 1200) {
+      this.isHD = true;
     } else {
-      this.isXxl = false;
+      this.isHD = false;
+    }
+
+    if ((this.browserScreenWidth >= 992) && (this.browserScreenWidth < 1199)) {
+      this.isLaptop = true;
+    } else {
+      this.isLaptop = false;
     }
   }
 }

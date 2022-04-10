@@ -1,8 +1,3 @@
-/*@use "/src/app/app.component.scss";
-@use "/src/app/modules/main-page/main-page.component.scss";
-@use "../../../../app/shared/styles" as *;
-@use "../../../../app/shared/styles/base" as *;
-@import "/src/app/shared/styles/media-quaries.scss";*/
 .deal {
   border: none;
   background: #f5f8fa;
@@ -20,7 +15,7 @@
     padding-right: 0;
   }
   &__content {
-    padding-left: 0;
+    padding-left: 64px;
     padding-right: 0;
   }
   &__description {
@@ -31,12 +26,14 @@
     line-height: 112.5px;
     margin-bottom: 8px;
     text-align: left;
+    font-weight: 600;
   }
   &__business {
     font-size: 64px;
     line-height: 75px;
     margin-bottom: 16px;
     text-align: left;
+    font-weight: 600;
   }
   &__franchise {
     font-size: 24px;
@@ -46,7 +43,6 @@
     text-align: left;
   }
   &__btn-action {
-    max-width: 287px;
     height: 76px;
     font-size: 24px;
     line-height: 28px;
@@ -72,6 +68,7 @@
     }
     &__content {
       width: 100%;
+      padding: 0;
     }
     &__description {
       padding-left: 24px;
@@ -95,7 +92,50 @@
     }
     &__btn-action {
       width: 100%;
-      max-width: 100%;
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .deal {
+      &.is-laptop &__img-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+      &.is-laptop &__content {
+        padding-left: 32px;
+      }
+      &.is-laptop &__title {
+        font-size: 64px;
+        line-height: 75px;
+      }
+      &.is-laptop &__business {
+        font-size: 44px;
+        line-height: 51.5px;
+      }
+      &.is-laptop &__btn-action {
+        width: 300px;
+      }
+    }
+  }
+
+  @media all and (min-width: 1200px) {
+    .deal {
+      &.is-restrict &__content {
+        padding-left: 44px;
+      }
+      &.is-restrict &__title {
+        font-size: 74px;
+        line-height: 75px;
+      }
+      &.is-restrict &__business {
+        font-size: 44px;
+        line-height: 52px;
+      }
+      &.is-restrict &__btn-action {
+        width: 287px;
+      }
     }
   }
 }
@@ -117,7 +157,7 @@
           justify-content: center;
           align-items: center;
           position: absolute;
-          width: 297px;
+          width: 100%;
           top: 0;
           height: 100%;
           font-size: 3.62vw;
@@ -161,8 +201,42 @@
   }
 }
 
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .statistics {
+      &.is-laptop &__item {
+        & ::ng-deep .p-panel {
+          & .p-panel-header {
+            height: 170.5px;
+            & .p-panel-title {
+              font-size: 96px;
+              line-height: 112px;
+            }
+          }
+          & .p-panel-content {
+            height: 170.5px;
+          }
+        }
+      }
+    }
+  }
+
+  @media all and (min-width: 1200px) {
+    .statistics {
+      &.is-hd &__item {
+        & ::ng-deep .p-panel {
+          & .p-panel-header,
+          & .p-panel-content {
+            height: 150px;
+          }
+        }
+      }
+    }
+  }
+}
+
 .note {
-  &__title {
+  &-title {
     background: transparent;
     border: none;
     padding-left: 0;
@@ -172,7 +246,7 @@
     line-height: 28px;
     color: #2c2c2c;
   }
-  &__description {
+  &-description {
     border: none;
     background: #f1f6ff;
     padding-top: 24px;
@@ -180,115 +254,159 @@
     padding-bottom: 24px;
     border-radius: 8px;
   }
-  &__buying {
-    width: 70%;
-    background: transparent;
-    border: none;
-    padding-bottom: 0;
+  &-content {
+    padding: 0;
   }
-  &__content {
-    padding-top: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-  }
-  &__location {
+  &-location {
+    position: relative;
     display: flex;
     flex-flow: row-reverse;
   }
-  &__img-box {
+  &-img-box {
     margin: 0 -20px 7px 10px;
   }
-  &__text-title {
+  &-text-title {
     font-size: 18px;
     line-height: 21px;
     font-weight: 500;
     margin-bottom: 16px;
   }
-  &__content-item {
+  &-content-item {
     font-size: 14px;
     line-height: 16px;
   }
-  &__redirect-catalog {
+  &-content-item:nth-child(3) {
+    margin-bottom: 26.5px;
+  }
+  &-redirect-catalog {
+    width: 126px;
+    height: 51px;
     font-size: 18px;
     line-height: 21px;
     border-radius: 4px;
-    height: 51px;
   }
 }
 
 @media all and (max-width: 576px) {
   .note {
-    &__title {
+    &-title {
       font-size: 19px;
       line-height: 22px;
     }
-    &__text-title {
+    &-text-title {
       font-size: 19px;
       line-height: 20px;
       max-width: 235px;
     }
-    &__description {
+    &-description {
       padding: 8px;
     }
-    &__img-box {
+    &-img-box {
       position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 73px;
       top: 0;
       right: 0;
-      width: 73px;
-      margin: 8px 8px 0 0;
+      margin: 8px 16px 0 0;
     }
-    &__content {
-      padding: 0;
+    &-text {
+      width: 100%;
     }
-    &__content-item:nth-child(2) {
+    &-content-item:nth-child(2) {
       margin-bottom: 28px;
     }
-    &__content-item:last-child {
+    &-content-item:nth-child(3) {
       margin-bottom: 24px;
     }
-    &__wrapper {
+    &-wrapper {
       display: flex;
       justify-content: flex-start;
     }
-    &__redirect-catalog {
+    &-redirect-catalog {
       width: 115px;
       font-size: 16px;
       line-height: 18px;
     }
   }
 }
-@media all and (min-width: 992px) and  (max-width: 1200px) {
-  // диапазон распознается неверно, нужно проверять с помощью динамического класса
-  .note__title {
-    border: 1px solid red;
-  }
-  // В этом месте располагается верстка для прохождения контрольной точки 1200пх
-}
-
-/*@media all and (min-width: 768px) {*/
-  // В этом месте располагается планшетная верстка
-  // смена диапазона игнорируется
-  /*.note__title {
-    border: 1px solid blue;
-    color: gray;
-  }
-}*/
-
-
-
-// попробовать выполнить медиа-запрос через параметр orientation: landscape (через альбомную ориентацию)
 
 ::ng-deep {
-  @media all and (min-width: 1201px) {
+  @media all and (min-width: 992px) {
     .note {
-      &__title {
-        border: 1px solid red;
+      &.is-laptop &-title {
+        font-size: 19px;
+        line-height: 22px;
       }
-      &.is-xxl &__content-item:first-child {
+      &.is-laptop &-text-title {
+        font-size: 17px;
+        line-height: 22px;
+      }
+      &.is-laptop {
+        width: 100%;
+        order: -1;
+      }
+      &.is-laptop &-content,
+      &.is-laptop &-text {
+        width: 100%;
+      }
+      &.is-laptop &-content-item {
+        & br {
+          display: none;
+        }
+        max-width: 500px;
+      }
+      &.is-laptop &-content-item:nth-child(2) {
         margin-bottom: 17px;
+      }
+      &.is-laptop &-content-item:nth-child(3) {
+        margin-bottom: 60px;
+      }
+      &.is-laptop &-description {
+        padding: 24px 16px;
+      }
+      &.is-laptop &-img-box {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 231px;
+        height: 100%;
+        margin: 0;
+      }
+      &.is-laptop &-redirect-catalog {
+        width: 125px;
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+  }
+
+  @media all and (min-width: 1200px) {
+    .note {
+      &.is-restrict &-title {
+        font-size: 21px;
+        line-height: 25px;
+        margin-bottom: 24px;
+      }
+      &.is-restrict &-description {
+        padding: 24px;
+      }
+      &.is-restrict &-text {
+        width: 100%;
+      }
+      &.is-restrict &-text-title {
+        max-width: 365px;
+      }
+      &.is-restrict &-content-item {
+        max-width: 365px;
+        br {
+          display: none;
+        }
+      }
+      &.is-restrict &-img-box {
+        display: none;
       }
     }
   }

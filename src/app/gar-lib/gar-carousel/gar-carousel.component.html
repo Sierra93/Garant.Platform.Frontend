@@ -6,12 +6,14 @@
                 <ng-template #sliderItem></ng-template>
             </div>
         </div>
-        <button (click)="onClickLeft()" [disabled]="leftDisabled$ | async">
-            <gar-icon name="polygon_left"></gar-icon>
-        </button>
-        <button (click)="onClickRight()" [disabled]="rightDisabled$ | async">
-            <gar-icon name="polygon_right"></gar-icon>
-        </button>
+        <ng-container *ngIf="viewRefs?.length">
+            <button (click)="onClickLeft()" [disabled]="leftDisabled$ | async">
+                <gar-icon name="polygon_left"></gar-icon>
+            </button>
+            <button (click)="onClickRight()" [disabled]="rightDisabled$ | async">
+                <gar-icon name="polygon_right"></gar-icon>
+            </button>
+        </ng-container>
     </ng-container>
 </ng-container>
 

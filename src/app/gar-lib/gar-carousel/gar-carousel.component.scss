@@ -1,3 +1,5 @@
+@import 'design';
+
 :host {
   display: flex;
   flex-direction: column;
@@ -22,7 +24,7 @@
     width: 32px;
     border-radius: 50%;
     border: none;
-    background: rgba(196, 196, 196, 0.4);
+    background-color: rgba($clrMidGray, 0.4);
     top: calc(50% - 8px);
     display: flex;
     align-items: center;
@@ -30,7 +32,7 @@
     transition: all 0.3s;
 
     &:hover:not([disabled]) {
-      background: rgba(196, 196, 196, 0.6);
+      background: rgba($clrMidGray, 0.6);
     }
 
     &[disabled] {
@@ -39,7 +41,8 @@
 
     > gar-icon {
       height: 16px;
-      width: 17px;
+      width: 14px;
+      fill: #313131;
     }
     &:first-child {}
     &:last-child {

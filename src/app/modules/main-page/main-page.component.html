@@ -2,7 +2,7 @@
   <div class="gar-row promo-block">
     <div class="gar-row-item">
       <div class="gar-row title">Недавно приобрели</div>
-      <app-gar-carousel [items]="aSlider" [template]="cardComponent"></app-gar-carousel>
+      <gar-carousel [items]="aSlider" [template]="cardComponent"></gar-carousel>
     </div>
 
     <div class="gar-row-item">
@@ -24,8 +24,7 @@
             <ng-template pTemplate="footer">
 
               <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
-              <button class="btn btn-dark" routerLink="/deal/start">Подробнее</button>
-
+              <gar-button role="primary" routerLink="/deal/start">Подробнее</gar-button>
               <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
                               </p-button> -->
             </ng-template>

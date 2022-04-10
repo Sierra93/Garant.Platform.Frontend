@@ -3,19 +3,26 @@
 $line-height: 1.3rem;
 
 /* Строки */
-$gar-row-between-vertical-margin: 16;
-$gar-row-items-between-vertical-margin: 8;
+$gar-row-between-vertical-margin: 16px;
+$gar-row-items-between-vertical-margin: 8px;
+$gar-row-items-between-horizontal-margin: 8px;
 /* Заголовок */
-$font-size-title: 18;
-$font-weight-title: 600;
-$font-size-sub-title: 12;
 $font-color-sub-title: $clrDarkGray;
 
 
 /* Карточка */
-$card-padding: 16;
+$card-padding: 16px;
 $border-radius-card: 8px;
-$gar-card-between-horizontal-margin: 24;
+$gar-card-between-horizontal-margin: 24px;
 
 /* badge */
 $main-badge-padding: 10px;
+
+/* Кнопка */
+$border-radius-btn: 4px;
+$btn-default-bg: $clrLightBlue;
+$btn-primary-bg: $clrBlue;
+$btn-secondary-bg: transparent;
+$btn-default-color: $clrBlue;
+$btn-primary-color: $clrWhite;
+$btn-secondary-color: $clrDarkGray;

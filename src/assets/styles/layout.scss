@@ -108,7 +108,7 @@ a {
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-radius: #{$border-radius-card}px;
+  border-radius: $border-radius-card;
   box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
   &:not(.secondary) {
     padding: #{$card-padding}px;
@@ -118,4 +118,13 @@ a {
   & .gar-card {
     box-shadow: none;
   }
+}
+
+/* Стили для элемента с выделенным фоном */
+.gar-badge {
+  @include typo("promo");
+  border-radius: calc(#{$border-radius-card}/2);
+  background: $clrLightBlue;
+  padding: $main-badge-padding;
+  color: $clrDarkBLue;
 }

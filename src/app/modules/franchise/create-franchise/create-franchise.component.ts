@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { attachment } from "../../../gar-lib/attachment";
 import { BehaviorSubject, Observable, of } from "rxjs";
 import { map, switchMap, takeUntil, tap } from "rxjs/operators";
-import { DestroyService } from "../../../core/destroy.service";
+import { GarDestroyService } from "../../../gar-lib/gar-destroy.service";
 import { error } from "jquery";
 import { FranchiseOutput } from "../../../models/franchise/output/franchise-output";
 
@@ -16,7 +16,7 @@ import { FranchiseOutput } from "../../../models/franchise/output/franchise-outp
     selector: "create-franchise",
     templateUrl: "./create-franchise.component.html",
     styleUrls: ["./create-franchise.component.scss"],
-    providers: [ConfirmationService, MessageService, DestroyService]
+    providers: [ConfirmationService, MessageService, GarDestroyService]
 })
 
 /** 
@@ -86,7 +86,7 @@ export class CreateFranchiseModule implements OnInit {
         private messageService: MessageService,
         private route: ActivatedRoute,
         private router: Router,
-        private _destroy$: DestroyService
+        private _destroy$: GarDestroyService
     ) {
         this.routeParamCategory = this.route.snapshot.queryParams.category;
         this.routeParamSubCategory = this.route.snapshot.queryParams.subCategory;

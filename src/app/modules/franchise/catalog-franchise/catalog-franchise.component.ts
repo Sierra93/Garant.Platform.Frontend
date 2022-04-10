@@ -10,6 +10,7 @@ import { PaginationInput } from 'src/app/models/pagination/input/pagination-inpu
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 // import { CatalogFranchiseService } from '../../../core/services/catalog-franchise.service';
 import { take } from 'rxjs/operators';
+import { CatalogShortCardComponent } from "../../products/catalog/catalog.short.card/catalog.short.card.component";
 
 @Component({
   selector: 'catalog-franchise',
@@ -61,6 +62,9 @@ export class CatalogFranchiseModule implements OnInit {
   catFranchPagination: any;
   pageNumber: number = 1;
   countRows: number = 12;
+  
+  /** Компонент, передаваемый в карусель */
+  cardComponent = CatalogShortCardComponent;
 
   constructor(
     private http: HttpClient,

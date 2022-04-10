@@ -4,14 +4,21 @@ import { GarImgUploaderComponent } from './gar-img-uploader/gar-img-uploader.com
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { GarIconComponent } from './gar-icon/gar-icon.component';
 import { PriceFormatPipe } from "./pipes/priceFormat.pipe";
+import { GarCarouselComponent } from './gar-carousel/gar-carousel.component';
+import { GarCarouselItemDirective } from './gar-carousel/gar-carousel-item.directive';
 
 const _COMPONENTS = [
 	GarImgUploaderComponent,
-	GarIconComponent
+	GarIconComponent,
+	GarCarouselComponent
 ]
 
 const _PIPES = [
 	PriceFormatPipe
+]
+
+const _DIRECTIVES = [
+	GarCarouselItemDirective
 ]
 
 @NgModule({
@@ -21,11 +28,13 @@ const _PIPES = [
 	],
 	declarations: [
 		..._COMPONENTS,
-		..._PIPES
+		..._PIPES,
+		..._DIRECTIVES
 	],
 	exports: [
 		..._COMPONENTS,
-		..._PIPES
+		..._PIPES,
+		..._DIRECTIVES
 	]
 })
 export class GarLibModule {

@@ -1,16 +1,8 @@
 <section id="catalog-franchise">
   <!-- Популярные франшизы. -->
   <div class="row section-mb">
-    <div class="col-12">
-      <h2 class="franchise-title">Популярные франшизы</h2>
-    </div>
-    <div class="gar-row">
-        <app-catalog-sort-card
-                class="gar-row-item"
-                *ngFor="let item of aPopularFranchises"
-                [item]="item"></app-catalog-sort-card>
-    </div>
-
+    <div class="gar-row title">Популярные франшизы</div>
+    <app-gar-carousel [items]="aPopularFranchises" [template]="cardComponent"></app-gar-carousel>
   </div>
 
   <!-- Каталог франшиз. -->

@@ -9,13 +9,13 @@ import { BehaviorSubject, Observable, of } from "rxjs";
 import { attachment } from "../../../gar-lib/attachment";
 import { catchError, map, switchMap, takeUntil, tap } from "rxjs/operators";
 import { FranchiseOutput } from "../../../models/franchise/output/franchise-output";
-import { DestroyService } from "../../../core/destroy.service";
+import { GarDestroyService } from "../../../gar-lib/gar-destroy.service";
 
 @Component({
     selector: "edit-franchise",
     templateUrl: "./edit-franchise.component.html",
     styleUrls: ["./edit-franchise.component.scss"],
-    providers: [ConfirmationService, MessageService, DestroyService]
+    providers: [ConfirmationService, MessageService, GarDestroyService]
 })
 
 /**
@@ -84,7 +84,7 @@ export class EditFranchiseModule implements OnInit {
         private commonService: CommonDataService,
         private route: ActivatedRoute,
         private messageService: MessageService,
-        private _destroy$: DestroyService
+        private _destroy$: GarDestroyService
     ) {
             this.responsiveOptions = [
                 {

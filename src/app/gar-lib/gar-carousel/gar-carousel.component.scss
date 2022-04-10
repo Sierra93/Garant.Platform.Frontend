@@ -1,0 +1,49 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .slides {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+
+    & * {
+      min-width: 325px;
+      &:not(:last-child) {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(196, 196, 196, 0.4);
+    top: calc(50% - 8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+
+    &:hover:not([disabled]) {
+      background: rgba(196, 196, 196, 0.6);
+    }
+
+    &[disabled] {
+      opacity: 0.3;
+    }
+
+    > gar-icon {
+      height: 16px;
+      width: 17px;
+    }
+    &:first-child {}
+    &:last-child {
+      right: 0;
+    }
+  }
+}

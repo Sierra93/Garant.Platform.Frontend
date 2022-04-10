@@ -30,43 +30,102 @@
     font-size: 96px;
     line-height: 112.5px;
     margin-bottom: 8px;
+    text-align: left;
   }
   &__business {
     font-size: 64px;
     line-height: 75px;
     margin-bottom: 16px;
+    text-align: left;
   }
   &__franchise {
     font-size: 24px;
     line-height: 28px;
     margin-bottom: 52px;
     color: #7a7a7a;
+    text-align: left;
   }
   &__btn-action {
-    font-size: 1.25vw;
+    max-width: 287px;
+    height: 76px;
+    font-size: 24px;
     line-height: 28px;
-    padding: 24px 32px;
     border-radius: 4px;
   }
 }
 
-.statistics {
+@media all and (max-width: 576px) {
+  .deal {
+    padding-top: 32px;
+    padding-bottom: 24px;
+    &__location {
+      display: block;
+    }
+    &__img-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &__img {
+      width: 112px;
+    }
+    &__content {
+      width: 100%;
+    }
+    &__description {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    &__title {
+      font-size: 32px;
+      line-height: 37px;
+      text-align: center;
+    }
+    &__business {
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+    }
+    &__franchise {
+      font-size: 17px;
+      line-height: 20px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    &__btn-action {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+:host .statistics {
   margin-top: 16px;
   &__item {
     & ::ng-deep .p-panel {
       & .p-panel-header {
+        position: relative;
+        height: 150px;
         justify-content: center;
         border: none;
         border-top-left-radius: 24px;
         border-top-right-radius: 24px;
         background: #f5f8fa;
-        padding-top: 64px;
-        padding-bottom: 16px;
         & .p-panel-title {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          width: 297px;
+          top: 0;
+          height: 100%;
           font-size: 3.62vw;
+          line-height: 112.5px;
         }
       }
       & .p-panel-content {
+        height: 150px;
         border: none;
         text-align: center;
         background: #f5f8fa;
@@ -74,6 +133,30 @@
         border-bottom-right-radius: 24px;
         padding: 0 0 64px;
       }
+    }
+  }
+}
+
+@media all and (max-width: 576px) {
+  :host .statistics {
+    &__item {
+      margin-bottom: 16px;
+      & ::ng-deep .p-panel {
+        & .p-panel-header {
+          height: 79.5px;
+          & .p-panel-title {
+            width: 103px;
+            font-size: 32px;
+            line-height: 37px;
+          }
+        }
+        & .p-panel-content {
+          height: 79.5px;
+        }
+      }
+    }
+    &__item:last-child {
+      margin-bottom: 0;
     }
   }
 }
@@ -126,15 +209,84 @@
     line-height: 16px;
   }
   &__redirect-catalog {
-    font-size: 0.94vw;
+    font-size: 18px;
     line-height: 21px;
     border-radius: 4px;
-    padding: 16px;
+    height: 51px;
   }
 }
+
+@media all and (max-width: 576px) {
+  .note {
+    &__title {
+      font-size: 19px;
+      line-height: 22px;
+    }
+    &__text-title {
+      font-size: 19px;
+      line-height: 20px;
+      max-width: 235px;
+    }
+    &__description {
+      padding: 8px;
+    }
+    &__img-box {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      right: 0;
+      width: 73px;
+      margin: 8px 8px 0 0;
+    }
+    &__content {
+      padding: 0;
+    }
+    &__content-item:nth-child(2) {
+      margin-bottom: 28px;
+    }
+    &__content-item:last-child {
+      margin-bottom: 24px;
+    }
+    &__wrapper {
+      display: flex;
+      justify-content: flex-start;
+    }
+    &__redirect-catalog {
+      width: 115px;
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+}
+@media all and (min-width: 992px) and  (max-width: 1200px) {
+  // диапазон распознается неверно, нужно проверять с помощью динамического класса
+  .note__title {
+    border: 1px solid red;
+  }
+  // В этом месте располагается верстка для прохождения контрольной точки 1200пх
+}
+
+/*@media all and (min-width: 768px) {*/
+  // В этом месте располагается планшетная верстка
+  // смена диапазона игнорируется
+  /*.note__title {
+    border: 1px solid blue;
+    color: gray;
+  }
+}*/
+
+
+
+// попробовать выполнить медиа-запрос через параметр orientation: landscape (через альбомную ориентацию)
+
 ::ng-deep {
   @media all and (min-width: 1201px) {
     .note {
+      &__title {
+        border: 1px solid red;
+      }
       &.is-xxl &__content-item:first-child {
         margin-bottom: 17px;
       }
@@ -195,5 +347,17 @@
     line-height: 21px;
     padding: 16px;
     border-radius: 4px;
+  }
+}
+
+@media all and (max-width: 576px) {
+  .checklist {
+    &__head {
+      font-size: 24px;
+      line-height: 28px;
+    }
+    &__action {
+      width: 100%;
+    }
   }
 }

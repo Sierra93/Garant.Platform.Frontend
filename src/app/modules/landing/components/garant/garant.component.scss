@@ -46,3 +46,25 @@
     color: #7a7a7a;
   }
 }
+
+@media all and (max-width: 576px) {
+  .garant {
+    margin-top: 40px;
+    &__title {
+      padding: 0;
+      font-size: 17px;
+      line-height: 20px;
+      max-width: 274px;
+    }
+    &__description {
+      font-size: 14px;
+      line-height: 16.5px;
+      max-width: 274px;
+    }
+    &__business,
+    &__clean {
+      font-size: 16px;
+      line-height: 18.5px;
+    }
+  }
+}

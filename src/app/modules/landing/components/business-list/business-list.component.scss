@@ -11,9 +11,13 @@
     color: #2c2c2c;
     font-weight: 600;
     line-height: 21px;
-    padding-top: 24px;
     margin-bottom: 16px;
     height: 42px;
+    max-width: 290px;
+  }
+  &__list:nth-child(2) &__subtitle,
+  &__list:nth-child(3) &__subtitle {
+    padding-right: 17px;
   }
   &__offer {
     border: none;
@@ -36,12 +40,47 @@
     line-height: 16px;
     margin-bottom: 51px;
     color: #7a7a7a;
-    height: 68px;
+    height: max-content;
+    max-width: 280px;
   }
   &__submit {
     font-size: 18px;
     line-height: 21px;
     padding: 16px;
     border-radius: 4px;
+    min-width: max-content;
+    max-width: 280px;
   }
+}
+
+@media all and (max-width: 576px) {
+  .choice {
+    margin-top: 24px;
+    &__card {
+      font-size: 19px;
+      line-height: 22px;
+    }
+    &__subtitle {
+      font-size: 17px;
+      line-height: 20px;
+      max-width: 210px;
+    }
+    &__list &__subtitle {
+      padding-right: 0;
+    }
+    &__text {
+      font-size: 14px;
+      line-height: 16.5px;
+      margin-bottom: 24px;
+      max-width: 210px;
+    }
+    &__submit {
+      font-size: 16px;
+      line-height: 19px;
+      max-width: 210px;
+    }
+  }
+}
+@media all and (min-width: 577px) and (max-width: 768px) {
+  
 }

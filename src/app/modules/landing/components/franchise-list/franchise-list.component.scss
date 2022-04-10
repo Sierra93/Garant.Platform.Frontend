@@ -1,12 +1,10 @@
-.franchise {
+:host .franchise {
+  margin-top: 74px;
   &__title {
     font-size: 24px;
     line-height: 28px;
     color: #000;
-    padding-top: 0;
-    padding-left: 0;
-    padding-bottom: 0;
-    margin-top: 74px;
+    padding: 0;
     margin-bottom: 32px;
     background: transparent;
     border: none;
@@ -38,7 +36,7 @@
     border-radius: 8px !important;
     background: #fff !important;
   }
-  &__picture {
+  &__img {
     width: 100%;
   }
   &__detail,
@@ -73,5 +71,32 @@
     font-size: 18px;
     line-height: 21px;
     font-weight: 600;
+  }
+}
+
+.img-fluid {
+  width: 100%;
+}
+
+@media all and (max-width: 576px) {
+  :host .franchise {
+    margin-top: 24px;
+    &__title {
+      font-size: 19px;
+      line-height: 22px;
+      margin-bottom: 16px;
+    }
+    &__text {
+      font-size: 17px;
+      line-height: 20px;
+    }
+    &__tooltip {
+      font-size: 11px;
+      line-height: 13px;
+    }
+    &__price {
+      font-size: 17px;
+      line-height: 20px;
+    }
   }
 }

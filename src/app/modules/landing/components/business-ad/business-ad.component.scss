@@ -1,13 +1,10 @@
-.business-ad {
-  margin-bottom: 74px;
+:host .business-ad {
+  margin-top: 74px;
   &__title {
     font-size: 24px;
     line-height: 28px;
     color: #000;
-    padding-top: 0;
-    padding-left: 0;
-    padding-bottom: 0;
-    margin-top: 74px;
+    padding: 0;
     margin-bottom: 32px;
     background: transparent;
     border: none;
@@ -74,5 +71,28 @@
     font-size: 18px;
     line-height: 21px;
     font-weight: 600;
+  }
+}
+
+@media all and (max-width: 576px) {
+  :host .business-ad {
+    margin-top: 26.5px;
+    &__title {
+      margin-bottom: 16px;
+      font-size: 19px;
+      line-height: 22px;
+    }
+    &__text {
+      font-size: 17px;
+      line-height: 20px;
+    }
+    &__tooltip {
+      font-size: 11px;
+      line-height: 13px;
+    }
+    &__price {
+      font-size: 17px;
+      line-height: 20px;
+    }
   }
 }

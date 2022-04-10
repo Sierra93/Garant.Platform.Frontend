@@ -5,7 +5,7 @@
   >
     <div class="container">
       <div class="row">
-        <div class="col-lg-9 col-xl-9 col-xxl-9">
+        <div class="col-sm-12 col-lg-9 col-xl-9 col-xxl-9">
           <div class="alert alert-light feedback__title">{{ title }}</div>
           <div class="alert alert-light feedback__subtitle">
             {{ subtitle }}
@@ -34,7 +34,7 @@
                 placeholder="Введите номер телефона"
               ></p-inputMask>
             </div>
-            <div class="col-6">
+            <div class="col-6 feedback__submit-request">
               <button
                 [ngClass]="{ 'is-prime': isModify }"
                 class="btn btn-primary feedback__submit"
@@ -48,7 +48,7 @@
         <img
           class="img-fluid feedback__assistant"
           [src]="imagePath"
-          alt="Сооснователь"
+          alt="Консультант"
         />
       </div>
     </div>

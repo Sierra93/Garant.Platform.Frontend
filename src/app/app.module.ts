@@ -80,6 +80,7 @@ import { BlockUIModule } from 'primeng/blockui';
 import { PanelModule } from 'primeng/panel';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,7 +113,8 @@ import { PanelModule } from 'primeng/panel';
     NotificationsModule,
     ConfiguratorAuthModule,
     CreateAdModule,
-    PriceFormatPipe
+    PriceFormatPipe,
+
   ],
 
   entryComponents: [],

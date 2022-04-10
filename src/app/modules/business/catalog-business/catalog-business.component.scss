@@ -47,9 +47,15 @@
     }
 
     &--aside {
-      margin-left: 0;
-      width: 163px;
-      height: 69px;
+      // margin-left: 0;
+      // width: 163px;
+      // height: 69px;
+      font-size: 12px;
+      padding: 5px 5px 5px 10px;
+      width: 140px;
+      background:$clrBlue;
+      align-items: center;
+      color: #ffffff;
     }
 
     &-close {
@@ -168,7 +174,7 @@
   }
 
   .block-catalog {
-    padding-top: 64px;
+    padding-top: 16px;
   }
 
   .catalog-item {
@@ -209,7 +215,7 @@
   ::ng-deep.p-inputnumber-input {
     display: block;
     width: 100%;
-    max-width: 220px;
+    max-width: 96%;
     height: 48px;
     padding: 16px;
     border: none;
@@ -244,6 +250,7 @@
     border-radius: 8px;
     min-height: 160px;
     padding: 16px;
+    margin-bottom: 32px;
 
     &-title {
       font-family: "Roboto";
@@ -380,7 +387,7 @@
     padding: 16px;
     background: #f1f6ff;
     border-radius: 4px;
-    padding: 15px;
+    
 
     .popular-item {
       width: 32%;
@@ -392,9 +399,7 @@
       border-radius: 8px;
       padding: 16px;
       margin: 6px 3px 8px 3px;
-      // @media (min-width: 460px) {
-      //   width: 49%;
-      // }
+
     }
   }
 
@@ -900,7 +905,7 @@
 .switch-garant-sorting {
   width: 23.8%;
   min-height: 558px;
-  padding: 0 16px 16px;
+  padding: 16px;
   margin-right: 14px;
   box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.08);
 }
@@ -920,6 +925,10 @@
 .p-dropdown-clearable {
   width: 100%;
 }
+.wrapper-container {
+  display: flex;
+  flex-direction: column;
+}
 .button-business {
   text-align: start;
   height: 48px;
@@ -934,6 +943,8 @@
   font-size: 14px;
   line-height: 16px;
   color: #2c2c2c;
+  padding: 15px;
+  margin-right: 8px;
 }
 
 .line {
@@ -1133,6 +1144,9 @@
     object-fit: cover;
     border-radius: 4px;
   }
+.wrapper-business {
+  background: #1f75fe;
+}
 }
 .image-blog-three {
   display: none;
@@ -1148,18 +1162,53 @@
 }
 
 }
-@media (min-width: 360px) and (max-width: 980px) {
-.app-container {
-  width: 90%;
-  margin: auto;
+
+@media (min-width: 320px) and (max-width: 980px) {
+.wrapper-business-blog {
+  display: block;
+  .image-blog {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .business-blog-video {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    .more-articles-content {
+      flex-direction: row;
+      margin-top: 0;
+    }
+  }
+  .image-blog-text {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+
+}
+
+.wrapper-business {
+  justify-content: start;
+  overflow: hidden;
+  height: 88px;
+ 
+}
+
+.wrapper-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 .block-catalog {
   .popular-list {
     .popular-item {
-      width: 33%;
+      width: 100%;
       padding: 16px 11px;
     }
   }
+.catalog-business-btn {
+  width: 100%;
+}
 }
 
 .left__news {
@@ -1184,25 +1233,16 @@
   left: 0px;
   top: 76%;
 }
-// @media (max-width: 459px) {
-  
-//   .left__news {
-//     width: 100%;
-//     margin-bottom: 16px;
-//   }
-  
-//   .right__news {
-//     width: 100%;
-//   }
-// }
 .d-flex {
   .catalog-business__filter {
 
     .control-quick-search-one {
       width: 100%;
+      margin-bottom: 24px;
     }
     .control-quick-search-two {
       width: 100%;
+      margin-bottom: 24px;
     }
     .control-quick-search-three {
       width: 100%;
@@ -1217,6 +1257,9 @@
           }
         }
       }
+    }
+    .block-catalog {
+      background:red;
     }
   }
 }
@@ -1261,7 +1304,14 @@
   .wrapper-business {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: start;
+    overflow: hidden;
+    height: 90px;
+      .overlow {
+        overflow: hidden;
+        width: 80px;
+        white-space: nowrap
+      }
       .catalog-business__filter-title {
         width: 100%;
     }
@@ -1270,6 +1320,7 @@
 .button-business-extra {
   display: none;
 }
+
 }
 .d1 {
   width: 4px;
@@ -1296,7 +1347,7 @@
 
 // Блок бизнес с тремя карточками
 .section-mb {
-  margin: auto auto 5rem auto !important;
+  margin: auto auto 5rem auto;
 }
 
 .card-business-holder {

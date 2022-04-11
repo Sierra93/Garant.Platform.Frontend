@@ -10,6 +10,16 @@ body {
   color: $clrBlack;
   font-family: Roboto, -apple-system, sans-serif;
   background-color: $clrWhite;
+  line-height: $line-height!important;
+}
+
+a {
+  color: $clrBlue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .app-container {
@@ -27,5 +37,85 @@ body {
 
   @include desktop {
     width: 1482px;
+  }
+}
+
+/* Строка */
+.gar-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* Вертикальный отступ между строками, если она не является последней */
+  &:not(.title) {
+    &:not(:last-child):not(.gar-row-item) {
+      margin-bottom: #{$gar-row-between-vertical-margin / 2}px;
+    }
+  }
+  /* Правый элемент */
+  > * {
+    &.right {
+      margin-left: auto;
+      flex-basis: auto;
+      word-break: normal;
+    }
+  }
+  /* Стиль описывающий элемент отображаемый как не делимый элемент строки */
+  > .gar-row-item {
+    display: flex;
+    flex-direction: column;
+    /* элемент строки является карточкой */
+    &.gar-card {
+      &:not(:first-child) {
+        margin-left: #{$gar-card-between-horizontal-margin}px;
+      }
+    }
+  }
+}
+
+/* Строка являющая заголовком */
+.gar-row.title {
+  @include typo("title");
+
+  /* Отступ у строки, если она не является последней */
+  &:not(:last-child) {
+    margin-bottom: #{$gar-row-between-vertical-margin}px;
+  }
+  & .sub-title {
+    @include typo("description");
+    color: $font-color-sub-title;
+  }
+  /* стили для вложенного элемента в title */
+  > .gar-row-item {
+    > *:not(:last-child) {
+      margin-bottom: #{$gar-row-between-vertical-margin / 3}px;
+    }
+  }
+  /* Модификатор, указывающий на то, что элемент публикуется, как основной на странице */
+  &.page {
+    @include typo("title-page");
+    &:not(:last-child) {
+      margin-bottom: #{$gar-row-between-vertical-margin - 3}px;
+    }
+  }
+  /* Модификатор, указывающий на то, что заголовок публикуется внутри других элементов */
+  &.item {
+    @include typo("title-item");
+  }
+}
+
+/* Стиль описывающий элемент карточка */
+.gar-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: #{$border-radius-card}px;
+  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  &:not(.secondary) {
+    padding: #{$card-padding}px;
+  }
+
+  /* карточка внутри карточки */
+  & .gar-card {
+    box-shadow: none;
   }
 }

@@ -1,5 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+/**
+ * @deprecated удалить на фронте преобразователи данных, всё форматировать на бэке
+ * */
 @Pipe({
   name: 'priceFormat',
 })

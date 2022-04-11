@@ -1,12 +1,24 @@
-@mixin typo($type) {
+@mixin typo($type, $weight: 400) {
   @if ($type == "texthead") {
     font-weight: 400;
     font-size: 24px;
     line-height: 28px;
   }
 
+  @if ($type == "texthead-bold") {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
   @if ($type == "regular") {
     font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  @if ($type == "regular-bold") {
+    font-weight: 600;
     font-size: 18px;
     line-height: 21px;
   }
@@ -35,9 +47,21 @@
     line-height: 21px;
   }
 
-  @if ($type == "regular") {
-    font-weight: 400;
+  @if ($type == "title-item") {
+    font-weight: 600;
     font-size: 18px;
     line-height: 21px;
+  }
+
+  @if ($type == "title") {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  @if ($type == "title-page") {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 36px;
   }
 }

@@ -4,30 +4,13 @@
     <div class="col-12">
       <h2 class="franchise-title">Популярные франшизы</h2>
     </div>
-
-    <div
-      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 popular-franchises"
-      *ngFor="let item of aPopularFranchises"
-    >
-      <div class="d-flex">
-        <div class="popular-franchises-block">
-          <p-card
-            header="{{ item.title }}"
-            subheader="{{ item.text }}"
-            [style]="{ width: '100%' }"
-          >
-            <ng-template pTemplate="header">
-              <img [src]="item.url" />
-            </ng-template>
-            <strong
-              >{{ item.textDoPrice }}
-              {{ item.price | priceFormat: item.price }} ₽
-            </strong>
-            <ng-template pTemplate="footer"></ng-template>
-          </p-card>
-        </div>
-      </div>
+    <div class="gar-row">
+        <app-catalog-sort-card
+                class="gar-row-item"
+                *ngFor="let item of aPopularFranchises"
+                [item]="item"></app-catalog-sort-card>
     </div>
+
   </div>
 
   <!-- Каталог франшиз. -->

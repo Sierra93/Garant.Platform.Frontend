@@ -2,7 +2,7 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "popper.js/dist/popper.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
-import { NgScrollbarModule } from 'ngx-scrollbar-v8';
+// import { NgScrollbarModule } from 'ngx-scrollbar-v8';
 import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { BrowserModule, Title } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
@@ -74,12 +74,14 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
 import { SessionService } from "./core/session/session.service";
 import { SESSION_TOKEN } from "./core/session/session.token";
 import { NotifyService } from "./services/notify/notify.service";
-import { PriceFormatPipe } from './core/pipes/priceFormat.pipe';
 import { LandingRequestService } from "./modules/landing/services/landing.service";
 import { BlockUIModule } from 'primeng/blockui';
 import { PanelModule } from 'primeng/panel';
 
 
+import { InputMaskModule } from 'primeng/inputmask';
+import { ProductsModule } from "./modules/products/products.module";
+// import { PriceFormatPipe } from "./gar-lib/pipes/priceFormat.pipe";
 
 @NgModule({
   declarations: [
@@ -113,18 +115,19 @@ import { PanelModule } from 'primeng/panel';
     NotificationsModule,
     ConfiguratorAuthModule,
     CreateAdModule,
-    PriceFormatPipe,
+    // PriceFormatPipe,
 
+    CreateAdModule
   ],
-
+  
   entryComponents: [],
-
+  
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    NgScrollbarModule,
+    // NgScrollbarModule,
     BrowserAnimationsModule,
     ButtonModule,
     DialogModule,
@@ -156,8 +159,10 @@ import { PanelModule } from 'primeng/panel';
     BlockUIModule,
     PanelModule,
 
+    InputMaskModule,
+    ProductsModule
   ],
-
+  
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -176,14 +181,13 @@ import { PanelModule } from 'primeng/panel';
     DocumentService,
     NotifyService,
     LandingRequestService,
-  {
-    provide: APP_INITIALIZER,
-    useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
-    deps: [NotifyService],
-    multi: true,
-  }
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
+      deps: [NotifyService],
+      multi: true,
+    }
   ],
-
   bootstrap: [AppComponent]
 })
 

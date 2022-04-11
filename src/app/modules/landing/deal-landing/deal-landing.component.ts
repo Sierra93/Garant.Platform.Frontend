@@ -17,6 +17,7 @@ import { LandingRequestService } from '../services/landing.service';
 })
 export class DealLandingModule implements OnInit, DoCheck {
   aPopularBusiness: any[] = [];
+  isFullHD!: boolean;
   isHD!: boolean;
   isRestrictHD!: boolean;
   isLaptop!: boolean;
@@ -102,7 +103,7 @@ export class DealLandingModule implements OnInit, DoCheck {
 
   public async ngOnInit(): Promise<void> {
     this.isHD = false;
-    this.isRestrictHD = false;
+    this.isFullHD = false;
     this.isLaptop = false;
     this.browserScreenWidth = window.screen.width;
     // await this.getPopularBusinessAsync();
@@ -474,15 +475,14 @@ export class DealLandingModule implements OnInit, DoCheck {
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
 
-    if (this.browserScreenWidth >= 1200) {
+    if (this.browserScreenWidth >= 1400) {
+      this.isFullHD = true;
+    } else {
+      this.isFullHD = false;
+    }
+
+    if (this.browserScreenWidth >= 1200 && this.browserScreenWidth < 1400) {
       this.isHD = true;
-      this.isRestrictHD = true;
-      console.log(this.isRestrictHD);
-      
-      if (this.browserScreenWidth < 1400) {
-        this.isRestrictHD = false;
-      } else {
-      }
     } else {
       this.isHD = false;
     }

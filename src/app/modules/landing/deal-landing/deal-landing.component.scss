@@ -122,18 +122,18 @@
 
   @media all and (min-width: 1200px) {
     .deal {
-      &.is-restrict &__content {
+      &.is-hd &__content {
         padding-left: 44px;
       }
-      &.is-restrict &__title {
+      &.is-hd &__title {
         font-size: 74px;
         line-height: 75px;
       }
-      &.is-restrict &__business {
+      &.is-hd &__business {
         font-size: 44px;
         line-height: 52px;
       }
-      &.is-restrict &__btn-action {
+      &.is-hd &__btn-action {
         width: 287px;
       }
     }
@@ -385,27 +385,27 @@
 
   @media all and (min-width: 1200px) {
     .note {
-      &.is-restrict &-title {
+      &.is-hd &-title {
         font-size: 21px;
         line-height: 25px;
         margin-bottom: 24px;
       }
-      &.is-restrict &-description {
+      &.is-hd &-description {
         padding: 24px;
       }
-      &.is-restrict &-text {
+      &.is-hd &-text {
         width: 100%;
       }
-      &.is-restrict &-text-title {
+      &.is-hd &-text-title {
         max-width: 365px;
       }
-      &.is-restrict &-content-item {
+      &.is-hd &-content-item {
         max-width: 365px;
         br {
           display: none;
         }
       }
-      &.is-restrict &-img-box {
+      &.is-hd &-img-box {
         display: none;
       }
     }

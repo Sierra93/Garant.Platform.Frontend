@@ -1,12 +1,13 @@
-<section
-  class="card deal"
-  [ngClass]="{ 'is-laptop': isLaptop, 'is-restrict': !isRestrictHD }"
->
-  <div [ngClass]="{ 'container-fluid': isLaptop, container: isHD }">
+<section class="card deal" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
+  <div [ngClass]="{ 'container-fluid': isLaptop, container: isHD || isFullHD }">
     <div class="row deal__location">
       <div
         class="deal__img-wrapper"
-        [ngClass]="{ 'col-lg-5': isLaptop, 'col-xl-4': isHD }"
+        [ngClass]="{
+          'col-lg-5': isLaptop,
+          'col-xl-4': isHD,
+          'col-xxl-4': isFullHD
+        }"
       >
         <img
           class="img-fluid deal__img"
@@ -16,7 +17,11 @@
       </div>
       <div
         class="deal__content"
-        [ngClass]="{ 'col-lg-7': isLaptop, 'col-xl-8': isHD }"
+        [ngClass]="{
+          'col-lg-7': isLaptop,
+          'col-xl-8': isHD,
+          'col-xxl-8': isFullHD
+        }"
       >
         <div class="card-body deal__description">
           <h5 class="card-title deal__title">Онлайн сделка</h5>
@@ -38,7 +43,12 @@
   <div class="row statistics__gallery">
     <div
       class="col-lg-6 statistics__item"
-      [ngClass]="{ 'mb-3': isLaptop, 'col-lg-6': isLaptop, 'col-xl-3': isHD }"
+      [ngClass]="{
+        'mb-3': isLaptop,
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
     >
       <app-statistics-card
         [pTitle]="'10'"
@@ -47,7 +57,12 @@
     </div>
     <div
       class="col-lg-6 statistics__item"
-      [ngClass]="{ 'mb-3': isLaptop, 'col-lg-6': isLaptop, 'col-xl-3': isHD }"
+      [ngClass]="{
+        'mb-3': isLaptop,
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
     >
       <app-statistics-card
         [pTitle]="'35'"
@@ -56,7 +71,11 @@
     </div>
     <div
       class="col-lg-6 statistics__item"
-      [ngClass]="{ 'col-lg-6': isLaptop, 'col-xl-3': isHD }"
+      [ngClass]="{
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
     >
       <app-statistics-card
         [pTitle]="'105'"
@@ -65,7 +84,11 @@
     </div>
     <div
       class="col-lg-6 statistics__item"
-      [ngClass]="{ 'col-lg-6': isLaptop, 'col-xl-3': isHD }"
+      [ngClass]="{
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
     >
       <app-statistics-card
         [pTitle]="'0.5-3%'"
@@ -81,7 +104,7 @@
   </div>
   <div
     class="col-lg-5 col-xl-5 col-xxl-5 note"
-    [ngClass]="{ 'is-laptop': isLaptop, 'is-restrict': isRestrictHD }"
+    [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }"
   >
     <h5 class="alert alert-light note-title">Покупка бизнеса с гарантиями</h5>
     <div class="card note-description">

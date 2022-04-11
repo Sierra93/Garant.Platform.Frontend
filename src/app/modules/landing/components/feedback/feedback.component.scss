@@ -64,6 +64,7 @@
     padding-left: 24px;
   }
   &__submit-request {
+    display: flex;
     margin-top: 32px;
   }
   &__submit {
@@ -119,10 +120,8 @@
     &__input-field:first-child {
       padding-bottom: 16px;
     }
-    &__input-field:nth-child(2) {
-      padding-bottom: 24px;
-    }
     &__submit-request {
+      margin-top: 24px;
       width: 100%;
     }
     &__submit {

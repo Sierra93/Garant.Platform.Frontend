@@ -131,3 +131,21 @@ a {
   padding: $main-badge-padding;
   color: $clrDarkBLue;
 }
+
+/* Стили для сетки */
+.gar-grid {
+  display: flex;
+  gap: $gridGap;
+
+  &_wrap {
+    flex-wrap: wrap;
+  }
+}
+
+/* Стили для центровки абсолютного элемента */
+.gar-absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

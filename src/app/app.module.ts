@@ -2,7 +2,6 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "popper.js/dist/popper.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
-// import { NgScrollbarModule } from 'ngx-scrollbar-v8';
 import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { BrowserModule, Title } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
@@ -81,7 +80,8 @@ import { PanelModule } from 'primeng/panel';
 
 import { InputMaskModule } from 'primeng/inputmask';
 import { ProductsModule } from "./modules/products/products.module";
-// import { PriceFormatPipe } from "./gar-lib/pipes/priceFormat.pipe";
+import { PriceFormatPipe } from "./gar-lib/pipes/priceFormat.pipe";
+import { NgScrollbarModule } from "ngx-scrollbar-v8";
 
 @NgModule({
   declarations: [
@@ -115,7 +115,7 @@ import { ProductsModule } from "./modules/products/products.module";
     NotificationsModule,
     ConfiguratorAuthModule,
     CreateAdModule,
-    // PriceFormatPipe,
+    PriceFormatPipe,
 
     CreateAdModule
   ],
@@ -127,7 +127,7 @@ import { ProductsModule } from "./modules/products/products.module";
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    // NgScrollbarModule,
+    NgScrollbarModule,
     BrowserAnimationsModule,
     ButtonModule,
     DialogModule,

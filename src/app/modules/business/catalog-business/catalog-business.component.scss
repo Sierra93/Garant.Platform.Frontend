@@ -53,7 +53,7 @@
       font-size: 12px;
       padding: 5px 5px 5px 10px;
       width: 140px;
-      background:$clrBlue;
+      background:#1f75fe;
       align-items: center;
       color: #ffffff;
     }
@@ -464,7 +464,7 @@
     max-width: 1440px !important;
     height: 194.5px !important;
     border-radius: 4px !important;
-    padding: 24px;
+    padding: 3%;
     background-color: #f1f6ff !important;
     margin-bottom: 50px;
     &-header {
@@ -581,7 +581,7 @@
     width: 1440px !important;
     height: 194.5px !important;
     border-radius: 4px !important;
-    padding: 24px;
+    padding: 3%;
     background-color: #f1f6ff !important;
 
     &-header {
@@ -1164,6 +1164,43 @@
 }
 
 @media (min-width: 320px) and (max-width: 980px) {
+::ng-deep .card-line {
+  padding: 15px;
+
+}
+
+
+::ng-deep .p-card {
+  &-content {
+    padding: 0rem !important;
+    .franchise-card-title {
+      margin: 0;
+    }
+  }
+  &-footer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+.mt-5 {
+  margin-top: 1rem !important;
+}
+::ng-deep .p-paginator {
+  background:#0dcaf0;
+  padding: 0;
+  border-radius: 10px;
+  border: 1px solid red;
+  .p-paginator-current {
+    display: none;
+  }
+  .p-paginator-rpp-options {
+    display: none;
+  }
+  .p-paginator-last {
+    min-width: 1rem;
+  }
+  
+}
 .wrapper-business-blog {
   display: block;
   .image-blog {
@@ -1207,6 +1244,10 @@
     }
   }
 .catalog-business-btn {
+  width: 100%;
+  margin-bottom: 8px;
+}
+.catalog-business-btn1 {
   width: 100%;
 }
 }

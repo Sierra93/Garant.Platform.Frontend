@@ -1,0 +1,28 @@
+<ng-container *ngIf="items$ | async as items; else noContent">
+    <ng-container *ngIf="template; else noTemplates">
+        <div class="slides" #slides>
+            <div *ngFor="let item of items$ | async; index as i" [id]="'slide-' + i" appGarCarouselItem
+                 [ngStyle]="{'height': heightContainer$ | async}">
+                <ng-template #sliderItem></ng-template>
+            </div>
+        </div>
+        <ng-container *ngIf="viewRefs?.length">
+            <button (click)="onClickLeft()" [disabled]="leftDisabled$ | async">
+                <gar-icon name="polygon_left"></gar-icon>
+            </button>
+            <button (click)="onClickRight()" [disabled]="rightDisabled$ | async">
+                <gar-icon name="polygon_right"></gar-icon>
+            </button>
+        </ng-container>
+    </ng-container>
+</ng-container>
+
+<!--Не передан массив с данными-->
+<ng-template #noContent>
+    <div class="gar-row title">Ничего нет :-((</div>
+</ng-template>
+<!--Не передан компонент карточки представления-->
+<ng-template #noTemplates>
+    <div class="gar-row title">Ожидаем контент...</div>
+</ng-template>
+

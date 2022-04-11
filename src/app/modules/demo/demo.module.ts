@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DemoPageComponent } from './components/demo.page/demo.page.component';
 import { RouterModule } from "@angular/router";
+import { GarLibModule } from "../../gar-lib/gar-lib.module";
 
 /**
  * Модуль, публикующий страницу Demo
@@ -15,7 +16,8 @@ import { RouterModule } from "@angular/router";
 			path: '',
 			component: DemoPageComponent
 		}]),
-		CommonModule
+		CommonModule,
+		GarLibModule
 	]
 })
 export class DemoModule {

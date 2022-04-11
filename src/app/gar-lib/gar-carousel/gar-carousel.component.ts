@@ -36,7 +36,7 @@ import { GarItemComponent } from "../gar-item/gar-item.component";
  * @param template - компонент, который является представлением, выводящегося в качестве элемента
  * */
 @Component({
-	selector: 'app-gar-carousel',
+	selector: 'gar-carousel',
 	templateUrl: './gar-carousel.component.html',
 	styleUrls: ['./gar-carousel.component.scss'],
 	providers: [GarDestroyService],

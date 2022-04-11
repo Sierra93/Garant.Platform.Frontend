@@ -48,11 +48,14 @@ a {
   /* Вертикальный отступ между строками, если она не является последней */
   &:not(.title) {
     &:not(:last-child):not(.gar-row-item) {
-      margin-bottom: #{$gar-row-between-vertical-margin / 2}px;
+      margin-bottom: calc(#{$gar-row-between-vertical-margin} / 2);
     }
   }
   /* Правый элемент */
   > * {
+    &:not(:last-child) {
+      margin-right: $gar-row-items-between-horizontal-margin;
+    }
     &.right {
       margin-left: auto;
       flex-basis: auto;
@@ -66,7 +69,7 @@ a {
     /* элемент строки является карточкой */
     &.gar-card {
       &:not(:first-child) {
-        margin-left: #{$gar-card-between-horizontal-margin}px;
+        margin-left: $gar-card-between-horizontal-margin;
       }
     }
   }
@@ -78,7 +81,7 @@ a {
 
   /* Отступ у строки, если она не является последней */
   &:not(:last-child) {
-    margin-bottom: #{$gar-row-between-vertical-margin}px;
+    margin-bottom: $gar-row-between-vertical-margin;
   }
   & .sub-title {
     @include typo("description");
@@ -87,14 +90,14 @@ a {
   /* стили для вложенного элемента в title */
   > .gar-row-item {
     > *:not(:last-child) {
-      margin-bottom: #{$gar-row-between-vertical-margin / 3}px;
+      margin-bottom: calc(#{$gar-row-between-vertical-margin} / 3);
     }
   }
   /* Модификатор, указывающий на то, что элемент публикуется, как основной на странице */
   &.page {
     @include typo("title-page");
     &:not(:last-child) {
-      margin-bottom: #{$gar-row-between-vertical-margin - 3}px;
+      margin-bottom: calc(#{$gar-row-between-vertical-margin} - 3);
     }
   }
   /* Модификатор, указывающий на то, что заголовок публикуется внутри других элементов */
@@ -111,7 +114,7 @@ a {
   border-radius: $border-radius-card;
   box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
   &:not(.secondary) {
-    padding: #{$card-padding}px;
+    padding: $card-padding;
   }
 
   /* карточка внутри карточки */

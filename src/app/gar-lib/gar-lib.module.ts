@@ -6,11 +6,13 @@ import { GarIconComponent } from './gar-icon/gar-icon.component';
 import { PriceFormatPipe } from "./pipes/priceFormat.pipe";
 import { GarCarouselComponent } from './gar-carousel/gar-carousel.component';
 import { GarCarouselItemDirective } from './gar-carousel/gar-carousel-item.directive';
+import { GarButtonComponent } from './gar-button/gar-button.component';
 
 const _COMPONENTS = [
 	GarImgUploaderComponent,
 	GarIconComponent,
-	GarCarouselComponent
+	GarCarouselComponent,
+	GarButtonComponent
 ]
 
 const _PIPES = [

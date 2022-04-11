@@ -64,4 +64,10 @@
     font-size: 32px;
     line-height: 36px;
   }
+
+  @if ($type == "promo") {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+  }
 }

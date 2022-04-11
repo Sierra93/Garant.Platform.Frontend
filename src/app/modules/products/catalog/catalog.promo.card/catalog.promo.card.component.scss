@@ -2,7 +2,7 @@
 
 :host {
   .image-container {
-    height: 162px;
+    height: 155px;
     display: flex;
     > img {
       width: 100%;
@@ -10,10 +10,5 @@
       object-fit: cover;
       border-radius: $border-radius-card $border-radius-card 0 0;
     }
-  }
-  & gar-icon {
-    fill: $clrMidGray;
-    height: 16px;
-    width: 8px;
   }
 }

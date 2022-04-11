@@ -1,46 +1,20 @@
 <section id="main-page">
-  <div class="row carousel-block section-mb">
-    <!-- Блок с каруселью. -->
-    <div class="col-lg-7">
-      <p-carousel [value]="aSlider" [numVisible]="2" [numScroll]="2" [circular]="false"
-        [responsiveOptions]="responsiveOptions" [showNavigators]="false">
-        <ng-template pTemplate="header">
-          <h5 class="title-franchise">Недавно приобрели</h5>
-        </ng-template>
-        <ng-template let-item pTemplate="item">
-          <div class="product-item">
-            <div class="product-item-content">
-              <div class="p-mb-3">
-                <img [src]="item.url" class="product-image">
-              </div>
-              <div>
-                <p-card header="{{item.name}}" subheader="{{item.text}}" [style]="{width: '100%'}"
-                  styleClass="p-card-shadow">
-                  <ng-template pTemplate="header">
-                    <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-                  </ng-template>
-                  <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
-                  <ng-template pTemplate="footer">
-                    <!-- <p-button label="Save" icon="pi pi-check"></p-button>
-                    <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
-                  </ng-template>
-                </p-card>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </p-carousel>
+  <div class="gar-row promo-block">
+    <div class="gar-row-item">
+      <div class="gar-row title">Недавно приобрели</div>
+      <gar-carousel [items]="aSlider" [template]="cardComponent"></gar-carousel>
     </div>
 
-    <div class="col-lg-5">
-      <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
+    <div class="gar-row-item">
+      <div class="gar-row title">Покупка бизнеса с гарантиями</div>
       <div class="right">
-    
+
         <div class="wrapper-container">
-    
-          <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" style="background-color: #F1F1F1"
-            styleClass="card">
-    
+
+          <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}"
+                  style="background-color: #F1F1F1"
+                  styleClass="card">
+
             <ng-template pTemplate="header">
               <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
               <!-- <h5>Покупка бизнеса любого размера онлайн с гарантиями</h5> -->
@@ -48,25 +22,21 @@
             <!-- <p>{{oTopAction.text}}</p> -->
             <p class="right-text">{{oTopAction.text}}</p>
             <ng-template pTemplate="footer">
-    
+
               <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
-              <button class="btn btn-dark" routerLink="/deal/start">Подробнее</button>
-    
+              <gar-button role="primary" routerLink="/deal/start">Подробнее</gar-button>
               <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
                               </p-button> -->
             </ng-template>
-    
+
           </p-card>
         </div>
         <div class="right-block-img">
           <img class="right-images" src="../../../assets/images/right-img.png" alt="картинка правого блока">
-    
+
         </div>
       </div>
     </div>
-    
-    
-    
   </div>
 
   <!-- Область с 3 карточками. -->

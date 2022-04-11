@@ -12,7 +12,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { AttachmentType } from "../attachment-type";
 import { Attachment, attachment } from "../attachment";
 import { catchError, filter, map, switchMap, takeUntil, tap } from "rxjs/operators";
-import { DestroyService } from "../../core/destroy.service";
+import { GarDestroyService } from "../gar-destroy.service";
 import { API_URL } from "../../core/core-urls/api-url";
 import { HttpClient } from "@angular/common/http";
 import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
@@ -33,7 +33,7 @@ const DEFAULT_IMG_TYPES = [AttachmentType.png, AttachmentType.jpeg, AttachmentTy
 	selector: 'gar-img-uploader',
 	templateUrl: './gar-img-uploader.component.html',
 	styleUrls: ['./gar-img-uploader.component.scss'],
-	providers: [DestroyService],
+	providers: [GarDestroyService],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GarImgUploaderComponent implements OnInit {
@@ -80,7 +80,7 @@ export class GarImgUploaderComponent implements OnInit {
 	public errors: { file: string; message: string }[] = [];
 	
 	constructor(
-		private _destroy$: DestroyService,
+		private _destroy$: GarDestroyService,
 		private _http: HttpClient
 	) {
 	}

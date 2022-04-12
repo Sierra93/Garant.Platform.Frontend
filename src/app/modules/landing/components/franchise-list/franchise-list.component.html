@@ -1,9 +1,15 @@
-<div class="franchise" [ngClass]="{'is-laptop': isLaptop}">
+<div class="franchise" [ngClass]="{ 'is-laptop': isLaptop }">
   <h5 class="alert alert-light text-break franchise__title">
     Популярные франшизы
   </h5>
   <div class="row">
-    <div class="col-lg-3 col-xl-3 col-xxl-3">
+    <div
+      [ngClass]="{
+        'col-lg-4': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <p-carousel
         [value]="aPopularFranchises"
         [numVisible]="1"

@@ -62,10 +62,22 @@ a {
       word-break: normal;
     }
   }
+  /* Элемент, занимающий область по ширине своего контента */
+  &.fit {
+    flex-basis: 0;
+    width: fit-content;
+  }
+  > * {
+    &.fit {
+      flex-basis: 0;
+      width: fit-content;
+    }
+  }
   /* Стиль описывающий элемент отображаемый как не делимый элемент строки */
   > .gar-row-item {
     display: flex;
     flex-direction: column;
+    width: 100%;
     /* элемент строки является карточкой */
     &.gar-card {
       &:not(:first-child) {
@@ -112,6 +124,7 @@ a {
   flex-direction: column;
   width: 100%;
   border-radius: $border-radius-card;
+  background-color: $clrWhite;
   box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
   &:not(.secondary) {
     padding: $card-padding;

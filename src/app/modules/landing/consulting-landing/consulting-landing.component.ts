@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -52,9 +52,19 @@ export class ConsultingLandingModule implements OnInit {
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
+  isFullHD!: boolean;
+  isHD!: boolean;
+  isLaptop!: boolean;
   isHideBusinessWithGarant: boolean = true;
+  browserScreenWidth!: number;
   name: string = "";
   phoneNumber: string = "";
+  feedbackTitle: string = 'Проверка';
+  feedbackSubtitle: string = 'юридических документов';
+  feedbackNote: string = 'при покупке франшизы или готового бизнеса';
+  feedbackImgPath: string =
+    '../../../../assets/images/deal-landing/template_person6 1.png';
+  feedbackTheme: boolean = false;
 
   public landingRequestNotify$ = new BehaviorSubject<any>(undefined);
 
@@ -98,6 +108,11 @@ export class ConsultingLandingModule implements OnInit {
   }
 
   public async ngOnInit() {
+    this.isHD = false;
+    this.isFullHD = false;
+    this.isLaptop = false;
+    this.browserScreenWidth = window.screen.width;
+
     // await this.getPopularBusinessAsync();
     await this.GetBusinessListAsync();
     await this.loadCitiesFranchisesListAsync();
@@ -111,6 +126,10 @@ export class ConsultingLandingModule implements OnInit {
     await this.loadSingleSuggestionAsync();
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
+  }
+
+  public ngDoCheck(): void {
+    this.defineResize();
   }
 
   /**
@@ -531,4 +550,27 @@ export class ConsultingLandingModule implements OnInit {
       this.phoneNumber = ''
     });
   };
+
+  @HostListener('window:resize', ['$event'])
+  private defineResize() {
+    this.browserScreenWidth = window.screen.width;
+
+    if (this.browserScreenWidth >= 1400) {
+      this.isFullHD = true;
+    } else {
+      this.isFullHD = false;
+    }
+
+    if (this.browserScreenWidth >= 1200 && this.browserScreenWidth < 1400) {
+      this.isHD = true;
+    } else {
+      this.isHD = false;
+    }
+
+    if (this.browserScreenWidth >= 992 && this.browserScreenWidth < 1199) {
+      this.isLaptop = true;
+    } else {
+      this.isLaptop = false;
+    }
+  }
 }

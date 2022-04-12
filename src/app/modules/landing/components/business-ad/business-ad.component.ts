@@ -14,7 +14,8 @@ export class BusinessAdComponent implements OnInit, DoCheck {
   slideShow: number = 1;
   slideCount: number = 3;
   infiniteScroll: boolean = true;
-
+  isFullHD!: boolean;
+  isHD!: boolean;
   isLaptop!: boolean;
   browserScreenWidth!: number;
 
@@ -75,7 +76,20 @@ export class BusinessAdComponent implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if ((this.browserScreenWidth >= 992) && (this.browserScreenWidth < 1199)) {
+
+    if (this.browserScreenWidth >= 1400) {
+      this.isFullHD = true;
+    } else {
+      this.isFullHD = false;
+    }
+
+    if (this.browserScreenWidth >= 1200 && this.browserScreenWidth < 1400) {
+      this.isHD = true;
+    } else {
+      this.isHD = false;
+    }
+
+    if (this.browserScreenWidth >= 992 && this.browserScreenWidth < 1199) {
       this.isLaptop = true;
     } else {
       this.isLaptop = false;

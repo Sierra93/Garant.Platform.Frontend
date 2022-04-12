@@ -420,7 +420,8 @@
     }
 
     &-body {
-      margin: 0 !important;
+      margin-top: 40px;
+      // margin: 0 !important;
       padding: 0 !important;
       background-color: rgba(218, 218, 218, 0.15);
     }
@@ -462,7 +463,7 @@
 
   ::ng-deep .card-line-wrapper .p-card {
     max-width: 1440px !important;
-    height: 194.5px !important;
+    min-height: 194.5px !important;
     border-radius: 4px !important;
     padding: 3%;
     background-color: #f1f6ff !important;
@@ -579,7 +580,7 @@
 
   ::ng-deep .card-line-wrapper .p-card {
     width: 1440px !important;
-    height: 194.5px !important;
+    min-height: 194.5px !important;
     border-radius: 4px !important;
     padding: 3%;
     background-color: #f1f6ff !important;
@@ -664,6 +665,7 @@
     height: 335px !important;
     margin: 0 !important;
     padding: 0 !important;
+   
   }
 
   &-header {
@@ -1037,6 +1039,7 @@
 .btn-show-more {
   width: 148px;
   height: 53px;
+  padding: 3px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 600;
@@ -1044,6 +1047,7 @@
   line-height: 21px; 
   color: #7A7A7A;
   border: 1px solid #7A7A7A
+  
 }
 .close {
   border: none;
@@ -1223,7 +1227,9 @@
 
 
 }
-
+.ml-1 {
+  width: 155px;
+}
 .wrapper-business {
   justify-content: start;
   overflow: hidden;

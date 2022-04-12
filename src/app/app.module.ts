@@ -80,7 +80,7 @@ import { PanelModule } from 'primeng/panel';
 
 import { InputMaskModule } from 'primeng/inputmask';
 import { ProductsModule } from "./modules/products/products.module";
-import { PriceFormatPipe } from "./gar-lib/pipes/priceFormat.pipe";
+// import { PriceFormatPipe } from "./gar-lib/pipes/priceFormat.pipe";
 import { NgScrollbarModule } from "ngx-scrollbar-v8";
 
 @NgModule({
@@ -115,7 +115,7 @@ import { NgScrollbarModule } from "ngx-scrollbar-v8";
     NotificationsModule,
     ConfiguratorAuthModule,
     CreateAdModule,
-    PriceFormatPipe,
+    // PriceFormatPipe,
 
     CreateAdModule
   ],

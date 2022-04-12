@@ -43,6 +43,7 @@
     text-align: left;
   }
   &__btn-action {
+    width: 287px;
     height: 76px;
     font-size: 24px;
     line-height: 28px;
@@ -208,10 +209,6 @@
         & ::ng-deep .p-panel {
           & .p-panel-header {
             height: 170.5px;
-            & .p-panel-title {
-              font-size: 96px;
-              line-height: 112px;
-            }
           }
           & .p-panel-content {
             height: 170.5px;
@@ -476,6 +473,16 @@
     }
     &__action {
       width: 100%;
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .checklist {
+      &.is-laptop &__description {
+        max-width: 50%;
+      }
     }
   }
 }

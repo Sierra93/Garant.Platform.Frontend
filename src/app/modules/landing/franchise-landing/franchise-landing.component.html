@@ -1,14 +1,28 @@
-<section class="card deal" [ngClass]="{ 'is-xxl': isXxl }">
-  <div class="container-fluid">
+<section class="card deal" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
+  <div [ngClass]="{ 'container-fluid': isLaptop, container: isHD || isFullHD }">
     <div class="row deal__location">
-      <div class="col-lg-6 col-xl-6 col-xxl-6 deal__img-wrapper">
+      <div
+        class="deal__img-wrapper"
+        [ngClass]="{
+          'col-lg-5': isLaptop,
+          'col-xl-5': isHD,
+          'col-xxl-5': isFullHD
+        }"
+      >
         <img
           class="img-fluid deal__img"
           src="../../../../assets/images/franchise-landing/desk.png"
           alt="Стол"
         />
       </div>
-      <div class="col-lg-6 col-xl-6 col-xxl-6 deal__content">
+      <div
+        class="deal__content"
+        [ngClass]="{
+          'col-lg-7': isLaptop,
+          'col-xl-7': isHD,
+          'col-xxl-7': isFullHD
+        }"
+      >
         <div class="card-body deal__description">
           <h5 class="card-title deal__title">Создание</h5>
           <div class="card-text deal__business">и упаковка франшиз</div>
@@ -24,27 +38,62 @@
   </div>
 </section>
 <!-- Секция статистика по достигнутым результатам -->
-<section class="statistics" [ngClass]="{ 'is-xxl': isXxl }">
+<section
+  class="statistics"
+  [ngClass]="{ 'is-hd': isHD, 'is-laptop': isLaptop }"
+>
   <div class="row statistics__gallery">
-    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+    <div
+      class="col-lg-6 statistics__item"
+      [ngClass]="{
+        'mb-3': isLaptop,
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <app-statistics-card
         [pTitle]="'80'"
         [pText]="'франшиз упаковали и создали с нуля'"
       ></app-statistics-card>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+    <div
+      class="col-lg-6 statistics__item"
+      [ngClass]="{
+        'mb-3': isLaptop,
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <app-statistics-card
         [pTitle]="'25'"
         [pText]="'сфер бизнеса проработано за время работы'"
       ></app-statistics-card>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+    <div
+      class="col-lg-6 statistics__item"
+      [ngClass]="{
+        'mb-3': isLaptop,
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <app-statistics-card
         [pTitle]="'65 млн'"
         [pText]="'заработали клиентам после создания франшиз'"
       ></app-statistics-card>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3 statistics__item">
+    <div
+      class="col-lg-6 statistics__item"
+      [ngClass]="{
+        'mb-3': isLaptop,
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <app-statistics-card
         [pTitle]="'14'"
         [pText]="'человек будут работать над вашим проектом'"
@@ -61,10 +110,17 @@
   [isModify]="feedbackTheme"
 ></app-feedback>
 <!-- Секция бонусов сервиса -->
-<section class="checklist" [ngClass]="{ 'is-xxl': isXxl }">
+<section class="checklist" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
   <h5 class="alert alert-light checklist__head">Бонусы от GoBizy</h5>
   <div class="row">
-    <div class="col-lg-6 col-xl-6 col-xxl-3 checklist__item">
+    <div
+      class="checklist__item"
+      [ngClass]="{
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img
@@ -96,7 +152,14 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-6 col-xl-6 col-xxl-3 checklist__item">
+    <div
+      class="checklist__item"
+      [ngClass]="{
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img
@@ -128,7 +191,14 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-6 col-xl-6 col-xxl-3 checklist__item">
+    <div
+      class="checklist__item"
+      [ngClass]="{
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img
@@ -160,7 +230,14 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-6 col-xl-6 col-xxl-3 checklist__item">
+    <div
+      class="checklist__item"
+      [ngClass]="{
+        'col-lg-6': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img

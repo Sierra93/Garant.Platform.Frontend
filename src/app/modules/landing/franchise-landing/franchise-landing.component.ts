@@ -53,13 +53,16 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
-  isXxl!: boolean;
+  isFullHD!: boolean;
+  isHD!: boolean;
+  isLaptop!: boolean;
   browserScreenWidth!: number;
   isHideBusinessWithGarant: boolean = true;
   feedbackTitle: string = 'Азамат Булатов';
   feedbackSubtitle: string = 'сооснователь проекта';
   feedbackNote: string = 'Лично ответственный за каждую упакованную франшизу';
-  feedbackImgPath: string = '../../../../assets/images/franchise-landing/template_person6 1.png';
+  feedbackImgPath: string =
+    '../../../../assets/images/franchise-landing/template_person6 1.png';
   feedbackTheme: boolean = true;
 
   constructor(
@@ -103,7 +106,9 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   }
 
   public async ngOnInit() {
-    this.isXxl = false;
+    this.isHD = false;
+    this.isFullHD = false;
+    this.isLaptop = false;
     this.browserScreenWidth = window.screen.width;
     // await this.getPopularBusinessAsync();
     await this.loadCitiesFranchisesListAsync();
@@ -344,7 +349,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   /**
    * Функция получит список бизнеса.
    */
-   private async GetBusinessListAsync() {
+  private async GetBusinessListAsync() {
     try {
       await this.http
         .post(API_URL.apiUrl.concat('/business/catalog-business'), {})
@@ -440,8 +445,6 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
     }
   }
 
-  
-
   // private async GetReviewsFranchisesAsync() {
   //     try {
   //         await this.http.post(API_URL.apiUrl.concat("/franchise/review"), {})
@@ -489,10 +492,23 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth > 1200) {
-      this.isXxl = true;
+
+    if (this.browserScreenWidth >= 1400) {
+      this.isFullHD = true;
     } else {
-      this.isXxl = false;
+      this.isFullHD = false;
+    }
+
+    if (this.browserScreenWidth >= 1200 && this.browserScreenWidth < 1400) {
+      this.isHD = true;
+    } else {
+      this.isHD = false;
+    }
+
+    if (this.browserScreenWidth >= 992 && this.browserScreenWidth < 1199) {
+      this.isLaptop = true;
+    } else {
+      this.isLaptop = false;
     }
   }
 }

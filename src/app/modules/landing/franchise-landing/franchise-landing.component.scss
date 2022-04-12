@@ -20,7 +20,7 @@
     padding-right: 0;
   }
   &__content {
-    padding-left: 100px;
+    padding-left: 64px;
     padding-right: 0;
   }
   &__description {
@@ -30,49 +30,202 @@
     font-size: 96px;
     line-height: 112.5px;
     margin-bottom: 8px;
+    text-align: left;
+    font-weight: 600;
   }
   &__business {
-    font-size: 62px;
+    font-size: 64px;
     line-height: 75px;
     margin-bottom: 16px;
+    text-align: left;
+    font-weight: 600;
   }
   &__franchise {
     font-size: 24px;
     line-height: 28px;
     margin-bottom: 52px;
     color: #7a7a7a;
+    text-align: left;
   }
   &__btn-action {
-    font-size: 1.25vw;
+    width: 305px;
+    font-size: 20px;
     line-height: 28px;
     padding: 24px 32px;
     border-radius: 4px;
   }
 }
 
-.statistics {
+@media all and (max-width: 576px) {
+  .deal {
+    padding-top: 32px;
+    padding-bottom: 24px;
+    &__location {
+      display: block;
+    }
+    &__img-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &__img {
+      width: 112px;
+    }
+    &__content {
+      width: 100%;
+      padding: 0;
+    }
+    &__description {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    &__title {
+      font-size: 32px;
+      line-height: 37px;
+      text-align: center;
+    }
+    &__business {
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+    }
+    &__franchise {
+      font-size: 17px;
+      line-height: 20px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    &__btn-action {
+      width: 100%;
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .deal {
+      &.is-laptop &__img-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+      &.is-laptop &__content {
+        padding-left: 32px;
+      }
+      &.is-laptop &__title {
+        font-size: 64px;
+        line-height: 75px;
+      }
+      &.is-laptop &__business {
+        font-size: 44px;
+        line-height: 51.5px;
+      }
+    }
+  }
+
+  @media all and (min-width: 1200px) {
+    .deal {
+      &.is-hd &__content {
+        padding-left: 44px;
+      }
+      &.is-hd &__title {
+        font-size: 74px;
+        line-height: 75px;
+      }
+      &.is-hd &__business {
+        font-size: 44px;
+        line-height: 52px;
+      }
+    }
+  }
+}
+
+:host .statistics {
   margin-top: 16px;
   &__item {
     & ::ng-deep .p-panel {
       & .p-panel-header {
+        position: relative;
+        height: 150px;
         justify-content: center;
         border: none;
         border-top-left-radius: 24px;
         border-top-right-radius: 24px;
         background: #f5f8fa;
-        padding-top: 64px;
-        padding-bottom: 16px;
         & .p-panel-title {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          width: 100%;
+          top: 0;
+          height: 100%;
           font-size: 3.62vw;
+          line-height: 112.5px;
         }
       }
       & .p-panel-content {
+        height: 150px;
         border: none;
         text-align: center;
         background: #f5f8fa;
         border-bottom-left-radius: 24px;
         border-bottom-right-radius: 24px;
         padding: 0 0 64px;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 576px) {
+  :host .statistics {
+    &__item {
+      margin-bottom: 16px;
+      & ::ng-deep .p-panel {
+        & .p-panel-header {
+          height: 79.5px;
+          & .p-panel-title {
+            width: 105px;
+            font-size: 32px;
+            line-height: 37px;
+          }
+        }
+        & .p-panel-content {
+          height: 79.5px;
+        }
+      }
+    }
+    &__item:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .statistics {
+      &.is-laptop &__item {
+        & ::ng-deep .p-panel {
+          & .p-panel-header {
+            height: 170.5px;
+          }
+          & .p-panel-content {
+            height: 170.5px;
+          }
+        }
+      }
+    }
+  }
+
+  @media all and (min-width: 1200px) {
+    .statistics {
+      &.is-hd &__item {
+        & ::ng-deep .p-panel {
+          & .p-panel-header,
+          & .p-panel-content {
+            height: 150px;
+          }
+        }
       }
     }
   }
@@ -99,18 +252,14 @@
     margin-bottom: 4px;
   }
   &__subtitle {
+    height: 42px;
     font-size: 12px;
     line-height: 14px;
     color: #646464;
     margin-bottom: 8px;
   }
-  &__step {
-    font-size: 18px;
-    line-height: 12px;
-    margin-bottom: 24px;
-    padding-top: 0;
-  }
   &__description {
+    height: 63px;
     font-size: 18px;
     line-height: 17px;
     margin-bottom: 24px;
@@ -131,6 +280,37 @@
     line-height: 21px;
     padding: 16px;
     border-radius: 4px;
+  }
+}
+
+@media all and (max-width: 576px) {
+  .checklist {
+    &__head {
+      font-size: 24px;
+      line-height: 28px;
+    }
+    &__action {
+      width: 100%;
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 1200px) {
+    .checklist {
+      &.is-hd &__title {
+        font-size: 20px;
+      }
+      &.is-hd &__description {
+        font-size: 15px;
+      }
+    }
   }
 }
 

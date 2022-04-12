@@ -19,7 +19,6 @@ export class DealLandingModule implements OnInit, DoCheck {
   aPopularBusiness: any[] = [];
   isFullHD!: boolean;
   isHD!: boolean;
-  isRestrictHD!: boolean;
   isLaptop!: boolean;
   browserScreenWidth!: number;
   // isGarant: boolean = false;

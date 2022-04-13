@@ -55,25 +55,19 @@
             <label>Инвестиции</label>
             <div class="row">
               <div class="col-6 block-price-min">
-                <input
-                  type="text"
-                  class="control-input-price min-price"
-                  pInputText
-                  placeholder="от 100 000 ₽"
-                  [(ngModel)]="minPrice"
-                  name="minPrice"
-                />
+                <app-gar-input-number
+                        title="от "
+                        prefix="от "
+                        mode="currency"
+                        [(ngModel)]="minPrice"></app-gar-input-number>
               </div>
 
               <div class="col-6 block-price-max">
-                <input
-                  type="text"
-                  class="control-input-price"
-                  pInputText
-                  placeholder="до 100 000 000 ₽"
-                  [(ngModel)]="maxPrice"
-                  name="maxPrice"
-                />
+                <app-gar-input-number
+                        title="до "
+                        prefix="до "
+                        mode="currency"
+                        [(ngModel)]="maxPrice"></app-gar-input-number>
               </div>
             </div>
           </div>

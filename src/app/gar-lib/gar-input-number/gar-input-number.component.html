@@ -1,0 +1,27 @@
+<ng-container [ngSwitch]="mode$ | async">
+    <ng-container [ngTemplateOutlet]="decimal" *ngSwitchCase="'decimal'"></ng-container>
+    <ng-container [ngTemplateOutlet]="currency" *ngSwitchCase="'currency'"></ng-container>
+</ng-container>
+
+<ng-template #decimal>
+    <p-inputNumber
+            [mode]="(mode$ | async)!"
+            [maxFractionDigits]="(maxFractionDigits$ | async)!"
+            [disabled]="(readonly$ | async)!"
+            [placeholder]="(title$ | async)!"
+            [prefix]="(prefix$ | async)!"
+            [suffix]="(postFix$ | async)!"
+            [(ngModel)]="value"></p-inputNumber>
+</ng-template>
+
+<ng-template #currency>
+    <p-inputNumber
+            currency="RUB"
+            [mode]="(mode$ | async)!"
+            [maxFractionDigits]="(maxFractionDigits$ | async)!"
+            [disabled]="(readonly$ | async)!"
+            [placeholder]="(title$ | async)!"
+            [prefix]="(prefix$ | async)!"
+            [suffix]="(postFix$ | async)!"
+            [(ngModel)]="value"></p-inputNumber>
+</ng-template>

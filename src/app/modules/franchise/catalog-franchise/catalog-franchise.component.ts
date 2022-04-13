@@ -66,7 +66,6 @@ export class CatalogFranchiseModule implements OnInit {
   
   /** Компонент, передаваемый в карусель */
   cardComponent = CatalogShortCardComponent;
-  testControl = 'qwerty';
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,
@@ -535,9 +534,5 @@ export class CatalogFranchiseModule implements OnInit {
     this.router.navigate(['/franchise/view'], {
       queryParams: {franchiseId: franchiseId},
     });
-  }
-  
-  tl() {
-    console.log(this.testControl)
   }
 }

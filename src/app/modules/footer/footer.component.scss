@@ -115,6 +115,10 @@
         &-col {
             border-bottom: 1px solid rgba($clrMidGray, .55);
 
+            &[open] .footer-nav-item-arrow {
+                transform: rotate(90deg);
+            }
+
             @include tablet-small {
                 border-bottom: none;
             }
@@ -177,7 +181,9 @@
                 width: 9px;
                 height: 16px;
 
-                transform: translateY(-50%);
+                fill: $clrMidGray;
+                margin-top: -8px;
+                transition: transform $timeFast;
 
                 @include tablet-small {
                     display: none;

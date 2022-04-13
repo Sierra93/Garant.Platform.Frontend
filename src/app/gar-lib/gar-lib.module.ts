@@ -7,12 +7,19 @@ import { PriceFormatPipe } from "./pipes/priceFormat.pipe";
 import { GarCarouselComponent } from './gar-carousel/gar-carousel.component';
 import { GarCarouselItemDirective } from './gar-carousel/gar-carousel-item.directive';
 import { GarButtonComponent } from './gar-button/gar-button.component';
+import { GarInputTextComponent } from "./gar-input-text/gar-input-text.component";
+import { GarInputNumberComponent } from './gar-input-number/gar-input-number.component';
+import { InputNumberModule } from "primeng/inputnumber";
+import { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 const _COMPONENTS = [
 	GarImgUploaderComponent,
 	GarIconComponent,
 	GarCarouselComponent,
-	GarButtonComponent
+	GarButtonComponent,
+	GarInputTextComponent,
+	GarInputNumberComponent
 ]
 
 const _PIPES = [
@@ -26,7 +33,10 @@ const _DIRECTIVES = [
 @NgModule({
 	imports: [
 		CommonModule,
-		DragDropModule
+		DragDropModule,
+		InputNumberModule,
+		FormsModule,
+		BrowserAnimationsModule
 	],
 	declarations: [
 		..._COMPONENTS,

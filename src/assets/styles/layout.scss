@@ -32,7 +32,7 @@ a {
  }
 
   @include tablet {
-    width: 1072px;
+    width: 1024px;
   }
 
   @include desktop {
@@ -148,4 +148,8 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.no-overflow {
+    overflow: hidden;
 }

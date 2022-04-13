@@ -12,6 +12,7 @@ import { GarInputNumberComponent } from './gar-input-number/gar-input-number.com
 import { InputNumberModule } from "primeng/inputnumber";
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { InputTextModule } from "primeng/inputtext";
 
 const _COMPONENTS = [
 	GarImgUploaderComponent,
@@ -36,7 +37,8 @@ const _DIRECTIVES = [
 		DragDropModule,
 		InputNumberModule,
 		FormsModule,
-		BrowserAnimationsModule
+		BrowserAnimationsModule,
+		InputTextModule
 	],
 	declarations: [
 		..._COMPONENTS,

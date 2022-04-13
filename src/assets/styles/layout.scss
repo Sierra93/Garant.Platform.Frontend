@@ -1,6 +1,7 @@
 @import '~normalize.css';
 @import 'fonts';
 @import 'design';
+@import './../components/gar-lib';
 
 * {
   box-sizing: border-box;
@@ -148,24 +149,4 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-/* Поле ввода */
-.gar-input {
-  display: flex;
-  > * {
-    width: 100%;
-    > * {
-      width: 100%;
-    }
-  }
-  & .p-inputnumber-input {
-    height: 48px;
-    background-color: $clrLightBlue;
-    border-color: $clrLightBlue;
-    color: $clrBlack;
-    padding: $input-padding;
-    border-radius: $input-border-radius;
-    @include typo("secondary");
-  }
 }

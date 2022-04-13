@@ -3,6 +3,20 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { Router } from '@angular/router';
 
+interface FooterNavItem {
+  column: number;
+  isPlace: boolean;
+  isSignleTitle: boolean;
+  name: string;
+  position: number;
+  title: string;
+}
+
+interface FooterSocialItem {
+  name: string,
+  link: string
+}
+
 @Component({
   selector: 'footer',
   templateUrl: './footer.component.html',
@@ -13,12 +27,16 @@ import { Router } from '@angular/router';
  * Класс модуля футера.
  */
 export class FooterModule implements OnInit {
-  aFooter: any[] = [];
-  aFooterColumn1: any[] = [];
-  aFooterColumn2: any[] = [];
-  aFooterColumn3: any[] = [];
-  aFooterColumn4: any[] = [];
-  tabletStart: boolean = false;
+  aFooter: any[] = [[], [], [], []];
+
+  isMobile: boolean = false;
+
+  socialItems: FooterSocialItem[] = [
+    { name: 'telegram', link: '#' },
+    { name: 'facebook', link: '#' },
+    { name: 'instagram', link: '#' },
+    { name: 'youtube', link: '#' }
+  ];
 
   constructor(
     private router: Router,
@@ -28,50 +46,32 @@ export class FooterModule implements OnInit {
 
   public async ngOnInit() {
     await this.initFooter();
+    this.isMobile = window.innerWidth < 768;
   }
 
-  @HostListener('window:resize', ['$event'])
   @HostListener('window:load', ['$event'])
+  @HostListener('window:resize', ['$event'])
   onResize() {
-    if (window.innerWidth === 768) {
-      this.tabletStart = true;
-    } else {
-      this.tabletStart = false;
-    }
+    this.isMobile = window.innerWidth < 768;
   }
+
 
   /**
    * Функция получит поля футера.
    */
   private async initFooter() {
     try {
-      await this.commonService.initFooterAsync().then((data: any) => {
+      await this.commonService.initFooterAsync().then((data: any): void => {
         // Распределит пункты футера в каждый стобец.
-        data.forEach((item: any) => {
-          if (item.column == 1 && item.title !== 'gobizy') {
-            this.aFooterColumn1.push(item);
-          } else if (item.column == 2) {
-            this.aFooterColumn2.push(item);
-          } else if (item.column == 3) {
-            this.aFooterColumn3.push(item);
-          } else if (item.column == 4) {
-            this.aFooterColumn4.push(item);
+        data.forEach((item: FooterNavItem) => {
+          if (item.title !== 'gobizy') {
+            this.aFooter[item.column - 1].push(item);
           }
         });
       });
     } catch (e: any) {
       throw new Error(e);
     }
-  }
-
-  // Если в первом столбце isPlace = true, то редиректим по маршруту /ad/create
-  public redirectCreateAd() {
-    this.aFooterColumn1.forEach((column: any) => {
-      let { isPlace } = column;
-      if (isPlace) {
-        this.router.navigate(['/ad/create']);
-      }
-    });
   }
 
   /**
@@ -84,9 +84,5 @@ export class FooterModule implements OnInit {
     //         this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
     //         break;
     // }
-  }
-
-  openNextElements(e: any) {
-    e.path[3].classList.toggle('open');
   }
 }

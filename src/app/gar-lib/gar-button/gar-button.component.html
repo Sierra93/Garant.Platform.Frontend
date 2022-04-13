@@ -1,0 +1,10 @@
+<button
+        [title]="hint$ | async"
+        [disabled]="isDisabled$ | async"
+        [type]="type$ | async">
+    <ng-container *ngTemplateOutlet="btnContent"></ng-container>
+</button>
+
+<ng-template #btnContent>
+    <ng-content></ng-content>
+</ng-template>

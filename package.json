@@ -33,6 +33,7 @@
     "ng-http-loader": "^11.0.1",
     "ng-spin-kit": "^2.0.0",
     "node-sass": "^7.0.1",
+    "normalize.css": "^8.0.1",
     "popper.js": "^1.16.1",
     "primeicons": "^4.1.0",
     "primeng": "^12.2.3",
@@ -41,6 +42,7 @@
     "sass-loader": "^7.1.0",
     "spinkit": "^2.0.1",
     "style-loader": "^3.3.1",
+    "svg2sprite-cli": "^2.0.1",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },

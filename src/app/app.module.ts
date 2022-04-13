@@ -73,11 +73,12 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
 import { SessionService } from "./core/session/session.service";
 import { SESSION_TOKEN } from "./core/session/session.token";
 import { NotifyService } from "./services/notify/notify.service";
-import { PriceFormatPipe } from './core/pipes/priceFormat.pipe';
 import { LandingRequestService } from "./modules/landing/services/landing.service";
 import { BlockUIModule } from 'primeng/blockui';
 import { PanelModule } from 'primeng/panel';
 
+import { InputMaskModule } from 'primeng/inputmask';
+import { ProductsModule } from "./modules/products/products.module";
 
 @NgModule({
   declarations: [
@@ -110,12 +111,11 @@ import { PanelModule } from 'primeng/panel';
     DealLandingModule,
     NotificationsModule,
     ConfiguratorAuthModule,
-    CreateAdModule,
-    PriceFormatPipe
+    CreateAdModule
   ],
-
+  
   entryComponents: [],
-
+  
   imports: [
     BrowserModule,
     FormsModule,
@@ -150,9 +150,11 @@ import { PanelModule } from 'primeng/panel';
     NgHttpLoaderModule.forRoot(),
     GarLibModule,
     BlockUIModule,
-    PanelModule
+    PanelModule,
+    InputMaskModule,
+    ProductsModule
   ],
-
+  
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -171,14 +173,13 @@ import { PanelModule } from 'primeng/panel';
     DocumentService,
     NotifyService,
     LandingRequestService,
-  {
-    provide: APP_INITIALIZER,
-    useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
-    deps: [NotifyService],
-    multi: true,
-  }
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
+      deps: [NotifyService],
+      multi: true,
+    }
   ],
-
   bootstrap: [AppComponent]
 })
 

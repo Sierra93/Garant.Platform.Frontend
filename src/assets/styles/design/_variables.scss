@@ -1,0 +1,33 @@
+@import './colors';
+/* main */
+$line-height: 1.3rem;
+$border-radius: 8px;
+
+/* Строки */
+$gar-row-between-vertical-margin: 16px;
+$gar-row-items-between-vertical-margin: 8px;
+$gar-row-items-between-horizontal-margin: 8px;
+
+/* Заголовок */
+$font-color-sub-title: $clrDarkGray;
+
+
+/* Карточка */
+$card-padding: 16px;
+$border-radius-card: $border-radius;
+$gar-card-between-horizontal-margin: 24px;
+
+/* badge */
+$main-badge-padding: 10px;
+
+/* Кнопка */
+$border-radius-btn: 4px;
+$btn-default-bg: $clrLightBlue;
+$btn-primary-bg: $clrBlue;
+$btn-secondary-bg: transparent;
+$btn-default-color: $clrBlue;
+$btn-primary-color: $clrWhite;
+$btn-secondary-color: $clrDarkGray;
+
+/* Сетка */
+$gridGap: 24px;

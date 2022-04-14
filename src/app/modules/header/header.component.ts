@@ -20,14 +20,14 @@ import { filter, map } from "rxjs/operators";
  */
 export class HeaderModule implements OnInit {
     private _aHeader$ = new BehaviorSubject<header.IItem[] | null>(null);
-    
+
     public aHeader$: Observable<header.IItem[] | null> = combineLatest([this._sessionService.isLogin$, this._aHeader$]).pipe(
         filter(([isLogin, aHeader]) => !!aHeader?.length),
         map(([isLogin, aHeader]) => {
             return !isLogin ? aHeader : aHeader!.filter(h => h.name !== 'Вход или регистрация')
         })
     )
-    
+
     aBreadcrumbs: any[] = [];
     routeParam: any;
     searchText: string = "";
@@ -38,10 +38,22 @@ export class HeaderModule implements OnInit {
     selectedSearchOption: string = "франшиза";
     isGarant: boolean = false;
     items!: MenuItem[];
-    isSmallScreen: boolean = false;
-    isMobile: boolean = false;
     isMenuHidden: boolean = true;
-    tabletStart: boolean = false;
+    categories: header.IHeaderItem[] = [
+      { name: 'Главная', icon: 'category-home', link: '/' },
+      { name: 'Франшизы', icon: 'category-franchise', link: '/catalog-franchise' },
+      { name: 'Готовый бизнес', icon: 'category-business', link: '/catalog-business' },
+      { name: 'Покупка через гарант', icon: 'category-deal', link: '/deal/start' },
+      { name: 'Консалтинг', icon: 'category-consulting', link: '/consulting/start' },
+      { name: 'Упаковка франшиз', icon: 'category-franchise-start', link: '/franchise/start' }
+    ];
+    cabinetLinks: header.IHeaderItem[] = [
+      { name: 'Продать', icon: 'cabinet-megaphone', link: '/' },
+      { name: 'Мои сделки', icon: 'cabinet-deal', link: '/' },
+      { name: 'Избранное', icon: 'cabinet-star', link: '/' },
+      { name: 'Уведомления', icon: 'cabinet-bell', link: '/' },
+      { name: 'Аккаунт', icon: 'cabinet-profile', link: '/profile/my-data' },
+    ]
 
     constructor(
         private http: HttpClient,
@@ -64,10 +76,12 @@ export class HeaderModule implements OnInit {
     };
 
     ngDoCheck(){
-      if (window.location.href.includes("stage")) {
-        this.isGarant = true;
+      this.isGarant = window.location.href.includes("stage");
+
+      if (this.isMenuHidden) {
+        document.body.classList.remove('no-overflow');
       } else {
-        this.isGarant = false;
+        document.body.classList.add('no-overflow');
       }
     }
 
@@ -86,23 +100,6 @@ export class HeaderModule implements OnInit {
     @HostListener('window:resize', ['$event'])
     @HostListener('window:load', ['$event'])
     onResize() {
-      if (window.innerWidth > 676 && window.innerWidth <= 1280) {
-        this.isSmallScreen = true;
-      } else if (window.innerWidth > 1280) {
-        this.isSmallScreen = false;
-      }
-
-      if (window.innerWidth <= 676) {
-        this.isMobile = true;
-      } else {
-        this.isMobile = false;
-      }
-
-      if (window.innerWidth === 768) {
-        this.tabletStart = true;
-      } else {
-        this.tabletStart = false;
-      }
     }
 
     public toggleMenu(show: boolean): void {
@@ -124,14 +121,11 @@ export class HeaderModule implements OnInit {
         }
     };
 
-    public onRouteStart() {
-        this.router.navigate(["/"]);
-    };
-
     /**
      * Функция распределит роуты по пунктам хидера.
      * @param name - параметр роута с названием пункта.
      */
+    // TODO refactor onGetMenuHeader method
     public onGetMenuHeader(name: string) {
         switch (name) {
             case "Вход или регистрация":
@@ -172,8 +166,8 @@ export class HeaderModule implements OnInit {
 
         else if (this.selectedSearchOption == this.searchOptions[1]) {
             type = "business";
-        }        
+        }
 
-        this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });        
-    };   
+        this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });
+    };
 }

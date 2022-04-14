@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { GarBaseInputComponent } from "../gar-base-input/gar-base-input.component";
 import { NgControl } from "@angular/forms";
 
@@ -15,7 +15,7 @@ import { NgControl } from "@angular/forms";
 	},
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GarInputTextComponent extends GarBaseInputComponent<string> implements OnInit {
+export class GarInputTextComponent extends GarBaseInputComponent<string> {
 	
 	constructor(
 		protected _cdRef: ChangeDetectorRef,
@@ -23,8 +23,4 @@ export class GarInputTextComponent extends GarBaseInputComponent<string> impleme
 	) {
 		super(_cdRef, _control)
 	}
-	
-	ngOnInit(): void {
-	}
-	
 }

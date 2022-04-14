@@ -1,8 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { GarBaseInputComponent } from "../gar-base-input/gar-base-input.component";
 import { NgControl } from "@angular/forms";
 import { BehaviorSubject, Observable, ReplaySubject } from "rxjs";
 import { map } from "rxjs/operators";
+import { GarDestroyService } from "../gar-destroy.service";
 
 export type ModeNumberInput = 'currency' | 'decimal';
 
@@ -24,9 +25,10 @@ export type ModeNumberInput = 'currency' | 'decimal';
 	host: {
 		class: 'gar-input-number'
 	},
+	providers: [GarDestroyService],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GarInputNumberComponent extends GarBaseInputComponent<number> implements OnInit {
+export class GarInputNumberComponent extends GarBaseInputComponent<number> {
 	
 	private readonly _prefix$ = new ReplaySubject<string>();
 	private readonly _postFix$ = new ReplaySubject<string>();
@@ -88,12 +90,15 @@ export class GarInputNumberComponent extends GarBaseInputComponent<number> imple
 	
 	constructor(
 		protected _cdRef: ChangeDetectorRef,
-		protected _control: NgControl
+		protected _control: NgControl,
+		private _destroy$: GarDestroyService
 	) {
-		super(_cdRef, _control)
+		super(_cdRef, _control);
 	}
 	
-	ngOnInit(): void {
+	// Вручную записываем value по мере ввода, как оказалось, primeng number input передает в
+	// контрол значение только после потери фокуса
+	onChange(value: number) {
+		this.value = value;
 	}
-	
 }

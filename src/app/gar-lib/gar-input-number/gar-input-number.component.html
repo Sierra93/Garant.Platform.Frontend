@@ -12,7 +12,8 @@
             [prefix]="(prefix$ | async)!"
             [suffix]="(postFix$ | async)!"
             (focusout)="propagateTouched()"
-            [(ngModel)]="value"></p-inputNumber>
+            (onInput)="onChange($event.value)"
+            [ngModel]="value"></p-inputNumber>
 </ng-template>
 
 <ng-template #currency>
@@ -25,5 +26,6 @@
             [prefix]="(prefix$ | async)!"
             [suffix]="(postFix$ | async)!"
             (focusout)="propagateTouched()"
-            [(ngModel)]="value"></p-inputNumber>
+            (onInput)="onChange($event.value)"
+            [ngModel]="value"></p-inputNumber>
 </ng-template>

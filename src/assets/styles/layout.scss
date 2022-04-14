@@ -67,6 +67,7 @@ a {
   > .gar-row-item {
     display: flex;
     flex-direction: column;
+    width: 100%;
     /* элемент строки является карточкой */
     &.gar-card {
       &:not(:first-child) {

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DemoPageComponent } from './components/demo.page/demo.page.component';
 import { RouterModule } from "@angular/router";
 import { GarLibModule } from "../../gar-lib/gar-lib.module";
+import { FormsModule } from "@angular/forms";
 
 /**
  * Модуль, публикующий страницу Demo
@@ -17,7 +18,8 @@ import { GarLibModule } from "../../gar-lib/gar-lib.module";
 			component: DemoPageComponent
 		}]),
 		CommonModule,
-		GarLibModule
+		GarLibModule,
+		FormsModule
 	]
 })
 export class DemoModule {

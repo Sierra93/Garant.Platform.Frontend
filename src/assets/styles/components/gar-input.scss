@@ -1,6 +1,7 @@
 /* Поле ввода */
 .gar-input {
   display: flex;
+  min-width: 193px;
   > * {
     width: 100%;
     > * {
@@ -28,6 +29,35 @@
       border-radius: calc(#{$input-border-radius} + 2px);
       padding: $input-padding;
       @include typo("regular");
+    }
+  }
+  /* select */
+  &.gar-select {
+    & .p-dropdown {
+      height: 48px;
+      background-color: $clrLightBlue;
+      border-color: $clrLightBlue;
+      border-radius: $input-border-radius;
+      & .p-inputtext {
+        color: $clrBlack;
+        padding: $input-padding;
+        @include typo("secondary");
+      }
+      & .p-dropdown-trigger {
+        transition: all 0.3s;
+        & .p-dropdown-trigger-icon:before {
+          content: ' ';
+          background: url('/assets/icons-source/smart-drop-down.svg');
+          display: block;
+          height: 9px;
+          width: 11px;
+        }
+      }
+      &.p-dropdown-open {
+        & .p-dropdown-trigger {
+          transform: rotate(180deg);
+        }
+      }
     }
   }
 }

@@ -24,7 +24,7 @@
 
   .d-flex {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     // gap: 24px;
   }
 
@@ -467,7 +467,7 @@
     height: 194.5px !important;
     border-radius: 4px !important;
     padding: 3%;
-    background-color: #f1f6ff !important;
+    background-color: #f1f6ff;
     margin-bottom: 50px;
 
     &-header {
@@ -533,12 +533,7 @@
 
 .catalog-business__body-card {
   ::ng-deep .p-card {
-    //width: 331.33px !important;
-    //height: 375px !important;
-    //border-radius: 8px !important;
     margin-right: 24px;
-    //padding: 16px;
-
     &-header {
       img {
         border-radius: 4px;
@@ -1073,6 +1068,7 @@
 .btn-show-more {
   width: 148px;
   height: 53px;
+  padding: 5px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 600;
@@ -1228,7 +1224,6 @@
   ::ng-deep .p-card {
     &-content {
       padding: 0rem !important;
-
       .franchise-card-title {
         margin: 0;
       }
@@ -1263,9 +1258,22 @@
     }
 
   }
-
+  ::ng-deep .card-line {
+    padding: 15px;
+    border: 1px solid black;
+    background: #F1F6FF;
+    .card-line-wrapper {
+      .p-card-header {
+        height: 24%;
+      }
+      .p-card-body {
+        background-color: #F1F6FF;
+      }
+    }
+  }
   .wrapper-business-blog {
     display: block;
+    background: #F1F6FF;
 
     .image-blog {
       width: 100%;

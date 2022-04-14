@@ -525,4 +525,20 @@ export class CatalogBusinessModule implements OnInit {
       queryParams: { businessId: businessId },
     });
   }
+  // кнопки для трех карточек 
+  public onRoute(text: string) {
+        if (text == "Продать") {
+            this.router.navigate(["/ad/create"]);
+            return;
+        }
+
+        if (text == "Начать") {
+            return;
+        }
+
+        if (text == "Упаковать") {
+            this.router.navigate(["/franchise/start"]);
+            return;
+        }
+    };
 }

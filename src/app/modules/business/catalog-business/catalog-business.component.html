@@ -27,10 +27,16 @@
 <div class="row section-mb">
   <h5 class="garant title-franchise">Популярный бизнес</h5>
 
-  <div class="catalog-business__header-card popular-item blog-item col--xxl-3 col-xl-3 col-lg-6 col-md-6"
-    *ngFor="let item of aPopularBusiness">
-    <p-card header="{{ item.title }}" subheader="{{ item.text }}" [style]="{ width: '100%' }"
-      styleClass="p-card-shadow">
+  <div
+    class="catalog-business__header-card popular-item blog-item col--xxl-3 col-xl-3 col-lg-6 col-md-6"
+    *ngFor="let item of aPopularBusiness"
+  >
+    <p-card
+      header="{{ item.title }}"
+      subheader="{{ item.text }}"
+      [style]="{ width: '100%' }"
+      styleClass="p-card-shadow"
+    >
       <ng-template pTemplate="header">
         <img [src]="item.url" class="franchise-card-img" />
       </ng-template>
@@ -38,7 +44,6 @@
   </div>
 
   <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 wrapper-business-blog">
-
     <!-- <div class="business-blog-images"> -->
     <div class="image-blog">
       <!-- компонент карточки -->
@@ -48,29 +53,58 @@
              *ngFor="let item of aPopularFranchises"
              [item] ="item"></app-catalog-sort-card>
            </div> -->
-      <img class="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
+      <img
+        class="image-blog-img"
+        src="../../../../assets/images/blog-img.svg"
+        alt=""
+      />
       <div class="image-blog-text">
         <div class="text-blog">Как понять франчайзинг?</div>
-        <div class="subtitle-text">читать ~5 минут <div class="d1"></div> опубликовано 3 февраля</div>
+        <div class="subtitle-text">
+          читать ~5 минут
+          <div class="d1"></div>
+          опубликовано 3 февраля
+        </div>
       </div>
     </div>
     <div class="image-blog">
-      <img class="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
+      <img
+        class="image-blog-img"
+        src="../../../../assets/images/blog-img.svg"
+        alt=""
+      />
       <div class="image-blog-text">
         <div class="text-blog">Бизнес или работа на “дядю”?</div>
-        <div class="subtitle-text">читать ~7 минут <div class="d1"></div> опубликовано 20 февраля</div>
+        <div class="subtitle-text">
+          читать ~7 минут
+          <div class="d1"></div>
+          опубликовано 20 февраля
+        </div>
       </div>
     </div>
-    <div class="image-blog image-blog-three"> <img class="image-blog-img" src="../../../../assets/images/blog-img.svg"
-        alt="">
+    <div class="image-blog image-blog-three">
+      <img
+        class="image-blog-img"
+        src="../../../../assets/images/blog-img.svg"
+        alt=""
+      />
       <div class="image-blog-text">
         <div class="text-blog">Так ли жестока налоговая?</div>
-        <div class="subtitle-text">читать ~11 минут <div class="d1"></div> опубликовано 25 февраля</div>
+        <div class="subtitle-text">
+          читать ~11 минут
+          <div class="d1"></div>
+          опубликовано 25 февраля
+        </div>
       </div>
     </div>
     <!-- </div> -->
     <div class="popular-item more-articles business-blog-video">
-      <p-card header="" subheader="" [style]="{ width: '100%' }" styleClass="p-card-shadow">
+      <p-card
+        header=""
+        subheader=""
+        [style]="{ width: '100%' }"
+        styleClass="p-card-shadow"
+      >
         <div class="more-articles-content d-flex align-items-center mt-4">
           <div class="more-articles-content-text">
             <h3 class="franchise-card-title">Больше статей</h3>
@@ -78,12 +112,11 @@
               Перейдите в наш блог и найдите там массу полезной информации.
             </p>
           </div>
-          <img src="../../../assets/images/Frame 66.png" height="32">
+          <img src="../../../assets/images/Frame 66.png" height="32" />
         </div>
       </p-card>
     </div>
   </div>
-
 </div>
 
 <!-- <div class="garant block-title-franchise">
@@ -92,7 +125,6 @@
 </div> -->
 
 <div class="d-flex">
-
   <div class="catalog-business__filter d-flex">
     <!-- <button type="button" class="btn-close btn-close--top" aria-label="Close" (click)="onClearFilters()"></button> -->
     <!-- <div>
@@ -102,31 +134,61 @@
 
     <div class="control-quick-search-one">
       <div class="catalog-business__filter-title">Выбор категории</div>
-      <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory"
-        placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
+      <p-dropdown
+        [options]="aBusinessCategories"
+        optionLabel="categoryName"
+        [(ngModel)]="selectedCategory"
+        placeholder="Категория"
+        [showClear]="true"
+        name="category"
+      ></p-dropdown>
     </div>
 
     <div class="control-quick-search-two">
       <div class="catalog-business__filter-title">Выбор города</div>
-      <p-dropdown [options]="aCities" optionLabel="businessCityName" name="city" [(ngModel)]="selectedCity"
-        placeholder="Город" [showClear]="true"></p-dropdown>
+      <p-dropdown
+        [options]="aCities"
+        optionLabel="businessCityName"
+        name="city"
+        [(ngModel)]="selectedCity"
+        placeholder="Город"
+        [showClear]="true"
+      ></p-dropdown>
     </div>
 
     <div class="d-flex control-quick-search-three">
       <div class="control-quick-search block-price-min">
         <div class="catalog-business__filter-title">Инвестиции</div>
         <div class="d-flex">
-          <p-inputNumber mode="currency" currency="EUR" locale="de-DE" placeholder="от 100 000 ₽"
-            [(ngModel)]="filterRang[0]" prefix="от " name="minPrice"></p-inputNumber>
-          <p-inputNumber mode="currency" currency="EUR" locale="de-DE" placeholder="до 100 000 000 ₽"
-            [(ngModel)]="filterRang[1]" prefix="до " name="maxPrice"></p-inputNumber>
+          <p-inputNumber
+            mode="currency"
+            currency="EUR"
+            locale="de-DE"
+            placeholder="от 100 000 ₽"
+            [(ngModel)]="filterRang[0]"
+            prefix="от "
+            name="minPrice"
+          ></p-inputNumber>
+          <p-inputNumber
+            mode="currency"
+            currency="EUR"
+            locale="de-DE"
+            placeholder="до 100 000 000 ₽"
+            [(ngModel)]="filterRang[1]"
+            prefix="до "
+            name="maxPrice"
+          ></p-inputNumber>
 
           <!--          <input type="text" class="control-input-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="filterRang[0]"-->
           <!--                 name="minPrice" />-->
           <!--          <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="filterRang[1]"-->
           <!--                 name="maxPrice" />-->
         </div>
-        <p-slider class="price-slider" [(ngModel)]="filterRang" [range]="true"></p-slider>
+        <p-slider
+          class="price-slider"
+          [(ngModel)]="filterRang"
+          [range]="true"
+        ></p-slider>
       </div>
     </div>
     <!--    <button type="button" class="btn-close btn-close&#45;&#45;bottom" aria-label="Close" (click)="onClearFilters()"></button>-->
@@ -144,8 +206,17 @@
   <div class="switch-garant-sorting">
     <div>
       <div class="catalog-business__filter-title">Сортировать по</div>
-      <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
-        [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
+      <p-dropdown
+        class="block-sort-by"
+        [options]="aSortPrices"
+        optionLabel="name"
+        optionCode="value"
+        name="price"
+        [(ngModel)]="selectedSort"
+        placeholder="Цена"
+        [showClear]="true"
+        (onChange)="onChangeSortPrice()"
+      ></p-dropdown>
     </div>
     <div class="line"></div>
     <div class="switch-garant garant-buy">
@@ -154,58 +225,136 @@
     </div>
     <div class="line"></div>
     <div class="wrapper-business">
-      <div class="catalog-business__filter-title">Подборка готового бизнеса</div>
-      <div class="wrapper-container">
-        <button pButton type="button" label="Со скидкой" class="p-button-text button-business"></button>
-        <button pButton type="button" label="Популярные" class="p-button-text button-business"></button>
-        <button pButton type="button" label="С быстрой окупаемостью"
-          class="p-button-text button-business overlow"></button>
-        <button pButton type="button" label="Для женщин" class="p-button-text button-business"></button>
-        <button pButton type="button" label="Без паушального взноса" class="p-button-text button-business"></button>
-        <button pButton type="button" label="Новинки"
-          class="p-button-text button-business button-business-extra"></button>
-        <button pButton type="button" label=" Для маленького города"
-          class="p-button-text button-business button-business-extra"></button>
-        <button pButton type="button" label=" Без роялти"
-          class="p-button-text button-business button-business-extra"></button>
+      <div class="catalog-business__filter-title">
+        Подборка готового бизнеса
       </div>
-
+      <div class="wrapper-container">
+        <button
+          pButton
+          type="button"
+          label="Со скидкой"
+          class="p-button-text button-business"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Популярные"
+          class="p-button-text button-business"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="С быстрой окупаемостью"
+          class="p-button-text button-business overlow"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Для женщин"
+          class="p-button-text button-business"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Без паушального взноса"
+          class="p-button-text button-business"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Новинки"
+          class="p-button-text button-business button-business-extra"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label=" Для маленького города"
+          class="p-button-text button-business button-business-extra"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label=" Без роялти"
+          class="p-button-text button-business button-business-extra"
+        ></button>
+      </div>
     </div>
     <div class="line"></div>
     <div class="switch-garant">
       <div class="catalog-business__filter-title">Прибыль в месяц</div>
       <div class="d-flex d-flex--short">
-        <p-inputNumber mode="currency" currency="EUR" locale="de-DE" placeholder="от 100 000 ₽"
-          [(ngModel)]="rangValue[0]" prefix="от " name="filterMinPrice"></p-inputNumber>
-        <p-inputNumber mode="currency" currency="EUR" locale="de-DE" placeholder="до 100 000 000 ₽"
-          [(ngModel)]="rangValue[1]" prefix="до " name="filterMaxPrice"></p-inputNumber>
+        <p-inputNumber
+          mode="currency"
+          currency="EUR"
+          locale="de-DE"
+          placeholder="от 100 000 ₽"
+          [(ngModel)]="rangValue[0]"
+          prefix="от "
+          name="filterMinPrice"
+        ></p-inputNumber>
+        <p-inputNumber
+          mode="currency"
+          currency="EUR"
+          locale="de-DE"
+          placeholder="до 100 000 000 ₽"
+          [(ngModel)]="rangValue[1]"
+          prefix="до "
+          name="filterMaxPrice"
+        ></p-inputNumber>
         <!--        <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽"-->
         <!--          [(ngModel)]="rangValue[0]" name="filterMinPrice" />-->
         <!--        <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽"-->
         <!--          [(ngModel)]="rangValue[1]" name="filterMaxPrice" />-->
       </div>
-      <p-slider class="price-slider" [(ngModel)]="rangValue" [range]="true"></p-slider>
+      <p-slider
+        class="price-slider"
+        [(ngModel)]="rangValue"
+        [range]="true"
+      ></p-slider>
     </div>
     <div class="btn-wrapper">
-      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter"
-        (click)="onFilterBusinessesWithPaginationAsync()">
+      <button
+        class="btn btn--aside btn-default btn-sm mt-3 btn-filter"
+        (click)="onFilterBusinessesWithPaginationAsync()"
+      >
         Применить фильтры
       </button>
-      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">
+      <button
+        class="btn btn--aside btn-default btn-sm mt-3 btn-filter ml-1"
+        (click)="onClearFilters()"
+      >
         Очистить фильтры
       </button>
     </div>
     <div class="line"></div>
     <div class="wrapper-business">
-
       <div class="catalog-business__filter-title">Срок окупаемости</div>
       <div class="wrapper-container">
-        <button pButton type="button" label="До 3 месяцев" class="p-button-text button-business"></button>
-        <button pButton type="button" label="До полугода" class="p-button-text button-business"></button>
-        <button pButton type="button" label="До года" class="p-button-text button-business"></button>
-        <button pButton type="button" label="От 1 до 3 лет" class="p-button-text button-business"></button>
+        <button
+          pButton
+          type="button"
+          label="До 3 месяцев"
+          class="p-button-text button-business"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="До полугода"
+          class="p-button-text button-business"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="До года"
+          class="p-button-text button-business"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="От 1 до 3 лет"
+          class="p-button-text button-business"
+        ></button>
       </div>
-
     </div>
   </div>
 
@@ -227,15 +376,24 @@
 
   <div class="catalog-business__body-card d-flex popular-list">
     <div class="popular-item" *ngFor="let item of aBusinessList">
-      <p-card header="{{ item.title }}" subheader="{{ item.fullText }}" [style]="{ width: '100%' }"
-        styleClass="p-card-shadow">
+      <p-card
+        header="{{ item.title }}"
+        subheader="{{ item.fullText }}"
+        [style]="{ width: '100%' }"
+        styleClass="p-card-shadow"
+      >
         <ng-template pTemplate="header">
           <img [src]="item.url" />
         </ng-template>
-        <strong>{{ item.textDoPrice }} {{ item.price | priceFormat:item.price }} ₽</strong>
+        <strong
+          >{{ item.textDoPrice }}
+          {{ item.price | priceFormat: item.price }} ₽</strong
+        >
         <ng-template pTemplate="footer" class="d-flex">
-          <button class="catalog-business-btn btn btn-default btn-filter"
-            (click)="routeViewFranchiseCardAsync(item.businessId)">
+          <button
+            class="catalog-business-btn btn btn-default btn-filter"
+            (click)="routeViewFranchiseCardAsync(item.businessId)"
+          >
             Подробнее
           </button>
           <button class="catalog-business-btn1 btn btn-default btn-filter">
@@ -249,16 +407,27 @@
 
 <!-- Пагинация. -->
 <div class="mt-5">
-  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="aRowsPerPageOptions"
-    [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
+  <p-paginator
+    [rows]="10"
+    [totalRecords]="countTotalPage"
+    [rowsPerPageOptions]="aRowsPerPageOptions"
+    [showCurrentPageReport]="true"
+    (onPageChange)="onPaginationChangeAsync($event)"
+  >
   </p-paginator>
 </div>
 
 <!-- Новый бизнес. -->
 <div class="garant New-business">
   <div class="garant">
-    <p-carousel [value]="aNewFranchises" [numVisible]="4" [numScroll]="4" [circular]="false"
-      [responsiveOptions]="responsiveOptions" [showNavigators]="false">
+    <p-carousel
+      [value]="aNewFranchises"
+      [numVisible]="4"
+      [numScroll]="4"
+      [circular]="false"
+      [responsiveOptions]="responsiveOptions"
+      [showNavigators]="false"
+    >
       <ng-template pTemplate="header">
         <h5 class="title-franchise">Новый бизнес</h5>
       </ng-template>
@@ -266,15 +435,19 @@
         <div class="product-item">
           <div class="product-item-content">
             <div class="p-mb-3">
-              <img [src]="item.url" class="product-image">
+              <img [src]="item.url" class="product-image" />
             </div>
             <div>
-              <p-card header="Название готового бизнеса" subheader="{{item.fullText}}" [style]="{width: '100%'}"
-                styleClass="p-card-shadow">
+              <p-card
+                header="Название готового бизнеса"
+                subheader="{{ item.fullText }}"
+                [style]="{ width: '100%' }"
+                styleClass="p-card-shadow"
+              >
                 <ng-template pTemplate="header">
                   <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
                 </ng-template>
-                <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+                <strong>{{ item.textDoPrice }} {{ item.price }} ₽</strong>
                 <ng-template pTemplate="footer">
                   <!-- <p-button label="Save" icon="pi pi-check"></p-button>
                             <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
@@ -286,10 +459,7 @@
       </ng-template>
     </p-carousel>
   </div>
-
 </div>
-
-
 
 <div class="row" *ngIf="isHideBusinessWithGarant">
   <div class="col-lg-12 col-xs-12 garant card-line">
@@ -297,8 +467,12 @@
       <ng-template pTemplate="header">
         <strong>Вы можете приобрести бизнес с гарантиями</strong>
 
-        <button type="button" class="close" aria-label="Close"
-          (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
+        >
           <i class="pi pi-times"></i>
           <!-- <span aria-hidden="true">&times;</span> -->
         </button>
@@ -313,8 +487,10 @@
           </div>
 
           <div>
-            <button class="btn btn-default btn-show-more"
-              (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
+            <button
+              class="btn btn-default btn-show-more"
+              (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
+            >
               {{ oSuggestion.button1Text }}
             </button>
           </div>
@@ -326,131 +502,184 @@
 
 <!-- Область с банерами (2 картинки). -->
 <div class="block-baner garant">
-  <div class="block-baner-img"><img class="baner" src="../../../../assets/images/Rectangle 13.png" /></div>
-  <div class="block-baner-img"><img class="baner" src="../../../../assets/images/Rectangle 13.png" /></div>
+  <div class="block-baner-img">
+    <img class="baner" src="../../../../assets/images/Rectangle 13.png" />
+  </div>
+  <div class="block-baner-img">
+    <img class="baner" src="../../../../assets/images/Rectangle 13.png" />
+  </div>
 </div>
-<!-- 3 card -->
-<!-- <div class="row section-mb">
-  <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder"
-    *ngFor="let item of aDataActions; let i = index">
+
+<div class="row section-mb">
+  <div
+    class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder"
+    *ngFor="let item of aDataActions; let i = index"
+  >
     <div class="card-business">
-      <h3 class="three-cards-header">{{item.title}}</h3>
+      <h3 class="three-cards-header">{{ item.title }}</h3>
+
       <div class="wrapper-businness">
-        <p-card [style]="{width: '100%'}" styleClass="card">
+        <p-card [style]="{ width: '100%' }" styleClass="card">
           <div class="card-business-content">
             <ng-template pTemplate="header">
+              <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
             </ng-template>
-            <h5>{{item.subTitle}}</h5>
-            <p class="business-text">{{item.text}}</p>
-            <!-- <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button> 
+            <h5>{{ item.subTitle }}</h5>
+            <p class="business-text">{{ item.text }}</p>
+            <button class="btn btn-dark" (click)="onRoute(item.buttonText)">
+              {{ item.buttonText }}
+            </button>
             <ng-template pTemplate="footer">
+              <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+              <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+                                        </p-button> -->
             </ng-template>
           </div>
         </p-card>
-        <div class="image-business-content"><img [src]="aDataActionsPictures[i]?.imgUrl" alt=""></div>
+
+        <div class="image-business-content">
+          <img [src]="aDataActionsPictures[i]?.imgUrl" alt="" />
+        </div>
       </div>
+      <!-- /.wrapper-businness -->
     </div>
   </div>
-</div> -->
-
-<div class="row section-mb">
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions; let i = index">
-      <div class="card-business">
-        <h3 class="three-cards-header">{{item.title}}</h3>
-        
-            <div class="wrapper-businness">
-              <p-card [style]="{width: '100%'}" styleClass="card">
-              
-                <div class="card-business-content">
-                  <ng-template pTemplate="header">
-                    <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-                  </ng-template>
-                  <h5>{{item.subTitle}}</h5>
-                  <p class="business-text">{{item.text}}</p>
-                  <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
-                  <ng-template pTemplate="footer">
-                    <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-                    <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-                                        </p-button> -->
-                  </ng-template>
-                </div>
-              </p-card>
-                
-              <div class="image-business-content"><img [src]="aDataActionsPictures[i]?.imgUrl" alt=""></div>
-            </div> 
-            <!-- /.wrapper-businness -->   
-      </div>          
-    </div> 
-  </div>
+</div>
 <!-- Новости делового мира. -->
 <div class="business__news">
   <h5 class="business__news-title">Новости делового мира</h5>
   <div class="left__news">
     <div class="business__news-photo">
       <img src="../../../../assets/images/Frame__31.jpg" class="garant-img" />
-      <button pButton pRipple type="button" label="Рекламный блок" class="news-photo-btn"></button>
-      <p class="news__photo-text">Здесь может быть реклама или блок с вложенностью актуальных бизнесов,
-        например. Также может быть “новость - хедлайнер” с фотографией на фоне</p>
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Рекламный блок"
+        class="news-photo-btn"
+      ></button>
+      <p class="news__photo-text">
+        Здесь может быть реклама или блок с вложенностью актуальных бизнесов,
+        например. Также может быть “новость - хедлайнер” с фотографией на фоне
+      </p>
     </div>
-
   </div>
 
   <div class="right__news">
     <!-- <ng-scrollbar [invertY]="true" barClass="scrollbar" thumbClass="scrollbar-thumbs"> -->
-      <div class="right_news-text">
-        <div class="ad-block">
-          <div class="ad-block-row"><img src="../../../../assets/images/business_news-fire (2).svg" alt="">
-            <p class="ad-text">Открывается новая франшиза кофеен при поддержке СберБанка.</p>
-            <p-button styleClass="p-button-link"><img src="../../../../assets/images/arrow-detail.svg" alt="">
-            </p-button>
-          </div>
-          <span class="ad-subtitle">12:51 <div class="d1"></div> сегодня <div class="d1"></div> франчайзинг</span>
+    <div class="right_news-text">
+      <div class="ad-block">
+        <div class="ad-block-row">
+          <img
+            src="../../../../assets/images/business_news-fire (2).svg"
+            alt=""
+          />
+          <p class="ad-text">
+            Открывается новая франшиза кофеен при поддержке СберБанка.
+          </p>
+          <p-button styleClass="p-button-link"
+            ><img src="../../../../assets/images/arrow-detail.svg" alt="" />
+          </p-button>
         </div>
-        <hr>
-        <div class="ad-block">
-          <div class="ad-block-row">
-            <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
-            <h4 class="ad-text">Федеральная сеть магазинов у дома Красное & Белое выходит на IPO.</h4>
-            <p-button styleClass="p-button-link"><img src="../../../../assets/images/arrow-detail.svg" alt="">
-            </p-button>
-          </div>
-          <span class="ad-subtitle">19:30 <div class="d1"></div> сегодня <div class="d1"></div> инвестиции</span>
-        </div>
-        <hr>
-        <div class="ad-block">
-          <div class="ad-block-row">
-            <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
-            <h4 class="ad-text">ЕР сохраняет лидерство в 199 одномандатных округах.</h4>
-            <p-button styleClass="p-button-link"><img src="../../../../assets/images/arrow-detail.svg" alt="">
-            </p-button>
-          </div>
-          <span class="ad-subtitle">08:44 <div class="d1"></div>сегодня <div class="d1"></div> правительство</span>
-        </div>
-        <hr>
-        <div class="ad-block">
-          <div class="ad-block-row">
-            <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
-            <h4 class="ad-text">Открывается новая франшиза кофеен при поддержке СберБанка.</h4>
-            <p-button styleClass="p-button-link"><img src="../../../../assets/images/arrow-detail.svg" alt="">
-            </p-button>
-          </div>
-          <span class="ad-subtitle">21:32 <div class="d1"></div> вчера <div class="d1"></div> бизнес</span>
-        </div>
-        <hr>
-
-        <div class="ad-block">
-          <div class="ad-block-row">
-            <img src="../../../../assets/images/business_news-fire (2).svg" alt="">
-            <h4 class="ad-text">Открывается новая франшиза кофеен при поддержке СберБанка.</h4>
-            <p-button styleClass="p-button-link"><img src="../../../../assets/images/arrow-detail.svg" alt="">
-            </p-button>
-          </div>
-          <span class="ad-subtitle">12:51 <div class="d1"></div> сегодня <div class="d1"></div> франчайзинг</span>
-        </div>
-
+        <span class="ad-subtitle"
+          >12:51
+          <div class="d1"></div>
+          сегодня
+          <div class="d1"></div>
+          франчайзинг</span
+        >
       </div>
-    <!-- </ng-scrollbar> -->
+      <hr />
+      <div class="ad-block">
+        <div class="ad-block-row">
+          <img
+            src="../../../../assets/images/business_news-fire (2).svg"
+            alt=""
+          />
+          <h4 class="ad-text">
+            Федеральная сеть магазинов у дома Красное & Белое выходит на IPO.
+          </h4>
+          <p-button styleClass="p-button-link"
+            ><img src="../../../../assets/images/arrow-detail.svg" alt="" />
+          </p-button>
+        </div>
+        <span class="ad-subtitle"
+          >19:30
+          <div class="d1"></div>
+          сегодня
+          <div class="d1"></div>
+          инвестиции</span
+        >
+      </div>
+      <hr />
+      <div class="ad-block">
+        <div class="ad-block-row">
+          <img
+            src="../../../../assets/images/business_news-fire (2).svg"
+            alt=""
+          />
+          <h4 class="ad-text">
+            ЕР сохраняет лидерство в 199 одномандатных округах.
+          </h4>
+          <p-button styleClass="p-button-link"
+            ><img src="../../../../assets/images/arrow-detail.svg" alt="" />
+          </p-button>
+        </div>
+        <span class="ad-subtitle"
+          >08:44
+          <div class="d1"></div>
+          сегодня
+          <div class="d1"></div>
+          правительство</span
+        >
+      </div>
+      <hr />
+      <div class="ad-block">
+        <div class="ad-block-row">
+          <img
+            src="../../../../assets/images/business_news-fire (2).svg"
+            alt=""
+          />
+          <h4 class="ad-text">
+            Открывается новая франшиза кофеен при поддержке СберБанка.
+          </h4>
+          <p-button styleClass="p-button-link"
+            ><img src="../../../../assets/images/arrow-detail.svg" alt="" />
+          </p-button>
+        </div>
+        <span class="ad-subtitle"
+          >21:32
+          <div class="d1"></div>
+          вчера
+          <div class="d1"></div>
+          бизнес</span
+        >
+      </div>
+      <hr />
 
+      <div class="ad-block">
+        <div class="ad-block-row">
+          <img
+            src="../../../../assets/images/business_news-fire (2).svg"
+            alt=""
+          />
+          <h4 class="ad-text">
+            Открывается новая франшиза кофеен при поддержке СберБанка.
+          </h4>
+          <p-button styleClass="p-button-link"
+            ><img src="../../../../assets/images/arrow-detail.svg" alt="" />
+          </p-button>
+        </div>
+        <span class="ad-subtitle"
+          >12:51
+          <div class="d1"></div>
+          сегодня
+          <div class="d1"></div>
+          франчайзинг</span
+        >
+      </div>
+    </div>
+    <!-- </ng-scrollbar> -->
   </div>
 </div>
 
@@ -467,18 +696,23 @@
           <div class="category-item" *ngFor="let item of categoryList1">
             <img class="space-right-image-category" [src]="item.url" />
             <span class="category-text">{{ item.name }}</span>
-            <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png" />
+            <img
+              class="space-right-image-category space-arrow-category"
+              src="../../../assets/images/Arrow 1.png"
+            />
           </div>
         </div>
       </div>
 
       <!-- 2 столбец -->
       <div class="col-6">
-
         <div class="category-item" *ngFor="let item of categoryList2">
           <img class="space-right-image-category" [src]="item.url" />
           <span class="category-text">{{ item.name }}</span>
-          <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png" />
+          <img
+            class="space-right-image-category space-arrow-category"
+            src="../../../assets/images/Arrow 1.png"
+          />
         </div>
       </div>
     </div>
@@ -494,7 +728,10 @@
           <div class="category-item" *ngFor="let item of categoryList3">
             <img class="space-right-image-category" [src]="item.url" />
             <span class="category-text">{{ item.name }}</span>
-            <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png" />
+            <img
+              class="space-right-image-category space-arrow-category"
+              src="../../../assets/images/Arrow 1.png"
+            />
           </div>
         </div>
       </div>
@@ -504,7 +741,10 @@
         <div class="category-item" *ngFor="let item of categoryList4">
           <img class="space-right-image-category" [src]="item.url" />
           <span class="category-text">{{ item.name }}</span>
-          <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png" />
+          <img
+            class="space-right-image-category space-arrow-category"
+            src="../../../assets/images/Arrow 1.png"
+          />
         </div>
       </div>
     </div>

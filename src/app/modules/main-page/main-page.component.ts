@@ -7,6 +7,7 @@ import { API_URL } from 'src/app/core/core-urls/api-url';
 import { ConfirmEmailInput } from 'src/app/models/register/input/confirm-email-input';
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { NgForm } from "@angular/forms";
+import { CatalogPromoCardComponent } from "../products/catalog/catalog.promo.card/catalog.promo.card.component";
 
 @Component({
     selector: 'main-page',
@@ -62,6 +63,9 @@ export class MainPageModule implements OnInit {
       imgUrl: 'assets/images/slider__3.svg'
     }
   ]
+    
+    cardComponent = CatalogPromoCardComponent;
+
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private titleService: Title,

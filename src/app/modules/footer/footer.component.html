@@ -1,79 +1,37 @@
-<div class="app-container footer">
-  <div class="row mb-5">
-    <div class="col-xxl-6 col-xl-6 col-lg-6 {{ tabletStart ? 'col-md-12' : 'col-md-6' }} col-sm-12 col-12">
-      <div>
-        <img src="../../../assets/images/search_logo.svg" alt="gobizy logo" />
+<div class="footer">
+  <div class="app-container">
+    <div class="footer-main">
+      <a href="#" class="footer-logo">
+        <gar-icon class="footer-logo-pic" name="search_logo"></gar-icon>
+      </a>
+
+      <div class="footer-social">
+        <div *ngFor="let item of socialItems" class="footer-social-item" [ngClass]="'footer-social-item_' + item.name" itemscope itemtype="http://schema.org/Organization">
+          <link itemprop="url" href="{{ item.link }}">
+          <gar-icon class="footer-social-item-icon" name="{{item.name}}"></gar-icon>
+          <a href="{{ item.link }}" class="footer-social-link" itemprop="sameAs"></a>
+        </div>
       </div>
-    </div>
-    <div class="col-xxl-6 col-xl-6 col-lg-6 {{ tabletStart ? 'col-md-12' : 'col-md-6' }} col-sm-12 col-12 social d-flex justify-content-end">
-      <div class="social-contacts">
-        <ul class="list-unstyled d-flex">
-          <li>
-            <img src="../../../assets/images/footer-icons/telegram.svg" alt="gobizy telegram channel" />
-          </li>
-          <li>
-            <img src="../../../assets/images/footer-icons/facebook.svg" alt="gobizy facebook page" />
-          </li>
-          <li>
-            <img src="../../../assets/images/footer-icons/instagram.svg" alt="gobizy instagram channel" />
-          </li>
-          <li>
-            <img src="../../../assets/images/footer-icons/youtube.svg" alt="gobizy youtube channel" />
-          </li>
-        </ul>
+
+      <nav class="footer-nav">
+        <details class="footer-nav-col" [open]="!isMobile" *ngFor="let col of aFooter">
+          <ng-container *ngFor="let el of col; let first = first">
+            <summary class="footer-nav-item-title" *ngIf="first">
+              {{el.title}}
+
+              <gar-icon class="footer-nav-item-arrow" name="arrow-right"></gar-icon>
+            </summary>
+
+            <div class="footer-nav-item-link">
+              <a href="#" *ngIf="!el.isPlace" [ngClass]="{'target-place':el.isPlace}">{{el.name}}</a>
+            </div>
+          </ng-container>
+        </details>
+      </nav>
+
+      <div class="footer-add">
+        <a [routerLink]="['/ad/create']" class="footer-add-link">Разместить объявление</a>
       </div>
     </div>
   </div>
-
-  <nav>
-    <div class="row">
-      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
-        <ul class="list-unstyled">
-          <li *ngFor="let el of aFooterColumn1; let first = first">
-            <h4 *ngIf="first" (click)="openNextElements($event)">
-              <span>{{el.title}}</span>
-              <img src="./../../../assets/images/Arrow 1.png" alt="left chevron icon" />
-            </h4>
-            <a href="javascript:void()">{{el.name}}</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 d-flex justify-content-center">
-        <ul class="list-unstyled">
-          <li *ngFor="let el of aFooterColumn2; let first = first">
-            <h4 *ngIf="first" (click)="openNextElements($event)">
-              <span>{{el.title}}</span>
-              <img src="./../../../assets/images/Arrow 1.png" alt="left chevron icon" />
-            </h4>
-            <a href="javascript:void()">{{el.name}}</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 d-flex justify-content-center">
-        <ul class="list-unstyled">
-          <li *ngFor="let el of aFooterColumn3; let first = first">
-            <h4 *ngIf="first" (click)="openNextElements($event)">
-              <span>{{el.title}}</span>
-              <img src="./../../../assets/images/Arrow 1.png" alt="left chevron icon" />
-            </h4>
-            <a href="javascript:void()">{{el.name}}</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 d-flex justify-content-end">
-        <ul class="list-unstyled">
-          <li *ngFor="let el of aFooterColumn4; let first = first">
-            <h4 *ngIf="first" (click)="openNextElements($event)">
-              <span>{{el.title}}</span>
-              <img src="./../../../assets/images/Arrow 1.png" alt="left chevron icon" />
-            </h4>
-            <a href="javascript:void()">{{el.name}}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
 </div>

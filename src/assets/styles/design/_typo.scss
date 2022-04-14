@@ -1,0 +1,67 @@
+@mixin typo($type, $weight: 400) {
+  @if ($type == "texthead") {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  @if ($type == "texthead-bold") {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  @if ($type == "regular") {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  @if ($type == "secondary") {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  @if ($type == "description") {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  @if ($type == "advertise") {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  @if ($type == "button") {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  @if ($type == "title-item") {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  @if ($type == "title") {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  @if ($type == "title-page") {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  @if ($type == "promo") {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+}

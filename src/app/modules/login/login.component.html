@@ -8,18 +8,18 @@
           <label class="form-label">Email или телефон</label>
 
           <input type="text" class="form-control input-auth" placeholder="Введите номер или почту" name="data"
-            [(ngModel)]="data" *ngIf="!isGetCode">
+            [(ngModel)]="data" *ngIf="!isGetCode" autocomplete="off">
           <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите код"
             name="code" [(ngModel)]="code" *ngIf="isGetCode">
         </div>
 
-        <div class="send-code" *ngIf="play">
+        <div class="send-code" *ngIf="type?.isSuccessMailing">
           <span class="message-box">Получить новый код можно через 00:{{time}}</span>
           <br>
-          <span class="action-link secondary">Отправить код повторно</span>
+          <button class="codeBtn" [disabled]="play" (click)="onGetCodeAsync(getCodeForm)">Отправить код повторно</button>
         </div>
 
-        <div class="agreements mb-3">
+        <div class="agreements mb-3" *ngIf="!type?.isSuccessMailing">
           <div class="checkbox">
             <input type="checkbox" id="policyAgreement" name="policyAgreement" [checked]="isPolicyAgreement"/>
             <span (click)="onToggle('changePolicyAgreement')"></span>
@@ -31,8 +31,16 @@
             <span (click)="onToggle('changeAdsEmail')"></span>
             <label for="getEmail">Хочу получать сообщения рекламного и информационного характера</label>
           </div>
-        </div>
 
+        </div>
+        <div class="checkbox" *ngIf="type?.isSuccessMailing">
+          <small>Если код не пришел вам на почту </small>
+          <i  pTooltip="Рекомендуем проверить папку спама в вашем почтовом ящике" tooltipPosition="bottom"
+              class="pi pi-info-circle"
+              style="font-size: 16px;  margin-left: 5px; color: #c00b0b"
+          ></i>
+
+        </div>
         <button class="btn btn-default btn-code-active main-btn" (click)="onGetCodeAsync(getCodeForm)"
           *ngIf="!isHideBtnGetCode" [disabled]="!isPolicyAgreement">Получить код</button>
         <button class="btn btn-default btn-code-active main-btn" (click)="onCheckCodeAsync(getCodeForm)"

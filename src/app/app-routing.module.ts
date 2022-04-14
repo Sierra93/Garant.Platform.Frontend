@@ -165,6 +165,9 @@ const routes: Routes = [
   {
     path: "configurator/admin",
     loadChildren: () => import('./modules/configurator/configurator.module').then(m => m.ConfiguratorModule)
+  }, {
+    path: "demo",
+    loadChildren: () => import('./modules/demo/demo.module').then(m => m.DemoModule)
   }
 ];
 

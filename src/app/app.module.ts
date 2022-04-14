@@ -73,6 +73,9 @@ import { GarLibModule } from "./gar-lib/gar-lib.module";
 import { SessionService } from "./core/session/session.service";
 import { SESSION_TOKEN } from "./core/session/session.token";
 import { NotifyService } from "./services/notify/notify.service";
+import { LandingRequestService } from "./modules/landing/services/landing.service";
+import { InputMaskModule } from 'primeng/inputmask';
+import { ProductsModule } from "./modules/products/products.module";
 
 @NgModule({
   declarations: [
@@ -107,9 +110,9 @@ import { NotifyService } from "./services/notify/notify.service";
     ConfiguratorAuthModule,
     CreateAdModule
   ],
-
+  
   entryComponents: [],
-
+  
   imports: [
     BrowserModule,
     FormsModule,
@@ -142,9 +145,11 @@ import { NotifyService } from "./services/notify/notify.service";
     StepsModule,
     TableModule,
     NgHttpLoaderModule.forRoot(),
-    GarLibModule
+    GarLibModule,
+    InputMaskModule,
+    ProductsModule
   ],
-
+  
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -162,14 +167,14 @@ import { NotifyService } from "./services/notify/notify.service";
     MessageService,
     DocumentService,
     NotifyService,
-  {
-    provide: APP_INITIALIZER,
-    useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
-    deps: [NotifyService],
-    multi: true,
-  }
+    LandingRequestService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
+      deps: [NotifyService],
+      multi: true,
+    }
   ],
-
   bootstrap: [AppComponent]
 })
 

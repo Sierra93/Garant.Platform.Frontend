@@ -824,37 +824,124 @@ $fa-font-path: "~font-awesome/fonts";
     text-align: center;
     background-color: rgba(218, 218, 218, 0.15);
   }
-
-  @media only screen and (min-device-width: 980px) and (max-device-width: 1200px) {
-
+  @media only screen and (min-device-width: 981px) and (max-device-width: 1024px) {
+  
     /* Styles */
-    .card-business {
-      .three-cards-header {
-        font-size: 1.1rem;
-        line-height: 0.9rem;
-      }
-
-      .wrapper-business {
-        height: 300px;
+    .three-cards-header {
+      font-size: 1rem !important;
+      line-height: 0.9rem;
+    }
+  
+    .card-business-holder {
+      .p-element {
+        width: 77%;
       }
     }
-
-    .p-element {
-      width: 100%;
-
-      .business-text {
-        font-size: 0.6rem;
-        height: 84px;
-        padding-right: 45px;
-      }
-    }
-
+  
     .image-business-content {
       display: none;
-
+  
       img {
         display: none;
       }
     }
   }
-}
+  
+  @media only screen and (min-device-width: 720px) and (max-device-width: 980px) {
+    .three-cards-header {
+      font-size: 1rem;
+    }
+  
+    .image-business-content {
+      display: none;
+  
+      img {
+        display: none;
+      }
+    }
+  
+    .business-text {
+      margin-bottom: 20pxpx;
+      height: 110px;
+    }
+  
+    .card-business-content {
+      padding-top: 15px;
+    }
+  }
+  
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .p-element {
+      width: 80%;
+    }
+  
+    .card-business {
+      .three-cards-header {
+        font-size: 0.9rem;
+      }
+    }
+  
+    h5 {
+      max-width: 99%;
+    }
+  
+    .wrapper-business {
+      height: 305px;
+    }
+  
+    .card {
+      padding-left: 10px;
+    }
+  
+    .p-card-content {
+      padding: 15px 0 8px !important;
+    }
+  
+    .business-text {
+      margin-bottom: 50px;
+      height: 110px;
+    }
+  }
+  }
+  
+  @media only screen and (min-device-width: 720px) and (max-device-width: 980px) {
+    .card-business-holder {
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+        width: 50%;
+      }
+    }
+  }
+  // @media only screen and (min-device-width: 980px) and (max-device-width: 1200px) {
+
+  //   /* Styles */
+  //   .card-business {
+  //     .three-cards-header {
+  //       font-size: 1.1rem;
+  //       line-height: 0.9rem;
+  //     }
+
+  //     .wrapper-business {
+  //       height: 300px;
+  //     }
+  //   }
+
+  //   .p-element {
+  //     width: 100%;
+
+  //     .business-text {
+  //       font-size: 0.6rem;
+  //       height: 84px;
+  //       padding-right: 45px;
+  //     }
+  //   }
+
+  //   .image-business-content {
+  //     display: none;
+
+  //     img {
+  //       display: none;
+  //     }
+  //   }
+  // }
+// }

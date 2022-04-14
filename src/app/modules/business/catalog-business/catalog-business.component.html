@@ -330,7 +330,7 @@
   <div class="block-baner-img"><img class="baner" src="../../../../assets/images/Rectangle 13.png" /></div>
 </div>
 <!-- 3 card -->
-<div class="row section-mb">
+<!-- <div class="row section-mb">
   <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder"
     *ngFor="let item of aDataActions; let i = index">
     <div class="card-business">
@@ -342,7 +342,7 @@
             </ng-template>
             <h5>{{item.subTitle}}</h5>
             <p class="business-text">{{item.text}}</p>
-            <!-- <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button> -->
+            <!-- <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button> 
             <ng-template pTemplate="footer">
             </ng-template>
           </div>
@@ -351,9 +351,37 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
-
+<div class="row section-mb">
+    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions; let i = index">
+      <div class="card-business">
+        <h3 class="three-cards-header">{{item.title}}</h3>
+        
+            <div class="wrapper-businness">
+              <p-card [style]="{width: '100%'}" styleClass="card">
+              
+                <div class="card-business-content">
+                  <ng-template pTemplate="header">
+                    <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+                  </ng-template>
+                  <h5>{{item.subTitle}}</h5>
+                  <p class="business-text">{{item.text}}</p>
+                  <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
+                  <ng-template pTemplate="footer">
+                    <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
+                    <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+                                        </p-button> -->
+                  </ng-template>
+                </div>
+              </p-card>
+                
+              <div class="image-business-content"><img [src]="aDataActionsPictures[i]?.imgUrl" alt=""></div>
+            </div> 
+            <!-- /.wrapper-businness -->   
+      </div>          
+    </div> 
+  </div>
 <!-- Новости делового мира. -->
 <div class="business__news">
   <h5 class="business__news-title">Новости делового мира</h5>

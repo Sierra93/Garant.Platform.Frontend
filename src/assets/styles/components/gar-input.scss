@@ -44,7 +44,7 @@
         @include typo("secondary");
       }
       & .p-dropdown-trigger {
-        transition: all 0.3s;
+        transition: $timeFast;
         & .p-dropdown-trigger-icon:before {
           content: ' ';
           background: url('/assets/icons-source/smart-drop-down.svg');

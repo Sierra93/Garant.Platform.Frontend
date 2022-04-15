@@ -23,7 +23,6 @@ import { gar } from "../gar";
 @Component({
   selector: 'gar-base-input',
   template: '',
-  styleUrls: ['gar-base-input.component.scss'],
   host: {
     class: 'gar-input'
   },

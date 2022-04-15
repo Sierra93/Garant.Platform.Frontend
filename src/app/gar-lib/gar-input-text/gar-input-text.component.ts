@@ -2,11 +2,17 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { GarBaseInputComponent } from "../gar-base-input/gar-base-input.component";
 import { NgControl } from "@angular/forms";
 
-/** TODO: в разработке */
+/**
+ * Компонент ввода строчных значений
+ *
+ * */
 @Component({
-	selector: 'app-gar-input-text',
+	selector: 'gar-input-text',
 	templateUrl: './gar-input-text.component.html',
 	styleUrls: ['./gar-input-text.component.scss'],
+	host: {
+		class: 'gar-input-text'
+	},
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GarInputTextComponent extends GarBaseInputComponent<string> implements OnInit {

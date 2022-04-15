@@ -11,6 +11,7 @@
             [placeholder]="(title$ | async)!"
             [prefix]="(prefix$ | async)!"
             [suffix]="(postFix$ | async)!"
+            (focusout)="propagateTouched()"
             [(ngModel)]="value"></p-inputNumber>
 </ng-template>
 
@@ -23,5 +24,6 @@
             [placeholder]="(title$ | async)!"
             [prefix]="(prefix$ | async)!"
             [suffix]="(postFix$ | async)!"
+            (focusout)="propagateTouched()"
             [(ngModel)]="value"></p-inputNumber>
 </ng-template>

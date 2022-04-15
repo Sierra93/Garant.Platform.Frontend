@@ -18,9 +18,12 @@ export type ModeNumberInput = 'currency' | 'decimal';
  * @param mode Флаг установки типа отображения
  * */
 @Component({
-	selector: 'app-gar-input-number',
+	selector: 'gar-input-number',
 	templateUrl: './gar-input-number.component.html',
 	styleUrls: ['./gar-input-number.component.scss'],
+	host: {
+		class: 'gar-input-number'
+	},
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GarInputNumberComponent extends GarBaseInputComponent<number> implements OnInit {

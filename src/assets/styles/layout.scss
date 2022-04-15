@@ -33,7 +33,7 @@ a {
  }
 
   @include tablet {
-    width: 1072px;
+    width: 1024px;
   }
 
   @include desktop {
@@ -149,4 +149,29 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+/* Обрезка переполненного контейнера */
+.no-overflow {
+    overflow: hidden;
+}
+
+/* Поле ввода */
+.gar-input {
+  display: flex;
+  > * {
+    width: 100%;
+    > * {
+      width: 100%;
+    }
+  }
+  & .p-inputnumber-input {
+    height: 48px;
+    background-color: $clrLightBlue;
+    border-color: $clrLightBlue;
+    color: $clrBlack;
+    padding: $input-padding;
+    border-radius: $input-border-radius;
+    @include typo("secondary");
+  }
 }

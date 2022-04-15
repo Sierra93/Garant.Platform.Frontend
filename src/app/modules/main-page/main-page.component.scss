@@ -580,6 +580,10 @@
 
 .block-cards-franchises-inner {
   padding: 1.5rem;
+  > app-catalog-simple-card {
+    //TODO: сделать по уму
+    max-width: 360px;
+  }
 }
 
 .quick-search-form {

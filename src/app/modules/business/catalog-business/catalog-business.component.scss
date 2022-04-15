@@ -316,6 +316,10 @@
     background: #F1F6FF;
     border-radius: 4px;
 
+    > app-catalog-simple-card {
+      max-width: 315px;
+    }
+
     .popular-item {
       width: 100%;
       max-width: 331px;

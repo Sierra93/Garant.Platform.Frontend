@@ -22,15 +22,11 @@
           >
             <label>Сфера франшиз</label>
             <div class="w-100">
-              <p-dropdown
-                [options]="aViewBusiness"
-                class="block-sort-by"
-                optionLabel="viewName"
-                [(ngModel)]="selectedViewBusiness"
-                placeholder="Вид бизнеса"
-                [showClear]="true"
-                name="view"
-              ></p-dropdown>
+              <gar-select
+                      [(ngModel)]="selectedViewBusiness"
+                      [items]="aViewBusiness"
+                      title="Вид бизнеса"
+                      displayLabel="viewName"></gar-select>
             </div>
           </div>
           <div
@@ -38,17 +34,14 @@
           >
             <label>Выбор категории</label>
             <div class="w-100">
-              <p-dropdown
-                [options]="aBusinessCategories"
-                class="block-sort-by"
-                optionLabel="categoryName"
-                [(ngModel)]="selectedCategory"
-                placeholder="Категория"
-                [showClear]="true"
-                name="category"
-              ></p-dropdown>
+              <gar-select
+                      [(ngModel)]="selectedCategory"
+                      [items]="aBusinessCategories"
+                      title="Категория"
+                      displayLabel="categoryName"></gar-select>
             </div>
           </div>
+
           <div
             class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount"
           >

@@ -3,6 +3,8 @@
 @use "../../../../app/shared/styles" as *;
 @use "../../../../app/shared/styles/base" as *;
 @use "/src/app/modules/franchise/catalog-franchise/catalog-franchise.component.scss";
+@import 'design';
+
 
 :host {
   strong {
@@ -842,7 +844,7 @@
   min-height: 558px;
   padding: 0 16px 16px;
   margin-right: 24px;
-  box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.08);
+  $box-shadow-card: 0 4px 44px rgba($clrBlack, .08);
 }
 .control-quick-search-one {
   width: 25%;

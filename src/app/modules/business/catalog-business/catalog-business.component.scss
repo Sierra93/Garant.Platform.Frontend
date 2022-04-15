@@ -844,7 +844,7 @@
   min-height: 558px;
   padding: 0 16px 16px;
   margin-right: 24px;
-  $box-shadow-card: 0 4px 44px rgba($clrBlack, .08);
+  box-shadow: $box-shadow-card;
 }
 .control-quick-search-one {
   width: 25%;

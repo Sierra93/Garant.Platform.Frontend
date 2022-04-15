@@ -15,7 +15,7 @@
   max-width: 464px;
   min-width: 320px;
   padding: 34px 26px 32px 24px;
-  $box-shadow-card: 0 4px 44px rgba($clrBlack, .08);
+  box-shadow: $box-shadow-card;
   border-radius: 4px;
 }
 h5 {

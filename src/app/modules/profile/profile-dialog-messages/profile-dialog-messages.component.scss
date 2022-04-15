@@ -47,7 +47,7 @@
 .message {
   span {
     padding: .5rem;
-    $box-shadow-card: 0 4px 44px rgba($clrBlack, .08);
+    box-shadow: $box-shadow-card;
     border-radius: .25rem;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;

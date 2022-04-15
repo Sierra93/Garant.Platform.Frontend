@@ -100,10 +100,10 @@
   padding-top: 0;
 }
 
-::ng-deep .card-business .p-card-body {
-  // background: #F1F1F1;
-  padding: 16px 24px;
-}
+// ::ng-deep .card-business .p-card-body {
+//   background: #F1F1F1;
+//   padding: 16px 24px;
+// }
 
 ::bg-deep .p-card {
   width: 1440px !important;
@@ -203,6 +203,17 @@
   }
   .right-images {
     width: 100%;
+  }
+  ::ng-deep .card-business .p-card-body {
+    // background: #F1F1F1;
+    padding: 16px 0px;
+    .p-card-content {
+      padding: 0;
+    }
+    .business-text {
+      font-size: 14px;
+      min-height: 84px;
+    }
   }
 }
 
@@ -776,7 +787,7 @@ $fa-font-path: "~font-awesome/fonts";
   }
 
   .card-business {
-    height: 335px;
+    min-height: 335px;
     display: flex;
     flex-wrap: wrap;
 
@@ -809,7 +820,7 @@ $fa-font-path: "~font-awesome/fonts";
     align-items: flex-end;
     width: 10rem;
     height: 53px;
-    padding: 10px 54px !important;
+    padding: 10px;
     background: #1f75fe;
   }
 
@@ -912,4 +923,10 @@ $fa-font-path: "~font-awesome/fonts";
       }
     }
   }
-  
+:host {
+  @media only screen and (min-device-width: 720px) and (max-device-width: 980px) {
+    .row .section-mb {
+      display: flex;
+    }
+  }
+}

@@ -132,6 +132,5 @@ export abstract class GarBaseInputComponent<T> implements gar.lib.IFieldComponen
   // eslint-disable-next-line no-unused-vars
   protected afterRefreshValue(value: T | null) {
     this._cdRef.markForCheck();
-    this._control.control?.markAsDirty();
   }
 }

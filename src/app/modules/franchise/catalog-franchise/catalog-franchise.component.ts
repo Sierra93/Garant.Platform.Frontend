@@ -11,6 +11,7 @@ import { CommonDataService } from 'src/app/services/common/common-data.service';
 // import { CatalogFranchiseService } from '../../../core/services/catalog-franchise.service';
 import { take } from 'rxjs/operators';
 import { CatalogShortCardComponent } from "../../products/catalog/catalog.short.card/catalog.short.card.component";
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: 'catalog-franchise',
@@ -65,7 +66,6 @@ export class CatalogFranchiseModule implements OnInit {
   
   /** Компонент, передаваемый в карусель */
   cardComponent = CatalogShortCardComponent;
-
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,

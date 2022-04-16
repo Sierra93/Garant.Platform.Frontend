@@ -330,6 +330,10 @@
     border-radius: 4px;
     padding: 15px;
 
+    > app-catalog-simple-card {
+      max-width: 315px;
+    }
+
     .popular-item {
       // width: 100%;
       max-width: 331px;

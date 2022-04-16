@@ -11,7 +11,9 @@ import { GarInputTextComponent } from "./gar-input-text/gar-input-text.component
 import { GarInputNumberComponent } from './gar-input-number/gar-input-number.component';
 import { InputNumberModule } from "primeng/inputnumber";
 import { FormsModule } from "@angular/forms";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { InputTextModule } from "primeng/inputtext";
+import { GarSelectComponent } from "./gar-select/gar-select.component";
+import { DropdownModule } from "primeng/dropdown";
 
 const _COMPONENTS = [
 	GarImgUploaderComponent,
@@ -19,7 +21,8 @@ const _COMPONENTS = [
 	GarCarouselComponent,
 	GarButtonComponent,
 	GarInputTextComponent,
-	GarInputNumberComponent
+	GarInputNumberComponent,
+	GarSelectComponent
 ]
 
 const _PIPES = [
@@ -36,7 +39,8 @@ const _DIRECTIVES = [
 		DragDropModule,
 		InputNumberModule,
 		FormsModule,
-		BrowserAnimationsModule
+		InputTextModule,
+		DropdownModule
 	],
 	declarations: [
 		..._COMPONENTS,

@@ -468,14 +468,13 @@
   background: #f1f6ff;
 }
 
-@media (min-width: 1201px) and (max-width: 1440px) {
-  .quick-search-form {
-    justify-content: space-between;
-    [class^="col-xxl-2"] {
-      margin: 0px 0 0 40px;
-      text-align: start;
-      max-width: 199px;
-    }
+.block-cards-franchises-inner {
+  padding: 1.5rem;
+  > app-catalog-simple-card {
+    //TODO: сделать по уму
+    max-width: 360px;
+  }
+}
 
     .price-range-input {
       width: 16rem;
@@ -483,7 +482,7 @@
     .col-xxl-4 {
       max-width: 17rem;
     }
-  }
+  
   .quick-search {
     border: none;
   }
@@ -492,7 +491,7 @@
       text-align: center;
     }
   }
-}
+
 .ready-business-categories .title-franchise {
   display: flex;
   align-items: center;

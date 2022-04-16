@@ -90,3 +90,31 @@
         </div>
     </div>
 </div>
+
+<div class="gar-row gar-card">
+    <div class="gar-row title">Компоненты INPUT</div>
+    <div class="gar-row">
+        <div class="gar-row-item">
+            <div class="gar-row title item">gar-input-text</div>
+            <gar-input-text title="Текстовое поле" [(ngModel)]="textInput"></gar-input-text>
+        </div>
+        <div class="gar-row-item"><pre>{{textInput | json}}</pre></div>
+        <div class="gar-row-item"></div>
+    </div>
+    <div class="gar-row">
+        <div class="gar-row-item">
+            <div class="gar-row title item">gar-number-number</div>
+            <gar-input-number title="Числовое поле" [(ngModel)]="numberInput"></gar-input-number>
+        </div>
+        <div class="gar-row-item"><pre>{{numberInput | json}}</pre></div>
+        <div class="gar-row-item"></div>
+    </div>
+    <div class="gar-row">
+        <div class="gar-row-item">
+            <div class="gar-row title item">gar-select</div>
+            <gar-select title="Города" [(ngModel)]="selectInput" [items]="cities" displayLabel="name"></gar-select>
+        </div>
+        <div class="gar-row-item"><pre>{{selectInput | json}}</pre></div>
+        <div class="gar-row-item"></div>
+    </div>
+</div>

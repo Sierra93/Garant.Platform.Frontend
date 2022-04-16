@@ -1,0 +1,26 @@
+<ng-container *ngIf="product$ | async as product">
+    <div class="image-container gar-card">
+        <img src="{{product.url}}" alt="{{product.title}}" title="{{product.title}}"/>
+    </div>
+    <div class="gar-card">
+        <div class="gar-row title item">
+            <div class="gar-row-item">
+<!--                TODO: привести к одной модели!!!-->
+                <span class="gar-row">{{product?.name || product?.businessName || ''}}</span>
+                <span class="gar-row sub-title gar-badge fit">{{product.text || ''}}</span>
+            </div>
+        </div>
+        <div class="gar-row title item">
+            <span class="gar-row-item">{{ product.price }} ₽</span>
+        </div>
+<!--        TODO: разобраться с действиями на этих кнопках-->
+        <div class="gar-row">
+            <div class="gar-row-item">
+                <gar-button>Подробнее</gar-button>
+            </div>
+            <div class="gar-row-item">
+                <gar-button role="primary">Купить онлайн</gar-button>
+            </div>
+        </div>
+    </div>
+</ng-container>

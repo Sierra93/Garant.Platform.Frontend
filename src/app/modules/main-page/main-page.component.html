@@ -211,46 +211,8 @@
           <!-- </div> -->
         </div>
 
-        <div class="block-cards-franchises-inner">
-          <div class="col-12">
-            <div class="row">
-              <div
-                class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 quick-search-card-holder"
-                *ngFor="let item of aFranchises"
-              >
-                <div class="card-franchise">
-                  <div class="quick-search-card">
-                    <p-card
-                      header="{{ item.title }}"
-                      subheader="{{ item.text }}"
-                      styleClass="p-card-shadow"
-                      class="card-item"
-                    >
-                      <ng-template pTemplate="header">
-                        <!-- <img class="block-card-img" [src]="item.url"> -->
-                        <img
-                          src="../../../assets/images/Rectangle 24.png"
-                          alt=""
-                        />
-                      </ng-template>
-                      <strong
-                        >{{ item.textDoPrice }}
-                        {{ item.price | priceFormat: item.price }} ₽</strong
-                      >
-                      <ng-template pTemplate="footer">
-                        <div class="franchise-wraper-btn">
-                          <button class="btn btn-dark-left">Подробнее</button>
-                          <button class="btn btn-dark-right">
-                            купить онлайн
-                          </button>
-                        </div>
-                      </ng-template>
-                    </p-card>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="block-cards-franchises-inner gar-row">
+          <app-catalog-simple-card *ngFor="let item of aFranchises" [item]="item"></app-catalog-simple-card>
         </div>
       </div>
 
@@ -479,4 +441,4 @@
       </div>
     </div>
   </div>
-</section>
+<!-- </section> -->

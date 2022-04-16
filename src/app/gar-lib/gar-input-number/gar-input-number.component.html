@@ -11,7 +11,9 @@
             [placeholder]="(title$ | async)!"
             [prefix]="(prefix$ | async)!"
             [suffix]="(postFix$ | async)!"
-            [(ngModel)]="value"></p-inputNumber>
+            (focusout)="propagateTouched()"
+            (onInput)="onChange($event.value)"
+            [ngModel]="value"></p-inputNumber>
 </ng-template>
 
 <ng-template #currency>
@@ -23,5 +25,7 @@
             [placeholder]="(title$ | async)!"
             [prefix]="(prefix$ | async)!"
             [suffix]="(postFix$ | async)!"
-            [(ngModel)]="value"></p-inputNumber>
+            (focusout)="propagateTouched()"
+            (onInput)="onChange($event.value)"
+            [ngModel]="value"></p-inputNumber>
 </ng-template>

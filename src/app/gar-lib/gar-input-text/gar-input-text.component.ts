@@ -1,15 +1,21 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { GarBaseInputComponent } from "../gar-base-input/gar-base-input.component";
 import { NgControl } from "@angular/forms";
 
-/** TODO: в разработке */
+/**
+ * Компонент ввода строчных значений
+ *
+ * */
 @Component({
-	selector: 'app-gar-input-text',
+	selector: 'gar-input-text',
 	templateUrl: './gar-input-text.component.html',
 	styleUrls: ['./gar-input-text.component.scss'],
+	host: {
+		class: 'gar-input-text'
+	},
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GarInputTextComponent extends GarBaseInputComponent<string> implements OnInit {
+export class GarInputTextComponent extends GarBaseInputComponent<string> {
 	
 	constructor(
 		protected _cdRef: ChangeDetectorRef,
@@ -17,8 +23,4 @@ export class GarInputTextComponent extends GarBaseInputComponent<string> impleme
 	) {
 		super(_cdRef, _control)
 	}
-	
-	ngOnInit(): void {
-	}
-	
 }

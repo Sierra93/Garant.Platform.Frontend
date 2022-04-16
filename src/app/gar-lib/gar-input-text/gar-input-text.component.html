@@ -1,1 +1,7 @@
-<p>gar-input works!</p>
+<input
+        type="text"
+        pInputText
+        (focusout)="propagateTouched()"
+        [disabled]="(readonly$ | async)!"
+        [placeholder]="(title$ | async)!"
+        [(ngModel)]="value" />

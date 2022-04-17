@@ -1,0 +1,88 @@
+.garant {
+  border: none;
+  border-radius: 8px;
+  background: #f1f6ff;
+  margin-top: 74px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    border: none;
+    background: transparent;
+    margin-bottom: 16px;
+  }
+  &__title {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 600;
+    margin-bottom: 0;
+    padding-top: 24px;
+  }
+  &__close {
+    width: 16px;
+    height: 16px;
+  }
+  &__description {
+    font-size: 14px;
+    line-height: 16.41px;
+    color: #7a7a7a;
+    margin-bottom: 40px;
+  }
+  &__business {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 600;
+    border-radius: 4px !important;
+    padding: 16px;
+    margin-right: 22px;
+  }
+  &__clean {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 600;
+    border-radius: 4px !important;
+    padding: 16px;
+    border: 1px solid #7a7a7a;
+    color: #7a7a7a;
+  }
+}
+
+@media all and (max-width: 576px) {
+  .garant {
+    margin-top: 40px;
+    &__title {
+      padding: 0;
+      font-size: 17px;
+      line-height: 20px;
+      max-width: 274px;
+    }
+    &__description {
+      font-size: 14px;
+      line-height: 16.5px;
+      max-width: 274px;
+    }
+    &__business,
+    &__clean {
+      font-size: 16px;
+      line-height: 18.5px;
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .garant {
+      &.is-laptop &__description {
+        max-width: 691px;
+      }
+    }
+  }
+
+  @media all and (min-width: 1200px) {
+    .garant {
+      &.is-hd &__description {
+        max-width: 946px;
+      }
+    }
+  }
+}

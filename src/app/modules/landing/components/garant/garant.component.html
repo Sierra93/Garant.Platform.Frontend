@@ -1,0 +1,33 @@
+<div
+  class="card garant"
+  *ngIf="isHideBusinessWithGarant"
+  [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }"
+>
+  <div class="card-header garant__header">
+    <div class="card-title text-break garant__title">
+      Вы можете приобрести бизнес с гарантиями
+    </div>
+    <div class="garant__btn-close">
+      <button class="close btn-close garant__close"></button>
+    </div>
+  </div>
+  <div class="card-body garant__content">
+    <div class="card-text text-break garant__description">
+      {{ oSuggestion.text }}
+    </div>
+    <div class="btn-group garant__btn-group">
+      <button
+        class="btn btn-primary text-break garant__business"
+        routerLink="/catalog-business"
+      >
+        {{ oSuggestion.button2Text }}
+      </button>
+      <button
+        class="btn btn-light text-break garant__clean"
+        (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
+      >
+        {{ oSuggestion.button1Text }}
+      </button>
+    </div>
+  </div>
+</div>

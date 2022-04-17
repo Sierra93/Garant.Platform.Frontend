@@ -18,7 +18,7 @@ interface FooterSocialItem {
 }
 
 @Component({
-  selector: 'footer',
+  selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
@@ -48,13 +48,11 @@ export class FooterModule implements OnInit {
     await this.initFooter();
     this.isMobile = window.innerWidth < 768;
   }
-
   @HostListener('window:load', ['$event'])
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.isMobile = window.innerWidth < 768;
   }
-
 
   /**
    * Функция получит поля футера.

@@ -1,0 +1,60 @@
+.business-blog {
+  margin-top: 74px;
+  &__title {
+    background: transparent;
+    padding: 0;
+    font-size: 24px;
+    line-height: 28px;
+    color: #2c2c2c;
+    margin-bottom: 32px;
+  }
+  &__content {
+    border: none;
+  }
+  &__blog-img {
+    padding: 0;
+    border: none;
+  }
+  &__description {
+    padding-top: 16px;
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+  &__img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  &__blog-title {
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    background: #ffdf37;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+  }
+  &__note {
+    font-size: 12px;
+    line-height: 14px;
+    color: #646464;
+  }
+}
+
+@media all and (max-width: 576px) {
+  .business-blog {
+    margin-top: 23.5px;
+    &__title {
+      font-size: 19px;
+      line-height: 22px;
+    }
+    &__blog-title {
+      font-size: 17px;
+      line-height: 20px;
+    }
+    &__note {
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }
+}

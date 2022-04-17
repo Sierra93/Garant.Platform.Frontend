@@ -36,7 +36,7 @@
     "normalize.css": "^8.0.1",
     "popper.js": "^1.16.1",
     "primeicons": "^4.1.0",
-    "primeng": "^12.2.1",
+    "primeng": "^12.2.3",
     "primeng-extensions": "^1.0.1",
     "rxjs": "~6.6.0",
     "sass-loader": "^7.1.0",

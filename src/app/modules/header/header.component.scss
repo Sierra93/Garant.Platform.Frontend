@@ -292,6 +292,7 @@
                     color: $clrBlue;
                 }
 
+
                 gar-icon {
                     width: 42px;
                     height: 42px;
@@ -305,8 +306,10 @@
             }
         }
 
+
         &-control {
             grid-area: control;
+
 
             @include tablet-small {
                 display: flex;
@@ -328,9 +331,11 @@
                 width: 100%;
                 margin-top: calc(#{$gridGap} / 2);
 
+
                 @include tablet-small {
                     margin-top: 0;
                 }
+
 
                 gar-icon {
                     vertical-align: -6px; // magic number
@@ -341,6 +346,7 @@
                 }
             }
         }
+
 
         &-categories {
             grid-area: categories;
@@ -463,7 +469,6 @@
 
     &-logo {
         fill: $clrBlue;
-
         gar-icon {
             width: 132px;
             height: 50px;
@@ -515,4 +520,39 @@
             }
         }
     }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 980px) {
+  .app-container {
+    width: 80%;
+    margin: 0 auto !important;
+  }
+
+  .logo-and-search {
+    display: flex;
+    width: fit-content;
+    flex-flow: row;
+    margin-right: 0;
+  }
+
+  .hamburger {
+    padding: 0;
+    width: fit-content;
+    padding-left: 15px;
+  }
+
+  .item-logo {
+    padding: 0;
+  }
+
+  .item-search {
+    padding: 0;
+    margin-left: 17px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .hamburger {
+    display: none !important;
+  }
 }

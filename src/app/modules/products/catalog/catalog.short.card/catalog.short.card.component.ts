@@ -11,7 +11,7 @@ import { CatalogBaseCardComponent } from "../catalog.base.card/catalog.base.card
  * TODO: привести к одному типу объекты продуктов, отображаемых в каталоге
  * */
 @Component({
-  selector: 'app-catalog-sort-card',
+  selector: 'app-catalog-short-card',
   templateUrl: './catalog.short.card.component.html',
   styleUrls: ['./catalog.short.card.component.scss'],
   host: {

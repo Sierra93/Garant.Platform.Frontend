@@ -75,11 +75,12 @@ a {
 /* Строка являющая заголовком */
 .gar-row.title {
   @include typo("title");
+  margin-bottom: #{$gar-row-between-vertical-margin * 2}px;
 
   /* Отступ у строки, если она не является последней */
-  &:not(:last-child) {
-    margin-bottom: #{$gar-row-between-vertical-margin}px;
-  }
+  // &:not(:last-child) {
+    // margin-bottom: #{$gar-row-between-vertical-margin * 2}px;
+  // }
   & .sub-title {
     @include typo("description");
     color: $font-color-sub-title;

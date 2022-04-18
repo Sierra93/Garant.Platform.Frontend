@@ -33,16 +33,16 @@
     margin-bottom: 48px;
     max-width: 423px;
   }
-  &__input-field {
+  &__entry-wrapper {
     display: flex;
     flex-direction: column;
   }
-  &__input-text {
+  &__text-note {
     color: #dadada;
     font-size: 12px;
     line-height: 14px;
   }
-  &__input {
+  &__entry-text {
     width: 100%;
     height: 69px;
     border-radius: 8px;
@@ -110,15 +110,15 @@
       line-height: 18px;
       margin-bottom: 24px;
     }
-    &__input,
+    &__entry-text,
     & ::ng-deep .p-element .p-inputtext {
       font-size: 18px;
       line-height: 21px;
     }
-    &__input-field {
+    &__entry-wrapper {
       width: 100%;
     }
-    &__input-field:first-child {
+    &__entry-wrapper:first-child {
       padding-bottom: 16px;
     }
     &__submit-request {
@@ -138,40 +138,49 @@
 
 ::ng-deep {
   @media all and (min-width: 992px) {
+    $typeDeviceWatched: 'is-laptop';
     .feedback {
-      &.is-laptop {
+      &.#{$typeDeviceWatched} {
         font-size: 64px;
         line-height: 75px;
+        .feedback {
+          &__title {
+            font-size: 64px;
+            line-height: 75px;
+          }
+          &__subtitle {
+            font-size: 44px;
+            line-height: 52px;
+            max-width: 50%;
+          }
+          &__note {
+            max-width: calc(50% + 4px);
+          }
+          &__field-orientation {
+            display: block;
+          }
+          &__entry-wrapper:first-child {
+            margin-bottom: 16px;
+          }
+          &__submit {
+            font-size: 19px;
+            line-height: 22px;
+          }
+        }
       }
-      &.is-laptop &__title {
-        font-size: 64px;
-        line-height: 75px;
-      }
-      &.is-laptop &__subtitle {
-        font-size: 44px;
-        line-height: 52px;
-        max-width: 423px;
-      }
-      &.is-laptop &__field-orientation {
-        display: block;
-      }
-      &.is-laptop &__input-field:first-child {
-        margin-bottom: 16px;
-      }
-      &.is-laptop &__submit {
-        font-size: 19px;
-        line-height: 22px;
+    }
+  }
+
+  @media all and (min-width: 1200px) {
+    $typeDeviceWatched: 'is-hd';
+    .feedback {
+      &.#{$typeDeviceWatched} {
+        .feedback {
+          &__note {
+            max-width: 80%;
+          }
+        }
       }
     }
   }
 }
-
-/*::ng-deep {
-  @media all and (min-width: 1201px) {
-    .feedback {
-      &.is-xxl &__input-field {
-        max-width: 295px;
-      }
-    }
-  }
-}*/

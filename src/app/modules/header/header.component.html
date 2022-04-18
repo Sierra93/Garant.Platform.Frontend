@@ -26,16 +26,16 @@
             </div>
 
             <div *ngIf="!isGarant" class="header-search">
-                <gar-select [title]="selectedSearchOption" [(ngModel)]="selectedSearchOption" [items]="searchOptions" displayLabel="name"></gar-select>
+                <gar-select [title]="selectedSearchOption.name" [(ngModel)]="selectedSearchOption" [items]="searchOptions" displayLabel="name"></gar-select>
 
                 <gar-input-text
                     class="header-search-input gar-input-text"
                     title="Например: “Медицинский центр”"
-                    [(ngModel)]="searchText"
+                    [ngModel]="searchText"
                     (keydown.enter)="onRouteSearch(searchText)">
                 </gar-input-text>
 
-                <gar-button type="button" role="primary" class="header-search-button">
+                <gar-button type="button" role="primary" class="header-search-button" (click)="onRouteSearch(searchText)">
                     <gar-icon name="search"></gar-icon>
                 </gar-button>
             </div>

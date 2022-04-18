@@ -80,7 +80,6 @@ import { NotifyService } from "./services/notify/notify.service";
 import { LandingRequestService } from "./modules/landing/services/landing.service";
 import { InputMaskModule } from 'primeng/inputmask';
 import { ProductsModule } from "./modules/products/products.module";
-import { PriceFormatPipe } from './core/pipes/priceFormat.pipe';
 import { BlockUIModule } from 'primeng/blockui';
 import { PanelModule } from 'primeng/panel';
 import { BusinessAdComponent } from './modules/landing/components/business-ad/business-ad.component';
@@ -125,7 +124,6 @@ import { StatisticsCardComponent } from './modules/landing/components/statistics
     NotificationsModule,
     ConfiguratorAuthModule,
     CreateAdModule,
-    PriceFormatPipe,
     BusinessAdComponent,
     BusinessBlogComponent,
     BusinessListComponent,
@@ -173,7 +171,7 @@ import { StatisticsCardComponent } from './modules/landing/components/statistics
     NgHttpLoaderModule.forRoot(),
     GarLibModule,
     InputMaskModule,
-    ProductsModule
+    ProductsModule,
     BlockUIModule,
     PanelModule
   ],

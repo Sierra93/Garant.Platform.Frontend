@@ -1,4 +1,4 @@
-:host .business-ad {
+.business-ad {
   margin-top: 74px;
   &__title {
     font-size: 24px;
@@ -8,6 +8,12 @@
     margin-bottom: 32px;
     background: transparent;
     border: none;
+  }
+  &__carousel-item {
+    display: none;
+  }
+  &__carousel-item:nth-child(n + 1) {
+    display: block;
   }
   // Кастомизация слайдера под дизайн
   & ::ng-deep .p-element .p-carousel-content {
@@ -99,12 +105,38 @@
 
 ::ng-deep {
   @media all and (min-width: 992px) {
+    $typeDeviceWatched: "is-laptop";
+
     .business-ad {
-      &.is-laptop {
+      &.#{$typeDeviceWatched} {
         margin-top: 36px;
+        .business-ad {
+          &__title {
+            margin-bottom: 20px;
+          }
+          &__carousel-item {
+            display: none;
+          }
+          &__carousel-item:nth-child(n + 2) {
+            display: block;
+          }
+        }
       }
-      &.is-laptop &__title {
-        margin-bottom: 20px;
+    }
+  }
+  @media all and (min-width: 1200px) {
+    $typeDeviceWatched: "is-hd";
+
+    .business-ad {
+      &.#{$typeDeviceWatched} {
+        .business-ad {
+          &__carousel-item {
+            display: none;
+          }
+          &__carousel-item:nth-child(n + 1) {
+            display: block;
+          }
+        }
       }
     }
   }

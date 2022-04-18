@@ -9,6 +9,12 @@
     background: transparent;
     border: none;
   }
+  &__carousel-item {
+    display: none;
+  }
+  &__carousel-item:nth-child(n + 1) {
+    display: block;
+  }
   // Кастомизация слайдера под дизайн
   & ::ng-deep .p-element .p-carousel-content {
     position: relative;
@@ -103,12 +109,37 @@
 
 ::ng-deep {
   @media all and (min-width: 992px) {
+    $typeDeviceWatched: "is-laptop";
     .franchise {
-      &.is-laptop {
+      &.#{$typeDeviceWatched} {
         margin-top: 36px;
+        .franchise {
+          &__title {
+            margin-bottom: 20px;
+          }
+          &__carousel-item {
+            display: none;
+          }
+          &__carousel-item:nth-child(n + 2) {
+            display: block;
+          }
+        }
       }
-      &.is-laptop &__title {
-        margin-bottom: 20px;
+    }
+  }
+
+  @media all and (min-width: 1200px) {
+    $typeDeviceWatched: "is-hd";
+    .franchise {
+      &.#{$typeDeviceWatched} {
+        .franchise {
+          &__carousel-item {
+            display: none;
+          }
+          &__carousel-item:nth-child(n + 1) {
+            display: block;
+          }
+        }
       }
     }
   }

@@ -1,9 +1,10 @@
-<div class="franchise" [ngClass]="{ 'is-laptop': isLaptop }">
+<div class="franchise" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD, 'is-full-hd': isFullHD }">
   <h5 class="alert alert-light text-break franchise__title">
     Популярные франшизы
   </h5>
   <div class="row">
     <div
+      class="franchise__carousel-item"
       [ngClass]="{
         'col-lg-4': isLaptop,
         'col-xl-3': isHD,
@@ -41,9 +42,7 @@
                       <span>{{ item.dayDeclination }} назад</span>
                     </div>
                     <div class="card-text franchise__price">
-                      <span
-                        >от {{ item.price | priceFormat: item.price }} ₽</span
-                      >
+                      <span>от {{ item.price }} ₽</span>
                     </div>
                   </div>
                 </div>
@@ -53,7 +52,14 @@
         </ng-template>
       </p-carousel>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3">
+    <div
+      class="franchise__carousel-item"
+      [ngClass]="{
+        'col-lg-4': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <p-carousel
         [value]="aPopularFranchises"
         [numVisible]="1"
@@ -85,9 +91,7 @@
                       <span>{{ item.dayDeclination }} назад</span>
                     </div>
                     <div class="card-text franchise__price">
-                      <span
-                        >от {{ item.price | priceFormat: item.price }} ₽</span
-                      >
+                      <span>от {{ item.price }} ₽</span>
                     </div>
                   </div>
                 </div>
@@ -97,7 +101,14 @@
         </ng-template>
       </p-carousel>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3">
+    <div
+      class="franchise__carousel-item"
+      [ngClass]="{
+        'col-lg-4': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <p-carousel
         [value]="aPopularFranchises"
         [numVisible]="1"
@@ -129,9 +140,7 @@
                       <span>{{ item.dayDeclination }} назад</span>
                     </div>
                     <div class="card-text franchise__price">
-                      <span
-                        >от {{ item.price | priceFormat: item.price }} ₽</span
-                      >
+                      <span>от {{ item.price }} ₽</span>
                     </div>
                   </div>
                 </div>
@@ -141,7 +150,14 @@
         </ng-template>
       </p-carousel>
     </div>
-    <div class="col-lg-3 col-xl-3 col-xxl-3">
+    <div
+      class="franchise__carousel-item"
+      [ngClass]="{
+        'col-lg-4': isLaptop,
+        'col-xl-3': isHD,
+        'col-xxl-3': isFullHD
+      }"
+    >
       <p-carousel
         [value]="aPopularFranchises"
         [numVisible]="1"
@@ -173,9 +189,7 @@
                       <span>{{ item.dayDeclination }} назад</span>
                     </div>
                     <div class="card-text franchise__price">
-                      <span
-                        >от {{ item.price | priceFormat: item.price }} ₽</span
-                      >
+                      <span>от {{ item.price }} ₽</span>
                     </div>
                   </div>
                 </div>

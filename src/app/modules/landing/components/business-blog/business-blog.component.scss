@@ -8,7 +8,14 @@
     color: #2c2c2c;
     margin-bottom: 32px;
   }
+  &__item {
+    display: none;
+  }
+  &__item:nth-child(n+2) {
+    display: flex;
+  }
   &__content {
+    width: 100%;
     border: none;
   }
   &__blog-img {
@@ -39,6 +46,45 @@
     line-height: 14px;
     color: #646464;
   }
+  &__elem-nav {
+    border: none;
+    background: #f1f6ff;
+    border-radius: 8px;
+    height: 100%;
+  }
+  &__elem-relation {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 88px;
+  }
+  &__nav-title {
+    color: #2c2c2c;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 600;
+  }
+  &__nav-text {
+    color: #7a7a7a;
+    font-size: 14px;
+    line-height: 16px;
+    max-width: 238px;
+  }
+  &__icon-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 13px;
+  }
+  &__icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    background: #1f75fe;
+    border-radius: 50%;
+  }
 }
 
 @media all and (max-width: 576px) {
@@ -52,9 +98,67 @@
       font-size: 17px;
       line-height: 20px;
     }
+    &__item.is-hide {
+      display: none;
+    }
     &__note {
       font-size: 11px;
       line-height: 13px;
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+    $typeDeviceWatched: "is-laptop";
+    .business-blog {
+      &.#{$typeDeviceWatched} {
+        .business-blog {
+          &__item {
+            display: none;
+          }
+          &__item:nth-child(n+3) {
+            display: flex;
+          }
+          &__elem-relation {
+            display: block;
+          }
+          &__text-group {
+            display: block;
+            text-align: center;
+          }
+          &__icon-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          &__nav-title {
+            margin-bottom: 18px;
+          }
+          &__nav-text {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  @media all and (min-width: 1200px) {
+    $typeDeviceWatched: "is-hd";
+    .business-blog {
+      &.#{$typeDeviceWatched} {
+        .business-blog {
+          &__item {
+            display: none;
+          }
+          &__item:nth-child(n+2) {
+            display: flex;
+          }
+          &__nav-text {
+            font-size: 13px;
+          }
+        }
+      }
     }
   }
 }

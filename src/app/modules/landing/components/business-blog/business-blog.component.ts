@@ -10,13 +10,37 @@ import { Component, OnInit, DoCheck, HostListener } from '@angular/core';
 export class BusinessBlogComponent implements OnInit, DoCheck {
   aBlogs: any[] = [];
 
-  isXxl!: boolean;
+  isLaptop!: boolean;
+  isHD!: boolean;
+  isFullHD!: boolean;
   browserScreenWidth!: number;
+  responsiveOptions!: any[];
+  blogsLength!: number;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.responsiveOptions = [
+      {
+          breakpoint: '1024px',
+          numVisible: 3,
+          numScroll: 3
+      },
+      {
+          breakpoint: '768px',
+          numVisible: 2,
+          numScroll: 2
+      },
+      {
+          breakpoint: '560px',
+          numVisible: 1,
+          numScroll: 1
+      }
+  ];
+  }
 
   public async ngOnInit(): Promise<void> {
-    this.isXxl = false;
+    this.isLaptop = false;
+    this.isHD = false;
+    this.isFullHD = false;
     this.browserScreenWidth = window.screen.width;
 
     await this.GetBlogsAsync();
@@ -38,6 +62,7 @@ export class BusinessBlogComponent implements OnInit, DoCheck {
           next: (response: any) => {
             console.log('Список блогов:', response);
             this.aBlogs = response;
+            this.blogsLength = this.aBlogs.length;
           },
 
           error: (err) => {
@@ -52,10 +77,23 @@ export class BusinessBlogComponent implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth > 1200) {
-      this.isXxl = true;
+
+    if (this.browserScreenWidth >= 1400) {
+      this.isFullHD = true;
     } else {
-      this.isXxl = false;
+      this.isFullHD = false;
+    }
+
+    if (this.browserScreenWidth >= 1200 && this.browserScreenWidth < 1400) {
+      this.isHD = true;
+    } else {
+      this.isHD = false;
+    }
+
+    if (this.browserScreenWidth >= 992 && this.browserScreenWidth < 1199) {
+      this.isLaptop = true;
+    } else {
+      this.isLaptop = false;
     }
   }
 }

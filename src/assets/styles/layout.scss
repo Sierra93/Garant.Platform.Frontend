@@ -9,7 +9,7 @@
 
 body {
   color: $clrBlack;
-  font-family: Roboto, -apple-system, sans-serif;
+  font-family: $font-family;
   background-color: $clrWhite;
   line-height: $line-height!important;
 }
@@ -37,7 +37,7 @@ a {
   }
 
   @include desktop {
-    width: 1482px;
+    width: 1440px;
   }
 }
 
@@ -154,6 +154,13 @@ a {
   &_wrap {
     flex-wrap: wrap;
   }
+}
+
+/* Стили для сетки с карточками */
+.gar-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: calc(#{$gridGap} / 3 * 2);
 }
 
 /* Стили для центровки абсолютного элемента */

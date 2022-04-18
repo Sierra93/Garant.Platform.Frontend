@@ -42,8 +42,18 @@
     > gar-icon {
       height: 16px;
       width: 14px;
-      fill: #313131;
+
+      fill: $clrBlack;
     }
+
+    .gar-carousel-left-icon {
+        margin-left: -3px;
+    }
+
+    .gar-carousel-right-icon {
+        margin-right: -3px;
+    }
+
     &:first-child {}
     &:last-child {
       right: 0;

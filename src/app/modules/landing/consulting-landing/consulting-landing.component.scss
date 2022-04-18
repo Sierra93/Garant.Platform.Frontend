@@ -100,43 +100,63 @@
 
 ::ng-deep {
   @media all and (min-width: 992px) {
+    $typeDeviceWatched: "is-laptop";
+
     .deal {
-      &.is-laptop &__img-wrapper {
-        display: flex;
-        justify-content: center;
-      }
-      &.is-laptop &__content {
-        padding-left: 32px;
-      }
-      &.is-laptop &__title {
-        font-size: 64px;
-        line-height: 75px;
-      }
-      &.is-laptop &__business {
-        font-size: 44px;
-        line-height: 51.5px;
-      }
-      &.is-laptop &__btn-action {
-        width: 300px;
+      &.#{$typeDeviceWatched} {
+        .deal {
+          &__img-wrapper {
+            display: flex;
+            justify-content: center;
+          }
+          &__content {
+            padding-left: 32px;
+          }
+          &__title {
+            font-size: 64px;
+            line-height: 75px;
+          }
+          &__business {
+            font-size: 44px;
+            line-height: 51.5px;
+            max-width: 80%;
+          }
+          &__franchise {
+            max-width: calc(55% + 10px);
+          }
+          &__btn-action {
+            width: calc(55% + 10px);
+          }
+        }
       }
     }
   }
 
   @media all and (min-width: 1200px) {
+    $typeDeviceWatched: "is-hd";
+
     .deal {
-      &.is-hd &__content {
-        padding-left: 44px;
-      }
-      &.is-hd &__title {
-        font-size: 74px;
-        line-height: 75px;
-      }
-      &.is-hd &__business {
-        font-size: 44px;
-        line-height: 52px;
-      }
-      &.is-hd &__btn-action {
-        width: 287px;
+      &.#{$typeDeviceWatched} {
+        .deal {
+          &__content {
+            padding-left: 44px;
+          }
+          &__title {
+            font-size: 74px;
+            line-height: 75px;
+          }
+          &__business {
+            font-size: 44px;
+            line-height: 52px;
+            max-width: calc(60% + 2px);
+          }
+          &__franchise {
+            width: 60%;
+          }
+          &__btn-action {
+            width: 50%;
+          }
+        }
       }
     }
   }
@@ -210,6 +230,10 @@
         & ::ng-deep .p-panel {
           & .p-panel-header {
             height: 170.5px;
+            & .p-panel-title {
+              font-size: 96px;
+              line-height: 112px;
+            }
           }
           & .p-panel-content {
             height: 170.5px;
@@ -332,79 +356,45 @@
 
 ::ng-deep {
   @media all and (min-width: 992px) {
+    $typeDeviceWatched: "is-laptop";
+
     .note {
-      &.is-laptop &-title {
-        font-size: 19px;
-        line-height: 22px;
-      }
-      &.is-laptop &-text-title {
-        font-size: 17px;
-        line-height: 22px;
-      }
-      &.is-laptop {
-        width: 100%;
-        order: -1;
-      }
-      &.is-laptop &-content,
-      &.is-laptop &-text {
-        width: 100%;
-      }
-      &.is-laptop &-content-item {
-        & br {
-          display: none;
-        }
-        max-width: 500px;
-      }
-      &.is-laptop &-content-item:nth-child(2) {
-        margin-bottom: 17px;
-      }
-      &.is-laptop &-content-item:nth-child(3) {
-        margin-bottom: 60px;
-      }
-      &.is-laptop &-description {
-        padding: 24px 16px;
-      }
-      &.is-laptop &-img-box {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 231px;
-        height: 100%;
-        margin: 0;
-      }
-      &.is-laptop &-redirect-catalog {
-        width: 125px;
-        font-size: 16px;
-        line-height: 19px;
+      &.#{$typeDeviceWatched} {
+        display: none;
       }
     }
   }
 
   @media all and (min-width: 1200px) {
+    $typeDeviceWatched: "is-hd";
+
     .note {
-      &.is-hd &-title {
-        font-size: 21px;
-        line-height: 25px;
-        margin-bottom: 24px;
-      }
-      &.is-hd &-description {
-        padding: 24px;
-      }
-      &.is-hd &-text {
-        width: 100%;
-      }
-      &.is-hd &-text-title {
-        max-width: 365px;
-      }
-      &.is-hd &-content-item {
-        max-width: 365px;
-        br {
-          display: none;
+      &.#{$typeDeviceWatched} {
+        .note {
+          &-title {
+            font-size: 21px;
+            line-height: 25px;
+            margin-bottom: 24px;
+          }
+          &-description {
+            padding: 24px;
+          }
+          &-text {
+            width: 100%;
+          }
+          &-text-title {
+            max-width: 365px;
+          }
+          &-content-item {
+            max-width: 365px;
+            br {
+              display: none;
+            }
+          }
+          &-img-box {
+            display: none;
+          }
         }
-      }
-      &.is-hd &-img-box {
-        display: none;
       }
     }
   }
@@ -418,6 +408,7 @@
     font-size: 48px;
     line-height: 38px;
     margin: 74px 0 32px;
+    color: #000;
   }
   &__header {
     background: transparent;
@@ -480,152 +471,146 @@
 
 ::ng-deep {
   @media all and (min-width: 992px) {
+    $typeDeviceWatched: "is-laptop";
+
     .checklist {
-      &.is-laptop &__description {
-        max-width: 50%;
+      &.#{$typeDeviceWatched} {
+        .checklist {
+          &__head {
+            font-size: 24px;
+            line-height: 28px;
+          }
+          &__description {
+            max-width: 50%;
+          }
+        }
       }
     }
   }
 }
 
-.packs {
-  display: flex;
-  gap: 24px;
-  width: 1440px;
-  height: 2869px;
-
-  &-header {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.5rem;
-    font-weight: 400;
+$columnGap: 24px;
+.package {
+  &-common-title {
+    font-size: 24px;
+    line-height: 28px;
     color: #2c2c2c;
-    margin-top: 80px;
     margin-bottom: 32px;
+    background: transparent;
+    border: none;
+    padding: 0;
   }
-
-  &-item {
-    width: 463px;
-    height: 2869px;
-
-    &__title {
-      font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
-      width: 463px;
-      height: 76px;
-      padding: 24px;
-      border: 0;
-      color: #ffffff;
-      background-color: #1653b4;
-      margin-bottom: 16px;
-      text-align: start;
+  &-root {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: $columnGap;
+  }
+  &-wrapper {
+    width: calc(33% - #{$columnGap/2});
+  }
+  &-list {
+    border: none;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+  }
+  &-title {
+    border: none;
+    
+    color: #fff;
+    padding: 16px 8px;
+    border-radius: 8px 8px 0 0;
+    &--dark {
+      background: #2c2c2c;
     }
-
-    &__text {
-      font-family: "Roboto", sans-serif;
-      font-size: 1.125rem;
-      width: 431px;
-      height: 63px;
+    &--primary {
+      background: #0d6efd;
+    }
+  }
+  &-content {
+    padding: 24px 8px 8px;
+    &-title {
+      color: #7a7a7a;
+      font-size: 18px;
       line-height: 21px;
-      color: #2c2c2c;
-      margin: 0 16px 32px 16px;
+      margin-bottom: 33px;
+      max-width: 70%;
     }
-
-    &__list {
-      width: 463px;
-      height: 1730px;
-      padding: 0;
-
-      li {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        list-style: none;
-        margin-left: 16px;
-        margin-bottom: 32px;
-      }
-    }
-
-    &__yes {
-      display: inline-block;
-      width: 56px;
-      height: 56px;
+  }
+  &-service {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-reach-icon {
+    width: 56px;
+    height: 56px;
+    &--yes {
       background: url(../../../../assets/images/franchise-landing/yes2.png)
           center no-repeat,
         url(../../../../assets/images/franchise-landing/yes1.png) center
           no-repeat;
     }
-
-    &__no {
-      display: inline-block;
-      width: 56px;
-      height: 56px;
+    &--no {
       background: url(../../../../assets/images/franchise-landing/no2.png)
           center no-repeat,
         url(../../../../assets/images/franchise-landing/no1.png) center
           no-repeat;
     }
-
-    &__tool {
-      display: inline-block;
-      font-family: "Roboto", sans-serif;
-      font-size: 1.125rem;
-      width: 349px;
+  }
+  &-service {
+    margin-bottom: 18.5px;
+    &-text {
+      color: #2c2c2c;
+      font-size: 18px;
       line-height: 21px;
-      color: #000000;
-      margin-left: 26px;
-      margin-right: 16px;
+      width: 80%;
+      text-align: left;
     }
+  }
+  &-total-price {
+    padding: 16px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+  }
+  &-price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+  }
+  &-price-item:first-child {
+    padding: 0 0 24px;
+  }
+  &-total-note {
+    color: #2c2c2c;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 600;
+  }
+  &-total-result {
+    color: #2c2c2c;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  &-submit {
+    width: 100%;
+    font-size: 21px;
+    line-height: 25px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+    border-radius: 66px;
+  }
+}
 
-    &-bottom {
-      width: 463px;
-      height: 326px;
-      background-color: #f1f6ff;
-
-      &__title {
-        font-family: "Roboto", sans-serif;
-        font-size: 1.125rem;
-        line-height: 21px;
-        color: #000000;
-        padding-top: 24px;
-        margin-left: 16px;
-        margin-bottom: 33px;
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .package {
+      &.is-laptop &-root {
+        grid-gap: 8px;
       }
-
-      &__text {
-        font-family: "Roboto", sans-serif;
-        font-size: 1.125rem;
-        line-height: 21px;
-        color: #000000;
-        padding-left: 16px;
-        margin-bottom: 33px;
-      }
-
-      &__price {
-        font-family: "Roboto", sans-serif;
-        font-size: 1.125rem;
-        line-height: 21px;
-        color: #000000;
-        padding-left: 16px;
-        margin-bottom: 33px;
-      }
-
-      &__button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Roboto", sans-serif;
-        font-size: 1.125rem;
-        font-weight: 400;
-        color: #ffffff;
-        line-height: 21px;
-        width: 431px;
-        height: 61px;
-        border: none;
-        border-radius: 4px;
-        padding: 20px 16px;
-        margin: 0;
-        background-color: #1f75fe;
-        margin-left: 16px;
+      &.is-laptop &-wrapper {
+        width: calc(50% - 8px);
       }
     }
   }

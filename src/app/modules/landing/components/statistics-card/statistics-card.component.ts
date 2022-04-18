@@ -7,7 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StatisticsCardComponent implements OnInit {
   @Input() pTitle: string = '';
-  @Input() pText: string = '';
+  @Input() cTitle: string = '';
+  @Input() cSubtitle: string = '';
+  @Input() cText: string = '';
 
   constructor() {}
 

@@ -34,7 +34,7 @@ export class HeaderModule implements OnInit {
     selectedValueFranchise: boolean = false;
     selectedValueBusiness: boolean = false;
     searchType: string = "";
-    searchOptions: string[];
+    searchOptions: any[];
     selectedSearchOption: string = "франшиза";
     isGarant: boolean = false;
     items!: MenuItem[];
@@ -63,7 +63,10 @@ export class HeaderModule implements OnInit {
         @Inject(SESSION_TOKEN)
         private _sessionService: SessionService
     ) {
-          this.searchOptions = ["франшиза", "бизнес"];
+          this.searchOptions = [
+            { name: 'франшиза' },
+            { name: 'бизнес' }
+          ];
 
           this.items = [
             {label: 'Подтверждение продажи'},

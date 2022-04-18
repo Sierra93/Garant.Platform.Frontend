@@ -26,21 +26,18 @@
             </div>
 
             <div *ngIf="!isGarant" class="header-search">
-                <div class="header-search-wrapper">
-                    <p-dropdown [options]="searchOptions" [(ngModel)]="selectedSearchOption"></p-dropdown>
+                <gar-select [title]="selectedSearchOption" [(ngModel)]="selectedSearchOption" [items]="searchOptions" displayLabel="name"></gar-select>
 
-                    <input
-                        type="search"
-                        class="header-search-input"
-                        pInputText
-                        placeholder="Например: “Медицинский центр”"
-                        [(ngModel)]="searchText"
-                        (keydown.enter)="onRouteSearch(searchText)">
+                <gar-input-text
+                    class="header-search-input gar-input-text"
+                    title="Например: “Медицинский центр”"
+                    [(ngModel)]="searchText"
+                    (keydown.enter)="onRouteSearch(searchText)">
+                </gar-input-text>
 
-                    <gar-button type="button" role="primary" class="header-search-button">
-                        <gar-icon name="search"></gar-icon>
-                    </gar-button>
-                </div>
+                <gar-button type="button" role="primary" class="header-search-button">
+                    <gar-icon name="search"></gar-icon>
+                </gar-button>
             </div>
 
             <div *ngIf="isGarant" class="header-deal">

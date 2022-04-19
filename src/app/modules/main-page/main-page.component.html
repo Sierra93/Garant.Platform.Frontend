@@ -195,7 +195,7 @@
                   class="col-xxl-2 col-xl-6 col-lg-6 col-md-12 quick-search5"
                 >
                   <div class="control-quick-search control-quick-search2">
-                    <p><strong>Покупка через гарант</strong></p>
+                    <p><strong>Покупка через </strong></p>
                     <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
                   </div>
                 </div>
@@ -215,12 +215,15 @@
           <!-- </div> -->
         </div>
 
-        <div class="block-cards-franchises-inner gar-row">
+        <!-- <div class="block-cards-franchises-inner gar-row"> -->
+        <div class="gar-grid-cards">
           <app-catalog-simple-card
             *ngFor="let item of aFranchises"
             [item]="item"
           ></app-catalog-simple-card>
         </div>
+
+        <!-- </div> -->
       </div>
 
       <div

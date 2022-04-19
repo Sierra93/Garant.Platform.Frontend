@@ -288,7 +288,7 @@
   width: 74rem;
   padding: 24px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
   position: static;
   background: #f1f6ff;
@@ -311,8 +311,8 @@
   .col-xxl-2 {
     padding: 0;
   }
-  .col-xxl-4 {
-    // max-width: 22rem;
+  .price-range-wrapper {
+    width: 30%;
     padding: 0;
     .price-range-input {
       display: flex;
@@ -327,6 +327,14 @@
       margin-top: 16px;
     }
   }
+  .quick-search-form {
+    .price-range {
+      width: 15%;
+    }
+  }
+  .quick-search5 {
+    width: 15%;
+  }
 }
 
 // Быстрый поиск блок с картинками.
@@ -334,6 +342,9 @@
   background: #f1f6ff;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+.block-cards-franchises {
+  margin-bottom: 24px;
 }
 
 ::ng-deep .quick-search-card-holder .ng-star-inserted {
@@ -372,7 +383,7 @@
   flex-direction: revert;
 }
 .price-range {
-  width: 14%;
+  width: 20%;
 }
 .btn-dark-left {
   width: 45%;
@@ -406,8 +417,8 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
-  color: #ffffff;
-  background: #1f75fe;
+  color: #1f75fe;
+  background: #ffffff;
 }
 ::ng-deep .p-carousel {
   max-width: calc(100% - 24px);
@@ -463,7 +474,7 @@
     }
   }
 }
-// Адаптив для блока с поиском
+
 .p-inputtext {
   max-width: 48%;
   background: #f1f6ff;
@@ -491,14 +502,25 @@
     display: none;
   }
 }
-@media (min-width: 992px) and (max-width: 1200px) {
+// Адаптив для блока с поиском
+@media only screen and (min-device-width: 992px) and (max-device-width: 1200px) {
   .quick-search {
     width: 100%;
     padding: 0;
     flex-direction: column;
-  }
-  .price-range {
-    margin-bottom: 20px;
+
+  .quick-search-form {
+    .price-range {
+      margin-bottom: 20px;
+      width: 32%;
+      }
+    }
+    .price-range-wrapper {
+      width: 66%;
+    }
+    .quick-search5 {
+      width: 32%;
+    }
   }
   .control-quick-search2 {
     max-width: 75%;
@@ -507,15 +529,11 @@
     margin-bottom: 30px;
   }
   .price-range-wrapper {
-    // width: 65%;
-    width: 314px;
-    max-width: 314px;
-  }
-  .price-range-wrapper {
   
     input {
       width: 49%;
     }
+    
   }
   .block-cards-franchises-inner {
     margin-bottom: 0;
@@ -527,12 +545,6 @@
   .wrapper-slider {
     display: none;
   }
-  .quick-search5 {
-    width: 33%;
-  }
-  // .gar-card {
-  //   width: 32%;
-  // }
 }
 ::ng-deep .p-dropdown-clearable {
   width: 100%;
@@ -557,20 +569,21 @@
     .card-demo-list {
       margin: auto;
     }
-  }
-  
-  .price-range {
-    width: 32%;
-    margin-bottom: 32px;
+    .quick-search-form {
+      .price-range {
+        width: 32%;
+        margin-bottom: 20px;
+      }
+      .quick-search5 {
+        width: 32%;
+      }
+      .price-range-wrapper  {
+        width: 66%;
+      }
+    }
   }
   .price-range-wrapper {
     max-width: 66%;
-  }
-  .quick-search5 {
-    width: 32%;
-    .control-quick-search2 {
-      text-align: start;
-    }
   }
   .quick-search-form {
     min-height: 216px;
@@ -584,6 +597,7 @@
     flex-wrap: wrap;
     padding: 0;
     justify-content: center;
+    margin-bottom: 24px;
     .gar-card {
       width: 48%;
       margin: 5px;
@@ -600,8 +614,8 @@
 @media only screen and (min-device-width: 320px) and (max-device-width: 488px) {
   .price-range-input {
     .p-inputtext {
-      width: 100% !important;
-      max-width: 100%;
+      width: 49% !important;
+      max-width: 49%;
       margin-bottom: 10px;
     }
   }
@@ -628,6 +642,19 @@
     .card-demo-list {
       margin: auto;
     }
+    .quick-search-form {
+      .price-range {
+        width: 100%;
+      }
+      .price-range-wrapper {
+        max-width: 100%;
+        width: 100%;
+        .price-range-input {
+          flex-direction: row;
+          flex-wrap: nowrap;
+        }
+      }
+    }
   }
   .quick-search-form:last-child {
     .control-quick-search {
@@ -637,6 +664,7 @@
   .block-cards-franchises {
     width: 95%;
     margin: auto;
+    margin-bottom: 8px;
     .block-cards-franchises-inner {
       margin-bottom: 8px;
     }
@@ -651,13 +679,6 @@
     margin-top: 0;
     background: #FFFFFF;
     color:#1f75fe;
-  }
-  .price-range {
-    width: 100%;
-  }
-  
-  .price-range-wrapper {
-    max-width: 100%;
   }
   .control-quick-search {
     text-align: start;

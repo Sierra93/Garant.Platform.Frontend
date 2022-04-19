@@ -8,43 +8,112 @@
       width: 100%;
     }
   }
+
   /* input-number */
   &.gar-input-number {
+    height: 48px;
+    background-color: $clrLightBlue;
+    color: $clrBlack;
+    border-radius: $input-border-radius;
+    outline: 1px solid transparent;
+    transition: $timeFast;
+    transition-property: outline-color, box-shadow;
+    @include typo("secondary");
+
+    &:hover {
+      outline-color: $clrBlue;
+    }
+
+    &:focus-within {
+      outline-color: $clrBlue;
+      @include inputFocus;
+    }
+
     & .p-inputnumber-input {
-      height: 48px;
-      background-color: $clrLightBlue;
-      border-color: $clrLightBlue;
-      color: $clrBlack;
-      padding: $input-padding;
-      border-radius: $input-border-radius;
-      @include typo("secondary");
+      @include inputReset;
+
+      &:focus {
+        box-shadow: none;
+      }
     }
   }
+
   /* input-text */
   &.gar-input-text {
+    @include typo("regular");
+
+    height: 68px;
+    color: $clrBlack;
+    border: 1px solid $clrBlack;
+    border-radius: calc(#{$input-border-radius} + 2px);
+    transition: $timeFast;
+    transition-property: background-color, color, border-color, box-shadow;
+
+    &:hover {
+      border-color: $clrBlue;
+    }
+
+    &:focus-within {
+      @include inputFocus;
+    }
+
     & .p-inputtext {
-      height: 68px;
-      color: $clrBlack;
-      border: 1px solid $clrBlack;
-      border-radius: calc(#{$input-border-radius} + 2px);
-      padding: $input-padding;
-      @include typo("regular");
+      @include inputReset;
+
+      &:focus {
+        box-shadow: none;
+      }
     }
   }
+
   /* select */
   &.gar-select {
+    overflow: hidden;
+    height: 48px;
+    background-color: $clrLightBlue;
+    border-radius: $input-border-radius;
+    outline: 1px solid transparent;
+    transition: $timeFast;
+    transition-property: outline-color, box-shadow;
+
+    &:hover {
+      outline-color: $clrBlue;
+    }
+
+    &:focus-within {
+      @include inputFocus;
+
+      outline-color: $clrBlue;
+    }
+
     & .p-dropdown {
-      height: 48px;
-      background-color: $clrLightBlue;
-      border-color: $clrLightBlue;
-      border-radius: $input-border-radius;
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      height: 100%;
+      cursor: pointer;
+      user-select: none;
+      border: none;
+      background: transparent;
+      border-radius: none;
+
       & .p-inputtext {
-        color: $clrBlack;
-        padding: $input-padding;
+        @include inputReset;
         @include typo("secondary");
+
+        display: flex;
+        align-items: center;
+        color: $clrBlack;
+        padding: 0 $input-padding;
+
+        &:focus {
+          box-shadow: none;
+        }
       }
+
       & .p-dropdown-trigger {
-        transition: $timeFast;
+        transition: transform $timeFast;
+
         & .p-dropdown-trigger-icon:before {
           content: ' ';
           background: url('/assets/icons-source/smart-drop-down.svg');
@@ -53,6 +122,7 @@
           width: 11px;
         }
       }
+
       &.p-dropdown-open {
         & .p-dropdown-trigger {
           transform: rotate(180deg);

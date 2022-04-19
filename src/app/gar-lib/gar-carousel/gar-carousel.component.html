@@ -8,10 +8,10 @@
         </div>
         <ng-container *ngIf="viewRefs?.length">
             <button (click)="onClickLeft()" [disabled]="leftDisabled$ | async">
-                <gar-icon name="polygon_left"></gar-icon>
+                <gar-icon name="polygon_left" class="gar-carousel-left-icon"></gar-icon>
             </button>
             <button (click)="onClickRight()" [disabled]="rightDisabled$ | async">
-                <gar-icon name="polygon_right"></gar-icon>
+                <gar-icon name="polygon_right" class="gar-carousel-right-icon"></gar-icon>
             </button>
         </ng-container>
     </ng-container>

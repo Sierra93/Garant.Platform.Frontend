@@ -10,4 +10,9 @@ export namespace header {
     icon: string;
     link: string;
   }
+
+  export interface ISearchOption {
+    name: string;
+    type: string;
+  }
 }

@@ -1,5 +1,5 @@
 <section id="main-page">
-  <div class="gar-row promo-block">
+  <div class="gar-row promo-block" style="display: none">
     <div class="gar-row-item">
       <div class="gar-row title">Недавно приобрели</div>
       <gar-carousel [items]="aSlider" [template]="cardComponent"></gar-carousel>
@@ -109,7 +109,7 @@
             <form #filterForm="ngForm" novalidate>
               <div class="row quick-search-form">
                 <div
-                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12"
+                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 price-range"
                 >
                   <p><strong>Вид бизнеса</strong></p>
                   <p-dropdown
@@ -121,9 +121,13 @@
                     name="view"
                   ></p-dropdown>
                 </div>
-
+                <!-- <gar-select
+                  [items]="aViewBusiness"
+                  title="Вид бизнеса"
+                  displayLabel="viewName"
+                ></gar-select> -->
                 <div
-                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12"
+                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 price-range"
                 >
                   <div class="control-quick-search">
                     <p><strong>Категория</strong></p>
@@ -140,7 +144,7 @@
                 </div>
 
                 <div
-                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"
+                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 price-range"
                 >
                   <div class="control-quick-search">
                     <p><strong>Город</strong></p>
@@ -212,7 +216,10 @@
         </div>
 
         <div class="block-cards-franchises-inner gar-row">
-          <app-catalog-simple-card *ngFor="let item of aFranchises" [item]="item"></app-catalog-simple-card>
+          <app-catalog-simple-card
+            *ngFor="let item of aFranchises"
+            [item]="item"
+          ></app-catalog-simple-card>
         </div>
       </div>
 
@@ -441,4 +448,5 @@
       </div>
     </div>
   </div>
-<!-- </section> -->
+  <!-- </section> -->
+</section>

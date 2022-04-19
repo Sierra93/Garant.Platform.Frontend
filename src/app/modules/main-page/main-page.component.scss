@@ -312,7 +312,7 @@
     padding: 0;
   }
   .col-xxl-4 {
-    max-width: 22rem;
+    // max-width: 22rem;
     padding: 0;
     .price-range-input {
       display: flex;
@@ -468,27 +468,27 @@
   background: #f1f6ff;
 }
 
-.block-cards-franchises-inner {
-  padding: 1.5rem;
-  > app-catalog-simple-card {
-    //TODO: сделать по уму
-    max-width: 360px;
-  }
-}
+// .block-cards-franchises-inner {
+//   // padding: 1.5rem;
+//   > app-catalog-simple-card {
+//     //TODO: сделать по уму
+//     max-width: 360px;
+//   }
+// }
 
     .price-range-input {
       width: 16rem;
     }
-    .col-xxl-4 {
-      max-width: 17rem;
-    }
+    // .col-xxl-4 {
+    //   max-width: 17rem;
+    // }
   
   .quick-search {
     border: none;
   }
   .quick-search-form:last-child {
     .control-quick-search {
-      text-align: center;
+      text-align: start;
     }
   }
 
@@ -503,22 +503,31 @@
 }
 @media (min-width: 992px) and (max-width: 1200px) {
   .quick-search {
-    .col-lg-4 {
-      border: none;
-    }
-    .col-xxl-4 {
-      max-width: 35rem;
-    }
+    width: 100%;
+    padding: 0;
+    flex-direction: column;
+  }
+  .price-range {
+    margin-bottom: 20px;
   }
   .control-quick-search2 {
     max-width: 75%;
+  }
+  ::ng-deep .p-dropdown-clearable {
+    margin-bottom: 30px;
   }
   .price-range-wrapper {
     width: 65%;
     max-width: 65%;
   }
+  .price-range-input {
+    input {
+      width: 49%;
+    }
+  }
   .block-cards-franchises-inner {
     margin-bottom: 0;
+    overflow: auto;
   }
   .show-btn {
     margin-top: 0;
@@ -527,8 +536,11 @@
     display: none;
   }
   .quick-search5 {
-    width: 30%;
+    width: 33%;
   }
+  // .gar-card {
+  //   width: 32%;
+  // }
 }
 ::ng-deep .p-dropdown-clearable {
   width: 95%;
@@ -538,10 +550,59 @@
     font-size: 1.25rem;
   }
 }
-@media only screen and (min-device-width: 489px) and (max-device-width: 768px) {
+@media only screen and (min-device-width: 489px) and (max-device-width: 980px) {
   /* Styles */
   .show-btn {
     margin-top: 0;
+  }
+  .quick-search {
+    width: 100%;
+    padding: 0;
+    flex-direction: column;
+    .col-xxl-4 {
+      max-width: 66%;
+    }
+    .card-demo-list {
+      margin: auto;
+    }
+  }
+  
+  .price-range {
+    width: 32%;
+    margin-bottom: 32px;
+  }
+  .price-range-wrapper {
+    max-width: 66%;
+  }
+  .quick-search5 {
+    width: 32%;
+    .control-quick-search2 {
+      text-align: start;
+    }
+  }
+  .quick-search-form {
+    min-height: 216px;
+    align-content: space-between;
+    .control-quick-search {
+      text-align: start;
+    }
+  }
+  .block-cards-franchises-inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: center;
+    .gar-card {
+      width: 48%;
+      margin: 5px;
+    }
+  }
+  
+  .show-btn {
+    margin-top: 0;
+    background: #FFFFFF;
+    color: #1f75fe;
+    margin-bottom: 16px;
   }
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 488px) {
@@ -561,6 +622,34 @@
     font-size: 18px;
     margin-bottom: 10px;
   }
+  .card-business-holder {
+    max-width: 100%;
+    padding: 0;
+    .card-business-content {
+      padding: 8px;
+    }
+  }
+  .quick-search {
+    width: 100%;
+    padding: 8px;
+    flex-direction: column;
+    .card-demo-list {
+      margin: auto;
+    }
+  }
+  .quick-search-form:last-child {
+    .control-quick-search {
+      text-align: start;
+    }
+  }
+  .block-cards-franchises {
+    width: 95%;
+    margin: auto;
+    .block-cards-franchises-inner {
+      margin-bottom: 8px;
+    }
+  }
+
   .btn-dark-right {
     width: 100% !important;
     font-size: 18px;
@@ -568,6 +657,45 @@
   }
   .show-btn {
     margin-top: 0;
+    background: #FFFFFF;
+    color:#1f75fe;
+  }
+  .price-range {
+    width: 100%;
+  }
+  
+  .price-range-wrapper {
+    max-width: 66%;
+  }
+  .control-quick-search {
+    text-align: start;
+  }
+  .quick-search5 {
+    display: none;
+    width: 100%;
+  
+    .control-quick-search2 {
+      text-align: start;
+    }
+  }
+//   ::ng-deep .gar-card {
+//   .gar-row {
+//     flex-direction: column;
+//     .gar-row-item {
+//       margin-bottom: 8px;
+//     }
+//   }
+// }
+  .block-cards-franchises-inner {
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: center;
+  
+    .gar-card {
+      width: 100%;
+      margin: 5px auto;
+
+    }
   }
 }
 @media (min-width: 1441px) and (max-width: 1700px) {
@@ -581,10 +709,11 @@
         width: 20%;
       }
       &:nth-child(4) {
-        width: 40%;
+        width: 20%;
       }
     }
   }
+  
 }
 
 @media (max-width: 1200px) {
@@ -653,7 +782,7 @@
         }
       }
     }
-
+    
     .title-franchise + div {
       display: none;
     }
@@ -874,7 +1003,9 @@ $fa-font-path: "~font-awesome/fonts";
       margin-bottom: 20pxpx;
       height: 110px;
     }
-  
+    .quick-search {
+      flex-direction: column;
+    }
     .card-business-content {
       padding-top: 15px;
     }
@@ -911,6 +1042,9 @@ $fa-font-path: "~font-awesome/fonts";
       margin-bottom: 50px;
       height: 110px;
     }
+  }
+  .secondary {
+    max-width: 100%;
   }
   }
   

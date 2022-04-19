@@ -3,6 +3,15 @@
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/franchuse-styles.scss";
 
+:host {
+  .promo-block {
+    > :first-child {
+      width: 830px;
+      margin-right:24px;
+    }
+  }
+}
+
 // Карусель.
 .carousel-block {
   margin: auto;
@@ -571,6 +580,10 @@
 
 .block-cards-franchises-inner {
   padding: 1.5rem;
+  > app-catalog-simple-card {
+    //TODO: сделать по уму
+    max-width: 360px;
+  }
 }
 
 .quick-search-form {

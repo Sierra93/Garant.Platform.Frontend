@@ -1,0 +1,47 @@
+@import 'design';
+
+:host {
+  display: inline-block;
+  height: 53px;
+  padding: 0 14px;
+  transition: $timeFast;
+  border: 1px solid transparent;
+
+  background: $btn-default-bg;
+  color: $btn-default-color;
+  border-radius: $border-radius-btn;
+  @include typo('regular-bold');
+
+  &.disabled {
+    pointer-events: none;
+  }
+
+  &.primary {
+    background: $btn-primary-bg;
+    color: $btn-primary-color;
+  }
+
+  &.secondary {
+    background: $btn-secondary-bg;
+    color: $btn-secondary-color;
+    border: 1px solid $btn-secondary-color;
+  }
+  > button {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    font-size: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    color: inherit;
+    font-weight: inherit;
+    padding: 0;
+    &:disabled {
+      cursor: default;
+    }
+  }
+}

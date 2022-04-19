@@ -1,6 +1,7 @@
 @import '~normalize.css';
 @import 'fonts';
 @import 'design';
+@import './../components/gar-lib';
 
 * {
   box-sizing: border-box;
@@ -32,7 +33,7 @@ a {
  }
 
   @include tablet {
-    width: 1072px;
+    width: 1024px;
   }
 
   @include desktop {
@@ -48,25 +49,40 @@ a {
   /* Вертикальный отступ между строками, если она не является последней */
   &:not(.title) {
     &:not(:last-child):not(.gar-row-item) {
-      margin-bottom: #{$gar-row-between-vertical-margin / 2}px;
+      margin-bottom: calc(#{$gar-row-between-vertical-margin} / 2);
     }
   }
   /* Правый элемент */
   > * {
+    &:not(:last-child) {
+      margin-right: $gar-row-items-between-horizontal-margin;
+    }
     &.right {
       margin-left: auto;
       flex-basis: auto;
       word-break: normal;
     }
   }
+  /* Элемент, занимающий область по ширине своего контента */
+  &.fit {
+    flex-basis: 0;
+    width: fit-content;
+  }
+  > * {
+    &.fit {
+      flex-basis: 0;
+      width: fit-content;
+    }
+  }
   /* Стиль описывающий элемент отображаемый как не делимый элемент строки */
   > .gar-row-item {
     display: flex;
     flex-direction: column;
+    width: 100%;
     /* элемент строки является карточкой */
     &.gar-card {
       &:not(:first-child) {
-        margin-left: #{$gar-card-between-horizontal-margin}px;
+        margin-left: $gar-card-between-horizontal-margin;
       }
     }
   }
@@ -78,9 +94,9 @@ a {
   margin-bottom: #{$gar-row-between-vertical-margin * 2}px;
 
   /* Отступ у строки, если она не является последней */
-  // &:not(:last-child) {
-    // margin-bottom: #{$gar-row-between-vertical-margin * 2}px;
-  // }
+  &:not(:last-child) {
+    margin-bottom: $gar-row-between-vertical-margin;
+  }
   & .sub-title {
     @include typo("description");
     color: $font-color-sub-title;
@@ -88,14 +104,14 @@ a {
   /* стили для вложенного элемента в title */
   > .gar-row-item {
     > *:not(:last-child) {
-      margin-bottom: #{$gar-row-between-vertical-margin / 3}px;
+      margin-bottom: calc(#{$gar-row-between-vertical-margin} / 3);
     }
   }
   /* Модификатор, указывающий на то, что элемент публикуется, как основной на странице */
   &.page {
     @include typo("title-page");
     &:not(:last-child) {
-      margin-bottom: #{$gar-row-between-vertical-margin - 3}px;
+      margin-bottom: calc(#{$gar-row-between-vertical-margin} - 3);
     }
   }
   /* Модификатор, указывающий на то, что заголовок публикуется внутри других элементов */
@@ -109,14 +125,67 @@ a {
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-radius: #{$border-radius-card}px;
+  border-radius: $border-radius-card;
+  background-color: $clrWhite;
   box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
   &:not(.secondary) {
-    padding: #{$card-padding}px;
+    padding: $card-padding;
   }
 
   /* карточка внутри карточки */
   & .gar-card {
     box-shadow: none;
+  }
+}
+
+/* Стили для элемента с выделенным фоном */
+.gar-badge {
+  @include typo("promo");
+  border-radius: calc(#{$border-radius-card}/2);
+  background: $clrLightBlue;
+  padding: $main-badge-padding;
+  color: $clrDarkBLue;
+}
+
+/* Стили для сетки */
+.gar-grid {
+  display: flex;
+  gap: $gridGap;
+
+  &_wrap {
+    flex-wrap: wrap;
+  }
+}
+
+/* Стили для центровки абсолютного элемента */
+.gar-absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Обрезка переполненного контейнера */
+.no-overflow {
+    overflow: hidden;
+}
+
+/* Поле ввода */
+.gar-input {
+  display: flex;
+  > * {
+    width: 100%;
+    > * {
+      width: 100%;
+    }
+  }
+  & .p-inputnumber-input {
+    height: 48px;
+    background-color: $clrLightBlue;
+    border-color: $clrLightBlue;
+    color: $clrBlack;
+    padding: $input-padding;
+    border-radius: $input-border-radius;
+    @include typo("secondary");
   }
 }

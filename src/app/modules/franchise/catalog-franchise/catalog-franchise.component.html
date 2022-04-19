@@ -9,6 +9,8 @@
       </app-catalog-short-card>
     </div>
 
+    <div class="gar-row title">Популярные франшизы</div>
+    <gar-carousel [items]="aPopularFranchises" [template]="cardComponent"></gar-carousel>
   </div>
 
   <!-- Каталог франшиз. -->
@@ -27,29 +29,43 @@
           <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 franchise-sphere">
             <label>Сфера франшиз</label>
             <div class="w-100">
-              <p-dropdown [options]="aViewBusiness" class="block-sort-by" optionLabel="viewName"
-                [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view">
-              </p-dropdown>
+              <gar-select
+                      [(ngModel)]="selectedViewBusiness"
+                      [items]="aViewBusiness"
+                      title="Вид бизнеса"
+                      displayLabel="viewName"></gar-select>
             </div>
           </div>
           <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 control-quick-search">
             <label>Выбор категории</label>
             <div class="w-100">
-              <p-dropdown [options]="aBusinessCategories" class="block-sort-by" optionLabel="categoryName"
-                [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
+              <gar-select
+                      [(ngModel)]="selectedCategory"
+                      [items]="aBusinessCategories"
+                      title="Категория"
+                      displayLabel="categoryName"></gar-select>
             </div>
           </div>
-          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount">
+
+          <div
+            class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount"
+          >
             <label>Инвестиции</label>
             <div class="row">
               <div class="col-6 block-price-min">
-                <input type="text" class="control-input-price min-price" pInputText placeholder="от 100 000 ₽"
-                  [(ngModel)]="minPrice" name="minPrice" />
+                <gar-input-number
+                        title="от "
+                        prefix="от "
+                        mode="currency"
+                        [(ngModel)]="minPrice"></gar-input-number>
               </div>
 
               <div class="col-6 block-price-max">
-                <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽"
-                  [(ngModel)]="maxPrice" name="maxPrice" />
+                <gar-input-number
+                        title="до "
+                        prefix="до "
+                        mode="currency"
+                        [(ngModel)]="maxPrice"></gar-input-number>
               </div>
             </div>
           </div>

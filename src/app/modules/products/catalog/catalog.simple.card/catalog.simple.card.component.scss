@@ -1,0 +1,17 @@
+@import 'design';
+
+:host {
+  > .gar-card:not(:first-child) {
+    padding-top: 0;
+  }
+  .image-container {
+    height: 162px;
+    display: flex;
+    > img {
+      width: 100%;
+      //TODO: уточнить, как картинку вмещать, или резиновый контейнер
+      object-fit: cover;
+      border-radius: calc(#{$border-radius-card} / 2);
+    }
+  }
+}

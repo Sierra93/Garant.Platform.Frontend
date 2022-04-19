@@ -1,9 +1,120 @@
 <div class="gar-row title page">DEMO страница с примерами из layout и образцами из компонентной базы</div>
-<div class="gar-row">
-    <div class="gar-card">
-        <div class="gar-row title">Заголовки</div>
-        <div class="gar-row title page">Заголовок типа "title-page"</div>
-        <div class="gar-row title item">Заголовок типа "title-item"</div>
-        <div class="gar-row title">Заголовок типа "title"</div>
+<div class="gar-row gar-card">
+    <div class="gar-row title">Заголовки</div>
+    <div class="gar-row title page">Заголовок типа "title-page"</div>
+    <div class="gar-row title item">Заголовок типа "title-item"</div>
+    <div class="gar-row title">Заголовок типа "title"</div>
+</div>
+<div class="gar-row gar-card">
+    <div class="gar-row title">Кнопки</div>
+    <div class="gar-row">
+        <gar-button>Кнопка Default</gar-button>
+        <gar-button role="primary">Кнопка Primary</gar-button>
+        <gar-button role="secondary">Кнопка Secondary</gar-button>
+    </div>
+</div>
+
+<div class="gar-row gar-card">
+    <div class="gar-row title">Сетка без возможности переноса <code style="margin: 0 10px;">.gar-grid</code> c gap 24px</div>
+    <div class="gar-row">
+        <div class="gar-grid">
+            <div class="item">item 1</div>
+            <div class="item">item 2</div>
+            <div class="item">item 3</div>
+            <div class="item">item 4</div>
+            <div class="item">item 5</div>
+            <div class="item">item 6</div>
+            <div class="item">item 7</div>
+            <div class="item">item 8</div>
+            <div class="item">item 9</div>
+            <div class="item">item 10</div>
+            <div class="item">item 11</div>
+            <div class="item">item 12</div>
+            <div class="item">item 13</div>
+            <div class="item">item 14</div>
+            <div class="item">item 15</div>
+            <div class="item">item 16</div>
+            <div class="item">item 17</div>
+            <div class="item">item 18</div>
+            <div class="item">item 19</div>
+            <div class="item">item 20</div>
+        </div>
+    </div>
+</div>
+
+<div class="gar-row gar-card">
+    <div class="gar-row title">Сетка с возможностью переноса <code style="margin: 0 10px;">.gar-grid.gar-grid_wrap</code> c gap 24px</div>
+    <div class="gar-row">
+        <div class="gar-grid gar-grid_wrap">
+            <div class="item">item 1</div>
+            <div class="item">item 2</div>
+            <div class="item">item 3</div>
+            <div class="item">item 4</div>
+            <div class="item">item 5</div>
+            <div class="item">item 6</div>
+            <div class="item">item 7</div>
+            <div class="item">item 8</div>
+            <div class="item">item 9</div>
+            <div class="item">item 10</div>
+            <div class="item">item 11</div>
+            <div class="item">item 12</div>
+            <div class="item">item 13</div>
+            <div class="item">item 14</div>
+            <div class="item">item 15</div>
+            <div class="item">item 16</div>
+            <div class="item">item 17</div>
+            <div class="item">item 18</div>
+            <div class="item">item 19</div>
+            <div class="item">item 20</div>
+            <div class="item">item 21</div>
+            <div class="item">item 22</div>
+            <div class="item">item 23</div>
+            <div class="item">item 24</div>
+            <div class="item">item 25</div>
+            <div class="item">item 26</div>
+            <div class="item">item 27</div>
+            <div class="item">item 28</div>
+            <div class="item">item 29</div>
+            <div class="item">item 30</div>
+        </div>
+    </div>
+</div>
+
+<div class="gar-row gar-card">
+    <div class="gar-row title">Центрирование абсолютно позиционированного элемента внутри контейнера с относительным положением <code>.gar-absolute-center</code></div>
+    <div class="gar-row">
+        <div style="position: relative; width: 100%; height: 200px; border: 1px solid #eee;">
+            <div class="gar-absolute-center" style="width: 80px; height: 80px; background-color: lightblue;">
+                <code>.gar-absolute-center</code>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="gar-row gar-card">
+    <div class="gar-row title">Компоненты INPUT</div>
+    <div class="gar-row">
+        <div class="gar-row-item">
+            <div class="gar-row title item">gar-input-text</div>
+            <gar-input-text title="Текстовое поле" [(ngModel)]="textInput"></gar-input-text>
+        </div>
+        <div class="gar-row-item"><pre>{{textInput | json}}</pre></div>
+        <div class="gar-row-item"></div>
+    </div>
+    <div class="gar-row">
+        <div class="gar-row-item">
+            <div class="gar-row title item">gar-number-number</div>
+            <gar-input-number title="Числовое поле" [(ngModel)]="numberInput"></gar-input-number>
+        </div>
+        <div class="gar-row-item"><pre>{{numberInput | json}}</pre></div>
+        <div class="gar-row-item"></div>
+    </div>
+    <div class="gar-row">
+        <div class="gar-row-item">
+            <div class="gar-row title item">gar-select</div>
+            <gar-select title="Города" [(ngModel)]="selectInput" [items]="cities" displayLabel="name"></gar-select>
+        </div>
+        <div class="gar-row-item"><pre>{{selectInput | json}}</pre></div>
+        <div class="gar-row-item"></div>
     </div>
 </div>

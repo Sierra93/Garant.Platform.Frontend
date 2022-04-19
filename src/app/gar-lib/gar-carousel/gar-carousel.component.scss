@@ -1,0 +1,52 @@
+@import 'design';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .slides {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+
+    & * {
+      min-width: 325px;
+      &:not(:last-child) {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba($clrMidGray, 0.4);
+    top: calc(50% - 8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: $timeFast;
+
+    &:hover:not([disabled]) {
+      background: rgba($clrMidGray, 0.6);
+    }
+
+    &[disabled] {
+      opacity: 0.3;
+    }
+
+    > gar-icon {
+      height: 16px;
+      width: 14px;
+      fill: #313131;
+    }
+    &:first-child {}
+    &:last-child {
+      right: 0;
+    }
+  }
+}

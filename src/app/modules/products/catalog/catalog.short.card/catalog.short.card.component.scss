@@ -8,7 +8,7 @@
       width: 100%;
       //TODO: уточнить, как картинку вмещать, или резиновый контейнер
       object-fit: cover;
-      border-radius: #{$border-radius-card}px #{$border-radius-card}px 0 0;
+      border-radius: $border-radius-card $border-radius-card 0 0;
     }
   }
   & gar-icon {

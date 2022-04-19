@@ -4,4 +4,10 @@ export namespace header {
 		type: string;
 		position: number;
 	}
+
+  export interface IHeaderItem {
+    name: string;
+    icon: string;
+    link: string;
+  }
 }

@@ -1,0 +1,8 @@
+<p-dropdown
+        (onChange)="valueChanged($event.value)"
+        (focusout)="propagateTouched()"
+        [options]="items"
+        [optionLabel]="(displayLabel$ | async)!"
+        [showClear]="(cleanable$ | async)!"
+        [placeholder]="(title$ | async)!"
+        [(ngModel)]="value"></p-dropdown>

@@ -1,283 +1,141 @@
-<div class="header-container {{ isGarant ? 'garant-header' : '' }}">
-  <div class="app-container">
-    <!-- верхний часть хедера -->
-    <div class="row navbar-top">
-      <div class="col-12">
-        <nav class="d-flex justify-content-end">
-          <ul class="list-unstyled d-flex">
-            <ng-container *ngIf="!!(aHeader$ | async)">
-              <li *ngFor="let el of aHeader$ | async; let last = last">
-                <span (click)="onGetMenuHeader(el.name)" *ngIf="!last">{{el.name}}</span>
-                <span (click)="onGetMenuHeader(el.name)" *ngIf="last" class="last">
-                  <span>
-                    <span>+</span>
-                    <span>{{el.name}}</span>
-                  </span>
-                </span>
-              </li>
-            </ng-container>
-          </ul>
-        </nav>
-      </div>
-    </div>
-    <!-- верхний часть хедера -->
+<div class="header" [class.header-cabinet]="isGarant">
+    <div class="app-container">
+        <div class="header-main">
+            <gar-button type="button" [role]="!isGarant ? 'primary' : 'secondary'" class="header-burger" (click)="toggleMenu(true)">
+                <gar-icon name="burger" class="gar-absolute-center"></gar-icon>
+            </gar-button>
 
-    <!-- лого, поисковое поле, и функции аккаунта -->
-    <div class="row logo-and-search {{ isGarant ? 'align-items-center' : '' }}">
-      <div class="col-xxl-2 {{ isSmallScreen ? 'col-xl-4' : 'col-xl-2'}} col-lg-4 col-md-3 {{ isMobile ? 'col-sm-8' : 'col-sm-3'}} col-8 item-logo" (click)="onRouteStart()">
-        <div class="logo">
-          <img src="../../assets/images/search_logo.svg" alt="gobizy logo" *ngIf="!isGarant" />
-          <img src="../../../assets/images/logo-garant.svg" alt="gobizy logo" *ngIf="isGarant" class="mb-3" />
-        </div>
-        <div *ngIf="isGarant" class="logo-text">
-          <span>Первый в мире сервис покупки бизнеса онлайн</span>
-        </div>
-      </div>
+            <nav class="header-nav" *ngIf="!!(aHeader$ | async)">
+                <div class="gar-grid">
+                    <span
+                        role="link"
+                        class="header-nav-item" [class.add]="last"
+                        *ngFor="let el of aHeader$ | async; let last = last"
+                        (click)="onGetMenuHeader(el.name)">
+                        {{el.name}}
+                    </span>
+                </div>
+            </nav>
 
-      <div class="col-xxl-5 {{ isSmallScreen ? 'col-xl-12' : 'col-xl-5'}} col-lg-12 {{ tabletStart ? 'col-md-7' : 'col-md-12' }} {{ isMobile ? 'col-sm-12' : 'col-sm-7'}} col-12 item-search" [ngStyle]="{'height': isGarant ? 'auto' : '61px'}">
-        <div class="search-container h-100 position-relative" *ngIf="!isGarant">
-          <div class="h-100 d-flex align-items-center">
-            <!-- тип селекта поиска -->
-            <div class="options">
-              <p-dropdown [options]="searchOptions" [(ngModel)]="selectedSearchOption"></p-dropdown>
+            <div class="header-logo-wrapper">
+                <a routerLink="/" class="header-logo">
+                    <gar-icon name="logo"></gar-icon>
+                </a>
+
+                <div *ngIf="isGarant" class="header-slogan">Первый в мире сервис покупки бизнеса онлайн</div>
             </div>
 
-            <!-- поле для поиска -->
-            <div class="h-100 w-100">
-              <input type="search" class="input-search search-header" pInputText
-                placeholder="Например: “Медицинский центр”" [(ngModel)]="searchText"
-                (keydown.enter)="onRouteSearch(searchText)">
+            <div *ngIf="!isGarant" class="header-search">
+                <div class="header-search-wrapper">
+                    <p-dropdown [options]="searchOptions" [(ngModel)]="selectedSearchOption"></p-dropdown>
+
+                    <input
+                        type="search"
+                        class="header-search-input"
+                        pInputText
+                        placeholder="Например: “Медицинский центр”"
+                        [(ngModel)]="searchText"
+                        (keydown.enter)="onRouteSearch(searchText)">
+
+                    <gar-button type="button" role="primary" class="header-search-button">
+                        <gar-icon name="search"></gar-icon>
+                    </gar-button>
+                </div>
             </div>
 
-            <!-- кнорка для поиска -->
-            <div class="search-button h-100">
-              <button (click)="onRouteSearch(searchText)">
-                <img src="../../../assets/images/search.svg" alt="gobizy search icon" />
-              </button>
+            <div *ngIf="isGarant" class="header-deal">
+                <div class="header-deal-data">
+                    <div class="header-deal-title">Сделка №125-127</div>
+                    <div class="header-deal-subtitle">Сделка от 08.12.2021</div>
+                </div>
+
+                <div>
+                    <gar-button type="button" role="secondary">
+                        Отменить сделку
+                    </gar-button>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div *ngIf="isGarant" class="deal-info">
-          <div class="w-100">
-            <strong>Сделка №125-127</strong>
-            <hr>
-            <span>Сделка от 08.12.2021</span>
-          </div>
+            <div class="header-options">
+                <a *ngFor="let item of cabinetLinks" routerLink="{{item.link}}" class="header-options-item">
+                    <gar-icon name="{{item.icon}}"></gar-icon>
 
-          <div>
-            <button>Отменить сделку</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="{{ isMobile ? 'col-sm-4 d-flex justify-content-end' : 'col-sm-2'}} col-4 hamburger item-hamburger">
-        <div>
-          <button (click)="toggleMenu(true)">
-            <img src="../../../assets/images/navbar-toggler.svg" alt="hamburger icon" />
-          </button>
-        </div>
-      </div>
-
-      <div class="col-xxl-5 {{ isSmallScreen ? 'col-xl-8' : 'col-xl-5'}} col-lg-8 col-md-9 item-account">
-        <div class="account-options">
-          <nav>
-            <ul class="list-unstyled d-flex justify-content-between">
-              <li>
-                <a class="text-center" routerLink="/">
-                  <gar-icon name="megaphone_1"></gar-icon>
-                  <br>
-                  <span class="">Продать</span>
+                    <span>{{item.name}}</span>
                 </a>
-              </li>
+            </div>
 
-              <li>
-                <a class="text-center" routerLink="/">
-                  <gar-icon name="deal_1"></gar-icon>
-                  <br>
-                  <span class="">Мои сделки</span>
-                </a>
-              </li>
+            <div *ngIf="isGarant" class="header-control">
+                <div class="header-control-title">Управление сделкой</div>
 
-              <li>
-                <a class="text-center" routerLink="/">
-                  <gar-icon name="star_1"></gar-icon>
-                  <br>
-                  <span class="">Избранное</span>
-                </a>
-              </li>
+                <div>
+                    <gar-button type="button" role="secondary">
+                        <gar-icon name="category-consulting" class="header-control-icon"></gar-icon>
 
-              <li>
-                <a class="text-center" routerLink="/">
-                  <gar-icon name="avatar_2"></gar-icon>
-                  <br>
-                  <span class="">Уведомления</span>
-                </a>
-              </li>
+                        Пригласить в сделку юриста
+                    </gar-button>
+                </div>
+            </div>
 
-              <li class="last">
-                <a class="text-center" routerLink="/profile/my-data">
-                  <gar-icon name="avatar_1"></gar-icon>
-                  <br>
-                  <span class="">Аккаунт</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+            <nav *ngIf="!isGarant" class="header-categories">
+                <div class="header-categories-wrapper">
+                    <a class="header-categories-item" *ngFor="let item of categories" routerLink="{{item.link}}" routerLinkActive="-active" [routerLinkActiveOptions]="{exact: true}">
+                        <span class="header-categories-item-square">
+                            <gar-icon name="{{item.icon}}" class="gar-absolute-center"></gar-icon>
+                        </span>
+
+                        <span class="header-categories-item-name">{{item.name}}</span>
+                    </a>
+                </div>
+            </nav>
         </div>
-      </div>
     </div>
-    <!-- лого, поисковое поле, и функции аккаунта -->
-
-    <div class="row garant-hr" *ngIf="isGarant">
-      <div class="col-12">
-        <hr>
-      </div>
-    </div>
-
-    <!-- Управление сделкой -->
-    <div class="garant-deal">
-      <div class="row align-items-center garant-deal" *ngIf="isGarant">
-        <div class="col-6">
-          <h4 class="garant-title">Управление сделкой</h4>
-        </div>
-        <div class="col-6 d-flex justify-content-end">
-          <button>
-            <img src="./../../../assets/images/invitation.svg" alt="invitation icon gobizy" />
-            <span>Пригласить в сделку юриста</span>
-          </button>
-        </div>
-      </div>
-    </div>
-    <!-- Управление сделкой -->
-
-    <!-- навбар основных страниц -->
-    <div class="row" *ngIf="!isGarant">
-      <div class="col-12">
-        <nav class="main-pages">
-          <ul class="list-unstyled">
-            <li>
-              <a routerLink="/">
-                <img src="../../../assets/images/Logo=Main, Stage=Passive.svg" class="after-search-img" width="44"
-                  height="42">
-                <span>Главная</span>
-              </a>
-            </li>
-
-            <li>
-              <a routerLink="/catalog-franchise">
-                <img src="../../../assets/images/Logo=Franchise, Stage=Passive.svg" class="after-search-img" width="44"
-                  height="42">
-                <span>Франшизы</span>
-              </a>
-            </li>
-
-            <li>
-              <a routerLink="/catalog-business">
-                <img src="../../../assets/images/Logo=Business, Stage=Passive.svg" class="after-search-img" width="44"
-                  height="42">
-                <span>Готовый бизнес</span>
-              </a>
-            </li>
-
-            <li>
-              <a routerLink="/deal/start">
-                <img src="../../../assets/images/Logo=Guarantee, Stage=Passive.svg" class="after-search-img" width="44"
-                  height="42">
-                <span>Покупка через гарант</span>
-              </a>
-            </li>
-
-            <li>
-              <a routerLink="/consulting/start">
-                <img src="../../../assets/images/Logo=Law, Stage=Passive.svg" class="after-search-img" width="44"
-                  height="42">
-                <span>Консалтинг</span>
-              </a>
-            </li>
-
-            <li>
-              <a routerLink="/franchise/start">
-                <img src="../../../assets/images/Logo=Settings, Stage=Passive.svg" class="after-search-img" width="44"
-                  height="42">
-                <span>Упаковка франшиз</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-    <!-- навбар основных страниц -->
-  </div>
-
-  <div class="stepper" *ngIf="isGarant">
-    <p-steps [model]="items"></p-steps>
-  </div>
-
-  <div class="menu-responsive {{ isMenuHidden ? 'hidden' : 'visible' }}">
-    <div class="header">
-      <div class="d-flex align-items-center justify-content-between">
-        <div>
-          <img src="./../../../assets/images/search_logo.svg" alt="gobizy logo" />
-        </div>
-
-        <span>
-          <button (click)="toggleMenu(false)">
-            <img src="./../../../assets/images/navbar-close.svg" alt="close navbar" />
-          </button>
-        </span>
-      </div>
-    </div>
-
-    <div class="content">
-      <ul>
-        <li *ngFor="let el of aHeader$ | async" class="d-flex justify-content-between align-items-center">
-          <span (click)="onGetMenuHeader(el.name)">{{el.name}}</span>
-          <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
-        </li>
-
-        <li>
-          <a routerLink="/" class="d-flex justify-content-between align-items-center">
-            <span>Главная</span>
-            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
-          </a>
-        </li>
-
-        <li>
-          <a routerLink="/catalog-franchise" class="d-flex justify-content-between align-items-center">
-            <span>Франшизы</span>
-            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
-          </a>
-        </li>
-
-        <li>
-          <a routerLink="/catalog-business" class="d-flex justify-content-between align-items-center">
-            <span>Готовый бизнес</span>
-            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
-          </a>
-        </li>
-
-        <li>
-          <a routerLink="/deal/start" class="d-flex justify-content-between align-items-center">
-            <span>Покупка через гарант</span>
-            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
-          </a>
-        </li>
-
-        <li>
-          <a routerLink="/consulting/start" class="d-flex justify-content-between align-items-center">
-            <span>Консалтинг</span>
-            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
-          </a>
-        </li>
-
-        <li>
-          <a routerLink="/franchise/start" class="d-flex justify-content-between align-items-center">
-            <span>Упаковка франшиз</span>
-            <img src="./../../../assets/images/Arrow 1.png" alt="right chevron icon" />
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </div>
+
+<div class="burger-menu" [class.-active]="!isMenuHidden">
+    <div class="gar-row">
+        <div class="burger-menu-logo">
+            <gar-icon name="logo"></gar-icon>
+        </div>
+
+        <div class="right">
+            <gar-button type="button" role="primary" class="burger-menu-button" (click)="toggleMenu(false)">
+                <gar-icon name="times" class="gar-absolute-center"></gar-icon>
+            </gar-button>
+        </div>
+    </div>
+
+    <div class="burger-menu-links">
+        <nav class="burger-menu-nav">
+            <a *ngFor="let item of categories" routerLink="{{item.link}}">
+                {{item.name}}
+
+                <gar-icon name="arrow-right"></gar-icon>
+            </a>
+        </nav>
+
+        <nav class="burger-menu-nav">
+            <a *ngFor="let item of cabinetLinks" routerLink="{{item.link}}">
+                {{item.name}}
+
+                <gar-icon name="arrow-right"></gar-icon>
+            </a>
+        </nav>
+
+        <nav class="burger-menu-nav" *ngIf="!!(aHeader$ | async)">
+            <a
+                *ngFor="let el of aHeader$ | async;"
+                href="#"
+                (click)="onGetMenuHeader(el.name)">
+                {{el.name}}
+
+                <gar-icon name="arrow-right"></gar-icon>
+            </a>
+        </nav>
+    </div>
+</div>
+
+<!--<div class="header-stepper" *ngIf="!isGarant">-->
+<!--    <div class="app-container">-->
+<!--        <p-steps [model]="items"></p-steps>-->
+<!--    </div>-->
+<!--</div>-->

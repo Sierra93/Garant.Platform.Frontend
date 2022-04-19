@@ -1,18 +1,40 @@
 @import './colors';
 /* main */
 $line-height: 1.3rem;
+$border-radius: 8px;
 
 /* Строки */
-$gar-row-between-vertical-margin: 16;
-$gar-row-items-between-vertical-margin: 8;
+$gar-row-between-vertical-margin: 16px;
+$gar-row-items-between-vertical-margin: 8px;
+$gar-row-items-between-horizontal-margin: 8px;
+
 /* Заголовок */
-$font-size-title: 18;
-$font-weight-title: 600;
-$font-size-sub-title: 12;
 $font-color-sub-title: $clrDarkGray;
 
 
 /* Карточка */
-$card-padding: 16;
-$border-radius-card: 8;
-$gar-card-between-horizontal-margin: 24;
+$card-padding: 16px;
+$border-radius-card: $border-radius;
+$gar-card-between-horizontal-margin: 24px;
+
+/* badge */
+$main-badge-padding: 10px;
+
+/* Кнопка */
+$border-radius-btn: 4px;
+$btn-default-bg: $clrLightBlue;
+$btn-primary-bg: $clrBlue;
+$btn-secondary-bg: $clrWhite;
+$btn-default-color: $clrBlue;
+$btn-primary-color: $clrWhite;
+$btn-secondary-color: $clrBlue;
+
+/* Сетка */
+$gridGap: 24px;
+
+/* Градиенты */
+$gradientGrayToBlue: linear-gradient(270deg, $clrUnique1 0, rgba($clrMidGray, 0) 11.33%);
+
+/* Инпут */
+$input-padding: 16px;
+$input-border-radius: 6px;

@@ -1,0 +1,18 @@
+@import 'variables';
+
+@mixin inputReset {
+    height: 100%;
+    color: currentColor;
+    font-family: $font-family;
+    font-size: inherit;
+    background: transparent;
+    padding: 0 $input-padding;
+    border: none;
+    appearance: none;
+    border-radius: none;
+}
+
+@mixin inputFocus {
+    box-shadow: 0 0 0 0.2rem $clrInputFocus;
+    border-color: $clrBlue;
+}

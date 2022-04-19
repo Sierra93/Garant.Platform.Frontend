@@ -4,7 +4,7 @@ import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MenuItem} from 'primeng/api';
 import { BehaviorSubject, combineLatest, Observable } from "rxjs";
-import { header } from "./header";
+import {header} from "./header";
 import { SESSION_TOKEN } from "../../core/session/session.token";
 import { SessionService } from "../../core/session/session.service";
 import { filter, map } from "rxjs/operators";
@@ -33,9 +33,8 @@ export class HeaderModule implements OnInit {
     searchText: string = "";
     selectedValueFranchise: boolean = false;
     selectedValueBusiness: boolean = false;
-    searchType: string = "";
-    searchOptions: string[];
-    selectedSearchOption: string = "франшиза";
+    searchOptions: header.ISearchOption[];
+    selectedSearchOption: header.ISearchOption;
     isGarant: boolean = false;
     items!: MenuItem[];
     isMenuHidden: boolean = true;
@@ -63,7 +62,12 @@ export class HeaderModule implements OnInit {
         @Inject(SESSION_TOKEN)
         private _sessionService: SessionService
     ) {
-          this.searchOptions = ["франшиза", "бизнес"];
+          this.searchOptions = [
+            { name: 'франшиза', type: 'franchise' },
+            { name: 'бизнес', type: 'business' }
+          ];
+
+          this.selectedSearchOption = this.searchOptions[0];
 
           this.items = [
             {label: 'Подтверждение продажи'},
@@ -157,17 +161,6 @@ export class HeaderModule implements OnInit {
     };
 
     public onRouteSearch(searchText: string) {
-      let type = "";
-      console.log(this.selectedSearchOption);
-
-        if (this.selectedSearchOption == this.searchOptions[0]) {
-            type = "franchise";
-        }
-
-        else if (this.selectedSearchOption == this.searchOptions[1]) {
-            type = "business";
-        }
-
-        this.router.navigate(["/search"], { queryParams: { searchType: type, searchText: searchText } });
+        this.router.navigate(["/search"], { queryParams: { searchType: this.selectedSearchOption.type, searchText: searchText } });
     };
 }

@@ -1,5 +1,5 @@
 <input
-        type="text"
+        [type]="type"
         pInputText
         (focusout)="propagateTouched()"
         [disabled]="(readonly$ | async)!"

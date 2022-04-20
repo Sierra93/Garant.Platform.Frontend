@@ -549,3 +549,119 @@
     }
   }
 }
+
+$columnGap: 24px;
+.package {
+  margin-top: 74px;
+  &-common-title {
+    font-size: 24px;
+    line-height: 28px;
+    color: #2c2c2c;
+    margin-bottom: 32px;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  &-root {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: $columnGap;
+  }
+  &-wrapper {
+    width: calc(33% - #{$columnGap/2});
+  }
+  &-list {
+    border: none;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+  }
+  &-title {
+    border: none;
+    padding: 32px 24px;
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 600;
+    &--dark {
+      background: #2c2c2c;
+    }
+    &--primary {
+      background: #0d6efd;
+    }
+  }
+  &-content {
+    padding: 24px 9px 24px 24px;
+    &-title {
+      color: #7a7a7a;
+      font-size: 18px;
+      line-height: 21px;
+      margin-bottom: 33px;
+    }
+  }
+  &-service {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-reach-icon {
+    width: 56px;
+    height: 56px;
+    &--yes {
+      background: url(../../../../assets/images/franchise-landing/yes2.png)
+          center no-repeat,
+        url(../../../../assets/images/franchise-landing/yes1.png) center
+          no-repeat;
+    }
+    &--no {
+      background: url(../../../../assets/images/franchise-landing/no2.png)
+          center no-repeat,
+        url(../../../../assets/images/franchise-landing/no1.png) center
+          no-repeat;
+    }
+  }
+  &-service {
+    margin-bottom: 18.5px;
+    &-text {
+      color: #2c2c2c;
+      font-size: 18px;
+      line-height: 21px;
+      width: 80%;
+      text-align: left;
+    }
+  }
+  &-total-price {
+    padding: 16px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+  }
+  &-price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+  }
+  &-price-item:first-child {
+    padding: 0 0 24px;
+  }
+  &-total-note {
+    color: #2c2c2c;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 600;
+  }
+  &-total-result {
+    color: #2c2c2c;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  &-submit {
+    width: 100%;
+    font-size: 21px;
+    line-height: 25px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
+    border-radius: 66px;
+  }
+}

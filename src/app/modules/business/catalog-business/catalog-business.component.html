@@ -27,34 +27,56 @@
 <div class="row section-mb">
   <div class="gar-row title page">Популярный бизнес</div>
   <div class="gar-row">
-    <app-catalog-sort-card *ngFor="let item of aPopularBusiness" [item]="item"></app-catalog-sort-card>
+    <app-catalog-sort-card
+      *ngFor="let item of aPopularBusiness"
+      [item]="item"
+    ></app-catalog-sort-card>
   </div>
 
-      <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 wrapper-business-blog" >
-        
-        <div class="business-blog-images">
-         <div class="image-blog"> 
-          <img class="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
-            <div class="image-blog-text">
-            <div class="text-blog">Как понять франчайзинг?</div>
-            <div class="subtitle-text">читать ~5 минут &bull; опубликовано 3 февраля</div>
-            </div> 
-          </div>
-         <div class="image-blog"> 
-                  <img class="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
-                  <div class="image-blog-text">
-                  <div class="text-blog">Бизнес или работа на “дядю”?</div>
-                <div class="subtitle-text">читать ~7 минут &bull; опубликовано 20 февраля</div>
-          </div>
-          </div>
-          <div class="image-blog"> <img class="image-blog-img" src="../../../../assets/images/blog-img.svg" alt="">
-                  <div class="image-blog-text"><div class="text-blog">Так ли жестока налоговая?</div>
-                  <div class="subtitle-text">читать ~11 минут &bull; опубликовано 25 февраля</div>
-                </div>
+  <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 wrapper-business-blog">
+    <div class="business-blog-images">
+      <div class="image-blog">
+        <img
+          class="image-blog-img"
+          src="../../../../assets/images/blog-img.svg"
+          alt=""
+        />
+        <div class="image-blog-text">
+          <div class="text-blog">Как понять франчайзинг?</div>
+          <div class="subtitle-text">
+            читать ~5 минут &bull; опубликовано 3 февраля
           </div>
         </div>
-          <div class="popular-item more-articles business-blog-video">
-              <p-card
+      </div>
+      <div class="image-blog">
+        <img
+          class="image-blog-img"
+          src="../../../../assets/images/blog-img.svg"
+          alt=""
+        />
+        <div class="image-blog-text">
+          <div class="text-blog">Бизнес или работа на “дядю”?</div>
+          <div class="subtitle-text">
+            читать ~7 минут &bull; опубликовано 20 февраля
+          </div>
+        </div>
+      </div>
+      <div class="image-blog">
+        <img
+          class="image-blog-img"
+          src="../../../../assets/images/blog-img.svg"
+          alt=""
+        />
+        <div class="image-blog-text">
+          <div class="text-blog">Так ли жестока налоговая?</div>
+          <div class="subtitle-text">
+            читать ~11 минут &bull; опубликовано 25 февраля
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popular-item more-articles business-blog-video">
+      <p-card
         header=""
         subheader=""
         [style]="{ width: '100%' }"
@@ -67,12 +89,11 @@
               Перейдите в наш блог и найдите там массу полезной информации.
             </p>
           </div>
-          <img src="../../../assets/images/Frame 66.png" height="32">
+          <img src="../../../assets/images/Frame 66.png" height="32" />
         </div>
-            </p-card>
-          </div>
-          </div>
-     
+      </p-card>
+    </div>
+  </div>
 </div>
 
 <div class="garant block-title-franchise">
@@ -81,8 +102,7 @@
 </div>
 
 <div class="d-flex">
-
-<div class="catalog-business__filter d-flex">
+  <div class="catalog-business__filter d-flex">
     <!-- <button type="button" class="btn-close btn-close--top" aria-label="Close" (click)="onClearFilters()"></button> -->
     <!-- <div>
     <strong>Сфера бизнеса</strong><br>
@@ -91,32 +111,64 @@
 
     <div class="control-quick-search-one">
       <div class="catalog-business__filter-title">Выбор категории</div>
-      <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory"
-        placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
+      <p-dropdown
+        [options]="aBusinessCategories"
+        optionLabel="categoryName"
+        [(ngModel)]="selectedCategory"
+        placeholder="Категория"
+        [showClear]="true"
+        name="category"
+      ></p-dropdown>
     </div>
 
     <div class="control-quick-search-two">
       <div class="catalog-business__filter-title">Выбор города</div>
-      <p-dropdown [options]="aCities" optionLabel="businessCityName" name="city" [(ngModel)]="selectedCity"
-        placeholder="Город" [showClear]="true"></p-dropdown>
+      <p-dropdown
+        [options]="aCities"
+        optionLabel="businessCityName"
+        name="city"
+        [(ngModel)]="selectedCity"
+        placeholder="Город"
+        [showClear]="true"
+      ></p-dropdown>
     </div>
 
     <div class="d-flex control-quick-search-three">
       <div class="control-quick-search block-price-min">
         <div class="catalog-business__filter-title">Инвестиции</div>
         <div class="d-flex">
-          <p-inputNumber mode="currency" currency="EUR" locale="de-DE"  placeholder="от 100 000 ₽" [(ngModel)]="filterRang[0]" prefix="от " name="minPrice"></p-inputNumber>
-          <p-inputNumber mode="currency" currency="EUR" locale="de-DE"  placeholder="до 100 000 000 ₽" [(ngModel)]="filterRang[1]" prefix="до " name="maxPrice"></p-inputNumber>
+          <p-inputNumber
+            mode="currency"
+            currency="EUR"
+            locale="de-DE"
+            placeholder="от 100 000 ₽"
+            [(ngModel)]="filterRang[0]"
+            prefix="от "
+            name="minPrice"
+          ></p-inputNumber>
+          <p-inputNumber
+            mode="currency"
+            currency="EUR"
+            locale="de-DE"
+            placeholder="до 100 000 000 ₽"
+            [(ngModel)]="filterRang[1]"
+            prefix="до "
+            name="maxPrice"
+          ></p-inputNumber>
 
-<!--          <input type="text" class="control-input-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="filterRang[0]"-->
-<!--                 name="minPrice" />-->
-<!--          <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="filterRang[1]"-->
-<!--                 name="maxPrice" />-->
+          <!--          <input type="text" class="control-input-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="filterRang[0]"-->
+          <!--                 name="minPrice" />-->
+          <!--          <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="filterRang[1]"-->
+          <!--                 name="maxPrice" />-->
         </div>
-        <p-slider class="price-slider" [(ngModel)]="filterRang" [range]="true"></p-slider>
+        <p-slider
+          class="price-slider"
+          [(ngModel)]="filterRang"
+          [range]="true"
+        ></p-slider>
       </div>
     </div>
-<!--    <button type="button" class="btn-close btn-close&#45;&#45;bottom" aria-label="Close" (click)="onClearFilters()"></button>-->
+    <!--    <button type="button" class="btn-close btn-close&#45;&#45;bottom" aria-label="Close" (click)="onClearFilters()"></button>-->
   </div>
 </div>
 
@@ -131,39 +183,109 @@
   <div class="switch-garant-sorting">
     <div>
       <div class="catalog-business__filter-title">Сортировать по</div>
-      <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
-        [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
+      <p-dropdown
+        class="block-sort-by"
+        [options]="aSortPrices"
+        optionLabel="name"
+        optionCode="value"
+        name="price"
+        [(ngModel)]="selectedSort"
+        placeholder="Цена"
+        [showClear]="true"
+        (onChange)="onChangeSortPrice()"
+      ></p-dropdown>
     </div>
-  <div class="line"></div>
+    <div class="line"></div>
     <div class="switch-garant garant-buy">
       <div class="catalog-business__filter-title">Покупка через гарант</div>
       <p-inputSwitch class="flag-garant" [(ngModel)]="isGarant"></p-inputSwitch>
     </div>
     <div class="line"></div>
-      <div class="wrapper-business">
-        <div class="catalog-business__filter-title">Подборка готового бизнеса</div>
-        <button pButton type="button" label="Со скидкой" class="p-button-text button-business"></button>
-        <button pButton type="button" label="Популярные" class="p-button-text button-business"></button>
-        <button pButton type="button" label="С быстрой окупаемостью" class="p-button-text button-business"></button>
-        <button pButton type="button" label="Для женщин" class="p-button-text button-business"></button>
-        <button pButton type="button" label="Без паушального взноса" class="p-button-text button-business"></button>
-        <button pButton type="button" label="Новинки" class="p-button-text button-business"></button>
-        <button pButton type="button" label=" Для маленького города" class="p-button-text button-business"></button>
-        <button pButton type="button" label=" Без роялти" class="p-button-text button-business"></button>
-       
+    <div class="wrapper-business">
+      <div class="catalog-business__filter-title">
+        Подборка готового бизнеса
       </div>
-      <div class="line"></div>
+      <button
+        pButton
+        type="button"
+        label="Со скидкой"
+        class="p-button-text button-business"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="Популярные"
+        class="p-button-text button-business"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="С быстрой окупаемостью"
+        class="p-button-text button-business"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="Для женщин"
+        class="p-button-text button-business"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="Без паушального взноса"
+        class="p-button-text button-business"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="Новинки"
+        class="p-button-text button-business"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label=" Для маленького города"
+        class="p-button-text button-business"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label=" Без роялти"
+        class="p-button-text button-business"
+      ></button>
+    </div>
+    <div class="line"></div>
     <div class="switch-garant">
       <div class="catalog-business__filter-title">Прибыль в месяц</div>
       <div class="d-flex d-flex--short">
-        <p-inputNumber mode="currency" currency="EUR" locale="de-DE"  placeholder="от 100 000 ₽"  [(ngModel)]="rangValue[0]" prefix="от " name="filterMinPrice"></p-inputNumber>
-        <p-inputNumber mode="currency" currency="EUR" locale="de-DE"  placeholder="до 100 000 000 ₽"  [(ngModel)]="rangValue[1]" prefix="до " name="filterMaxPrice"></p-inputNumber>
-<!--        <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽"-->
-<!--          [(ngModel)]="rangValue[0]" name="filterMinPrice" />-->
-<!--        <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽"-->
-<!--          [(ngModel)]="rangValue[1]" name="filterMaxPrice" />-->
+        <p-inputNumber
+          mode="currency"
+          currency="EUR"
+          locale="de-DE"
+          placeholder="от 100 000 ₽"
+          [(ngModel)]="rangValue[0]"
+          prefix="от "
+          name="filterMinPrice"
+        ></p-inputNumber>
+        <p-inputNumber
+          mode="currency"
+          currency="EUR"
+          locale="de-DE"
+          placeholder="до 100 000 000 ₽"
+          [(ngModel)]="rangValue[1]"
+          prefix="до "
+          name="filterMaxPrice"
+        ></p-inputNumber>
+        <!--        <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽"-->
+        <!--          [(ngModel)]="rangValue[0]" name="filterMinPrice" />-->
+        <!--        <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽"-->
+        <!--          [(ngModel)]="rangValue[1]" name="filterMaxPrice" />-->
       </div>
-      <p-slider class="price-slider" [(ngModel)]="rangValue" [range]="true"></p-slider>
+      <p-slider
+        class="price-slider"
+        [(ngModel)]="rangValue"
+        [range]="true"
+      ></p-slider>
     </div>
     <div class="btn-wrapper">
       <button
@@ -182,14 +304,33 @@
     <div class="line"></div>
     <div class="wrapper-business">
       <div class="catalog-business__filter-title">Срок окупаемости</div>
-      <button pButton type="button" label="До 3 месяцев" class="p-button-text button-business"></button>
-      <button pButton type="button" label="До полугода" class="p-button-text button-business"></button>
-      <button pButton type="button" label="До года" class="p-button-text button-business"></button>
-      <button pButton type="button" label="От 1 до 3 лет" class="p-button-text button-business"></button>
-    
+      <button
+        pButton
+        type="button"
+        label="До 3 месяцев"
+        class="p-button-text button-business"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="До полугода"
+        class="p-button-text button-business"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="До года"
+        class="p-button-text button-business"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="От 1 до 3 лет"
+        class="p-button-text button-business"
+      ></button>
     </div>
   </div>
-      
+
   <!-- Список бизнеса. -->
   <!-- <div class="d-flex popular-list franchise-list">
   <div class="popular-item catalog-item col-lg-4" *ngFor="let item of aBusinessList">
@@ -207,8 +348,13 @@
 </div> -->
 
   <div class="catalog-business__body-card d-flex popular-list">
-    <app-catalog-simple-card *ngFor="let item of aBusinessList" [item]="item"></app-catalog-simple-card>
+    <!-- <div class="gar-grid-cards"> -->
+    <app-catalog-simple-card
+      *ngFor="let item of aBusinessList"
+      [item]="item"
+    ></app-catalog-simple-card>
   </div>
+  <!-- </div> -->
 </div>
 
 <!-- Пагинация. -->
@@ -226,8 +372,14 @@
 <!-- Новый бизнес. -->
 <div class="garant New-business">
   <div class="garant">
-    <p-carousel [value]="aNewFranchises" [numVisible]="4" [numScroll]="4" [circular]="false"
-      [responsiveOptions]="responsiveOptions" [showNavigators]="false">
+    <p-carousel
+      [value]="aNewFranchises"
+      [numVisible]="4"
+      [numScroll]="4"
+      [circular]="false"
+      [responsiveOptions]="responsiveOptions"
+      [showNavigators]="false"
+    >
       <ng-template pTemplate="header">
         <h5 class="title-franchise">Новый бизнес</h5>
       </ng-template>
@@ -235,15 +387,19 @@
         <div class="product-item">
           <div class="product-item-content">
             <div class="p-mb-3">
-              <img [src]="item.url" class="product-image">
+              <img [src]="item.url" class="product-image" />
             </div>
             <div>
-              <p-card header="Название готового бизнеса" subheader="{{item.fullText}}" [style]="{width: '100%'}"
-                styleClass="p-card-shadow">
+              <p-card
+                header="Название готового бизнеса"
+                subheader="{{ item.fullText }}"
+                [style]="{ width: '100%' }"
+                styleClass="p-card-shadow"
+              >
                 <ng-template pTemplate="header">
                   <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
                 </ng-template>
-                <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
+                <strong>{{ item.textDoPrice }} {{ item.price }} ₽</strong>
                 <ng-template pTemplate="footer">
                   <!-- <p-button label="Save" icon="pi pi-check"></p-button>
                             <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
@@ -255,7 +411,6 @@
       </ng-template>
     </p-carousel>
   </div>
-
 </div>
 
 <!-- Отзывы о франшизах -->
@@ -404,10 +559,10 @@
           Перейдите в наш блог и найдите <br />
           там массу полезной информации.
         </p>
-        
+
         <!-- <div class="image"> -->
-        
-          <!-- <img src="../../../assets/images/Frame 66.png" height="32" /> -->
+
+        <!-- <img src="../../../assets/images/Frame 66.png" height="32" /> -->
         <!-- </div> -->
       </div>
       <ng-template pTemplate="footer"> </ng-template>
@@ -419,7 +574,7 @@
 <h5 class="garant title-franchise">Новости делового мира</h5>
 <div class="d-flex">
   <div>
-    <img src="../../../assets/images/Frame 31.png" />
+    <img src="../../../../assets/images/business-news..jpg" />
   </div>
 
   <div>

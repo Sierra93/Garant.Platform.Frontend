@@ -1,0 +1,64 @@
+@use "./../manage-account/manage-account.component.scss";
+.button-detail-notify {
+  padding: 0px 5px 0px 0px;
+}
+
+.notification {
+  background-color: #F1F6FF;
+  font-family: 'Roboto', sans-serif;
+  padding: 1rem;
+  position: relative;
+}
+
+.notification-title {
+  font-size: 18px;
+  line-height: 21px;
+  color: #1F75FE;
+  margin-bottom: 1.25rem;
+}
+
+.notification-description {
+  font-size: 14px;
+  line-height: 16px;
+  color: #646464;
+}
+
+.notification-buttons > div:first-child {
+  margin-right: 1rem;
+}
+
+.notification-buttons > div button {
+  padding: 1rem;
+  height: 3rem;
+  border-radius: .25rem;
+  border: none;
+}
+
+.notification-buttons > div:first-child button, .notification-buttons > div:first-child button:focus {
+  background-color: #1F75FE;
+  color: #fff;
+}
+
+.notification-buttons > div:last-child button, .notification-buttons > div:last-child button:focus {
+  background-color: transparent;
+  border: 1px solid #2C2C2C;
+  color: #2C2C2C;
+}
+
+.notification-remove {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.notification-remove button, .notification-remove button:focus {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.notification-remove button img {
+  width: 1rem;
+  height: 1rem;
+}
+/*# sourceMappingURL=notifications.component.css.map */

@@ -1,0 +1,116 @@
+footer {
+  background-color: #f9f9f9;
+}
+
+.footer {
+  padding: 65px 0;
+}
+
+.footer .social-contacts ul {
+  margin-bottom: 0;
+}
+
+.footer .social-contacts ul li {
+  height: 54px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.footer .social-contacts ul li:not(:last-child) {
+  margin-right: 2.5rem;
+}
+
+@media (max-width: 576px) {
+  .footer .social-contacts ul li:not(:last-child) {
+    margin-right: 1.5rem;
+  }
+}
+
+.footer nav h4 {
+  font-size: 1.5rem;
+  color: #2c2c2c;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.footer nav h4 img {
+  display: none;
+}
+
+.footer nav a {
+  text-decoration: none;
+  color: #7a7a7a;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .footer nav {
+    margin-bottom: 1.5rem;
+  }
+  .footer nav .row > div.d-flex {
+    -webkit-box-pack: start !important;
+        -ms-flex-pack: start !important;
+            justify-content: flex-start !important;
+  }
+  .footer nav h4 {
+    font-size: 18px;
+  }
+  .footer nav a {
+    font-size: .75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer nav .row > .d-flex {
+    display: block !important;
+  }
+  .footer nav a {
+    display: none;
+  }
+  .footer nav h4 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    cursor: pointer;
+  }
+  .footer nav h4 img {
+    display: block;
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    transition: transform .3s;
+    transition: transform .3s, -webkit-transform .3s;
+  }
+  .footer nav ul.open h4 img {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  .footer nav ul.open a {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer .social {
+    -webkit-box-pack: start !important;
+        -ms-flex-pack: start !important;
+            justify-content: flex-start !important;
+    margin-top: 18px;
+  }
+}
+/*# sourceMappingURL=footer.component.css.map */

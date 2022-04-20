@@ -386,7 +386,7 @@ strong {
       gap: 16px;
       margin-bottom: 32px;
     }
-    ::ng-deep.p-inputtext{
+    ::ng-deep.p-inputtext {
       display: block;
       font-family: "Roboto", sans-serif;
       font-size: 1.125rem;
@@ -536,34 +536,33 @@ strong {
 }
 
 ::ng-deep .p-card {
-  width: 331.33px;
-  height: 359px;
+  // width: 331.33px;
+  // max-height: 359px;
   border-radius: 4px;
 
   &-header {
-    width: 331.33px;
-    height: 162px;
-    margin-bottom: 24px;
+    width: 331.33px !important;
+    // height: 162px;
+    // margin-bottom: 24px;
 
     img {
       height: 100%;
       object-fit: cover;
     }
   }
-
   &-body {
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    // padding: 0 !important;;
   }
 
   &-title {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.125rem;
-    font-weight: 500;
-    margin: 0;
-    padding: 0;
-    margin-left: 8px;
-    margin-bottom: 8px;
+    font-family: "Roboto", sans-serif !important;
+    // font-size: 1.125rem !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-left: 8px !important;
+    margin-bottom: 8px !important;
   }
 
   &-subtitle {

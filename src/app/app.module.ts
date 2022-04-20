@@ -74,6 +74,9 @@ import { SessionService } from "./core/session/session.service";
 import { SESSION_TOKEN } from "./core/session/session.token";
 import { NotifyService } from "./services/notify/notify.service";
 import { LandingRequestService } from "./modules/landing/services/landing.service";
+import { BlockUIModule } from 'primeng/blockui';
+import { PanelModule } from 'primeng/panel';
+
 import { InputMaskModule } from 'primeng/inputmask';
 import { ProductsModule } from "./modules/products/products.module";
 
@@ -146,6 +149,8 @@ import { ProductsModule } from "./modules/products/products.module";
     TableModule,
     NgHttpLoaderModule.forRoot(),
     GarLibModule,
+    BlockUIModule,
+    PanelModule,
     InputMaskModule,
     ProductsModule
   ],

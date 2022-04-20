@@ -46,6 +46,7 @@ a {
   display: flex;
   flex-direction: row;
   width: 100%;
+  
   /* Вертикальный отступ между строками, если она не является последней */
   &:not(.title) {
     &:not(:last-child):not(.gar-row-item) {
@@ -84,7 +85,14 @@ a {
       &:not(:first-child) {
         margin-left: $gar-card-between-horizontal-margin;
       }
+      
     }
+    @include phone {
+      margin-bottom: 8px;
+    }
+  }
+  @include phone {
+    flex-direction: column;
   }
 }
 
@@ -105,6 +113,7 @@ a {
     > *:not(:last-child) {
       margin-bottom: calc(#{$gar-row-between-vertical-margin} / 3);
     }
+    
   }
   /* Модификатор, указывающий на то, что элемент публикуется, как основной на странице */
   &.page {

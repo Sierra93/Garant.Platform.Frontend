@@ -8,32 +8,23 @@
     <div class="gar-row-item">
       <div class="gar-row title">Покупка бизнеса с гарантиями</div>
       <div class="right">
-
         <div class="wrapper-container">
+          <p-card
+            header="{{ oTopAction.title }}"
+            subheader=""
+            [style]="{ width: '100%' }"
+            style="background-color: #f1f1f1"
+            styleClass="card"
+          >
+            <ng-template pTemplate="header"> </ng-template>
 
-          <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}"
-                  style="background-color: #F1F1F1"
-                  styleClass="card">
-
-            <ng-template pTemplate="header">
-              <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-              <!-- <h5>Покупка бизнеса любого размера онлайн с гарантиями</h5> -->
-            </ng-template>
-            <!-- <p>{{oTopAction.text}}</p> -->
-            <p class="right-text">{{oTopAction.text}}</p>
+            <p class="right-text">{{ oTopAction.text }}</p>
             <ng-template pTemplate="footer">
-
-              <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
-              <gar-button role="primary" routerLink="/deal/start">Подробнее</gar-button>
-              <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-                              </p-button> -->
+              <gar-button role="primary" routerLink="/deal/start"
+                >Подробнее</gar-button
+              >
             </ng-template>
-
           </p-card>
-        </div>
-        <div class="right-block-img">
-          <img class="right-images" src="../../../assets/images/right-img.png" alt="картинка правого блока">
-
         </div>
       </div>
     </div>
@@ -41,28 +32,31 @@
 
   <!-- Область с 3 карточками. -->
   <div class="row section-mb">
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions">
+    <div
+      class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder"
+      *ngFor="let item of aDataActions; let i = index"
+    >
       <div class="card-business">
-        <h3 class="three-cards-header">{{item.title}}</h3>
-        <p-card [style]="{width: '100%'}" styleClass="card">
-          <div class="card-business-content">
-            <ng-template pTemplate="header">
-              <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-            </ng-template>
-            <h5>{{item.subTitle}}</h5>
-            <p>{{item.text}}</p>
-            <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
-            <ng-template pTemplate="footer">
-              <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-              <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button> -->
-            </ng-template>
+        <h3 class="three-cards-header">{{ item.title }}</h3>
+        <div class="wrapper-businness">
+          <p-card [style]="{ width: '100%' }" styleClass="card">
+            <div class="card-business-content">
+              <ng-template pTemplate="header"> </ng-template>
+              <h5>{{ item.subTitle }}</h5>
+              <p class="business-text">{{ item.text }}</p>
+              <button class="btn btn-dark" (click)="onRoute(item.buttonText)">
+                {{ item.buttonText }}
+              </button>
+              <ng-template pTemplate="footer"> </ng-template>
+            </div>
+          </p-card>
+          <div class="image-business-content">
+            <img [src]="aDataActionsPictures[i]?.imgUrl" alt="" />
           </div>
-        </p-card>
+        </div>
       </div>
     </div>
   </div>
-
   <div class="row section-mb" *ngIf="!isHideBusinessWithGarant">
     <div class="col-lg-12 col-xs-12 card-line">
       <p-card class="business-garanteese">
@@ -72,24 +66,26 @@
             type="button"
             class="close"
             aria-label="Close"
-            (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
-            <span aria-hidden="true"><img src="../../../assets/images/cross.svg" alt=""></span>
+            (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
+          >
+            <span aria-hidden="true"
+              ><img src="../../../assets/images/cross.svg" alt=""
+            /></span>
           </button>
         </ng-template>
-        <p>{{oSuggestion.text}}</p>
+        <p>{{ oSuggestion.text }}</p>
         <ng-template pTemplate="footer">
           <div class="d-flex align-items-center">
-            <button
-              class="btn btn-dark more-info-btn"
-              routerLink="/deal/start">
-            {{oSuggestion.button2Text}}
-          </button>
+            <button class="btn btn-dark more-info-btn" routerLink="/deal/start">
+              {{ oSuggestion.button2Text }}
+            </button>
 
             <button
               class="btn btn-default btn-show-more"
-              (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
-              {{oSuggestion.button1Text}}
-          </button>
+              (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
+            >
+              {{ oSuggestion.button1Text }}
+            </button>
           </div>
         </ng-template>
       </p-card>
@@ -97,59 +93,109 @@
   </div>
 
   <!-- Секция быстрого поиска. -->
-  <div class="row section-mb gray quick-search">
+  <div class="row section-mb gray">
     <div class="col-12">
-      <h5 class="title-franchise">Быстрый поиск</h5>
+      <h5 class="title-franchise-Searc title-franchise-Search">
+        Быстрый поиск
+      </h5>
     </div>
 
-    <div class="col-12">
+    <div class="col-12 quick-search">
       <div class="block-cards-franchises block-cards-franchises-bg">
         <div class="bg">
           <p-card>
-            <ng-template pTemplate="header">
-
-            </ng-template>
+            <ng-template pTemplate="header"> </ng-template>
 
             <form #filterForm="ngForm" novalidate>
               <div class="row quick-search-form">
-                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                <div
+                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 price-range"
+                >
                   <p><strong>Вид бизнеса</strong></p>
-                  <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness"
-                    placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
+                  <p-dropdown
+                    [options]="aViewBusiness"
+                    optionLabel="viewName"
+                    [(ngModel)]="selectedViewBusiness"
+                    placeholder="Вид бизнеса"
+                    [showClear]="true"
+                    name="view"
+                  ></p-dropdown>
                 </div>
-
-                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                <!-- <gar-select
+                  [items]="aViewBusiness"
+                  title="Вид бизнеса"
+                  displayLabel="viewName"
+                ></gar-select> -->
+                <div
+                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 price-range"
+                >
                   <div class="control-quick-search">
                     <p><strong>Категория</strong></p>
-                    <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName"
-                      [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category">
+                    <p-dropdown
+                      [options]="aBusinessCategories"
+                      optionLabel="categoryName"
+                      [(ngModel)]="selectedCategory"
+                      placeholder="Категория"
+                      [showClear]="true"
+                      name="category"
+                    >
                     </p-dropdown>
                   </div>
                 </div>
 
-                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                <div
+                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 price-range"
+                >
                   <div class="control-quick-search">
                     <p><strong>Город</strong></p>
-                    <p-dropdown [options]="aCities" optionLabel="cityName" name="city" [(ngModel)]="selectedCity"
-                      placeholder="Город" [showClear]="true"></p-dropdown>
+                    <p-dropdown
+                      [options]="aCities"
+                      optionLabel="cityName"
+                      name="city"
+                      [(ngModel)]="selectedCity"
+                      placeholder="Город"
+                      [showClear]="true"
+                    ></p-dropdown>
                   </div>
                 </div>
 
-                <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
+                <div
+                  class="col-xxl-4 col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12 price-range-wrapper"
+                >
                   <div>
                     <p class="d-inline-block"><strong>Стоимость</strong></p>
                   </div>
                   <div class="price-range-input">
-                    <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
+                    <input
+                      type="text"
+                      pInputText
+                      placeholder="от 100 000 ₽"
+                      [(ngModel)]="minPrice"
+                      name="minPrice"
+                      style="width: 48%"
+                    />
 
-                    <input type="text" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice"
-                      name="maxPrice" />
+                    <input
+                      type="text"
+                      pInputText
+                      placeholder="до 100 000 000 ₽"
+                      [(ngModel)]="maxPrice"
+                      name="maxPrice"
+                    />
+                  </div>
+                  <div class="wrapper-slider">
+                    <p-slider
+                      [(ngModel)]="rangeValues"
+                      [range]="true"
+                    ></p-slider>
                   </div>
                 </div>
 
-                <div class="col-xxl-2 col-xl-6 col-lg-6 col-md-12">
-                  <div class="control-quick-search">
-                    <p><strong>Покупка через гарант</strong></p>
+                <div
+                  class="col-xxl-2 col-xl-6 col-lg-6 col-md-12 quick-search5"
+                >
+                  <div class="control-quick-search control-quick-search2">
+                    <p><strong>Покупка через </strong></p>
                     <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
                   </div>
                 </div>
@@ -157,33 +203,54 @@
             </form>
 
             <ng-template pTemplate="footer">
-              <button class="btn btn-dark" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
+              <button
+                class="btn btn-dark btn-dark-search"
+                (click)="onFilterFranchisesAsync(filterForm)"
+                style="background: #1f75fe; width: 160px; margin-left: -13px"
+              >
+                Найти
+              </button>
             </ng-template>
           </p-card>
           <!-- </div> -->
         </div>
 
-        <div class="block-cards-franchises-inner gar-row">
-          <app-catalog-simple-card *ngFor="let item of aFranchises" [item]="item"></app-catalog-simple-card>
+        <!-- <div class="block-cards-franchises-inner gar-row"> -->
+        <div class="gar-grid-cards">
+          <app-catalog-simple-card
+            *ngFor="let item of aFranchises"
+            [item]="item"
+          ></app-catalog-simple-card>
         </div>
 
-        <div class="col-lg-12 col-xs-12 d-flex justify-content-center card-demo-list">
-          <button class="btn btn-default text-center btn-show-more">Показать ещё</button>
-        </div>
+        <!-- </div> -->
+      </div>
+
+      <div
+        class="col-lg-12 col-xs-12 d-flex justify-content-center card-demo-list"
+      >
+        <button class="btn btn-default text-center btn-show-more show-btn">
+          Показать ещё
+        </button>
       </div>
     </div>
   </div>
+  <!-- </div> -->
 
   <!-- Область с банерами (2 картинки). -->
   <div class="row section-mb">
-    <div class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+    <div
+      class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"
+    >
       <div>
-        <img class="baner" src="../../../assets/images/Rectangle 13.png">
+        <img class="baner" src="../../../assets/images/Rectangle 13.png" />
       </div>
     </div>
-    <div class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+    <div
+      class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"
+    >
       <div>
-        <img class="baner" src="../../../assets/images/Rectangle 14.png">
+        <img class="baner" src="../../../assets/images/Rectangle 14.png" />
       </div>
     </div>
   </div>
@@ -193,18 +260,26 @@
     <div class="col-12">
       <h5 class="title-franchise">Популярные франшизы</h5>
     </div>
-    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aPopularFranchises">
+    <div
+      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6"
+      *ngFor="let item of aPopularFranchises"
+    >
       <div class="popular-list">
         <div>
-          <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}"
-            styleClass="p-card-shadow">
+          <p-card
+            header="{{ item.title }}"
+            subheader="{{ item.text }}"
+            [style]="{ width: '100%' }"
+            styleClass="p-card-shadow"
+          >
             <ng-template pTemplate="header">
-              <img [src]="item.url">
+              <img [src]="item.url" />
             </ng-template>
-            <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
-            <ng-template pTemplate="footer">
-
-            </ng-template>
+            <strong
+              >{{ item.textDoPrice }}
+              {{ item.price | priceFormat: item.price }} ₽</strong
+            >
+            <ng-template pTemplate="footer"> </ng-template>
           </p-card>
         </div>
       </div>
@@ -216,18 +291,26 @@
     <div class="col-12">
       <h5 class="title-franchise">Новые объявления готового бизнеса</h5>
     </div>
-    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aNewBusiness">
+    <div
+      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6"
+      *ngFor="let item of aNewBusiness"
+    >
       <div class="popular-list">
         <div>
-          <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}"
-            styleClass="p-card-shadow">
+          <p-card
+            header="{{ item.title }}"
+            subheader="{{ item.text }}"
+            [style]="{ width: '100%' }"
+            styleClass="p-card-shadow"
+          >
             <ng-template pTemplate="header">
-              <img [src]="item.url">
+              <img [src]="item.url" />
             </ng-template>
-            <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
-            <ng-template pTemplate="footer">
-
-            </ng-template>
+            <strong
+              >{{ item.textDoPrice }}
+              {{ item.price | priceFormat: item.price }} ₽</strong
+            >
+            <ng-template pTemplate="footer"> </ng-template>
           </p-card>
         </div>
       </div>
@@ -279,20 +362,20 @@
   <div class="row section-mb">
     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
       <div class="business-world-img">
-        <img src="../../../assets/images/Frame 31.png">
+        <img src="../../../assets/images/business-news..jpg" />
       </div>
     </div>
 
     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
       <div class="news-item space-left-item" *ngFor="let item of aNews">
         <!-- <img [src]="item.url"> -->
-        <strong class="title-news">{{item.name}}</strong>
+        <strong class="title-news">{{ item.name }}</strong>
         <div class="bottom-line">
-          <small>{{item.time}}</small>
-          <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
-          <small>{{item.date}}</small>
-          <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
-          <small>{{item.type}}</small>
+          <small>{{ item.time }}</small>
+          <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
+          <small>{{ item.date }}</small>
+          <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
+          <small>{{ item.type }}</small>
         </div>
       </div>
     </div>
@@ -304,13 +387,19 @@
     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
       <h5 class="title-franchise" (click)="showCategoryOnMobile($event)">
         <span>Категории бизнеса</span>
-        <img src="./../../../assets/images/Arrow 1.png" alt="gobizy arrow icon" />
+        <img
+          src="./../../../assets/images/Arrow 1.png"
+          alt="gobizy arrow icon"
+        />
       </h5>
       <div>
         <div class="category-item" *ngFor="let item of categoryList1">
-          <img class="space-right-image-category" [src]="item.url">
-          <span>{{item.name}}</span>
-          <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+          <img class="space-right-image-category" [src]="item.url" />
+          <span>{{ item.name }}</span>
+          <img
+            class="space-right-image-category space-arrow-category"
+            src="../../../assets/images/Arrow 1.png"
+          />
         </div>
       </div>
     </div>
@@ -319,9 +408,12 @@
     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
       <div class="title-franchise">&nbsp;</div>
       <div class="category-item" *ngFor="let item of categoryList2">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+        <img class="space-right-image-category" [src]="item.url" />
+        <span>{{ item.name }}</span>
+        <img
+          class="space-right-image-category space-arrow-category"
+          src="../../../assets/images/Arrow 1.png"
+        />
       </div>
     </div>
 
@@ -329,13 +421,19 @@
     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
       <h5 class="title-franchise" (click)="showCategoryOnMobile($event)">
         <span>Категории франшиз</span>
-        <img src="./../../../assets/images/Arrow 1.png" alt="gobizy arrow icon" />
+        <img
+          src="./../../../assets/images/Arrow 1.png"
+          alt="gobizy arrow icon"
+        />
       </h5>
       <div>
         <div class="category-item" *ngFor="let item of categoryList3">
-          <img class="space-right-image-category" [src]="item.url">
-          <span>{{item.name}}</span>
-          <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+          <img class="space-right-image-category" [src]="item.url" />
+          <span>{{ item.name }}</span>
+          <img
+            class="space-right-image-category space-arrow-category"
+            src="../../../assets/images/Arrow 1.png"
+          />
         </div>
       </div>
     </div>
@@ -344,10 +442,14 @@
     <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
       <div class="title-franchise">&nbsp;</div>
       <div class="category-item" *ngFor="let item of categoryList4">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+        <img class="space-right-image-category" [src]="item.url" />
+        <span>{{ item.name }}</span>
+        <img
+          class="space-right-image-category space-arrow-category"
+          src="../../../assets/images/Arrow 1.png"
+        />
       </div>
     </div>
   </div>
+  <!-- </section> -->
 </section>

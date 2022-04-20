@@ -85,233 +85,6 @@
   margin: 0;
 }
 
-.bg {
-  padding: 1rem 1.5rem;
-  padding-top: 20px;
-  background: #f1f1f1;
-  width: 100%;
-  margin: 20px auto;
-}
-// Покупка бизнеса с гарантиями
-::ng-deep {
-  .col-lg-5 {
-    padding: 0;
-  }
-}
-.title-franchise {
-  max-width: 341px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 28px;
-}
-.right-text {
-  width: 90%;
-  height: 96px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-  margin-bottom: 0;
-}
-
-.right-block-img {
-  margin: 0 -20px 7px 10px;
-}
-.btn-dark {
-  width: 156px;
-  height: 53px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 21px;
-  background: #1f75fe;
-}
-.wrapper-container {
-  width: 59%;
-  flex-wrap: nowrap;
-}
-::ng-deep {
-  // весь блок
-  .carousel-block {
-    width: 100%;
-    display: flex;
-    min-height: 342px;
-    margin: 0;
-    .col-lg-7 {
-      padding: 0;
-    }
-    // карточка название готового бизнеса
-    .product-item {
-      // текст карточки готового бизнеса
-      .product-image {
-        margin-bottom: 16px;
-      }
-      .p-card {
-        height: 127px;
-
-        // Название готового бизнеса
-        &-title {
-          width: 234px;
-          height: 21px;
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: 600;
-          font-size: 18px;
-          line-height: 21px;
-          margin-bottom: 8px;
-          text-align: left;
-        }
-        &-subtitle {
-          text-align: start;
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 12px;
-          line-height: 14px;
-          margin-bottom: 16px;
-        }
-        &-content {
-          padding: 0;
-          padding-left: 10px;
-          position: static;
-          width: 190px;
-          height: 36px;
-          left: 16px;
-          top: 75px;
-          background: #f1f6ff;
-          border-radius: 4px;
-          color: #1653b4;
-
-          strong {
-            display: inline-block;
-            position: static;
-            width: 185px;
-            height: 16px;
-            margin: auto;
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 16.41px;
-            color: #1653b4;
-          }
-        }
-        &-body {
-          padding: 0;
-        }
-      }
-    }
-  }
-}
-::ng-deep {
-  .right {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    width: 100%;
-    background: #f1f6ff;
-    .card-right {
-      height: 282px !important;
-      background: #121213;
-    }
-    .p-card {
-      width: 100%;
-      background-color: transparent !important;
-      &-footer {
-        padding: 0;
-      }
-
-      &-content {
-        .right-text {
-          width: 100% !important;
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 14px;
-          line-height: 16px;
-          color: #2c2c2c;
-        }
-      }
-
-      &-title {
-        width: 100% !important;
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 21px;
-        color: #2c2c2c;
-      }
-    }
-  }
-}
-/* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 980px) and (max-device-width: 1024px) {
-  /* Styles */
-  ::ng-deep .p-carousel-items-container {
-    width: 587px;
-  }
-  .p-card-title {
-    width: 100px;
-  }
-  .title-franchise {
-    font-size: 21px;
-  }
-  .right-images {
-    display: none;
-  }
-  ::hg-deep {
-    .p-carousel-indicators {
-      display: none;
-    }
-  }
-  .wrapper-container {
-    width: 100%;
-  }
-  ::ng-deep {
-    .right {
-      .card-right {
-        max-width: 413px;
-        background: #2c2c2c;
-      }
-    }
-  }
-}
-@media only screen and (min-device-width: 320px) and (max-device-width: 979px) {
-  ::ng-deep {
-    // весь блок
-    .carousel-block {
-      display: flex;
-      flex-wrap: wrap-reverse;
-      margin-bottom: 36px !important;
-      .p-carousel-indicators {
-        display: none;
-      }
-    }
-  }
-  .wrapper-container {
-    width: 100%;
-  }
-  .right-images {
-    display: inline-block;
-  }
-}
-
-::ng-deep .card1 {
-  border: none !important;
-  background-color: #f1f6ff !important;
-  display: flex;
-  // width: 576px;
-  // height: 292px;
-}
-.p.card .p-card-title {
-  font-size: 18px;
-}
 ::ng-deep .business-garanteese .p-card .p-card-header {
   padding-bottom: 0;
   // margin-bottom: 16px;
@@ -327,10 +100,10 @@
   padding-top: 0;
 }
 
-::ng-deep .card-business .p-card-body {
-  // background: #F1F1F1;
-  padding: 16px 24px;
-}
+// ::ng-deep .card-business .p-card-body {
+//   background: #F1F1F1;
+//   padding: 16px 24px;
+// }
 
 ::bg-deep .p-card {
   width: 1440px !important;
@@ -339,11 +112,11 @@
 ::ng-deep .card-business .btn-dark {
   padding: 16px;
 }
-
-::ng-deep .right .btn-dark {
-  padding: 16px;
+.block-cards-franchises {
+  &:p-card-footer {
+    background: #1f75fe;
+  }
 }
-
 ::ng-deep .card-line .p-card-body {
   // background: #F1F6FF;
   padding: 24px 16px 24px 16px;
@@ -370,23 +143,13 @@
 
 ::ng-deep .card {
   border: none !important;
-  background-color: #f1f6ff;
-  width: 342px;
-  height: 282px;
+  background-color: rgba(218, 218, 218, 0.15)
 }
 
 .block-card-item {
   // background: white;
   width: 336px;
 }
-
-.card-demo-list {
-  margin-top: 24px;
-}
-
-// .gray {
-//   background: #F1F1F1;
-// }
 
 .btn-show-more {
   border: 1px solid;
@@ -441,6 +204,17 @@
   .right-images {
     width: 100%;
   }
+  ::ng-deep .card-business .p-card-body {
+    // background: #F1F1F1;
+    padding: 16px 0px;
+    .p-card-content {
+      padding: 0;
+    }
+    .business-text {
+      font-size: 14px;
+      min-height: 84px;
+    }
+  }
 }
 
 /* Smartphones (landscape) ----------- */
@@ -454,11 +228,9 @@
 }
 
 /* iPads (portrait and landscape) ----------- */
-// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-//   /* Styles */
-//   .card {
-//   }
-// }
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Styles */
+}
 
 /* iPads (landscape) ----------- */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
@@ -502,27 +274,152 @@
   /* Styles */
 }
 
-.block-cards-franchises {
-  gap: 16px;
-  justify-content: center;
-  padding-bottom: 24px;
-  background: #f1f1f1;
+// Быстрый поиск
 
-  .card-franchise {
+.title-franchise-Search {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #2c2c2c;
+}
+.quick-search {
+  width: 74rem;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: static;
+  background: #f1f6ff;
+  border-radius: 8px;
+
+  .block-cards-franchises-bg {
+    width: 100%;
+  }
+  .control-quick-search {
+    font-size: 18px;
+  }
+  .quick-search-form {
+    justify-content: space-between;
+    [class^="col"] {
+      margin: 0px;
+      font-size: 18px;
+      text-align: start;
+    }
+  }
+  .col-xxl-2 {
     padding: 0;
   }
-
-  .block-cards-franchises-content {
-    background: #f1f1f1;
+  .price-range-wrapper {
+    width: 33%;
+    padding: 0;
+    .price-range-input {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    .wrapper-slider {
+      display: none;
+      width: 314px;
+      height: 28px;
+      margin-top: 16px;
+    }
+  }
+  .quick-search-form {
+    .price-range {
+      width: 15%;
+    }
+  }
+  .quick-search5 {
+    width: 15%;
   }
 }
 
-.card-left-centered {
+// Быстрый поиск блок с картинками.
+.block-cards-franchises-inner {
+  background: #f1f6ff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.block-cards-franchises {
+  margin-bottom: 24px;
+}
+
+::ng-deep .quick-search-card-holder .ng-star-inserted {
+  display: flex;
+  flex-direction: column;
+  max-height: 375px;
+}
+::ng-deep .p-card-shadow {
+  padding-top: 12px;
+  .p-card-body {
+    .p-card-title {
+      font-size: 18px;
+      background: #ffffff;
+    }
+    .p-card-subtitle {
+      background: #ffffff;
+    }
+  }
+}
+::ng-deep .card-left-centered {
   display: flex;
   flex-direction: column;
   align-items: baseline;
 }
-
+.block-card-img {
+  border: 1px solid black;
+  height: 163px;
+  display: block;
+  width: 100%;
+  // margin-top: 12px;
+  margin: 0 auto 12px;
+}
+.franchise-wraper-btn {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: revert;
+}
+.price-range {
+  width: 20%;
+}
+.btn-dark-left {
+  width: 45%;
+  padding: 9px 0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  background: #f1f6ff;
+  color: #1f75fe;
+}
+.btn-dark-right {
+  width: 51%;
+  background: #1f75fe;
+  padding: 5px 0;
+  color: #ffffff;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+}
+.show-btn {
+  border: none;
+  border-radius: 43px;
+  // margin-top: 3rem;
+  padding: 16px 25px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #1f75fe;
+  background: #ffffff;
+}
 ::ng-deep .p-carousel {
   max-width: calc(100% - 24px);
   // justify-content: space-between;
@@ -532,26 +429,30 @@
   background: #f1f6ff;
 }
 
-::ng-deep .quick-search .p-inputtext {
-  background: #f1f6ff;
+::ng-deep .quick-search .price-range-input {
   width: 149px;
-  margin-right: 16px;
+  background: #ffffff;
+  @media (min-width: 992px) and (max-width: 1200px) {
+    width: 24rem;
+    input {
+      max-width: 49%;
+    }
+  }
 }
 
 ::ng-deep .p-inputswitch .p-inputswitch-slider {
   background: #c8dbff;
 }
 
-.block-card-img {
-  display: block;
-  width: 100%;
-  padding-top: 12px;
-  margin: 0 auto;
-}
-
 ::ng-deep .p-carousel-item {
   max-width: 365px;
   // grid-gap: 20px !important;
+}
+
+::ng-deep {
+  .p-card-body {
+    padding: 1.5rem;
+  }
 }
 
 .section-mb {
@@ -563,6 +464,10 @@
 }
 
 ::ng-deep {
+  // .p-inputtext {
+  //   width: auto !important;
+  // }
+
   .quick-search-card {
     .p-card-header {
       padding: 0 0.75rem;
@@ -571,22 +476,22 @@
 }
 
 .p-inputtext {
-  max-width: 150px;
+  max-width: 48%;
+  background: #f1f6ff;
 }
 
-.block-cards-franchises-inner {
-  padding: 1.5rem;
-  > app-catalog-simple-card {
-    //TODO: сделать по уму
-    max-width: 360px;
+    .price-range-input {
+      width: 16rem;
+    }
+  
+  .quick-search {
+    border: none;
   }
-}
-
-.quick-search-form {
-  [class^="col"] {
-    margin: 1rem 0;
+  .quick-search-form:last-child {
+    .control-quick-search {
+      text-align: start;
+    }
   }
-}
 
 .ready-business-categories .title-franchise {
   display: flex;
@@ -597,14 +502,216 @@
     display: none;
   }
 }
+// Адаптив для блока с поиском
+@media only screen and (min-device-width: 992px) and (max-device-width: 1200px) {
+  .quick-search {
+    width: 100%;
+    padding: 0;
+    flex-direction: column;
 
+  .quick-search-form {
+    .price-range {
+      margin-bottom: 20px;
+      width: 32%;
+      }
+    }
+    .price-range-wrapper {
+      width: 66%;
+    }
+    .quick-search5 {
+      width: 32%;
+    }
+  }
+  .control-quick-search2 {
+    max-width: 75%;
+  }
+  ::ng-deep .p-dropdown-clearable {
+    margin-bottom: 30px;
+  }
+  .price-range-wrapper {
+  
+    input {
+      width: 49%;
+    }
+    
+  }
+  .block-cards-franchises-inner {
+    margin-bottom: 0;
+    overflow: auto;
+  }
+  .show-btn {
+    margin-top: 0;
+  }
+  .wrapper-slider {
+    display: none;
+  }
+}
+::ng-deep .p-dropdown-clearable {
+  width: 100%;
+}
 @media (max-width: 1800px) {
   .three-cards-header {
     font-size: 1.25rem;
   }
 }
+@media only screen and (min-device-width: 489px) and (max-device-width: 980px) {
+  /* Styles */
+  .show-btn {
+    margin-top: 0;
+  }
+  .quick-search {
+    width: 100%;
+    padding: 0;
+    flex-direction: column;
+    .col-xxl-4 {
+      max-width: 66%;
+    }
+    .card-demo-list {
+      margin: auto;
+    }
+    .quick-search-form {
+      .price-range {
+        width: 32%;
+        margin-bottom: 20px;
+      }
+      .quick-search5 {
+        width: 32%;
+      }
+      .price-range-wrapper  {
+        width: 66%;
+      }
+    }
+  }
+  .price-range-wrapper {
+    max-width: 66%;
+  }
+  .quick-search-form {
+    min-height: 216px;
+    align-content: space-between;
+    .control-quick-search {
+      text-align: start;
+    }
+  }
+  .block-cards-franchises-inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: center;
+    margin-bottom: 24px;
+    .gar-card {
+      width: 48%;
+      margin: 5px;
+    }
+  }
+  
+  .show-btn {
+    margin-top: 0;
+    background: #FFFFFF;
+    color: #1f75fe;
+    margin-bottom: 16px;
+  }
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 488px) {
+  .price-range-input {
+    .p-inputtext {
+      width: 49% !important;
+      max-width: 49%;
+      margin-bottom: 10px;
+    }
+  }
+  .franchise-wraper-btn {
+    display: flex;
+    flex-direction: column;
+  }
+  .btn-dark-left {
+    width: 100% !important;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .card-business-holder {
+    max-width: 100%;
+    padding: 0;
+    .card-business-content {
+      padding: 8px;
+    }
+  }
+  .quick-search {
+    width: 100%;
+    padding: 8px;
+    flex-direction: column;
+    .card-demo-list {
+      margin: auto;
+    }
+    .quick-search-form {
+      .price-range {
+        width: 100%;
+      }
+      .price-range-wrapper {
+        max-width: 100%;
+        width: 100%;
+        .price-range-input {
+          flex-direction: row;
+          flex-wrap: nowrap;
+        }
+      }
+    }
+  }
+  .quick-search-form:last-child {
+    .control-quick-search {
+      text-align: start;
+    }
+  }
+  .block-cards-franchises {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 8px;
+    .block-cards-franchises-inner {
+      margin-bottom: 8px;
+    }
+  }
 
-@media (min-width: 1400px) and (max-width: 1700px) {
+  .btn-dark-right {
+    width: 100% !important;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .show-btn {
+    margin-top: 0;
+    background: #FFFFFF;
+    color:#1f75fe;
+  }
+  .control-quick-search {
+    text-align: start;
+  }
+  .quick-search5 {
+    display: none;
+    width: 100%;
+  
+    .control-quick-search2 {
+      text-align: start;
+    }
+  }
+//   ::ng-deep .gar-card {
+//   .gar-row {
+//     flex-direction: column;
+//     .gar-row-item {
+//       margin-bottom: 8px;
+//     }
+//   }
+// }
+  .block-cards-franchises-inner {
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: center;
+  
+    .gar-card {
+      width: 100%;
+      margin: 5px auto;
+
+    }
+  }
+}
+@media (min-width: 1441px) and (max-width: 1700px) {
   .quick-search-form {
     [class^="col"] {
       &:nth-child(1),
@@ -615,10 +722,11 @@
         width: 20%;
       }
       &:nth-child(4) {
-        width: 40%;
+        width: 30%;
       }
     }
   }
+  
 }
 
 @media (max-width: 1200px) {
@@ -636,21 +744,6 @@
     font-size: 1rem;
   }
 }
-// Закоментировал 10.03.22
-// @media (max-width: 992px) {
-//   .carousel-block {
-//     flex-direction: column-reverse;
-//     background: #2c2c2c;
-
-//     .right {
-//       margin-bottom: 2.25rem;
-//     }
-
-//     [class^="col"] {
-//       width: 100%;
-//     }
-//   }
-// }
 
 @media (max-width: 992px) {
   .carousel-block {
@@ -702,7 +795,7 @@
         }
       }
     }
-
+    
     .title-franchise + div {
       display: none;
     }
@@ -774,6 +867,212 @@
       .p-dropdown {
         width: 100%;
       }
+    }
+  }
+}
+
+// 3 карточки
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+/* You can add global styles to this file, and also import other style files */
+// общие стили
+.app-container {
+  width: 80%;
+  max-width: 1440px;
+  margin: 0 auto !important;
+
+  @media (max-width: 1440px) {
+    width: 96%;
+    margin: 0 1.5rem !important;
+  }
+
+  @media (max-width: 1080px) {
+    width: calc(100% - 10rem);
+    margin: 0 5rem !important;
+  }
+
+  @media (max-width: 576px) {
+    width: calc(100% - 2.5rem);
+    margin: 0 1.25rem !important;
+  }
+}
+
+// общие стили
+// Блок бизнес с тремя карточками
+.section-mb {
+  margin: auto auto 5rem auto !important;
+}
+
+.card-business-holder {
+  .p-element {
+    width: 65%;
+  }
+
+  .three-cards-header {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1rem;
+  }
+
+  .card {
+    min-height: 100%;
+    padding-left: 24px;
+    background-color: rgba(218, 218, 218, 0.15);
+  }
+
+  .wrapper-businness {
+    display: flex;
+  }
+
+  .card-business {
+    min-height: 335px;
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 0;
+  }
+
+  .card-business-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h5 {
+    max-width: 78%;
+    min-height: 58px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 21px;
+    color: #2c2c2c;
+  }
+
+  .business-text {
+    font-size: 0.7rem;
+    height: 122px;
+  }
+
+  .btn-dark {
+    align-items: flex-end;
+    width: 10rem;
+    height: 53px;
+    padding: 10px;
+    background: #1f75fe;
+  }
+
+  .p-card-body {
+    padding: 0 !important;
+  }
+
+  .image-business-content {
+    min-width: 30%;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(218, 218, 218, 0.15);
+  }
+  @media only screen and (min-device-width: 981px) and (max-device-width: 1024px) {
+  
+    /* Styles */
+    .three-cards-header {
+      font-size: 1rem !important;
+      line-height: 0.9rem;
+    }
+  
+    .card-business-holder {
+      .p-element {
+        width: 77%;
+      }
+    }
+  
+    .image-business-content {
+      display: none;
+  
+      img {
+        display: none;
+      }
+    }
+  }
+  
+  @media only screen and (min-device-width: 720px) and (max-device-width: 980px) {
+    .three-cards-header {
+      font-size: 1rem;
+    }
+  
+    .image-business-content {
+      display: none;
+  
+      img {
+        display: none;
+      }
+    }
+  
+    .business-text {
+      margin-bottom: 20pxpx;
+      height: 110px;
+    }
+    .quick-search {
+      flex-direction: column;
+    }
+    .card-business-content {
+      padding-top: 15px;
+    }
+  }
+  
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .p-element {
+      width: 80%;
+    }
+  
+    .card-business {
+      .three-cards-header {
+        font-size: 0.9rem;
+      }
+    }
+  
+    h5 {
+      max-width: 99%;
+    }
+  
+    .wrapper-business {
+      height: 305px;
+    }
+  
+    .card {
+      padding-left: 10px;
+    }
+  
+    .p-card-content {
+      padding: 15px 0 8px !important;
+    }
+  
+    .business-text {
+      margin-bottom: 50px;
+      height: 110px;
+    }
+  }
+  .secondary {
+    max-width: 100%;
+  }
+  }
+  
+  @media only screen and (min-device-width: 720px) and (max-device-width: 980px) {
+    .card-business-holder {
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+        width: 50%;
+      }
+    }
+  }
+:host {
+  @media only screen and (min-device-width: 720px) and (max-device-width: 980px) {
+    .row .section-mb {
+      display: flex;
     }
   }
 }

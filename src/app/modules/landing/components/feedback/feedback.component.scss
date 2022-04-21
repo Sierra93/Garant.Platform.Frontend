@@ -78,17 +78,22 @@
     line-height: 21px;
     border: 1px solid #fff;
   }
-  &__submit.is-prime {
-    background: #1f75fe;
-    color: #fff;
-    border: none;
+  &__submit {
+    &.is-convert {
+      background: #1f75fe;
+      color: #fff;
+      border: none;
+    }
+  }
+  &__photo-wrapper {
+    position: relative;
   }
   &__assistant {
+    height: 90%;
     position: absolute;
-    width: 622px;
     right: 0;
     bottom: 0;
-    margin-right: -140px;
+    margin-bottom: -60px;
   }
 }
 

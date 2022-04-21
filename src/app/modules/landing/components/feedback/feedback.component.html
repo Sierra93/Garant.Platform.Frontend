@@ -1,11 +1,11 @@
 <section class="feedback" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
   <form
-    class="bg-primary feedback__request"
-    [ngClass]="{ 'bg-dark': isModify }"
+    class="feedback__request"
+    [ngStyle]="{'background-color': bgColor}"
   >
     <div class="container">
       <div class="row">
-        <div [ngClass]="{ 'col-lg-9': isLaptop, 'col-xl-9': isHD }">
+        <div [ngClass]="{ 'col-lg-7': isLaptop || isHD }">
           <div class="alert alert-light feedback__title">{{ title }}</div>
           <div class="alert alert-light feedback__subtitle">
             {{ subtitle }}
@@ -14,7 +14,7 @@
           <div class="mb-3 row feedback__field-orientation">
             <div
               class="feedback__entry-wrapper"
-              [ngClass]="{ 'col-xl-4': isHD, 'col-lg-6': isLaptop }"
+              [ngClass]="{ 'col-xl-5': isHD, 'col-lg-6': isLaptop }"
             >
               <label for="userName" class="form-label feedback__text-note"
                 >Имя</label
@@ -29,7 +29,7 @@
             </div>
             <div
               class="feedback__entry-wrapper"
-              [ngClass]="{ 'col-xl-4': isHD, 'col-lg-6': isLaptop }"
+              [ngClass]="{ 'col-xl-5': isHD, 'col-lg-6': isLaptop }"
             >
               <label class="form-label feedback__text-note"
                 >Номер телефона</label
@@ -42,10 +42,10 @@
             </div>
             <div
               class="feedback__submit-request"
-              [ngClass]="{ 'col-xl-6': isHD, 'col-lg-6': isLaptop }"
+              [ngClass]="{ 'col-lg-8': isLaptop || isHD }"
             >
               <button
-                [ngClass]="{ 'is-prime': isModify }"
+                [ngClass]="{ 'is-convert': isBgColor }"
                 class="btn btn-primary feedback__submit"
                 (click)="onSendLandingRequestAsync(name, phoneNumber)"
               >
@@ -54,11 +54,16 @@
             </div>
           </div>
         </div>
-        <img
-          class="img-fluid feedback__assistant"
-          [src]="imagePath"
-          alt="Консультант"
-        />
+        <div
+          [ngClass]="{ 'col-lg-5': isLaptop || isHD }"
+          class="feedback__photo-wrapper"
+        >
+          <img
+            class="img-fluid feedback__assistant"
+            [src]="imagePath"
+            alt="Консультант"
+          />
+        </div>
       </div>
     </div>
   </form>

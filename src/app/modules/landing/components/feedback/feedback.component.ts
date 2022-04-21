@@ -11,7 +11,8 @@ export class FeedbackComponent implements OnInit, DoCheck {
   @Input() subtitle: string = '';
   @Input() tooltip: string = '';
   @Input() imagePath: string = '';
-  @Input() isModify: boolean = false;
+  @Input() bgColor: string = '';
+  @Input() isBgColor: boolean = false;
 
   isLaptop!: boolean;
   isHD!: boolean;

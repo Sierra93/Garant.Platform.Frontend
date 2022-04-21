@@ -5,8 +5,7 @@
         class="deal__img-wrapper"
         [ngClass]="{
           'col-lg-5': isLaptop,
-          'col-xl-5': isHD,
-          'col-xxl-5': isFullHD
+          'col-xl-5': isHD || isFullHD
         }"
       >
         <img
@@ -19,8 +18,7 @@
         class="deal__content"
         [ngClass]="{
           'col-lg-7': isLaptop,
-          'col-xl-7': isHD,
-          'col-xxl-7': isFullHD
+          'col-xl-7': isHD || isFullHD
         }"
       >
         <div class="card-body deal__description">
@@ -44,12 +42,11 @@
 >
   <div class="row statistics__gallery">
     <div
-      class="col-lg-6 statistics__item"
+      class="statistics__item"
       [ngClass]="{
         'mb-3': isLaptop,
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <app-statistics-card
@@ -60,12 +57,11 @@
       ></app-statistics-card>
     </div>
     <div
-      class="col-lg-6 statistics__item"
+      class="statistics__item"
       [ngClass]="{
         'mb-3': isLaptop,
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <app-statistics-card
@@ -76,12 +72,11 @@
       ></app-statistics-card>
     </div>
     <div
-      class="col-lg-6 statistics__item"
+      class="statistics__item"
       [ngClass]="{
         'mb-3': isLaptop,
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <app-statistics-card
@@ -92,12 +87,11 @@
       ></app-statistics-card>
     </div>
     <div
-      class="col-lg-6 statistics__item"
+      class="statistics__item"
       [ngClass]="{
         'mb-3': isLaptop,
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <app-statistics-card
@@ -115,7 +109,8 @@
   [subtitle]="feedbackSubtitle"
   [tooltip]="feedbackNote"
   [imagePath]="feedbackImgPath"
-  [isModify]="feedbackTheme"
+  [bgColor]="'rgba(0, 0, 0, 0.9)'"
+  [isBgColor]="true"
 ></app-feedback>
 <!-- Секция бонусов сервиса -->
 <section class="checklist" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
@@ -125,8 +120,7 @@
       class="checklist__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <div class="card checklist__content">
@@ -164,8 +158,7 @@
       class="checklist__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <div class="card checklist__content">
@@ -203,8 +196,7 @@
       class="checklist__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <div class="card checklist__content">
@@ -242,8 +234,7 @@
       class="checklist__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <div class="card checklist__content">
@@ -285,35 +276,40 @@
 <app-garant></app-garant>
 <!--  -->
 <!-- Секция пакеты услуг -->
-<section class="package" [ngClass]="{'is-laptop': isLaptop}">
+<section class="package" [ngClass]="{ 'is-laptop': isLaptop }">
   <h5 class="alert alert-light package-common-title">
     Пакеты на создание франшиз упаковки
   </h5>
   <div class="row package-root">
-    <div
-      class="package-wrapper"
-    >
+    <div class="package-wrapper">
       <div class="card package-list">
+        <img
+          class="img-fluid"
+          src="../../../../assets/images/franchise-landing/fast-start 1.png"
+          alt="Пакет из 7 инструментов"
+        />
         <div class="card-header package-title package-title--dark">
           Пакет "Быстрый старт"
         </div>
         <div class="card-body package-content">
           <div class="card-text package-content-title">
-           Если у Вас за порогом стоит потенциальный<br>
-           покупатель или Вы хотите просто<br>
-           протестировать нишу, то этот пакет именно для<br>
-           Вас!
-          </div>
-          <div class="package-service">
-            <div class="package-reach-icon package-reach-icon--yes"></div>
-            <div class="package-service-text">Аудит бизнеса и анализ конкурентов</div>
+            Если у Вас за порогом стоит потенциальный<br />
+            покупатель или Вы хотите просто<br />
+            протестировать нишу, то этот пакет именно для<br />
+            Вас!
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка состава франшизы:<br>
-              определение стоимости франшизы,<br>
-              создание уникального предложения и<br>
+              Аудит бизнеса и анализ конкурентов
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка состава франшизы:<br />
+              определение стоимости франшизы,<br />
+              создание уникального предложения и<br />
               концепции франшизы
             </div>
           </div>
@@ -327,15 +323,15 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Создание финансовой модели<br>
-              франшизы (инвестиции в запуск,<br>
+              Создание финансовой модели<br />
+              франшизы (инвестиции в запуск,<br />
               доходность и окупаемость)
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка договора коммерческой<br>
+              Разработка договора коммерческой<br />
               концессии/лицензионный договор
             </div>
           </div>
@@ -348,57 +344,55 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Разработка сайта для продажи<br>
+              Разработка сайта для продажи<br />
               франшизы (до 10 страниц)
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
-            <div class="package-service-text">
-              Книга продаж Вашей франшизы
-            </div>
+            <div class="package-service-text">Книга продаж Вашей франшизы</div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Обучение и аттестация Вашего<br>
+              Обучение и аттестация Вашего<br />
               менеджера по продажам
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Внедрение CRM системы для аналитики<br>
+              Внедрение CRM системы для аналитики<br />
               продаж франшизы
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Разработка фирменного стиля<br>
+              Разработка фирменного стиля<br />
               компании
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Руководство по запуску франшизы<br>
+              Руководство по запуску франшизы<br />
               (франчбук)
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Разработка стратегии: «Каналы продаж<br>
+              Разработка стратегии: «Каналы продаж<br />
               франшизы»
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Настройка рекламной компании, для<br>
-              запуска продаж Вашей франшизы либо<br>
-              размещение в ТОП-овом каталоге<br>
+              Настройка рекламной компании, для<br />
+              запуска продаж Вашей франшизы либо<br />
+              размещение в ТОП-овом каталоге<br />
               франшиз;
             </div>
           </div>
@@ -411,7 +405,7 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Контроль качества звонков менеджера,<br>
+              Контроль качества звонков менеджера,<br />
               нашим руководителем отдела продаж
             </div>
           </div>
@@ -425,15 +419,13 @@
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
-            <div class="package-service-text">
-              Настройка CRM-системы
-            </div>
+            <div class="package-service-text">Настройка CRM-системы</div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Гарантированное сопровождение и<br>
-              доведение до первых продаж<br>
+              Гарантированное сопровождение и<br />
+              доведение до первых продаж<br />
               франшизы;
             </div>
           </div>
@@ -444,42 +436,53 @@
             </li>
             <li class="list-group-item package-price-item">
               <span class="package-total-note">Бесплатный бонус</span>
-              <span class="package-total-result">проверка торгового<br> знака</span>
+              <span class="package-total-result"
+                >проверка торгового<br />
+                знака</span
+              >
             </li>
             <li class="list-group-item package-price-item">
               <span class="package-total-note">Стоимость пакета</span>
               <span class="package-total-result">350 000 &#8381;</span>
             </li>
             <li class="list-group-item package-price-item">
-              <button class="btn btn-primary package-submit">Упаковать франшизу</button>
+              <button class="btn btn-primary package-submit">
+                Упаковать франшизу
+              </button>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <div
-      class="package-wrapper"
-    >
+    <div class="package-wrapper">
       <div class="card package-list">
+        <img
+          class="img-fluid"
+          src="../../../../assets/images/franchise-landing/fast-start 2.png"
+          alt="Пакет из 15 инструментов"
+        />
         <div class="card-header package-title package-title--primary">
           Пакет "Франшиза под ключ"
         </div>
         <div class="card-body package-content">
           <div class="card-text package-content-title">
-            Этот пакет для Вас, если Вам нужен полный<br>
-            комплекс услуг необходимых для продажи<br>
-            франшизы и запуска вашего Вашего<br> франчайзи.
-          </div>
-          <div class="package-service">
-            <div class="package-reach-icon package-reach-icon--yes"></div>
-            <div class="package-service-text">Аудит бизнеса и анализ конкурентов</div>
+            Этот пакет для Вас, если Вам нужен полный<br />
+            комплекс услуг необходимых для продажи<br />
+            франшизы и запуска вашего Вашего<br />
+            франчайзи.
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка состава франшизы:<br>
-              определение стоимости франшизы,<br>
-              создание уникального предложения и<br>
+              Аудит бизнеса и анализ конкурентов
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка состава франшизы:<br />
+              определение стоимости франшизы,<br />
+              создание уникального предложения и<br />
               концепции франшизы
             </div>
           </div>
@@ -493,15 +496,15 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Создание финансовой модели<br>
-              франшизы (инвестиции в запуск,<br>
+              Создание финансовой модели<br />
+              франшизы (инвестиции в запуск,<br />
               доходность и окупаемость)
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка договора коммерческой<br>
+              Разработка договора коммерческой<br />
               концессии/лицензионный договор
             </div>
           </div>
@@ -514,57 +517,55 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка сайта для продажи<br>
+              Разработка сайта для продажи<br />
               франшизы (до 10 страниц)
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
-            <div class="package-service-text">
-              Книга продаж Вашей франшизы
-            </div>
+            <div class="package-service-text">Книга продаж Вашей франшизы</div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Обучение и аттестация Вашего<br>
+              Обучение и аттестация Вашего<br />
               менеджера по продажам
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Внедрение CRM системы для аналитики<br>
+              Внедрение CRM системы для аналитики<br />
               продаж франшизы
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка фирменного стиля<br>
+              Разработка фирменного стиля<br />
               компании
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Руководство по запуску франшизы<br>
+              Руководство по запуску франшизы<br />
               (франчбук)
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Разработка стратегии: «Каналы продаж<br>
+              Разработка стратегии: «Каналы продаж<br />
               франшизы»
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Настройка рекламной компании, для<br>
-              запуска продаж Вашей франшизы либо<br>
-              размещение в ТОП-овом каталоге<br>
+              Настройка рекламной компании, для<br />
+              запуска продаж Вашей франшизы либо<br />
+              размещение в ТОП-овом каталоге<br />
               франшиз;
             </div>
           </div>
@@ -577,7 +578,7 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Контроль качества звонков менеджера,<br>
+              Контроль качества звонков менеджера,<br />
               нашим руководителем отдела продаж
             </div>
           </div>
@@ -591,15 +592,13 @@
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
-            <div class="package-service-text">
-              Настройка CRM-системы
-            </div>
+            <div class="package-service-text">Настройка CRM-системы</div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Гарантированное сопровождение и<br>
-              доведение до первых продаж<br>
+              Гарантированное сопровождение и<br />
+              доведение до первых продаж<br />
               франшизы;
             </div>
           </div>
@@ -610,43 +609,53 @@
             </li>
             <li class="list-group-item package-price-item">
               <span class="package-total-note">Бесплатный бонус</span>
-              <span class="package-total-result">консультирование<br> в течение полугода</span>
+              <span class="package-total-result"
+                >консультирование<br />
+                в течение полугода</span
+              >
             </li>
             <li class="list-group-item package-price-item">
               <span class="package-total-note">Стоимость пакета</span>
               <span class="package-total-result">480 000 &#8381;</span>
             </li>
             <li class="list-group-item package-price-item">
-              <button class="btn btn-primary package-submit">Упаковать франшизу</button>
+              <button class="btn btn-primary package-submit">
+                Упаковать франшизу
+              </button>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <div
-      class="package-wrapper"
-    >
+    <div class="package-wrapper">
       <div class="card package-list">
+        <img
+          class="img-fluid"
+          src="../../../../assets/images/franchise-landing/fast-start 3.png"
+          alt="Пакет из 25 инструментов"
+        />
         <div class="card-header package-title package-title--dark">
           Пакет "Доведение до продаж"
         </div>
         <div class="card-body package-content">
           <div class="card-text package-content-title">
-            В рамках пакета быстрый старт вы<br>
-            получаете полностью упакованный<br>
-            бизнес во франшизу + обученного<br>
+            В рамках пакета быстрый старт вы<br />
+            получаете полностью упакованный<br />
+            бизнес во франшизу + обученного<br />
             менеджера.
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
-            <div class="package-service-text">Аудит бизнеса и анализ конкурентов</div>
+            <div class="package-service-text">
+              Аудит бизнеса и анализ конкурентов
+            </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка состава франшизы:<br>
-              определение стоимости франшизы,<br>
-              создание уникального предложения и<br>
+              Разработка состава франшизы:<br />
+              определение стоимости франшизы,<br />
+              создание уникального предложения и<br />
               концепции франшизы
             </div>
           </div>
@@ -660,15 +669,15 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Создание финансовой модели<br>
-              франшизы (инвестиции в запуск,<br>
+              Создание финансовой модели<br />
+              франшизы (инвестиции в запуск,<br />
               доходность и окупаемость)
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка договора коммерческой<br>
+              Разработка договора коммерческой<br />
               концессии/лицензионный договор
             </div>
           </div>
@@ -681,57 +690,55 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка сайта для продажи<br>
+              Разработка сайта для продажи<br />
               франшизы (до 10 страниц)
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
-            <div class="package-service-text">
-              Книга продаж Вашей франшизы
-            </div>
+            <div class="package-service-text">Книга продаж Вашей франшизы</div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Обучение и аттестация Вашего<br>
+              Обучение и аттестация Вашего<br />
               менеджера по продажам
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Внедрение CRM системы для аналитики<br>
+              Внедрение CRM системы для аналитики<br />
               продаж франшизы
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка фирменного стиля<br>
+              Разработка фирменного стиля<br />
               компании
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Руководство по запуску франшизы<br>
+              Руководство по запуску франшизы<br />
               (франчбук)
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка стратегии: «Каналы продаж<br>
+              Разработка стратегии: «Каналы продаж<br />
               франшизы»
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Настройка рекламной компании, для<br>
-              запуска продаж Вашей франшизы либо<br>
-              размещение в ТОП-овом каталоге<br>
+              Настройка рекламной компании, для<br />
+              запуска продаж Вашей франшизы либо<br />
+              размещение в ТОП-овом каталоге<br />
               франшиз;
             </div>
           </div>
@@ -744,7 +751,7 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Контроль качества звонков менеджера,<br>
+              Контроль качества звонков менеджера,<br />
               нашим руководителем отдела продаж
             </div>
           </div>
@@ -758,15 +765,13 @@
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
-            <div class="package-service-text">
-              Настройка CRM-системы
-            </div>
+            <div class="package-service-text">Настройка CRM-системы</div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Гарантированное сопровождение и<br>
-              доведение до первых продаж<br>
+              Гарантированное сопровождение и<br />
+              доведение до первых продаж<br />
               франшизы;
             </div>
           </div>
@@ -777,14 +782,19 @@
             </li>
             <li class="list-group-item package-price-item">
               <span class="package-total-note">Бесплатный бонус</span>
-              <span class="package-total-result">обучение вашего<br> менеджера</span>
+              <span class="package-total-result"
+                >обучение вашего<br />
+                менеджера</span
+              >
             </li>
             <li class="list-group-item package-price-item">
               <span class="package-total-note">Стоимость пакета</span>
               <span class="package-total-result">750 000 &#8381;</span>
             </li>
             <li class="list-group-item package-price-item">
-              <button class="btn btn-primary package-submit">Упаковать франшизу</button>
+              <button class="btn btn-primary package-submit">
+                Упаковать франшизу
+              </button>
             </li>
           </ul>
         </div>
@@ -792,476 +802,14 @@
     </div>
   </div>
 </section>
-<!-- Секция виды тарифов -->
-<section class="pack-services">
-  <h5 class="packs-header">Пакеты на создание франшиз упаковки</h5>
-  <div class="packs">
-    <div class="packs-item">
-      <div class="packs-item__image">
-        <img
-          src="../../../../assets/images/franchise-landing/fast-start 1.png"
-          alt="Пакет из 7 инструментов"
-        />
-      </div>
-      <!--<button class="packs-item__title">Пакет “Быстрый старт”</button>
-      <div class="packs-item__text">
-        Если у Вас за порогом стоит потенциальный покупатель или Вы хотите
-        просто протестировать нишу, то этот пакет именно для Вас!
-      </div>
-      <ul class="packs-item__list">
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Аудит бизнеса и анализ конкурентов</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка состава франшизы: определение стоимости франшизы,
-            создание уникального предложения и концепции франшизы</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка пакетов франшизы и определение их стоимости</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Создание финансовой модели франшизы (инвестиции в запуск,
-            доходность и окупаемость)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка договора коммерческой концессии/лицензионный
-            договор</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Презентация франшизы (маркетинг кит)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Разработка сайта для продажи франшизы (до 10 страниц)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool">Книга продаж Вашей франшизы</span>
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Обучение и аттестация Вашего менеджера по продажам</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Внедрение CRM системы для аналитики продаж франшизы</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Разработка фирменного стиля компании</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Руководство по запуску франшизы (франчбук)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Разработка стратегии: «Каналы продаж франшизы»</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Настройка рекламной кампании, для запуска продаж Вашей франшизы
-            либо размещение в ТОП-овом каталоге франшиз;</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool">Внедрение системы записи звонков</span>
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Контроль качества звонков менеджера, нашим руководителем отдела
-            продаж</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Совместная обработка звонков и возникающих вопросов у клиента</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool">Настройка CRM-системы</span>
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Гарантированное сопровождение и доведение до первых продаж
-            франшизы;</span
-          >
-        </li>
-      </ul>
-      <div class="packs-item-bottom">
-        <p class="packs-item-bottom__title">Срок: 20 рабочих дней</p>
-        <p class="packs-item-bottom__text">
-          Бесплатный бонус: проверка торгового знака + консультирование по
-          окончанию упаковки в течение 6 месяцев + обучение и прокачка Вас и
-          Вашего менеджера;
-        </p>
-        <p class="packs-item-bottom__price">Стоимость пакета: 350 000 ₽</p>
-        <button class="packs-item-bottom__button">
-          Упаковать франшизу за 350 000 ₽
-        </button>
-      </div> -->
-    </div>
-    <div class="packs-item">
-      <div class="packs-item__image">
-        <img
-          src="../../../../assets/images/franchise-landing/fast-start 2.png"
-          alt="Пакет из 15 инструментов"
-        />
-      </div>
-      <button class="packs-item__title">Пакет “Франшиза под ключ”</button>
-      <!-- <div class="packs-item__text">
-        Этот пакет для Вас, если Вам нужен полный комплекс услуг необходимых для
-        продажи франшизы и запуска Вашего франчайзи.
-      </div>
-      <ul class="packs-item__list">
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Аудит бизнеса и анализ конкурентов</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка состава франшизы: определение стоимости франшизы,
-            создание уникального предложения и концепции франшизы</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка пакетов франшизы и определение их стоимости</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Создание финансовой модели франшизы (инвестиции в запуск,
-            доходность и окупаемость)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка договора коммерческой концессии/лицензионный
-            договор</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Презентация франшизы (маркетинг кит)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка сайта для продажи франшизы (до 10 страниц)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool">Книга продаж Вашей франшизы</span>
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Обучение и аттестация Вашего менеджера по продажам</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Внедрение CRM системы для аналитики продаж франшизы</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка фирменного стиля компании</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Руководство по запуску франшизы (франчбук)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка стратегии: «Каналы продаж франшизы»</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Настройка рекламной кампании, для запуска продаж Вашей франшизы
-            либо размещение в ТОП-овом каталоге франшиз;</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool">Внедрение системы записи звонков</span>
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Контроль качества звонков менеджера, нашим руководителем отдела
-            продаж</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Совместная обработка звонков и возникающих вопросов у клиента</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool">Настройка CRM-системы</span>
-        </li>
-        <li>
-          <div class="packs-item__no"></div>
-          <span class="packs-item__tool"
-            >Гарантированное сопровождение и доведение до первых продаж
-            франшизы;</span
-          >
-        </li>
-      </ul>
-      <div class="packs-item-bottom">
-        <p class="packs-item-bottom__title">Срок: 30 рабочих дней</p>
-        <p class="packs-item-bottom__text">
-          Бесплатный бонус: проверка торгового знака + консультирование по
-          окончанию упаковки в течение 6 месяцев + обучение и прокачка Вас и
-          Вашего менеджера;
-        </p>
-        <p class="packs-item-bottom__price">Стоимость пакета: 480 000 ₽</p>
-        <button class="packs-item-bottom__button">
-          Упаковать франшизу за 480 000 ₽
-        </button>
-      </div> -->
-    </div>
-
-    <div class="packs-item">
-      <div class="packs-item__image">
-        <img
-          src="../../../../assets/images/franchise-landing/fast-start 3.png"
-          alt="Пакет из 25 инструментов"
-        />
-      </div>
-      <button class="packs-item__title">Пакет “Доведение до продаж”</button>
-      <!--<div class="packs-item__text">
-        В рамках которого вы получаете полностью упакованный бизнес во франшизу
-        + обученного менеджера.
-      </div>
-      <ul class="packs-item__list">
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Аудит бизнеса и анализ конкурентов</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка состава франшизы: определение стоимости франшизы,
-            создание уникального предложения и концепции франшизы</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка пакетов франшизы и определение их стоимости</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Создание финансовой модели франшизы (инвестиции в запуск,
-            доходность и окупаемость)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка договора коммерческой концессии/лицензионный
-            договор</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Презентация франшизы (маркетинг кит)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка сайта для продажи франшизы (до 10 страниц)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool">Книга продаж Вашей франшизы</span>
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Обучение и аттестация Вашего менеджера по продажам</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Внедрение CRM системы для аналитики продаж франшизы</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка фирменного стиля компании</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Руководство по запуску франшизы (франчбук)</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Разработка стратегии: «Каналы продаж франшизы»</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Настройка рекламной кампании, для запуска продаж Вашей франшизы
-            либо размещение в ТОП-овом каталоге франшиз;</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool">Внедрение системы записи звонков</span>
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Контроль качества звонков менеджера, нашим руководителем отдела
-            продаж</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Совместная обработка звонков и возникающих вопросов у клиента</span
-          >
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool">Настройка CRM-системы</span>
-        </li>
-        <li>
-          <div class="packs-item__yes"></div>
-          <span class="packs-item__tool"
-            >Гарантированное сопровождение и доведение до первых продаж
-            франшизы;</span
-          >
-        </li>
-      </ul>
-      <div class="packs-item-bottom">
-        <p class="packs-item-bottom__title">Срок: 35 рабочих дней</p>
-        <p class="packs-item-bottom__text">
-          Бесплатный бонус: проверка торгового знака + консультирование по
-          окончанию упаковки в течение 6 месяцев + обучение и прокачка Вас и
-          Вашего менеджера;
-        </p>
-        <p class="packs-item-bottom__price">Стоимость пакета: 750 000 ₽</p>
-        <button class="packs-item-bottom__button">
-          Упаковать франшизу за 750 000 ₽
-        </button>
-      </div> -->
-    </div>
-  </div>
-</section>
-<section class="special">
-  <div class="special-content">
-    <div class="special-content__title">
-      Управляющая <br />
-      компания
-    </div>
-    <div class="special-content__subtitle">Особый пакет</div>
-    <div class="special-content__text">
-      Условия обсуждаются индвидуально. <br />
-      От 1 500 000 ₽
-    </div>
-    <div class="special-content__inputs">
-      <label class="special-content__label"
-        >Имя
-        <input
-          class="special-content__input"
-          type="text"
-          name="name"
-          placeholder="Введите имя"
-        />
-      </label>
-      <label class="special-content__label"
-        >Номер телефона
-        <input
-          class="special-content__input"
-          type="tel"
-          name="telephone"
-          placeholder="Введите номер телефона"
-        />
-      </label>
-    </div>
-    <button class="special-content__button">Обратиться за консультацией</button>
-  </div>
-  <div class="special-image">
-    <img
-      src="../../../../assets/images/franchise-landing/Layer_7_1 1.png"
-      alt="Фото управляющего"
-    />
-  </div>
-</section>
+<app-feedback
+  [title]="'Управляющая компания'"
+  [subtitle]="'Особый пакет'"
+  [tooltip]="'Условия обсуждаются индивидуально. От 1500р'"
+  [imagePath]="'../../../../assets/images/franchise-landing/Layer_7_1 1.png'"
+  [bgColor]="'rgba(0, 0, 0, 0.9)'"
+  [isBgColor]="true"
+></app-feedback>
 <!-- Популярные франшизы -->
 <app-franchise-list></app-franchise-list>
 <!-- Новые объявления готового бизнеса -->

@@ -5,8 +5,7 @@
         class="deal__img-wrapper"
         [ngClass]="{
           'col-lg-5': isLaptop,
-          'col-xl-4': isHD,
-          'col-xxl-4': isFullHD
+          'col-xl-4': isHD || isFullHD
         }"
       >
         <img
@@ -19,8 +18,7 @@
         class="deal__content"
         [ngClass]="{
           'col-lg-7': isLaptop,
-          'col-xl-8': isHD,
-          'col-xxl-8': isFullHD
+          'col-xl-8': isHD || isFullHD
         }"
       >
         <div class="card-body deal__description">
@@ -46,8 +44,7 @@
       [ngClass]="{
         'mb-3': isLaptop,
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <app-statistics-card
@@ -62,8 +59,7 @@
       [ngClass]="{
         'mb-3': isLaptop,
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <app-statistics-card
@@ -77,8 +73,7 @@
       class="col-lg-6 statistics__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <app-statistics-card
@@ -92,8 +87,7 @@
       class="col-lg-6 statistics__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <app-statistics-card
@@ -159,7 +153,8 @@
   [subtitle]="feedbackSubtitle"
   [tooltip]="feedbackNote"
   [imagePath]="feedbackImgPath"
-  [isModify]="feedbackTheme"
+  [bgColor]="'rgba(13, 110, 253, 0.9)'"
+  [isBgColor]="false"
 ></app-feedback>
 <!-- Секция шаги совершения безопасной сделки -->
 <section class="checklist" [ngClass]="{ 'is-laptop': isLaptop }">
@@ -171,8 +166,7 @@
       class="checklist__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <div class="card checklist__content">
@@ -204,8 +198,7 @@
       class="checklist__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <div class="card checklist__content">
@@ -237,8 +230,7 @@
       class="checklist__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <div class="card checklist__content">
@@ -266,8 +258,7 @@
       class="checklist__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
-        'col-xl-3': isHD,
-        'col-xxl-3': isFullHD
+        'col-xl-3': isHD || isFullHD
       }"
     >
       <div class="card checklist__content">

@@ -60,7 +60,6 @@ export class DealLandingModule implements OnInit, DoCheck {
   feedbackNote: string = 'с юристом и консультантами сервиса';
   feedbackImgPath: string =
     '../../../../assets/images/deal-landing/template_person6 1.png';
-  feedbackTheme: boolean = false;
 
   constructor(
     private http: HttpClient,

@@ -665,3 +665,27 @@ $columnGap: 24px;
     border-radius: 66px;
   }
 }
+
+@media all and (max-width: 576px) {
+  .package {
+    &-root {
+      display: block;
+    }
+    &-wrapper {
+      width: 100%;
+    }
+  }
+}
+
+::ng-deep {
+  @media all and (min-width: 992px) {
+    .package {
+      &.is-laptop &-root {
+        grid-gap: 8px;
+      }
+      &.is-laptop &-wrapper {
+        width: calc(50% - 8px);
+      }
+    }
+  }
+}

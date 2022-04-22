@@ -100,7 +100,7 @@
       </h5>
     </div>
 
-    <div class="col-12 quick-search">
+    <div class="quick-search">
       <div class="block-cards-franchises block-cards-franchises-bg">
         <div class="bg">
           <p-card>
@@ -108,9 +108,7 @@
 
             <form #filterForm="ngForm" novalidate>
               <div class="row quick-search-form">
-                <div
-                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 price-range"
-                >
+                <div class="price-range">
                   <p><strong>Вид бизнеса</strong></p>
                   <p-dropdown
                     [options]="aViewBusiness"
@@ -119,16 +117,17 @@
                     placeholder="Вид бизнеса"
                     [showClear]="true"
                     name="view"
-                  ></p-dropdown>
+                  >
+                  </p-dropdown>
                 </div>
+
+                <div class="img-search"></div>
                 <!-- <gar-select
                   [items]="aViewBusiness"
                   title="Вид бизнеса"
                   displayLabel="viewName"
                 ></gar-select> -->
-                <div
-                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 price-range"
-                >
+                <div class="price-range">
                   <div class="control-quick-search">
                     <p><strong>Категория</strong></p>
                     <p-dropdown
@@ -142,10 +141,8 @@
                     </p-dropdown>
                   </div>
                 </div>
-
-                <div
-                  class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 price-range"
-                >
+                <div class="img-search"></div>
+                <div class="price-range">
                   <div class="control-quick-search">
                     <p><strong>Город</strong></p>
                     <p-dropdown
@@ -158,10 +155,8 @@
                     ></p-dropdown>
                   </div>
                 </div>
-
-                <div
-                  class="col-xxl-4 col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12 price-range-wrapper"
-                >
+                <div class="img-search"></div>
+                <div class="price-range-wrapper">
                   <div>
                     <p class="d-inline-block"><strong>Стоимость</strong></p>
                   </div>
@@ -190,12 +185,10 @@
                     ></p-slider>
                   </div>
                 </div>
-
-                <div
-                  class="col-xxl-2 col-xl-6 col-lg-6 col-md-12 quick-search5"
-                >
+                <div class="img-search"></div>
+                <div class="quick-search5">
                   <div class="control-quick-search control-quick-search2">
-                    <p><strong>Покупка через </strong></p>
+                    <p><strong>Покупка через гарант</strong></p>
                     <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
                   </div>
                 </div>
@@ -206,7 +199,7 @@
               <button
                 class="btn btn-dark btn-dark-search"
                 (click)="onFilterFranchisesAsync(filterForm)"
-                style="background: #1f75fe; width: 160px; margin-left: -13px"
+                style="background: #1f75fe; width: 160px; margin-left: 0"
               >
                 Найти
               </button>

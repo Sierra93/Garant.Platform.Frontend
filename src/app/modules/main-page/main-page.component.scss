@@ -293,27 +293,78 @@
   position: static;
   background: #f1f6ff;
   border-radius: 8px;
-
+  ::ng-deep .p-card-body .p-card-content {
+    padding: 0;
+  }
   .block-cards-franchises-bg {
     width: 100%;
   }
   .control-quick-search {
     font-size: 18px;
   }
+  ::ng-deep {
+    .p-dropdown-label {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: #000000;
+    }
+    .p-dropdown-clear-icon {
+      display: none;
+    }
+    .p-dropdown-trigger {
+      color: #1f75fe;
+    }
+    .p-inputswitch-slider {
+      width: 79px;
+      height: 47px;
+      margin-top: -6px;
+    }
+    .p-inputswitch-slider:before {
+      width: 42px;
+      height: 42px;
+      margin-top: -21px;
+    }
+    .p-inputtext {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: #000000;
+      height: 48px;
+      margin: auto;
+    }
+  }
   .quick-search-form {
-    justify-content: space-between;
+    ::ng-deep .price-range .d-inline-block{
+      p {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 21px;
+        color: #2C2C2C;
+      }
+    }
     [class^="col"] {
       margin: 0px;
       font-size: 18px;
       text-align: start;
     }
   }
-  .col-xxl-2 {
+  .img-search {
+    width: 1px;
+    background:#F1F6FF;
     padding: 0;
+    margin: 0 20px;
   }
   .price-range-wrapper {
-    width: 33%;
+    width: 23.5%;
     padding: 0;
+    margin: -9px 0px 0 0;
     .price-range-input {
       display: flex;
       justify-content: space-between;
@@ -328,12 +379,20 @@
     }
   }
   .quick-search-form {
+    padding-left: 16px;
     .price-range {
       width: 15%;
+      padding: 0;
+      margin: -9px 0px 0 0;
+    }
+    .price-range-input {
+      padding: 0;
+      font-size: 14px;
     }
   }
   .quick-search5 {
     width: 15%;
+    padding: 0;
   }
 }
 
@@ -548,6 +607,9 @@
 }
 ::ng-deep .p-dropdown-clearable {
   width: 100%;
+  height: 48px;
+  align-items: center;
+  padding: 6px;
 }
 @media (max-width: 1800px) {
   .three-cards-header {

@@ -1,35 +1,65 @@
 <section class="card deal" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
-  <div [ngClass]="{ 'container-fluid': isLaptop, container: isHD || isFullHD }">
+  <div
+    [ngClass]="{ 'container-fluid': isLaptop || isHD || isFullHD }"
+    class="deal__container"
+  >
     <div class="row deal__location">
       <div
         class="deal__img-wrapper"
         [ngClass]="{
           'col-lg-5': isLaptop,
-          'col-xl-5': isHD || isFullHD
+          'col-xl-7': isHD,
+          'col-xxl-5': isFullHD
         }"
       >
-        <img
-          class="img-fluid deal__img"
-          src="../../../../assets/images/franchise-landing/desk.png"
-          alt="Стол"
-        />
+        <ng-container *ngIf="!isSmall">
+          <img
+            class="img-fluid deal__img"
+            src="../../../../assets/images/franchise-landing/desk.png"
+            alt="Стол"
+          />
+        </ng-container>
+        <ng-container *ngIf="isSmall">
+          <img class="img-fluid sm-img" src="" alt="" />
+        </ng-container>
       </div>
       <div
         class="deal__content"
         [ngClass]="{
+          'sm-deal-content': isSmall,
           'col-lg-7': isLaptop,
-          'col-xl-7': isHD || isFullHD
+          'col-xl-5': isHD,
+          'col-xxl-7': isFullHD
         }"
       >
-        <div class="card-body deal__description">
-          <h5 class="card-title deal__title">Создание</h5>
-          <div class="card-text deal__business">и упаковка франшиз</div>
-          <div class="card-text deal__franchise">
+        <div
+          class="card-body deal__description"
+          [ngClass]="{ 'sm-deal-item': isSmall }"
+        >
+          <ng-container *ngIf="!isSmall">
+            <h5 class="card-title deal__title">Создание</h5>
+            <div class="card-text deal__business">и упаковка франшиз</div>
+          </ng-container>
+          <ng-container *ngIf="isSmall">
+            <h5 class="card-title sm-deal-title">Создание</h5>
+            <div class="card-text sm-deal-business">и упаковка франшиз</div>
+          </ng-container>
+          <div
+            class="card-text deal__franchise"
+            [ngClass]="{ 'sm-deal-franchise': isSmall }"
+          >
             с бесплатным размещением в каталоге
           </div>
-          <button class="btn btn-primary deal__btn-action">
-            Бесплатная консультация
-          </button>
+          <ng-container *ngIf="isSmall">
+            <button class="btn btn-primary sm-deal-start">
+              Бесплатная консультация
+            </button>
+          </ng-container>
+          <ng-container *ngIf="!isSmall">
+            <button class="btn btn-primary deal__btn-action">
+              Бесплатная консультация
+            </button>
+          </ng-container>
         </div>
       </div>
     </div>
@@ -44,9 +74,9 @@
     <div
       class="statistics__item"
       [ngClass]="{
-        'mb-3': isLaptop,
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'md-item': isSmall || isLaptop || isHD,
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <app-statistics-card
@@ -59,9 +89,9 @@
     <div
       class="statistics__item"
       [ngClass]="{
-        'mb-3': isLaptop,
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'md-item': isSmall || isLaptop || isHD,
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <app-statistics-card
@@ -74,9 +104,9 @@
     <div
       class="statistics__item"
       [ngClass]="{
-        'mb-3': isLaptop,
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'md-item': isSmall || isLaptop,
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <app-statistics-card
@@ -89,9 +119,8 @@
     <div
       class="statistics__item"
       [ngClass]="{
-        'mb-3': isLaptop,
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <app-statistics-card
@@ -119,159 +148,255 @@
     <div
       class="checklist__item"
       [ngClass]="{
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img
             class="card-img-top checklist__img"
+            [ngClass]="{ 'sm-img': isSmall }"
             src="../../../../assets/images/deal-landing/loupe-clip-art-6 1.png"
             alt="Лупа"
           />
         </div>
         <div class="card-body checklist__step">
-          <div class="card-text checklist__title">
-            Бесплатное размещение<br />
-            в каталоге
-          </div>
-          <div class="card-text checklist__subtitle">
-            на срок от 3 до 12 месяцев.<br />
-            срок размещения зависит от выбранного пакета
-          </div>
-          <div class="card-text checklist__description">
-            После покупки любого из пакетов<br />
-            вы получите бесплатное<br />
-            размещение в сервисе.
-          </div>
-          <button
-            class="btn btn-dark checklist__action"
-            routerLink="/catalog-franchise"
-          >
-            Упаковать франшизу
-          </button>
+          <ng-container *ngIf="!isSmall">
+            <div class="card-text checklist__title">
+              Бесплатное размещение<br />
+              в каталоге
+            </div>
+            <div class="card-text checklist__subtitle">
+              на срок от 3 до 12 месяцев.<br />
+              срок размещения зависит от выбранного пакета
+            </div>
+            <div class="card-text checklist__description">
+              После покупки любого из пакетов<br />
+              вы получите бесплатное<br />
+              размещение в сервисе.
+            </div>
+            <button
+              class="btn btn-dark checklist__action"
+              routerLink="/catalog-franchise"
+            >
+              Упаковать франшизу
+            </button>
+          </ng-container>
+          <ng-container *ngIf="isSmall">
+            <div class="card-text sm-title">
+              Бесплатное размещение<br />
+              в каталоге
+            </div>
+            <div class="card-text sm-subtitle">
+              на срок от 3 до 12 месяцев.<br />
+              срок размещения зависит от выбранного пакета
+            </div>
+            <div class="card-text sm-description">
+              После покупки любого из пакетов<br />
+              вы получите бесплатное<br />
+              размещение в сервисе.
+            </div>
+            <button
+              class="btn btn-dark sm-action"
+              routerLink="/catalog-franchise"
+            >
+              Упаковать франшизу
+            </button>
+          </ng-container>
         </div>
       </div>
     </div>
     <div
       class="checklist__item"
       [ngClass]="{
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img
             class="card-img-top checklist__img"
+            [ngClass]="{ 'sm-img': isSmall }"
             src="../../../../assets/images/deal-landing/pen-clip-art-6 2.png"
             alt="Ручка"
           />
         </div>
         <div class="card-body checklist__step">
-          <div class="card-text checklist__title">
-            Книга продаж и обучение<br />
-            вашего менеджера
-          </div>
-          <div class="card-text checklist__subtitle">
-            в любом выбранном пакете, вне зависимости<br />
-            от стоимости
-          </div>
-          <div class="card-text checklist__description">
-            Помощь с обучением вашего<br />
-            менеджера, составление<br />
-            книги продаж
-          </div>
-          <button
-            class="btn btn-dark checklist__action"
-            routerLink="/catalog-franchise"
-          >
-            Обучить менеджера
-          </button>
+          <ng-container *ngIf="!isSmall">
+            <div class="card-text checklist__title">
+              Книга продаж и обучение<br />
+              вашего менеджера
+            </div>
+            <div class="card-text checklist__subtitle">
+              в любом выбранном пакете, вне зависимости<br />
+              от стоимости
+            </div>
+            <div class="card-text checklist__description">
+              Помощь с обучением вашего<br />
+              менеджера, составление<br />
+              книги продаж
+            </div>
+            <button
+              class="btn btn-dark checklist__action"
+              routerLink="/catalog-franchise"
+            >
+              Обучить менеджера
+            </button>
+          </ng-container>
+          <ng-container *ngIf="isSmall">
+            <div class="card-text sm-title">
+              Книга продаж и обучение<br />
+              вашего менеджера
+            </div>
+            <div class="card-text sm-subtitle">
+              в любом выбранном пакете, вне зависимости<br />
+              от стоимости
+            </div>
+            <div class="card-text sm-description">
+              Помощь с обучением вашего<br />
+              менеджера, составление<br />
+              книги продаж
+            </div>
+            <button
+              class="btn btn-dark sm-action"
+              routerLink="/catalog-franchise"
+            >
+              Обучить менеджера
+            </button>
+          </ng-container>
         </div>
       </div>
     </div>
     <div
       class="checklist__item"
       [ngClass]="{
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img
             class="card-img-top checklist__img"
+            [ngClass]="{ 'sm-img': isSmall }"
             src="../../../../assets/images/deal-landing/file-clip-art-6 3.png"
             alt="Папка"
           />
         </div>
         <div class="card-body checklist__step">
-          <div class="card-text checklist__title">
-            Проверка<br />
-            товарного знака
-          </div>
-          <div class="card-text checklist__subtitle">
-            полная и оперативная проверка<br />
-            товарного знака
-          </div>
-          <div class="card-text checklist__description">
-            Бесплатная и быстрая<br />
-            проверка товарного знака<br />
-            франшизы
-          </div>
-          <button
-            class="btn btn-dark checklist__action"
-            routerLink="/catalog-franchise"
-          >
-            Начать сделку
-          </button>
+          <ng-container *ngIf="!isSmall">
+            <div class="card-text checklist__title">
+              Проверка<br />
+              товарного знака
+            </div>
+            <div class="card-text checklist__subtitle">
+              полная и оперативная проверка<br />
+              товарного знака
+            </div>
+            <div class="card-text checklist__description">
+              Бесплатная и быстрая<br />
+              проверка товарного знака<br />
+              франшизы
+            </div>
+            <button
+              class="btn btn-dark checklist__action"
+              routerLink="/catalog-franchise"
+            >
+              Начать сделку
+            </button>
+          </ng-container>
+          <ng-container *ngIf="isSmall">
+            <div class="card-text sm-title">
+              Проверка<br />
+              товарного знака
+            </div>
+            <div class="card-text sm-subtitle">
+              полная и оперативная проверка<br />
+              товарного знака
+            </div>
+            <div class="card-text sm-description">
+              Бесплатная и быстрая<br />
+              проверка товарного знака<br />
+              франшизы
+            </div>
+            <button
+              class="btn btn-dark sm-action"
+              routerLink="/catalog-franchise"
+            >
+              Начать сделку
+            </button>
+          </ng-container>
         </div>
       </div>
     </div>
     <div
       class="checklist__item"
       [ngClass]="{
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <div class="card checklist__content">
         <div class="card-header checklist__header">
           <img
             class="card-img-top checklist__img"
+            [ngClass]="{ 'sm-img': isSmall }"
             src="../../../../assets/images/deal-landing/credit_card_PNG24 1.png"
             alt="Кредитная карточка"
           />
         </div>
         <div class="card-body checklist__step">
-          <div class="card-text checklist__title">
-            Функция управляющей<br />
-            компании
-          </div>
-          <div class="card-text checklist__subtitle">
-            Отдельный пакет по упаковке<br />
-            с полным делегированием
-          </div>
-          <div class="card-text checklist__description">
-            Все функции по продаже и<br />
-            открытию франшиз мы возьмем<br />
-            на себя
-          </div>
-          <button
-            class="btn btn-dark checklist__action"
-            routerLink="/catalog-franchise"
-          >
-            Нанять УК
-          </button>
+          <ng-container *ngIf="!isSmall">
+            <div class="card-text checklist__title">
+              Функция управляющей<br />
+              компании
+            </div>
+            <div class="card-text checklist__subtitle">
+              Отдельный пакет по упаковке<br />
+              с полным делегированием
+            </div>
+            <div class="card-text checklist__description">
+              Все функции по продаже и<br />
+              открытию франшиз мы возьмем<br />
+              на себя
+            </div>
+            <button
+              class="btn btn-dark checklist__action"
+              routerLink="/catalog-franchise"
+            >
+              Нанять УК
+            </button>
+          </ng-container>
+          <ng-container *ngIf="isSmall">
+            <div class="card-text sm-title">
+              Функция управляющей<br />
+              компании
+            </div>
+            <div class="card-text sm-subtitle">
+              Отдельный пакет по упаковке<br />
+              с полным делегированием
+            </div>
+            <div class="card-text sm-description">
+              Все функции по продаже и<br />
+              открытию франшиз мы возьмем<br />
+              на себя
+            </div>
+            <button
+              class="btn btn-dark sm-action"
+              routerLink="/catalog-franchise"
+            >
+              Нанять УК
+            </button>
+          </ng-container>
         </div>
       </div>
     </div>
   </div>
 </section>
 <!-- Наше предложение-->
-<app-business-list></app-business-list>
+<app-business-list *ngIf="!isSmall"></app-business-list>
 <!-- Гарант -->
 <app-garant></app-garant>
 <!--  -->
@@ -280,7 +405,528 @@
   <h5 class="alert alert-light package-common-title">
     Пакеты на создание франшиз упаковки
   </h5>
-  <div class="row package-root">
+  <div *ngIf="isSmall" class="sm-package-root">
+    <div class="sm-package-wrapper">
+      <div class="card package-list">
+        <img
+          class="img-fluid"
+          src="../../../../assets/images/franchise-landing/fast-start 1.png"
+          alt="Пакет из 7 инструментов"
+        />
+        <div class="card-header package-title package-title--dark">
+          Пакет "Быстрый старт"
+        </div>
+        <div class="card-body package-content">
+          <div class="card-text package-content-title">
+            Если у Вас за порогом стоит потенциальный<br />
+            покупатель или Вы хотите просто<br />
+            протестировать нишу, то этот пакет именно для<br />
+            Вас!
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Аудит бизнеса и анализ конкурентов
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка состава франшизы:<br />
+              определение стоимости франшизы,<br />
+              создание уникального предложения и<br />
+              концепции франшизы
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка пакетов франшизы<br />
+              и определение их стоимости
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Создание финансовой модели<br />
+              франшизы (инвестиции в запуск,<br />
+              доходность и окупаемость)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка договора коммерческой<br />
+              концессии/лицензионный договор
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Презентация франшизы (маркетинг кит)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Разработка сайта для продажи<br />
+              франшизы (до 10 страниц)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">Книга продаж Вашей франшизы</div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Обучение и аттестация Вашего<br />
+              менеджера по продажам
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Внедрение CRM системы для аналитики<br />
+              продаж франшизы
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Разработка фирменного стиля<br />
+              компании
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Руководство по запуску франшизы<br />
+              (франчбук)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Разработка стратегии: «Каналы продаж<br />
+              франшизы»
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Настройка рекламной компании, для<br />
+              запуска продаж Вашей франшизы либо<br />
+              размещение в ТОП-овом каталоге<br />
+              франшиз;
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Внедрение системы записи звонков
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Контроль качества звонков менеджера,<br />
+              нашим руководителем отдела продаж
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Совместная обработка звонков<br />
+              и возникших вопросов<br />
+              у клиента
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">Настройка CRM-системы</div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Гарантированное сопровождение и<br />
+              доведение до первых продаж<br />
+              франшизы;
+            </div>
+          </div>
+          <ul class="list-group list-group-flush package-total-price">
+            <li class="list-group-item package-price-item">
+              <span class="package-total-note">Срок:</span>
+              <span class="package-total-result">20 рабочих дней</span>
+            </li>
+            <li class="list-group-item package-price-item">
+              <span class="package-total-note">Бесплатный бонус</span>
+              <span class="package-total-result"
+                >проверка торгового<br />
+                знака</span
+              >
+            </li>
+            <li class="list-group-item package-price-item">
+              <span class="package-total-note">Стоимость пакета</span>
+              <span class="package-total-result">350 000 &#8381;</span>
+            </li>
+            <li class="list-group-item package-price-item">
+              <button class="btn btn-primary package-submit">
+                Упаковать франшизу
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="sm-package-wrapper">
+      <div class="card package-list">
+        <img
+          class="img-fluid"
+          src="../../../../assets/images/franchise-landing/fast-start 2.png"
+          alt="Пакет из 15 инструментов"
+        />
+        <div class="card-header package-title package-title--primary">
+          Пакет "Франшиза под ключ"
+        </div>
+        <div class="card-body package-content">
+          <div class="card-text package-content-title">
+            Этот пакет для Вас, если Вам нужен полный<br />
+            комплекс услуг необходимых для продажи<br />
+            франшизы и запуска вашего Вашего<br />
+            франчайзи.
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Аудит бизнеса и анализ конкурентов
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка состава франшизы:<br />
+              определение стоимости франшизы,<br />
+              создание уникального предложения и<br />
+              концепции франшизы
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка пакетов франшизы<br />
+              и определение их стоимости
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Создание финансовой модели<br />
+              франшизы (инвестиции в запуск,<br />
+              доходность и окупаемость)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка договора коммерческой<br />
+              концессии/лицензионный договор
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Презентация франшизы (маркетинг кит)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка сайта для продажи<br />
+              франшизы (до 10 страниц)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">Книга продаж Вашей франшизы</div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Обучение и аттестация Вашего<br />
+              менеджера по продажам
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Внедрение CRM системы для аналитики<br />
+              продаж франшизы
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка фирменного стиля<br />
+              компании
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Руководство по запуску франшизы<br />
+              (франчбук)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Разработка стратегии: «Каналы продаж<br />
+              франшизы»
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Настройка рекламной компании, для<br />
+              запуска продаж Вашей франшизы либо<br />
+              размещение в ТОП-овом каталоге<br />
+              франшиз;
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Внедрение системы записи звонков
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Контроль качества звонков менеджера,<br />
+              нашим руководителем отдела продаж
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Совместная обработка звонков<br />
+              и возникших вопросов<br />
+              у клиента
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">Настройка CRM-системы</div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--no"></div>
+            <div class="package-service-text">
+              Гарантированное сопровождение и<br />
+              доведение до первых продаж<br />
+              франшизы;
+            </div>
+          </div>
+          <ul class="list-group list-group-flush package-total-price">
+            <li class="list-group-item package-price-item">
+              <span class="package-total-note">Срок:</span>
+              <span class="package-total-result">30 рабочих дней</span>
+            </li>
+            <li class="list-group-item package-price-item">
+              <span class="package-total-note">Бесплатный бонус</span>
+              <span class="package-total-result"
+                >консультирование<br />
+                в течение полугода</span
+              >
+            </li>
+            <li class="list-group-item package-price-item">
+              <span class="package-total-note">Стоимость пакета</span>
+              <span class="package-total-result">480 000 &#8381;</span>
+            </li>
+            <li class="list-group-item package-price-item">
+              <button class="btn btn-primary package-submit">
+                Упаковать франшизу
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="sm-package-wrapper">
+      <div class="card package-list">
+        <img
+          class="img-fluid"
+          src="../../../../assets/images/franchise-landing/fast-start 3.png"
+          alt="Пакет из 25 инструментов"
+        />
+        <div class="card-header package-title package-title--dark">
+          Пакет "Доведение до продаж"
+        </div>
+        <div class="card-body package-content">
+          <div class="card-text package-content-title">
+            В рамках пакета быстрый старт вы<br />
+            получаете полностью упакованный<br />
+            бизнес во франшизу + обученного<br />
+            менеджера.
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Аудит бизнеса и анализ конкурентов
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка состава франшизы:<br />
+              определение стоимости франшизы,<br />
+              создание уникального предложения и<br />
+              концепции франшизы
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка пакетов франшизы<br />
+              и определение их стоимости
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Создание финансовой модели<br />
+              франшизы (инвестиции в запуск,<br />
+              доходность и окупаемость)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка договора коммерческой<br />
+              концессии/лицензионный договор
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Презентация франшизы (маркетинг кит)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка сайта для продажи<br />
+              франшизы (до 10 страниц)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">Книга продаж Вашей франшизы</div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Обучение и аттестация Вашего<br />
+              менеджера по продажам
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Внедрение CRM системы для аналитики<br />
+              продаж франшизы
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка фирменного стиля<br />
+              компании
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Руководство по запуску франшизы<br />
+              (франчбук)
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Разработка стратегии: «Каналы продаж<br />
+              франшизы»
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Настройка рекламной компании, для<br />
+              запуска продаж Вашей франшизы либо<br />
+              размещение в ТОП-овом каталоге<br />
+              франшиз;
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Внедрение системы записи звонков
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Контроль качества звонков менеджера,<br />
+              нашим руководителем отдела продаж
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Совместная обработка звонков<br />
+              и возникших вопросов<br />
+              у клиента
+            </div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">Настройка CRM-системы</div>
+          </div>
+          <div class="package-service">
+            <div class="package-reach-icon package-reach-icon--yes"></div>
+            <div class="package-service-text">
+              Гарантированное сопровождение и<br />
+              доведение до первых продаж<br />
+              франшизы;
+            </div>
+          </div>
+          <ul class="list-group list-group-flush package-total-price">
+            <li class="list-group-item package-price-item">
+              <span class="package-total-note">Срок:</span>
+              <span class="package-total-result">35 рабочих дней</span>
+            </li>
+            <li class="list-group-item package-price-item">
+              <span class="package-total-note">Бесплатный бонус</span>
+              <span class="package-total-result"
+                >обучение вашего<br />
+                менеджера</span
+              >
+            </li>
+            <li class="list-group-item package-price-item">
+              <span class="package-total-note">Стоимость пакета</span>
+              <span class="package-total-result">750 000 &#8381;</span>
+            </li>
+            <li class="list-group-item package-price-item">
+              <button class="btn btn-primary package-submit">
+                Упаковать франшизу
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row package-root" *ngIf="!isSmall">
     <div class="package-wrapper">
       <div class="card package-list">
         <img
@@ -811,11 +1457,11 @@
   [isBgColor]="true"
 ></app-feedback>
 <!-- Популярные франшизы -->
-<app-franchise-list></app-franchise-list>
+<app-franchise-list *ngIf="!isSmall"></app-franchise-list>
 <!-- Новые объявления готового бизнеса -->
-<app-business-ad></app-business-ad>
+<app-business-ad *ngIf="!isSmall"></app-business-ad>
 <!-- Бизнес блог. -->
-<app-business-blog></app-business-blog>
+<app-business-blog *ngIf="!isSmall"></app-business-blog>
 <!-- Компонент Новости -->
 <app-news></app-news>
 <!-- Списки категорий -->

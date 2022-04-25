@@ -16,6 +16,8 @@ export class FeedbackComponent implements OnInit, DoCheck {
 
   isLaptop!: boolean;
   isHD!: boolean;
+  isFullHD!: boolean;
+  isSmall!: boolean;
   browserScreenWidth!: number;
   name: string = '';
   phoneNumber: string = '';
@@ -25,6 +27,8 @@ export class FeedbackComponent implements OnInit, DoCheck {
   public ngOnInit(): void {
     this.isLaptop = false;
     this.isHD = false;
+    this.isFullHD = false;
+    this.isSmall = false;
     this.browserScreenWidth = window.screen.width;
   }
   public ngDoCheck(): void {
@@ -43,16 +47,28 @@ export class FeedbackComponent implements OnInit, DoCheck {
   @HostListener('window:resize', ['$event'])
   private defineResize() {
     this.browserScreenWidth = window.screen.width;
-    if (this.browserScreenWidth >= 1200) {
+    if (this.browserScreenWidth >= 1400) {
+      this.isFullHD = true;
+    } else {
+      this.isFullHD = false;
+    }
+
+    if (this.browserScreenWidth >= 1200 && this.browserScreenWidth < 1400) {
       this.isHD = true;
     } else {
       this.isHD = false;
     }
 
-    if ((this.browserScreenWidth >= 992) && (this.browserScreenWidth < 1199)) {
+    if (this.browserScreenWidth >= 992 && this.browserScreenWidth < 1199) {
       this.isLaptop = true;
     } else {
       this.isLaptop = false;
+    }
+
+    if (this.browserScreenWidth <= 576) {
+      this.isSmall = true;
+    } else {
+      this.isSmall = false;
     }
   }
 }

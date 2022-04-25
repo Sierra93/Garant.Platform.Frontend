@@ -30,7 +30,10 @@
           </div>
         </div>
         <div [ngClass]="{ 'col-lg-4': isLaptop, 'col-xl-6': isHD }">
-          <div class="btn btn-outline-primary category__redirect">
+          <div
+            class="btn btn-outline-primary category__redirect"
+            [ngClass]="{ 'sm-redirect': isSmall }"
+          >
             <span class="category__redirect-text">Весь готовый бизнес</span>
             <span class="category__redirect-attr">
               <svg
@@ -80,7 +83,10 @@
           </div>
         </div>
         <div [ngClass]="{ 'col-lg-4': isLaptop, 'col-xl-6': isHD }">
-          <div class="btn btn-outline-primary category__redirect">
+          <div
+            class="btn btn-outline-primary category__redirect"
+            [ngClass]="{ 'sm-redirect': isSmall }"
+          >
             <span class="category__redirect-text">Все франшизы</span>
             <span class="category__redirect-attr">
               <svg

@@ -1,23 +1,25 @@
-/*@use "/src/app/app.component.scss";
-@use "/src/app/modules/main-page/main-page.component.scss";
-@use "../../../../app/shared/styles" as *;
-@use "../../../../app/shared/styles/base" as *;
-@import "/src/app/shared/styles/media-quaries.scss";*/
 .deal {
   border: none;
   background: #f5f8fa;
   border-radius: 24px;
   padding-top: 64px;
   padding-bottom: 64px;
+  &__container {
+    padding-left: 0;
+  }
   &__location {
     display: flex;
     flex-flow: row-reverse;
+    flex-wrap: wrap;
   }
   &__img-wrapper {
     display: flex;
     justify-content: flex-end;
     padding-left: 0;
     padding-right: 0;
+  }
+  &__img {
+    width: 100%;
   }
   &__content {
     padding-left: 64px;
@@ -48,7 +50,7 @@
     text-align: left;
   }
   &__btn-action {
-    width: 305px;
+    width: 45%;
     font-size: 20px;
     line-height: 28px;
     padding: 24px 32px;
@@ -56,48 +58,40 @@
   }
 }
 
-@media all and (max-width: 576px) {
-  .deal {
-    padding-top: 32px;
-    padding-bottom: 24px;
-    &__location {
-      display: block;
-    }
-    &__img-wrapper {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    &__img {
-      width: 112px;
-    }
-    &__content {
-      width: 100%;
-      padding: 0;
-    }
-    &__description {
-      padding-left: 24px;
-      padding-right: 24px;
-    }
-    &__title {
+.sm {
+  &-deal {
+    &-title {
       font-size: 32px;
-      line-height: 37px;
+      line-height: 37.5px;
+      margin-bottom: 8px;
+      font-weight: 700;
       text-align: center;
     }
-    &__business {
+    &-business {
+      font-size: 24px;
+      line-height: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    &-franchise {
+      text-align: center;
+    }
+    &-start {
+      padding: 24px 32px;
+      width: 100%;
       font-size: 24px;
       line-height: 28px;
       text-align: center;
     }
-    &__franchise {
-      font-size: 17px;
-      line-height: 20px;
-      text-align: center;
-      margin-bottom: 24px;
+    &-content {
+      padding-left: 0;
+      padding-right: 0;
     }
-    &__btn-action {
-      width: 100%;
+    &-item {
+      margin: 1rem;
+      padding-left: 24px;
+      padding-right: 24px;
     }
   }
 }
@@ -136,6 +130,9 @@
         font-size: 44px;
         line-height: 52px;
       }
+      &.is-hd &__btn-action {
+        width: 60%;
+      }
     }
   }
 }
@@ -160,7 +157,6 @@
           width: 100%;
           top: 0;
           height: 100%;
-          //font-size: 3.62vw;
           font-size: 96px;
           line-height: 112.5px;
         }
@@ -175,29 +171,8 @@
         padding: 0 0 64px;
       }
     }
-  }
-}
-
-@media all and (max-width: 576px) {
-  :host .statistics {
-    &__item {
+    &.md-item {
       margin-bottom: 16px;
-      & ::ng-deep .p-panel {
-        & .p-panel-header {
-          height: 79.5px;
-          & .p-panel-title {
-            width: 105px;
-            font-size: 32px;
-            line-height: 37px;
-          }
-        }
-        & .p-panel-content {
-          height: 79.5px;
-        }
-      }
-    }
-    &__item:last-child {
-      margin-bottom: 0;
     }
   }
 }
@@ -228,6 +203,30 @@
           }
         }
       }
+    }
+  }
+}
+
+::ng-deep {
+  .has {
+    &-request {
+      padding: 24px 24px 0 24px !important;
+    }
+    &-title {
+      font-size: 32px !important;
+      line-height: 38px !important;
+      margin-bottom: 8px !important;
+    }
+    &-subtitle {
+      font-size: 24px !important;
+      line-height: 28px !important;
+      margin-bottom: 16px !important;
+    }
+    &-assistant {
+      position: relative !important;
+      width: 100% !important;
+      height: 418px !important;
+      margin-bottom: 0 !important;
     }
   }
 }
@@ -284,21 +283,18 @@
   }
 }
 
-@media all and (max-width: 576px) {
-  .checklist {
-    &__head {
-      font-size: 24px;
-      line-height: 28px;
-    }
-    &__action {
-      width: 100%;
-    }
-  }
+.sm-title {
+  border: 1px solid red;
 }
 
 ::ng-deep {
   @media all and (min-width: 992px) {
-
+    .checklist {
+      &.is-laptop &__head {
+        font-size: 24px;
+        line-height: 28px;
+      }
+    }
   }
 }
 
@@ -663,17 +659,6 @@ $columnGap: 24px;
     padding-bottom: 22px;
     box-shadow: 0 4px 44px rgba(0, 0, 0, 0.08);
     border-radius: 66px;
-  }
-}
-
-@media all and (max-width: 576px) {
-  .package {
-    &-root {
-      display: block;
-    }
-    &-wrapper {
-      width: 100%;
-    }
   }
 }
 

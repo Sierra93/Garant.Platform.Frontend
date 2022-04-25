@@ -13,6 +13,7 @@ export class CategoryListComponent implements OnInit, DoCheck {
 
   isLaptop!: boolean;
   isHD!: boolean;
+  isSmall!: boolean;
   browserScreenWidth!: number;
 
   constructor(private http: HttpClient) {}
@@ -20,6 +21,7 @@ export class CategoryListComponent implements OnInit, DoCheck {
   public async ngOnInit(): Promise<void> {
     this.isLaptop = false;
     this.isHD = false;
+    this.isSmall = false;
     this.browserScreenWidth = window.screen.width;
 
     await this.GetBusinessCategoriesAsync();
@@ -87,6 +89,12 @@ export class CategoryListComponent implements OnInit, DoCheck {
       this.isLaptop = true;
     } else {
       this.isLaptop = false;
+    }
+
+    if (this.browserScreenWidth <= 576) {
+      this.isSmall = true;
+    } else {
+      this.isSmall = false;
     }
   }
 }

@@ -56,6 +56,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   isFullHD!: boolean;
   isHD!: boolean;
   isLaptop!: boolean;
+  isSmall!:boolean;
   browserScreenWidth!: number;
   isHideBusinessWithGarant: boolean = true;
   feedbackTitle: string = 'Азамат Булатов';
@@ -109,6 +110,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
     this.isHD = false;
     this.isFullHD = false;
     this.isLaptop = false;
+    this.isSmall = false;
     this.browserScreenWidth = window.screen.width;
     // await this.getPopularBusinessAsync();
     await this.loadCitiesFranchisesListAsync();
@@ -509,6 +511,12 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
       this.isLaptop = true;
     } else {
       this.isLaptop = false;
+    }
+
+    if (this.browserScreenWidth <= 576) {
+      this.isSmall = true;
+    } else {
+      this.isSmall = false;
     }
   }
 }

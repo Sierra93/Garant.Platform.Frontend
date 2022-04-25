@@ -136,7 +136,7 @@
           &__carousel-item {
             display: none;
           }
-          &__carousel-item:nth-child(n + 1) {
+          &__carousel-item:nth-child(n + 2) {
             display: block;
           }
         }

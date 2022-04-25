@@ -41,6 +41,8 @@ export class BusinessAdComponent implements OnInit, DoCheck {
 
   public async ngOnInit(): Promise<void> {
     this.isLaptop = false;
+    this.isHD = false;
+    this.isFullHD = false;
     this.browserScreenWidth = window.screen.width;
 
     await this.GetBusinessListAsync();

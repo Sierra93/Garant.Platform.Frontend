@@ -8,8 +8,7 @@
       <div
         class="business-blog__item"
         [ngClass]="{
-          'col-lg-4': isLaptop,
-          'col-xl-3': isHD,
+          'col-lg-4': isLaptop || isHD,
           'col-xxl-3': isFullHD
         }"
       >
@@ -36,8 +35,7 @@
     <div
       class="business-blog__nav"
       [ngClass]="{
-        'col-lg-4': isLaptop,
-        'col-xl-3': isHD,
+        'col-lg-4': isLaptop || isHD,
         'col-xxl-3': isFullHD
       }"
     >

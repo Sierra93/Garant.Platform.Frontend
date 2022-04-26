@@ -78,9 +78,9 @@
       text-align: center;
     }
     &-start {
-      padding: 24px 32px;
       width: 100%;
-      font-size: 24px;
+      height: 78px;
+      font-size: 21px;
       line-height: 28px;
       text-align: center;
     }
@@ -207,30 +207,6 @@
   }
 }
 
-::ng-deep {
-  .has {
-    &-request {
-      padding: 24px 24px 0 24px !important;
-    }
-    &-title {
-      font-size: 32px !important;
-      line-height: 38px !important;
-      margin-bottom: 8px !important;
-    }
-    &-subtitle {
-      font-size: 24px !important;
-      line-height: 28px !important;
-      margin-bottom: 16px !important;
-    }
-    &-assistant {
-      position: relative !important;
-      width: 100% !important;
-      height: 418px !important;
-      margin-bottom: 0 !important;
-    }
-  }
-}
-
 .checklist {
   &__head {
     background: transparent;
@@ -283,8 +259,38 @@
   }
 }
 
-.sm-title {
-  border: 1px solid red;
+.sm-check {
+  &-title {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 4px;
+  }
+  &-subtitle {
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 8px;
+  }
+  &-description {
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 24px;
+  }
+  &-action {
+    width: 100%;
+    height: 53px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+
+
+@media all and (min-width: 576px) {
+  .checklist {
+    &__head {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
 }
 
 ::ng-deep {
@@ -293,6 +299,9 @@
       &.is-laptop &__head {
         font-size: 24px;
         line-height: 28px;
+      }
+      &.is-laptop &__description {
+        max-width: 45%;
       }
     }
   }
@@ -306,6 +315,7 @@
       }
       &.is-hd &__description {
         font-size: 15px;
+        max-width: 45%;
       }
     }
   }

@@ -68,7 +68,6 @@
 
   /* select */
   &.gar-select {
-    overflow: hidden;
     height: 48px;
     background-color: $clrLightBlue;
     border-radius: $input-border-radius;
@@ -83,7 +82,7 @@
     &:focus-within {
       @include inputFocus;
 
-      outline-color: $clrBlue;
+      outline: none;
     }
 
     & .p-dropdown {

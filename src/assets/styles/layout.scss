@@ -17,6 +17,7 @@ body {
 a {
   color: $clrBlue;
   text-decoration: none;
+  transition: $timeFast color;
 
   &:hover {
     text-decoration: underline;
@@ -141,9 +142,14 @@ a {
 .gar-badge {
   @include typo("promo");
   border-radius: calc(#{$border-radius-card}/2);
-  background: $clrLightBlue;
+  background-color: $clrLightBlue;
   padding: $main-badge-padding;
   color: $clrDarkBLue;
+
+  &.-blue {
+    color: $clrWhite;
+    background-color: rgba($clrBlue, .85);
+  }
 }
 
 /* Стили для сетки */
@@ -159,7 +165,7 @@ a {
 /* Стили для сетки с карточками */
 .gar-grid-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: calc(#{$gridGap} / 3 * 2);
 }
 
@@ -193,5 +199,38 @@ a {
     padding: $input-padding;
     border-radius: $input-border-radius;
     @include typo("secondary");
+  }
+}
+
+/* Хлебные крошки с разделителем в виде точки */
+.gar-breadcrumbs-dotted {
+  @include typo('secondary');
+
+  display: flex;
+  flex-wrap: wrap;
+  color: $clrMidGray;
+
+  &.-small {
+    @include typo('description');
+  }
+
+  & > * {
+    position: relative;
+    margin-right: 20px;
+  }
+
+  & > *:not(:last-child)::after {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 8px);
+
+    width: 4px;
+    height: 4px;
+    background-color: currentColor;
+    border-radius: 50%;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(-50%);
+    content: '';
   }
 }

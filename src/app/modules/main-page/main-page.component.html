@@ -276,23 +276,31 @@
   </div> -->
 
   <!-- Новости делового мира. -->
-  <div class="row section-mb">
-    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-      <div class="business-world-img">
-        <img src="../../../assets/images/Frame 31.png">
+  <div class="gar-row title">Новости делового мира</div>
+
+  <div class="gar-grid gar-grid_wrap">
+    <div class="latest-news-promo">
+      <img src="/assets/images/promo-block.png" alt="" class="latest-news-promo-pic">
+
+      <div class="latest-news-promo-content">
+        <div class="gar-badge -blue news-promo-badge">Рекламный блок</div>
+
+        <div class="latest-news-promo-description">
+          Здесь может быть реклама или блок с вложенностью актуальных бизнесов, например. Также может быть “новость - хедлайнер” с фотографией на фоне
+        </div>
       </div>
+
+      <a routerLink="#" class="news-promo-link"></a>
     </div>
 
-    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-      <div class="news-item space-left-item" *ngFor="let item of aNews">
-        <!-- <img [src]="item.url"> -->
-        <strong class="title-news">{{item.name}}</strong>
-        <div class="bottom-line">
-          <small>{{item.time}}</small>
-          <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
-          <small>{{item.date}}</small>
-          <img class="ellipse" src="../../../assets/images/Ellipse 13.png">
-          <small>{{item.type}}</small>
+    <div class="latest-news">
+      <div class="latest-news-item" *ngFor="let item of aNews">
+        <a routerLink="#" class="latest-news-item-title" title="{{item.title}}">{{item.title}}</a>
+
+        <div class="gar-breadcrumbs-dotted -small latest-news-item-breadcrumbs">
+          <span>{{item.time}}</span>
+          <span>{{item.date}}</span>
+          <a routerLink="#">{{item.type}}</a>
         </div>
       </div>
     </div>

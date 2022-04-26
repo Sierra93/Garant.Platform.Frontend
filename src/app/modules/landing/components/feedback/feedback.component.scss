@@ -101,10 +101,14 @@
   :host .feedback {
     &__request {
       padding: 24px;
+      &.with-headmaster {
+        padding: 24px 24px 0;
+      }
     }
     &__title {
       font-size: 32px;
       line-height: 37px;
+      margin-bottom: 8px;
     }
     &__subtitle {
       font-size: 24px;
@@ -135,8 +139,18 @@
       line-height: 21px;
       margin-top: 0;
     }
-    &__assistant {
+    &__photo-wrapper {
       display: none;
+      &.photo-headmaster {
+        display: block;
+      }
+    }
+    &__assistant {
+      &.has-headmaster {
+        position: relative;
+        height: 100%;
+        margin-bottom: 0;
+      }
     }
   }
 }

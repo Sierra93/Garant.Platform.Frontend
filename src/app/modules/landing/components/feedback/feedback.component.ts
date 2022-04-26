@@ -13,6 +13,7 @@ export class FeedbackComponent implements OnInit, DoCheck {
   @Input() imagePath: string = '';
   @Input() bgColor: string = '';
   @Input() isBgColor: boolean = false;
+  @Input() hasConsultant: boolean = false;
 
   isLaptop!: boolean;
   isHD!: boolean;
@@ -63,12 +64,6 @@ export class FeedbackComponent implements OnInit, DoCheck {
       this.isLaptop = true;
     } else {
       this.isLaptop = false;
-    }
-
-    if (this.browserScreenWidth <= 576) {
-      this.isSmall = true;
-    } else {
-      this.isSmall = false;
     }
   }
 }

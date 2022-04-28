@@ -56,7 +56,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   isFullHD!: boolean;
   isHD!: boolean;
   isLaptop!: boolean;
-  isSmall!:boolean;
+  isSmall!: boolean;
   browserScreenWidth!: number;
   isHideBusinessWithGarant: boolean = true;
   feedbackTitle: string = 'Азамат Булатов';
@@ -107,11 +107,12 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   }
 
   public async ngOnInit() {
-    this.isHD = false;
     this.isFullHD = false;
+    this.isHD = false;
     this.isLaptop = false;
     this.isSmall = false;
     this.browserScreenWidth = window.screen.width;
+
     // await this.getPopularBusinessAsync();
     await this.loadCitiesFranchisesListAsync();
     await this.loadCategoriesFranchisesListAsync();
@@ -500,19 +501,16 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
     } else {
       this.isFullHD = false;
     }
-
     if (this.browserScreenWidth >= 1200 && this.browserScreenWidth < 1400) {
       this.isHD = true;
     } else {
       this.isHD = false;
     }
-
     if (this.browserScreenWidth >= 992 && this.browserScreenWidth < 1199) {
       this.isLaptop = true;
     } else {
       this.isLaptop = false;
     }
-
     if (this.browserScreenWidth <= 576) {
       this.isSmall = true;
     } else {

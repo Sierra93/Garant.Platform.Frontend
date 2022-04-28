@@ -672,6 +672,46 @@ $columnGap: 24px;
   }
 }
 
+
+@media all and (max-width: 576px) {
+  .package {
+    &-common-title {
+      max-width: 60%;
+      font-size: 19px;
+      line-height: 22px;
+    }
+    &-root {
+      display: block;
+    }
+    &-content {
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-bottom: 0;
+    }
+    &-total-price {
+      padding-bottom: 8px;
+    }
+    &-price-item {
+      display: block;
+      padding-bottom: 16px;
+    }
+    &-total-result {
+      display: block;
+      & br {
+        display: none;
+      }
+    }
+    &-total-note {
+      display: block;
+      margin-bottom: 16px;
+    }
+    &-submit {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+}
+
 ::ng-deep {
   @media all and (min-width: 992px) {
     .package {

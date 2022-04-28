@@ -9,14 +9,16 @@ import {
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 // import { CatalogFranchiseService } from '../../../core/services/catalog-franchise.service';
-import { take } from 'rxjs/operators';
+import { shareReplay, take, takeUntil, tap } from 'rxjs/operators';
 import { CatalogShortCardComponent } from "../../products/catalog/catalog.short.card/catalog.short.card.component";
 import { FormControl } from "@angular/forms";
+import { GarDestroyService } from "../../../gar-lib/gar-destroy.service";
 
 @Component({
   selector: 'catalog-franchise',
   templateUrl: './catalog-franchise.component.html',
   styleUrls: ['./catalog-franchise.component.scss'],
+  providers: [GarDestroyService]
 })
 
 /**
@@ -66,12 +68,19 @@ export class CatalogFranchiseModule implements OnInit {
   
   /** Компонент, передаваемый в карусель */
   cardComponent = CatalogShortCardComponent;
+  /** список популярных франшиз */
+  readonly aPopularFranchises$ = this.commonService.getPopularFranchise().pipe(
+      shareReplay(1),
+      tap(data => console.log('Популярные франшизы:', data)),
+      takeUntil(this._destroy$)
+  )
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,
     private titleService: Title,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _destroy$: GarDestroyService
   ) {
     // TODO: Переделать на хранение на бэке.
     this.aSortPrices = [
@@ -108,7 +117,6 @@ export class CatalogFranchiseModule implements OnInit {
 
   public async ngOnInit() {
     this.titleService.setTitle('Gobizy: Каталог франшиз');
-    await this.GetPopularAsync();
     //TODO: Возможно вызов не нужен, франшизы грузятся при ините пагинации.
     //await this.GetFranchisesListAsync();
     //await this.loadCitiesFranchisesListAsync();
@@ -123,21 +131,6 @@ export class CatalogFranchiseModule implements OnInit {
     await this.loadSingleSuggestionAsync();
     await this.GetNewFranchisesListAsync();
     await this.GetReviewsFranchisesAsync();
-  }
-
-  /**
-   * Функция получит список популярныз франшиз.
-   * @returns Список франшиз.
-   */
-  private async GetPopularAsync() {
-    try {
-      await this.commonService.getPopularAsync().then((data: any) => {
-        console.log('Популярные франшизы:', data);
-        this.aPopularFranchises = data;
-      });
-    } catch (e: any) {
-      throw new Error(e);
-    }
   }
 
   /**

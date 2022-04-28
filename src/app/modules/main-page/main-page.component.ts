@@ -8,11 +8,14 @@ import { ConfirmEmailInput } from 'src/app/models/register/input/confirm-email-i
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { NgForm } from "@angular/forms";
 import { CatalogPromoCardComponent } from "../products/catalog/catalog.promo.card/catalog.promo.card.component";
+import { shareReplay, takeUntil, tap } from "rxjs/operators";
+import { GarDestroyService } from "../../gar-lib/gar-destroy.service";
 
 @Component({
     selector: 'main-page',
     templateUrl: './main-page.component.html',
-    styleUrls: ['./main-page.component.scss']
+    styleUrls: ['./main-page.component.scss'],
+    providers: [GarDestroyService]
 })
 
 /**
@@ -54,12 +57,22 @@ export class MainPageModule implements OnInit {
     showCategoryMenu: boolean = false;
     
     cardComponent = CatalogPromoCardComponent;
+    /**
+     * список последних бизнесов
+     * */
+    readonly aNewBusiness$ = this.commonService.getNewBusiness().pipe(
+        shareReplay(1),
+        tap(data => console.log("Последний бизнес:", data)),
+        takeUntil(this._destroy$)
+    )
 
     constructor(private http: HttpClient,
         private commonService: CommonDataService,
         private titleService: Title,
         private route: ActivatedRoute,
-        private router: Router) {
+        private router: Router,
+        private _destroy$: GarDestroyService
+    ) {
         this.responsiveOptions = [
             {
                 breakpoint: '1024px',
@@ -95,7 +108,6 @@ export class MainPageModule implements OnInit {
         await this.GetActionsAsync();
         await this.loadSingleSuggestionAsync();
         await this.getPopularAsync();
-        await this.getNewBusinessAsync();
         await this.GetBlogsAsync();
         await this.GetNewsTopAsync();
         await this.GetQuickFranchisesAsync();
@@ -229,27 +241,12 @@ export class MainPageModule implements OnInit {
      */
     private async getPopularAsync() {
         try {
-            await this.commonService.getPopularAsync().then((data: any) => {
-                console.log("Популярные франшизы:", data);
+            this.commonService.getPopularFranchise().pipe(
+                takeUntil(this._destroy$)
+            ).subscribe(data => {
+                console.log('Популярные франшизы:', data);
                 this.aPopularFranchises = data;
-            });
-        }
-
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };
-
-    /**
-     * Функция получит список последних бизнесов.
-     * @returns Список объявлений.
-     */
-     private async getNewBusinessAsync() {
-        try {
-            await this.commonService.getNewBusinessAsync().then((data: any) => {
-                console.log("Последний бизнес:", data);
-                this.aNewBusiness = data;
-            });
+            })
         }
 
         catch (e: any) {

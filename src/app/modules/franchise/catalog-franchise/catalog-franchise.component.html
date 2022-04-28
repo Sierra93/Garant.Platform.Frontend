@@ -10,7 +10,7 @@
     </div>
 
     <div class="gar-row title">Популярные франшизы</div>
-    <gar-carousel [items]="aPopularFranchises" [template]="cardComponent"></gar-carousel>
+    <gar-carousel [items]="aPopularFranchises$ | async" [template]="cardComponent"></gar-carousel>
   </div>
 
   <!-- Каталог франшиз. -->

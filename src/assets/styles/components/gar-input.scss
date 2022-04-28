@@ -18,7 +18,7 @@
     outline: 1px solid transparent;
     transition: $timeFast;
     transition-property: outline-color, box-shadow;
-    @include typo("secondary");
+    @include typo('secondary');
 
     &:hover {
       outline-color: $clrBlue;
@@ -68,7 +68,6 @@
 
   /* select */
   &.gar-select {
-    overflow: hidden;
     height: 48px;
     background-color: $clrLightBlue;
     border-radius: $input-border-radius;
@@ -83,7 +82,7 @@
     &:focus-within {
       @include inputFocus;
 
-      outline-color: $clrBlue;
+      outline: none;
     }
 
     & .p-dropdown {
@@ -99,7 +98,7 @@
 
       & .p-inputtext {
         @include inputReset;
-        @include typo("secondary");
+        @include typo('secondary');
 
         display: flex;
         align-items: center;

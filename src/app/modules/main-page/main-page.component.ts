@@ -8,7 +8,7 @@ import { ConfirmEmailInput } from 'src/app/models/register/input/confirm-email-i
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { NgForm } from "@angular/forms";
 import { CatalogPromoCardComponent } from "../products/catalog/catalog.promo.card/catalog.promo.card.component";
-import { shareReplay, takeUntil } from "rxjs/operators";
+import { shareReplay, takeUntil, tap } from "rxjs/operators";
 import { GarDestroyService } from "../../gar-lib/gar-destroy.service";
 
 @Component({
@@ -62,6 +62,7 @@ export class MainPageModule implements OnInit {
      * */
     readonly aNewBusiness$ = this.commonService.getNewBusiness().pipe(
         shareReplay(1),
+        tap(data => console.log("Последний бизнес:", data)),
         takeUntil(this._destroy$)
     )
 
@@ -107,7 +108,6 @@ export class MainPageModule implements OnInit {
         await this.GetActionsAsync();
         await this.loadSingleSuggestionAsync();
         await this.getPopularAsync();
-        // await this.getNewBusinessAsync();
         await this.GetBlogsAsync();
         await this.GetNewsTopAsync();
         await this.GetQuickFranchisesAsync();
@@ -253,26 +253,6 @@ export class MainPageModule implements OnInit {
             throw new Error(e);
         }
     };
-
-    // /**
-    //  * Функция получит список последних бизнесов.
-    //  * @returns Список объявлений.
-    //  */
-    //  private async getNewBusinessAsync() {
-    //     try {
-    //         return this.commonService.getNewBusiness().pipe(
-    //             takeUntil(this._destroy$)
-    //         ).subscribe()
-    //         await this.commonService.getNewBusinessAsync().then((data: any) => {
-    //             console.log("Последний бизнес:", data);
-    //             this.aNewBusiness = data;
-    //         });
-    //     }
-    //
-    //     catch (e: any) {
-    //         throw new Error(e);
-    //     }
-    // };
 
     /**
      * Функция получит список блогов.

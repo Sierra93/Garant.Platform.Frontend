@@ -9,7 +9,7 @@ import {
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 // import { CatalogFranchiseService } from '../../../core/services/catalog-franchise.service';
-import { shareReplay, take, takeUntil } from 'rxjs/operators';
+import { shareReplay, take, takeUntil, tap } from 'rxjs/operators';
 import { CatalogShortCardComponent } from "../../products/catalog/catalog.short.card/catalog.short.card.component";
 import { FormControl } from "@angular/forms";
 import { GarDestroyService } from "../../../gar-lib/gar-destroy.service";
@@ -71,6 +71,7 @@ export class CatalogFranchiseModule implements OnInit {
   /** список популярных франшиз */
   readonly aPopularFranchises$ = this.commonService.getPopularFranchise().pipe(
       shareReplay(1),
+      tap(data => console.log('Популярные франшизы:', data)),
       takeUntil(this._destroy$)
   )
   constructor(

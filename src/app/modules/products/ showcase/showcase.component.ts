@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonDataService } from "../../../services/common/common-data.service";
 import { GarDestroyService } from "../../../gar-lib/gar-destroy.service";
 import { CatalogShortCardComponent } from "../catalog/catalog.short.card/catalog.short.card.component";
-import { shareReplay, takeUntil } from "rxjs/operators";
+import { shareReplay, takeUntil, tap } from "rxjs/operators";
 
 /**
  * Компонент представления повторяющихся блоков с промо информацией
@@ -24,6 +24,7 @@ export class ShowcaseComponent {
 	/** список популярных франшиз */
 	readonly aPopularFranchises$ = this.commonService.getPopularFranchise().pipe(
 		shareReplay(1),
+		tap(data => console.log('Популярные франшизы:', data)),
 		takeUntil(this._destroy$)
 	)
 	/**

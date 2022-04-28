@@ -120,6 +120,11 @@ a {
   }
 }
 
+/* Строка с второстепенным текстом */
+.gar-row.secondary {
+  @include typo('secondary');
+}
+
 /* Стиль описывающий элемент карточка */
 .gar-card {
   display: flex;
@@ -130,6 +135,14 @@ a {
   box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
   &:not(.secondary) {
     padding: $card-padding;
+  }
+  /* Карточка с промо информацией с голубым фоном */
+  &.promo {
+    background-color: $clrLightBlue;
+    & .gar-row.secondary {
+      color: $clrGray;
+      margin-bottom: 40px;
+    }
   }
 
   /* карточка внутри карточки */
@@ -198,7 +211,7 @@ a {
     color: $clrBlack;
     padding: $input-padding;
     border-radius: $input-border-radius;
-    @include typo("secondary");
+    @include typo('secondary');
   }
 }
 
@@ -233,4 +246,9 @@ a {
     transform: translateY(-50%);
     content: '';
   }
+}
+
+/* Класс, описывающий секцию */
+.section {
+  margin-bottom: 80px;
 }

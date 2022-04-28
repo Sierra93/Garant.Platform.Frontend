@@ -11,6 +11,8 @@ import { SESSION_TOKEN } from "../../core/session/session.token";
 import { SessionService } from "../../core/session/session.service";
 import { SessionItems } from "../../core/session/session-items";
 import { header } from "../../modules/header/header";
+import { catchError } from "rxjs/operators";
+import { Observable, throwError } from "rxjs";
 
 /**
  * Сервис общих функций.
@@ -208,31 +210,16 @@ export class CommonDataService {
             throw new Error(e);
         }
     };
-
+    
     /**
      * Функция получит список популярныз франшиз.
      * @returns Список франшиз.
      */
-    public async getPopularAsync() {
-        try {
-            return new Promise(async resolve => {
-                await this.http.post(API_URL.apiUrl.concat("/franchise/main-popular"), {})
-                    .subscribe({
-                        next: (response: any) => {
-                            resolve(response);
-                        },
-
-                        error: (err) => {
-                            throw new Error(err);
-                        }
-                    });
-            })
-        }
-
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };
+    public getPopularFranchise(): Observable<any> {
+        return this.http.post(API_URL.apiUrl.concat("/franchise/main-popular"), {}).pipe(
+            catchError(err => throwError(err))
+        )
+    }
 
     public async getPopularBusinessAsync() {
         try {
@@ -668,6 +655,12 @@ export class CommonDataService {
     public getUserLocation(): string {
         return window.navigator.language.substr(0, 2).toLowerCase();
     };
+    
+    public getNewBusiness(): Observable<any> {
+        return this.http.post(API_URL.apiUrl.concat("/business/new-business"), {}).pipe(
+            catchError(err => throwError(err))
+        )
+    }
 
     public async getNewBusinessAsync() {
         try {

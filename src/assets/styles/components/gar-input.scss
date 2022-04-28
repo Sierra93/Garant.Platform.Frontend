@@ -18,7 +18,7 @@
     outline: 1px solid transparent;
     transition: $timeFast;
     transition-property: outline-color, box-shadow;
-    @include typo("secondary");
+    @include typo('secondary');
 
     &:hover {
       outline-color: $clrBlue;
@@ -98,7 +98,7 @@
 
       & .p-inputtext {
         @include inputReset;
-        @include typo("secondary");
+        @include typo('secondary');
 
         display: flex;
         align-items: center;

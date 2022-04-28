@@ -1,40 +1,43 @@
-<section class="feedback" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
+<section
+  class="feedback-form"
+  [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }"
+>
   <form
-    class="feedback__request"
+    class="feedback-form__form"
     [ngClass]="{ 'with-headmaster': hasConsultant }"
     [ngStyle]="{ 'background-color': bgColor }"
   >
     <div class="container">
       <div class="row">
         <div [ngClass]="{ 'col-lg-6': isLaptop, 'col-xl-7': isHD || isFullHD }">
-          <div class="alert alert-light feedback__title">
+          <div class="alert alert-light feedback-form__title">
             {{ title }}
           </div>
-          <div class="alert alert-light feedback__subtitle">
+          <div class="alert alert-light feedback-form__subtitle">
             {{ subtitle }}
           </div>
-          <div class="alert alert-light feedback__note">{{ tooltip }}</div>
-          <div class="mb-3 row feedback__field-orientation">
+          <div class="alert alert-light feedback-form__note">{{ tooltip }}</div>
+          <div class="mb-3 row feedback-form__orientation">
             <div
-              class="feedback__entry-wrapper"
+              class="feedback-form__any-box"
               [ngClass]="{ 'col-xl-5': isHD || isFullHD, 'col-lg-6': isLaptop }"
             >
-              <label for="userName" class="form-label feedback__text-note"
+              <label for="userName" class="form-label feedback-form__label"
                 >Имя</label
               >
               <input
                 type="text"
-                class="form-control feedback__entry-text"
+                class="form-control feedback-form__input"
                 id="userName"
                 placeholder="Введите имя"
                 name="name"
               />
             </div>
             <div
-              class="feedback__entry-wrapper"
+              class="feedback-form__any-box"
               [ngClass]="{ 'col-xl-5': isHD || isFullHD, 'col-lg-6': isLaptop }"
             >
-              <label class="form-label feedback__text-note"
+              <label class="form-label feedback-form__label"
                 >Номер телефона</label
               >
               <p-inputMask
@@ -44,12 +47,15 @@
               ></p-inputMask>
             </div>
             <div
-              class="feedback__submit-request"
+              class="feedback-form__any-button"
               [ngClass]="{ 'col-lg-6': isLaptop, 'col-xl-8': isHD || isFullHD }"
             >
               <button
-                [ngClass]="{ 'is-convert': isBgColor }"
-                class="btn btn-primary feedback__submit"
+                [ngClass]="{
+                  'set-bg': isBgColor,
+                  'set-master-bg': hasConsultant
+                }"
+                class="btn btn-primary feedback-form__submit"
                 (click)="onSendLandingRequestAsync(name, phoneNumber)"
               >
                 Обратиться за консультацией
@@ -63,10 +69,10 @@
             'col-xl-5': isHD || isFullHD,
             'photo-headmaster': hasConsultant
           }"
-          class="feedback__photo-wrapper"
+          class="feedback-form__any-photo"
         >
           <img
-            class="img-fluid feedback__assistant"
+            class="img-fluid feedback-form__img"
             [ngClass]="{ 'has-headmaster': hasConsultant }"
             [src]="imagePath"
             alt="Консультант"

@@ -76,6 +76,7 @@ import { NotifyService } from "./services/notify/notify.service";
 import { LandingRequestService } from "./modules/landing/services/landing.service";
 import { InputMaskModule } from 'primeng/inputmask';
 import { ProductsModule } from "./modules/products/products.module";
+import { NewsModule } from "./modules/news/news.module";
 
 @NgModule({
   declarations: [
@@ -112,43 +113,44 @@ import { ProductsModule } from "./modules/products/products.module";
   ],
   
   entryComponents: [],
-  
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    ButtonModule,
-    DialogModule,
-    ConfirmDialogModule,
-    MessagesModule,
-    ToastModule,
-    TabViewModule,
-    PaginatorModule,
-    RadioButtonModule,
-    InputTextModule,
-    AutoCompleteModule,
-    CarouselModule,
-    CardModule,
-    InputSwitchModule,
-    SliderModule,
-    CheckboxModule,
-    BreadcrumbModule,
-    FileUploadModule,
-    GalleriaModule,
-    InputTextareaModule,
-    AvatarModule,
-    AvatarGroupModule,
-    ReactiveFormsModule,
-    TabMenuModule,
-    StepsModule,
-    TableModule,
-    NgHttpLoaderModule.forRoot(),
-    GarLibModule,
-    InputMaskModule,
-    ProductsModule
-  ],
+	
+	imports: [
+		BrowserModule,
+		FormsModule,
+		AppRoutingModule,
+		HttpClientModule,
+		BrowserAnimationsModule,
+		ButtonModule,
+		DialogModule,
+		ConfirmDialogModule,
+		MessagesModule,
+		ToastModule,
+		TabViewModule,
+		PaginatorModule,
+		RadioButtonModule,
+		InputTextModule,
+		AutoCompleteModule,
+		CarouselModule,
+		CardModule,
+		InputSwitchModule,
+		SliderModule,
+		CheckboxModule,
+		BreadcrumbModule,
+		FileUploadModule,
+		GalleriaModule,
+		InputTextareaModule,
+		AvatarModule,
+		AvatarGroupModule,
+		ReactiveFormsModule,
+		TabMenuModule,
+		StepsModule,
+		TableModule,
+		NgHttpLoaderModule.forRoot(),
+		GarLibModule,
+		InputMaskModule,
+		ProductsModule,
+		NewsModule
+	],
   
   providers: [
     {

@@ -80,12 +80,18 @@ a {
     display: flex;
     flex-direction: column;
     width: 100%;
+    flex-basis: 100%;
     /* элемент строки является карточкой */
     &.gar-card {
       &:not(:first-child) {
         margin-left: $gar-card-between-horizontal-margin;
       }
     }
+  }
+
+  /* Перестраиваем строку в колонку на мобилке */
+  @include phone {
+    flex-direction: column;
   }
 }
 

@@ -37,7 +37,6 @@ export class MainPageModule implements OnInit {
     aPopularFranchises: any[] = [];
     aAds: any[] = [];
     aBlogs: any[] = [];
-    aNews: any[] = [];
     aFranchises: any[] = [];
     oTopAction: any = {};
     selectedCity: string = "";
@@ -109,7 +108,6 @@ export class MainPageModule implements OnInit {
         await this.loadSingleSuggestionAsync();
         await this.getPopularAsync();
         await this.GetBlogsAsync();
-        await this.GetNewsTopAsync();
         await this.GetQuickFranchisesAsync();
         await this.loadCitiesFranchisesListAsync();
         await this.loadCategoriesFranchisesListAsync();
@@ -265,30 +263,6 @@ export class MainPageModule implements OnInit {
                     next: (response: any) => {
                         console.log("Список блогов:", response);
                         this.aBlogs = response;
-                    },
-
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
-        }
-
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };
-
-    /**
-     * Функция получит список проплаченных новостей.
-     * @returns Список новостей.
-     */
-    private async GetNewsTopAsync() {
-        try {
-            await this.http.post(API_URL.apiUrl.concat("/blog/get-news"), {})
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Список новостей:", response);
-                        this.aNews = response;
                     },
 
                     error: (err) => {

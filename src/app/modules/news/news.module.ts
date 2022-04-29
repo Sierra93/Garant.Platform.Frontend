@@ -4,13 +4,18 @@ import { NewsPageComponent } from "./components/news.page/news.page.component";
 import { RouterModule } from "@angular/router";
 import { GarLibModule } from "../../gar-lib/gar-lib.module";
 import { ProductsModule } from "../products/products.module";
+import { NewsBlockComponent } from "./components/news.block/news.block.component";
 
 
 
 @NgModule({
-  declarations: [
-      NewsPageComponent
-  ],
+	declarations: [
+		NewsPageComponent,
+		NewsBlockComponent
+	],
+	exports: [
+		NewsBlockComponent
+	],
 	imports: [
 		CommonModule,
 		RouterModule.forChild([{

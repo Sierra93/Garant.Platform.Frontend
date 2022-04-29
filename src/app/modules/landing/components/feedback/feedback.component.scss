@@ -102,62 +102,79 @@
   }
 }
 
-@media all and (max-width: 576px) {
-  :host .feedback-form {
-    &__form {
-      padding: 24px;
-      &.with-headmaster {
-        padding: 24px 24px 0;
-      }
+:host {
+  & .feedback-form {
+    &__form.is-master {
+      padding: 24px 24px 0;
     }
-    &__title {
+    &__title.is-master {
       font-size: 32px;
       line-height: 37px;
       margin-bottom: 8px;
     }
-    &__subtitle {
+    &__subtitle.is-master {
       font-size: 24px;
       line-height: 28px;
     }
-    &__note {
-      margin-bottom: 24px;
-      max-width: 95%;
-    }
-    &__any-box {
-      display: block;
-    }
-    &__any-box:first-child {
+    &__any-box.is-master {
       margin-bottom: 16px;
     }
-    &__input,
-    & ::ng-deep .p-element .p-inputtext {
-      font-size: 18px;
-      line-height: 21px;
+    &__any-photo.is-master {
+      display: block;
+      padding-left: 0;
+      padding-right: 0;
+      text-align: center;
+      border-radius: 7px;
     }
-    &__any-button {
-      margin-top: 24px;
+    &__img.is-master {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0;
     }
-    &__submit {
-      font-size: 17px;
-      line-height: 21px;
-      margin-top: 0;
-    }
-    &__any-photo {
-      display: none;
-      &.photo-headmaster {
-        display: block;
-        padding-left: 0;
-        padding-right: 0;
-        text-align: center;
-        border-radius: 7px;
+  }
+}
+
+@media all and (max-width: 576px) {
+  :host {
+    & .feedback-form {
+      &__form {
+        padding: 24px;
       }
-    }
-    &__img {
-      &.has-headmaster {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        margin-bottom: 0;
+      &__title {
+        font-size: 32px;
+        line-height: 37px;
+        margin-bottom: 8px;
+      }
+      &__subtitle {
+        font-size: 24px;
+        line-height: 28px;
+      }
+      &__note {
+        margin-bottom: 24px;
+        max-width: 95%;
+      }
+      &__any-box {
+        display: block;
+      }
+      &__any-box:first-child {
+        margin-bottom: 16px;
+      }
+      &__input,
+      & ::ng-deep .p-element .p-inputtext {
+        font-size: 18px;
+        line-height: 21px;
+      }
+      &__any-button {
+        margin-top: 24px;
+      }
+      &__submit {
+        font-size: 17px;
+        line-height: 21px;
+        margin-top: 0;
+      }
+      &__any-photo {
+        display: none;
       }
     }
   }
@@ -165,48 +182,36 @@
 
 ::ng-deep {
   @media all and (min-width: 992px) {
-    $typeDeviceWatched: "is-laptop";
     .feedback-form {
-      &.#{$typeDeviceWatched} {
+      &.is-laptop &__title {
         font-size: 64px;
         line-height: 75px;
-        .feedback-form {
-          &__title {
-            font-size: 64px;
-            line-height: 75px;
-          }
-          &__subtitle {
-            font-size: 44px;
-            line-height: 52px;
-            max-width: 50%;
-          }
-          &__note {
-            max-width: calc(50% + 4px);
-          }
-          &__orientation {
-            display: block;
-          }
-          &__any-box:first-child {
-            margin-bottom: 16px;
-          }
-          &__submit {
-            font-size: 19px;
-            line-height: 22px;
-          }
-        }
+      }
+      &.is-laptop &__subtitle {
+        font-size: 44px;
+        line-height: 52px;
+        max-width: 50%;
+      }
+      &.is-laptop &__note {
+        max-width: calc(50% + 4px);
+      }
+      &.is-laptop &__orientation {
+        display: block;
+      }
+      &.is-laptop &__any-box:first-child {
+        margin-bottom: 16px;
+      }
+      &.is-laptop &__submit {
+        font-size: 19px;
+        line-height: 22px;
       }
     }
   }
 
   @media all and (min-width: 1200px) {
-    $typeDeviceWatched: "is-hd";
     .feedback-form {
-      &.#{$typeDeviceWatched} {
-        .feedback-form {
-          &__note {
-            max-width: 80%;
-          }
-        }
+      &__note.is-hd {
+        max-width: 80%;
       }
     }
   }

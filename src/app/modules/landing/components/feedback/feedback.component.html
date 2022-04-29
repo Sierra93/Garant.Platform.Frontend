@@ -1,26 +1,41 @@
 <section
   class="feedback-form"
-  [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }"
+  [ngClass]="{ 'is-laptop': isLaptop }"
 >
   <form
     class="feedback-form__form"
-    [ngClass]="{ 'with-headmaster': hasConsultant }"
+    [ngClass]="{ 'is-master': hasConsultant }"
     [ngStyle]="{ 'background-color': bgColor }"
   >
     <div class="container">
       <div class="row">
         <div [ngClass]="{ 'col-lg-6': isLaptop, 'col-xl-7': isHD || isFullHD }">
-          <div class="alert alert-light feedback-form__title">
+          <div
+            class="alert alert-light feedback-form__title"
+            [ngClass]="{ 'is-master': hasConsultant }"
+          >
             {{ title }}
           </div>
-          <div class="alert alert-light feedback-form__subtitle">
+          <div
+            class="alert alert-light feedback-form__subtitle"
+            [ngClass]="{ 'is-master': hasConsultant }"
+          >
             {{ subtitle }}
           </div>
-          <div class="alert alert-light feedback-form__note">{{ tooltip }}</div>
+          <div
+            class="alert alert-light feedback-form__note"
+            [ngClass]="{ 'is-hd': isHD }"
+          >
+            {{ tooltip }}
+          </div>
           <div class="mb-3 row feedback-form__orientation">
             <div
               class="feedback-form__any-box"
-              [ngClass]="{ 'col-xl-5': isHD || isFullHD, 'col-lg-6': isLaptop }"
+              [ngClass]="{
+                'is-master': hasConsultant,
+                'col-xl-5': isHD || isFullHD,
+                'col-lg-6': isLaptop
+              }"
             >
               <label for="userName" class="form-label feedback-form__label"
                 >Имя</label
@@ -67,13 +82,13 @@
           [ngClass]="{
             'col-lg-6': isLaptop,
             'col-xl-5': isHD || isFullHD,
-            'photo-headmaster': hasConsultant
+            'is-master': hasConsultant
           }"
           class="feedback-form__any-photo"
         >
           <img
             class="img-fluid feedback-form__img"
-            [ngClass]="{ 'has-headmaster': hasConsultant }"
+            [ngClass]="{ 'is-master': hasConsultant }"
             [src]="imagePath"
             alt="Консультант"
           />

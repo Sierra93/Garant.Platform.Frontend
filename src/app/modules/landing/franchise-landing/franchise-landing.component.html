@@ -1,12 +1,13 @@
-<section class="card deal" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
+<section class="card service">
   <div
     [ngClass]="{ 'container-fluid': isLaptop || isHD || isFullHD }"
-    class="deal__container"
+    class="service-any-root"
   >
-    <div class="row deal__location">
+    <div class="row service-any-row">
       <div
-        class="deal__img-wrapper"
+        class="service-any-img"
         [ngClass]="{
+          'is-laptop': isLaptop,
           'col-lg-5': isLaptop,
           'col-xl-7': isHD,
           'col-xxl-5': isFullHD
@@ -14,52 +15,64 @@
       >
         <ng-container *ngIf="!isSmall">
           <img
-            class="img-fluid deal__img"
+            class="img-fluid service-img service-img--large"
             src="../../../../assets/images/franchise-landing/desk.png"
             alt="Стол"
           />
         </ng-container>
         <ng-container *ngIf="isSmall">
-          <img class="img-fluid sm-img" src="" alt="" />
+          <img class="img-fluid service-img service-img--small" src="" alt="" />
         </ng-container>
       </div>
       <div
-        class="deal__content"
+        class="service-content"
         [ngClass]="{
-          'sm-deal-content': isSmall,
+          'is-hd': isHD,
+          'is-laptop': isLaptop,
+          'is-sm': isSmall,
           'col-lg-7': isLaptop,
           'col-xl-5': isHD,
           'col-xxl-7': isFullHD
         }"
       >
-        <div
-          class="card-body deal__description"
-          [ngClass]="{ 'sm-deal-item': isSmall }"
-        >
-          <ng-container *ngIf="!isSmall">
-            <h5 class="card-title deal__title">Создание</h5>
-            <div class="card-text deal__business">и упаковка франшиз</div>
-          </ng-container>
-          <ng-container *ngIf="isSmall">
-            <h5 class="card-title sm-deal-title">Создание</h5>
-            <div class="card-text sm-deal-business">и упаковка франшиз</div>
-          </ng-container>
-          <div
-            class="card-text deal__franchise"
-            [ngClass]="{ 'sm-deal-franchise': isSmall }"
+        <div class="card-body service-body" [ngClass]="{ 'is-sm': isSmall }">
+          <h5
+            class="card-title service-title"
+            [ngClass]="{
+              'is-sm': isSmall,
+              'is-laptop': isLaptop,
+              'is-hd': isHD
+            }"
           >
+            Создание
+          </h5>
+          <div
+            class="card-text service-subtitle"
+            [ngClass]="{
+              'is-sm': isSmall,
+              'is-laptop': isLaptop,
+              'is-hd': isHD
+            }"
+          >
+            и упаковка франшиз
+          </div>
+          <div class="card-text service-subtitle-note" *ngIf="!isSmall">
             с бесплатным размещением в каталоге
           </div>
-          <ng-container *ngIf="isSmall">
-            <button class="btn btn-primary sm-deal-start">
-              Бесплатная консультация
-            </button>
-          </ng-container>
-          <ng-container *ngIf="!isSmall">
-            <button class="btn btn-primary deal__btn-action">
-              Бесплатная консультация
-            </button>
-          </ng-container>
+          <div
+            class="card-text service-subtitle-note"
+            *ngIf="isSmall"
+            [ngClass]="{ 'is-sm': isSmall }"
+          >
+            с бесплатным <br />
+            размещением в каталоге
+          </div>
+          <button
+            class="btn btn-primary service-button"
+            [ngClass]="{ 'is-sm': isSmall, 'is-hd': isHD }"
+          >
+            Бесплатная консультация
+          </button>
         </div>
       </div>
     </div>
@@ -153,255 +166,164 @@
   [isBgColor]="true"
   [hasConsultant]="true"
 ></app-feedback>
-<!-- Секция бонусов сервиса -->
-<section class="checklist" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
-  <h5 class="alert alert-light checklist__head">4 простых шага для безопасной сделки онлайн</h5>
-  <div class="row">
+<!-- Секция совершения сделки -->
+<section
+  class="creating-deal"
+  [ngClass]="{ 'is-sm': isSmall, 'is-laptop': isLaptop, 'is-hd': isHD }"
+>
+  <h5 class="alert alert-light creating-deal-section-title">
+    4 простых шага для безопасной сделки онлайн
+  </h5>
+  <div class="row creation-deal-any-row">
     <div
-      class="checklist__item"
+      class="creating-deal-any-card"
       [ngClass]="{
         'col-lg-6': isLaptop || isHD,
         'col-xl-3': isFullHD
       }"
     >
-      <div class="card checklist__content">
-        <div class="card-header checklist__header">
+      <div class="card creating-deal-card">
+        <div class="card-header creating-deal-card-header">
           <img
-            class="card-img-top checklist__img"
-            [ngClass]="{ 'sm-img': isSmall }"
-            src="../../../../assets/images/deal-landing/loupe-clip-art-6 1.png"
+            class="card-img-top creating-deal-img"
+            src="../../../../assets/images/service-landing/loupe-clip-art-6 1.png"
             alt="Лупа"
           />
         </div>
-        <div class="card-body checklist__step">
-          <ng-container *ngIf="!isSmall">
-            <div class="card-text checklist__title">
-              Бесплатное размещение<br />
-              в каталоге
-            </div>
-            <div class="card-text checklist__subtitle">
-              на срок от 3 до 12 месяцев.<br />
-              срок размещения зависит от выбранного пакета
-            </div>
-            <div class="card-text checklist__description">
-              После покупки любого из пакетов<br />
-              вы получите бесплатное<br />
-              размещение в сервисе.
-            </div>
-            <button
-              class="btn btn-dark checklist__action"
-              routerLink="/catalog-franchise"
-            >
-              Упаковать франшизу
-            </button>
-          </ng-container>
-          <ng-container *ngIf="isSmall">
-            <div class="card-text sm-check-title">
-              Бесплатное размещение<br />
-              в каталоге
-            </div>
-            <div class="card-text sm-check-subtitle">
-              на срок от 3 до 12 месяцев.<br />
-              срок размещения зависит от выбранного пакета
-            </div>
-            <div class="card-text sm-check-description">
-              После покупки любого из пакетов<br />
-              вы получите бесплатное<br />
-              размещение в сервисе.
-            </div>
-            <button
-              class="btn btn-dark sm-check-action"
-              routerLink="/catalog-franchise"
-            >
-              Упаковать франшизу
-            </button>
-          </ng-container>
+        <div class="card-body creating-deal-content">
+          <div class="card-text creating-deal-content-title">
+            Бесплатное размещение<br />
+            в каталоге
+          </div>
+          <div class="card-text creating-deal-content-subtitle">
+            на срок от 3 до 12 месяцев.<br />
+            срок размещения зависит от выбранного пакета
+          </div>
+          <div class="card-text creating-deal-content-body">
+            После покупки любого из пакетов<br />
+            вы получите бесплатное<br />
+            размещение в сервисе.
+          </div>
+          <button
+            class="btn btn-dark creating-deal__action"
+            routerLink="/catalog-franchise"
+          >
+            Упаковать франшизу
+          </button>
         </div>
       </div>
     </div>
     <div
-      class="checklist__item"
+      class="creating-deal-any-card"
       [ngClass]="{
         'col-lg-6': isLaptop || isHD,
         'col-xl-3': isFullHD
       }"
     >
-      <div class="card checklist__content">
-        <div class="card-header checklist__header">
+      <div class="card creating-deal-card">
+        <div class="card-header creating-deal-card-header">
           <img
-            class="card-img-top checklist__img"
-            [ngClass]="{ 'sm-img': isSmall }"
-            src="../../../../assets/images/deal-landing/pen-clip-art-6 2.png"
+            class="card-img-top creating-deal-img"
+            src="../../../../assets/images/service-landing/pen-clip-art-6 2.png"
             alt="Ручка"
           />
         </div>
-        <div class="card-body checklist__step">
-          <ng-container *ngIf="!isSmall">
-            <div class="card-text checklist__title">
-              Книга продаж и обучение<br />
-              вашего менеджера
-            </div>
-            <div class="card-text checklist__subtitle">
-              в любом выбранном пакете, вне зависимости<br />
-              от стоимости
-            </div>
-            <div class="card-text checklist__description">
-              Помощь с обучением вашего<br />
-              менеджера, составление<br />
-              книги продаж
-            </div>
-            <button
-              class="btn btn-dark checklist__action"
-              routerLink="/catalog-franchise"
-            >
-              Обучить менеджера
-            </button>
-          </ng-container>
-          <ng-container *ngIf="isSmall">
-            <div class="card-text sm-check-title">
-              Книга продаж и обучение<br />
-              вашего менеджера
-            </div>
-            <div class="card-text sm-check-subtitle">
-              в любом выбранном пакете, вне зависимости<br />
-              от стоимости
-            </div>
-            <div class="card-text sm-check-description">
-              Помощь с обучением вашего<br />
-              менеджера, составление<br />
-              книги продаж
-            </div>
-            <button
-              class="btn btn-dark sm-check-action"
-              routerLink="/catalog-franchise"
-            >
-              Обучить менеджера
-            </button>
-          </ng-container>
+        <div class="card-body creating-deal-content">
+          <div class="card-text creating-deal-content-title">
+            Книга продаж и обучение<br />
+            вашего менеджера
+          </div>
+          <div class="card-text creating-deal-content-subtitle">
+            в любом выбранном пакете, вне зависимости<br />
+            от стоимости
+          </div>
+          <div class="card-text creating-deal-content-body">
+            Помощь с обучением вашего<br />
+            менеджера, составление<br />
+            книги продаж
+          </div>
+          <button
+            class="btn btn-dark creating-deal__action"
+            routerLink="/catalog-franchise"
+          >
+            Обучить менеджера
+          </button>
         </div>
       </div>
     </div>
     <div
-      class="checklist__item"
+      class="creating-deal-any-card"
       [ngClass]="{
         'col-lg-6': isLaptop || isHD,
         'col-xl-3': isFullHD
       }"
     >
-      <div class="card checklist__content">
-        <div class="card-header checklist__header">
+      <div class="card creating-deal-card">
+        <div class="card-header creating-deal-card-header">
           <img
-            class="card-img-top checklist__img"
-            [ngClass]="{ 'sm-img': isSmall }"
-            src="../../../../assets/images/deal-landing/file-clip-art-6 3.png"
+            class="card-img-top creating-deal-img"
+            src="../../../../assets/images/service-landing/file-clip-art-6 3.png"
             alt="Папка"
           />
         </div>
-        <div class="card-body checklist__step">
-          <ng-container *ngIf="!isSmall">
-            <div class="card-text checklist__title">
-              Проверка<br />
-              товарного знака
-            </div>
-            <div class="card-text checklist__subtitle">
-              полная и оперативная проверка<br />
-              товарного знака
-            </div>
-            <div class="card-text checklist__description">
-              Бесплатная и быстрая<br />
-              проверка товарного знака<br />
-              франшизы
-            </div>
-            <button
-              class="btn btn-dark checklist__action"
-              routerLink="/catalog-franchise"
-            >
-              Начать сделку
-            </button>
-          </ng-container>
-          <ng-container *ngIf="isSmall">
-            <div class="card-text sm-check-title">
-              Проверка<br />
-              товарного знака
-            </div>
-            <div class="card-text sm-check-subtitle">
-              полная и оперативная проверка<br />
-              товарного знака
-            </div>
-            <div class="card-text sm-check-description">
-              Бесплатная и быстрая<br />
-              проверка товарного знака<br />
-              франшизы
-            </div>
-            <button
-              class="btn btn-dark sm-check-action"
-              routerLink="/catalog-franchise"
-            >
-              Начать сделку
-            </button>
-          </ng-container>
+        <div class="card-body creating-deal-content">
+          <div class="card-text creating-deal-content-title">
+            Проверка<br />
+            товарного знака
+          </div>
+          <div class="card-text creating-deal-content-subtitle">
+            полная и оперативная проверка<br />
+            товарного знака
+          </div>
+          <div class="card-text creating-deal-content-body">
+            Бесплатная и быстрая<br />
+            проверка товарного знака<br />
+            франшизы
+          </div>
+          <button
+            class="btn btn-dark creating-deal__action"
+            routerLink="/catalog-franchise"
+          >
+            Начать сделку
+          </button>
         </div>
       </div>
     </div>
     <div
-      class="checklist__item"
+      class="creating-deal-any-card"
       [ngClass]="{
         'col-lg-6': isLaptop || isHD,
         'col-xl-3': isFullHD
       }"
     >
-      <div class="card checklist__content">
-        <div class="card-header checklist__header">
+      <div class="card creating-deal-card">
+        <div class="card-header creating-deal-card-header">
           <img
-            class="card-img-top checklist__img"
-            [ngClass]="{ 'sm-img': isSmall }"
-            src="../../../../assets/images/deal-landing/credit_card_PNG24 1.png"
+            class="card-img-top creating-deal-img"
+            src="../../../../assets/images/service-landing/credit_card_PNG24 1.png"
             alt="Кредитная карточка"
           />
         </div>
-        <div class="card-body checklist__step">
-          <ng-container *ngIf="!isSmall">
-            <div class="card-text checklist__title">
-              Функция управляющей<br />
-              компании
-            </div>
-            <div class="card-text checklist__subtitle">
-              Отдельный пакет по упаковке<br />
-              с полным делегированием
-            </div>
-            <div class="card-text checklist__description">
-              Все функции по продаже и<br />
-              открытию франшиз мы возьмем<br />
-              на себя
-            </div>
-            <button
-              class="btn btn-dark checklist__action"
-              routerLink="/catalog-franchise"
-            >
-              Нанять УК
-            </button>
-          </ng-container>
-          <ng-container *ngIf="isSmall">
-            <div class="card-text sm-check-title">
-              Функция управляющей<br />
-              компании
-            </div>
-            <div class="card-text sm-check-subtitle">
-              Отдельный пакет по упаковке<br />
-              с полным делегированием
-            </div>
-            <div class="card-text sm-check-description">
-              Все функции по продаже и<br />
-              открытию франшиз мы возьмем<br />
-              на себя
-            </div>
-            <button
-              class="btn btn-dark sm-check-action"
-              routerLink="/catalog-franchise"
-            >
-              Нанять УК
-            </button>
-          </ng-container>
+        <div class="card-body creating-deal-content">
+          <div class="card-text creating-deal-content-title">
+            Функция управляющей<br />
+            компании
+          </div>
+          <div class="card-text creating-deal-content-subtitle">
+            Отдельный пакет по упаковке<br />
+            с полным делегированием
+          </div>
+          <div class="card-text creating-deal-content-body">
+            Все функции по продаже и<br />
+            открытию франшиз мы возьмем<br />
+            на себя
+          </div>
+          <button
+            class="btn btn-dark creating-deal__action"
+            routerLink="/catalog-franchise"
+          >
+            Нанять УК
+          </button>
         </div>
       </div>
     </div>
@@ -413,15 +335,15 @@
 <app-garant></app-garant>
 <!--  -->
 <!-- Секция пакеты услуг -->
-<section class="package" [ngClass]="{ 'is-laptop': isLaptop }">
+<section class="package" [ngClass]="{ 'is-sm': isSmall,'is-laptop': isLaptop }">
   <h5 class="alert alert-light package-common-title">
     Пакеты на создание франшиз упаковки
   </h5>
-  <div [ngClass]="{'row': !isSmall}" class="package-root">
-    <div [ngClass]="{'package-wrapper': !isSmall}">
+  <div [ngClass]="{ row: !isSmall }" class="package-root">
+    <div [ngClass]="{ 'package-any-list': !isSmall }">
       <div class="card package-list">
         <img
-          class="img-fluid"
+          class="package-img img-fluid"
           src="../../../../assets/images/franchise-landing/fast-start 1.png"
           alt="Пакет из 7 инструментов"
         />
@@ -571,7 +493,7 @@
               <span class="package-total-note">Срок:</span>
               <span class="package-total-result">20 рабочих дней</span>
             </li>
-            <li class="list-group-item package-price-item">
+            <li class="list-group-item package-price-item" [ngClass]="{'is-sm': isSmall}">
               <span class="package-total-note">Бесплатный бонус</span>
               <span class="package-total-result"
                 >проверка торгового<br />
@@ -591,7 +513,7 @@
         </div>
       </div>
     </div>
-    <div [ngClass]="{'package-wrapper': !isSmall}">
+    <div [ngClass]="{ 'package-any-list': !isSmall }">
       <div class="card package-list">
         <img
           class="img-fluid"
@@ -744,7 +666,7 @@
               <span class="package-total-note">Срок:</span>
               <span class="package-total-result">30 рабочих дней</span>
             </li>
-            <li class="list-group-item package-price-item">
+            <li class="list-group-item package-price-item" [ngClass]="{'is-sm': isSmall}">
               <span class="package-total-note">Бесплатный бонус</span>
               <span class="package-total-result"
                 >консультирование<br />
@@ -764,7 +686,7 @@
         </div>
       </div>
     </div>
-    <div [ngClass]="{'package-wrapper': !isSmall}">
+    <div [ngClass]="{ 'package-any-list': !isSmall }">
       <div class="card package-list">
         <img
           class="img-fluid"
@@ -917,7 +839,7 @@
               <span class="package-total-note">Срок:</span>
               <span class="package-total-result">35 рабочих дней</span>
             </li>
-            <li class="list-group-item package-price-item">
+            <li class="list-group-item package-price-item" [ngClass]="{'is-sm': isSmall}">
               <span class="package-total-note">Бесплатный бонус</span>
               <span class="package-total-result"
                 >обучение вашего<br />
@@ -946,6 +868,7 @@
   [imagePath]="'../../../../assets/images/franchise-landing/Layer_7_1 1.png'"
   [bgColor]="'rgba(0, 0, 0, 0.9)'"
   [isBgColor]="true"
+  [hasConsultant]="true"
 ></app-feedback>
 <!-- Популярные франшизы -->
 <app-franchise-list *ngIf="!isSmall"></app-franchise-list>

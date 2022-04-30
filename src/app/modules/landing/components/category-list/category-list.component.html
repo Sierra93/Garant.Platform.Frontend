@@ -1,24 +1,30 @@
-<div class="category" [ngClass]="{ 'is-laptop': isLaptop, 'is-hd': isHD }">
-  <div class="row">
+<div class="list">
+  <div class="row list__root-row">
     <div
-      class="category__category-item"
+      class="list__item"
       [ngClass]="{ 'col-lg-12': isLaptop, 'col-xl-6': isHD }"
     >
-      <div class="alert alert-light category__category-title">
+      <div
+        class="alert alert-light list__title"
+        [ngClass]="{ 'is-laptop': isLaptop }"
+      >
         Категории готового бизнеса
       </div>
-      <div class="row">
+      <div class="row list__any-row">
         <div
           *ngFor="let item of this.aBusinessCategories"
           [ngClass]="{ 'col-lg-4': isLaptop, 'col-xl-6': isHD }"
         >
-          <div class="alert alert-light category__category-detail">
-            <span class="category__category-name">{{ item.categoryName }}</span>
+          <div
+            class="alert alert-light list__content"
+            [ngClass]="{ 'is-laptop': isLaptop }"
+          >
+            <span class="list__text">{{ item.categoryName }}</span>
             <svg
               width="1em"
               height="1em"
               viewBox="0 0 16 16"
-              class="bi bi-chevron-right category__list-icon"
+              class="bi bi-chevron-right list__item-icon"
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -31,16 +37,18 @@
         </div>
         <div [ngClass]="{ 'col-lg-4': isLaptop, 'col-xl-6': isHD }">
           <div
-            class="btn btn-outline-primary category__redirect"
-            [ngClass]="{ 'sm-redirect': isSmall }"
+            class="btn btn-outline-primary list__button"
+            [ngClass]="{ 'is-laptop': isLaptop }"
           >
-            <span class="category__redirect-text">Весь готовый бизнес</span>
-            <span class="category__redirect-attr">
+            <span class="list__btn-text" [ngClass]="{ 'is-laptop': isLaptop }"
+              >Весь готовый бизнес</span
+            >
+            <span class="list__btn-icon-box">
               <svg
                 width="1em"
                 height="1em"
                 viewBox="0 0 16 16"
-                class="bi bi-caret-right-fill category__redirect-icon"
+                class="bi bi-caret-right-fill list__btn-icon"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -54,24 +62,30 @@
       </div>
     </div>
     <div
-      class="category__category-item"
+      class="list__item"
       [ngClass]="{ 'col-lg-12': isLaptop, 'col-xl-6': isHD }"
     >
-      <div class="alert alert-light category__category-title">
+      <div
+        class="alert alert-light list__title"
+        [ngClass]="{ 'is-laptop': isLaptop }"
+      >
         Категории франшиз
       </div>
-      <div class="row">
+      <div class="row list__any-row">
         <div
           *ngFor="let item of this.aFranchiseCategories"
           [ngClass]="{ 'col-lg-4': isLaptop, 'col-xl-6': isHD }"
         >
-          <div class="alert alert-light category__category-detail">
-            <span class="category__category-name">{{ item.categoryName }}</span>
+          <div
+            class="alert alert-light list__content"
+            [ngClass]="{ 'is-laptop': isLaptop }"
+          >
+            <span class="list__text">{{ item.categoryName }}</span>
             <svg
               width="1em"
               height="1em"
               viewBox="0 0 16 16"
-              class="bi bi-chevron-right category__list-icon"
+              class="bi bi-chevron-right list__item-icon"
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -84,16 +98,18 @@
         </div>
         <div [ngClass]="{ 'col-lg-4': isLaptop, 'col-xl-6': isHD }">
           <div
-            class="btn btn-outline-primary category__redirect"
-            [ngClass]="{ 'sm-redirect': isSmall }"
+            class="btn btn-outline-primary list__button"
+            [ngClass]="{ 'is-laptop': isLaptop }"
           >
-            <span class="category__redirect-text">Все франшизы</span>
-            <span class="category__redirect-attr">
+            <span class="list__btn-text" [ngClass]="{ 'is-laptop': isLaptop }"
+              >Все франшизы</span
+            >
+            <span class="list__btn-icon-box">
               <svg
                 width="1em"
                 height="1em"
                 viewBox="0 0 16 16"
-                class="bi bi-caret-right-fill category__redirect-icon"
+                class="bi bi-caret-right-fill list__btn-icon"
                 fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
               >

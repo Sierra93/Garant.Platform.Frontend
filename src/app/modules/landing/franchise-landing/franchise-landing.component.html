@@ -148,20 +148,24 @@
 <!-- Компонент обратной связи -->
 <app-feedback
   *ngIf="!isSmall"
-  [title]="feedbackTitle"
-  [subtitle]="feedbackSubtitle"
-  [tooltip]="feedbackNote"
-  [imagePath]="feedbackImgPath"
+  [title]="'Азамат Булатов'"
+  [subtitle]="'сооснователь проекта'"
+  [tooltip]="'Лично ответственный за каждую упакованную франшизу'"
+  [imagePath]="
+    '../../../../assets/images/franchise-landing/template_person6 1.png'
+  "
   [bgColor]="'rgba(0, 0, 0, 0.9)'"
   [isBgColor]="true"
   [hasConsultant]="false"
 ></app-feedback>
 <app-feedback
   *ngIf="isSmall"
-  [title]="feedbackTitle"
-  [subtitle]="feedbackSubtitle"
-  [tooltip]="feedbackNote"
-  [imagePath]="feedbackImgPath"
+  [title]="'Азамат Булатов'"
+  [subtitle]="'сооснователь проекта'"
+  [tooltip]="'Лично ответственный за каждую упакованную франшизу'"
+  [imagePath]="
+    '../../../../assets/images/franchise-landing/template_person6 1.png'
+  "
   [bgColor]="'rgba(0, 0, 0, 0.9)'"
   [isBgColor]="true"
   [hasConsultant]="true"
@@ -335,12 +339,15 @@
 <app-garant></app-garant>
 <!--  -->
 <!-- Секция пакеты услуг -->
-<section class="package" [ngClass]="{ 'is-sm': isSmall,'is-laptop': isLaptop }">
+<section
+  class="package"
+  [ngClass]="{ 'is-sm': isSmall, 'is-laptop': isLaptop }"
+>
   <h5 class="alert alert-light package-common-title">
     Пакеты на создание франшиз упаковки
   </h5>
   <div [ngClass]="{ row: !isSmall }" class="package-root">
-    <div [ngClass]="{ 'package-any-list': !isSmall }">
+    <div class="package-any-list">
       <div class="card package-list">
         <img
           class="package-img img-fluid"
@@ -493,7 +500,10 @@
               <span class="package-total-note">Срок:</span>
               <span class="package-total-result">20 рабочих дней</span>
             </li>
-            <li class="list-group-item package-price-item" [ngClass]="{'is-sm': isSmall}">
+            <li
+              class="list-group-item package-price-item"
+              [ngClass]="{ 'is-sm': isSmall }"
+            >
               <span class="package-total-note">Бесплатный бонус</span>
               <span class="package-total-result"
                 >проверка торгового<br />
@@ -513,7 +523,7 @@
         </div>
       </div>
     </div>
-    <div [ngClass]="{ 'package-any-list': !isSmall }">
+    <div class="package-any-list">
       <div class="card package-list">
         <img
           class="img-fluid"
@@ -666,7 +676,10 @@
               <span class="package-total-note">Срок:</span>
               <span class="package-total-result">30 рабочих дней</span>
             </li>
-            <li class="list-group-item package-price-item" [ngClass]="{'is-sm': isSmall}">
+            <li
+              class="list-group-item package-price-item"
+              [ngClass]="{ 'is-sm': isSmall }"
+            >
               <span class="package-total-note">Бесплатный бонус</span>
               <span class="package-total-result"
                 >консультирование<br />
@@ -686,7 +699,7 @@
         </div>
       </div>
     </div>
-    <div [ngClass]="{ 'package-any-list': !isSmall }">
+    <div class="package-any-list">
       <div class="card package-list">
         <img
           class="img-fluid"
@@ -839,7 +852,10 @@
               <span class="package-total-note">Срок:</span>
               <span class="package-total-result">35 рабочих дней</span>
             </li>
-            <li class="list-group-item package-price-item" [ngClass]="{'is-sm': isSmall}">
+            <li
+              class="list-group-item package-price-item"
+              [ngClass]="{ 'is-sm': isSmall }"
+            >
               <span class="package-total-note">Бесплатный бонус</span>
               <span class="package-total-result"
                 >обучение вашего<br />
@@ -882,16 +898,51 @@
   [hasConsultant]="true"
 ></app-feedback>
 <!-- Популярные франшизы -->
-<app-franchise-list *ngIf="!isSmall"></app-franchise-list>
-<gar-carousel *ngIf="isSmall"></gar-carousel>
-<!-- <gar-carousel [items]="aSlider" [template]="cardComponent"></gar-carousel>-->
+<app-franchise-list *ngIf="isHD || isFullHD"></app-franchise-list>
+<!-- Мобильная версия Популярные франшизы -->
+<ng-container *ngIf="isSmall || isLaptop">
+  <div class="gar-carousel-title">Популярные франшизы</div>
+  <gar-carousel
+    [items]="aDataActions"
+    [template]="cardComponent"
+  ></gar-carousel>
+</ng-container>
 <!-- Новые объявления готового бизнеса -->
-<app-business-ad *ngIf="!isSmall"></app-business-ad>
-<gar-carousel *ngIf="isSmall"></gar-carousel>
-<!-- <gar-carousel [items]="aSlider" [template]="cardComponent"></gar-carousel> -->
+<app-business-ad *ngIf="isHD || isFullHD"></app-business-ad>
+<!-- Мобильная версия новые объявления готового бизнеса. -->
+<ng-container *ngIf="isSmall || isLaptop">
+  <div class="gar-carousel-title">Новые объявления готового бизнеса</div>
+  <gar-carousel
+    [items]="aBusinessList"
+    [template]="cardComponent"
+  ></gar-carousel>
+</ng-container>
 <!-- Бизнес блог. -->
-<app-business-blog *ngIf="!isSmall"></app-business-blog>
-<!-- <gar-carousel [items]="aSlider" [template]="cardComponent"></gar-carousel> -->
+<app-business-blog *ngIf="isHD || isFullHD"></app-business-blog>
+<!-- Мобильная версия Бизнес блог. -->
+<ng-container *ngIf="isSmall || isLaptop">
+  <div class="gar-carousel-title">Бизнес блог</div>
+  <gar-carousel [items]="aBlogs" [template]="cardComponent"></gar-carousel>
+  <div class="gar-carousel-button">
+    Больше статей
+    <div class="any-chevron">
+      <svg
+        _ngcontent-vyo-c133=""
+        width="1em"
+        height="1em"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        class="bi bi-caret-right-fill category__redirect-icon"
+      >
+        <path
+          _ngcontent-vyo-c133=""
+          d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+</ng-container>
 <!-- Компонент Новости -->
 <app-news></app-news>
 <!-- Списки категорий -->

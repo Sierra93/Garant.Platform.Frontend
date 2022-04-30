@@ -20,7 +20,6 @@
     font-weight: 700;
   }
   &__subtitle {
-    /*font-size: 60px;*/
     font-size: 51px;
     line-height: 75px;
     color: #fff;
@@ -105,6 +104,9 @@
 
 :host {
   & .feedback-form {
+    &.is-master {
+      margin-top: 24px;
+    }
     &__form.is-master {
       padding: 24px 24px 0;
     }
@@ -142,6 +144,10 @@
       &__form {
         padding: 24px;
       }
+      &__any-data {
+        padding-left: 0;
+        padding-right: 0;
+      }
       &__title {
         font-size: 32px;
         line-height: 37px;
@@ -152,8 +158,10 @@
         line-height: 28px;
       }
       &__note {
+        font-size: 15px;
+        line-height: 18px;
         margin-bottom: 24px;
-        max-width: 95%;
+        max-width: 272px;
       }
       &__any-box {
         display: block;

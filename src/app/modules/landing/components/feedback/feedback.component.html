@@ -1,6 +1,6 @@
 <section
   class="feedback-form"
-  [ngClass]="{ 'is-laptop': isLaptop }"
+  [ngClass]="{ 'is-laptop': isLaptop, 'is-master': hasConsultant }"
 >
   <form
     class="feedback-form__form"
@@ -9,7 +9,10 @@
   >
     <div class="container">
       <div class="row">
-        <div [ngClass]="{ 'col-lg-6': isLaptop, 'col-xl-7': isHD || isFullHD }">
+        <div
+          class="feedback-form__any-data"
+          [ngClass]="{ 'col-lg-6': isLaptop, 'col-xl-7': isHD || isFullHD }"
+        >
           <div
             class="alert alert-light feedback-form__title"
             [ngClass]="{ 'is-master': hasConsultant }"
@@ -87,7 +90,7 @@
           class="feedback-form__any-photo"
         >
           <img
-            class="img-fluid feedback-form__img"
+            class="feedback-form__img"
             [ngClass]="{ 'is-master': hasConsultant }"
             [src]="imagePath"
             alt="Консультант"

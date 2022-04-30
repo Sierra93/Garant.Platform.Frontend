@@ -9,6 +9,7 @@ import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { LandingRequestService } from '../services/landing.service';
+import { CatalogPromoCardComponent } from '../../products/catalog/catalog.promo.card/catalog.promo.card.component';
 
 @Component({
   selector: 'franchise-landing',
@@ -59,12 +60,8 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   isSmall!: boolean;
   browserScreenWidth!: number;
   isHideBusinessWithGarant: boolean = true;
-  feedbackTitle: string = 'Азамат Булатов';
-  feedbackSubtitle: string = 'сооснователь проекта';
-  feedbackNote: string = 'Лично ответственный за каждую упакованную франшизу';
-  feedbackImgPath: string =
-    '../../../../assets/images/franchise-landing/template_person6 1.png';
-  feedbackTheme: boolean = true;
+  cardComponent!: any;
+  aDataActions: any[] = [];
 
   constructor(
     private http: HttpClient,
@@ -104,9 +101,10 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
     ];
 
     this.routeParam = this.route.snapshot.queryParams.businessId;
+    this.cardComponent = CatalogPromoCardComponent;
   }
 
-  public async ngOnInit() {
+  public async ngOnInit(): Promise<void> {
     this.isFullHD = false;
     this.isHD = false;
     this.isLaptop = false;
@@ -123,7 +121,61 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
     await this.loadSingleSuggestionAsync();
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
+
+    await this.GetBlogsAsync();
+    await this.GetBusinessListAsync();
+    await this.GetActionsAsync();
   }
+ 
+  /**
+   * Функция получит список блогов.
+   * @returns Список блогов.
+   */
+ private async GetBlogsAsync() {
+  try {
+    await this.http
+      .post(API_URL.apiUrl.concat('/blog/get-blogs'), {})
+      .subscribe({
+        next: (response: any) => {
+          console.log('Список блогов:', response);
+          this.aBlogs = response;
+        },
+
+        error: (err: string | undefined) => {
+          throw new Error(err);
+        },
+      });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+}
+
+/**
+   * Функция получит данные для блока событий.
+   */
+ private async GetActionsAsync() {
+  try {
+    await this.http
+      .post(API_URL.apiUrl.concat('/main/actions'), {})
+      .subscribe({
+        next: (response: any) => {
+          console.log('Блок событий:', response);
+          this.aDataActions = response.filter((el: any) => el.isTop == false);
+
+          // this.oTopAction = this.aDataActions.filter(el => el.isTop == true)[0];
+          // console.log("oTopAction",this.oTopAction);
+        },
+
+        error: (err) => {
+          throw new Error(err);
+        },
+      });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+}
+
+
 
   public ngDoCheck(): void {
     this.defineResize();

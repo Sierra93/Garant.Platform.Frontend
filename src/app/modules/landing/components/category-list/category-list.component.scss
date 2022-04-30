@@ -1,8 +1,8 @@
-.category {
-  &__category-item {
+.list {
+  &__item {
     margin-bottom: 43px;
   }
-  &__category-title {
+  &__title {
     color: #2c2c2c;
     font-size: 24px;
     line-height: 28px;
@@ -11,7 +11,7 @@
     margin-bottom: 41px;
     border: none;
   }
-  &__category-detail {
+  &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,12 +24,17 @@
     height: 87px;
     border: none;
   }
-  &__list-icon {
+  &__text {
+    font-size: 16px;
+    line-height: 19px;
+    color: #2c2c2c;
+  }
+  &__item-icon {
     color: #c4c4c4;
     font-size: 18px;
     line-height: 21px;
   }
-  &__redirect {
+  &__button {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,12 +46,12 @@
       background: none;
     }
   }
-  &__redirect-text {
+  &__btn-text {
     font-size: 18px;
     line-height: 21px;
     color: #1f75fe;
   }
-  &__redirect-attr {
+  &__btn-icon-box {
     position: relative;
     display: inline-block;
     background: #1f75fe;
@@ -54,7 +59,7 @@
     height: 32px;
     border-radius: 40px;
   }
-  &__redirect-icon {
+  &__btn-icon {
     position: absolute;
     left: 0;
     margin-left: 4px;
@@ -66,19 +71,18 @@
 }
 
 @media all and (max-width: 576px) {
-  .category {
-    &__category-item {
+  .list {
+    &__item {
       margin-bottom: 24px;
     }
-    &__category-title {
+    &__title {
       font-size: 19px;
       line-height: 22px;
     }
-    &__category-name {
-      font-size: 16px;
-      line-height: 18.5px;
+    &__button {
+      padding: 29px 16px;
     }
-    &__redirect-text {
+    &__btn-text {
       font-size: 16px;
       line-height: 18.5px;
     }
@@ -87,20 +91,19 @@
 
 ::ng-deep {
   @media all and (min-width: 992px) {
-    .category {
-      &.is-laptop &__category-title {
+    .list {
+      &__title.is-laptop {
         font-size: 19px;
         line-height: 22px;
       }
-      &.is-laptop &__category-detail {
+      &__content.is-laptop {
         font-size: 16px;
         line-height: 18px;
       }
-      &.is-laptop &__redirect {
-        text-align: left;
+      &__button.is-laptop {
         max-width: 243px;
       }
-      &.is-laptop &__redirect-text {
+      &__btn-text.is-laptop {
         font-size: 16px;
         line-height: 18px;
         max-width: 147px;

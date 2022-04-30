@@ -20,7 +20,8 @@
     font-weight: 700;
   }
   &__subtitle {
-    font-size: 60px;
+    /*font-size: 60px;*/
+    font-size: 51px;
     line-height: 75px;
     color: #fff;
     margin-bottom: 16px;
@@ -31,7 +32,7 @@
     line-height: 28px;
     color: #dadada;
     margin-bottom: 48px;
-    max-width: 100%;
+    max-width: 460px;
   }
   &__any-box {
     display: flex;

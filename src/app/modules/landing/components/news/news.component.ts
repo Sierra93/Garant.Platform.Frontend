@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from 'src/app/core/core-urls/api-url';
 
@@ -7,13 +7,23 @@ import { API_URL } from 'src/app/core/core-urls/api-url';
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss'],
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent implements OnInit, DoCheck {
   aNews: any[] = [];
+  browserScreenWidth!: number;
+  isLaptop!: boolean;
+  isHD!: boolean;
 
   constructor(private http: HttpClient) {}
 
   public async ngOnInit(): Promise<void> {
+    this.isLaptop = false;
+    this.isHD = false;
+
     await this.GetNewsTopAsync();
+  }
+
+  public ngDoCheck(): void {
+    this.defineResize();
   }
 
   /**
@@ -36,6 +46,23 @@ export class NewsComponent implements OnInit {
         });
     } catch (e: any) {
       throw new Error(e);
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  private defineResize() {
+    this.browserScreenWidth = window.screen.width;
+
+    if (this.browserScreenWidth >= 1200) {
+      this.isHD = true;
+    } else {
+      this.isHD = false;
+    }
+
+    if (this.browserScreenWidth >= 992 && this.browserScreenWidth < 1199) {
+      this.isLaptop = true;
+    } else {
+      this.isLaptop = false;
     }
   }
 }

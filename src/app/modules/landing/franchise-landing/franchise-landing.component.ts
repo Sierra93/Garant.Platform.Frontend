@@ -61,7 +61,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
   browserScreenWidth!: number;
   isHideBusinessWithGarant: boolean = true;
   cardComponent!: any;
-  aDataActions: any[] = [];
+  aPopularFranchises: any[] = [];
 
   constructor(
     private http: HttpClient,
@@ -124,7 +124,7 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
 
     await this.GetBlogsAsync();
     await this.GetBusinessListAsync();
-    await this.GetActionsAsync();
+    await this.getPopularAsync();
   }
  
   /**
@@ -151,25 +151,15 @@ export class FranchiseLandingModule implements OnInit, DoCheck {
 }
 
 /**
-   * Функция получит данные для блока событий.
+   * Функция получит список популярныз франшиз.
+   * @returns Список франшиз.
    */
- private async GetActionsAsync() {
+ private async getPopularAsync() {
   try {
-    await this.http
-      .post(API_URL.apiUrl.concat('/main/actions'), {})
-      .subscribe({
-        next: (response: any) => {
-          console.log('Блок событий:', response);
-          this.aDataActions = response.filter((el: any) => el.isTop == false);
-
-          // this.oTopAction = this.aDataActions.filter(el => el.isTop == true)[0];
-          // console.log("oTopAction",this.oTopAction);
-        },
-
-        error: (err) => {
-          throw new Error(err);
-        },
-      });
+    await this.commonService.getPopularAsync().then((data: any) => {
+      console.log('Популярные франшизы:', data);
+      this.aPopularFranchises = data;
+    });
   } catch (e: any) {
     throw new Error(e);
   }

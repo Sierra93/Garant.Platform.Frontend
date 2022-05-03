@@ -898,19 +898,15 @@
   [hasConsultant]="true"
 ></app-feedback>
 <!-- Популярные франшизы -->
-<app-franchise-list *ngIf="isHD || isFullHD"></app-franchise-list>
-<!-- Мобильная версия Популярные франшизы -->
-<ng-container *ngIf="isSmall || isLaptop">
+<ng-container>
   <div class="gar-carousel-title">Популярные франшизы</div>
   <gar-carousel
-    [items]="aDataActions"
+    [items]="aPopularFranchises"
     [template]="cardComponent"
   ></gar-carousel>
 </ng-container>
 <!-- Новые объявления готового бизнеса -->
-<app-business-ad *ngIf="isHD || isFullHD"></app-business-ad>
-<!-- Мобильная версия новые объявления готового бизнеса. -->
-<ng-container *ngIf="isSmall || isLaptop">
+<ng-container>
   <div class="gar-carousel-title">Новые объявления готового бизнеса</div>
   <gar-carousel
     [items]="aBusinessList"

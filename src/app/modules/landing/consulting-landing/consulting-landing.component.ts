@@ -51,6 +51,7 @@ export class ConsultingLandingModule implements OnInit {
   aBusinessList: any[] = [];
   responsiveOptions: any[] = [];
   aReviewsFranchises: any[] = [];
+  aPopularFranchises: any[] = [];
   businessId: number = 0;
   routeParam: number;
   isFullHD!: boolean;
@@ -64,8 +65,7 @@ export class ConsultingLandingModule implements OnInit {
   cardComponent!: any;
 
   public landingRequestNotify$ = new BehaviorSubject<any>(undefined);
-  aPopularFranchises: any;
-
+  
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,

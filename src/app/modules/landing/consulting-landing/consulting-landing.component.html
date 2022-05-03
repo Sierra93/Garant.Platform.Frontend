@@ -588,7 +588,7 @@
 <app-business-blog *ngIf="!isSmall"></app-business-blog>
 <ng-container *ngIf="isSmall">
   <div class="gar-carousel-title">Бизнес блог</div>
-  <gar-carousel [items]="aBlogs" [template]="cardComponent"></gar-carousel>
+  <gar-carousel [items]="aBusinessList" [template]="cardComponent"></gar-carousel>
 </ng-container>
 <!-- Компонент Новости -->
 <app-news></app-news>

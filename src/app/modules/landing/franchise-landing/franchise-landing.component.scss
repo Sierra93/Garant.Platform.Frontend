@@ -406,12 +406,12 @@ $columnGap: 24px;
     }
   }
   &-service {
+    display: flex;
     margin-bottom: 18.5px;
     &-text {
       color: #2c2c2c;
-      font-size: 18px;
+      font-size: 17.3px;
       line-height: 21px;
-      width: 80%;
       text-align: left;
     }
   }
@@ -500,12 +500,26 @@ $columnGap: 24px;
     &-title {
       padding: 16px 8px;
     }
+    &-content-title {
+      max-width: 304px;
+      & br {
+        display: none;
+      }
+    }
     &-any-list {
       width: auto;
       margin-bottom: 16px;
       &:last-child {
         margin-bottom: 0;
       }
+    }
+    &-reach-icon {
+      margin-right: 12px;
+    }
+    &-service-text {
+      max-width: 230px;
+      margin-right: auto;
+      font-size: 17.3px;
     }
   }
 }

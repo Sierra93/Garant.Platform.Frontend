@@ -104,9 +104,6 @@
 
 :host {
   & .feedback-form {
-    &.is-master {
-      margin-top: 24px;
-    }
     &__form.is-master {
       padding: 24px 24px 0;
     }
@@ -141,6 +138,7 @@
 @media all and (max-width: 576px) {
   :host {
     & .feedback-form {
+      margin-top: 24px;
       &__form {
         padding: 24px;
       }
@@ -156,6 +154,7 @@
       &__subtitle {
         font-size: 24px;
         line-height: 28px;
+        max-width: 272px;
       }
       &__note {
         font-size: 15px;

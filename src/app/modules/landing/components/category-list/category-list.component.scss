@@ -76,11 +76,27 @@
       margin-bottom: 24px;
     }
     &__title {
+      display: flex;
+      justify-content: space-between;
       font-size: 19px;
       line-height: 22px;
+      margin: 0;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #dadada;
+    }
+    &__toggle {
+      display: inline-block;
+      transform: rotate(90deg);
+    }
+    &__any-row > &__any-content {
+      margin: 27px 0 0;
+    }
+    &__content {
+      height: 30px;
     }
     &__button {
-      padding: 29px 16px;
+      height: 78px;
+      padding: 0 31px 0 16px;
     }
     &__btn-text {
       font-size: 16px;
@@ -95,6 +111,9 @@
       &__title.is-laptop {
         font-size: 19px;
         line-height: 22px;
+      }
+      &__toggle.is-laptop {
+        display: none;
       }
       &__content.is-laptop {
         font-size: 16px;

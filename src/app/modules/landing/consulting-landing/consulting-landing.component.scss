@@ -514,7 +514,7 @@ $columnGap: 24px;
   }
   &-title {
     border: none;
-    
+    font-weight: 600;
     color: #fff;
     padding: 16px 8px;
     border-radius: 8px 8px 0 0;
@@ -532,7 +532,7 @@ $columnGap: 24px;
       font-size: 18px;
       line-height: 21px;
       margin-bottom: 33px;
-      max-width: 70%;
+      max-width: 304px;
     }
   }
   &-service {
@@ -610,6 +610,22 @@ $columnGap: 24px;
     }
     &-wrapper {
       width: 100%;
+      margin-bottom: 16px;
+    }
+    &-wrapper:last-child {
+      margin-bottom: 0;
+    }
+    &-title {
+      font-size: 27px;
+      line-height: 32px;
+    }
+    &-reach-icon {
+      margin-right: 12px;
+    }
+    &-service-text {
+      font-size: 17.3px;
+      max-width: 230px;
+      margin-right: auto;
     }
   }
 }

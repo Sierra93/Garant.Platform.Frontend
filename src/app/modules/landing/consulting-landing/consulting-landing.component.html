@@ -330,8 +330,10 @@
               <span class="package-total-note">Стоимость пакета</span>
               <span class="package-total-result">15 000 &#8381;</span>
             </li>
+            <li class="list-group-item package-price-item">
+              <button class="btn btn-primary package-submit">Подготовить договор</button>
+            </li>
           </ul>
-          <button class="btn btn-primary package-submit">Подготовить договор</button>
         </div>
       </div>
     </div>
@@ -552,22 +554,42 @@
 </section>
 <!-- Компонент с формой обратной связи -->
 <app-feedback
-  [title]="feedbackTitle"
-  [subtitle]="feedbackSubtitle"
-  [tooltip]="feedbackNote"
-  [imagePath]="feedbackImgPath"
+  [title]="'Проверка'"
+  [subtitle]="'юридических документов'"
+  [tooltip]="'при покупке франшизы или готового бизнеса'"
+  [imagePath]="'../../../../assets/images/deal-landing/template_person6 1.png'"
   [bgColor]="'rgb(13, 110, 253, 0.9)'"
   [isBgColor]="false"
   [hasConsultant]="false"
 ></app-feedback>
 <!-- Популярные франшизы -->
-<app-franchise-list></app-franchise-list>
+<app-franchise-list *ngIf="!isSmall"></app-franchise-list>
+<!-- Мобильная версия Популярные франшизы -->
+<ng-container *ngIf="isSmall">
+  <div class="gar-carousel-title">Популярные франшизы</div>
+  <gar-carousel
+    [items]="aPopularFranchises"
+    [template]="cardComponent"
+  ></gar-carousel>
+</ng-container>
 <!-- Новые объявления готового бизнеса -->
-<app-business-ad></app-business-ad>
+<app-business-ad *ngIf="!isSmall"></app-business-ad>
+<!-- Мобильная версия Новые объявления готового бизнеса -->
+<ng-container *ngIf="isSmall">
+  <div class="gar-carousel-title">Новые объявления готового бизнеса</div>
+  <gar-carousel
+    [items]="aBusinessList"
+    [template]="cardComponent"
+  ></gar-carousel>
+</ng-container>
 <!-- Гарант -->
 <app-garant></app-garant>
 <!-- Бизнес блог. -->
-<app-business-blog></app-business-blog>
+<app-business-blog *ngIf="!isSmall"></app-business-blog>
+<ng-container *ngIf="isSmall">
+  <div class="gar-carousel-title">Бизнес блог</div>
+  <gar-carousel [items]="aBlogs" [template]="cardComponent"></gar-carousel>
+</ng-container>
 <!-- Компонент Новости -->
 <app-news></app-news>
 <!-- Списки категорий -->

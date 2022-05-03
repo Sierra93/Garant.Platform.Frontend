@@ -10,7 +10,7 @@ import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { LandingRequestService } from '../services/landing.service';
-import { finalize } from 'rxjs/operators';
+import { CatalogPromoCardComponent } from './../../products/catalog/catalog.promo.card/catalog.promo.card.component';
 
 @Component({
   selector: 'consulting-landing',
@@ -48,6 +48,7 @@ export class ConsultingLandingModule implements OnInit {
   oTopAction: any = {};
   oSuggestion: any = {};
   aNewFranchises: any[] = [];
+  aBusinessList: any[] = [];
   responsiveOptions: any[] = [];
   aReviewsFranchises: any[] = [];
   businessId: number = 0;
@@ -55,18 +56,15 @@ export class ConsultingLandingModule implements OnInit {
   isFullHD!: boolean;
   isHD!: boolean;
   isLaptop!: boolean;
+  isSmall!: boolean;
   isHideBusinessWithGarant: boolean = true;
   browserScreenWidth!: number;
   name: string = "";
   phoneNumber: string = "";
-  feedbackTitle: string = 'Проверка';
-  feedbackSubtitle: string = 'юридических документов';
-  feedbackNote: string = 'при покупке франшизы или готового бизнеса';
-  feedbackImgPath: string =
-    '../../../../assets/images/deal-landing/template_person6 1.png';
-  feedbackTheme: boolean = false;
+  cardComponent!: any;
 
   public landingRequestNotify$ = new BehaviorSubject<any>(undefined);
+  aPopularFranchises: any;
 
   constructor(
     private http: HttpClient,
@@ -103,6 +101,7 @@ export class ConsultingLandingModule implements OnInit {
         numScroll: 1,
       },
     ];
+    this.cardComponent = CatalogPromoCardComponent;
 
     this.routeParam = this.route.snapshot.queryParams.businessId;
   }
@@ -111,6 +110,7 @@ export class ConsultingLandingModule implements OnInit {
     this.isHD = false;
     this.isFullHD = false;
     this.isLaptop = false;
+    this.isSmall = false;
     this.browserScreenWidth = window.screen.width;
 
     // await this.getPopularBusinessAsync();
@@ -126,11 +126,28 @@ export class ConsultingLandingModule implements OnInit {
     await this.loadSingleSuggestionAsync();
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
+    await this.getPopularAsync();
   }
 
   public ngDoCheck(): void {
     this.defineResize();
   }
+
+/**
+   * Функция получит список популярныз франшиз.
+   * @returns Список франшиз.
+   */
+ private async getPopularAsync() {
+  try {
+    await this.commonService.getPopularAsync().then((data: any) => {
+      console.log('Популярные франшизы:', data);
+      this.aPopularFranchises = data;
+    });
+  } catch (e: any) {
+    throw new Error(e);
+  }
+}
+
 
   /**
    * Функция получит список популярного бизнеса.
@@ -193,7 +210,7 @@ export class ConsultingLandingModule implements OnInit {
         .subscribe({
           next: (response: any) => {
             console.log('Список бизнеса:', response);
-            // this.aBusinessList = response;
+            this.aBusinessList = response;
           },
 
           error: (err) => {
@@ -571,6 +588,12 @@ export class ConsultingLandingModule implements OnInit {
       this.isLaptop = true;
     } else {
       this.isLaptop = false;
+    }
+
+    if (this.browserScreenWidth <= 576) {
+      this.isSmall = true;
+    } else {
+      this.isSmall = false;
     }
   }
 }

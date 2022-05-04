@@ -5,6 +5,7 @@
 // @import "/src/app/modules/garant/garant-init/garant-init.component.scss";
 // @import "/src/app/modules/profile/profile-my-data/profile-my-data.component.scss";
 // @import "/src/app/modules/garant/garant-concord/garant-concord.component.scss";
+@import 'design';
 
 @use "/src/app/app.component.scss";
 // @import "/src/app/shared/styles/body-margins.scss";
@@ -55,7 +56,7 @@
 // }
 
 .right-panel-second {
-  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: $box-shadow-card;
   // box-shadow: 0 0 10px rgb(0 0 0 / 50%);
   // padding: 16px;
 }
@@ -71,13 +72,13 @@
 }
 
 .left-panel-first {
-  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: $box-shadow-card;
   // padding: 16px;
 }
 
 .right-panel-first {
   // box-shadow: 0 0 10px rgb(0 0 0 / 50%);
-  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: $box-shadow-card;
   // padding: 16px;
 }
 
@@ -358,7 +359,7 @@
       border-radius: 4px;
       color: #1f75fe;
       background-color: #ffffff;
-      box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+      box-shadow: $box-shadow-card;
     }
 
     // &__no {
@@ -549,7 +550,7 @@
   &-contract {
     width: 1074px;
     padding: 24px;
-    box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: $box-shadow-card;
 
     &__title {
       font-family: "Roboto", sans-serif;
@@ -619,7 +620,7 @@
   &-sides {
     width: 1074px;
     padding: 24px;
-    box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: $box-shadow-card;
 
     &__title {
       font-family: "Roboto", sans-serif;

@@ -1,9 +1,10 @@
 @import "./../manage-account/manage-account.component.scss";
+@import 'design';
 
 .block-right {
   font-family: 'Roboto', sans-serif;
   padding: 1.5rem;
-  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: $box-shadow-card;
   background-color: #fff;
   border-radius: .5rem;
   margin-bottom: 5rem;

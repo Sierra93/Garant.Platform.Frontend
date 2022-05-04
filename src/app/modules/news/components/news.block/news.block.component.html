@@ -1,0 +1,29 @@
+<div class="gar-row title">{{title}}</div>
+
+<div class="gar-row gar-grid">
+    <div class="latest-news-promo gar-row-item">
+        <img [src]="src" alt="Баннер">
+
+        <div class="latest-news-promo-content">
+            <div class="gar-badge -blue news-promo-badge">Рекламный блок</div>
+
+            <div class="latest-news-promo-description">
+                Здесь может быть реклама или блок с вложенностью актуальных бизнесов, например. Также может быть “новость - хедлайнер” с фотографией на фоне
+            </div>
+        </div>
+
+        <a routerLink="#" class="news-promo-link"></a>
+    </div>
+
+    <div class="latest-news gar-row-item">
+        <div class="latest-news-item" *ngFor="let item of news$ | async">
+            <a routerLink="#" class="latest-news-item-title" title="{{item.title}}">{{item.title}}</a>
+
+            <div class="gar-breadcrumbs-dotted -small latest-news-item-breadcrumbs">
+                <span>{{item.time}}</span>
+                <span>{{item.date}}</span>
+                <a routerLink="#">{{item.type}}</a>
+            </div>
+        </div>
+    </div>
+</div>

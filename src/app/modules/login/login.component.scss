@@ -1,5 +1,6 @@
 @import "/src/app/shared/styles/image-space.scss";
 @import "/src/app/shared/styles/common.scss";
+@import 'design';
 
 .form-auth {
   display: flex;
@@ -7,7 +8,7 @@
   padding: 94px 0;
 
   form {
-    box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: $box-shadow-card;
     width: 464px;
     max-width: 100%;
     padding: 62px 1.5rem 2rem 1.5rem;

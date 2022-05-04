@@ -4,6 +4,7 @@
 @use "/src/app/shared/styles/common.scss";
 @use "/src/app/modules/franchise/create-franchise/create-franchise.component.scss";
 @use "/src/app/modules/login/login.component.scss";
+@import 'design';
 
 .block-space-check {
   margin: 0 64px;
@@ -14,7 +15,7 @@
   max-width: 464px;
   min-width: 320px;
   padding: 34px 26px 32px 24px;
-  box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.08);
+  box-shadow: $box-shadow-card;
   border-radius: 4px;
 }
 h5 {

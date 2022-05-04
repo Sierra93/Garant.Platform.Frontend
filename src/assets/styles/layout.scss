@@ -17,6 +17,7 @@ body {
 a {
   color: $clrBlue;
   text-decoration: none;
+  transition: $timeFast color;
 
   &:hover {
     text-decoration: underline;
@@ -119,6 +120,11 @@ a {
   }
 }
 
+/* Строка с второстепенным текстом */
+.gar-row.secondary {
+  @include typo('secondary');
+}
+
 /* Стиль описывающий элемент карточка */
 .gar-card {
   display: flex;
@@ -129,6 +135,14 @@ a {
   box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
   &:not(.secondary) {
     padding: $card-padding;
+  }
+  /* Карточка с промо информацией с голубым фоном */
+  &.promo {
+    background-color: $clrLightBlue;
+    & .gar-row.secondary {
+      color: $clrGray;
+      margin-bottom: 40px;
+    }
   }
 
   /* карточка внутри карточки */
@@ -141,9 +155,14 @@ a {
 .gar-badge {
   @include typo("promo");
   border-radius: calc(#{$border-radius-card}/2);
-  background: $clrLightBlue;
+  background-color: $clrLightBlue;
   padding: $main-badge-padding;
   color: $clrDarkBLue;
+
+  &.-blue {
+    color: $clrWhite;
+    background-color: rgba($clrBlue, .85);
+  }
 }
 
 /* Стили для сетки */
@@ -159,7 +178,7 @@ a {
 /* Стили для сетки с карточками */
 .gar-grid-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: calc(#{$gridGap} / 3 * 2);
 }
 
@@ -192,6 +211,44 @@ a {
     color: $clrBlack;
     padding: $input-padding;
     border-radius: $input-border-radius;
-    @include typo("secondary");
+    @include typo('secondary');
   }
+}
+
+/* Хлебные крошки с разделителем в виде точки */
+.gar-breadcrumbs-dotted {
+  @include typo('secondary');
+
+  display: flex;
+  flex-wrap: wrap;
+  color: $clrMidGray;
+
+  &.-small {
+    @include typo('description');
+  }
+
+  & > * {
+    position: relative;
+    margin-right: 20px;
+  }
+
+  & > *:not(:last-child)::after {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 8px);
+
+    width: 4px;
+    height: 4px;
+    background-color: currentColor;
+    border-radius: 50%;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(-50%);
+    content: '';
+  }
+}
+
+/* Класс, описывающий секцию */
+.section {
+  margin-bottom: 80px;
 }

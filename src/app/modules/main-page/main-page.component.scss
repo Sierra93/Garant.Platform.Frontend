@@ -1,4 +1,4 @@
-// @import "../../app.component.scss";
+@import 'design';
 @import "/src/app/shared/styles/image-space.scss";
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/franchuse-styles.scss";
@@ -443,65 +443,6 @@
   }
 }
 
-/* Smartphones (landscape) ----------- */
-@media only screen and (min-width: 321px) {
-  /* Styles */
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width: 320px) {
-  /* Styles */
-}
-
-/* iPads (portrait and landscape) ----------- */
-// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-//   /* Styles */
-//   .card {
-//   }
-// }
-
-/* iPads (landscape) ----------- */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  /* Styles */
-}
-
-/* iPads (portrait) ----------- */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  /* Styles */
-}
-
-/* Desktops and laptops ----------- */
-@media only screen and (min-width: 1224px) {
-}
-
-/* Large screens ----------- */
-@media only screen and (min-width: 1824px) {
-  /* Styles */
-}
-
-/* iPhone 4 - 5s ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-  only screen and (min-device-pixel-ratio: 1.5) {
-  /* Styles */
-}
-
-/* iPhone 6 ----------- */
-@media only screen and (max-device-width: 667px),
-  only screen and (-webkit-device-pixel-ratio: 2) {
-  /* Styles */
-}
-
-/* iPhone 6+ ----------- */
-@media only screen and (min-device-width: 414px),
-  only screen and (-webkit-device-pixel-ratio: 3) {
-  /*** You've spent way too much on a phone ***/
-}
-
-/* Samsung Galaxy S7 Edge ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 192dpi) and (max-width: 640px) {
-  /* Styles */
-}
-
 .block-cards-franchises {
   gap: 16px;
   justify-content: center;
@@ -773,6 +714,111 @@
     .quick-search-form {
       .p-dropdown {
         width: 100%;
+      }
+    }
+  }
+}
+
+/* news block */
+.latest-news-promo {
+  position: relative;
+
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+
+  border-radius: $border-radius;
+
+  @include tablet {
+    width: calc(50% - calc(#{$gridGap} / 2));
+  }
+
+  &-pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-content {
+    position: absolute;
+    bottom: calc(#{$gridGap} / 3);
+    left: calc(#{$gridGap} / 3);
+  }
+
+  &-badge {
+    display: inline-block;
+    margin-bottom: calc(#{$gridGap} / 3 * 2);
+  }
+
+  &-description {
+    @include typo('secondary');
+
+    width: 100%;
+    max-width: 415px;
+
+    color: $clrWhite;
+    background-color: rgba($clrBlack, .85);
+    border-radius: calc(#{$border-radius} / 2);
+    padding: calc(#{$gridGap} / 3);
+  }
+
+  &-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.latest-news {
+  overflow-y: auto;
+
+  height: 370px;
+  background-color: $clrWhite;
+  border-radius: $border-radius;
+  padding: calc(#{$gridGap} / 3 * 2);
+  box-shadow: $box-shadow-card;
+
+  @include tablet {
+    width: calc(50% - calc(#{$gridGap} / 2));
+    height: 400px;
+  }
+
+  &-item {
+    border-bottom: 1px solid rgba($clrMidGray, .5);
+    padding: 25px 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &-title {
+      @include typo('title-item');
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+
+      color: $clrBlack;
+      text-decoration: none;
+
+      &:hover {
+        color: $clrBlue;
+      }
+    }
+
+    &-breadcrumbs {
+      margin-top: calc(#{$gridGap} / 3);
+
+      a {
+        color: currentColor;
+        text-decoration: none;
       }
     }
   }

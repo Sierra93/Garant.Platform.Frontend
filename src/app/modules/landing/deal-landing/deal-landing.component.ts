@@ -9,11 +9,14 @@ import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { LandingRequestService } from '../services/landing.service';
+import { takeUntil } from "rxjs/operators";
+import { GarDestroyService } from "../../../gar-lib/gar-destroy.service";
 
 @Component({
   selector: 'deal-landing',
   templateUrl: './deal-landing.component.html',
   styleUrls: ['./deal-landing.component.scss'],
+  providers: [GarDestroyService]
 })
 export class DealLandingModule implements OnInit {
   aPopularBusiness: any[] = [];
@@ -61,7 +64,8 @@ export class DealLandingModule implements OnInit {
     private titleService: Title,
     private router: Router,
     private route: ActivatedRoute,
-    private requestService: LandingRequestService
+    private requestService: LandingRequestService,
+    private _destroy$: GarDestroyService
   ) {
     // this.aSortPrices = [
     //     {
@@ -530,7 +534,9 @@ export class DealLandingModule implements OnInit {
    */
   private async getPopularAsync() {
     try {
-      await this.commonService.getPopularAsync().then((data: any) => {
+      this.commonService.getPopularFranchise().pipe(
+          takeUntil(this._destroy$)
+      ).subscribe(data => {
         console.log('Популярные франшизы:', data);
         this.aPopularFranchises = data;
       });

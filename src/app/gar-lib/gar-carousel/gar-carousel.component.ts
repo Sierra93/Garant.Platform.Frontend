@@ -113,7 +113,7 @@ export class GarCarouselComponent<T> implements AfterViewInit {
 	ngAfterViewInit() {
 		this.viewRefs?.changes.pipe(
 			switchMap(_ => this._items$),
-			filter(items => !!items.length),
+			filter(items => !!items?.length),
 			takeUntil(this._destroy$)
 		).subscribe(items => {
 			items.forEach((item, index) => {
@@ -128,7 +128,7 @@ export class GarCarouselComponent<T> implements AfterViewInit {
 	}
 	
 	onClickLeft() {
-		this.slidesContainer!.nativeElement.scrollLeft -= this.currentItem!.nativeElement.offsetWidth;
+		this.slidesContainer!.nativeElement.scrollLeft -= this.currentItem!.nativeElement.offsetWidth + 24;
 		if (this.slidesIndex > 0) {
 			this.slidesIndex--;
 		}
@@ -136,7 +136,7 @@ export class GarCarouselComponent<T> implements AfterViewInit {
 	}
 	
 	onClickRight() {
-		this.slidesContainer!.nativeElement.scrollLeft += this.currentItem!.nativeElement.offsetWidth;
+		this.slidesContainer!.nativeElement.scrollLeft += this.currentItem!.nativeElement.offsetWidth + 24;
 		if (this.slidesIndex < this.items!.length - 1) {
 			this.slidesIndex++
 		}

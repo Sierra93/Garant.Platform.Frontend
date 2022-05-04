@@ -168,6 +168,12 @@ const routes: Routes = [
   }, {
     path: "demo",
     loadChildren: () => import('./modules/demo/demo.module').then(m => m.DemoModule)
+  }, {
+    path: "blog",
+    loadChildren: () => import('./modules/blog/blog.module').then(m => m.BlogModule)
+  }, {
+    path: "news",
+    loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule)
   }
 ];
 

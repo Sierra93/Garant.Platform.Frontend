@@ -5,11 +5,13 @@ import { GarLibModule } from "../../gar-lib/gar-lib.module";
 import { RouterModule } from "@angular/router";
 import { CatalogPromoCardComponent } from './catalog/catalog.promo.card/catalog.promo.card.component';
 import { CatalogSimpleCardComponent } from './catalog/catalog.simple.card/catalog.simple.card.component';
+import { ShowcaseComponent } from './ showcase/showcase.component';
 
 const _COMPONENTS = [
 	CatalogShortCardComponent,
 	CatalogPromoCardComponent,
-	CatalogSimpleCardComponent
+	CatalogSimpleCardComponent,
+	ShowcaseComponent
 ]
 
 /**

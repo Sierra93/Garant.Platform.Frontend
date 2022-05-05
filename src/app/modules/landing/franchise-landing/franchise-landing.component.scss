@@ -384,11 +384,6 @@ $columnGap: 24px;
       margin-bottom: 33px;
     }
   }
-  &-service {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
   &-reach-icon {
     width: 56px;
     height: 56px;
@@ -407,12 +402,14 @@ $columnGap: 24px;
   }
   &-service {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 18.5px;
     &-text {
       color: #2c2c2c;
       font-size: 17.3px;
       line-height: 21px;
-      text-align: left;
+      width: 80%;
     }
   }
   &-total-price {

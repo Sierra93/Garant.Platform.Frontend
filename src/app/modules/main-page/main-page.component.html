@@ -97,94 +97,71 @@
   </div>
 
   <!-- Секция быстрого поиска. -->
-  <div class="row section-mb gray quick-search">
-    <div class="col-12">
-      <h5 class="title-franchise">Быстрый поиск</h5>
-    </div>
-
-    <div class="col-12">
-      <div class="block-cards-franchises block-cards-franchises-bg">
-        <div class="bg">
-          <p-card>
-            <ng-template pTemplate="header">
-
-            </ng-template>
-
-            <form #filterForm="ngForm" novalidate>
-              <div class="row quick-search-form">
-                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                  <p><strong>Вид бизнеса</strong></p>
-                  <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness"
-                    placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
-                </div>
-
-                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-                  <div class="control-quick-search">
-                    <p><strong>Категория</strong></p>
-                    <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName"
-                      [(ngModel)]="selectedCategory" placeholder="Категория" [showClear]="true" name="category">
-                    </p-dropdown>
-                  </div>
-                </div>
-
-                <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                  <div class="control-quick-search">
-                    <p><strong>Город</strong></p>
-                    <p-dropdown [options]="aCities" optionLabel="cityName" name="city" [(ngModel)]="selectedCity"
-                      placeholder="Город" [showClear]="true"></p-dropdown>
-                  </div>
-                </div>
-
-                <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
-                  <div>
-                    <p class="d-inline-block"><strong>Стоимость</strong></p>
-                  </div>
-                  <div class="price-range-input">
-                    <input type="text" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice" name="minPrice" />
-
-                    <input type="text" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice"
-                      name="maxPrice" />
-                  </div>
-                </div>
-
-                <div class="col-xxl-2 col-xl-6 col-lg-6 col-md-12">
-                  <div class="control-quick-search">
-                    <p><strong>Покупка через гарант</strong></p>
-                    <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
-                  </div>
-                </div>
-              </div>
-            </form>
-
-            <ng-template pTemplate="footer">
-              <button class="btn btn-dark" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
-            </ng-template>
-          </p-card>
-          <!-- </div> -->
+  <div class="section">
+    <div class="gar-row title">Быстрый поиск</div>
+    <div class="home-quick-search">
+      <form #filterForm="ngForm" novalidate class="home-quick-search-main">
+        <div class="home-quick-search-section">
+          <div class="gar-row title item">Вид бизнеса</div>
+          <gar-select [(ngModel)]="selectedViewBusiness" [items]="aViewBusiness" displayLabel="viewName"></gar-select>
         </div>
 
-        <div class="block-cards-franchises-inner gar-row">
-          <app-catalog-simple-card *ngFor="let item of aFranchises" [item]="item"></app-catalog-simple-card>
+        <div class="home-quick-search-section">
+          <div class="gar-row title item">Категория</div>
+          <gar-select [(ngModel)]="selectedCategory" [items]="aBusinessCategories" displayLabel="categoryName"></gar-select>
         </div>
 
-        <div class="col-lg-12 col-xs-12 d-flex justify-content-center card-demo-list">
-          <button class="btn btn-default text-center btn-show-more">Показать ещё</button>
+        <div class="home-quick-search-section">
+          <div class="gar-row title item">Город</div>
+          <gar-select [(ngModel)]="selectedCity" [items]="aCities" displayLabel="cityName"></gar-select>
         </div>
+
+        <div class="home-quick-search-section">
+          <div class="gar-row title item">Стоимость</div>
+
+          <div class="gar-grid home-quick-search-section-price">
+            <gar-input-number title="От" [(ngModel)]="minPrice" name="minPrice"></gar-input-number>
+            <gar-input-number title="До" [(ngModel)]="maxPrice" name="maxPrice"></gar-input-number>
+          </div>
+        </div>
+
+        <div class="home-quick-search-section">
+          <div class="gar-row title item">Сделка онлайн</div>
+          <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
+        </div>
+      </form>
+
+      <div class="align-center">
+        <gar-button role="primary" (click)="onFilterFranchisesAsync(filterForm)">Найти</gar-button>
+      </div>
+
+      <div class="gar-grid-cards">
+        <app-catalog-simple-card *ngFor="let item of aFranchises" [item]="item"></app-catalog-simple-card>
+      </div>
+
+      <div class="align-center">
+        <gar-button role="secondary">Показать ещё</gar-button>
       </div>
     </div>
   </div>
 
-  <!-- Область с банерами (2 картинки). -->
-  <div class="row section-mb">
-    <div class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-      <div>
-        <img class="baner" src="../../../assets/images/Rectangle 13.png">
-      </div>
-    </div>
-    <div class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-      <div>
-        <img class="baner" src="../../../assets/images/Rectangle 14.png">
-      </div>
+  <div class="section home-special-offers">
+    <div class="gar-grid gar-grid_wrap">
+      <a routerLink="#" class="home-special-offer">
+        <picture>
+          <source srcset="/assets/images/franchise-block-picture.webp" type="image/webp">
+          <source srcset="/assets/images/franchise-block-picture.png" type="image/png">
+          <img src="/assets/images/franchise-block-picture.png" alt="Описание для СЕО">
+        </picture>
+      </a>
+
+      <a routerLink="#" class="home-special-offer">
+        <picture>
+          <source srcset="/assets/images/franchise-block-picture.webp" type="image/webp">
+          <source srcset="/assets/images/franchise-block-picture.png" type="image/png">
+          <img src="/assets/images/franchise-block-picture.png" alt="Описание для СЕО">
+        </picture>
+      </a>
     </div>
   </div>
 

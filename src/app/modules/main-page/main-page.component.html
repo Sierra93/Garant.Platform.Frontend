@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <!-- Область с 3 карточками. -->
+  <!-- Область с 3 карточками -->
   <div class="row section-mb">
     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions">
       <div class="card-business">
@@ -96,7 +96,7 @@
     </div>
   </div>
 
-  <!-- Секция быстрого поиска. -->
+  <!-- Секция быстрого поиска -->
   <div class="section">
     <div class="gar-row title">Быстрый поиск</div>
     <div class="home-quick-search">
@@ -165,53 +165,54 @@
     </div>
   </div>
 
-  <!-- Популярные франшизы. -->
-  <div class="row section-mb">
-    <div class="col-12">
-      <h5 class="title-franchise">Популярные франшизы</h5>
-    </div>
-    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aPopularFranchises">
-      <div class="popular-list">
-        <div>
-          <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}"
-            styleClass="p-card-shadow">
-            <ng-template pTemplate="header">
-              <img [src]="item.url">
-            </ng-template>
-            <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
-            <ng-template pTemplate="footer">
+  <!-- Популярные франшизы -->
+  <div class="section" *ngIf="aPopularFranchises">
+    <div class="gar-row title">Популярные франшизы</div>
 
-            </ng-template>
-          </p-card>
+    <gar-carousel [items]="aPopularFranchises" [template]="cardShortComponent"></gar-carousel>
+  </div>
+
+  <!-- Новые объявления готового бизнеса -->
+  <div class="section" *ngIf="aNewBusiness">
+    <div class="gar-row title">Новые объявления готового бизнеса</div>
+
+    <gar-carousel [items]="aNewBusiness" [template]="cardShortComponent"></gar-carousel>
+  </div>
+
+  <!-- Бизнес блог -->
+  <div class="section">
+    <div class="gar-row title">Бизнес блог</div>
+
+    <div class="home-blog">
+      <div class="home-blog-item" *ngFor="let item of aBlogs">
+        <a routerLink="#" class="home-blog-item-pic">
+          <img src="{{ item.url }}" alt="{{ item.title }}">
+        </a>
+
+        <div class="home-blog-item-title">
+          <a routerLink="#">{{ item.title }}</a>
         </div>
+
+        <div class="gar-breadcrumbs-dotted -small">
+          <span>читать ~5 минут</span>
+          <span>опубликовано {{ item.dateCreated | date:'longDate' }}</span>
+        </div>
+      </div>
+
+      <div class="home-blog-item home-blog-item_more gar-flex-center">
+        <div class="home-blog-item-description">
+          Больше статей
+          <span>Перейдите в наш блог и найдите там массу полезной информации.</span>
+        </div>
+
+        <div class="home-blog-item-button gar-flex-center">
+          <gar-icon name="polygon_right"></gar-icon>
+        </div>
+
+        <a routerLink="#"></a>
       </div>
     </div>
   </div>
-
-  <!-- Новые объявления готового бизнеса. -->
-  <div class="row section-mb">
-    <div class="col-12">
-      <h5 class="title-franchise">Новые объявления готового бизнеса</h5>
-    </div>
-    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aNewBusiness$ | async">
-      <div class="popular-list">
-        <div>
-          <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}"
-            styleClass="p-card-shadow">
-            <ng-template pTemplate="header">
-              <img [src]="item.url">
-            </ng-template>
-            <strong>{{item.textDoPrice}} {{item.price | priceFormat:item.price}} ₽</strong>
-            <ng-template pTemplate="footer">
-
-            </ng-template>
-          </p-card>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Бизнес блог. -->
   <!-- <div class="row section-mb">
     <div class="col-12">
       <h5 class="title-franchise">Бизнес блог</h5>

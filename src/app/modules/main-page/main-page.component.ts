@@ -10,6 +10,7 @@ import { NgForm } from "@angular/forms";
 import { CatalogPromoCardComponent } from "../products/catalog/catalog.promo.card/catalog.promo.card.component";
 import { shareReplay, takeUntil, tap } from "rxjs/operators";
 import { GarDestroyService } from "../../gar-lib/gar-destroy.service";
+import {CatalogShortCardComponent} from "../products/catalog/catalog.short.card/catalog.short.card.component";
 
 @Component({
     selector: 'main-page',
@@ -54,8 +55,9 @@ export class MainPageModule implements OnInit {
     aNewBusiness: any[] = [];
     isHideBusinessWithGarant: boolean = false;
     showCategoryMenu: boolean = false;
-    
+
     cardComponent = CatalogPromoCardComponent;
+    cardShortComponent = CatalogShortCardComponent;
     /**
      * список последних бизнесов
      * */

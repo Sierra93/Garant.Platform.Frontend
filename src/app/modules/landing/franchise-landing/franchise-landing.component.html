@@ -20,6 +20,7 @@
             alt="Стол"
           />
         </ng-container>
+        <!-- В мобильной версии картинка другая -->
         <ng-container *ngIf="isSmall">
           <img class="img-fluid service-img service-img--small" src="" alt="" />
         </ng-container>
@@ -899,7 +900,7 @@
 ></app-feedback>
 <!-- Популярные франшизы -->
 <ng-container>
-  <div class="gar-carousel-title">Популярные франшизы</div>
+  <div class="gar-carousel-title gar-carousel-title--1">Популярные франшизы</div>
   <gar-carousel
     [items]="aPopularFranchises"
     [template]="cardComponent"
@@ -907,7 +908,7 @@
 </ng-container>
 <!-- Новые объявления готового бизнеса -->
 <ng-container>
-  <div class="gar-carousel-title">Новые объявления готового бизнеса</div>
+  <div class="gar-carousel-title gar-carousel-title--2">Новые объявления готового бизнеса</div>
   <gar-carousel
     [items]="aBusinessList"
     [template]="cardComponent"
@@ -917,8 +918,8 @@
 <app-business-blog *ngIf="isHD || isFullHD"></app-business-blog>
 <!-- Мобильная версия Бизнес блог. -->
 <ng-container *ngIf="isSmall || isLaptop">
-  <div class="gar-carousel-title">Бизнес блог</div>
-  <gar-carousel [items]="aBlogs" [template]="cardComponent"></gar-carousel>
+  <div class="gar-carousel-title gar-carousel-title--3">Бизнес блог</div>
+  <gar-carousel [items]="aBusinessList" [template]="cardComponent"></gar-carousel>
   <div class="gar-carousel-button">
     Больше статей
     <div class="any-chevron">

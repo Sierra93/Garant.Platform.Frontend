@@ -9,6 +9,7 @@ import { FilterInput } from 'src/app/models/franchise/input/filter-franchise-inp
 import { FranchiseInput } from 'src/app/models/franchise/input/franchise-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { LandingRequestService } from '../services/landing.service';
+import { CatalogPromoCardComponent } from '../../products/catalog/catalog.promo.card/catalog.promo.card.component';
 
 @Component({
   selector: 'deal-landing',
@@ -20,6 +21,7 @@ export class DealLandingModule implements OnInit, DoCheck {
   isFullHD!: boolean;
   isHD!: boolean;
   isLaptop!: boolean;
+  isSmall!: boolean;
   browserScreenWidth!: number;
   // isGarant: boolean = false;
   // aCities: any[] = [];
@@ -55,11 +57,7 @@ export class DealLandingModule implements OnInit, DoCheck {
   responsiveOptions: any[] = [];
   aPopularFranchises: any[] = [];
   isHideBusinessWithGarant: boolean = true;
-  feedbackTitle: string = 'Консультация';
-  feedbackSubtitle: string = 'при покупке бизнеса онлайн';
-  feedbackNote: string = 'с юристом и консультантами сервиса';
-  feedbackImgPath: string =
-    '../../../../assets/images/deal-landing/template_person6 1.png';
+  cardComponent!: any;
 
   constructor(
     private http: HttpClient,
@@ -97,12 +95,15 @@ export class DealLandingModule implements OnInit, DoCheck {
       },
     ];
     this.routeParam = this.route.snapshot.queryParams.businessId;
+    this.cardComponent = CatalogPromoCardComponent;
   }
 
   public async ngOnInit(): Promise<void> {
     this.isHD = false;
     this.isFullHD = false;
     this.isLaptop = false;
+    this.isSmall = false;
+
     this.browserScreenWidth = window.screen.width;
     // await this.getPopularBusinessAsync();
     await this.GetBusinessListAsync();
@@ -114,10 +115,26 @@ export class DealLandingModule implements OnInit, DoCheck {
     await this.loadCategoriesListAsync();
     await this.GetNewFranchisesListAsync();
     // await this.GetReviewsFranchisesAsync();
+    await this.getPopularAsync();
   }
 
   public ngDoCheck(): void {
     this.defineResize();
+  }
+
+  /**
+   * Функция получит список популярныз франшиз.
+   * @returns Список франшиз.
+   */
+  private async getPopularAsync() {
+    try {
+      await this.commonService.getPopularAsync().then((data: any) => {
+        console.log('Популярные франшизы:', data);
+        this.aPopularFranchises = data;
+      });
+    } catch (e: any) {
+      throw new Error(e);
+    }
   }
 
   /**
@@ -489,6 +506,12 @@ export class DealLandingModule implements OnInit, DoCheck {
       this.isLaptop = true;
     } else {
       this.isLaptop = false;
+    }
+
+    if (this.browserScreenWidth <= 576) {
+      this.isSmall = true;
+    } else {
+      this.isSmall = false;
     }
   }
 }

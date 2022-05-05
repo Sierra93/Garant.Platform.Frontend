@@ -102,7 +102,11 @@
 <!-- Секция недавно приобретенных услуг -->
 <section class="row">
   <div class="col-lg-7 col-xl-7 col-xxl-7">
-    <h5 class="alert alert-light">Недавно приобрели</h5>
+    <h5 class="gar-carousel-title">Недавно приобрели</h5>
+    <gar-carousel
+    [items]="aPopularFranchises"
+    [template]="cardComponent"
+  ></gar-carousel>
   </div>
   <div
     class="col-lg-5 col-xl-5 col-xxl-5 note"
@@ -149,10 +153,10 @@
 </section>
 <!-- Компонент с формой обратной связи -->
 <app-feedback
-  [title]="feedbackTitle"
-  [subtitle]="feedbackSubtitle"
-  [tooltip]="feedbackNote"
-  [imagePath]="feedbackImgPath"
+  [title]="'Консультация'"
+  [subtitle]="'при покупке бизнеса онлайн'"
+  [tooltip]="'с юристом и консультантами сервиса'"
+  [imagePath]="'../../../../assets/images/deal-landing/template_person6 1.png'"
   [bgColor]="'rgba(13, 110, 253, 0.9)'"
   [isBgColor]="false"
   [hasConsultant]="false"
@@ -291,11 +295,47 @@
 <!-- Наше предложение-->
 <app-business-list></app-business-list>
 <!-- Популярные франшизы -->
-<app-franchise-list></app-franchise-list>
+<ng-container>
+  <div class="gar-carousel-title gar-carousel-title--1">Популярные франшизы</div>
+  <gar-carousel
+    [items]="aPopularFranchises"
+    [template]="cardComponent"
+  ></gar-carousel>
+</ng-container>
 <!-- Новые объявления готового бизнеса -->
-<app-business-ad></app-business-ad>
+<ng-container>
+  <div class="gar-carousel-title gar-carousel-title--2">Новые объявления готового бизнеса</div>
+  <gar-carousel
+    [items]="aBusinessList"
+    [template]="cardComponent"
+  ></gar-carousel>
+</ng-container>
 <!-- Бизнес блог. -->
-<app-business-blog></app-business-blog>
+<app-business-blog *ngIf="isHD || isFullHD"></app-business-blog>
+<!-- Мобильная версия Бизнес блог. -->
+<ng-container *ngIf="isSmall || isLaptop">
+  <div class="gar-carousel-title gar-carousel-title--3">Бизнес блог</div>
+  <gar-carousel [items]="aBusinessList" [template]="cardComponent"></gar-carousel>
+  <div class="gar-carousel-button">
+    Больше статей
+    <div class="any-chevron">
+      <svg
+        _ngcontent-vyo-c133=""
+        width="1em"
+        height="1em"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        class="bi bi-caret-right-fill category__redirect-icon"
+      >
+        <path
+          _ngcontent-vyo-c133=""
+          d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+        ></path>
+      </svg>
+    </div>
+  </div>
+</ng-container>
 <!-- Компонент Новости -->
 <app-news></app-news>
 <!-- Списки категорий -->

@@ -80,7 +80,7 @@
   }
 }
 
-.img-fluid {
+img.img-fluid {
   width: 100%;
 }
 
@@ -109,37 +109,29 @@
 
 ::ng-deep {
   @media all and (min-width: 992px) {
-    $typeDeviceWatched: "is-laptop";
     .franchise {
-      &.#{$typeDeviceWatched} {
+      &.is-laptop {
         margin-top: 36px;
-        .franchise {
-          &__title {
-            margin-bottom: 20px;
-          }
-          &__carousel-item {
-            display: none;
-          }
-          &__carousel-item:nth-child(n + 2) {
-            display: block;
-          }
-        }
+      }
+      &.is-laptop &__title {
+        margin-bottom: 20px;
+      }
+      &.is-laptop &__carousel-item {
+        display: none;
+      }
+      &.is-laptop &__carousel-item:nth-child(n + 2) {
+        display: block;
       }
     }
   }
 
   @media all and (min-width: 1200px) {
-    $typeDeviceWatched: "is-hd";
     .franchise {
-      &.#{$typeDeviceWatched} {
-        .franchise {
-          &__carousel-item {
-            display: none;
-          }
-          &__carousel-item:nth-child(n + 2) {
-            display: block;
-          }
-        }
+      &.is-hd &__carousel-item {
+        display: none;
+      }
+      &.is-hd &__carousel-item:nth-child(n + 2) {
+        display: block;
       }
     }
   }

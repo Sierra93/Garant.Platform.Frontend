@@ -198,10 +198,9 @@
       &.is-laptop &__subtitle {
         font-size: 44px;
         line-height: 52px;
-        max-width: 50%;
       }
       &.is-laptop &__note {
-        max-width: calc(50% + 4px);
+        max-width: 460px;
       }
       &.is-laptop &__orientation {
         display: block;

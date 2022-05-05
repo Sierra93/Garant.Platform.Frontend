@@ -438,6 +438,7 @@
     line-height: 17px;
     margin-bottom: 24px;
     height: 63px;
+    max-width: 306px;
   }
   &__item:first-child &__content {
     background: #f5f8fa;
@@ -463,6 +464,9 @@
       font-size: 24px;
       line-height: 28px;
     }
+    &__description {
+      max-width: 100%;
+    }
     &__action {
       width: 100%;
     }
@@ -471,19 +475,13 @@
 
 ::ng-deep {
   @media all and (min-width: 992px) {
-    $typeDeviceWatched: "is-laptop";
-
     .checklist {
-      &.#{$typeDeviceWatched} {
-        .checklist {
-          &__head {
-            font-size: 24px;
-            line-height: 28px;
-          }
-          &__description {
-            max-width: 50%;
-          }
-        }
+      &.is-laptop &__head {
+        font-size: 24px;
+        line-height: 28px;
+      }
+      &.is-laptop &__description {
+        max-width: 50%;
       }
     }
   }
@@ -535,11 +533,6 @@ $columnGap: 24px;
       max-width: 304px;
     }
   }
-  &-service {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
   &-reach-icon {
     width: 56px;
     height: 56px;
@@ -557,13 +550,15 @@ $columnGap: 24px;
     }
   }
   &-service {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 18.5px;
     &-text {
       color: #2c2c2c;
       font-size: 18px;
       line-height: 21px;
       width: 80%;
-      text-align: left;
     }
   }
   &-total-price {

@@ -45,7 +45,7 @@
 >
   <div class="row statistics__gallery">
     <div
-      class="col-lg-6 statistics__item"
+      class="statistics__item"
       [ngClass]="{
         'mb-3': isLaptop,
         'col-lg-6': isLaptop,
@@ -60,7 +60,7 @@
       ></app-statistics-card>
     </div>
     <div
-      class="col-lg-6 statistics__item"
+      class="statistics__item"
       [ngClass]="{
         'mb-3': isLaptop,
         'col-lg-6': isLaptop,
@@ -75,7 +75,7 @@
       ></app-statistics-card>
     </div>
     <div
-      class="col-lg-6 statistics__item"
+      class="statistics__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
         'col-xl-3': isHD || isFullHD
@@ -89,7 +89,7 @@
       ></app-statistics-card>
     </div>
     <div
-      class="col-lg-6 statistics__item"
+      class="statistics__item"
       [ngClass]="{
         'col-lg-6': isLaptop,
         'col-xl-3': isHD || isFullHD
@@ -109,9 +109,9 @@
   <div class="col-lg-7 col-xl-7 col-xxl-7">
     <h5 class="gar-carousel-title">Недавно приобрели</h5>
     <gar-carousel
-    [items]="aPopularFranchises"
-    [template]="cardComponent"
-  ></gar-carousel>
+      [items]="aPopularFranchises"
+      [template]="cardComponent"
+    ></gar-carousel>
   </div>
   <div
     class="col-lg-5 col-xl-5 col-xxl-5 note"
@@ -163,10 +163,10 @@
   </h5>
   <div class="row">
     <div
-      class="checklist__item"
+      class="col-lg-6 checklist__item"
       [ngClass]="{
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <div class="card checklist__content">
@@ -195,10 +195,10 @@
       </div>
     </div>
     <div
-      class="checklist__item"
+      class="col-lg-6 checklist__item"
       [ngClass]="{
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <div class="card checklist__content">
@@ -229,10 +229,10 @@
       </div>
     </div>
     <div
-      class="checklist__item"
+      class="col-lg-6 checklist__item"
       [ngClass]="{
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <div class="card checklist__content">
@@ -258,10 +258,10 @@
       </div>
     </div>
     <div
-      class="checklist__item"
+      class="col-lg-6 checklist__item"
       [ngClass]="{
-        'col-lg-6': isLaptop,
-        'col-xl-3': isHD || isFullHD
+        'col-lg-6': isLaptop || isHD,
+        'col-xl-3': isFullHD
       }"
     >
       <div class="card checklist__content">
@@ -289,22 +289,18 @@
   </div>
 </section>
 <!-- Секция пакеты услуг -->
-<section class="package" [ngClass]="{'is-laptop': isLaptop}">
+<section class="package" [ngClass]="{ 'is-laptop': isLaptop }">
   <h5 class="alert alert-light package-common-title">
     Пакеты юридических услуг
   </h5>
   <div class="row package-root">
-    <div
-      class="package-wrapper"
-    >
+    <div class="package-wrapper">
       <div class="card package-list">
         <div class="card-header package-title package-title--dark">
           Пакет "Подготовка договора"
         </div>
         <div class="card-body package-content">
-          <div class="card-text package-content-title">
-            Подготовка договора
-          </div>
+          <div class="card-text package-content-title">Подготовка договора</div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
@@ -335,15 +331,15 @@
               <span class="package-total-result">15 000 &#8381;</span>
             </li>
             <li class="list-group-item package-price-item">
-              <button class="btn btn-primary package-submit">Подготовить договор</button>
+              <button class="btn btn-primary package-submit">
+                Подготовить договор
+              </button>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <div
-      class="package-wrapper"
-    >
+    <div class="package-wrapper">
       <div class="card package-list">
         <div class="card-header package-title package-title--primary">
           Пакет "Проверка контрагента"
@@ -373,9 +369,7 @@
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
-            <div class="package-service-text">
-              Книга продаж вашей франшизы
-            </div>
+            <div class="package-service-text">Книга продаж вашей франшизы</div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
@@ -401,28 +395,26 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Контроль качества звонков менеджера,<br>
+              Контроль качества звонков менеджера,<br />
               нашим руководителем отдела продаж
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Совместная обработка звонков<br>
+              Совместная обработка звонков<br />
               и возникших вопрсов у клиента
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
-            <div class="package-service-text">
-              Настройка CRM-системы
-            </div>
+            <div class="package-service-text">Настройка CRM-системы</div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--no"></div>
             <div class="package-service-text">
-              Гарантированное сопровождение и<br>
-              доведение до первых продаж<br>
+              Гарантированное сопровождение и<br />
+              доведение до первых продаж<br />
               франшизы;
             </div>
           </div>
@@ -436,15 +428,15 @@
               <span class="package-total-result">35 000 &#8381;</span>
             </li>
             <li class="list-group-item package-price-item">
-              <button class="btn btn-primary package-submit">Проверить контрагента</button>
+              <button class="btn btn-primary package-submit">
+                Проверить контрагента
+              </button>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <div
-      class="package-wrapper"
-    >
+    <div class="package-wrapper">
       <div class="card package-list">
         <div class="card-header package-title package-title--dark">
           Пакет "Сопровождение сделки"
@@ -468,15 +460,13 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Разработка пакетов франшизы<br>
+              Разработка пакетов франшизы<br />
               и определение их стоимости
             </div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
-            <div class="package-service-text">
-              Книга продаж Вашей франшизы
-            </div>
+            <div class="package-service-text">Книга продаж Вашей франшизы</div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
@@ -498,8 +488,8 @@
             <div class="package-service-text">
               Настройка рекламной компании,<br />
               для запуска продаж Вашей<br />
-              франшизы,<br> 
-              либо размещение в ТОП-овом каталоге<br>
+              франшизы,<br />
+              либо размещение в ТОП-овом каталоге<br />
               франшиз;
             </div>
           </div>
@@ -512,7 +502,7 @@
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Контроль качества звонков менеджера,<br>
+              Контроль качества звонков менеджера,<br />
               нашим руководителем отдела продаж
             </div>
           </div>
@@ -526,15 +516,13 @@
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
-            <div class="package-service-text">
-              Настройка CRM-системы
-            </div>
+            <div class="package-service-text">Настройка CRM-системы</div>
           </div>
           <div class="package-service">
             <div class="package-reach-icon package-reach-icon--yes"></div>
             <div class="package-service-text">
-              Гарантированное сопровождение и<br>
-              доведение до первых продаж<br>
+              Гарантированное сопровождение и<br />
+              доведение до первых продаж<br />
               франшизы;
             </div>
           </div>
@@ -548,7 +536,9 @@
               <span class="package-total-result">35 000 &#8381;</span>
             </li>
             <li class="list-group-item package-price-item">
-              <button class="btn btn-primary package-submit">Заказать сопровождение</button>
+              <button class="btn btn-primary package-submit">
+                Заказать сопровождение
+              </button>
             </li>
           </ul>
         </div>
@@ -592,7 +582,10 @@
 <app-business-blog *ngIf="!isSmall"></app-business-blog>
 <ng-container *ngIf="isSmall">
   <div class="gar-carousel-title">Бизнес блог</div>
-  <gar-carousel [items]="aBusinessList" [template]="cardComponent"></gar-carousel>
+  <gar-carousel
+    [items]="aBusinessList"
+    [template]="cardComponent"
+  ></gar-carousel>
 </ng-container>
 <!-- Компонент Новости -->
 <app-news></app-news>

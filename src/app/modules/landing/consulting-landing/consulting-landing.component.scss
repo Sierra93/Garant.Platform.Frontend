@@ -6,6 +6,7 @@
 // @import "/src/app/modules/main-page/main-page.component.scss";
 
 // @import "/src/app/shared/styles/franchuse-styles.scss";
+@import 'design';
 
 @use "/src/app/app.component.scss";
 // @import "/src/app/shared/styles/image-space.scss";
@@ -1365,7 +1366,7 @@ strong {
     }
 
     &-bottom {
-      box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+      box-shadow: $box-shadow-card;
       width: 464px;
       height: 239.21px;
       border-radius: 4px;

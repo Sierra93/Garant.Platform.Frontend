@@ -1,7 +1,9 @@
+@import 'design';
+
 .block-left {
   padding: 1.5rem;
   border-radius: .5rem;
-  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: $box-shadow-card;
   background-color: #fff;
 
   @media (max-width: 375px) {

@@ -304,9 +304,15 @@
   .block-cards-franchises-bg {
     width: 100%;
   }
-  .control-quick-search {
+  .quick-search-text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
     font-size: 18px;
+    line-height: 21px;
+    color: #2C2C2C;
   }
+  
   ::ng-deep {
     .p-dropdown-label {
       font-family: 'Roboto';

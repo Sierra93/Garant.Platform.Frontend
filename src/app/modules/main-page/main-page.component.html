@@ -107,7 +107,7 @@
             <form #filterForm="ngForm" novalidate>
               <div class="row quick-search-form">
                 <div class="price-range">
-                  <p><strong>Вид бизнеса</strong></p>
+                  <p><strong class="quick-search-text">Вид бизнеса</strong></p>
                   <p-dropdown
                     [options]="aViewBusiness"
                     optionLabel="viewName"
@@ -127,7 +127,7 @@
                 ></gar-select> -->
                 <div class="price-range">
                   <div class="control-quick-search">
-                    <p><strong>Категория</strong></p>
+                    <p><strong class="quick-search-text">Категория</strong></p>
                     <p-dropdown
                       [options]="aBusinessCategories"
                       optionLabel="categoryName"
@@ -142,7 +142,7 @@
                 <div class="img-search"></div>
                 <div class="price-range">
                   <div class="control-quick-search">
-                    <p><strong>Город</strong></p>
+                    <p><strong class="quick-search-text">Город</strong></p>
                     <p-dropdown
                       [options]="aCities"
                       optionLabel="cityName"
@@ -157,7 +157,9 @@
                 <div class="img-search img-search--none"></div>
                 <div class="price-range-wrapper">
                   <div>
-                    <p class="d-inline-block"><strong>Стоимость</strong></p>
+                    <p class="d-inline-block">
+                      <strong class="quick-search-text">Стоимость</strong>
+                    </p>
                   </div>
                   <div class="price-range-input">
                     <input
@@ -187,7 +189,11 @@
                 <div class="img-search img-search--horizontal"></div>
                 <div class="quick-search5">
                   <div class="control-quick-search control-quick-search2">
-                    <p><strong>Покупка через гарант</strong></p>
+                    <p>
+                      <strong class="quick-search-text"
+                        >Покупка через гарант</strong
+                      >
+                    </p>
                     <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
                   </div>
                 </div>
@@ -218,9 +224,7 @@
         <!-- </div> -->
       </div>
 
-      <div
-        class="col-lg-12 col-xs-12 d-flex justify-content-center card-demo-list"
-      >
+      <div class="d-flex justify-content-center card-demo-list">
         <button class="btn btn-default text-center btn-show-more show-btn">
           Показать ещё
         </button>

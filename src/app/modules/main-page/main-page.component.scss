@@ -283,16 +283,21 @@
   font-size: 24px;
   line-height: 28px;
   color: #2c2c2c;
+  padding: 0;
 }
 .quick-search {
   width: 74rem;
   padding: 24px;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   align-items: flex-start;
   position: static;
   background: #f1f6ff;
   border-radius: 8px;
+  .bg {
+    margin-bottom: 20px;
+  }
   ::ng-deep .p-card-body .p-card-content {
     padding: 0;
   }
@@ -335,7 +340,7 @@
       line-height: 16px;
       color: #000000;
       height: 48px;
-      margin: auto;
+      margin: auto 0;
     }
   }
   .quick-search-form {
@@ -359,8 +364,10 @@
     width: 1px;
     background:#F1F6FF;
     padding: 0;
-    margin: 0 20px;
+    margin: 0 14px;
+    
   }
+
   .price-range-wrapper {
     width: 23.5%;
     padding: 0;
@@ -379,7 +386,8 @@
     }
   }
   .quick-search-form {
-    padding-left: 16px;
+    padding: 0 16px;
+    justify-content: space-between;
     .price-range {
       width: 15%;
       padding: 0;
@@ -394,8 +402,11 @@
     width: 15%;
     padding: 0;
   }
+  
 }
-
+.line-searsh-horisontal {
+  display: none;
+}
 // Быстрый поиск блок с картинками.
 .block-cards-franchises-inner {
   background: #f1f6ff;
@@ -565,34 +576,41 @@
 @media only screen and (min-device-width: 992px) and (max-device-width: 1200px) {
   .quick-search {
     width: 100%;
-    padding: 0;
+    padding: 24px;
     flex-direction: column;
-
+  .bg {
+    margin-bottom: 20px;
+  }
   .quick-search-form {
     .price-range {
-      margin-bottom: 20px;
-      width: 32%;
+      // margin-bottom: 20px;
+      width: 30%;
+      justify-content: space-between;
       }
     }
     .price-range-wrapper {
-      width: 66%;
+      width: 65%;
     }
     .quick-search5 {
-      width: 32%;
+      width: 30%;
     }
   }
+  
   .control-quick-search2 {
     max-width: 75%;
   }
   ::ng-deep .p-dropdown-clearable {
     margin-bottom: 30px;
   }
+  .img-search--none {
+    display: none;
+  }
   .price-range-wrapper {
   
     input {
-      width: 49%;
+      width: 46%;
+      margin: 0;
     }
-    
   }
   .block-cards-franchises-inner {
     margin-bottom: 0;
@@ -603,6 +621,11 @@
   }
   .wrapper-slider {
     display: none;
+  }
+  .line-searsh-horisontal {
+    display: flex;
+    color:#7e9dd8;
+    margin: 16px 0;
   }
 }
 ::ng-deep .p-dropdown-clearable {
@@ -616,43 +639,47 @@
     font-size: 1.25rem;
   }
 }
-@media only screen and (min-device-width: 489px) and (max-device-width: 980px) {
+@media only screen and (min-device-width: 536px) and (max-device-width: 980px) {
   /* Styles */
   .show-btn {
     margin-top: 0;
   }
   .quick-search {
     width: 100%;
-    padding: 0;
+    padding: 24px;
     flex-direction: column;
-    .col-xxl-4 {
-      max-width: 66%;
+  
+    .bg {
+      margin-bottom: 20px;
     }
-    .card-demo-list {
-      margin: auto;
-    }
+  .control-quick-search {
+    font-size: 17px;
+  }
     .quick-search-form {
       .price-range {
-        width: 32%;
-        margin-bottom: 20px;
+        // margin-bottom: 20px;
+        width: 30%;
+        justify-content: space-between;
       }
-      .quick-search5 {
-        width: 32%;
+      .img-search {
+        margin: 0;
       }
-      .price-range-wrapper  {
-        width: 66%;
-      }
+    }
+  
+    .price-range-wrapper {
+      width: 65%;
+    }
+  
+    .quick-search5 {
+      width: 30%;
     }
   }
   .price-range-wrapper {
     max-width: 66%;
   }
-  .quick-search-form {
-    min-height: 216px;
-    align-content: space-between;
-    .control-quick-search {
-      text-align: start;
-    }
+  
+  .img-search--none {
+    display: none;
   }
   .block-cards-franchises-inner {
     flex-direction: row;
@@ -665,7 +692,11 @@
       margin: 5px;
     }
   }
-  
+  .line-searsh-horisontal {
+    display: flex;
+    color: #7e9dd8;
+    margin: 16px 0;
+  }
   .show-btn {
     margin-top: 0;
     background: #FFFFFF;
@@ -673,7 +704,7 @@
     margin-bottom: 16px;
   }
 }
-@media only screen and (min-device-width: 320px) and (max-device-width: 488px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 535px) {
   .price-range-input {
     .p-inputtext {
       width: 49% !important;
@@ -699,10 +730,20 @@
   }
   .quick-search {
     width: 100%;
-    padding: 8px;
+    padding: 16px;
     flex-direction: column;
     .card-demo-list {
       margin: auto;
+    }
+    .img-search {
+      width: 100%;
+      background: #F1F6FF;
+      padding: 0;
+      margin: 14px 0;
+      height: 1px;
+    }
+    .img-search--horizontal {
+      display: none;
     }
     .quick-search-form {
       .price-range {
@@ -821,11 +862,7 @@
   }
 }
 
-@media (max-width: 800px) {
-  .p-inputtext {
-    max-width: 120px;
-  }
-}
+
 
 @media (min-width: 768px) and (max-width: 788px) {
   .carousel-block {
@@ -925,11 +962,11 @@
       max-width: 100%;
     }
 
-    .quick-search-form {
-      .p-dropdown {
-        width: 100%;
-      }
-    }
+    // .quick-search-form {
+    //   .p-dropdown {
+    //     width: 100%;
+    //   }
+    // }
   }
 }
 

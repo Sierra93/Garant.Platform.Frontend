@@ -1,5 +1,5 @@
 <section id="main-page">
-  <div class="gar-row promo-block">
+  <div class="gar-row promo-block" style="display: none">
     <div class="gar-row-item">
       <div class="gar-row title">Недавно приобрели</div>
       <gar-carousel [items]="aSlider" [template]="cardComponent"></gar-carousel>
@@ -94,11 +94,9 @@
 
   <!-- Секция быстрого поиска. -->
   <div class="row section-mb gray">
-    <div class="col-12">
-      <h5 class="title-franchise-Searc title-franchise-Search">
-        Быстрый поиск
-      </h5>
-    </div>
+    <!-- <div class="col-12"> -->
+    <h5 class="title-franchise-Searc title-franchise-Search">Быстрый поиск</h5>
+    <!-- </div> -->
 
     <div class="quick-search">
       <div class="block-cards-franchises block-cards-franchises-bg">
@@ -155,7 +153,8 @@
                     ></p-dropdown>
                   </div>
                 </div>
-                <div class="img-search"></div>
+                <hr class="line-searsh-horisontal" />
+                <div class="img-search img-search--none"></div>
                 <div class="price-range-wrapper">
                   <div>
                     <p class="d-inline-block"><strong>Стоимость</strong></p>
@@ -185,7 +184,7 @@
                     ></p-slider>
                   </div>
                 </div>
-                <div class="img-search"></div>
+                <div class="img-search img-search--horizontal"></div>
                 <div class="quick-search5">
                   <div class="control-quick-search control-quick-search2">
                     <p><strong>Покупка через гарант</strong></p>

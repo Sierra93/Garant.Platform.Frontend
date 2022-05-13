@@ -1,98 +1,61 @@
 <section id="main-page">
-  <div class="gar-row promo-block">
-    <div class="gar-row-item">
-      <div class="gar-row title">Недавно приобрели</div>
-      <gar-carousel [items]="aSlider" [template]="cardComponent"></gar-carousel>
-    </div>
+  <div class="section">
+    <div class="gar-row home-promo-block">
+      <div class="gar-row-item">
+        <div class="gar-row title">Недавно приобрели</div>
+        <gar-carousel [items]="aSlider" [template]="cardComponent"></gar-carousel>
+      </div>
 
-    <div class="gar-row-item">
-      <div class="gar-row title">Покупка бизнеса с гарантиями</div>
-      <div class="right">
+      <div class="gar-row-item">
+        <div class="gar-row title">Покупка бизнеса с гарантиями</div>
+        <div class="home-promo-block-main">
+          <div class="home-promo-block-main-title">{{oTopAction.title}}</div>
 
-        <div class="wrapper-container">
+          <div class="home-promo-block-main-text">{{oTopAction.text}}</div>
 
-          <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}"
-                  style="background-color: #F1F1F1"
-                  styleClass="card">
+          <gar-button role="primary" routerLink="/deal/start">Подробнее</gar-button>
 
-            <ng-template pTemplate="header">
-              <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-              <!-- <h5>Покупка бизнеса любого размера онлайн с гарантиями</h5> -->
-            </ng-template>
-            <!-- <p>{{oTopAction.text}}</p> -->
-            <p class="right-text">{{oTopAction.text}}</p>
-            <ng-template pTemplate="footer">
-
-              <!-- <p-button label="Подробнее" icon="" styleClass="p-button-dark"></p-button> -->
-              <gar-button role="primary" routerLink="/deal/start">Подробнее</gar-button>
-              <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-                              </p-button> -->
-            </ng-template>
-
-          </p-card>
-        </div>
-        <div class="right-block-img">
-          <img class="right-images" src="../../../assets/images/right-img.png" alt="картинка правого блока">
-
+          <img src="/assets/images/home-promo-block-pic.png" alt="" class="home-promo-block-main-pic">
         </div>
       </div>
     </div>
   </div>
 
   <!-- Область с 3 карточками -->
-  <div class="row section-mb">
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder" *ngFor="let item of aDataActions">
-      <div class="card-business">
-        <h3 class="three-cards-header">{{item.title}}</h3>
-        <p-card [style]="{width: '100%'}" styleClass="card">
-          <div class="card-business-content">
-            <ng-template pTemplate="header">
-              <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-            </ng-template>
-            <h5>{{item.subTitle}}</h5>
-            <p>{{item.text}}</p>
-            <button class="btn btn-dark" (click)="onRoute(item.buttonText)">{{item.buttonText}}</button>
-            <ng-template pTemplate="footer">
-              <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-              <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button> -->
-            </ng-template>
+  <div class="section">
+    <div class="gar-grid gar-grid_wrap home-sections">
+      <div class="home-section" *ngFor="let item of aDataActions">
+        <div class="home-section-title">{{item.title}}</div>
+
+        <div class="home-section-item">
+          <div class="home-section-item-title">{{item.subTitle}}</div>
+
+          <div class="home-section-item-text">
+            {{item.text}}
           </div>
-        </p-card>
+
+          <gar-button role="primary" (click)="onRoute(item.buttonText)">{{item.buttonText}}</gar-button>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="row section-mb" *ngIf="!isHideBusinessWithGarant">
-    <div class="col-lg-12 col-xs-12 card-line">
-      <p-card class="business-garanteese">
-        <ng-template pTemplate="header">
-          <strong>Вы можете приобрести бизнес с гарантиями</strong>
-          <button
-            type="button"
-            class="close"
-            aria-label="Close"
-            (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
-            <span aria-hidden="true"><img src="../../../assets/images/cross.svg" alt=""></span>
-          </button>
-        </ng-template>
-        <p>{{oSuggestion.text}}</p>
-        <ng-template pTemplate="footer">
-          <div class="d-flex align-items-center">
-            <button
-              class="btn btn-dark more-info-btn"
-              routerLink="/deal/start">
-            {{oSuggestion.button2Text}}
-          </button>
+  <!-- Бизнес с гарантиями -->
+  <div class="section" *ngIf="!isHideBusinessWithGarant">
+    <div class="home-business-garantee">
+      <div class="gar-row title home-business-garantee-title">Вы можете приобрести бизнес с гарантиями</div>
 
-            <button
-              class="btn btn-default btn-show-more"
-              (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
-              {{oSuggestion.button1Text}}
-          </button>
-          </div>
-        </ng-template>
-      </p-card>
+      <div class="home-business-garantee-text">
+        Воспользовавшись нашим сервисом вы сможете провести безопасную сделку через интернет, провести все средства онлайн и стать полноправным владельцем бизнеса уже сегодня.
+      </div>
+
+      <gar-button routerLink="/deal/start" role="primary" class="home-business-garantee-accept">{{oSuggestion.button2Text}}</gar-button>
+
+      <gar-button role="secondary" (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">{{oSuggestion.button1Text}}</gar-button>
+
+      <button type="button" aria-label="Close" class="home-business-garantee-close" (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
+        <gar-icon name="times"></gar-icon>
+      </button>
     </div>
   </div>
 
@@ -145,6 +108,7 @@
     </div>
   </div>
 
+  <!--  Баннеры спец предложения -->
   <div class="section home-special-offers">
     <div class="gar-grid gar-grid_wrap">
       <a routerLink="#" class="home-special-offer">
@@ -213,45 +177,6 @@
       </div>
     </div>
   </div>
-  <!-- <div class="row section-mb">
-    <div class="col-12">
-      <h5 class="title-franchise">Бизнес блог</h5>
-    </div>
-    <div class="col--xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aBlogs">
-      <div class="popular-list">
-        <div class="blog-item">
-          <p-card header="{{item.title}}" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
-            <ng-template pTemplate="header">
-              <img [src]="item.url">
-            </ng-template>
-            <ng-template pTemplate="footer">
-
-            </ng-template>
-          </p-card>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
-      <div class="more-articles">
-        <p-card header="" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
-          <ng-template pTemplate="header">
-          </ng-template>
-          <div class="more-articles-content d-flex align-items-center mt-4">
-            <div class="more-articles-content-text">
-              <h4>Больше статей</h4>
-              <p>Перейдите в наш блог и найдите
-                там массу полезной информации.</p>
-            </div>
-            <img src="../../../assets/images/Frame 66.png" height="32">
-          </div>
-          <ng-template pTemplate="footer">
-
-          </ng-template>
-        </p-card>
-      </div>
-    </div>
-  </div> -->
 
   <!-- Новости делового мира. -->
   <section class="section">
@@ -259,55 +184,66 @@
   </section>
 
   <!-- Категории готового бизнеса. -->
-  <div class="row ready-business-categories section-mb">
-    <!-- 1 столбец. -->
-    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
-      <h5 class="title-franchise" (click)="showCategoryOnMobile($event)">
-        <span>Категории бизнеса</span>
-        <img src="./../../../assets/images/Arrow 1.png" alt="gobizy arrow icon" />
-      </h5>
-      <div>
-        <div class="category-item" *ngFor="let item of categoryList1">
-          <img class="space-right-image-category" [src]="item.url">
-          <span>{{item.name}}</span>
-          <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+  <div class="section">
+    <div class="gar-grid gar-grid_wrap">
+      <details class="home-categories" open>
+        <summary class="home-categories-title">
+          Категории бизнеса
+
+          <gar-icon class="home-categories-arrow" name="arrow-right"></gar-icon>
+        </summary>
+
+        <div class="home-categories-items">
+          <div class="home-categories-item" *ngFor="let item of categoryListBusiness">
+            <gar-icon class="home-categories-item-icon" name="item.icon"></gar-icon>
+
+            <span>{{item.name}}</span>
+
+            <gar-icon class="home-categories-item-arrow" name="arrow-right"></gar-icon>
+
+            <a routerLink="#"></a>
+          </div>
+
+          <a routerLink="#" class="home-categories-all">
+            Весь готовый бизнес
+
+            <span class="home-categories-all-button gar-flex-center">
+              <gar-icon name="polygon_right"></gar-icon>
+            </span>
+          </a>
         </div>
-      </div>
-    </div>
+      </details>
 
-    <!-- 2 столбец -->
-    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
-      <div class="title-franchise">&nbsp;</div>
-      <div class="category-item" *ngFor="let item of categoryList2">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
-    </div>
+      <details class="home-categories" open>
+        <summary class="home-categories-title">
+          Категории франшиз
 
-    <!-- 3 столбец. -->
-    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
-      <h5 class="title-franchise" (click)="showCategoryOnMobile($event)">
-        <span>Категории франшиз</span>
-        <img src="./../../../assets/images/Arrow 1.png" alt="gobizy arrow icon" />
-      </h5>
-      <div>
-        <div class="category-item" *ngFor="let item of categoryList3">
-          <img class="space-right-image-category" [src]="item.url">
-          <span>{{item.name}}</span>
-          <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
+          <gar-icon class="home-categories-arrow" name="arrow-right"></gar-icon>
+        </summary>
+
+        <div class="home-categories-items">
+          <div class="home-categories-item" *ngFor="let item of categoryListFranchises">
+            <gar-icon *ngIf="item.icon else defaultIcon" class="home-categories-item-icon" name="{{item.icon}}"></gar-icon>
+            <ng-template #defaultIcon>
+              <gar-icon class="home-categories-item-icon" name="category-auto"></gar-icon>
+            </ng-template>
+
+            <span>{{item.name}}</span>
+
+            <gar-icon class="home-categories-item-arrow" name="arrow-right"></gar-icon>
+
+            <a routerLink="#"></a>
+          </div>
+
+          <a routerLink="#" class="home-categories-all">
+            Все франшизы
+
+            <span class="home-categories-all-button gar-flex-center">
+              <gar-icon name="polygon_right"></gar-icon>
+            </span>
+          </a>
         </div>
-      </div>
-    </div>
-
-    <!-- 4 столбец -->
-    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-12">
-      <div class="title-franchise">&nbsp;</div>
-      <div class="category-item" *ngFor="let item of categoryList4">
-        <img class="space-right-image-category" [src]="item.url">
-        <span>{{item.name}}</span>
-        <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png">
-      </div>
+      </details>
     </div>
   </div>
 </section>

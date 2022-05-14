@@ -11,7 +11,7 @@ import { FormGroupDirective } from "@angular/forms";
 import { GarDestroyService } from "../gar-destroy.service";
 import { map } from "rxjs/operators";
 
-export type GarBtnRole = 'default' | 'primary' | 'secondary' | 'critical' ;
+export type GarBtnRole = 'default' | 'primary' | 'secondary' | 'critical' | 'filter' ;
 
 /**
  * Компонент кнопка

@@ -1,0 +1,9 @@
+@import 'design';
+
+:host {
+  .gar-card.promo {
+    & gar-button {
+      margin: auto;
+    }
+  }
+}

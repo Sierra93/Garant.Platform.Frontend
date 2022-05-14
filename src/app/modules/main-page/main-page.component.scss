@@ -1,719 +1,689 @@
 @import 'design';
-@import "/src/app/shared/styles/image-space.scss";
-@import "/src/app/shared/styles/media-quaries.scss";
-@import "/src/app/shared/styles/franchuse-styles.scss";
 
-:host {
-  .promo-block {
-    > :first-child {
-      width: 830px;
-      margin-right:24px;
-    }
-  }
-}
-
-// Карусель.
-.carousel-block {
-  margin: auto;
-}
-.product-item:not(:last-child) {
-  .product-item-content {
-    border-radius: 3px;
-    margin-right: 20px;
-    text-align: center;
-    padding: 0;
+.home-promo-block {
+  @include tablet-small {
+    flex-wrap: wrap;
   }
 
-  .product-image {
-    // width: 50%;
-    width: 100%;
-    height: 162px;
-    // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
-  }
-}
-
-.more-articles {
-  margin: 0;
-  background-color: #f1f1f1;
-  height: 208px;
-}
-
-::ng-deep .more-articles .p-card {
-  background: none;
-}
-
-.blog-item {
-  max-width: 342px;
-}
-
-::ng-deep .blog-item .p-card-title {
-  font-size: 18px;
-}
-
-.wrapper {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-.cards-popup {
-  margin: 0 10px;
-}
-
-::ng-deep .card-business {
-  max-width: 100%;
-}
-
-.p-carousel-container {
-  gap: 20px;
-}
-
-.more-info-btn {
-  margin-right: 16px;
-}
-
-::ng-deep .business-garanteese .p-card {
-  background: #f1f6ff;
-}
-
-::ng-deep .business-garanteese .p-card-content {
-  padding: 0;
-}
-::ng-deep .p-card-content {
-  padding: 0;
-}
-::ng-deep .p-card .p-card-body {
-  margin: 0;
-}
-
-.bg {
-  padding: 1rem 1.5rem;
-  padding-top: 20px;
-  background: #f1f1f1;
-  width: 100%;
-  margin: 20px auto;
-}
-// Покупка бизнеса с гарантиями
-::ng-deep {
-  .col-lg-5 {
-    padding: 0;
-  }
-}
-.title-franchise {
-  max-width: 341px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 28px;
-}
-.right-text {
-  width: 90%;
-  height: 96px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-  margin-bottom: 0;
-}
-
-.right-block-img {
-  margin: 0 -20px 7px 10px;
-}
-.btn-dark {
-  width: 156px;
-  height: 53px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 21px;
-  background: #1f75fe;
-}
-.wrapper-container {
-  width: 59%;
-  flex-wrap: nowrap;
-}
-::ng-deep {
-  // весь блок
-  .carousel-block {
-    width: 100%;
-    display: flex;
-    min-height: 342px;
-    margin: 0;
-    .col-lg-7 {
-      padding: 0;
-    }
-    // карточка название готового бизнеса
-    .product-item {
-      // текст карточки готового бизнеса
-      .product-image {
-        margin-bottom: 16px;
-      }
-      .p-card {
-        height: 127px;
-
-        // Название готового бизнеса
-        &-title {
-          width: 234px;
-          height: 21px;
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: 600;
-          font-size: 18px;
-          line-height: 21px;
-          margin-bottom: 8px;
-          text-align: left;
-        }
-        &-subtitle {
-          text-align: start;
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 12px;
-          line-height: 14px;
-          margin-bottom: 16px;
-        }
-        &-content {
-          padding: 0;
-          padding-left: 10px;
-          position: static;
-          width: 190px;
-          height: 36px;
-          left: 16px;
-          top: 75px;
-          background: #f1f6ff;
-          border-radius: 4px;
-          color: #1653b4;
-
-          strong {
-            display: inline-block;
-            position: static;
-            width: 185px;
-            height: 16px;
-            margin: auto;
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 16.41px;
-            color: #1653b4;
-          }
-        }
-        &-body {
-          padding: 0;
-        }
-      }
-    }
-  }
-}
-::ng-deep {
-  .right {
-    display: flex;
+  @include tablet {
     flex-wrap: nowrap;
-    justify-content: space-between;
-    width: 100%;
-    background: #f1f6ff;
-    .card-right {
-      height: 282px !important;
-      background: #121213;
+  }
+
+  .gar-row-item {
+    &:first-child {
+      order: 1;
+      margin-top: $gridGap;
+
+      @include tablet {
+        order: 0;
+        flex-basis: calc(60% - calc(#{$gridGap} / 2));
+        width: calc(60% - calc(#{$gridGap} / 2));
+        margin-top: 0;
+      }
     }
-    .p-card {
+
+    &:last-child {
+      @include tablet {
+        flex-basis: calc(40% - calc(#{$gridGap} / 2));
+        width: calc(40% - calc(#{$gridGap} / 2));
+        margin-left: auto;
+      }
+    }
+  }
+
+  &-main {
+    position: relative;
+    background-color: $clrLightBlue;
+    border-radius: $border-radius;
+    padding: calc(#{$gridGap} / 3);
+
+    @include tablet-small {
+      padding: $gridGap calc(#{$gridGap} / 3 * 2);
+      padding-right: 258px;
+    }
+
+    @include tablet {
+      padding: $gridGap;
+    }
+
+    @include desktop {
+      padding-right: 220px;
+    }
+
+    &-title {
+      @include typo('title-item');
+
+      padding-right: calc(#{$gridGap} * 3);
+
+      @include tablet-small {
+        padding-right: 0;
+      }
+    }
+
+    &-text {
+      color: $clrDarkGray;
+      margin: $gridGap 0;
+    }
+
+    &-pic {
+      position: absolute;
+      top: calc(#{$gridGap} / 3);
+      right: calc(#{$gridGap} / 3);
+
+      width: 61px;
+      height: 73px;
+      object-fit: contain;
+
+      @include tablet-small {
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        width: 231px;
+        height: 100%;
+      }
+
+      @include tablet {
+        display: none;
+      }
+
+      @include desktop {
+        display: block;
+      }
+    }
+  }
+}
+
+.home-section {
+  @include tablet {
+    width: calc(33.33% - calc(#{$gridGap} / 3 * 2));
+  }
+
+  &-title {
+    @include typo('regular');
+
+    margin-bottom: calc(#{$gridGap} / 3 * 2);
+
+    @include tablet-small {
+      margin-bottom: $gridGap;
+    }
+
+    @include desktop {
+      @include typo('title');
+    }
+  }
+
+  &-item {
+    background-color: rgba($clrLightGray, .15);
+    border-radius: $border-radius;
+    padding: calc(#{$gridGap} / 3);
+
+    @include tablet-small {
+      padding: calc(#{$gridGap} / 3 * 2);
+    }
+
+    @include tablet {
+      padding: $gridGap;
+    }
+
+    &-title {
+      @include typo('title-item');
+
+      margin-bottom: calc(#{$gridGap} / 3 * 2);
+
+      @include tablet {
+        height: 42px;
+      }
+    }
+
+    &-text {
+      color: $clrDarkGray;
+      margin-bottom: $gridGap;
+
+      @include tablet-small {
+        margin-bottom: calc(#{$gridGap} * 2);
+      }
+
+      @include tablet {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.home-business-garantee {
+  position: relative;
+  background-color: $clrLightBlue;
+  border-radius: $border-radius;
+  padding: calc(#{$gridGap} / 3);
+
+  @include tablet-small {
+    padding: calc(#{$gridGap} / 3 * 2);
+  }
+
+  @include tablet {
+    padding: $gridGap;
+  }
+
+  &-title {
+    padding-right: $gridGap;
+  }
+
+  &-text {
+    color: $clrDarkGray;
+    margin-bottom: calc(#{$gridGap} * 2);
+  }
+
+  &-accept {
+    margin-right: calc(#{$gridGap} / 3 * 2);
+  }
+
+  &-close {
+    @include inputReset;
+
+    position: absolute;
+    top: calc(#{$gridGap} / 3);
+    right: calc(#{$gridGap} / 3);
+
+    width: 20px;
+    height: 20px;
+    padding: 0;
+
+    gar-icon {
+      width: 20px;
+      height: 20px;
+
+      fill: $clrDarkGray;
+    }
+  }
+}
+
+.home-special-offers {
+  .home-special-offer {
+    overflow: hidden;
+    width: 100%;
+    border-radius: calc(#{$border-radius} * 2);
+    box-shadow: $box-shadow-card;
+
+    @include tablet-small {
+      width: calc(50% - calc(#{$gridGap} / 2));
+    }
+
+    img {
       width: 100%;
-      background-color: transparent !important;
-      &-footer {
-        padding: 0;
-      }
-
-      &-content {
-        .right-text {
-          width: 100% !important;
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 14px;
-          line-height: 16px;
-          color: #2c2c2c;
-        }
-      }
-
-      &-title {
-        width: 100% !important;
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 21px;
-        color: #2c2c2c;
-      }
     }
   }
 }
-/* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 980px) and (max-device-width: 1024px) {
-  /* Styles */
-  ::ng-deep .p-carousel-items-container {
-    width: 587px;
+
+.home-quick-search {
+  display: flex;
+  flex-direction: column;
+  gap: calc(#{$gridGap} / 3 * 2);
+
+  background-color: $clrLightBlue;
+  border-radius: $border-radius;
+  padding: calc(#{$gridGap} / 3);
+
+  @include tablet-small {
+    padding: calc(#{$gridGap} / 3 * 2);
   }
-  .p-card-title {
-    width: 100px;
+
+  @include tablet {
+    gap: $gridGap;
+    padding: $gridGap;
   }
-  .title-franchise {
-    font-size: 21px;
-  }
-  .right-images {
-    display: none;
-  }
-  ::hg-deep {
-    .p-carousel-indicators {
-      display: none;
+
+  &-main {
+    display: grid;
+    gap: $gridGap;
+
+    background-color: $clrWhite;
+    border-radius: $border-radius;
+    padding: calc(#{$gridGap} / 3);
+    box-shadow: $box-shadow-card;
+
+    @include tablet-small {
+      grid-template-columns: repeat(3, 1fr);
+      gap: calc(#{$gridGap} / 3 * 4) $gridGap;
+      padding: calc(#{$gridGap} / 3 * 2);
+    }
+
+    @include tablet {
+      gap: calc(#{$gridGap} / 3 * 4);
+      padding: $gridGap;
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr) 2fr 1fr;
     }
   }
-  .wrapper-container {
-    width: 100%;
-  }
-  ::ng-deep {
-    .right {
-      .card-right {
-        max-width: 413px;
-        background: #2c2c2c;
+
+  &-section {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      right: 0;
+      top: calc(#{$gridGap} / 2 * -1);
+      left: 0;
+
+      height: 1px;
+      background-color: rgba($clrLightGray, .5);
+      content: '';
+
+      @include tablet-small {
+        top: 0;
+        right: auto;
+        bottom: 0;
+        left: calc(#{$gridGap} / 2 * -1);
+
+        width: 1px;
+        height: auto;
+      }
+
+      @include tablet {
+        left: calc(#{$gridGap} / 3 * 2 * -1);
       }
     }
-  }
-}
-@media only screen and (min-device-width: 320px) and (max-device-width: 979px) {
-  ::ng-deep {
-    // весь блок
-    .carousel-block {
-      display: flex;
-      flex-wrap: wrap-reverse;
-      margin-bottom: 36px !important;
-      .p-carousel-indicators {
+
+    &::after {
+      @include tablet-small {
+        position: absolute;
+        bottom: calc(#{$gridGap} / 3 * 2 * -1);
+        right: 0;
+        left: 0;
+
+        height: 1px;
+        background-color: rgba($clrLightGray, .5);
+        content: '';
+      }
+    }
+
+    &:first-child {
+      &::before {
         display: none;
       }
     }
-  }
-  .wrapper-container {
-    width: 100%;
-  }
-  .right-images {
-    display: inline-block;
-  }
-}
 
-::ng-deep .card1 {
-  border: none !important;
-  background-color: #f1f6ff !important;
-  display: flex;
-  // width: 576px;
-  // height: 292px;
-}
-.p.card .p-card-title {
-  font-size: 18px;
-}
-::ng-deep .business-garanteese .p-card .p-card-header {
-  padding-bottom: 0;
-  // margin-bottom: 16px;
-  font-size: 18px;
-}
-
-::ng-deep .business-garanteese .p-card .p-card-footer {
-  padding-top: 0;
-  margin-top: 40px;
-}
-
-::ng-deep .business-garanteese .p-card .p-card-body {
-  padding-top: 0;
-}
-
-::ng-deep .card-business .p-card-body {
-  // background: #F1F1F1;
-  padding: 16px 24px;
-}
-
-::bg-deep .p-card {
-  width: 1440px !important;
-}
-
-::ng-deep .card-business .btn-dark {
-  padding: 16px;
-}
-
-::ng-deep .right .btn-dark {
-  padding: 16px;
-}
-
-::ng-deep .card-line .p-card-body {
-  // background: #F1F6FF;
-  padding: 24px 16px 24px 16px;
-  background-color: #f1f6ff;
-}
-
-::ng-deep .card-line .p-card-header {
-  // background: #F1F6FF;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 16px 24px 16px;
-  background-color: #f1f6ff;
-}
-
-.close {
-  border: none;
-  background: none;
-}
-
-::ng-deep .p-card {
-  box-shadow: none;
-}
-
-::ng-deep .card {
-  border: none !important;
-  background-color: #f1f6ff;
-  width: 342px;
-  height: 282px;
-}
-
-.block-card-item {
-  // background: white;
-  width: 336px;
-}
-
-.card-demo-list {
-  margin-top: 24px;
-}
-
-// .gray {
-//   background: #F1F1F1;
-// }
-
-.btn-show-more {
-  border: 1px solid;
-  border-radius: 5px;
-}
-
-.baner {
-  width: 100%;
-  height: auto;
-}
-
-.block-baner {
-  justify-content: space-between;
-}
-
-.title-news {
-  font-size: 18px;
-  font-family: Roboto;
-}
-
-.ellipse {
-  margin-left: 8px;
-  margin-right: 8px;
-}
-
-.space-top {
-  margin-top: 28px;
-}
-
-.bottom-line {
-  margin-bottom: 25px;
-}
-
-.category-item {
-  margin-bottom: 8px;
-}
-
-// Медиа-запросы.
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  /* Styles */
-  ::ng-deep .right {
-    .p-card-title {
-      font-size: 14px !important;
-    }
-  }
-  .right-block-img {
-    width: 61px;
-    height: 91px;
-    margin: 0 20px 0 10px;
-  }
-  .right-images {
-    width: 100%;
-  }
-}
-
-.block-cards-franchises {
-  gap: 16px;
-  justify-content: center;
-  padding-bottom: 24px;
-  background: #f1f1f1;
-
-  .card-franchise {
-    padding: 0;
-  }
-
-  .block-cards-franchises-content {
-    background: #f1f1f1;
-  }
-}
-
-.card-left-centered {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-}
-
-::ng-deep .p-carousel {
-  max-width: calc(100% - 24px);
-  // justify-content: space-between;
-}
-
-::ng-deep .p-dropdown {
-  background: #f1f6ff;
-}
-
-::ng-deep .quick-search .p-inputtext {
-  background: #f1f6ff;
-  width: 149px;
-  margin-right: 16px;
-}
-
-::ng-deep .p-inputswitch .p-inputswitch-slider {
-  background: #c8dbff;
-}
-
-.block-card-img {
-  display: block;
-  width: 100%;
-  padding-top: 12px;
-  margin: 0 auto;
-}
-
-::ng-deep .p-carousel-item {
-  max-width: 365px;
-  // grid-gap: 20px !important;
-}
-
-.section-mb {
-  margin-bottom: 5rem;
-}
-
-.business-world-img img {
-  width: 100%;
-}
-
-::ng-deep {
-  .quick-search-card {
-    .p-card-header {
-      padding: 0 0.75rem;
-    }
-  }
-}
-
-.p-inputtext {
-  max-width: 150px;
-}
-
-.block-cards-franchises-inner {
-  padding: 1.5rem;
-  > app-catalog-simple-card {
-    //TODO: сделать по уму
-    max-width: 360px;
-  }
-}
-
-.quick-search-form {
-  [class^="col"] {
-    margin: 1rem 0;
-  }
-}
-
-.ready-business-categories .title-franchise {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  img {
-    display: none;
-  }
-}
-
-@media (max-width: 1800px) {
-  .three-cards-header {
-    font-size: 1.25rem;
-  }
-}
-
-@media (min-width: 1400px) and (max-width: 1700px) {
-  .quick-search-form {
-    [class^="col"] {
-      &:nth-child(1),
-      &:nth-child(2) {
-        width: 20%;
-      }
-      &:nth-child(3) {
-        width: 20%;
-      }
-      &:nth-child(4) {
-        width: 40%;
-      }
-    }
-  }
-}
-
-@media (max-width: 1200px) {
-  .quick-search-card-holder {
-    margin-bottom: 1.5rem;
-
-    img {
-      height: auto;
-    }
-  }
-}
-
-@media (max-width: 1080px) {
-  .three-cards-header {
-    font-size: 1rem;
-  }
-}
-// Закоментировал 10.03.22
-// @media (max-width: 992px) {
-//   .carousel-block {
-//     flex-direction: column-reverse;
-//     background: #2c2c2c;
-
-//     .right {
-//       margin-bottom: 2.25rem;
-//     }
-
-//     [class^="col"] {
-//       width: 100%;
-//     }
-//   }
-// }
-
-@media (max-width: 992px) {
-  .carousel-block {
-    flex-direction: column-reverse;
-
-    .right {
-      margin-bottom: 2.25rem;
-    }
-
-    [class^="col"] {
-      width: 100%;
-    }
-  }
-}
-
-@media (max-width: 800px) {
-  .p-inputtext {
-    max-width: 120px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 788px) {
-  .carousel-block {
-    .title-franchise {
-      font-size: 1.2rem;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .baner-img {
-    &:first-child {
-      margin-bottom: 1.5rem;
-    }
-  }
-
-  .ready-business-categories {
-    [class^="col"] {
-      width: 100%;
-    }
-
-    .title-franchise {
-      img {
-        display: block;
-
-        &.rotated {
-          transform: rotate(90deg);
-          transition: transform 0.5s;
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      &::after {
+        @include tablet {
+          display: none;
         }
       }
     }
 
-    .title-franchise + div {
-      display: none;
+    &:nth-child(4) {
+      @include tablet-small {
+        grid-column: 1 / 3;
+
+        &::before,
+        &::after {
+          display: none;
+        }
+      }
+
+      @include desktop {
+        grid-column: auto;
+
+        &::before {
+          display: block;
+        }
+      }
     }
 
-    .category-item {
+    &:nth-child(5) {
+      &::after {
+        display: none;
+      }
+    }
+
+    &-price {
+      flex-wrap: wrap;
+
+      @include tablet-small {
+        flex-wrap: nowrap;
+      }
+    }
+
+    gar-input-number {
+      width: 100%;
+    }
+  }
+}
+
+.home-blog {
+  display: flex;
+  gap: calc(#{$gridGap} / 3);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+
+  @include tablet-small {
+    display: grid;
+    grid-template-columns: 1fr 1fr max-content;
+    gap: calc(#{$gridGap} / 3 * 2);
+    overflow: hidden;
+    scroll-snap-type: none;
+  }
+
+  @include tablet {
+    gap: $gridGap;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(3, 1fr) max-content;
+  }
+
+  &-item {
+    flex-shrink: 0;
+    width: 254px;
+    scroll-snap-align: start;
+
+    @include tablet-small {
+      display: none;
+      width: auto;
+    }
+
+    &:nth-child(-n + 2) {
+      @include tablet-small {
+        display: block;
+      }
+    }
+
+    &:nth-child(-n + 3) {
+      @include desktop {
+        display: block;
+      }
+    }
+
+    &-pic {
+      display: block;
+      overflow: hidden;
+      height: 162px;
+      border-radius: calc(#{$border-radius} / 2);
+      margin-bottom: calc(#{$gridGap} / 3 * 2);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-title {
+      position: relative;
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+      border-radius: calc(#{$border-radius} / 2);
+      padding: calc(#{$gridGap} / 3) 0;
+      margin-bottom: calc(#{$gridGap} / 3);
+
+      a {
+        @include typo('title-item');
+
+        position: relative;
+
+        color: $clrBlack;
+        text-decoration: none;
+        white-space: nowrap;
+        padding: calc(#{$gridGap} / 3);
+
+        &:hover {
+          &::before {
+            background-color: darken($clrYellow, 20%);
+          }
+        }
+
+        &::before {
+          position: absolute;
+          top: .125em;
+          right: 0;
+          bottom: .125em;
+          left: 0;
+          z-index: -1;
+
+          background-color: $clrYellow;
+          padding: calc(#{$gridGap} / 3 * 2);
+          border-radius: calc(#{$border-radius} / 2);
+
+          content: '';
+          transition: background-color $timeFast;
+        }
+      }
+    }
+
+    &-description {
+      @include typo('title-item');
+
+      span {
+        @include typo('secondary');
+        display: none;
+
+        color: $clrDarkGray;
+
+        @include tablet {
+          display: block;
+          margin-top: calc(#{$gridGap} / 3 * 2);
+        }
+      }
+    }
+
+    &-button {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+
+      background-color: $clrBlue;
+      border-radius: 50%;
+
+      gar-icon {
+        width: 16px;
+        height: 17px;
+
+        fill: $clrWhite;
+        transform: translate(2px, 1px);
+      }
+    }
+
+    &_more {
+      flex-direction: column;
+      gap: calc(#{$gridGap} / 2);
       position: relative;
 
-      .space-arrow-category {
+      width: 164px;
+      background-color: $clrLightBlue;
+      border-radius: $border-radius;
+      transition: background-color $timeFast;
+
+      @include tablet-small {
+        display: flex;
+      }
+
+      @include tablet {
+        flex-direction: row;
+        width: 325px;
+        padding: $gridGap;
+      }
+
+      &:hover {
+        background-color: darken($clrLightBlue, 5%);
+      }
+
+      a {
         position: absolute;
+        top: 0;
         right: 0;
-        top: 50%;
-        transform: translateY(-50%);
+        bottom: 0;
+        left: 0;
       }
     }
   }
+}
 
-  .price-range-input {
+.home-categories {
+  width: 100%;
+
+  @include tablet {
+    width: calc(50% - calc(#{$gridGap} / 2));
+  }
+
+  &[open] {
+    .home-categories-arrow {
+      transform: rotate(90deg);
+    }
+  }
+
+  &-title {
+    @include typo('regular');
+
+    position: relative;
+    list-style: none;
+    border-bottom: 1px solid rgba($clrLightGray, .5);
+    padding-right: calc(#{$gridGap} / 3 * 2);
+    padding-bottom: calc(#{$gridGap} / 3 * 2);
+    margin-bottom: calc(#{$gridGap} / 3 * 2);
+
+    @include tablet-small {
+      border-bottom: none;
+      padding: 0;
+      margin-bottom: $gridGap;
+      pointer-events: none;
+    }
+  }
+
+  &-arrow {
+    position: absolute;
+    top: 2px;
+    right: 0;
+
+    width: 9px;
+    height: 16px;
+
+    fill: $clrMidGray;
+    transition: transform $timeFast;
+
+    @include tablet-small {
+      display: none;
+    }
+  }
+
+  &-items {
+    @include tablet-small {
+      columns: 3;
+      column-gap: $gridGap;
+    }
+
+    @include tablet {
+      column-count: 2;
+      column-gap: calc(#{$gridGap} * 3);
+    }
+  }
+
+  &-item {
+    position: relative;
     display: flex;
-    justify-content: space-between;
-  }
+    align-items: center;
+    gap: calc(#{$gridGap} / 3);
 
-  .p-inputtext {
-    max-width: 50%;
-    width: 48% !important;
-    margin: 0;
-  }
-}
-
-@media (max-width: 486px) {
-  .price-range-input {
-    flex-direction: column;
-  }
-
-  .p-inputtext {
-    max-width: 100%;
-    width: 100% !important;
-
-    &:first-child {
-      margin-bottom: 1rem;
-    }
-  }
-}
-
-::ng-deep {
-  @media (max-width: 1080px) {
-    .p-carousel-item {
-      flex: 1 0 70% !important;
-    }
-  }
-
-  @media (max-width: 992px) {
-    .card-business-holder {
-      &:not(:last-child) {
-        margin-bottom: 1.5rem;
+    &:hover {
+      span {
+        text-decoration: underline;
       }
     }
 
-    .p-carousel-item {
-      flex: 1 0 80% !important;
+    @include tablet-small {
+      margin-bottom: calc(#{$gridGap} / 3 * 2);
+      page-break-inside: avoid;
+      break-inside: avoid-column;
+    }
+
+    &-icon {
+      flex-shrink: 0;
+
+      width: 40px;
+      height: 40px;
+
+      fill: $clrDarkGray;
+    }
+
+    span {
+      @include typo('secondary');
+
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-right: $gridGap;
+    }
+
+    &-arrow {
+      flex-shrink: 0;
+
+      width: 9px;
+      height: 16px;
+
+      fill: $clrMidGray;
+    }
+
+    a {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
   }
 
-  @media (max-width: 768px) {
-    .p-carousel {
-      max-width: 100%;
+  &-all {
+    @include typo('secondary');
+
+    position: relative;
+    display: block;
+
+    color: $clrBlue;
+    text-decoration: none;
+    background-color: $clrLightBlue;
+    border: 2px solid $clrBlue;
+    border-radius: calc(#{$gridGap} * 2);
+    padding: $gridGap calc(#{$gridGap} * 3) $gridGap calc(#{$gridGap} / 3 * 2);
+    margin-top: calc(#{$gridGap} / 3 * 2);
+    transition: background-color $timeFast;
+
+    &:hover {
+      background-color: darken($clrLightBlue, 3%);
     }
 
-    .quick-search-form {
-      .p-dropdown {
-        width: 100%;
+    @include tablet-small {
+      page-break-inside: avoid;
+      break-inside: avoid-column;
+      margin-top: 0;
+    }
+
+    &-button {
+      position: absolute;
+      top: 50%;
+      right: calc(#{$gridGap} / 3 * 2);
+
+      width: 32px;
+      height: 32px;
+      background-color: $clrBlue;
+      border-radius: 50%;
+      transform: translateY(-50%);
+
+      gar-icon {
+        width: 16px;
+        height: 17px;
+        fill: $clrWhite;
+        transform: translate(3px, 1px);
       }
     }
   }

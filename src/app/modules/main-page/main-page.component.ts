@@ -10,6 +10,7 @@ import { NgForm } from "@angular/forms";
 import { CatalogPromoCardComponent } from "../products/catalog/catalog.promo.card/catalog.promo.card.component";
 import { shareReplay, takeUntil, tap } from "rxjs/operators";
 import { GarDestroyService } from "../../gar-lib/gar-destroy.service";
+import {CatalogShortCardComponent} from "../products/catalog/catalog.short.card/catalog.short.card.component";
 
 @Component({
     selector: 'main-page',
@@ -27,10 +28,8 @@ export class MainPageModule implements OnInit {
     // rangeNumber: number = 0;
     rangeValues: number[] = [];
     routeParam: any;
-    categoryList1: any[] = [];
-    categoryList2: any[] = [];
-    categoryList3: any[] = [];
-    categoryList4: any[] = [];
+    categoryListBusiness: any[] = [];
+    categoryListFranchises: any[] = [];
     aSlider: any[] = [];
     aDataActions: any[] = [];
     oSuggestion: any = {};
@@ -54,8 +53,9 @@ export class MainPageModule implements OnInit {
     aNewBusiness: any[] = [];
     isHideBusinessWithGarant: boolean = false;
     showCategoryMenu: boolean = false;
-    
+
     cardComponent = CatalogPromoCardComponent;
+    cardShortComponent = CatalogShortCardComponent;
     /**
      * список последних бизнесов
      * */
@@ -155,10 +155,9 @@ export class MainPageModule implements OnInit {
     private async loadCategoriesListAsync() {
         try {
             await this.commonService.loadCategoriesListAsync().then((data: any) => {
-                this.categoryList1 = data.resultCol1;
-                this.categoryList2 = data.resultCol2;
-                this.categoryList3 = data.resultCol3;
-                this.categoryList4 = data.resultCol4;
+                // TODO refactor backend structure, request will contain only 2 arrays for bussiness and franchises
+                this.categoryListBusiness = [...data.resultCol1];
+                this.categoryListFranchises = [...data.resultCol3];
             });
         }
 

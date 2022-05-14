@@ -73,6 +73,7 @@
 
     &-content {
       position: absolute;
+      right: calc(#{$gridGap} / 3);
       bottom: calc(#{$gridGap} / 3);
       left: calc(#{$gridGap} / 3);
     }

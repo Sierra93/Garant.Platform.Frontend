@@ -1,0 +1,132 @@
+import { news } from "../news";
+
+export class NewsMock {
+	public static readonly businessWorld: news.IBusinessNewsBlockItem[] = [
+		{
+			newsId: 13,
+			title: "В Сеть слили переписку двух миллиардеров. Билл Гейтс хотел обсудить с Илоном Маском благотворительность, но разговор не задался",
+			text: "Причина обращения Гейтса к Маску оказалось вполне себе благородной – он хотел обсудить благотворительность в насущных вопросах изменения климата. Судя по скриншотам, Маск поначалу был не против встречи, но потом он спросил у Гейтса о его коротких позициях в Tesla на полмиллиарда долларов. И тот признал, что действительно не закрыл их. На что Маск ответил следующее:   ",
+			url: "../../../assets/images/mgates.PNG",
+			dateCreated: "2022-04-24T18:50:12.436244",
+			type: "Партнёрство",
+			isPaid: false,
+			position: 4,
+			viewsCount: 0,
+			date: "April 24",
+			time: "6:50 PM",
+			theme: 'Инвестиции'
+		},
+		{
+			newsId: 12,
+			title: "В Сеть слили переписку двух миллиардеров. Билл Гейтс хотел обсудить с Илоном Маском благотворительность, но разговор не задался",
+			text: "Причина обращения Гейтса к Маску оказалось вполне себе благородной – он хотел обсудить благотворительность в насущных вопросах изменения климата. Судя по скриншотам, Маск поначалу был не против встречи, но потом он спросил у Гейтса о его коротких позициях в Tesla на полмиллиарда долларов. И тот признал, что действительно не закрыл их. На что Маск ответил следующее:   ",
+			url: "../../../assets/images/mgates.PNG",
+			dateCreated: "2022-04-24T18:49:53.111159",
+			type: "Партнёрство",
+			isPaid: false,
+			position: 3,
+			viewsCount: 0,
+			date: "April 24",
+			time: "6:49 PM",
+			theme: 'Франчайзинг'
+		},
+		{
+			newsId: 11,
+			title: "В Сеть слили переписку двух миллиардеров. Билл Гейтс хотел обсудить с Илоном Маском благотворительность, но разговор не задался",
+			text: "Причина обращения Гейтса к Маску оказалось вполне себе благородной – он хотел обсудить благотворительность в насущных вопросах изменения климата. Судя по скриншотам, Маск поначалу был не против встречи, но потом он спросил у Гейтса о его коротких позициях в Tesla на полмиллиарда долларов. И тот признал, что действительно не закрыл их. На что Маск ответил следующее:   ",
+			url: "../../../assets/images/mgates.PNG",
+			dateCreated: "2022-04-24T18:49:39.869117",
+			type: "Партнёрство",
+			isPaid: false,
+			position: 2,
+			viewsCount: 0,
+			date: "April 24",
+			time: "6:49 PM",
+			theme: 'Инвестиции'
+		},
+		{
+			newsId: 9,
+			title: "test",
+			text: "test",
+			url: "../../../assets/images/Rectangle 24.png",
+			dateCreated: "2022-03-25T16:58:43.76",
+			type: "test",
+			isPaid: false,
+			position: 1,
+			viewsCount: 6,
+			date: "February 11",
+			time: "4:58 PM",
+			theme: 'Политика'
+		},
+		{
+			newsId: 5,
+			title: "test",
+			text: "test",
+			url: "../../../assets/images/Rectangle 24.png",
+			dateCreated: "2022-03-19T16:58:43.76",
+			type: "test",
+			isPaid: false,
+			position: 1,
+			viewsCount: 6,
+			date: "February 11",
+			time: "4:58 PM",
+			theme: ''
+		},
+		{
+			newsId: 4,
+			title: "test",
+			text: "test",
+			url: "../../../assets/images/Rectangle 24.png",
+			dateCreated: "2022-02-11T16:58:43.76",
+			type: "test",
+			isPaid: false,
+			position: 1,
+			viewsCount: 6,
+			date: "February 11",
+			time: "4:58 PM",
+			theme: 'Франчайзинг'
+		},
+		{
+			newsId: 3,
+			title: "test",
+			text: "test",
+			url: "../../../assets/images/Rectangle 24.png",
+			dateCreated: "2022-02-10T16:58:43.76",
+			type: "test",
+			isPaid: false,
+			position: 1,
+			viewsCount: 6,
+			date: "February 11",
+			time: "4:58 PM",
+			theme: 'Бизнес'
+		},
+		{
+			newsId: 2,
+			title: "test",
+			text: "test",
+			url: "../../../assets/images/Rectangle 24.png",
+			dateCreated: "2022-01-30T16:58:43.76",
+			type: "test",
+			isPaid: false,
+			position: 1,
+			viewsCount: 6,
+			date: "February 11",
+			time: "4:58 PM",
+			theme: 'Бизнес'
+		},
+		{
+			newsId: 1,
+			title: "test",
+			text: "test",
+			url: "../../../assets/images/Rectangle 24.png",
+			dateCreated: "2022-01-11T16:58:43.76",
+			type: "test",
+			isPaid: false,
+			position: 1,
+			viewsCount: 6,
+			date: "February 11",
+			time: "4:58 PM",
+			theme: 'Франчайзинг'
+		}
+	]
+}

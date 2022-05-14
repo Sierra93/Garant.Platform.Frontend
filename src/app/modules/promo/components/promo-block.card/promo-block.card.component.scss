@@ -1,0 +1,97 @@
+@import 'design';
+
+:host {
+  .promo-block {
+    @include tablet-small {
+      flex-wrap: wrap;
+    }
+
+    @include tablet {
+      flex-wrap: nowrap;
+    }
+
+    .gar-row-item {
+      &:first-child {
+        order: 1;
+        margin-top: $gridGap;
+
+        @include tablet {
+          order: 0;
+          flex-basis: calc(60% - calc(#{$gridGap} / 2));
+          width: calc(60% - calc(#{$gridGap} / 2));
+          margin-top: 0;
+        }
+      }
+
+      &:last-child {
+        @include tablet {
+          flex-basis: calc(40% - calc(#{$gridGap} / 2));
+          width: calc(40% - calc(#{$gridGap} / 2));
+          margin-left: auto;
+        }
+      }
+    }
+
+    &-main {
+      position: relative;
+      background-color: $clrLightBlue;
+      border-radius: $border-radius;
+      padding: calc(#{$gridGap} / 3);
+
+      @include tablet-small {
+        padding: $gridGap calc(#{$gridGap} / 3 * 2);
+        padding-right: 258px;
+      }
+
+      @include tablet {
+        padding: $gridGap;
+      }
+
+      @include desktop {
+        padding-right: 220px;
+      }
+
+      &-title {
+        @include typo('title-item');
+
+        padding-right: calc(#{$gridGap} * 3);
+
+        @include tablet-small {
+          padding-right: 0;
+        }
+      }
+
+      &-text {
+        color: $clrDarkGray;
+        margin: $gridGap 0;
+      }
+
+      &-pic {
+        position: absolute;
+        top: calc(#{$gridGap} / 3);
+        right: calc(#{$gridGap} / 3);
+
+        width: 61px;
+        height: 73px;
+        object-fit: contain;
+
+        @include tablet-small {
+          top: 0;
+          right: 0;
+          bottom: 0;
+
+          width: 231px;
+          height: 100%;
+        }
+
+        @include tablet {
+          display: none;
+        }
+
+        @include desktop {
+          display: block;
+        }
+      }
+    }
+  }
+}

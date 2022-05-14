@@ -1,0 +1,19 @@
+<div class="gar-row promo-block">
+    <div class="gar-row-item">
+        <div class="gar-row title">{{sliderTitle}}</div>
+        <gar-carousel [items]="(aSliderItems$ | async)!" [template]="cardComponent"></gar-carousel>
+    </div>
+
+    <div class="gar-row-item" *ngIf="actionsTop$ | async as oTopAction">
+        <div class="gar-row title">{{bannerTitle}}</div>
+        <div class="promo-block-main">
+            <div class="promo-block-main-title">{{oTopAction.title}}</div>
+
+            <div class="promo-block-main-text">{{oTopAction.text}}</div>
+
+            <gar-button role="primary" routerLink="/deal/start">{{oTopAction.buttonText}}</gar-button>
+
+            <img src="/assets/images/home-promo-block-pic.png" alt="" class="promo-block-main-pic">
+        </div>
+    </div>
+</div>

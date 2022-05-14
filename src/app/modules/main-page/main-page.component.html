@@ -1,30 +1,12 @@
 <section id="main-page">
   <div class="section">
-    <div class="gar-row home-promo-block">
-      <div class="gar-row-item">
-        <div class="gar-row title">Недавно приобрели</div>
-        <gar-carousel [items]="aSlider" [template]="cardComponent"></gar-carousel>
-      </div>
-
-      <div class="gar-row-item">
-        <div class="gar-row title">Покупка бизнеса с гарантиями</div>
-        <div class="home-promo-block-main">
-          <div class="home-promo-block-main-title">{{oTopAction.title}}</div>
-
-          <div class="home-promo-block-main-text">{{oTopAction.text}}</div>
-
-          <gar-button role="primary" routerLink="/deal/start">Подробнее</gar-button>
-
-          <img src="/assets/images/home-promo-block-pic.png" alt="" class="home-promo-block-main-pic">
-        </div>
-      </div>
-    </div>
+    <app-promo-block-card></app-promo-block-card>
   </div>
 
   <!-- Область с 3 карточками -->
   <div class="section">
     <div class="gar-grid gar-grid_wrap home-sections">
-      <div class="home-section" *ngFor="let item of aDataActions">
+      <div class="home-section" *ngFor="let item of aDataActions$ | async">
         <div class="home-section-title">{{item.title}}</div>
 
         <div class="home-section-item">

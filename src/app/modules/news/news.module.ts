@@ -5,6 +5,7 @@ import { RouterModule } from "@angular/router";
 import { GarLibModule } from "../../gar-lib/gar-lib.module";
 import { ProductsModule } from "../products/products.module";
 import { NewsBlockComponent } from "./components/news.block/news.block.component";
+import { PromoModule } from "../promo/promo.module";
 
 
 
@@ -23,7 +24,8 @@ import { NewsBlockComponent } from "./components/news.block/news.block.component
 			component: NewsPageComponent
 		}]),
 		GarLibModule,
-		ProductsModule
+		ProductsModule,
+		PromoModule
 	]
 })
 export class NewsModule { }

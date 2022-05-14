@@ -77,6 +77,7 @@ import { LandingRequestService } from "./modules/landing/services/landing.servic
 import { InputMaskModule } from 'primeng/inputmask';
 import { ProductsModule } from "./modules/products/products.module";
 import { NewsModule } from "./modules/news/news.module";
+import { PromoModule } from "./modules/promo/promo.module";
 
 @NgModule({
   declarations: [
@@ -149,7 +150,8 @@ import { NewsModule } from "./modules/news/news.module";
 		GarLibModule,
 		InputMaskModule,
 		ProductsModule,
-		NewsModule
+		NewsModule,
+		PromoModule
 	],
   
   providers: [

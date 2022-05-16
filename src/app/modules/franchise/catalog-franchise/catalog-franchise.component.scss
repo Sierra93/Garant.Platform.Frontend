@@ -4,11 +4,6 @@
     color: #2c2c2c;
 
     .franchise {
-      &-title {
-        font-size: 24px;
-        margin-bottom: 2rem;
-      }
-
       &-subtitle {
         font-size: 18px;
         color: #2c2c2c;
@@ -181,54 +176,6 @@
     .business-blog-video {
       padding: 1.5rem;
       background-color: #f1f1f1;
-    }
-
-    .business-world-news {
-      img {
-        width: 100%;
-      }
-
-      @media (max-width: 992px) {
-        margin-bottom: 1rem;
-      }
-    }
-
-    .business-news {
-      &:not(:last-child) {
-        border-bottom: .5px solid #c4c4c4;
-        margin-bottom: 1.75rem;
-      }
-
-      .top {
-        margin-bottom: .5rem;
-
-        img {
-          &:first-child {
-            margin-right: .5rem;
-          }
-          &:last-child {
-            margin-left: 2rem;
-          }
-        }
-
-        strong {
-          font-size: 18px;
-          color: #2c2c2c;
-        }
-      }
-
-      .bottom {
-        margin-bottom: 1.5rem;
-
-        span {
-          font-size: 12px;
-          color: #646464;
-        }
-
-        img {
-          margin: 0 .5rem;
-        }
-      }
     }
 
     .category-item {

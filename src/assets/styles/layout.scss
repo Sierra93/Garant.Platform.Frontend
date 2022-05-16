@@ -80,12 +80,18 @@ a {
     display: flex;
     flex-direction: column;
     width: 100%;
+    flex-basis: 100%;
     /* элемент строки является карточкой */
     &.gar-card {
       &:not(:first-child) {
         margin-left: $gar-card-between-horizontal-margin;
       }
     }
+  }
+
+  /* Перестраиваем строку в колонку на мобилке */
+  @include phone {
+    flex-direction: column;
   }
 }
 
@@ -133,7 +139,7 @@ a {
   width: 100%;
   border-radius: $border-radius-card;
   background-color: $clrWhite;
-  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: $box-shadow-card;
   &:not(.secondary) {
     padding: $card-padding;
   }
@@ -191,6 +197,12 @@ a {
     transform: translate(-50%, -50%);
 }
 
+.gar-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Обрезка переполненного контейнера */
 .no-overflow {
     overflow: hidden;
@@ -228,28 +240,38 @@ a {
     @include typo('description');
   }
 
-  & > * {
+  & > *:not(:last-child) {
     position: relative;
     margin-right: 20px;
-  }
 
-  & > *:not(:last-child)::after {
-    position: absolute;
-    top: 50%;
-    left: calc(100% + 8px);
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: calc(100% + 8px);
 
-    width: 4px;
-    height: 4px;
-    background-color: currentColor;
-    border-radius: 50%;
-    pointer-events: none;
-    user-select: none;
-    transform: translateY(-50%);
-    content: '';
+      width: 4px;
+      height: 4px;
+      background-color: currentColor;
+      border-radius: 50%;
+      pointer-events: none;
+      user-select: none;
+      transform: translateY(-50%);
+      content: '';
+    }
   }
 }
 
 /* Класс, описывающий секцию */
 .section {
   margin-bottom: 80px;
+}
+
+/* Выравнивание текста по центру */
+.align-center {
+  text-align: center;
+}
+
+/* Задание ширины 100% */
+.full-width {
+  width: 100%;
 }

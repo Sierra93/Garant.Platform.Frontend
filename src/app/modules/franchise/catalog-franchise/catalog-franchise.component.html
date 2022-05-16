@@ -361,50 +361,10 @@
         </p-card>
       </div>
 
-      <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
-        <div class="popular-item more-articles business-blog-video">
-          <p-card header="" subheader="" [style]="{ width: '100%' }" styleClass="p-card-shadow">
-            <div class="more-articles-content d-flex align-items-center mt-4">
-              <div class="more-articles-content-text">
-                <h3 class="franchise-card-title">Больше статей</h3>
-                <p class="franchise-card-description">
-                  Перейдите в наш блог и найдите там массу полезной информации.
-                </p>
-              </div>
-              <img src="../../../assets/images/Frame 66.png" height="32" />
-            </div>
-          </p-card>
-        </div>
-      </div>
-    </div>
-
-    <!-- Новости делового мира. -->
-    <div class="row section-mb">
-      <h2 class="franchise-title">Новости делового мира</h2>
-
-      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-        <div class="business-world-news">
-          <img src="../../../assets/images/Frame 31.png" />
-        </div>
-      </div>
-
-      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
-        <div class="news-item space-left-item business-news" *ngFor="let item of aNews">
-          <div class="top">
-            <img [src]="item.url" />
-            <strong class="title-news">{{ item.name }}</strong>
-            <img class="space-right-image-category space-arrow-category" src="../../../assets/images/Arrow 1.png" />
-          </div>
-          <div class="bottom">
-            <span>{{ item.time }}</span>
-            <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
-            <span>{{ item.date }}</span>
-            <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
-            <span>{{ item.type }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- Новости делового мира. -->
+  <section class="section">
+    <app-news-block></app-news-block>
+  </section>
 
     <!-- Категории готового бизнеса. -->
     <div class="row franchise-categories section-mb">

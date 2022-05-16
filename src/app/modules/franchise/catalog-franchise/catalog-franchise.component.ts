@@ -48,7 +48,6 @@ export class CatalogFranchiseModule implements OnInit {
   selectedCountRows: number = 12;
   countFranchises!: number;
   aBlogs: any[] = [];
-  aNews: any[] = [];
   categoryList1: any[] = [];
   categoryList2: any[] = [];
   categoryList3: any[] = [];
@@ -126,7 +125,6 @@ export class CatalogFranchiseModule implements OnInit {
     // this.getCatFranchPagination()
     await this.GetActionsAsync();
     await this.GetBlogsAsync();
-    await this.GetNewsTopAsync();
     await this.loadCategoriesListAsync();
     await this.loadSingleSuggestionAsync();
     await this.GetNewFranchisesListAsync();
@@ -397,29 +395,6 @@ export class CatalogFranchiseModule implements OnInit {
           next: (response: any) => {
             console.log('Список блогов:', response);
             this.aBlogs = response;
-          },
-
-          error: (err) => {
-            throw new Error(err);
-          },
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
-
-  /**
-   * Функция получит список проплаченных новостей.
-   * @returns Список новостей.
-   */
-  private async GetNewsTopAsync() {
-    try {
-      await this.http
-        .post(API_URL.apiUrl.concat('/blog/get-news'), {})
-        .subscribe({
-          next: (response: any) => {
-            console.log('Список новостей:', response);
-            this.aNews = response;
           },
 
           error: (err) => {

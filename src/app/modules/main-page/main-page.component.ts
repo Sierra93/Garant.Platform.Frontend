@@ -10,6 +10,7 @@ import { NgForm } from "@angular/forms";
 import { CatalogPromoCardComponent } from "../products/catalog/catalog.promo.card/catalog.promo.card.component";
 import { shareReplay, takeUntil, tap } from "rxjs/operators";
 import { GarDestroyService } from "../../gar-lib/gar-destroy.service";
+import {CatalogShortCardComponent} from "../products/catalog/catalog.short.card/catalog.short.card.component";
 
 @Component({
     selector: 'main-page',
@@ -27,17 +28,14 @@ export class MainPageModule implements OnInit {
     // rangeNumber: number = 0;
     rangeValues: number[] = [];
     routeParam: any;
-    categoryList1: any[] = [];
-    categoryList2: any[] = [];
-    categoryList3: any[] = [];
-    categoryList4: any[] = [];
+    categoryListBusiness: any[] = [];
+    categoryListFranchises: any[] = [];
     aSlider: any[] = [];
     aDataActions: any[] = [];
     oSuggestion: any = {};
     aPopularFranchises: any[] = [];
     aAds: any[] = [];
     aBlogs: any[] = [];
-    aNews: any[] = [];
     aFranchises: any[] = [];
     oTopAction: any = {};
     selectedCity: string = "";
@@ -55,8 +53,9 @@ export class MainPageModule implements OnInit {
     aNewBusiness: any[] = [];
     isHideBusinessWithGarant: boolean = false;
     showCategoryMenu: boolean = false;
-    
+
     cardComponent = CatalogPromoCardComponent;
+    cardShortComponent = CatalogShortCardComponent;
     /**
      * список последних бизнесов
      * */
@@ -109,7 +108,6 @@ export class MainPageModule implements OnInit {
         await this.loadSingleSuggestionAsync();
         await this.getPopularAsync();
         await this.GetBlogsAsync();
-        await this.GetNewsTopAsync();
         await this.GetQuickFranchisesAsync();
         await this.loadCitiesFranchisesListAsync();
         await this.loadCategoriesFranchisesListAsync();
@@ -157,10 +155,9 @@ export class MainPageModule implements OnInit {
     private async loadCategoriesListAsync() {
         try {
             await this.commonService.loadCategoriesListAsync().then((data: any) => {
-                this.categoryList1 = data.resultCol1;
-                this.categoryList2 = data.resultCol2;
-                this.categoryList3 = data.resultCol3;
-                this.categoryList4 = data.resultCol4;
+                // TODO refactor backend structure, request will contain only 2 arrays for bussiness and franchises
+                this.categoryListBusiness = [...data.resultCol1];
+                this.categoryListFranchises = [...data.resultCol3];
             });
         }
 
@@ -265,30 +262,6 @@ export class MainPageModule implements OnInit {
                     next: (response: any) => {
                         console.log("Список блогов:", response);
                         this.aBlogs = response;
-                    },
-
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
-        }
-
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };
-
-    /**
-     * Функция получит список проплаченных новостей.
-     * @returns Список новостей.
-     */
-    private async GetNewsTopAsync() {
-        try {
-            await this.http.post(API_URL.apiUrl.concat("/blog/get-news"), {})
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Список новостей:", response);
-                        this.aNews = response;
                     },
 
                     error: (err) => {

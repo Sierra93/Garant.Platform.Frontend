@@ -2,6 +2,7 @@
 // @import "/src/app/shared/styles/body-margins.scss";
 // @import "/src/app/shared/styles/media-quaries.scss";
 // @import "/src/app/shared/styles/common.scss";
+@import 'design';
 
 @use "/src/app/app.component.scss";
 // @import "/src/app/shared/styles/body-margins.scss";
@@ -23,13 +24,13 @@ $whiteText: white;
 }
 
 .left-panel-first {
-  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: $box-shadow-card;
   // padding: 16px;
 }
 
 .right-panel-first {
   // box-shadow: 0 0 10px rgb(0 0 0 / 50%);
-  box-shadow: 0 4px 44px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: $box-shadow-card;
   // padding: 16px;
 }
 

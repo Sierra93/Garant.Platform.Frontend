@@ -18,4 +18,11 @@ export namespace products {
 			url: string;
 		}
 	}
+	
+	export namespace filter {
+		export interface ITag {
+			selected: boolean;
+			tag: string;
+		}
+	}
 }

@@ -79,8 +79,10 @@ a {
   > .gar-row-item {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    flex-basis: 100%;
+    &:not(.fit) {
+      width: 100%;
+      flex-basis: 100%;
+    }
     /* элемент строки является карточкой */
     &.gar-card {
       &:not(:first-child) {
@@ -91,7 +93,9 @@ a {
 
   /* Перестраиваем строку в колонку на мобилке */
   @include phone {
-    flex-direction: column;
+    &:not(.gar-breadcrumbs-dotted) {
+      flex-direction: column;
+    }
   }
 }
 

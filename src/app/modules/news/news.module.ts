@@ -7,6 +7,7 @@ import { ProductsModule } from "../products/products.module";
 import { NewsBlockComponent } from "./components/news.block/news.block.component";
 import { PromoModule } from "../promo/promo.module";
 import { BusinessNewsBlockComponent } from './components/business-news.block/business-news.block.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 
 
@@ -27,7 +28,9 @@ import { BusinessNewsBlockComponent } from './components/business-news.block/bus
 		}]),
 		GarLibModule,
 		ProductsModule,
-		PromoModule
+		PromoModule,
+		FormsModule,
+		ReactiveFormsModule
 	]
 })
 export class NewsModule { }

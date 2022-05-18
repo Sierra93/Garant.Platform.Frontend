@@ -1,0 +1,18 @@
+<ng-container *ngIf="product$ | async as product">
+    <div class="image-container gar-card">
+        <img src="{{ product.url }}" alt="{{ product.title }}" title="{{ product.title }}"/>
+    </div>
+    <div class="gar-card">
+        <div class="gar-row">
+            <div class="gar-row-item">
+                <span class="gar-row title item">{{ product?.title }}</span>
+            </div>
+            <div class="gar-row-item fit right">Читать дальше</div>
+        </div>
+        <div class="gar-row gar-breadcrumbs-dotted -small latest-news-item-breadcrumbs">
+            <span class="gar-badge">Тема новости: {{ product.theme }}</span>
+            <span>{{ product.date }} в {{ product.time }}</span>
+        </div>
+        <div class="gar-row">{{ product.text }}</div>
+    </div>
+</ng-container>

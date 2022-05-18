@@ -14,6 +14,7 @@ import { FormsModule } from "@angular/forms";
 import { InputTextModule } from "primeng/inputtext";
 import { GarSelectComponent } from "./gar-select/gar-select.component";
 import { DropdownModule } from "primeng/dropdown";
+import { SelectionByPropertyPipe } from './pipes/selection-by-property.pipe';
 
 const _COMPONENTS = [
 	GarImgUploaderComponent,
@@ -26,7 +27,8 @@ const _COMPONENTS = [
 ]
 
 const _PIPES = [
-	PriceFormatPipe
+	PriceFormatPipe,
+	SelectionByPropertyPipe
 ]
 
 const _DIRECTIVES = [

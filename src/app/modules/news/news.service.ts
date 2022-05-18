@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { API_URL } from "../../core/core-urls/api-url";
 import { HttpClient } from "@angular/common/http";
 import { news } from "./news";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { tap } from "rxjs/operators";
+import { NewsMock } from "./mocks/news.mock";
 
 /**
  * Сервис новостей
@@ -26,6 +27,16 @@ export class NewsService {
     return this._http.post<news.INewsBlockItem[]> (API_URL.apiUrl.concat("/blog/get-news"), {}).pipe(
         tap(response => console.log('Список новостей:', response))
     )
+  }
+  
+  /**
+   * Получение новостей делового мира
+   *
+   * TODO: нет реализации на бэке
+   *
+   */
+  getBusinessNews(): Observable<news.IBusinessNewsBlockItem[]> {
+    return of(NewsMock.businessWorld);
   }
   
 }

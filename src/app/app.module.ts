@@ -2,7 +2,7 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "popper.js/dist/popper.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
-import { APP_INITIALIZER, NgModule } from "@angular/core";
+import { APP_INITIALIZER, Inject, NgModule } from "@angular/core";
 import { BrowserModule, Title } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -77,6 +77,9 @@ import { LandingRequestService } from "./modules/landing/services/landing.servic
 import { InputMaskModule } from 'primeng/inputmask';
 import { ProductsModule } from "./modules/products/products.module";
 import { NewsModule } from "./modules/news/news.module";
+import { PromoModule } from "./modules/promo/promo.module";
+import { WINDOW } from "../environments/window/window.token";
+import { WindowProvider } from "../environments/window/window.provider";
 
 @NgModule({
   declarations: [
@@ -149,7 +152,8 @@ import { NewsModule } from "./modules/news/news.module";
 		GarLibModule,
 		InputMaskModule,
 		ProductsModule,
-		NewsModule
+		NewsModule,
+		PromoModule
 	],
   
   providers: [
@@ -175,9 +179,25 @@ import { NewsModule } from "./modules/news/news.module";
       useFactory: (notifyService: NotifyService) => () => notifyService.initiateSignalrConnection(),
       deps: [NotifyService],
       multi: true,
-    }
+    },
+	{
+	  provide: WINDOW,
+	  useClass: WindowProvider
+	}
   ],
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+	constructor(
+		@Inject(WINDOW)
+		private _window: WindowProvider
+	) {
+		this._window.application.grades = {
+			phone: 767,
+			tabletSmall: 768,
+			tablet: 1024,
+			desktop: 1440
+		};
+	}
+}

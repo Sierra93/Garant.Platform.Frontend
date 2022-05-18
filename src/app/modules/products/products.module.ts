@@ -6,12 +6,17 @@ import { RouterModule } from "@angular/router";
 import { CatalogPromoCardComponent } from './catalog/catalog.promo.card/catalog.promo.card.component';
 import { CatalogSimpleCardComponent } from './catalog/catalog.simple.card/catalog.simple.card.component';
 import { ShowcaseComponent } from './ showcase/showcase.component';
+import { TagToggleComponent } from "./filter/tag.toggle/tag.toggle.component";
+import { FormsModule } from "@angular/forms";
+import { CatalogNewsCardComponent } from './catalog/catalog.news.card/catalog.news.card.component';
 
 const _COMPONENTS = [
 	CatalogShortCardComponent,
 	CatalogPromoCardComponent,
 	CatalogSimpleCardComponent,
-	ShowcaseComponent
+	CatalogNewsCardComponent,
+	ShowcaseComponent,
+	TagToggleComponent
 ]
 
 /**
@@ -27,7 +32,8 @@ const _COMPONENTS = [
 	imports: [
 		CommonModule,
 		GarLibModule,
-		RouterModule
+		RouterModule,
+		FormsModule
 	]
 })
 export class ProductsModule {

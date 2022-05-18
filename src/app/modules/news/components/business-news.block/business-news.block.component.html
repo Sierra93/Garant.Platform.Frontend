@@ -1,0 +1,28 @@
+<h2 class="gar-row title">Новости делового мира</h2>
+<div class="gar-row">
+    <form [formGroup]="businessNews.form" class="gar-card filter">
+        <p class="gar-row title item">Сортировать по</p>
+        <div class="gar-row">
+            <gar-select
+                    [cleanable]="false"
+                    displayLabel="value"
+                    formControlName="sorting"
+                    [items]="soringProperties"></gar-select>
+        </div>
+        <div class="gar-row dashed"></div>
+        <ng-container *ngIf="news$ | async" formArrayName="tags">
+            <p class="gar-row title item">Темы новостей</p>
+            <div class="tag-container">
+                <filter-tag-toggle *ngFor="let tag of tags; let i=index" [formControlName]="i"></filter-tag-toggle>
+            </div>
+        </ng-container>
+    </form>
+    <div class="gar-card promo">
+        <ng-container *ngIf="businessNews.form">
+            <div class="card-container gar-grid">
+                <app-catalog-news-card *ngFor="let item of filteredNews$ | async" [item]="item"></app-catalog-news-card>
+            </div>
+            <gar-button class="fit" role="filter" (click)="increaseVisible()">Показать ещё</gar-button>
+        </ng-container>
+    </div>
+</div>

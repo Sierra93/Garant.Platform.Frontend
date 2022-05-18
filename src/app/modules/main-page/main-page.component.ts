@@ -11,6 +11,7 @@ import { CatalogPromoCardComponent } from "../products/catalog/catalog.promo.car
 import { shareReplay, takeUntil, tap } from "rxjs/operators";
 import { GarDestroyService } from "../../gar-lib/gar-destroy.service";
 import {CatalogShortCardComponent} from "../products/catalog/catalog.short.card/catalog.short.card.component";
+import { PromoService } from "../promo/promo.service";
 
 @Component({
     selector: 'main-page',
@@ -30,8 +31,6 @@ export class MainPageModule implements OnInit {
     routeParam: any;
     categoryListBusiness: any[] = [];
     categoryListFranchises: any[] = [];
-    aSlider: any[] = [];
-    aDataActions: any[] = [];
     oSuggestion: any = {};
     aPopularFranchises: any[] = [];
     aAds: any[] = [];
@@ -53,8 +52,8 @@ export class MainPageModule implements OnInit {
     aNewBusiness: any[] = [];
     isHideBusinessWithGarant: boolean = false;
     showCategoryMenu: boolean = false;
-
-    cardComponent = CatalogPromoCardComponent;
+    
+    readonly aDataActions$ = this._promoService.actions$;
     cardShortComponent = CatalogShortCardComponent;
     /**
      * список последних бизнесов
@@ -65,7 +64,9 @@ export class MainPageModule implements OnInit {
         takeUntil(this._destroy$)
     )
 
-    constructor(private http: HttpClient,
+    constructor(
+        private http: HttpClient,
+        private _promoService: PromoService,
         private commonService: CommonDataService,
         private titleService: Title,
         private route: ActivatedRoute,
@@ -103,8 +104,6 @@ export class MainPageModule implements OnInit {
         }
 
         await this.loadCategoriesListAsync();
-        await this.loadSliderLastBuyAsync();
-        await this.GetActionsAsync();
         await this.loadSingleSuggestionAsync();
         await this.getPopularAsync();
         await this.GetBlogsAsync();
@@ -159,56 +158,6 @@ export class MainPageModule implements OnInit {
                 this.categoryListBusiness = [...data.resultCol1];
                 this.categoryListFranchises = [...data.resultCol3];
             });
-        }
-
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };
-
-    /**
-     * Функция получит данные слайдера.
-     */
-    private async loadSliderLastBuyAsync() {
-        try {
-            await this.http.post(API_URL.apiUrl.concat("/main/slider-last-buy"), {})
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Слайдер:", response);
-                        this.aSlider = response;
-                    },
-
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
-        }
-
-        catch (e: any) {
-            throw new Error(e);
-        }
-    };
-
-    /**
-     * Функция получит данные для блока событий.
-     */
-    private async GetActionsAsync() {
-        try {
-            await this.http.post(API_URL.apiUrl.concat("/main/actions"), {})
-                .subscribe({
-                    next: (response: any) => {
-                        console.log("Блок событий:", response);
-                        let actions = response.filter((el:any) => el.isTop == false);
-                        this.aDataActions = actions;
-
-                        this.oTopAction = response.filter((el: any) => el.isTop == true)[0];
-                        console.log("oTopAction",this.oTopAction);
-                    },
-
-                    error: (err) => {
-                        throw new Error(err);
-                    }
-                });
         }
 
         catch (e: any) {

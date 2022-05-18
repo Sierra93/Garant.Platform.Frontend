@@ -3,6 +3,10 @@ import { GarBaseInputComponent } from "../gar-base-input/gar-base-input.componen
 import { NgControl } from "@angular/forms";
 import { BehaviorSubject, Observable, ReplaySubject } from "rxjs";
 
+/**
+ * Компонент инпута типа select
+ *
+ * */
 @Component({
   selector: 'gar-select',
   templateUrl: './gar-select.component.html',

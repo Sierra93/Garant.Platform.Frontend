@@ -3,13 +3,22 @@ export namespace news {
 		date: string;
 		dateCreated: string;
 		isPaid: false;
-		newsId: 13;
-		position: 4;
+		newsId: number;
+		position: number;
 		text: string;
 		time: string;
 		title: string;
 		type: string;
 		url: string;
-		viewsCount: 0;
+		viewsCount: number;
+	}
+	
+	/**
+	 * Модель для Новостей делового мира (с фильтром)
+	 *
+	 * TODO: полная отсебятина для показа, обсудить с бэком в дальнейшем
+	 * */
+	export interface IBusinessNewsBlockItem extends INewsBlockItem {
+		theme: string;
 	}
 }

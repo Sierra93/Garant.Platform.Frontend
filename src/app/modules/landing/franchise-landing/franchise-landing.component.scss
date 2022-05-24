@@ -68,7 +68,7 @@ strong {
 .header {
   display: flex;
   gap: 90px;
-  width: 1440px;
+  max-width: 1440px;
   height: 496px;
   border-radius: 24px;
   padding: 64px 0 64px 64px;
@@ -83,7 +83,7 @@ strong {
   }
 
   @include xl-lg {
-    width: 1024px;
+    // width: 1024px;
     height: 456px;
     margin-top: 64px;
     gap: 10px;
@@ -91,11 +91,11 @@ strong {
   }
 
   @include lg-md {
-    width: 768px;
+    // width: 768px;
     height: 432px;
     margin-top: 36px;
     gap: 0px;
-    padding: 32px 0 32px 32px;
+    padding: 32px 0 32px 25px;
   }
 
   @include md {
@@ -118,7 +118,7 @@ strong {
     }
 
     @include lg-md {
-      width: 429px;
+      width: 386px;
     }
 
     @include md {
@@ -139,8 +139,8 @@ strong {
       }
 
       @include lg-md {
-        width: 429px;
-        font-size: 4rem;
+        // width: 429px;
+        font-size: 3rem;
         line-height: 75px;
       }
 
@@ -154,20 +154,21 @@ strong {
 
     &__subtitle {
       font-family: "Roboto", sans-serif;
-      font-size: 4rem;
+      font-size: 59px;
       font-weight: 700;
       color: #2c2c2c;
       line-height: 75px;
       margin-bottom: 16px;
 
       @include xl-lg {
-        font-size: 2.75rem;
+        font-size: 2rem;
         line-height: 52px;
       }
 
       @include lg-md {
-        font-size: 2.75rem;
+        font-size: 1.7rem;
         line-height: 52px;
+        
       }
 
       @include md {
@@ -179,7 +180,7 @@ strong {
 
     &__text {
       font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       font-weight: 400;
       color: #7a7a7a;
       line-height: 28px;
@@ -190,8 +191,9 @@ strong {
       }
 
       @include lg-md {
-        width: 332px;
-        margin-bottom: 85px;
+        max-width: 332px;
+        font-size: 24px;
+        margin-bottom: 79px;
       }
 
       @include md {
@@ -207,7 +209,7 @@ strong {
       justify-content: center;
       align-items: center;
       font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 500;
       color: #ffffff;
       line-height: 28px;
@@ -215,9 +217,13 @@ strong {
       height: 76px;
       border: none;
       border-radius: 4px;
-      padding: 24px 32px;
+      padding: 10px;
       margin: 0;
       background-color: #1f75fe;
+      @include lg-md {
+        width: 333px;
+        font-size: 24px;
+      }
 
       @include md {
         width: 273px;
@@ -288,34 +294,48 @@ strong {
 
 .statistics {
   display: flex;
-  gap: 16px;
-  width: 1440px;
-  height: 341px;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin-bottom: 80px;
+  @include lg-md {
+    // width: 768px;
+  }
+  
+  
 
   &-item {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    width: 24.3%;
+    margin-bottom: 16px;
     justify-content: center;
     align-items: center;
-    width: 348px;
-    height: 341px;
     border-radius: 24px;
-    // padding: 64px;
     background-color: #f5f8fa;
+    @include xl-lg {
+      width: 49%;
+      min-height: 301px;
+    }
+    @include lg-md {
+      width: 49%;
+      min-height: 341px;
+    }
 
     &__number {
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: "Roboto", sans-serif;
-      font-size: 6rem;
+      font-size: 4.4rem;
       font-weight: 700;
       color: #2c2c2c;
       height: 113px;
       text-align: center;
       align-self: center;
+      @include xl-lg {
+        font-size: 96px;
+      }
+      
     }
 
     &__text {
@@ -341,7 +361,7 @@ strong {
 .founder {
   display: flex;
   gap: 32px;
-  width: 1440px;
+  max-width: 1440px;
   height: 623px;
   border-radius: 24px;
   padding: 64px 0 64px 64px;
@@ -353,20 +373,20 @@ strong {
 
     &__title {
       font-family: "Roboto", sans-serif;
-      font-size: 6rem;
+      font-size: 4rem;
       font-weight: 700;
       color: #ffffff;
-      width: 730px;
+      // width: 730px;
       line-height: 113px;
       margin-bottom: 16px;
     }
 
     &__subtitle {
       font-family: "Roboto", sans-serif;
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: 700;
       color: #ffffff;
-      width: 730px;
+      // width: 730px;
       line-height: 75px;
       margin-bottom: 16px;
     }
@@ -472,7 +492,7 @@ strong {
 
     &__title {
       font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
+      font-size:24px;
       font-weight: 500;
       color: #2c2c2c;
       line-height: 28px;
@@ -483,7 +503,7 @@ strong {
 
     &__subtitle {
       font-family: "Roboto", sans-serif;
-      font-size: 0.75rem;
+      font-size: 12px;
       font-weight: 400;
       color: #646464;
       line-height: 14px;
@@ -494,7 +514,7 @@ strong {
 
     &__text {
       font-family: "Roboto", sans-serif;
-      font-size: 1.125rem;
+      font-size: 18px;
       font-weight: 400;
       color: #2c2c2c;
       line-height: 21px;
@@ -505,15 +525,15 @@ strong {
 
     &__button {
       display: flex;
+      width: 85%;
       justify-content: center;
       align-items: center;
       font-family: "Roboto", sans-serif;
-      font-size: 1.125rem;
-      margin-left: 24px;
-      margin-right: 24px;
+      font-size: 1rem;
+      margin:auto;
       // min-width: 125px;
       height: 53px;
-      padding: 16px;
+      padding: 5px;
       border: 0;
       border-radius: 4px;
       color: #ffffff;

@@ -1,121 +1,3 @@
-<!-- <div class="garant block-title-franchise">
-  <h5 class="title-franchise">Каталог бизнеса</h5>
-  <span class="count-franchise">Всего {{countBusinesses}} бизнесов</span>
-</div> -->
-
-<!-- <form class="d-flex" #filterForm="ngForm" novalidate>
-  <div class="business-search"> -->
-<!-- <div>
-    <strong>Сфера бизнеса</strong><br>
-    <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
-  </div> -->
-
-<!-- <div class="">
-      <strong>Выбор категории</strong><br>
-      <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory"
-        placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
-    </div> -->
-
-<!-- <div class="control-quick-search">
-      <strong>Выбор города</strong><br>
-      <p-dropdown [options]="aCities" optionLabel="businessCityName" name="city" [(ngModel)]="selectedCity"
-        placeholder="Город" [showClear]="true"></p-dropdown>
-    </div> -->
-
-<!-- <div class="d-flex">
-      <div class="control-quick-search block-price-min">
-        <strong>Стоимость</strong><br>
-        <input type="text" class="control-input-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice"
-          name="minPrice" />
-      </div>
-
-      <div class="block-price-max">
-        <strong></strong><br>
-        <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice"
-          name="maxPrice" />
-      </div>
-    </div>
-  </div> -->
-
-<!-- </form> -->
-
-<!-- <div class="btn-wrapper">
-  <button class="btn btn--aside btn-default mt-3 btn-sm btn-filter"
-    (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
-  <button class="btn btn--aside btn-default btn-sm mt-3 ml-1 btn-filter" (click)="onClearFilters()">Очистить
-    фильтры</button>
-</div> -->
-
-<!-- <div class="block-catalog d-flex">
-  <div class=""> -->
-<!-- <div>
-      <strong>Сортировать по</strong><br>
-      <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
-        [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
-    </div>  -->
-
-<!-- <div class="switch-garant garant-buy">
-      <strong>Покупка через гарант</strong>
-      <p-inputSwitch class="flag-garant" [(ngModel)]="isGarant"></p-inputSwitch>
-    </div> -->
-
-<!-- <div class="switch-garant">
-      <strong>Прибыль в месяц</strong><br> -->
-<!-- <div class="d-flex d-flex--short">
-        <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽"
-          [(ngModel)]="filterMinPrice" name="filterMinPrice" />
-        <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽"
-          [(ngModel)]="filterMaxPrice" name="filterMaxPrice" />
-      </div> -->
-<!-- </div> -->
-<!-- <div class="btn-wrapper">
-      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter" (click)="FilterFranchisesAsync()">Применить
-        фильтры</button>
-      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">Очистить
-        фильтры</button>
-    </div> -->
-
-<!-- </div> -->
-
-<!-- Список бизнеса. -->
-<!-- <div class="d-flex popular-list franchise-list">
-  <div class="popular-item catalog-item col-lg-4" *ngFor="let item of aBusinessList">
-    <p-card header="{{item.title}}" subheader="{{item.text}}"
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img [src]="item.url">
-    </ng-template>
-    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-    <ng-template pTemplate="footer">
-      <button class="btn btn-default btn-filter" (click)="routeViewFranchiseCardAsync(item.franchiseId)">Подробнее</button>
-    </ng-template>
-  </p-card>
-  </div>
-</div> -->
-
-<!-- <div class="d-flex popular-list">
-    <div class="popular-item" *ngFor="let item of aBusinessList">
-      <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
-        <ng-template pTemplate="header">
-          <img [src]="item.url">
-        </ng-template>
-        <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-        <ng-template pTemplate="footer">
-          <button class="btn btn-default btn-filter"
-            (click)="routeViewFranchiseCardAsync(item.businessId)">Подробнее</button>
-        </ng-template>
-      </p-card>
-    </div>
-  </div> -->
-<!-- </div> -->
-
-<!-- Пагинация. -->
-<!-- <div class="mt-5">
-  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
-    [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
-  </p-paginator>
-</div> -->
-
 <div class="header">
   <div class="header-content">
     <div class="header-content__title">Онлайн сделка</div>
@@ -184,21 +66,28 @@
           [(ngModel)]="name"
         />
       </label>
-<!--      <label class="consulting-content__label"-->
-<!--        >Номер телефона-->
-<!--        <input-->
-<!--          class="consulting-content__input"-->
-<!--          type="tel"-->
-<!--          name="telephone"-->
-<!--          placeholder="Введите номер телефона"-->
-<!--        />-->
-<!--      </label>-->
+      <!--      <label class="consulting-content__label"-->
+      <!--        >Номер телефона-->
+      <!--        <input-->
+      <!--          class="consulting-content__input"-->
+      <!--          type="tel"-->
+      <!--          name="telephone"-->
+      <!--          placeholder="Введите номер телефона"-->
+      <!--        />-->
+      <!--      </label>-->
       <div>
         <label class="consulting-content__label">Номер телефона</label>
-        <p-inputMask  mask="+7(999) 999-99-99" [(ngModel)]="phoneNumber" placeholder="Введите номер телефона"></p-inputMask>
+        <p-inputMask
+          mask="+7(999) 999-99-99"
+          [(ngModel)]="phoneNumber"
+          placeholder="Введите номер телефона"
+        ></p-inputMask>
       </div>
     </div>
-    <button class="consulting-content__button" (click)="onSendLandingRequestAsync(name, phoneNumber)">
+    <button
+      class="consulting-content__button"
+      (click)="onSendLandingRequestAsync(name, phoneNumber)"
+    >
       Обратиться за консультацией
     </button>
   </div>
@@ -656,7 +545,7 @@
   </div>
 </div>
 
-<!-- Новости делового мира. -->
+<!-- Новости делового мира.
 <h5 class="garant title-franchise">Новости делового мира</h5>
 <div class="d-flex">
   <div>
@@ -676,8 +565,11 @@
       </div>
     </div>
   </div>
-</div>
-
+</div> -->
+<!-- Новости делового мира. -->
+<section class="section">
+  <app-news-block></app-news-block>
+</section>
 <!-- Категории готового бизнеса. -->
 <div class="row garant">
   <!-- <div class="d-flex"> -->

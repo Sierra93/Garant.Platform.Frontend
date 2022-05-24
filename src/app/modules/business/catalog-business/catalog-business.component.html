@@ -1,33 +1,11 @@
-<!-- Популярный бизнес. -->
-<!-- <h5 class="garant title-franchise">Популярный бизнес</h5> -->
-<!-- <div class="d-flex popular-list">
-  <div class="popular-item" *ngFor="let item of aPopularBusiness">
-    <p-card header="{{item.businessName}}" subheader="{{item.text}}" [style]="{width: '100%'}"
-      styleClass="p-card-shadow">
-      <ng-template pTemplate="header">
-        <img [src]="item.url">
-      </ng-template>
-      <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-      <ng-template pTemplate="footer">
-
-      </ng-template>
-    </p-card>
-  </div>
-</div> -->
-
-<!-- <div class="" *ngFor="let item of aPopularBusiness">
-  <p-card header="{{item.businessName}}" subheader="" [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img [src]="item.url" class="franchise-card-img">
-    </ng-template>
-  </p-card>
-</div> -->
-
 <!-- Бизнес блог. -->
 <div class="row section-mb">
   <div class="gar-row title page">Популярный бизнес</div>
   <div class="gar-row">
-    <app-catalog-sort-card *ngFor="let item of aPopularBusiness" [item]="item"></app-catalog-sort-card>
+    <app-catalog-sort-card
+      *ngFor="let item of aPopularBusiness"
+      [item]="item"
+    ></app-catalog-sort-card>
   </div>
 
   <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
@@ -58,8 +36,7 @@
 </div>
 
 <div class="d-flex">
-
-<div class="catalog-business__filter d-flex">
+  <div class="catalog-business__filter d-flex">
     <!-- <button type="button" class="btn-close btn-close--top" aria-label="Close" (click)="onClearFilters()"></button> -->
     <!-- <div>
     <strong>Сфера бизнеса</strong><br>
@@ -68,32 +45,64 @@
 
     <div class="">
       <div class="catalog-business__filter-title">Выбор категории</div>
-      <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory"
-        placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
+      <p-dropdown
+        [options]="aBusinessCategories"
+        optionLabel="categoryName"
+        [(ngModel)]="selectedCategory"
+        placeholder="Категория"
+        [showClear]="true"
+        name="category"
+      ></p-dropdown>
     </div>
 
     <div class="control-quick-search">
       <div class="catalog-business__filter-title">Выбор города</div>
-      <p-dropdown [options]="aCities" optionLabel="businessCityName" name="city" [(ngModel)]="selectedCity"
-        placeholder="Город" [showClear]="true"></p-dropdown>
+      <p-dropdown
+        [options]="aCities"
+        optionLabel="businessCityName"
+        name="city"
+        [(ngModel)]="selectedCity"
+        placeholder="Город"
+        [showClear]="true"
+      ></p-dropdown>
     </div>
 
     <div class="d-flex">
       <div class="control-quick-search block-price-min">
         <div class="catalog-business__filter-title">Инвестиции</div>
         <div class="d-flex">
-          <p-inputNumber mode="currency" currency="EUR" locale="de-DE"  placeholder="от 100 000 ₽" [(ngModel)]="filterRang[0]" prefix="от " name="minPrice"></p-inputNumber>
-          <p-inputNumber mode="currency" currency="EUR" locale="de-DE"  placeholder="до 100 000 000 ₽" [(ngModel)]="filterRang[1]" prefix="до " name="maxPrice"></p-inputNumber>
+          <p-inputNumber
+            mode="currency"
+            currency="EUR"
+            locale="de-DE"
+            placeholder="от 100 000 ₽"
+            [(ngModel)]="filterRang[0]"
+            prefix="от "
+            name="minPrice"
+          ></p-inputNumber>
+          <p-inputNumber
+            mode="currency"
+            currency="EUR"
+            locale="de-DE"
+            placeholder="до 100 000 000 ₽"
+            [(ngModel)]="filterRang[1]"
+            prefix="до "
+            name="maxPrice"
+          ></p-inputNumber>
 
-<!--          <input type="text" class="control-input-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="filterRang[0]"-->
-<!--                 name="minPrice" />-->
-<!--          <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="filterRang[1]"-->
-<!--                 name="maxPrice" />-->
+          <!--          <input type="text" class="control-input-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="filterRang[0]"-->
+          <!--                 name="minPrice" />-->
+          <!--          <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="filterRang[1]"-->
+          <!--                 name="maxPrice" />-->
         </div>
-        <p-slider class="price-slider" [(ngModel)]="filterRang" [range]="true"></p-slider>
+        <p-slider
+          class="price-slider"
+          [(ngModel)]="filterRang"
+          [range]="true"
+        ></p-slider>
       </div>
     </div>
-<!--    <button type="button" class="btn-close btn-close&#45;&#45;bottom" aria-label="Close" (click)="onClearFilters()"></button>-->
+    <!--    <button type="button" class="btn-close btn-close&#45;&#45;bottom" aria-label="Close" (click)="onClearFilters()"></button>-->
   </div>
 </div>
 
@@ -108,8 +117,17 @@
   <div class="">
     <div>
       <div class="catalog-business__filter-title">Сортировать по</div>
-      <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
-        [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
+      <p-dropdown
+        class="block-sort-by"
+        [options]="aSortPrices"
+        optionLabel="name"
+        optionCode="value"
+        name="price"
+        [(ngModel)]="selectedSort"
+        placeholder="Цена"
+        [showClear]="true"
+        (onChange)="onChangeSortPrice()"
+      ></p-dropdown>
     </div>
 
     <div class="switch-garant garant-buy">
@@ -120,14 +138,34 @@
     <div class="switch-garant">
       <div class="catalog-business__filter-title">Прибыль в месяц</div>
       <div class="d-flex d-flex--short">
-        <p-inputNumber mode="currency" currency="EUR" locale="de-DE"  placeholder="от 100 000 ₽"  [(ngModel)]="rangValue[0]" prefix="от " name="filterMinPrice"></p-inputNumber>
-        <p-inputNumber mode="currency" currency="EUR" locale="de-DE"  placeholder="до 100 000 000 ₽"  [(ngModel)]="rangValue[1]" prefix="до " name="filterMaxPrice"></p-inputNumber>
-<!--        <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽"-->
-<!--          [(ngModel)]="rangValue[0]" name="filterMinPrice" />-->
-<!--        <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽"-->
-<!--          [(ngModel)]="rangValue[1]" name="filterMaxPrice" />-->
+        <p-inputNumber
+          mode="currency"
+          currency="EUR"
+          locale="de-DE"
+          placeholder="от 100 000 ₽"
+          [(ngModel)]="rangValue[0]"
+          prefix="от "
+          name="filterMinPrice"
+        ></p-inputNumber>
+        <p-inputNumber
+          mode="currency"
+          currency="EUR"
+          locale="de-DE"
+          placeholder="до 100 000 000 ₽"
+          [(ngModel)]="rangValue[1]"
+          prefix="до "
+          name="filterMaxPrice"
+        ></p-inputNumber>
+        <!--        <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽"-->
+        <!--          [(ngModel)]="rangValue[0]" name="filterMinPrice" />-->
+        <!--        <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽"-->
+        <!--          [(ngModel)]="rangValue[1]" name="filterMaxPrice" />-->
       </div>
-      <p-slider class="price-slider" [(ngModel)]="rangValue" [range]="true"></p-slider>
+      <p-slider
+        class="price-slider"
+        [(ngModel)]="rangValue"
+        [range]="true"
+      ></p-slider>
     </div>
     <div class="btn-wrapper">
       <button
@@ -162,7 +200,10 @@
 </div> -->
 
   <div class="catalog-business__body-card d-flex popular-list">
-    <app-catalog-simple-card *ngFor="let item of aBusinessList" [item]="item"></app-catalog-simple-card>
+    <app-catalog-simple-card
+      *ngFor="let item of aBusinessList"
+      [item]="item"
+    ></app-catalog-simple-card>
   </div>
 </div>
 
@@ -207,7 +248,10 @@
               <ng-template pTemplate="header">
                 <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
               </ng-template>
-              <strong>{{ item.textDoPrice }} {{ item.price | priceFormat: item.price }} ₽</strong>
+              <strong
+                >{{ item.textDoPrice }}
+                {{ item.price | priceFormat: item.price }} ₽</strong
+              >
               <ng-template pTemplate="footer">
                 <!-- <p-button label="Save" icon="pi pi-check"></p-button>
                           <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
@@ -265,7 +309,7 @@
 </div>
 </div> -->
 
-<div class="row" *ngIf="isHideBusinessWithGarant">
+<!-- <div class="row" *ngIf="isHideBusinessWithGarant">
   <div class="col-lg-12 col-xs-12 garant card-line">
     <p-card class="card-line-wrapper">
       <ng-template pTemplate="header">
@@ -300,7 +344,13 @@
       </ng-template>
     </p-card>
   </div>
-</div>
+</div> -->
+
+<!--Компонент с представлением списка промо блоков-->
+<!--Вы можете приобрести бизнес с гарантиями-->
+<section class="section">
+  <app-showcase></app-showcase>
+</section>
 
 <!-- Область с банерами (2 картинки). -->
 <div class="d-flex block-baner garant">
@@ -376,26 +426,9 @@
 </div>
 
 <!-- Новости делового мира. -->
-<h5 class="garant title-franchise">Новости делового мира</h5>
-<div class="d-flex">
-  <div>
-    <img src="../../../assets/images/Frame 31.png" />
-  </div>
-
-  <div>
-    <div class="news-item" *ngFor="let item of aNews">
-      <img [src]="item.url" />
-      <strong class="news-title">{{ item.name }}</strong>
-      <div class="news-bottom-line">
-        <small>{{ item.time }}</small>
-        <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
-        <small>{{ item.date }}</small>
-        <img class="ellipse" src="../../../assets/images/Ellipse 13.png" />
-        <small>{{ item.type }}</small>
-      </div>
-    </div>
-  </div>
-</div>
+<section class="section">
+  <app-news-block></app-news-block>
+</section>
 
 <!-- Категории готового бизнеса. -->
 <div class="row garant">

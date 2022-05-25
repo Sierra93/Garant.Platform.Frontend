@@ -61,8 +61,9 @@
     </p>
   </div>
 </div>
-<div class="section">
-  <!-- блок с каруселью -->
+
+<!-- блок с каруселью -->
+<div>
   <app-promo-block-card></app-promo-block-card>
 </div>
 <div class="founder">
@@ -83,15 +84,7 @@
           [(ngModel)]="name"
         />
       </label>
-      <!--      <label class="founder-content__label"-->
-      <!--        >Номер телефона-->
-      <!--        <input-->
-      <!--          class="founder-content__input"-->
-      <!--          type="tel"-->
-      <!--          name="telephone"-->
-      <!--          placeholder="Введите номер телефона"-->
-      <!--        />-->
-      <!--      </label>-->
+
       <div>
         <label class="founder-content__label">Номер телефона</label>
         <p-inputMask
@@ -209,60 +202,23 @@
 </div>
 
 <!-- Область с 3 карточками. -->
-<div class="d-flex three-cards">
-  <div class="col-lg-4 card-business" *ngFor="let item of aDataActions">
-    <p-card
-      class="three-cards-wrapper"
-      header="{{ item.title }}"
-      subheader="{{ item.subTitle }}"
-      [style]="{ width: '100%' }"
-      styleClass="card"
-    >
-      <ng-template pTemplate="header">
-        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-      </ng-template>
-      <p>{{ item.text }}</p>
-      <ng-template pTemplate="footer">
-        <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-        <button class="btn btn-dark">{{ item.buttonText }}</button>
-        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button> -->
-      </ng-template>
-    </p-card>
-  </div>
-</div>
 
-<div class="row" *ngIf="isHideBusinessWithGarant">
-  <div class="col-lg-12 col-xs-12 garant card-line">
-    <p-card class="card-line-wrapper">
-      <ng-template pTemplate="header">
-        <strong>Помощь юристов с составлением договоров</strong>
-        <button type="button" class="close" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </ng-template>
-      <p>{{ oSuggestion.text }}</p>
-      <ng-template pTemplate="footer">
-        <div class="d-flex">
-          <div class="ml-1">
-            <button class="btn btn-dark" routerLink="/deal/start">
-              {{ oSuggestion.button2Text }}
-            </button>
-          </div>
-
-          <div>
-            <button
-              class="btn btn-default btn-show-more"
-              (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
-            >
-              {{ oSuggestion.button1Text }}
-            </button>
-          </div>
-        </div>
-      </ng-template>
-    </p-card>
+<section class="section">
+  <div class="gar-card promo">
+    <div class="gar-row title item">
+      Вы можете приобрести бизнес с гарантиями
+    </div>
+    <div class="gar-row secondary">
+      Вам больше не нужно покупать бизнес онлайн! Все тренды сводятся к покупке
+      бизнеса и управлению им из дома. Предлагаем получить консультацию по
+      покупке бизнеса онлайн.
+    </div>
+    <div class="gar-row">
+      <gar-button role="primary">Получить консультацию</gar-button>
+      <gar-button role="secondary">Позднее</gar-button>
+    </div>
   </div>
-</div>
+</section>
 
 <h5 class="packs-header">Пакеты на создание франшиз упаковки</h5>
 <div class="packs">
@@ -745,7 +701,7 @@
 </div>
 
 <!-- Новый бизнес. -->
-<div class="garant">
+<!-- <div class="garant">
   <p-carousel
     [value]="aNewFranchises"
     [numVisible]="4"
@@ -770,13 +726,11 @@
               [style]="{ width: '100%' }"
               styleClass="p-card-shadow"
             >
-              <ng-template pTemplate="header">
-                <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
+             
               </ng-template>
               <strong>{{ item.textDoPrice }} {{ item.price }} ₽</strong>
               <ng-template pTemplate="footer">
-                <!-- <p-button label="Save" icon="pi pi-check"></p-button>
-                          <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
+               
               </ng-template>
             </p-card>
           </div>
@@ -784,7 +738,7 @@
       </div>
     </ng-template>
   </p-carousel>
-</div>
+</div> -->
 
 <!-- Бизнес блог. -->
 <h5 class="garant title-franchise">Бизнес блог</h5>

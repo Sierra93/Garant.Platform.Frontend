@@ -99,26 +99,6 @@
   </div>
 </div>
 
-<!-- <div class="founder">
-  <div class="founder-content">
-    <div class="founder-content__title">Азамат Булатов</div>
-    <div class="founder-content__subtitle">сооснователь проекта</div>
-    <div class="founder-content__text">Лично ответственный за каждую упакованную франшизу</div>
-    <div class="founder-content__inputs">
-      <label class="founder-content__label">Имя
-        <input class="founder-content__input" type="text" name="name" placeholder="Введите имя">
-      </label>
-      <label class="founder-content__label">Номер телефона
-        <input class="founder-content__input" type="tel" name="telephone" placeholder="Введите номер телефона">
-      </label>
-    </div>
-    <button class="founder-content__button">Обратиться за консультацией</button>
-  </div>
-  <div class="founder-image">
-    <img src="../../../../assets/images/franchise-landing/template_person6 1.png" alt="Фото сооснователя">
-  </div>
-</div> -->
-
 <h5 class="steps-header">4 простых шага для безопасной сделки онлайн</h5>
 <div class="steps">
   <div class="steps-item">
@@ -186,228 +166,29 @@
 </div>
 
 <!-- <div class="row"> -->
-<div class="garant card-line" *ngIf="isHideBusinessWithGarant">
-  <p-card class="card-line-wrapper">
-    <ng-template pTemplate="header">
-      <strong>Вы можете приобрести бизнес с гарантиями</strong>
-      <button type="button" class="close" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </ng-template>
-    <p>{{ oSuggestion.text }}</p>
-    <ng-template pTemplate="footer">
-      <!-- <div class="d-flex"> -->
-      <div class="ml-1">
-        <button class="btn btn-dark" routerLink="/catalog-business">
-          {{ oSuggestion.button2Text }}
-        </button>
-      </div>
 
-      <div>
-        <button
-          class="btn btn-default btn-show-more"
-          (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
-        >
-          {{ oSuggestion.button1Text }}
-        </button>
-      </div>
-
-      <!-- </div> -->
-    </ng-template>
-  </p-card>
-</div>
-<!-- </div> -->
-
+<section class="section">
+  <div class="gar-card promo">
+    <div class="gar-row title item">
+      Вы можете приобрести бизнес с гарантиями
+    </div>
+    <div class="gar-row secondary">
+      Вам больше не нужно покупать бизнес онлайн! Все тренды сводятся к покупке
+      бизнеса и управлению им из дома. Предлагаем получить консультацию по
+      покупке бизнеса онлайн.
+    </div>
+    <div class="gar-row">
+      <gar-button role="primary">Получить консультацию</gar-button>
+      <gar-button role="secondary">Позднее</gar-button>
+    </div>
+  </div>
+</section>
 <!-- Область с 3 карточками. -->
-<div class="d-flex three-cards">
-  <div class="card-business" *ngFor="let item of aDataActions; let last = last">
-    <p-card
-      class="three-cards-wrapper"
-      header="{{ item.title }}"
-      subheader="{{ item.subTitle }}"
-      [style]="{ width: '100%' }"
-      styleClass="card"
-      [class.three-cards-wrapper--last]="last"
-    >
-      <ng-template pTemplate="header">
-        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-      </ng-template>
 
-      <p>
-        {{ item.text }}
-        <span class="three-cards__image"></span>
-      </p>
-      <ng-template pTemplate="footer">
-        <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-        <button class="btn btn-dark">{{ item.buttonText }}</button>
-        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button> -->
-      </ng-template>
-    </p-card>
-  </div>
-</div>
+<!-- Популярный бизнес.
 
-<!-- <h5 class="packs-header">Пакеты юридических услуг</h5>
-<div class="packs">
-  <div class="packs-item"> -->
-<!-- <div class="packs-item__image">
-      <img src="../../../../assets/images/franchise-landing/fast-start 1.png" alt="Пакет из 7 инструментов">
-    </div> -->
-<!-- <button class="packs-item__title">Пакет “Подготовка договора”</button>
-    <div class="packs-item__text">Подготовка договора</div>
-    <ul class="packs-item__list packs-item__list--first">
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Подготовка ключевого договора</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Подготовка актов приема передачи</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Разработка сайта для продажи франшизы (до 10 страниц)</span>
-      </li>
-    </ul>
-    <div class="packs-item-bottom">
-      <p class="packs-item-bottom__title">Срок: 5 рабочих дней</p>
-           <p class="packs-item-bottom__price">Стоимость пакета: 15 000 ₽</p>
-      <button class="packs-item-bottom__button">Подготовить договор за 15 000 ₽</button>
-    </div>
-  </div> -->
 
-<!-- <div class="packs-item"> -->
-<!-- <div class="packs-item__image">
-      <img src="../../../../assets/images/franchise-landing/fast-start 2.png" alt="Пакет из 15 инструментов">
-    </div> -->
-<!-- <button class="packs-item__title">Пакет “Проверка контрагента”</button>
-    <div class="packs-item__text">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью упакованный бизнес во франшизу</div>
-    <ul class="packs-item__list">
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Аудит бизнеса</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка сайта для продажи франшизы (до 10 страниц)</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Книга продаж Вашей франшизы</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка стратегии: «Каналы продаж франшизы»</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Настройка рекламной кампании, для запуска продаж Вашей франшизы либо размещение в ТОП-овом каталоге франшиз;</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Внедрение системы записи звонков</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Контроль качества звонков менеджера, нашим руководителем отдела продаж</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Совместная обработка звонков и возникающих вопросов у клиента</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Настройка CRM-системы</span>
-      </li>
-      <li>
-        <div class="packs-item__no"></div>
-        <span class="packs-item__tool">Гарантированное сопровождение и доведение до первых продаж франшизы;</span>
-      </li>
-    </ul>
-    <div class="packs-item-bottom">
-      <p class="packs-item-bottom__title">Срок: 7 рабочих дней</p>
-           <p class="packs-item-bottom__price">Стоимость пакета: 35 000 ₽</p>
-      <button class="packs-item-bottom__button">Проверить контрагента за 35 000 ₽</button>
-    </div>
-  </div> -->
-
-<!-- <div class="packs-item"> -->
-<!-- <div class="packs-item__image">
-      <img src="../../../../assets/images/franchise-landing/fast-start 3.png" alt="Пакет из 25 инструментов">
-    </div> -->
-<!-- <button class="packs-item__title">Пакет “Сопровождение сделки”</button>
-    <div class="packs-item__text">Наш самый популярный пакет с гарантией. В рамках которого вы получаете полностью упакованный бизнес во франшизу</div>
-    <ul class="packs-item__list packs-item__list--last">
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Аудит бизнеса и анализ конкурентов</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка состава франшизы: определение стоимости франшизы, создание уникального предложения и концепции франшизы</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Разработка пакетов франшизы и определение их стоимости</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Создание финансовой модели франшизы (инвестиции в запуск, доходность и окупаемость)</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Контроль качества звонков менеджера, нашим руководителем отдела продаж</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Совместная обработка звонков и возникающих вопросов у клиента</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Настройка CRM-системы</span>
-      </li>
-      <li>
-        <div class="packs-item__yes"></div>
-        <span class="packs-item__tool">Гарантированное сопровождение и доведение до первых продаж франшизы;</span>
-      </li>
-    </ul>
-    <div class="packs-item-bottom packs-item-bottom--last">
-      <p class="packs-item-bottom__title">Срок: 35 рабочих дней</p>
-      <p class="packs-item-bottom--last__text">Бесплатный бонус: проверка торгового знака + консультирование по окончанию
-        упаковки в течение 6 месяцев + обучение и прокачка Вас и Вашего менеджера;</p>
-      <p class="packs-item-bottom__price">Стоимость пакета: 750 000 ₽</p>
-      <button class="packs-item-bottom__button">Упаковать франшизу за 750 000 ₽</button>
-    </div>
-  </div>
-</div> -->
-
-<!-- Популярный бизнес. -->
-<div class="row section-mb">
-  <div class="col-12">
-    <h5 class="title-franchise">Популярные франшизы</h5>
-  </div>
-  <div
-    class="col-xxl-3 col-xl-3 col-lg-6 col-md-6"
-    *ngFor="let item of aPopularFranchises"
-  >
-    <div class="popular-list">
-      <div>
-        <p-card
-          header="{{ item.title }}"
-          subheader="{{ item.text }}"
-          [style]="{ width: '100%' }"
-          styleClass="p-card-shadow"
-        >
-          <ng-template pTemplate="header">
-            <img [src]="item.url" />
-          </ng-template>
-          <strong>{{ item.textDoPrice }} {{ item.price }} ₽</strong>
-          <ng-template pTemplate="footer"> </ng-template>
-        </p-card>
-      </div>
-    </div>
-  </div>
-</div>
+  
 
 <!-- Новый бизнес. -->
 <div class="garant">

@@ -359,28 +359,6 @@
 </div>
 
 <!-- Область с 3 карточками. -->
-<div class="d-flex three-cards">
-  <div class="col-lg-4 card-business" *ngFor="let item of aDataActions">
-    <p-card
-      class="three-cards-wrapper"
-      header="{{ item.title }}"
-      subheader="{{ item.subTitle }}"
-      [style]="{ width: '100%' }"
-      styleClass="card"
-    >
-      <ng-template pTemplate="header">
-        <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-      </ng-template>
-      <p>{{ item.text }}</p>
-      <ng-template pTemplate="footer">
-        <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-        <button class="btn btn-dark">{{ item.buttonText }}</button>
-        <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button> -->
-      </ng-template>
-    </p-card>
-  </div>
-</div>
 
 <!-- Бизнес блог. -->
 <h5 class="garant title-franchise">Бизнес блог</h5>

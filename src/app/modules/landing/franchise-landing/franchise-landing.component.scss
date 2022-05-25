@@ -465,7 +465,8 @@ strong {
   display: flex;
   gap: 24px;
   width: 1440px;
-  height: 427px;
+  // height: 427px;
+  margin-bottom: 30px;
 
   &-header {
     font-family: "Roboto", sans-serif;
@@ -732,7 +733,7 @@ strong {
 
     &__list {
       width: 463px;
-      height: 1730px;
+      // height: 1730px;
       padding: 0;
 
       li {
@@ -835,11 +836,11 @@ strong {
   display: flex;
   gap: 172px;
   width: 1440px;
-  height: 816px;
+  // height: 816px;
   border-radius: 24px;
   padding: 64px 117px 64px 64px;
   background-color: #1a1a1a;
-  margin-top: 80px;
+  margin-top: 180px;
 
   &-content {
     width: 650px;
@@ -893,14 +894,14 @@ strong {
     &__input {
       display: block;
       font-family: "Roboto", sans-serif;
-      font-size: 1.125rem;
+      font-size: 18px;
       font-weight: 400;
       color: #7a7a7a;
       width: 291px;
       height: 69px;
       border: 1.5px solid #dadada;
       border-radius: 8px;
-      padding: 24px 40px 24px 24px;
+      padding: 24px;
       // margin-bottom: 32px;
     }
 
@@ -909,15 +910,15 @@ strong {
       justify-content: center;
       align-items: center;
       font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
+      font-size: 24px;
       font-weight: 400;
       color: #ffffff;
       line-height: 28px;
-      width: 398px;
+      // width: 398px;
       height: 76px;
       border: none;
       border-radius: 4px;
-      padding: 24px 28px;
+      padding: 24px;
       margin: 0;
       background-color: #1f75fe;
     }

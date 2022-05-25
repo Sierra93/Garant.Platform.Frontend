@@ -54,6 +54,8 @@ export class FranchiseLandingModule implements OnInit {
   name: string = '';
   phoneNumber: string = '';
 
+  
+
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,
@@ -126,6 +128,8 @@ export class FranchiseLandingModule implements OnInit {
   //         throw new Error(e);
   //     }
   // };
+
+    
 
   /**
    * Функция отфильтрует список бизнеса по фильтрам.

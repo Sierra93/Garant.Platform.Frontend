@@ -2,7 +2,10 @@
   <!-- Популярные франшизы. -->
   <div class="row section-mb">
     <div class="gar-row title">Популярные франшизы</div>
-    <gar-carousel [items]="aPopularFranchises$ | async" [template]="cardComponent"></gar-carousel>
+    <gar-carousel
+      [items]="aPopularFranchises$ | async"
+      [template]="cardComponent"
+    ></gar-carousel>
   </div>
 
   <!-- Каталог франшиз. -->
@@ -23,10 +26,11 @@
             <label>Сфера франшиз</label>
             <div class="w-100">
               <gar-select
-                      [(ngModel)]="selectedViewBusiness"
-                      [items]="aViewBusiness"
-                      title="Вид бизнеса"
-                      displayLabel="viewName"></gar-select>
+                [(ngModel)]="selectedViewBusiness"
+                [items]="aViewBusiness"
+                title="Вид бизнеса"
+                displayLabel="viewName"
+              ></gar-select>
             </div>
           </div>
           <div
@@ -35,10 +39,11 @@
             <label>Выбор категории</label>
             <div class="w-100">
               <gar-select
-                      [(ngModel)]="selectedCategory"
-                      [items]="aBusinessCategories"
-                      title="Категория"
-                      displayLabel="categoryName"></gar-select>
+                [(ngModel)]="selectedCategory"
+                [items]="aBusinessCategories"
+                title="Категория"
+                displayLabel="categoryName"
+              ></gar-select>
             </div>
           </div>
 
@@ -49,18 +54,20 @@
             <div class="row">
               <div class="col-6 block-price-min">
                 <gar-input-number
-                        title="от "
-                        prefix="от "
-                        mode="currency"
-                        [(ngModel)]="minPrice"></gar-input-number>
+                  title="от "
+                  prefix="от "
+                  mode="currency"
+                  [(ngModel)]="minPrice"
+                ></gar-input-number>
               </div>
 
               <div class="col-6 block-price-max">
                 <gar-input-number
-                        title="до "
-                        prefix="до "
-                        mode="currency"
-                        [(ngModel)]="maxPrice"></gar-input-number>
+                  title="до "
+                  prefix="до "
+                  mode="currency"
+                  [(ngModel)]="maxPrice"
+                ></gar-input-number>
               </div>
             </div>
           </div>
@@ -88,19 +95,19 @@
                 name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true"
                 (onChange)="onChangeSortPrice()"></p-dropdown> -->
 
-              <p-dropdown
-                class="block-sort-by"
-                [options]="aSortPrices"
-                optionLabel="name"
-                optionCode="value"
-                name="price"
-                [(ngModel)]="selectedSort"
-                placeholder="Цена"
-                [showClear]="true"
-                (onChange)="onChangeSortPrice()"
-              ></p-dropdown>
-            </div>
+            <p-dropdown
+              class="block-sort-by"
+              [options]="aSortPrices"
+              optionLabel="name"
+              optionCode="value"
+              name="price"
+              [(ngModel)]="selectedSort"
+              placeholder="Цена"
+              [showClear]="true"
+              (onChange)="onChangeSortPrice()"
+            ></p-dropdown>
           </div>
+        </div>
 
         <div class="d-flex">
           <div class="">
@@ -328,40 +335,8 @@
       </div>
     </div>
   </div>
-
-  <div class="row section-mb" *ngIf="isHideBusinessWithGarant">
-    <div class="col-12">
-      <div class="franchise-business-creation">
-        <p-card>
-          <ng-template pTemplate="header">
-            <h5>Вы можете приобрести бизнес с гарантиями</h5>
-            <button type="button" class="close" aria-label="Close">
-              <span aria-hidden="true"
-                ><img src="../../../assets/images/cross.svg" alt=""
-              /></span>
-            </button>
-          </ng-template>
-          <p>{{ oSuggestion.text }}</p>
-          <ng-template pTemplate="footer">
-            <div class="d-flex align-items-center">
-              <button
-                class="btn btn-dark more-info-btn"
-                routerLink="/deal/start"
-              >
-                {{ oSuggestion.button2Text }}
-              </button>
-              <button
-                class="btn btn-default btn-show-more"
-                (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
-              >
-                {{ oSuggestion.button1Text }}
-              </button>
-            </div>
-          </ng-template>
-        </p-card>
-      </div>
-    </div>
-  </div>
+<!-- Вы можете приобрести бизнес с гарантиями -->
+ 
 
   <!-- Область с банерами (2 картинки). -->
   <div class="row section-mb">

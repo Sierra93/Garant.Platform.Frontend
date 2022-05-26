@@ -19,7 +19,7 @@ export class FranchiseLandingModule implements OnInit {
   aPopularBusiness: any[] = [];
   // isGarant: boolean = false;
   // aCities: any[] = [];
-  // aBusinessCategories: any[] = [];
+  // aBusinessCategories: any[] = []; 
   aViewBusiness: any[] = [];
   minPrice!: number;
   maxPrice!: number;
@@ -53,8 +53,6 @@ export class FranchiseLandingModule implements OnInit {
   isHideBusinessWithGarant: boolean = true;
   name: string = '';
   phoneNumber: string = '';
-
-  
 
   constructor(
     private http: HttpClient,

@@ -335,8 +335,7 @@
       </div>
     </div>
   </div>
-<!-- Вы можете приобрести бизнес с гарантиями -->
- 
+  <!-- Вы можете приобрести бизнес с гарантиями -->
 
   <!-- Область с банерами (2 картинки). -->
   <div class="row section-mb">
@@ -357,33 +356,6 @@
   </div>
 
   <!-- Область с 3 карточками. -->
-  <div class="row section-mb">
-    <div
-      class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 card-business-holder"
-      *ngFor="let item of aDataActions"
-    >
-      <h3 class="franchise-title">{{ item.title }}</h3>
-      <div class="franchise-three-cards">
-        <p-card [style]="{ width: '100%' }" styleClass="card">
-          <div class="card-business-content">
-            <ng-template pTemplate="header">
-              <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-            </ng-template>
-            <h5 class="franchise-subtitle">{{ item.subTitle }}</h5>
-            <p class="franchise-description-small">{{ item.text }}</p>
-            <button class="three-card-btn btn btn-dark">
-              {{ item.buttonText }}
-            </button>
-            <ng-template pTemplate="footer">
-              <!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-              <!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button> -->
-            </ng-template>
-          </div>
-        </p-card>
-      </div>
-    </div>
-  </div>
 
   <!-- Бизнес блог. -->
   <div class="row section-mb">

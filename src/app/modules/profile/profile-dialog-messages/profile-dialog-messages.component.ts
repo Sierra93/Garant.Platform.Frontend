@@ -29,8 +29,10 @@ export class ProfileDialogMessagesModule implements OnInit, AfterViewChecked {
     dialogId: number = 0;
     chatItemUrl: string = "";
     routeParam: any;
+    backlight: boolean = false;
 
     @ViewChild('chatBox') private chatBoxScroll!: ElementRef<HTMLDivElement>;
+    @ViewChild('submitMessage') private submitMessage!: ElementRef;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -46,11 +48,20 @@ export class ProfileDialogMessagesModule implements OnInit, AfterViewChecked {
       this.scrollToBottom();
     };
 
-    ngAfterViewChecked() {
+    public ngAfterViewChecked() {
         this.scrollToBottom();
     }
 
-    scrollToBottom(): void {
+    public addBackLight(): void {
+        console.log(this.message);
+        if (this.message) {
+            this.backlight = true
+        } else {
+            this.backlight = false
+        }
+    }
+
+    private scrollToBottom(): void {
         try {
             this.chatBoxScroll.nativeElement.scrollTop = this.chatBoxScroll.nativeElement.scrollHeight;
         } catch(err) { }

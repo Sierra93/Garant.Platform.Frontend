@@ -54,11 +54,7 @@ export class ProfileDialogMessagesModule implements OnInit, AfterViewChecked {
 
     public addBackLight(): void {
         console.log(this.message);
-        if (this.message) {
-            this.backlight = true
-        } else {
-            this.backlight = false
-        }
+        this.backlight = (this.message) ? true : false;
     }
 
     private scrollToBottom(): void {

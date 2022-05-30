@@ -1,0 +1,14 @@
+<div class="gar-row">
+    <p class="gar-row-item">
+        <ng-content></ng-content>
+    </p>
+    <gar-button aria-label="Close" (click)="onReject()" class="icon">
+        <gar-icon name="close"></gar-icon>
+    </gar-button>
+</div>
+<ng-container>
+    <p class="gar-row">
+        <gar-button routerLink="{{link}}" role="primary" *ngIf="action">{{action}}</gar-button>
+        <gar-button aria-label="Close" (click)="onReject()" role="secondary" *ngIf="reject">{{reject}}</gar-button>
+    </p>
+</ng-container>

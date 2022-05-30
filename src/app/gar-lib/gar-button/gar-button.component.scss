@@ -32,6 +32,12 @@
     color: $btn-default-color;
     border-radius: 43px;
   }
+
+  &.icon {
+    padding: 0;
+    width: fit-content;
+    height: fit-content;
+  }
   > button {
     height: 100%;
     width: 100%;

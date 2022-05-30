@@ -23,22 +23,11 @@
   </div>
 
   <!-- Бизнес с гарантиями -->
-  <div class="section" *ngIf="!isHideBusinessWithGarant">
-    <div class="home-business-garantee">
-      <div class="gar-row title home-business-garantee-title">Вы можете приобрести бизнес с гарантиями</div>
-
-      <div class="home-business-garantee-text">
-        Воспользовавшись нашим сервисом вы сможете провести безопасную сделку через интернет, провести все средства онлайн и стать полноправным владельцем бизнеса уже сегодня.
-      </div>
-
-      <gar-button routerLink="/deal/start" role="primary" class="home-business-garantee-accept">{{oSuggestion.button2Text}}</gar-button>
-
-      <gar-button role="secondary" (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">{{oSuggestion.button1Text}}</gar-button>
-
-      <button type="button" aria-label="Close" class="home-business-garantee-close" (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant">
-        <gar-icon name="times"></gar-icon>
-      </button>
-    </div>
+  <div class="section">
+    <app-promotion-card action="{{oSuggestion.button2Text}}" reject="{{oSuggestion.button1Text}}" link="/deal/start">
+      <p class="gar-row title">Вы можете приобрести бизнес с гарантиями</p>
+      <p class="gar-row secondary">{{oSuggestion.text}}</p>
+    </app-promotion-card>
   </div>
 
   <!-- Секция быстрого поиска -->

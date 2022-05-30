@@ -1,7 +1,9 @@
 /* Поле ввода */
 .gar-input {
   display: flex;
-  min-width: 193px;
+  &:not(gar-toggle) {
+    min-width: 193px;
+  }
   > * {
     width: 100%;
     > * {

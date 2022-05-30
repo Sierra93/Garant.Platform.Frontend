@@ -15,6 +15,7 @@ import { InputTextModule } from "primeng/inputtext";
 import { GarSelectComponent } from "./gar-select/gar-select.component";
 import { DropdownModule } from "primeng/dropdown";
 import { SelectionByPropertyPipe } from './pipes/selection-by-property.pipe';
+import { GarToggleComponent } from './gar-toggle/gar-toggle.component';
 
 const _COMPONENTS = [
 	GarImgUploaderComponent,
@@ -23,7 +24,8 @@ const _COMPONENTS = [
 	GarButtonComponent,
 	GarInputTextComponent,
 	GarInputNumberComponent,
-	GarSelectComponent
+	GarSelectComponent,
+	GarToggleComponent
 ]
 
 const _PIPES = [

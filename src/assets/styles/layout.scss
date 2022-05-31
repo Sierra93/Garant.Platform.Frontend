@@ -268,6 +268,88 @@ a {
   }
 }
 
+/* Лайаут для страниц с фильтром */
+.gar-filter {
+  --gar-filter-padding: calc(#{$gridGap} / 3);
+
+  position: relative;
+  width: 100%;
+  background-color: $clrLightBlue;
+  border-radius: $border-radius;
+  padding: var(--gar-filter-padding);
+  box-shadow: $box-shadow-card;
+
+  @include tablet-small {
+    --gar-filter-padding: calc(#{$gridGap} / 3 * 2)
+  }
+
+  @include tablet {
+    align-self: flex-start;
+    width: 325px;
+    padding: 0;
+  }
+
+  &-container {
+    background-color: $clrWhite;
+    border-radius: $border-radius;
+    padding: var(--gar-filter-padding);
+  }
+
+  &-section {
+    padding: ($gridGap / 2) 0;
+
+    @include tablet-small {
+      padding: calc(#{$gridGap} / 3 * 2) 0;
+    }
+
+    @include tablet {
+      padding: $gridGap 0;
+    }
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &:not(:first-child) {
+      border-top: 1px solid rgba($clrLightGray, .5);
+    }
+  }
+
+  &-price.gar-input {
+    width: 100%;
+    min-width: auto;
+
+    @include tablet-small {
+      width: calc(50% - calc(#{$gridGap / 2}));
+    }
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &-sibling {
+    --gar-filter-padding: calc(#{$gridGap} / 3);
+
+    width: 100%;
+    background-color: $clrLightBlue;
+    border-radius: $border-radius;
+    padding: var(--gar-filter-padding);
+
+    @include tablet-small {
+      --gar-filter-padding: calc(#{$gridGap} / 3 * 2)
+    }
+
+    @include tablet {
+      width: calc(100% - 325px - calc(#{$gridGap}));
+    }
+  }
+}
+
 /* Класс, описывающий секцию */
 .section {
   margin-bottom: 80px;

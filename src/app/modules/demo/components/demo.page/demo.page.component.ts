@@ -20,6 +20,8 @@ export class DemoPageComponent implements OnInit {
     {name: 'Istanbul', code: 'IST'},
     {name: 'Paris', code: 'PRS'}
   ];
+  toggle = false;
+  toggle2 = true;
   
   ngOnInit(): void {
   }

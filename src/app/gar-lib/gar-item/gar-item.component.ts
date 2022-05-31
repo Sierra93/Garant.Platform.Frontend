@@ -18,4 +18,6 @@ export abstract class GarItemComponent<T> {
 	public set item(value: T | undefined) {
 		this._product$.next(value);
 	}
+	
+	public path: string | undefined;
 }

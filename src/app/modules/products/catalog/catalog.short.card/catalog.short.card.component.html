@@ -8,7 +8,9 @@
                 <span class="gar-row">{{product.title || ''}}</span>
                 <span class="gar-row sub-title">{{product.text || ''}}</span>
             </div>
-            <gar-icon class="gar-row-item right" name="arrow_right" [routerLink]="path"></gar-icon>
+            <gar-button class="icon">
+                <gar-icon class="gar-row-item right" name="arrow_right" [routerLink]="parseUrl" [queryParams]="queryParams"></gar-icon>
+            </gar-button>
         </div>
         <div class="gar-row title item">{{ product.textDoPrice }}{{ product.price }} ₽</div>
     </div>

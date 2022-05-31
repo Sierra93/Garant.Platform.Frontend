@@ -101,10 +101,10 @@
   </div>
 
   <!-- Популярные франшизы -->
-  <div class="section" *ngIf="aPopularFranchises">
+  <div class="section" *ngIf="aPopularFranchises$ | async">
     <div class="gar-row title">Популярные франшизы</div>
 
-    <gar-carousel [items]="aPopularFranchises" [template]="cardShortComponent"></gar-carousel>
+    <gar-carousel [items]="aPopularFranchises$ | async" [template]="cardShortComponent"></gar-carousel>
   </div>
 
   <!-- Новые объявления готового бизнеса -->

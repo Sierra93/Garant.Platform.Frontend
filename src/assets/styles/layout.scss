@@ -75,6 +75,10 @@ a {
       width: fit-content;
     }
   }
+  /* У последней строки нет отступа */
+  &:last-child {
+    margin-bottom: 0;
+  }
   /* Стиль описывающий элемент отображаемый как не делимый элемент строки */
   > .gar-row-item {
     display: flex;
@@ -277,4 +281,9 @@ a {
 /* Задание ширины 100% */
 .full-width {
   width: 100%;
+}
+
+/* Скрытие элемента */
+.gar-hidden {
+  display: none;
 }

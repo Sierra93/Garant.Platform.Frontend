@@ -50,7 +50,6 @@ export class MainPageModule implements OnInit {
     city: string = "";
     category: string = "";
     aNewBusiness: any[] = [];
-    isHideBusinessWithGarant: boolean = false;
     showCategoryMenu: boolean = false;
     
     readonly aDataActions$ = this._promoService.actions$;

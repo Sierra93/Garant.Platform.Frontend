@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CatalogBaseCardComponent } from "../catalog.base.card/catalog.base.card.component";
+import { Params, Router } from "@angular/router";
 
 /**
  * Компонент представления карточки каталога
@@ -20,9 +21,19 @@ import { CatalogBaseCardComponent } from "../catalog.base.card/catalog.base.card
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CatalogShortCardComponent extends CatalogBaseCardComponent<any> {
-
-  constructor() {
-    super();
+  
+  get parseUrl(): string[] {
+    return this.path ? ['/', ...this._router.parseUrl(this.path).root.children.primary.segments.map(s => s.path)] : [];
+  }
+  
+  get queryParams(): Params | undefined {
+    return this.path ? this._router.parseUrl(this.path).queryParams : undefined;
   }
 
+  constructor(
+      private _router: Router
+  ) {
+    super();
+  }
+  
 }

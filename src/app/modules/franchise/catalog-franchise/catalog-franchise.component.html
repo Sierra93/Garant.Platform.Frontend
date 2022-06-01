@@ -2,7 +2,7 @@
   <!-- Популярные франшизы. -->
   <div class="row section-mb">
     <div class="gar-row title">Популярные франшизы</div>
-    <gar-carousel [items]="aPopularFranchises$ | async" [template]="cardComponent"></gar-carousel>
+    <gar-carousel [items]="aPopularFranchises$ | async" [template]="cardComponent" path="franchise/view" queryParamKey="franchiseId"></gar-carousel>
   </div>
 
   <!-- Каталог франшиз. -->

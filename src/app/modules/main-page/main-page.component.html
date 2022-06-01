@@ -101,7 +101,7 @@
   </div>
 
   <!-- Популярные франшизы -->
-  <div class="section" *ngIf="aPopularFranchises">
+  <div class="section" *ngIf="aPopularFranchises$ | async as aPopularFranchises">
     <div class="gar-row title">Популярные франшизы</div>
 
     <gar-carousel [items]="aPopularFranchises" [template]="cardShortComponent"></gar-carousel>

@@ -16,7 +16,6 @@ export abstract class CatalogBaseCardComponent<T> extends GarItemComponent<T> im
 		this._product$.next(value);
 	}
 	
-	path: string | undefined;
 	readonly product$: Observable<T> | undefined = this._product$;
 	
 }

@@ -53,6 +53,10 @@ export class MainPageModule implements OnInit {
     showCategoryMenu: boolean = false;
     
     readonly aDataActions$ = this._promoService.actions$;
+    readonly aPopularFranchises$ = this.commonService.getPopularFranchise().pipe(
+        shareReplay(1),
+        takeUntil(this._destroy$)
+    )
     cardShortComponent = CatalogShortCardComponent;
     /**
      * список последних бизнесов

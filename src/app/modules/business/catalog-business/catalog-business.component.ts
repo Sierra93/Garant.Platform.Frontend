@@ -7,6 +7,7 @@ import { API_URL } from 'src/app/core/core-urls/api-url';
 import { FilterBusinessWithPaginationInput } from 'src/app/models/business/input/filter-business-with-pagination-input';
 import { PaginationInput } from 'src/app/models/pagination/input/pagination-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
+import { CatalogShortCardComponent } from "../../products/catalog/catalog.short.card/catalog.short.card.component";
 
 @Component({
     selector: "catalog-business",
@@ -59,6 +60,8 @@ export class CatalogBusinessModule implements OnInit {
   isHideBusinessWithGarant: boolean = true;
   filterRang: number[] = [20, 80];
   rangValue: number[] = [20, 80];
+
+  cardComponent = CatalogShortCardComponent;
 
   constructor(
     private http: HttpClient,

@@ -57,7 +57,6 @@
             <div class="gar-grid gar-grid_wrap">
               <gar-input-number
                 title="от "
-                prefix="от "
                 mode="currency"
                 [(ngModel)]="minPrice"
                 class="gar-filter-price"
@@ -65,7 +64,6 @@
 
               <gar-input-number
                 title="до "
-                prefix="до "
                 mode="currency"
                 [(ngModel)]="maxPrice"
                 class="gar-filter-price"
@@ -101,7 +99,7 @@
         <div class="gar-grid-cards">
           <app-catalog-simple-card
             *ngFor="let item of aFranchises"
-            item="aFranchise"
+            [item]="item"
           >
           </app-catalog-simple-card>
         </div>

@@ -1,61 +1,60 @@
-<div class="row">
-  <!-- Левая часть. -->
-  <div class="col-xxl-3 col-xl-3 col-lg-4">
+<div class="chat">
+  <div class="chat__sidebar">
     <manage-account></manage-account>
   </div>
-
-  <!-- Правая часть. -->
-  <div class="col-xxl-9 col-xl-9 col-lg-8">
-    <h2 class="profile-title">
-      <a routerLink="/profile/chat/dialogs" class="me-3">
-        <img src="./../../../../assets/images/back.svg" alt="gobizy icon" />
-      </a>
-      <span>Чат с {{fio}}</span>
+  <div class="chat__article">
+    <h2 class="chat__any-title">
+      <a class="chat__icon-link" routerLink="/profile/chat/dialogs">&#8592;</a>
+      <span class="chat__any-label">
+        Чат с <span class="chat__someone">{{ fio }}</span>
+      </span>
     </h2>
-
-    <div class="block-right block-profile">
-      <div class="row">
-        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-          <img class="space-intgr w-100" src="{{chatItemUrl}}" />
+    <div class="chat__messanger">
+      <div class="chat__discussion">
+        <div class="chat__any-img">
+          <img class="chat__discussion-img" [src]="chatItemUrl" />
         </div>
-
-        <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 d-flex justify-content-between chat-header-wrapper">
-          <div class="chat-item-name d-flex flex-column">
-            <span>Предмет чата:</span>
-            <span>{{chatItemName}}</span>
-          </div>
+        <div class="chat__topic-discussion">
+          <span class="chat__topic-label">Тема обсуждения: </span>
+          <span class="chat__topic-name">{{ chatItemName }}</span>
+        </div>
+        <div class="chat__starting-time" #chatBox>
+          Начало чата: {{ dateStartDialog }}
         </div>
       </div>
-
-      <hr class="hr">
-
-      <div class="block-chat position-relative" #chatBox>
-        <div class="chat-start-date sticky-top text-center">
-          <span>Начало чата: </span>
-          <span>{{dateStartDialog}}</span>
-        </div>
-
-        <div class="" *ngFor="let item of aMessages">
-          <div class="block-messages">
-            <div class="message" [ngClass]="{messageEnd:item.isMyMessage}">
-              <span>{{item.message}}</span>
+      <div class="chat__underline"></div>
+      <div class="chat__correspondence" #chatBox>
+        <ng-scrollbar
+          [appearance]="'standard'"
+          [viewClass]="'scrollar-viewport'"
+          [trackClass]="'scrollar-track'"
+          [thumbClass]="'scrollar-thumb'"
+        >
+          <div class="chat__message" *ngFor="let item of aMessages">
+            <div class="chat__message-text message">
+              <span>{{ item.message }}</span>
             </div>
           </div>
-        </div>
+        </ng-scrollbar>
       </div>
-
-      <div class="d-flex align-items-center message-input">
-        <div>
-          <img src="./../../../../assets/images/attach-file.svg" alt="attach file icon gobizy" />
+      <div class="chat__submit">
+        <div class="chat__any-file">
+          <gar-icon path="./../../../../assets/images/attach-file.svg"></gar-icon>
         </div>
-        <div class="w-100 position-relative">
-          <textarea class="w-100 mb-0" pInputTextarea [autoResize]="true"
-          placeholder="Введите сообщение" [(ngModel)]="message" (keydown.enter)="onSendMessageAsync()"></textarea>
-          <button class="position-absolute reply" (click)="onSendMessageAsync()">
-            <!-- <img src="./../../../../assets/images/reply.svg" alt="reply icon gobizy" /> -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21.5005 11.0999L3.60045 2.09993C2.70045 1.69993 1.70045 2.49993 2.10045 3.39993L4.60045 10.0999L16.0004 11.9999L4.60045 13.8999L2.10045 20.5999C1.80045 21.4999 2.70045 22.2999 3.60045 21.7999L21.5005 12.7999C22.2005 12.4999 22.2005 11.4999 21.5005 11.0999Z" />
-              </svg>
+        <div class="chat__any-text">
+          <textarea
+            #submitMessage
+            class="chat__input-text"
+            [ngClass]="{'activated': backlight}"
+            pInputTextarea
+            [autoResize]="true"
+            placeholder="Введите сообщение"
+            [(ngModel)]="message"
+            (keydown.enter)="onSendMessageAsync()"
+            (input)="addBackLight()"
+          ></textarea>
+          <button class="chat__submit-message" (click)="onSendMessageAsync()" [ngClass]="{'activated': backlight}">
+            <gar-icon name="telegram.svg"></gar-icon>
           </button>
         </div>
       </div>

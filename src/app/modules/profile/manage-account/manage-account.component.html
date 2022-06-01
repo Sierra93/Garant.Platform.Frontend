@@ -1,50 +1,45 @@
-<div style="margin-bottom: 5rem;">
-  <h2 class="profile-title">Управление аккаунтом</h2>
-
-  <div class="block-left">
-    <div class="d-flex align-items-center justify-content-between">
-      <div class="profile-img">
+<div class="manage-account">
+  <h2 class="manage-account__any-title">Управление аккаунтом</h2>
+  <div class="manage-account__sidebar">
+    <div class="manage-account__person">
+      <div class="manage-account__photo">
         <p-avatar image="../../../assets/images/nophoto.jpg" styleClass="" shape="circle"></p-avatar>
       </div>
-
-      <div class="profile-fio">
-        <div class="d-flex flex-column mb-4">
-          <span class="label">ФИО</span>
-          <strong>{{profileData.firstName}} {{profileData.lastName}}</strong>
+      <div class="manage-account__info">
+        <div class="manage-account__userinfo">
+          <span class="manage-account__any-label">ФИО</span>
+          <span class="manage-account__username">{{profileData.firstName}} {{profileData.lastName}}</span>
         </div>
-
-        <div class="d-flex flex-column">
-          <span class="label">В качестве</span>
-          <strong>{{role}}</strong>
+        <div class="manage-account__any-status">
+          <span class="manage-account__any-label">В качестве</span>
+          <span class="manage-account__userstatus">{{ role }}</span>
         </div>
       </div>
     </div>
-
-    <hr class="hr">
-
-    <div class="profile-stats">
-      <div class="d-flex flex-column">
-        <span>Количество объявлений</span>
-        <strong>{{countAd}}</strong>
+    <div class="manage-account__underline"></div>
+    <div class="manage-account__deal">
+      <div class="manage-account__any-item">
+        <span class="manage-account__any-label">Количество объявлений</span>
+        <span class="manage-account__data-item">{{ countAd }}</span>
       </div>
-
-      <div class="d-flex flex-column">
-        <span>На сайте</span>
-        <strong>{{countTimeSite}}</strong>
+      <div class="manage-account__any-item">
+        <span class="manage-account__any-label">Количество сделок через гарант</span>
+        <span class="manage-account__data-item">{{ countTimeSite }}</span>
+      </div>
+      <div class="manage-account__any-item">
+        <span class="manage-account__any-label">На сайте</span>
+        <span class="manage-account__data-item">1 месяц</span>
       </div>
     </div>
-
-    <hr class="hr">
-
-    <div class="profile-menu">
-      <ul *ngFor="let item of aProfileMenu" class="list-unstyled">
-        <li>
-          <a routerLink="/{{item.navigationLink}}" *ngIf="!item.isHide" routerLinkActive="active" class="d-flex justify-content-between">
-            <span>{{item.navigationText}}</span>
-            <img src="./../../../../assets/images/Arrow 1.png" alt="">
-          </a>
-        </li>
-      </ul>
+    <div class="manage-account__underline"></div>
+    <div class="manage-account__menu">
+      <a routerLink="/" class="manage-account__menu-item" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:true}">Мои данные</a>
+      <a routerLink="/catalog-franchise" class="manage-account__menu-item" routerLinkActive="is-active">Мои сообщения</a>
+      <a routerLink="/profile/chat/dialogs/dialog" class="manage-account__menu-item" routerLinkActive="is-active">Мои объявления</a>
+      <a routerLink="/deal/start" class="manage-account__menu-item" routerLinkActive="is-active">Мои сделки</a>
+      <a routerLink="/deal/start" class="manage-account__menu-item" routerLinkActive="is-active">Избранное</a>
+      <a routerLink="/consulting/start" class="manage-account__menu-item" routerLinkActive="is-active">Уведомления</a>
+      <a routerLink="/franchise/start" class="manage-account__menu-item" routerLinkActive="is-active">Связь с юристом</a>
     </div>
   </div>
 </div>

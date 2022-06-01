@@ -139,15 +139,16 @@ export class GarCarouselComponent<T> implements AfterViewInit {
 			items.forEach((item, index) => {
 				const _factory: ComponentFactory<GarItemComponent<T>> = this._cfr.resolveComponentFactory(this.template!);
 				const componentFactory  = this.viewRefs!.find((el, i) => i === index)!.createComponent(_factory);
+				const _queryParams = new URLSearchParams();
+				// @ts-ignore
+				_queryParams.set(this.queryParamKey!, item[this.queryParamKey])
 				componentFactory.instance.path = this.path
 					? this.queryParamKey
-						// @ts-ignore
-						? `${this.path}?${this.queryParamKey}=${item[this.queryParamKey]}`
+						? `${this.path}?${_queryParams}`
 						// @ts-ignore
 						: `${this.path}/${item[this.queryParamKey]}`
 					: this.queryParamKey
-						// @ts-ignore
-						? `?${this.queryParamKey}=${item[this.queryParamKey]}`
+						? `?${_queryParams}`
 						: undefined;
 				componentFactory.instance.item = item;
 				componentFactory.changeDetectorRef.detectChanges();

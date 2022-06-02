@@ -1,7 +1,7 @@
 <!-- Популярный бизнес. -->
 <div class="section">
   <div class="gar-row title">Популярный готовый бизнес</div>
-  <gar-carousel [items]="aPopularBusiness" [template]="cardComponent"></gar-carousel>
+  <gar-carousel [items]="aPopularBusiness" [template]="cardComponent" path="business/view" queryParamKey="businessId"></gar-carousel>
 </div>
 
 <div class="section">
@@ -19,11 +19,9 @@
           <gar-select
             [(ngModel)]="selectedSort"
             [items]="aSortPrices"
+            [cleanable]="false"
             displayLabel="name"
             name="price"
-            (onChange)="onChangeSortPrice()"
-            optionLabel="name"
-            optionCode="value"
           ></gar-select>
         </div>
 
@@ -33,6 +31,7 @@
           <gar-select
             [(ngModel)]="selectedCategory"
             [items]="aBusinessCategories"
+            [cleanable]="false"
             displayLabel="categoryName"
             name="category"
           >
@@ -45,6 +44,7 @@
           <gar-select
             [(ngModel)]="selectedCity"
             [items]="aCities"
+            [cleanable]="false"
             displayLabel="businessCityName"
             name="city"
           >

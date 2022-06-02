@@ -54,14 +54,17 @@ a {
     }
   }
   /* Правый элемент */
-  > * {
-    &:not(:last-child) {
-      margin-right: $gar-row-items-between-horizontal-margin;
-    }
-    &.right {
-      margin-left: auto;
-      flex-basis: auto;
-      word-break: normal;
+  &:not(.gar-grid) {
+    > * {
+      &:not(:last-child) {
+        margin-right: $gar-row-items-between-horizontal-margin;
+      }
+
+      &.right {
+        margin-left: auto;
+        flex-basis: auto;
+        word-break: normal;
+      }
     }
   }
   /* Элемент, занимающий область по ширине своего контента */
@@ -93,11 +96,22 @@ a {
         margin-left: $gar-card-between-horizontal-margin;
       }
     }
+
+    > * {
+      &:not(:last-child) {
+        margin-bottom: $gar-row-items-between-vertical-margin;
+      }
+    }
+  }
+
+  /* Строка, игнорирующая адаптив */
+  &.no-adaptive-row {
+    white-space: nowrap;
   }
 
   /* Перестраиваем строку в колонку на мобилке */
   @include phone {
-    &:not(.gar-breadcrumbs-dotted) {
+    &:not(.gar-breadcrumbs-dotted):not(.no-adaptive-row) {
       flex-direction: column;
     }
   }
@@ -147,6 +161,11 @@ a {
   border-radius: $border-radius-card;
   background-color: $clrWhite;
   box-shadow: $box-shadow-card;
+
+  & .gar-row.secondary {
+    color: $clrDarkGray;
+  }
+
   &:not(.secondary) {
     padding: $card-padding;
   }
@@ -368,4 +387,36 @@ a {
 /* Скрытие элемента */
 .gar-hidden {
   display: none;
+}
+
+/* Характеристика какой либо сущности (gar-property-value) */
+.gar-property-value {
+  > *:first-child {
+    // описание характеристики
+  }
+  > *:last-child {
+    // значение характеристики
+    white-space: nowrap;
+  }
+}
+
+/* Галерея */
+p-galleriacontent {
+  .p-galleria {
+    height: 418px;
+
+    &-content {
+      height: 100%;
+    }
+    &-item-wrapper {
+      height: 100%;
+
+      & .p-galleria-item {
+        > img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
 }

@@ -7,6 +7,7 @@ import { CreateUpdateBusinessInput } from 'src/app/models/business/input/busines
 import { GetBusinessInput } from 'src/app/models/business/input/get-business-input';
 import { RequestBusinessInput } from 'src/app/models/request/input/request-business-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
+import { Observable, of } from "rxjs";
 
 @Component({
   selector: 'view-ready-business',
@@ -63,6 +64,73 @@ export class ViewReadyBusinessModule implements OnInit {
   number: string = '';
   isHidePeculiarity: boolean = false;
   isUrlVideo: boolean = false;
+  
+  public readonly listAdvantagesBusiness$: Observable<{title: string; description: string; result: string}[]> = of([{
+    title: 'Стоимость',
+    description: 'полная стоимость бизнеса',
+    result: '2 400 000 ₽'
+  }, {
+    title: 'Оборот',
+    description: 'средняя выручка',
+    result: '400 000 ₽'
+  }, {
+    title: 'Прибыль',
+    description: 'чистая прибыль за месяц',
+    result: '205 000 ₽'
+  }, {
+    title: 'Окупаемость',
+    description: 'планируемый срок',
+    result: '10-12 месяцев'
+  }, {
+    title: 'Рентабельность',
+    description: 'в процентах',
+    result: '35%'
+  }, {
+    title: 'Возраст бизнеса',
+    description: 'с момента основания',
+    result: '4 года'
+  }]);
+  
+  public readonly listAdvantagesCompany$: Observable<{title: string; description: string; result: string}[]> = of([{
+    title: 'Сотрудников',
+    description: 'компании',
+    result: '15'
+  }, {
+    title: 'Форма',
+    description: 'организационно-правовая',
+    result: 'ООО'
+  }, {
+    title: 'Доля',
+    description: 'к продаже',
+    result: '100%'
+  }, {
+    title: 'Сайт',
+    description: 'Сайт',
+    result: 'Ссылка'
+  }]);
+  
+  public readonly propertyBusiness$: Observable<{title: string; result: string}[]> = of([{
+    title: 'Оборудование, мебель, оргтехника',
+    result: '350 000 ₽'
+  }, {
+    title: 'Обучающий материал',
+    result: '300 000 ₽'
+  }, {
+    title: 'Переуступка договора аренды',
+    result: '120 000 ₽'
+  }, {
+    title: 'Клиентская база',
+    result: '100 000 ₽'
+  }, {
+    title: 'Сайт',
+    result: '35 000 ₽'
+  }, {
+    title: 'Фирма ООО',
+    result: '150 000 ₽'
+  }, {
+    title: 'Итого',
+    result: '4 685 000 ₽'
+  }]);
 
   constructor(
     private http: HttpClient,

@@ -14,10 +14,74 @@
       border-radius: initial;
     }
   }
+  .gar-card {
+    &.presentation {
+      height: 200px;
+      background-color: aliceblue;
+    }
+    &.basic {
+      width: 70%;
+    }
+    &.example {
+      
+      background-color: aliceblue;
+    }
+  }
+  .gar-row {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #2C2C2C;
+    &.buttons {
+      margin-top: auto;
+    }
+    &.secondary {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 14px;
+      color: #7A7A7A;
+    }
+    &.lesson {
+      width: 70%;
+    }
+    &.title {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-size: 18px;
+      line-height: 21px;
+      color: #2C2C2C;
+      &.item {
+        margin-bottom: 40px;
+        &-coffee {
+          margin-bottom: 5px;
+        }
+      }
+      
+    }
+  }
+  .picture {
+    height: 140px;
+    width: 140px;
+  
+    >img {
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
 }
 
 
-
+.gar-property {
+  &-value {
+    width: 385px;
+    margin-bottom: 40px;
+  }
+}
 .section-margin {
   margin-bottom: 5rem;
 }
@@ -85,6 +149,7 @@
     font-weight: 500;
     color: #000;
     margin-bottom: .5rem;
+    min-height: 55px;
   }
 
   span {
@@ -260,7 +325,12 @@
     }
   }
 }
-
+.download-presentation {
+  width: 221px;
+  margin-top: 20px;
+  
+  
+}
 .franchise-packages {
   font-family: 'Roboto', sans-serif;
 

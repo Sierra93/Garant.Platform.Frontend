@@ -80,6 +80,7 @@ import { NewsModule } from "./modules/news/news.module";
 import { PromoModule } from "./modules/promo/promo.module";
 import { WINDOW } from "../environments/window/window.token";
 import { WindowProvider } from "../environments/window/window.provider";
+import { NgxMetrikaModule } from "@kolkov/ngx-metrika";
 
 @NgModule({
   declarations: [
@@ -153,7 +154,8 @@ import { WindowProvider } from "../environments/window/window.provider";
 		InputMaskModule,
 		ProductsModule,
 		NewsModule,
-		PromoModule
+		PromoModule,
+		NgxMetrikaModule.forRoot()
 	],
   
   providers: [

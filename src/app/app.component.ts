@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Spinkit } from 'ng-http-loader';
+import { MetrikaService } from "./services/common/metrika.service";
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,13 @@ import { Spinkit } from 'ng-http-loader';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   isGarant: boolean = false;
   spinnerStyle = Spinkit;
 
-  constructor() { }
+  constructor(
+      private _metrika: MetrikaService
+  ) { }
 
   ngDoCheck() {
     if (window.location.href.includes("stage")) {
@@ -20,4 +23,8 @@ export class AppComponent {
       this.isGarant = false;
     }
   };
+  
+  ngOnInit(): void {
+    this._metrika.initMetrika();
+  }
 }

@@ -1,199 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
+<form class="form-auth">
+  <h5 class="gar-row title">Добавить объявление</h5>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+  <div class="form-auth__section">
+    <div class="gar-row title item">Вид бизнеса</div>
 
-<body>
-  <!-- <div class="text-center">
-    <h5>Добавить объявление</h5>
-    <span class="title-small">Вид бизнеса</span>
+    <div class="gar-grid">
+      <div class="gar-grid gar-grid_small">
+        <p-radioButton
+          name="businessType"
+          inputId="franch"
+          value="Franchise"
+          [(ngModel)]="selectedValue"
+          (onClick)="onSelectCheck()"
+        >
+        </p-radioButton>
 
-    <div class="d-flex justify-content-center">
-      <div>
-        <p-checkbox name="franchise" value="New York" inputId="franch"></p-checkbox>
-        <label for="franch" class="control-label-checkbox">Франшиза</label>
+        <label for="franch" class="form-auth__label-radio">Франшиза</label>
       </div>
 
-      <div class="block-space-check"></div>
+      <div class="gar-grid gar-grid_small">
+        <p-radioButton
+          name="businessType"
+          inputId="bus"
+          value="Business"
+          [(ngModel)]="selectedValue"
+          (onClick)="onSelectCheck()">
+        </p-radioButton>
 
-      <div>
-        <p-checkbox name="business" value="New York" inputId="bus"></p-checkbox>
-        <label for="bus" class="control-label-checkbox">Готовый бизнес</label>
+        <label for="bus" class="form-auth__label-radio">Готовый бизнес</label>
       </div>
     </div>
-
-    <div>
-      <span class="title-small">Выбор сферы</span>
-      <strong>Город</strong><br>
-      <p-dropdown [options]="aCategories" optionLabel="categoryName" name="category" [(ngModel)]="selectedCategory"
-        placeholder="Город" [showClear]="true"></p-dropdown>
-    </div>
-
-    <div>
-        <span class="title-small">Выбор сферы</span>
-        <p-dropdown [options]="aCategories" optionLabel="categoryName" name="category" [(ngModel)]="selectedCategory"
-          placeholder="Сфера" [showClear]="true"></p-dropdown>
-      </div>
-  </div> -->
-
-  <div class="space-top-auth-form form-auth d-flex justify-content-center">
-    <form class="block-form-auth">
-      <h5>Добавить объявление</h5>
-
-      <div class="space-top-bottom-32">
-        <strong class="title-small">Вид бизнеса</strong>
-      </div>
-
-      <div class="d-flex justify-content-center">
-        <div>
-          <p-radioButton
-              name="businessType"
-              inputId="franch"
-              value="Franchise"
-              [(ngModel)]="selectedValue"
-              (onClick)="onSelectCheck()">
-        </p-radioButton>
-          <label for="franch" class="control-label-checkbox">Франшиза</label>
-        </div>
-
-        <div class="block-space-check"></div>
-
-        <div>
-          <p-radioButton
-            name="businessType"
-            inputId="bus"
-            value="Business"
-            [(ngModel)]="selectedValue"
-            (onClick)="onSelectCheck()">
-        </p-radioButton>
-          <label for="bus" class="control-label-checkbox">Готовый бизнес</label>
-        </div>
-      </div>
-
-      <div>
-        <div class="space-top-bottom-32">
-          <strong class="title-small">Выбор сферы</strong>
-        </div>
-
-        <p-dropdown
-          [options]="aFranchiseCategories"
-          optionLabel="categoryName"
-          optionCode="categoryCode"
-          [filter]="true"
-          name="category"
-          placeholder="Выберите сферу"
-          [(ngModel)]="selectedCategory"
-          [showClear]="true"
-          (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
-          (onFilter)="onFilterSphereAsync($event.filter)"
-          *ngIf="isSelectFranch">
-      </p-dropdown>
-
-      <p-dropdown
-          [options]="aBusinessCategories"
-          optionLabel="categoryName"
-          optionCode="categoryCode"
-          [filter]="true"
-          name="category"
-          placeholder="Выберите сферу"
-          [(ngModel)]="selectedCategory"
-          [showClear]="true"
-          (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
-          (onFilter)="onFilterSphereAsync($event.filter)"
-          *ngIf="isSelectBus">
-      </p-dropdown>
-      </div>
-
-      <div>
-        <div class="space-top-bottom-32">
-          <strong class="title-small">Выбор категории</strong>
-        </div>
-
-        <p-dropdown
-          [options]="aFranchiseSubCategories"
-          optionLabel="subCategoryName"
-          [filter]="true"
-          name="subCategory"
-          [(ngModel)]="selectedSubCategory"
-            optionCode="categoryCode"
-            placeholder="Выберите категорию"
-            [showClear]="true"
-            (onFilter)="onFilterCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)"
-            *ngIf="isSelectFranch">
-        </p-dropdown>
-
-        <p-dropdown
-          [options]="aBusinessSubCategories"
-          optionLabel="subCategoryName"
-          [filter]="true"
-          name="subCategory"
-          [(ngModel)]="selectedSubCategory"
-            optionCode="categoryCode"
-            placeholder="Выберите категорию"
-            [showClear]="true"
-            (onFilter)="onFilterCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)"
-            *ngIf="isSelectBus">
-        </p-dropdown>
-      </div>
-
-      <div *ngIf="isSelectBus">
-        <div class="space-top-bottom-32">
-          <strong class="title-small">Выбор города</strong>
-        </div>
-
-        <p-dropdown [options]="aCities" optionLabel="businessCityName" name="cityName" [(ngModel)]="selectedCityName"
-          placeholder="Выберите город" [showClear]="true"></p-dropdown>
-      </div>
-
-      <div class="d-flex space-top-bottom-32">
-        <p-checkbox
-            name="condition"
-            inputId="cond"
-            [(ngModel)]="isSelectGobizy"
-            [binary]="true">
-
-        </p-checkbox>
-
-        <label for="cond" class="control-label-checkbox">
-          Согласен с условиями использования<br>
-          сервисов GoBizy и обработки персональных<br>
-          данных
-        </label>
-      </div>
-
-      <div class="d-flex space-top-bottom-32">
-        <p-checkbox
-            name="sell"
-            inputId="sell"
-            [(ngModel)]="isSelectSell"
-            [binary]="true">
-        </p-checkbox>
-
-        <label for="sell" class="control-label-checkbox">
-          Хочу продать бизнес онлайн
-        </label>
-      </div>
-
-      <div class="text-center">
-        <!-- <button
-          class="btn btn-default btn-code-active"
-          (click)="onContinue(isSelectFranch, isSelectBus, isSelectGobizy, isSelectSell)"
-          (disabled)="isSelectGobizy">
-        Продолжить
-      </button> -->
-      <p-button
-        label="Продолжить"
-        [disabled]="!isSelectGobizy || !isSelectSell"
-        (click)="onContinue(isSelectFranch, isSelectBus, isSelectGobizy, isSelectSell)">
-    </p-button>
-      </div>
-    </form>
   </div>
 
-</body>
+  <div class="form-auth__section">
+    <div class="gar-row title item">Выбор сферы</div>
 
-</html>
+    <p-dropdown
+      [options]="aFranchiseCategories"
+      optionLabel="categoryName"
+      optionCode="categoryCode"
+      [filter]="true"
+      name="category"
+      placeholder="Выберите сферу"
+      [(ngModel)]="selectedCategory"
+      [showClear]="false"
+      (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
+      (onFilter)="onFilterSphereAsync($event.filter)"
+      *ngIf="isSelectFranch"
+    >
+    </p-dropdown>
+
+    <p-dropdown
+      [options]="aBusinessCategories"
+      optionLabel="categoryName"
+      optionCode="categoryCode"
+      [filter]="true"
+      name="category"
+      placeholder="Выберите сферу"
+      [(ngModel)]="selectedCategory"
+      [showClear]="false"
+      (onChange)="onChangeValueSphereAsync($event.value.categoryCode, $event.value.franchiseCategorySysName)"
+      (onFilter)="onFilterSphereAsync($event.filter)"
+      *ngIf="isSelectBus">
+    </p-dropdown>
+  </div>
+
+  <div class="form-auth__section">
+    <div class="gar-row title item">Выбор категории</div>
+
+    <p-dropdown
+      [options]="aFranchiseSubCategories"
+      optionLabel="subCategoryName"
+      [filter]="true"
+      name="subCategory"
+      [(ngModel)]="selectedSubCategory"
+      optionCode="categoryCode"
+      placeholder="Выберите категорию"
+      [showClear]="false"
+      (onFilter)="onFilterCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)"
+      *ngIf="isSelectFranch">
+    </p-dropdown>
+  
+    <p-dropdown
+      [options]="aBusinessSubCategories"
+      optionLabel="subCategoryName"
+      [filter]="true"
+      name="subCategory"
+      [(ngModel)]="selectedSubCategory"
+      optionCode="categoryCode"
+      placeholder="Выберите категорию"
+      [showClear]="false"
+      (onFilter)="onFilterCategoryAsync($event.filter, $event.value.categoryCode, $event.value.franchiseCategorySysName)"
+      *ngIf="isSelectBus">
+    </p-dropdown>
+  </div>
+
+  <div class="form-auth__section" *ngIf="isSelectBus">
+    <div class="gar-row title item">Выбор города</div>
+
+    <p-dropdown
+      [options]="aCities"
+      optionLabel="businessCityName"
+      name="cityName"
+      [(ngModel)]="selectedCityName"
+      placeholder="Выберите город"
+      [showClear]="false"
+    ></p-dropdown>
+  </div>
+
+  <div class="form-auth__section gar-grid gar-grid_small gar-grid_align-center">
+    <p-checkbox
+      name="condition"
+      inputId="cond"
+      [(ngModel)]="isSelectGobizy"
+      [binary]="false"
+    >
+    </p-checkbox>
+
+    <label for="cond" class="form-auth__label-checkbox">
+      Согласен с условиями использования<br>
+      сервисов GoBizy и обработки персональных<br>
+      данных
+    </label>
+  </div>
+
+  <div class="form-auth__section gar-grid gar-grid_small gar-grid_align-center">
+    <p-checkbox
+      name="sell"
+      inputId="sell"
+      [(ngModel)]="isSelectSell"
+      [binary]="true"
+    >
+    </p-checkbox>
+
+    <label for="sell" class="form-auth__label-checkbox">
+      Хочу продать бизнес онлайн
+    </label>
+  </div>
+
+  <div class="form-auth__section">
+    <!-- TODO добавить кнопке
+    [disabled]="!isSelectGobizy || !isSelectSell" -->
+    <gar-button
+      role="primary"
+      (click)="onContinue(isSelectFranch, isSelectBus, isSelectGobizy, isSelectSell)"
+      class="full-width"
+    >
+      Продолжить
+    </gar-button>
+  </div>
+</form>

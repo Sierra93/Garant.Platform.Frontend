@@ -54,14 +54,17 @@ a {
     }
   }
   /* Правый элемент */
-  > * {
-    &:not(:last-child) {
-      margin-right: $gar-row-items-between-horizontal-margin;
-    }
-    &.right {
-      margin-left: auto;
-      flex-basis: auto;
-      word-break: normal;
+  &:not(.gar-grid) {
+    > * {
+      &:not(:last-child) {
+        margin-right: $gar-row-items-between-horizontal-margin;
+      }
+
+      &.right {
+        margin-left: auto;
+        flex-basis: auto;
+        word-break: normal;
+      }
     }
   }
   /* Элемент, занимающий область по ширине своего контента */
@@ -74,6 +77,10 @@ a {
       flex-basis: 0;
       width: fit-content;
     }
+  }
+  /* У последней строки нет отступа */
+  &:last-child {
+    margin-bottom: 0;
   }
   /* Стиль описывающий элемент отображаемый как не делимый элемент строки */
   > .gar-row-item {
@@ -89,11 +96,22 @@ a {
         margin-left: $gar-card-between-horizontal-margin;
       }
     }
+
+    > * {
+      &:not(:last-child) {
+        margin-bottom: $gar-row-items-between-vertical-margin;
+      }
+    }
+  }
+
+  /* Строка, игнорирующая адаптив */
+  &.no-adaptive-row {
+    white-space: nowrap;
   }
 
   /* Перестраиваем строку в колонку на мобилке */
   @include phone {
-    &:not(.gar-breadcrumbs-dotted) {
+    &:not(.gar-breadcrumbs-dotted):not(.no-adaptive-row) {
       flex-direction: column;
     }
   }
@@ -143,6 +161,11 @@ a {
   border-radius: $border-radius-card;
   background-color: $clrWhite;
   box-shadow: $box-shadow-card;
+
+  & .gar-row.secondary {
+    color: $clrDarkGray;
+  }
+
   &:not(.secondary) {
     padding: $card-padding;
   }
@@ -264,6 +287,88 @@ a {
   }
 }
 
+/* Лайаут для страниц с фильтром */
+.gar-filter {
+  --gar-filter-padding: calc(#{$gridGap} / 3);
+
+  position: relative;
+  width: 100%;
+  background-color: $clrLightBlue;
+  border-radius: $border-radius;
+  padding: var(--gar-filter-padding);
+  box-shadow: $box-shadow-card;
+
+  @include tablet-small {
+    --gar-filter-padding: calc(#{$gridGap} / 3 * 2)
+  }
+
+  @include tablet {
+    align-self: flex-start;
+    width: 325px;
+    padding: 0;
+  }
+
+  &-container {
+    background-color: $clrWhite;
+    border-radius: $border-radius;
+    padding: var(--gar-filter-padding);
+  }
+
+  &-section {
+    padding: ($gridGap / 2) 0;
+
+    @include tablet-small {
+      padding: calc(#{$gridGap} / 3 * 2) 0;
+    }
+
+    @include tablet {
+      padding: $gridGap 0;
+    }
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &:not(:first-child) {
+      border-top: 1px solid rgba($clrLightGray, .5);
+    }
+  }
+
+  &-price.gar-input {
+    width: 100%;
+    min-width: auto;
+
+    @include tablet-small {
+      width: calc(50% - calc(#{$gridGap / 2}));
+    }
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &-sibling {
+    --gar-filter-padding: calc(#{$gridGap} / 3);
+
+    width: 100%;
+    background-color: $clrLightBlue;
+    border-radius: $border-radius;
+    padding: var(--gar-filter-padding);
+
+    @include tablet-small {
+      --gar-filter-padding: calc(#{$gridGap} / 3 * 2)
+    }
+
+    @include tablet {
+      width: calc(100% - 325px - calc(#{$gridGap}));
+    }
+  }
+}
+
 /* Класс, описывающий секцию */
 .section {
   margin-bottom: 80px;
@@ -277,4 +382,41 @@ a {
 /* Задание ширины 100% */
 .full-width {
   width: 100%;
+}
+
+/* Скрытие элемента */
+.gar-hidden {
+  display: none;
+}
+
+/* Характеристика какой либо сущности (gar-property-value) */
+.gar-property-value {
+  > *:first-child {
+    // описание характеристики
+  }
+  > *:last-child {
+    // значение характеристики
+    white-space: nowrap;
+  }
+}
+
+/* Галерея */
+p-galleriacontent {
+  .p-galleria {
+    height: 418px;
+
+    &-content {
+      height: 100%;
+    }
+    &-item-wrapper {
+      height: 100%;
+
+      & .p-galleria-item {
+        > img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
 }

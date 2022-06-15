@@ -15,13 +15,12 @@ import { GarCarouselItemDirective } from "./gar-carousel-item.directive";
 import { BehaviorSubject, Observable, ReplaySubject } from "rxjs";
 import { ComponentType } from "@angular/cdk/overlay";
 import {
+	concatMap,
 	debounceTime,
-	delay,
 	filter,
 	map,
 	shareReplay,
 	startWith,
-	switchMap,
 	takeUntil,
 	tap
 } from "rxjs/operators";
@@ -31,9 +30,10 @@ import { GarItemComponent } from "../gar-item/gar-item.component";
 /**
  * Компонент карусель
  *
- * @param items - массив данных, по которому карусель выводит список своих элементов
- *
+ * @param items - массив данных, по которому карусель выводит список своих элементов *
  * @param template - компонент, который является представлением, выводящегося в качестве элемента
+ * @param path - маршрут, на который должен производиться переход при клике по карточке, если необходимо
+ * @param queryParamKey - ключ queryParams к маршруту
  * */
 @Component({
 	selector: 'gar-carousel',
@@ -79,6 +79,27 @@ export class GarCarouselComponent<T> implements AfterViewInit {
 	@Input()
 	template: ComponentType<GarItemComponent<T>> | undefined;
 	
+	/**
+	 * Маршрут, на который должен производиться переход при клике по карточке, если необходимо
+	 *
+	 * @remarks к маршруту будет подставляться id продукта, как сегмент (если не установлен queryParamKey)
+	 *
+	 * */
+	@Input('path')
+	path: string | undefined;
+	
+	/**
+	 * ключ queryParams к маршруту
+	 *
+	 * @remarks к маршруту будет поставляться этот ключ ...?[queryParamKey]=item[queryParamKey]
+	 *
+	 * @remarks например, во франшизе приходит 'franchiseId', в бизнесе 'businessId'
+	 *
+	 * TODO: необходимо привести к единому именованию 'id' во всех моделях, обсудить с бэком
+	 * */
+	@Input('queryParamKey')
+	queryParamKey: string | undefined;
+	
 	get currentItem(): ElementRef<HTMLDivElement> | undefined {
 		return this.items!.find((item, index) => index === this.slidesIndex);
 	}
@@ -107,20 +128,30 @@ export class GarCarouselComponent<T> implements AfterViewInit {
 		private _cfr: ComponentFactoryResolver,
 		private _destroy$: GarDestroyService,
 		private _cdr: ChangeDetectorRef
-	) {
-	}
+	) {}
 	
 	ngAfterViewInit() {
 		this.viewRefs?.changes.pipe(
-			switchMap(_ => this._items$),
+			concatMap(_ => this._items$),
 			filter(items => !!items?.length),
 			takeUntil(this._destroy$)
 		).subscribe(items => {
 			items.forEach((item, index) => {
 				const _factory: ComponentFactory<GarItemComponent<T>> = this._cfr.resolveComponentFactory(this.template!);
 				const componentFactory  = this.viewRefs!.find((el, i) => i === index)!.createComponent(_factory);
+				const _queryParams = new URLSearchParams();
+				// @ts-ignore
+				_queryParams.set(this.queryParamKey!, item[this.queryParamKey])
+				componentFactory.instance.path = this.path
+					? this.queryParamKey
+						? `${this.path}?${_queryParams}`
+						// @ts-ignore
+						: `${this.path}/${item[this.queryParamKey]}`
+					: this.queryParamKey
+						? `?${_queryParams}`
+						: undefined;
 				componentFactory.instance.item = item;
-				componentFactory?.changeDetectorRef.detectChanges();
+				componentFactory.changeDetectorRef.detectChanges();
 			})
 			this._heightContainer$.next(`${this.currentItem!.nativeElement.clientHeight + 15}px`);
 			this._cdr.detectChanges();

@@ -1,0 +1,13 @@
+@import "design";
+
+:host {
+  gar-button {
+    &.icon {
+      & gar-icon {
+        height: 16px;
+        width: 16px;
+        fill: $clrGray;
+      }
+    }
+  }
+}

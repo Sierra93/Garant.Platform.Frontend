@@ -1,473 +1,178 @@
 <section id="catalog-franchise">
   <!-- Популярные франшизы. -->
-  <div class="row section-mb">
+  <div class="section">
     <div class="gar-row title">Популярные франшизы</div>
     <gar-carousel
       [items]="aPopularFranchises$ | async"
       [template]="cardComponent"
+      path="franchise/view"
+      queryParamKey="franchiseId"
     ></gar-carousel>
   </div>
 
   <!-- Каталог франшиз. -->
-  <div class="row section-mb">
-    <div class="col-12">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="franchise-title mb-0">Каталог франшиз</h2>
-        <span class="franchise-count">Всего {{ countFranchises }} франшиз</span>
-      </div>
+  <div class="section">
+    <div class="gar-row">
+      <div class="gar-row title">Каталог франшиз</div>
+      <span class="franchise-count right"
+        >Всего {{ countFranchises }} франшиз</span
+      >
     </div>
 
-    <div class="col-12">
-      <form>
-        <div class="row">
-          <div
-            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 franchise-sphere"
-          >
-            <label>Сфера франшиз</label>
-            <div class="w-100">
-              <gar-select
-                [(ngModel)]="selectedViewBusiness"
-                [items]="aViewBusiness"
-                title="Вид бизнеса"
-                displayLabel="viewName"
-              ></gar-select>
-            </div>
+    <div class="gar-grid gar-grid_wrap">
+      <form class="gar-filter">
+        <div class="gar-filter-container">
+          <div class="gar-filter-section">
+            <div class="gar-row title item">Сортировать по</div>
+
+            <gar-select
+              [(ngModel)]="selectedSort"
+              [items]="aSortPrices"
+              displayLabel="name"
+              name="price"
+              (onChange)="onChangeSortPrice()"
+              optionLabel="name"
+              optionCode="value"
+            ></gar-select>
           </div>
-          <div
-            class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 control-quick-search"
-          >
-            <label>Выбор категории</label>
-            <div class="w-100">
-              <gar-select
-                [(ngModel)]="selectedCategory"
-                [items]="aBusinessCategories"
-                title="Категория"
-                displayLabel="categoryName"
-              ></gar-select>
+
+          <div class="gar-filter-section">
+            <div class="gar-row title item">Сфера франшиз</div>
+
+            <gar-select
+              [(ngModel)]="selectedViewBusiness"
+              [items]="aViewBusiness"
+              title="Вид бизнеса"
+              displayLabel="viewName"
+            ></gar-select>
+          </div>
+
+          <div class="gar-filter-section">
+            <div class="gar-row title item">Выбор категории</div>
+
+            <gar-select
+              [(ngModel)]="selectedCategory"
+              [items]="aBusinessCategories"
+              title="Категория"
+              displayLabel="categoryName"
+            ></gar-select>
+          </div>
+
+          <div class="gar-filter-section">
+            <div class="gar-row title item">Инвестиции</div>
+
+            <div class="gar-grid gar-grid_wrap">
+              <gar-input-number
+                title="от "
+                mode="currency"
+                [(ngModel)]="minPrice"
+                class="gar-filter-price"
+              ></gar-input-number>
+
+              <gar-input-number
+                title="до "
+                mode="currency"
+                [(ngModel)]="maxPrice"
+                class="gar-filter-price"
+              ></gar-input-number>
             </div>
           </div>
 
-          <div
-            class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 investment-amount"
-          >
-            <label>Инвестиции</label>
-            <div class="row">
-              <div class="col-6 block-price-min">
-                <gar-input-number
-                  title="от "
-                  prefix="от "
-                  mode="currency"
-                  [(ngModel)]="minPrice"
-                ></gar-input-number>
-              </div>
+          <div class="gar-filter-section">
+            <div class="gar-row title item">Прибыль в месяц</div>
 
-              <div class="col-6 block-price-max">
-                <gar-input-number
-                  title="до "
-                  prefix="до "
-                  mode="currency"
-                  [(ngModel)]="maxPrice"
-                ></gar-input-number>
-              </div>
+            <div class="gar-grid gar-grid_wrap">
+              <gar-input-number
+                title="от 100 000 ₽"
+                [(ngModel)]="filterMinPrice"
+                name="filterMinPrice"
+                class="gar-filter-price"
+              ></gar-input-number>
+
+              <gar-input-number
+                title="до 100 000 000 ₽"
+                [(ngModel)]="filterMaxPrice"
+                name="filterMaxPrice"
+                class="gar-filter-price"
+              ></gar-input-number>
+            </div>
+          </div>
+
+          <div class="gar-filter-section">
+            <div class="gar-grid gar-grid_wrap">
+              <gar-button
+                (click)="onFilterFranchisesWithPaginationAsync()"
+                role="primary"
+                class="full-width"
+              >
+                Применить фильтры
+              </gar-button>
+
+              <gar-button
+                role="secondary"
+                (click)="onClearFilters()"
+                class="full-width"
+              >
+                Очистить фильтры
+              </gar-button>
             </div>
           </div>
         </div>
       </form>
-    </div>
-  </div>
 
-  <div class="col-12 mt-3">
-    <hr class="hr" />
-  </div>
-
-  <div class="col-12 franchise-catalog-form">
-    <div class="row">
-      <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-5">
-        <!-- <div class="d-flex">
-            <button class="btn-filter" (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
-            <button class="btn-filter" (click)="onClearFilters()">Очистить фильтры</button>
-          </div> -->
-
-        <div class="price-sorter">
-          <label class="label-filter">Сортировать по</label>
-          <div>
-            <!-- <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value"
-                name="price" [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true"
-                (onChange)="onChangeSortPrice()"></p-dropdown> -->
-
-            <p-dropdown
-              class="block-sort-by"
-              [options]="aSortPrices"
-              optionLabel="name"
-              optionCode="value"
-              name="price"
-              [(ngModel)]="selectedSort"
-              placeholder="Цена"
-              [showClear]="true"
-              (onChange)="onChangeSortPrice()"
-            ></p-dropdown>
-          </div>
-        </div>
-
-        <div class="d-flex">
-          <div class="">
-            <strong>Покупка через гарант</strong>
-          </div>
-
-          <div>
-            <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
-          </div>
-        </div>
-
-        <div class="monthly-income">
-          <label class="label-filter">Прибыль в месяц</label>
-          <div class="d-flex justify-content-between filter-btns-profit">
-            <input
-              type="text"
-              class="control-input-filter-price no-margin"
-              pInputText
-              placeholder="от 100 000 ₽"
-              [(ngModel)]="filterMinPrice"
-              name="filterMinPrice"
-            />
-            <input
-              type="text"
-              class="control-input-filter-price no-margin"
-              pInputText
-              placeholder="до 100 000 000 ₽"
-              [(ngModel)]="filterMaxPrice"
-              name="filterMaxPrice"
-            />
-          </div>
-        </div>
-
-        <div class="filter-btns d-flex justify-content-between">
-          <button
-            class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control"
-            (click)="onFilterFranchisesWithPaginationAsync()"
+      <div class="gar-filter-sibling">
+        <div class="gar-grid-cards">
+          <app-catalog-simple-card
+            *ngFor="let item of aFranchises"
+            [item]="item"
           >
-            Применить фильтры
-          </button>
-          <button
-            class="btn btn-default btn-sm mt-3 btn-filter btn-filter-control ml-1"
-            (click)="onClearFilters()"
-          >
-            Очистить фильтры
-          </button>
+          </app-catalog-simple-card>
         </div>
-      </div>
 
-      <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-7">
-        <div class="franchise-card-container">
-          <div class="row">
-            <!-- <div class="col-12">
-                <div class="franchise-card">
-                  <img src="../../../../assets/images/once-card.png" alt="gobizy franchise card"
-                    class="franchise-card-img">
-                  <div class="franchise-card-content">
-                    <h3 class="franchise-card-title">Название готового бизнеса</h3>
-                    <span class="franchise-card-description">Готовый бизнес 40 дня</span>
-                    <strong class="franchise-card-price">Стоимость: 12 500 000 ₽</strong>
-                    <button class="franchise-card-btn">Подробнее</button>
-                  </div>
-                </div>
-              </div> -->
-
-            <div
-              class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-6 col-12"
-              *ngFor="let item of aFranchises"
-            >
-              <p-card
-                header="{{ item.title }}"
-                subheader="{{ item.fullText }}"
-                [style]="{ width: '100%' }"
-                styleClass="p-card-shadow"
-              >
-                <ng-template pTemplate="header">
-                  <img [src]="item.url" />
-                </ng-template>
-                <strong>
-                  {{ item.textDoPrice }}
-                  {{ item.totalInvest | priceFormat: item.totalInvest }} ₽
-                </strong>
-                <ng-template pTemplate="footer">
-                  <button
-                    class="btn btn-default btn-filter"
-                    (click)="routeViewFranchiseCardAsync(item.franchiseId)"
-                  >
-                    Подробнее
-                  </button>
-                </ng-template>
-              </p-card>
-            </div>
-
-            <div class="col-12">
-              <div class="franchise-card-pagination">
-                <p-paginator
-                  [rows]="12"
-                  [totalRecords]="countFranchises"
-                  [rowsPerPageOptions]="[12, 21, 30]"
-                  [showCurrentPageReport]="true"
-                  (onPageChange)="onPaginationChangeAsync($event)"
-                >
-                </p-paginator>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p-paginator
+          [rows]="12"
+          [totalRecords]="countFranchises"
+          [rowsPerPageOptions]="[12, 21, 30]"
+          [showCurrentPageReport]="true"
+          (onPageChange)="onPaginationChangeAsync($event)"
+        ></p-paginator>
       </div>
     </div>
   </div>
+
+  <!-- <div class="d-flex">
+    <div class="">
+      <strong>Покупка через гарант</strong>
+    </div>
+
+    <div>
+      <p-inputSwitch [(ngModel)]="isGarant"></p-inputSwitch>
+    </div>
+  </div> -->
 
   <!-- Новые франшизы. -->
-  <div class="row section-mb">
-    <div class="col-12">
-      <div class="garant">
-        <p-carousel
-          [value]="aNewFranchises"
-          [numVisible]="4"
-          [numScroll]="4"
-          [circular]="false"
-          [responsiveOptions]="responsiveOptions"
-          [showNavigators]="false"
-        >
-          <ng-template pTemplate="header">
-            <h5 class="title-franchise">Новые франшизы</h5>
-          </ng-template>
-          <ng-template let-item pTemplate="item">
-            <div class="product-item">
-              <div class="product-item-content">
-                <div class="p-mb-3">
-                  <img [src]="item.url" class="product-image" />
-                </div>
-                <div>
-                  <p-card
-                    header="Название готового бизнеса"
-                    subheader="{{ item.fullText }}"
-                    [style]="{ width: '100%' }"
-                    styleClass="p-card-shadow"
-                  >
-                    <ng-template pTemplate="header">
-                      <!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-                    </ng-template>
-                    <strong>
-                      {{ item.textDoPrice }}
-                      {{ item.totalInvest | priceFormat: item.totalInvest }}
-                      ₽
-                    </strong>
-                    <ng-template pTemplate="footer">
-                      <!-- <p-button label="Save" icon="pi pi-check"></p-button>
-                          <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button> -->
-                    </ng-template>
-                  </p-card>
-                </div>
-              </div>
-            </div>
-          </ng-template>
-        </p-carousel>
-      </div>
-    </div>
+  <div class="section">
+    <div class="gar-row title">Популярные франшизы</div>
+    <gar-carousel
+      [items]="aNewFranchises"
+      [template]="cardComponent"
+    ></gar-carousel>
   </div>
 
-  <!-- Отзывы о франшизах -->
-  <div class="row carousel-block section-mb">
-    <div class="col-lg-7 col-md-6">
-      <div class="franchise-feedbacks">
-        <p-carousel
-          [value]="aReviewsFranchises"
-          [numVisible]="2"
-          [numScroll]="2"
-          [circular]="false"
-          [responsiveOptions]="responsiveOptions"
-          [showNavigators]="false"
-        >
-          <ng-template pTemplate="header">
-            <h5 class="franchise-title">Отзывы о франшизах</h5>
-          </ng-template>
-          <ng-template let-item pTemplate="item">
-            <div class="product-item">
-              <div class="product-item-content">
-                <div class="p-mb-3">
-                  <img [src]="item.url" class="franchise-card-img" />
-                </div>
-                <div>
-                  <p-card
-                    header="Название готового бизнеса"
-                    subheader="{{ item.fullText }}"
-                    [style]="{ width: '100%' }"
-                    styleClass="franchise-card-description"
-                  >
-                    <ng-template pTemplate="header"> </ng-template>
-                    <strong class="franchise-card-price"
-                      >{{ item.textDoPrice }}
-                      {{ item.price | priceFormat: item.price }} ₽
-                    </strong>
-                  </p-card>
-                </div>
-              </div>
-            </div>
-          </ng-template>
-        </p-carousel>
-      </div>
-    </div>
-
-    <div class="col-lg-5 col-md-6 right">
-      <div class="h-100">
-        <h5 class="franchise-title">Покупка франшиз с гарантиями</h5>
-        <div class="franchise-sale">
-          <p-card
-            header="Покупка бизнеса любого размера онлайн с гарантиями"
-            subheader=""
-            [style]="{ width: '100%' }"
-            styleClass="card"
-          >
-            <p>
-              Первый в мире сервис с функцией приобретитения франшизы или
-              готового бизнеса онлайн и без опасений
-            </p>
-            <ng-template pTemplate="footer">
-              <button class="btn btn-dark" routerLink="/catalog-business">
-                Подробнее
-              </button>
-            </ng-template>
-          </p-card>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Вы можете приобрести бизнес с гарантиями -->
-
-  <!-- Область с банерами (2 картинки). -->
-  <div class="row section-mb">
-    <div
-      class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"
+  <!-- Бизнес с гарантиями -->
+  <div class="section">
+    <app-promotion-card
+      action="{{ oSuggestion.button2Text }}"
+      reject="{{ oSuggestion.button1Text }}"
+      link="/deal/start"
     >
-      <div class="franchise-banner">
-        <img class="baner" src="../../../assets/images/Rectangle 13.png" />
-      </div>
-    </div>
-    <div
-      class="baner-img col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"
-    >
-      <div class="franchise-banner">
-        <img class="baner" src="../../../assets/images/Rectangle 14.png" />
-      </div>
-    </div>
-  </div>
-
-  <!-- Область с 3 карточками. -->
-
-  <!-- Бизнес блог. -->
-  <div class="row section-mb">
-    <h5 class="franchise-title">Бизнес блог</h5>
-
-    <div
-      class="popular-item blog-item col--xxl-3 col-xl-3 col-lg-6 col-md-6"
-      *ngFor="let item of aBlogs"
-    >
-      <p-card
-        header="{{ item.title }}"
-        subheader=""
-        [style]="{ width: '100%' }"
-        styleClass="p-card-shadow"
-      >
-        <ng-template pTemplate="header">
-          <img [src]="item.url" class="franchise-card-img" />
-        </ng-template>
-      </p-card>
-    </div>
-
-    <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
-      <div class="popular-item more-articles business-blog-video">
-        <p-card
-          header=""
-          subheader=""
-          [style]="{ width: '100%' }"
-          styleClass="p-card-shadow"
-        >
-          <div class="more-articles-content d-flex align-items-center mt-4">
-            <div class="more-articles-content-text">
-              <h3 class="franchise-card-title">Больше статей</h3>
-              <p class="franchise-card-description">
-                Перейдите в наш блог и найдите там массу полезной информации.
-              </p>
-            </div>
-            <img src="../../../assets/images/Frame 66.png" height="32" />
-          </div>
-        </p-card>
-      </div>
-    </div>
+      <p class="gar-row title">Вы можете приобрести бизнес с гарантиями</p>
+      <p class="gar-row secondary">{{ oSuggestion.text }}</p>
+    </app-promotion-card>
   </div>
 
   <!-- Новости делового мира. -->
   <section class="section">
     <app-news-block></app-news-block>
   </section>
-
-  <!-- Категории готового бизнеса. -->
-  <div class="row franchise-categories section-mb">
-    <div class="col-12">
-      <h5 class="franchise-title">Категории франшиз</h5>
-    </div>
-
-    <!-- 1 столбец. -->
-    <div
-      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12"
-      *ngFor="let item of categoryList1"
-    >
-      <div class="category-item">
-        <img class="space-right-image-category" [src]="item.url" />
-        <span>{{ item.name }}</span>
-        <img
-          class="space-right-image-category space-arrow-category"
-          src="../../../assets/images/Arrow 1.png"
-        />
-      </div>
-    </div>
-
-    <!-- 2 столбец -->
-    <div
-      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12"
-      *ngFor="let item of categoryList2"
-    >
-      <div class="category-item">
-        <img class="space-right-image-category" [src]="item.url" />
-        <span>{{ item.name }}</span>
-        <img
-          class="space-right-image-category space-arrow-category"
-          src="../../../assets/images/Arrow 1.png"
-        />
-      </div>
-    </div>
-
-    <!-- 3 столбец. -->
-    <div
-      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12"
-      *ngFor="let item of categoryList3"
-    >
-      <div class="category-item">
-        <img class="space-right-image-category" [src]="item.url" />
-        <span>{{ item.name }}</span>
-        <img
-          class="space-right-image-category space-arrow-category"
-          src="../../../assets/images/Arrow 1.png"
-        />
-      </div>
-    </div>
-
-    <!-- 4 столбец -->
-    <div
-      class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-12"
-      *ngFor="let item of categoryList4"
-    >
-      <div class="category-item">
-        <img class="space-right-image-category" [src]="item.url" />
-        <span>{{ item.name }}</span>
-        <img
-          class="space-right-image-category space-arrow-category"
-          src="../../../assets/images/Arrow 1.png"
-        />
-      </div>
-    </div>
-  </div>
 </section>

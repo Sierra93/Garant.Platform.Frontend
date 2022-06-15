@@ -50,10 +50,13 @@ export class MainPageModule implements OnInit {
     city: string = "";
     category: string = "";
     aNewBusiness: any[] = [];
-    isHideBusinessWithGarant: boolean = false;
     showCategoryMenu: boolean = false;
     
     readonly aDataActions$ = this._promoService.actions$;
+    readonly aPopularFranchises$ = this.commonService.getPopularFranchise().pipe(
+        shareReplay(1),
+        takeUntil(this._destroy$)
+    )
     cardShortComponent = CatalogShortCardComponent;
     /**
      * список последних бизнесов

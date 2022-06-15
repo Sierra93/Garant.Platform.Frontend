@@ -117,4 +117,20 @@
         <div class="gar-row-item"><pre>{{selectInput | json}}</pre></div>
         <div class="gar-row-item"></div>
     </div>
+    <div class="gar-row">
+        <div class="gar-row-item">
+            <div class="gar-row title item">gar-toggle</div>
+            <div class="gar-row">
+                <gar-toggle [(ngModel)]="toggle">toggle#1</gar-toggle>
+            </div>
+            <div class="gar-row">
+                <gar-toggle [(ngModel)]="toggle2">toggle#2</gar-toggle>
+            </div>
+        </div>
+        <div class="gar-row-item">
+            <pre>toggle#1: {{toggle | json}}</pre>
+            <pre>toggle#2: {{toggle2 | json}}</pre>
+        </div>
+        <div class="gar-row-item"></div>
+    </div>
 </div>

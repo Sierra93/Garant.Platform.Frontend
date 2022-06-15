@@ -6,22 +6,17 @@
   <!-- ТУТ была область с 3 карточками, покойся с миром -->
 
   <!-- Бизнес с гарантиями -->
-  <section class="section">
-    <div class="gar-card promo">
-      <div class="gar-row title item">
-        Вы можете приобрести бизнес с гарантиями
-      </div>
-      <div class="gar-row secondary">
-        Вам больше не нужно покупать бизнес онлайн! Все тренды сводятся к
-        покупке бизнеса и управлению им из дома. Предлагаем получить
-        консультацию по покупке бизнеса онлайн.
-      </div>
-      <div class="gar-row">
-        <gar-button role="primary">Получить консультацию</gar-button>
-        <gar-button role="secondary">Позднее</gar-button>
-      </div>
-    </div>
-  </section>
+  <div class="section">
+    <app-promotion-card
+      action="{{ oSuggestion.button2Text }}"
+      reject="{{ oSuggestion.button1Text }}"
+      link="/deal/start"
+    >
+      <p class="gar-row title">Вы можете приобрести бизнес с гарантиями</p>
+      <p class="gar-row secondary">{{ oSuggestion.text }}</p>
+    </app-promotion-card>
+  </div>
+
   <!-- Секция быстрого поиска -->
   <div class="section">
     <div class="gar-row title">Быстрый поиск</div>
@@ -136,7 +131,10 @@
   </div>
 
   <!-- Популярные франшизы -->
-  <div class="section" *ngIf="aPopularFranchises">
+  <div
+    class="section"
+    *ngIf="aPopularFranchises$ | async as aPopularFranchises"
+  >
     <div class="gar-row title">Популярные франшизы</div>
 
     <gar-carousel

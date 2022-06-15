@@ -7,7 +7,7 @@
   transition: $timeFast;
   border: 1px solid transparent;
 
-  background: $btn-default-bg;
+  background-color: $btn-default-bg;
   color: $btn-default-color;
   border-radius: $border-radius-btn;
   @include typo('regular-bold');
@@ -17,20 +17,27 @@
   }
 
   &.primary {
-    background: $btn-primary-bg;
+    background-color: $btn-primary-bg;
     color: $btn-primary-color;
   }
 
   &.secondary {
-    background: $btn-secondary-bg;
+    background-color: $btn-secondary-bg;
     color: $btn-secondary-color;
     border: 1px solid $btn-secondary-color;
   }
 
   &.filter {
-    background: $btn-filter-bg;
+    background-color: $btn-filter-bg;
     color: $btn-default-color;
     border-radius: 43px;
+  }
+
+  &.icon {
+    padding: 0;
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
   }
   > button {
     height: 100%;

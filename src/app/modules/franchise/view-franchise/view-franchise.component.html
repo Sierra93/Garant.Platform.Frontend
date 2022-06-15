@@ -2,8 +2,8 @@
   <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
   <!-- Блок с названием. -->
-  <div class="gar-card">
-    <div class="gar-row">
+  <div class="gar-card hd">
+    <div class="gar-row gar-row-hd">
       <div class="gar-row-item fit right">
         <img
           src="./../../../../assets/images/franchise-pages/franchise-view-header.png"
@@ -215,7 +215,7 @@
           </div>
         </div>
       </div>
-      <div class="gar-row-item fit">
+      <div class="gar-row-item">
         <h2 class="gar-row title">Входит в инвестиции</h2>
         <div class="gar-row advantages gar-grid">
           <div class="gar-card">
@@ -233,10 +233,7 @@
   </section>
 
   <!-- Описание особенности франшизы. -->
-  <div
-    class="row franchise-details section-margin"
-    *ngIf="franchiseData.peculiarity != null"
-  >
+  <div class="gar-row gar-grid" *ngIf="franchiseData.peculiarity != null">
     <div class="col-12">
       <div class="franchise-details-block">
         <h5 class="subsection-title">Описание особенности франшизы</h5>
@@ -392,8 +389,8 @@
 
       <!-- Ключевые финансовые показатели. -->
       <div class="gar-card difference-business" *ngIf="isHideIndicators">
+        <h5 class="subsection-title">Ключевые финансовые показатели</h5>
         <div class="franchise-details-block">
-          <h5 class="subsection-title">Ключевые финансовые показатели</h5>
           <div class="child-blocks-wrapper">
             <div class="row" *ngFor="let item of aFinIndicators">
               <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
@@ -682,10 +679,6 @@
   <section class="section">
     <app-showcase></app-showcase>
   </section>
-  <!-- Новости делового мира -->
-  <!-- <section class="section">
-    <app-news-block></app-news-block>
-  </section> -->
 
   <!-- Пакеты франшизы. -->
   <div class="row franchise-packages section-margin" *ngIf="isHidePacks">
@@ -746,100 +739,102 @@
   </div>
 
   <!-- Видео о франшизе. -->
-  <div
-    class="row franchise-video section-margin"
-    *ngIf="franchiseData.urlVideo != null"
-  >
-    <div class="col-xxl-8 col-xl-8">
-      <div>
-        <div class="d-flex">
-          <!-- <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox> -->
-          <h3 class="section-title mb-0">
-            <label for="packs">Видео о франшизе</label>
-          </h3>
-        </div>
-
+  <section class="section">
+    <div
+      class="gar-row gar-card franchise-video"
+      *ngIf="franchiseData.urlVideo != null"
+    >
+      <div class="gar-card video">
         <div>
-          <p class="description">{{ franchiseData.urlVideo }}</p>
+          <div class="d-flex">
+            <!-- <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox> -->
+            <h3 class="section-title mb-0">
+              <label for="packs">Видео о франшизе</label>
+            </h3>
+          </div>
+
+          <div>
+            <p class="description">{{ franchiseData.urlVideo }}</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-xxl-4 col-xl-4">
-      <!-- Форма заявки. -->
-      <h3 class="section-title">Оставьте заявку</h3>
+      <div class="gar-card request">
+        <!-- Форма заявки. -->
+        <h3 class="section-title">Оставьте заявку</h3>
 
-      <div class="application-form">
-        <div>
-          <label for="name" class="">Имя</label>
-          <input
-            type="text"
-            class="control-input-filter-price"
-            pInputText
-            placeholder="Имя"
-            name="name"
-            [(ngModel)]="userName"
-          />
-        </div>
-
-        <div>
-          <label for="number" class="">Телефон</label>
-          <input
-            type="text"
-            class="control-input-filter-price"
-            pInputText
-            placeholder="Телефон"
-            name="number"
-            [(ngModel)]="number"
-          />
-        </div>
-
-        <div>
-          <label for="city" class="">Город</label>
-          <input
-            type="text"
-            class="control-input-filter-price"
-            pInputText
-            placeholder="Город"
-            name="city"
-            [(ngModel)]="city"
-          />
-        </div>
-
-        <div class="agreement-policy">
+        <div class="packs-item request">
           <div>
-            <p-checkbox
-              name="groupname"
-              value="val1"
-              [(ngModel)]="selectedValues"
-            ></p-checkbox>
+            <label for="name" class="">Имя</label>
+            <input
+              type="text"
+              class="control-input-filter-price"
+              pInputText
+              placeholder="Имя"
+              name="name"
+              [(ngModel)]="userName"
+            />
           </div>
-          <p class="mb-0">
-            Согласен с условиями использования сервисов GoBizy и обработки
-            персональных данных
-          </p>
-        </div>
 
-        <div>
-          <button
-            class="primary-button"
-            (click)="
-              onCreateRequestFranchiseAsync(
-                userName,
-                number,
-                city,
-                franchiseData.franchiseId
-              )
-            "
-          >
-            Оставить заявку
-          </button>
-        </div>
+          <div>
+            <label for="number" class="">Телефон</label>
+            <input
+              type="text"
+              class="control-input-filter-price"
+              pInputText
+              placeholder="Телефон"
+              name="number"
+              [(ngModel)]="number"
+            />
+          </div>
 
-        <!-- <div>
+          <div>
+            <label for="city" class="">Город</label>
+            <input
+              type="text"
+              class="control-input-filter-price"
+              pInputText
+              placeholder="Город"
+              name="city"
+              [(ngModel)]="city"
+            />
+          </div>
+
+          <div class="agreement-policy">
+            <div>
+              <p-checkbox
+                name="groupname"
+                value="val1"
+                [(ngModel)]="selectedValues"
+              ></p-checkbox>
+            </div>
+            <p class="mb-0">
+              Согласен с условиями использования сервисов GoBizy и обработки
+              персональных данных
+            </p>
+          </div>
+
+          <div>
+            <button
+              class="primary-button"
+              (click)="
+                onCreateRequestFranchiseAsync(
+                  userName,
+                  number,
+                  city,
+                  franchiseData.franchiseId
+                )
+              "
+            >
+              Оставить заявку
+            </button>
+          </div>
+
+          <!-- <div>
           <p class="description">Заявку оставляли 5 раз за последний месяц</p>
         </div> -->
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </section>

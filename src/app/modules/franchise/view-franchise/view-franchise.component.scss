@@ -18,8 +18,11 @@
     }
   }
   .gar-card {
+    &.hd {
+      padding: 0;
+    }
     &.presentation {
-      height: 200px;
+      align-self: flex-start;
       background-color: aliceblue;
     }
     &.promo {
@@ -27,6 +30,9 @@
     }
     &.basic {
       width: 70%;
+      @include phone {
+        width: 100%;
+      }
     }
     &.example {
       
@@ -35,7 +41,8 @@
     &.service {
       flex-direction: row;
       justify-content: space-between;
-      grid-gap: 32px;
+      font-size: 18px;
+      grid-gap: calc(#{$gridGap} / 4);
       img {
         width: 75px;
         height: 116px;
@@ -43,7 +50,7 @@
       &.profile {
         justify-content: center;
         align-items: center;
-        background:#F1F6FF;
+        background:$clrLightBlue;
         img {
           width: 56px;
           height: 56px;
@@ -55,47 +62,55 @@
       flex-direction: row;
       flex-wrap: wrap;
       align-items: flex-start;
-      padding: 24px;
+      padding: $gridGap;
       gap: 10px;
-      background: #F1F6FF;
-      border-radius: 8px      
+      background-color: $clrLightBlue;
+      border-radius: $border-radius;
     }
     &.text {
-      font-family: 'Roboto';
-      font-style: normal;
+      @include typo('regular');
       font-weight: 400;
       font-size: 18px;
       line-height: 21px;
-      color: #2C2C2C;
+      color: $clrBlack;
+    }
+    &.video {
+      width: 100%;
+    }
+    &.request {
+      width: 50%;
+      @include phone {
+        width: 100%;
+      }
     }
   }
   .gar-row {
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 21px;
-    color: #2C2C2C;
+    color: $clrBlack;
+    @include phone {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    
     &.buttons {
       margin-top: auto;
     }
     &.secondary {
-      font-family: 'Roboto';
-      font-style: normal;
       font-weight: 400;
       font-size: 14px;
       line-height: 14px;
-      color: #7A7A7A;
+      color: $clrDarkGray;
     }
     &.lesson {
       width: 70%;
     }
     &.title {
-      font-family: 'Roboto';
-      font-style: normal;
       font-size: 18px;
       line-height: 21px;
-      color: #2C2C2C;
+      color: $clrBlack;
       &.item {
         margin-bottom: 40px;
         &-coffee {
@@ -119,6 +134,7 @@
   }
 }
 
+
 .reviews {
   &__images {
     padding-top: 4px;
@@ -128,18 +144,16 @@
     width: 88%;
   }
 }
-.gar-property {
-  &-value {
-    width: 385px;
-    margin-bottom: 40px;
-  }
-}
-.section-margin {
-  margin-bottom: 5rem;
-}
+// .gar-property {
+//   &-value {
+//     width: 100%;
+//     margin-bottom: 40px;
+//   }
+// }
+
 
 .main-title, .section-title, .subsection-title {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   line-height: normal;
   font-weight: 500;
 }
@@ -155,7 +169,7 @@
 
 .section-title {
   font-size: 1.5rem;
-  color: #2c2c2c;
+  color: $clrBlack;
   margin-bottom: 2rem;
 }
 
@@ -173,16 +187,16 @@
 }
 
 .description {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: normal;
-  color: #2c2c2c;
+  color: $clrBlack;
   margin-bottom: 2rem;
 }
 
 .content {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   font-size: 14px;
   font-weight: normal;
   color: #646464;
@@ -190,7 +204,7 @@
 }
 
 .fact-item {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
@@ -219,7 +233,7 @@
 }
 
 .invest {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -232,7 +246,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px dashed #DADADA;
+      border-bottom: 1px dashed $clrLightGray;
       padding: 1.25rem;
 
       strong {
@@ -252,7 +266,7 @@
 }
 
 .photos {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
 
   .franchise-holder {
     padding: 1.5rem;
@@ -280,7 +294,7 @@
 }
 
 .key-finance {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   margin-top: 2rem;
 
   > div {
@@ -317,7 +331,7 @@
     height: 53px;
     padding: 1rem;
     border-radius: 4px;
-    font-family: 'Roboto', sans-serif;
+    font-family: sans-serif;
     font-size: 18px;
     border: none;
     background-color: transparent;
@@ -348,7 +362,7 @@
       .child-block {
         padding: 1.5rem;
         background-color: white;
-        font-family: 'Roboto', sans-serif;
+        font-family: sans-serif;
         height: 100%;
 
         strong {
@@ -378,14 +392,11 @@
   }
 }
 .download-presentation {
-  width: 221px;
+  width: 250px;
+  padding: 0 8px;
   margin-top: 20px;
-  
-  
 }
 .franchise-packages {
-  font-family: 'Roboto', sans-serif;
-
   .package {
     filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
 
@@ -408,7 +419,7 @@
     }
 
     &-offers {
-      font-family: 'Roboto', sans-serif;
+      font-family: sans-serif;
       padding: 1rem;
       background: #F1F6FF;
 
@@ -439,13 +450,16 @@
 }
 
 .franchise-video {
-  font-family: 'Roboto', sans-serif;
+  flex-direction: row;
 
-  .application-form {
-    padding: 2rem 1.5rem;
+.packs-item {
+  &.request {
+    width: 100%;
+    padding: 32px 24px;
     border-radius: 4px;
     box-shadow: $box-shadow-card;
     background-color: white;
+
 
     > div {
       display: flex;
@@ -482,7 +496,6 @@
       }
 
       p {
-        font-family: 'Roboto', sans-serif;
         font-size: 1rem;
         text-align: left;
         color: #646464;
@@ -490,36 +503,7 @@
     }
   }
 }
-
-@media (max-width: 650px) {
-  .buttons {
-    display: flex;
-    flex-direction: column;
-
-    button {
-      width: 100%;
-
-      &:first-child {
-        margin-right: 0 !important;
-      }
-    }
-  }
 }
-
-::ng-deep {
-  .agreement-policy {
-    .p-checkbox, .p-checkbox .p-checkbox-box {
-      width: 2rem;
-      height: 2rem;
-      background-color: #f7f7f7;
-    }
-
-    .p-checkbox .p-checkbox-box .p-checkbox-icon {
-      font-size: 1.5rem;
-    }
-  }
-}
-
 .logo-and-title {
   .franchise-logo {
     justify-content: flex-start;
@@ -535,43 +519,6 @@
     }
   }
 }
-
-.franchise-details {
-  .buttons {
-    button {
-      @media (max-width: 650px) {
-        &:first-child {
-          margin-bottom: .5rem;
-        }
-      }
-
-      @media (max-width: 425px) {
-        font-size: .75rem;
-      }
-    }
-  }
-}
-
-.income-calculation {
-  .franchise-details-block {
-    .subsection-title {
-      @media (max-width: 486px) {
-        margin-right: 1rem;
-      }
-    }
-
-    .child-blocks-wrapper {
-      .row {
-        [class^=col] {
-          @media (max-width: 576px) {
-            margin-bottom: 1rem !important;
-          }
-        }
-      }
-    }
-  }
-}
-
 .main-info {
   .margin-bottom {
     @media (max-width: 992px) {
@@ -628,7 +575,7 @@
 }
 .packs {
   display: flex;
-  gap: 24px;
+  gap: $gridGap;
   width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -640,12 +587,12 @@
 
   @include tablet {
     flex-wrap: nowrap;
-    grid-gap: 12px;
+    grid-gap: $gridGap / 2;
   }
   &-item {
     width: 100%;
     min-width: 325px;
-    box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.08);
+    box-shadow: $box-shadow-card;
 
     @include phone {
       width: 100%;
@@ -665,20 +612,19 @@
     }
 
     &__title {
-      font-family: "Roboto", sans-serif;
       font-size: 1.25rem;
-      border-radius: 8px 8px 0px 0px;
+      border-radius: $border-radius;
       width: 100%;
-      padding: 24px;
+      padding: $gridGap;
       border: 0;
-      color: #ffffff;
-      background-color: #1653b4;
+      color: $clrWhite;
+      background-color: clrDarkBLue;
       margin-bottom: 16px;
       text-align: start;
 
       @include phone {
         font-size: 22px;
-        padding: 17px;
+        padding: calc(#{$gridGap} / 3 * 2);
       }
 
       @include tablet-small {
@@ -691,13 +637,13 @@
     }
 
     &__text {
-      font-family: "Roboto", sans-serif;
       font-size: 18px;
       max-width: 431px;
       padding: 10px;
       line-height: 21px;
-      color: #2c2c2c;
-      margin: 0 16px 32px 16px;
+      color: $clrBlack;
+      // margin: 0 16px 32px 16px;
+      gap: $gridGap;
 
       @include phone {
         padding: 5px;
@@ -705,7 +651,8 @@
 
       @include tablet-small {
         padding: 0;
-        margin: 0 16px 32px 0;
+        // margin: 0 16px 32px 0;
+        gap: $gridGap;
       }
 
       @include tablet {
@@ -743,38 +690,39 @@
     }
     &__tool {
       display: inline-block;
-      font-family: "Roboto", sans-serif;
       font-size: 18px;
       width: 349px;
       line-height: 21px;
-      color: #000000;
-      margin-left: 26px;
+      color: $clrBlack;
+      // margin-left: 26px;
+      gap: $gridGap;
       margin-right: 16px;
 
       @include tablet-small {
-        margin-left: 16px;
+        // margin-left: 16px;
+        gap: $gridGap;
         max-width: 292px;
       }
     }
 
     &-bottom {
       max-width: 463px;
-      background: #ffffff;
-      box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.08);
+      background-color: $clrWhite;
+      box-shadow: $box-shadow-card;
       padding: 16px;
 
       &__title {
-        font-family: "Roboto", sans-serif;
         font-size: 1.125rem;
         line-height: 21px;
-        color: #2C2C2C;
-        padding-top: 24px;
+        color: $clrBlack;
+        gap: $gridGap;
         margin-bottom: 24px;
         display: flex;
         justify-content: space-between;
         width: 100%;
-        border-bottom: 1px dashed #DADADA;
-        padding-bottom: 24px;
+        border-bottom: 1px dashed $clrLightGray;
+        // padding-bottom: 24px;
+        gap:$gridGap;
 
         @include phone {
           display: flex;
@@ -784,16 +732,16 @@
       }
 
       &__text {
-        font-family: "Roboto", sans-serif;
         font-size: 18px;
         line-height: 21px;
-        color: #000000;
+        color: $clrBlack;
       }
 
       &__text1 {
-        margin-bottom: 24px;
+        // margin-bottom: 24px;
+        gap:$gridGap;
         padding-bottom: 20px;
-        border-bottom: 1px dashed #DADADA;
+        border-bottom: 1px dashed $clrLightGray;
       }
 
       &__price {
@@ -802,25 +750,22 @@
         font-size: 18px;
         line-height: 21px;
         padding-bottom: 24px;
-        border-bottom: 1px dashed #DADADA;
-        font-family: 'Roboto';
-        font-style: normal;
+        border-bottom: 1px dashed $clrLightGray;
         font-weight: 400;
-        color: #2C2C2C;
+        color: $clrBlack;
       }
 
       &__button {
         width: 100%;
         display: flex;
-        font-family: "Roboto", sans-serif;
         font-size: 24px;
         font-weight: 400;
-        color: #ffffff;
+        color: $clrWhite;
         line-height: 21px;
         border: none;
-        box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.08);
+        box-shadow: $box-shadow-card;
         border-radius: 66px;
-        padding: 24px;
+        padding: $gridGap;
         padding-left: 78px;
         margin: auto;
         background-color: #1f75fe;

@@ -1,13 +1,20 @@
 <!-- Популярный бизнес. -->
 <div class="section">
   <div class="gar-row title">Популярный готовый бизнес</div>
-  <gar-carousel [items]="aPopularBusiness" [template]="cardComponent" path="business/view" queryParamKey="businessId"></gar-carousel>
+  <gar-carousel
+    [items]="aPopularBusiness"
+    [template]="cardComponent"
+    path="business/view"
+    queryParamKey="businessId"
+  ></gar-carousel>
 </div>
 
 <div class="section">
   <div class="gar-row">
     <h5 class="gar-row title">Каталог готового бизнеса</h5>
-    <span class="business-count right">Всего {{ countBusinesses }} бизнесов</span>
+    <span class="business-count right"
+      >Всего {{ countBusinesses }} бизнесов</span
+    >
   </div>
 
   <div class="gar-grid gar-grid_wrap">
@@ -69,7 +76,7 @@
               [(ngModel)]="filterRang[1]"
               class="gar-filter-price"
               name="maxPrice"
-              ></gar-input-number>
+            ></gar-input-number>
           </div>
         </div>
 
@@ -97,11 +104,19 @@
 
         <div class="gar-filter-section">
           <div class="gar-grid gar-grid_wrap">
-            <gar-button (click)="onFilterBusinessesWithPaginationAsync()" role="primary" class="full-width">
+            <gar-button
+              (click)="onFilterBusinessesWithPaginationAsync()"
+              role="primary"
+              class="full-width"
+            >
               Применить фильтры
             </gar-button>
-          
-            <gar-button role="secondary" (click)="onClearFilters()" class="full-width">
+
+            <gar-button
+              role="secondary"
+              (click)="onClearFilters()"
+              class="full-width"
+            >
               Очистить фильтры
             </gar-button>
           </div>
@@ -132,14 +147,21 @@
 <!-- Новый бизнес. -->
 <div class="section">
   <div class="gar-row title">Новый бизнес</div>
-  <gar-carousel [items]="aNewFranchises" [template]="cardComponent"></gar-carousel>
+  <gar-carousel
+    [items]="aNewFranchises"
+    [template]="cardComponent"
+  ></gar-carousel>
 </div>
 
 <!-- Бизнес с гарантиями -->
 <div class="section">
-  <app-promotion-card action="{{oSuggestion.button2Text}}" reject="{{oSuggestion.button1Text}}" link="/deal/start">
+  <app-promotion-card
+    action="{{ oSuggestion.button2Text }}"
+    reject="{{ oSuggestion.button1Text }}"
+    link="/deal/start"
+  >
     <p class="gar-row title">Вы можете приобрести бизнес с гарантиями</p>
-    <p class="gar-row secondary">{{oSuggestion.text}}</p>
+    <p class="gar-row secondary">{{ oSuggestion.text }}</p>
   </app-promotion-card>
 </div>
 

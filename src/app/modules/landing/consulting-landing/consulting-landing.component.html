@@ -1,121 +1,3 @@
-<!-- <div class="garant block-title-franchise">
-  <h5 class="title-franchise">Каталог бизнеса</h5>
-  <span class="count-franchise">Всего {{countBusinesses}} бизнесов</span>
-</div> -->
-
-<!-- <form class="d-flex" #filterForm="ngForm" novalidate>
-  <div class="business-search"> -->
-<!-- <div>
-    <strong>Сфера бизнеса</strong><br>
-    <p-dropdown [options]="aViewBusiness" optionLabel="viewName" [(ngModel)]="selectedViewBusiness" placeholder="Вид бизнеса" [showClear]="true" name="view"></p-dropdown>
-  </div> -->
-
-<!-- <div class="">
-      <strong>Выбор категории</strong><br>
-      <p-dropdown [options]="aBusinessCategories" optionLabel="categoryName" [(ngModel)]="selectedCategory"
-        placeholder="Категория" [showClear]="true" name="category"></p-dropdown>
-    </div> -->
-
-<!-- <div class="control-quick-search">
-      <strong>Выбор города</strong><br>
-      <p-dropdown [options]="aCities" optionLabel="businessCityName" name="city" [(ngModel)]="selectedCity"
-        placeholder="Город" [showClear]="true"></p-dropdown>
-    </div> -->
-
-<!-- <div class="d-flex">
-      <div class="control-quick-search block-price-min">
-        <strong>Стоимость</strong><br>
-        <input type="text" class="control-input-price" pInputText placeholder="от 100 000 ₽" [(ngModel)]="minPrice"
-          name="minPrice" />
-      </div>
-
-      <div class="block-price-max">
-        <strong></strong><br>
-        <input type="text" class="control-input-price" pInputText placeholder="до 100 000 000 ₽" [(ngModel)]="maxPrice"
-          name="maxPrice" />
-      </div>
-    </div>
-  </div> -->
-
-<!-- </form> -->
-
-<!-- <div class="btn-wrapper">
-  <button class="btn btn--aside btn-default mt-3 btn-sm btn-filter"
-    (click)="onFilterFranchisesAsync(filterForm)">Найти</button>
-  <button class="btn btn--aside btn-default btn-sm mt-3 ml-1 btn-filter" (click)="onClearFilters()">Очистить
-    фильтры</button>
-</div> -->
-
-<!-- <div class="block-catalog d-flex">
-  <div class=""> -->
-<!-- <div>
-      <strong>Сортировать по</strong><br>
-      <p-dropdown class="block-sort-by" [options]="aSortPrices" optionLabel="name" optionCode="value" name="price"
-        [(ngModel)]="selectedSort" placeholder="Цена" [showClear]="true" (onChange)="onChangeSortPrice()"></p-dropdown>
-    </div>  -->
-
-<!-- <div class="switch-garant garant-buy">
-      <strong>Покупка через гарант</strong>
-      <p-inputSwitch class="flag-garant" [(ngModel)]="isGarant"></p-inputSwitch>
-    </div> -->
-
-<!-- <div class="switch-garant">
-      <strong>Прибыль в месяц</strong><br> -->
-<!-- <div class="d-flex d-flex--short">
-        <input type="text" class="control-input-filter-price" pInputText placeholder="от 100 000 ₽"
-          [(ngModel)]="filterMinPrice" name="filterMinPrice" />
-        <input type="text" class="control-input-filter-price" pInputText placeholder="до 100 000 000 ₽"
-          [(ngModel)]="filterMaxPrice" name="filterMaxPrice" />
-      </div> -->
-<!-- </div> -->
-<!-- <div class="btn-wrapper">
-      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter" (click)="FilterFranchisesAsync()">Применить
-        фильтры</button>
-      <button class="btn btn--aside btn-default btn-sm mt-3 btn-filter ml-1" (click)="onClearFilters()">Очистить
-        фильтры</button>
-    </div> -->
-
-<!-- </div> -->
-
-<!-- Список бизнеса. -->
-<!-- <div class="d-flex popular-list franchise-list">
-  <div class="popular-item catalog-item col-lg-4" *ngFor="let item of aBusinessList">
-    <p-card header="{{item.title}}" subheader="{{item.text}}"
-    [style]="{width: '100%'}" styleClass="p-card-shadow">
-    <ng-template pTemplate="header">
-      <img [src]="item.url">
-    </ng-template>
-    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-    <ng-template pTemplate="footer">
-      <button class="btn btn-default btn-filter" (click)="routeViewFranchiseCardAsync(item.franchiseId)">Подробнее</button>
-    </ng-template>
-  </p-card>
-  </div>
-</div> -->
-
-<!-- <div class="d-flex popular-list">
-    <div class="popular-item" *ngFor="let item of aBusinessList">
-      <p-card header="{{item.title}}" subheader="{{item.text}}" [style]="{width: '100%'}" styleClass="p-card-shadow">
-        <ng-template pTemplate="header">
-          <img [src]="item.url">
-        </ng-template>
-        <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-        <ng-template pTemplate="footer">
-          <button class="btn btn-default btn-filter"
-            (click)="routeViewFranchiseCardAsync(item.businessId)">Подробнее</button>
-        </ng-template>
-      </p-card>
-    </div>
-  </div> -->
-<!-- </div> -->
-
-<!-- Пагинация. -->
-<!-- <div class="mt-5">
-  <p-paginator [rows]="10" [totalRecords]="countTotalPage" [rowsPerPageOptions]="[10,20,30]"
-    [showCurrentPageReport]="true" (onPageChange)="onPaginationChangeAsync($event)">
-  </p-paginator>
-</div> -->
-
 <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
 <div class="header">
@@ -176,26 +58,6 @@
     </p>
   </div>
 </div>
-
-<!-- <div class="founder">
-  <div class="founder-content">
-    <div class="founder-content__title">Азамат Булатов</div>
-    <div class="founder-content__subtitle">сооснователь проекта</div>
-    <div class="founder-content__text">Лично ответственный за каждую упакованную франшизу</div>
-    <div class="founder-content__inputs">
-      <label class="founder-content__label">Имя
-        <input class="founder-content__input" type="text" name="name" placeholder="Введите имя">
-      </label>
-      <label class="founder-content__label">Номер телефона
-        <input class="founder-content__input" type="tel" name="telephone" placeholder="Введите номер телефона">
-      </label>
-    </div>
-    <button class="founder-content__button">Обратиться за консультацией</button>
-  </div>
-  <div class="founder-image">
-    <img src="../../../../assets/images/franchise-landing/template_person6 1.png" alt="Фото сооснователя">
-  </div>
-</div> -->
 
 <h5 class="steps-header">4 шага к безопасной сделке онлайн</h5>
 <div class="steps">
@@ -263,23 +125,6 @@
 </div>
 
 <!-- Область с 3 карточками. -->
-<!-- <div class="d-flex three-cards">
-  <div class="col-lg-4 card-business" *ngFor="let item of aDataActions">
-    <p-card class="three-cards-wrapper" header="{{item.title}}" subheader="{{item.subTitle}}" [style]="{width: '100%'}"
-      styleClass="card">
-      <ng-template pTemplate="header"> -->
-<!-- <img alt="Card" src="assets/showcase/images/usercard.png"> -->
-<!-- </ng-template>
-      <p>{{item.text}}</p>
-      <ng-template pTemplate="footer"> -->
-<!-- <p-button label="Save" icon="pi pi-check"></p-button> -->
-<!-- <button class="btn btn-dark">{{item.buttonText}}</button> -->
-<!-- <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button> -->
-<!-- </ng-template>
-    </p-card>
-  </div>
-</div> -->
 
 <h5 class="packs-header">Пакеты юридических услуг</h5>
 <div class="packs">
@@ -406,9 +251,6 @@
   </div>
 
   <div class="packs-item">
-    <!-- <div class="packs-item__image">
-      <img src="../../../../assets/images/franchise-landing/fast-start 3.png" alt="Пакет из 25 инструментов">
-    </div> -->
     <button class="packs-item__title">Пакет “Сопровождение сделки”</button>
     <div class="packs-item__text">
       Наш самый популярный пакет с гарантией. В рамках которого вы получаете
@@ -509,22 +351,22 @@
           [(ngModel)]="name"
         />
       </label>
-<!--      <label class="check-content__label"-->
-<!--        >Номер телефона-->
-<!--        <input-->
-<!--          class="check-content__input"-->
-<!--          type="tel"-->
-<!--          name="telephone"-->
-<!--          placeholder="Введите номер телефона"-->
-<!--          [(ngModel)]="phoneNumber"-->
-<!--        />-->
-<!--      </label>-->
+
       <div>
         <label class="check-content__label">Номер телефона</label>
-        <p-inputMask  mask="+7(999) 999-99-99" [(ngModel)]="phoneNumber" placeholder="Введите номер телефона"></p-inputMask>
+        <p-inputMask
+          mask="+7(999) 999-99-99"
+          [(ngModel)]="phoneNumber"
+          placeholder="Введите номер телефона"
+        ></p-inputMask>
       </div>
     </div>
-    <button class="check-content__button" (click)="onSendLandingRequestAsync(name, phoneNumber)">Отправить договор на проверку</button>
+    <button
+      class="check-content__button"
+      (click)="onSendLandingRequestAsync(name, phoneNumber)"
+    >
+      Отправить договор на проверку
+    </button>
   </div>
   <div class="check-image">
     <img
@@ -595,89 +437,22 @@
   </p-carousel>
 </div>
 
-<!-- Отзывы о франшизах -->
-<!-- <div class="d-flex garant">
-<div class="col-lg-8">
-  <p-carousel [value]="aReviewsFranchises" [numVisible]="2" [numScroll]="2" [circular]="false" [responsiveOptions]="responsiveOptions" [showNavigators]="false">
-    <ng-template pTemplate="header">
-      <h5 class="title-franchise">Отзывы о франшизах</h5>
-    </ng-template>
-    <ng-template let-item pTemplate="item">
-        <div class="product-item">
-            <div class="product-item-content">
-                <div class="p-mb-3">
-                    <img [src]="item.url" class="product-image">
-                </div>
-                <div>
-                  <p-card header="Название готового бизнеса" subheader="{{item.fullText}}"
-                    [style]="{width: '100%'}" styleClass="p-card-shadow">
-                    <ng-template pTemplate="header">
-
-                    </ng-template>
-                    <strong>{{item.textDoPrice}} {{item.price}} ₽</strong>
-                    <ng-template pTemplate="footer">
-
-                    </ng-template>
-                  </p-card>
-                </div>
-            </div>
-        </div>
-    </ng-template>
-</p-carousel>
-</div>
-
-<div class="col-lg-4">
-  <h5 class="title-franchise">Покупка бизнеса с гарантиями</h5>
-  <p-card header="{{oTopAction.title}}" subheader="" [style]="{width: '100%'}" styleClass="card">
-    <ng-template pTemplate="header">
-
-    </ng-template>
-    <p>{{oTopAction.text}}</p>
-    <ng-template pTemplate="footer">
-      <button class="btn btn-dark">Подробнее</button>
-    </ng-template>
-  </p-card>
-</div>
-</div> -->
-
-<!-- Область с банерами (2 картинки). -->
-<!-- <div class="d-flex block-baner garant">
-  <img class="baner" src="../../../assets/images/Rectangle 13.png">
-  <img class="baner" src="../../../assets/images/Rectangle 14.png">
-</div> -->
-
-<!-- <div class="row"> -->
-<div class="garant card-line" *ngIf="isHideBusinessWithGarant">
-  <p-card class="card-line-wrapper">
-    <ng-template pTemplate="header">
-      <strong>Вы можете приобрести бизнес с гарантиями</strong>
-      <button type="button" class="close" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </ng-template>
-    <p>{{ oSuggestion.text }}</p>
-    <ng-template pTemplate="footer">
-      <!-- <div class="d-flex"> -->
-      <div class="ml-1">
-        <button class="btn btn-dark" routerLink="/deal/start">
-          {{ oSuggestion.button2Text }}
-        </button>
-      </div>
-
-      <div>
-        <button
-          class="btn btn-default btn-show-more"
-          (click)="isHideBusinessWithGarant = !isHideBusinessWithGarant"
-        >
-          {{ oSuggestion.button1Text }}
-        </button>
-      </div>
-
-      <!-- </div> -->
-    </ng-template>
-  </p-card>
-</div>
-<!-- </div> -->
+<section class="section">
+  <div class="gar-card promo">
+    <div class="gar-row title item">
+      Вы можете приобрести бизнес с гарантиями
+    </div>
+    <div class="gar-row secondary">
+      Вам больше не нужно покупать бизнес онлайн! Все тренды сводятся к покупке
+      бизнеса и управлению им из дома. Предлагаем получить консультацию по
+      покупке бизнеса онлайн.
+    </div>
+    <div class="gar-row">
+      <gar-button role="primary">Получить консультацию</gar-button>
+      <gar-button role="secondary">Позднее</gar-button>
+    </div>
+  </div>
+</section>
 
 <!-- Бизнес блог. -->
 <h5 class="garant title-franchise">Бизнес блог</h5>
@@ -723,13 +498,13 @@
 </div>
 
 <!-- Новости делового мира. -->
-<h5 class="garant title-franchise">Новости делового мира</h5>
+<!-- <h5 class="garant title-franchise">Новости делового мира</h5>
 <div class="d-flex">
   <div>
     <img src="../../../assets/images/Frame 31.png" />
-  </div>
+  </div> -->
 
-  <div>
+<!-- <div>
     <div class="news-item" *ngFor="let item of aNews">
       <img [src]="item.url" />
       <strong class="news-title">{{ item.name }}</strong>
@@ -742,8 +517,11 @@
       </div>
     </div>
   </div>
-</div>
-
+</div> -->
+<!-- Новости делового мира. -->
+<section class="section">
+  <app-news-block></app-news-block>
+</section>
 <!-- Категории готового бизнеса. -->
 <div class="row garant">
   <!-- <div class="d-flex"> -->

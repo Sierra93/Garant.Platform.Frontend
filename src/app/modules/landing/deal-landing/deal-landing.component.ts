@@ -16,7 +16,8 @@ import { GarDestroyService } from "../../../gar-lib/gar-destroy.service";
   selector: 'deal-landing',
   templateUrl: './deal-landing.component.html',
   styleUrls: ['./deal-landing.component.scss'],
-  providers: [GarDestroyService]
+  providers: [GarDestroyService],
+  
 })
 export class DealLandingModule implements OnInit {
   aPopularBusiness: any[] = [];
@@ -57,6 +58,7 @@ export class DealLandingModule implements OnInit {
   isHideBusinessWithGarant: boolean = true;
   name: string = "";
   phoneNumber: string = "";
+  
 
   constructor(
     private http: HttpClient,

@@ -136,7 +136,7 @@ strong {
 
     &__title {
       font-family: "Roboto", sans-serif;
-      font-size: 6rem;
+      font-size: 96px;
       font-weight: 700;
       color: #2c2c2c;
       line-height: 113px;
@@ -163,7 +163,7 @@ strong {
 
     &__subtitle {
       font-family: "Roboto", sans-serif;
-      font-size: 4rem;
+      font-size: 64px;
       font-weight: 700;
       color: #2c2c2c;
       line-height: 75px;
@@ -188,7 +188,7 @@ strong {
 
     &__text {
       font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 400;
       color: #7a7a7a;
       line-height: 28px;
@@ -215,15 +215,15 @@ strong {
       justify-content: center;
       align-items: center;
       font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 500;
       color: #ffffff;
       line-height: 28px;
       width: 287px;
-      height: 76px;
+      // height: 76px;
       border: none;
       border-radius: 4px;
-      padding: 24px 32px;
+      padding: 24px 10px;
       margin: 0;
       background-color: #1f75fe;
 
@@ -342,7 +342,7 @@ strong {
       justify-content: center;
       align-items: center;
       font-family: "Roboto", sans-serif;
-      font-size: 6rem;
+      font-size: 4.8rem;
       font-weight: 700;
       color: #2c2c2c;
       height: 113px;
@@ -358,13 +358,12 @@ strong {
     &__text {
       display: flex;
       justify-content: center;
-      align-items: center;
-      font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
+      font-family: "Roboto";
+      font-size: 1rem;
       font-weight: 400;
       color: #7a7a7a;
       text-align: center;
-      height: 84px;
+      width: 67%;
 
       @include md {
         font-size: 1rem;
@@ -372,14 +371,11 @@ strong {
       }
     }
 
-    // &__unit {
-    //   font-size: 2.5rem;
-    //   margin-left: 1rem;
-    //   height: 24px;
-    // }
-  }
+
 }
 
+
+// ----------------------------------------------------------------------
 // .founder {
 //   display: flex;
 //   gap: 32px;
@@ -449,8 +445,8 @@ strong {
 //       border: 1.5px solid #dadada;
 //       border-radius: 8px;
 //       padding: 24px 40px 24px 24px;
-//       // margin-bottom: 32px;
-//     }
+      // margin-bottom: 32px;
+    }
 
 //     &__button {
 //       display: flex;
@@ -471,7 +467,7 @@ strong {
 //     }
 //   }
 // }
-
+//------------------------------------------------------------------------------
 .steps {
   display: flex;
   flex-wrap: wrap;
@@ -503,7 +499,7 @@ strong {
 
   &-header {
     font-family: "Roboto", sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 500;
     color: #000000;
     margin-top: 80px;
@@ -1243,7 +1239,7 @@ strong {
 
     &__title {
       font-family: "Roboto", sans-serif;
-      font-size: 6rem;
+      font-size: 5rem;
       font-weight: 700;
       color: #ffffff;
       width: 864px;
@@ -1272,7 +1268,7 @@ strong {
 
     &__subtitle {
       font-family: "Roboto", sans-serif;
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: 700;
       color: #ffffff;
       width: 864px;
@@ -1335,10 +1331,10 @@ strong {
         font-weight: 400;
         color: #7a7a7a;
         width: 291px;
-        height: 69px;
+        // height: 69px;
         border: 1.5px solid #dadada;
         border-radius: 8px;
-        padding: 24px 40px 24px 24px;
+        padding: 20px 9px;
       }
       @include lg-md {
         flex-direction: column;
@@ -1357,7 +1353,7 @@ strong {
       line-height: 14px;
       font-weight: 400;
       color: #dadada;
-      //margin-bottom: 8px;
+      margin-bottom: 8px;
 
       @include lg-md {
         margin-bottom: 0;
@@ -1378,7 +1374,8 @@ strong {
       height: 69px;
       border: 1.5px solid #dadada;
       border-radius: 8px;
-      padding: 24px 40px 24px 24px;
+      padding: 24px 10px;
+      margin-top: 8px;
 
       @include lg-md {
         margin-top: 8px;
@@ -1395,15 +1392,15 @@ strong {
       justify-content: center;
       align-items: center;
       font-family: "Roboto", sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 500;
       color: #1f75fe;
       line-height: 28px;
       width: 398px;
-      height: 76px;
+      // height: 76px;
       border: none;
       border-radius: 4px;
-      padding: 24px 29.5px;
+      padding: 24px 10px;
       margin: 0;
       background-color: #ffffff;
 
@@ -1885,7 +1882,7 @@ strong {
       }
     }
   }
-}
+
 
 .news {
   &-item {
@@ -1916,4 +1913,5 @@ strong {
   font-size: 1.125rem;
   font-weight: 400;
   color: #2c2c2c;
+}
 }

@@ -3,30 +3,17 @@
     <app-promo-block-card></app-promo-block-card>
   </div>
 
-  <!-- Область с 3 карточками -->
-  <div class="section">
-    <div class="gar-grid gar-grid_wrap home-sections">
-      <div class="home-section" *ngFor="let item of aDataActions$ | async">
-        <div class="home-section-title">{{item.title}}</div>
-
-        <div class="home-section-item">
-          <div class="home-section-item-title">{{item.subTitle}}</div>
-
-          <div class="home-section-item-text">
-            {{item.text}}
-          </div>
-
-          <gar-button role="primary" (click)="onRoute(item.buttonText)">{{item.buttonText}}</gar-button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- ТУТ была область с 3 карточками, покойся с миром -->
 
   <!-- Бизнес с гарантиями -->
   <div class="section">
-    <app-promotion-card action="{{oSuggestion.button2Text}}" reject="{{oSuggestion.button1Text}}" link="/deal/start">
+    <app-promotion-card
+      action="{{ oSuggestion.button2Text }}"
+      reject="{{ oSuggestion.button1Text }}"
+      link="/deal/start"
+    >
       <p class="gar-row title">Вы можете приобрести бизнес с гарантиями</p>
-      <p class="gar-row secondary">{{oSuggestion.text}}</p>
+      <p class="gar-row secondary">{{ oSuggestion.text }}</p>
     </app-promotion-card>
   </div>
 
@@ -37,25 +24,45 @@
       <form #filterForm="ngForm" novalidate class="home-quick-search-main">
         <div class="home-quick-search-section">
           <div class="gar-row title item">Вид бизнеса</div>
-          <gar-select [(ngModel)]="selectedViewBusiness" [items]="aViewBusiness" displayLabel="viewName"></gar-select>
+          <gar-select
+            [(ngModel)]="selectedViewBusiness"
+            [items]="aViewBusiness"
+            displayLabel="viewName"
+          ></gar-select>
         </div>
 
         <div class="home-quick-search-section">
           <div class="gar-row title item">Категория</div>
-          <gar-select [(ngModel)]="selectedCategory" [items]="aBusinessCategories" displayLabel="categoryName"></gar-select>
+          <gar-select
+            [(ngModel)]="selectedCategory"
+            [items]="aBusinessCategories"
+            displayLabel="categoryName"
+          ></gar-select>
         </div>
 
         <div class="home-quick-search-section">
           <div class="gar-row title item">Город</div>
-          <gar-select [(ngModel)]="selectedCity" [items]="aCities" displayLabel="cityName"></gar-select>
+          <gar-select
+            [(ngModel)]="selectedCity"
+            [items]="aCities"
+            displayLabel="cityName"
+          ></gar-select>
         </div>
 
         <div class="home-quick-search-section">
           <div class="gar-row title item">Стоимость</div>
 
           <div class="gar-grid home-quick-search-section-price">
-            <gar-input-number title="От" [(ngModel)]="minPrice" name="minPrice"></gar-input-number>
-            <gar-input-number title="До" [(ngModel)]="maxPrice" name="maxPrice"></gar-input-number>
+            <gar-input-number
+              title="От"
+              [(ngModel)]="minPrice"
+              name="minPrice"
+            ></gar-input-number>
+            <gar-input-number
+              title="До"
+              [(ngModel)]="maxPrice"
+              name="maxPrice"
+            ></gar-input-number>
           </div>
         </div>
 
@@ -66,11 +73,16 @@
       </form>
 
       <div class="align-center">
-        <gar-button role="primary" (click)="onFilterFranchisesAsync(filterForm)">Найти</gar-button>
+        <gar-button role="primary" (click)="onFilterFranchisesAsync(filterForm)"
+          >Найти</gar-button
+        >
       </div>
 
       <div class="gar-grid-cards">
-        <app-catalog-simple-card *ngFor="let item of aFranchises" [item]="item"></app-catalog-simple-card>
+        <app-catalog-simple-card
+          *ngFor="let item of aFranchises"
+          [item]="item"
+        ></app-catalog-simple-card>
       </div>
 
       <div class="align-center">
@@ -84,34 +96,51 @@
     <div class="gar-grid gar-grid_wrap">
       <a routerLink="#" class="home-special-offer">
         <picture>
-          <source srcset="/assets/images/franchise-block-picture.webp" type="image/webp">
-          <source srcset="/assets/images/franchise-block-picture.png" type="image/png">
-          <img src="/assets/images/franchise-block-picture.png" alt="Описание для СЕО">
+          <source
+            srcset="/assets/images/franchise-block-picture.webp"
+            type="image/webp"
+          />
+          <source
+            srcset="/assets/images/franchise-block-picture.png"
+            type="image/png"
+          />
+          <img
+            src="/assets/images/franchise-block-picture.png"
+            alt="Описание для СЕО"
+          />
         </picture>
       </a>
 
       <a routerLink="#" class="home-special-offer">
         <picture>
-          <source srcset="/assets/images/franchise-block-picture.webp" type="image/webp">
-          <source srcset="/assets/images/franchise-block-picture.png" type="image/png">
-          <img src="/assets/images/franchise-block-picture.png" alt="Описание для СЕО">
+          <source
+            srcset="/assets/images/franchise-block-picture.webp"
+            type="image/webp"
+          />
+          <source
+            srcset="/assets/images/franchise-block-picture.png"
+            type="image/png"
+          />
+          <img
+            src="/assets/images/franchise-block-picture.png"
+            alt="Описание для СЕО"
+          />
         </picture>
       </a>
     </div>
   </div>
 
   <!-- Популярные франшизы -->
-  <div class="section" *ngIf="aPopularFranchises$ | async as aPopularFranchises">
+  <div
+    class="section"
+    *ngIf="aPopularFranchises$ | async as aPopularFranchises"
+  >
     <div class="gar-row title">Популярные франшизы</div>
 
-    <gar-carousel [items]="aPopularFranchises" [template]="cardShortComponent"></gar-carousel>
-  </div>
-
-  <!-- Новые объявления готового бизнеса -->
-  <div class="section" *ngIf="aNewBusiness">
-    <div class="gar-row title">Новые объявления готового бизнеса</div>
-
-    <gar-carousel [items]="aNewBusiness" [template]="cardShortComponent"></gar-carousel>
+    <gar-carousel
+      [items]="aPopularFranchises"
+      [template]="cardShortComponent"
+    ></gar-carousel>
   </div>
 
   <!-- Бизнес блог -->
@@ -121,7 +150,7 @@
     <div class="home-blog">
       <div class="home-blog-item" *ngFor="let item of aBlogs">
         <a routerLink="#" class="home-blog-item-pic">
-          <img src="{{ item.url }}" alt="{{ item.title }}">
+          <img src="{{ item.url }}" alt="{{ item.title }}" />
         </a>
 
         <div class="home-blog-item-title">
@@ -130,14 +159,16 @@
 
         <div class="gar-breadcrumbs-dotted -small">
           <span>читать ~5 минут</span>
-          <span>опубликовано {{ item.dateCreated | date:'longDate' }}</span>
+          <span>опубликовано {{ item.dateCreated | date: "longDate" }}</span>
         </div>
       </div>
 
       <div class="home-blog-item home-blog-item_more gar-flex-center">
         <div class="home-blog-item-description">
           Больше статей
-          <span>Перейдите в наш блог и найдите там массу полезной информации.</span>
+          <span
+            >Перейдите в наш блог и найдите там массу полезной информации.</span
+          >
         </div>
 
         <div class="home-blog-item-button gar-flex-center">
@@ -165,12 +196,21 @@
         </summary>
 
         <div class="home-categories-items">
-          <div class="home-categories-item" *ngFor="let item of categoryListBusiness">
-            <gar-icon class="home-categories-item-icon" name="item.icon"></gar-icon>
+          <div
+            class="home-categories-item"
+            *ngFor="let item of categoryListBusiness"
+          >
+            <gar-icon
+              class="home-categories-item-icon"
+              name="item.icon"
+            ></gar-icon>
 
-            <span>{{item.name}}</span>
+            <span>{{ item.name }}</span>
 
-            <gar-icon class="home-categories-item-arrow" name="arrow-right"></gar-icon>
+            <gar-icon
+              class="home-categories-item-arrow"
+              name="arrow-right"
+            ></gar-icon>
 
             <a routerLink="#"></a>
           </div>
@@ -193,15 +233,28 @@
         </summary>
 
         <div class="home-categories-items">
-          <div class="home-categories-item" *ngFor="let item of categoryListFranchises">
-            <gar-icon *ngIf="item.icon else defaultIcon" class="home-categories-item-icon" name="{{item.icon}}"></gar-icon>
+          <div
+            class="home-categories-item"
+            *ngFor="let item of categoryListFranchises"
+          >
+            <gar-icon
+              *ngIf="item.icon; else defaultIcon"
+              class="home-categories-item-icon"
+              name="{{ item.icon }}"
+            ></gar-icon>
             <ng-template #defaultIcon>
-              <gar-icon class="home-categories-item-icon" name="category-auto"></gar-icon>
+              <gar-icon
+                class="home-categories-item-icon"
+                name="category-auto"
+              ></gar-icon>
             </ng-template>
 
-            <span>{{item.name}}</span>
+            <span>{{ item.name }}</span>
 
-            <gar-icon class="home-categories-item-arrow" name="arrow-right"></gar-icon>
+            <gar-icon
+              class="home-categories-item-arrow"
+              name="arrow-right"
+            ></gar-icon>
 
             <a routerLink="#"></a>
           </div>

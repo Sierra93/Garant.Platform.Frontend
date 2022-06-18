@@ -10,6 +10,7 @@
   .section {
     margin-bottom: 80px;
   }
+
   .view-franchise {
     &.title-btn.p-button {
       width: initial;
@@ -17,56 +18,68 @@
       border-radius: initial;
     }
   }
+
   .gar-card {
     &.hd {
       padding: 0;
     }
+
     &.presentation {
       align-self: flex-start;
       background-color: aliceblue;
     }
+
     &.promo {
       display: none;
     }
+
     &.basic {
       width: 70%;
+
       @include phone {
         width: 100%;
       }
     }
+
     &.example {
-      
+
       background-color: aliceblue;
     }
+
     &.service {
       flex-direction: row;
       justify-content: space-between;
       font-size: 18px;
       grid-gap: calc(#{$gridGap} / 4);
+
       img {
         width: 75px;
         height: 116px;
       }
+
       &.profile {
         justify-content: center;
         align-items: center;
-        background:$clrLightBlue;
+        background: $clrLightBlue;
+
         img {
           width: 56px;
           height: 56px;
         }
       }
     }
+
     &.reviews {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       align-items: flex-start;
       padding: $gridGap;
-      gap: 10px;
+      gap: calc(#{$gridGap} / 2);
       background-color: $clrLightBlue;
       border-radius: $border-radius;
     }
+
     &.text {
       @include typo('regular');
       font-weight: 400;
@@ -74,58 +87,70 @@
       line-height: 21px;
       color: $clrBlack;
     }
+
     &.video {
       width: 100%;
     }
+
     &.request {
       width: 50%;
+
       @include phone {
         width: 100%;
       }
     }
   }
+
   .gar-row {
     font-weight: 400;
     font-size: 18px;
     line-height: 21px;
     color: $clrBlack;
+
     @include phone {
       flex-direction: row;
       flex-wrap: wrap;
     }
 
-    
+
     &.buttons {
       margin-top: auto;
     }
+
     &.secondary {
       font-weight: 400;
       font-size: 14px;
       line-height: 14px;
       color: $clrDarkGray;
     }
+
     &.lesson {
       width: 70%;
     }
+
     &.title {
       font-size: 18px;
       line-height: 21px;
       color: $clrBlack;
+
       &.item {
         margin-bottom: 40px;
+
         &-coffee {
           margin-bottom: 5px;
         }
-      } 
+      }
     }
+
     &.service {
       grid-gap: 23px;
     }
   }
+
   .picture {
     height: 140px;
     width: 140px;
-  
+
     >img {
       height: 100%;
       width: 100%;
@@ -140,10 +165,12 @@
     padding-top: 4px;
     width: 9%;
   }
+
   &__text {
     width: 88%;
   }
 }
+
 // .gar-property {
 //   &-value {
 //     width: 100%;
@@ -152,7 +179,9 @@
 // }
 
 
-.main-title, .section-title, .subsection-title {
+.main-title,
+.section-title,
+.subsection-title {
   font-family: sans-serif;
   line-height: normal;
   font-weight: 500;
@@ -242,7 +271,7 @@
     background-color: #f1f1f1;
     height: 100%;
 
-    > div {
+    >div {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -293,38 +322,39 @@
   }
 }
 
-.key-finance {
-  font-family: sans-serif;
-  margin-top: 2rem;
+// .key-finance {
+//   font-family: sans-serif;
+//   margin-top: 2rem;
 
-  > div {
-    .key-finance-block {
-      padding: 1.5rem;
-      background-color: #f1f1f1;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
+//   >div {
+//     .key-finance-block {
+//       padding: 1.5rem;
+//       background-color: #f1f1f1;
+//       display: flex;
+//       flex-direction: column;
+//       height: 100%;
 
-      strong {
-        font-size: 18px;
-        color: #000;
-        margin-bottom: .5rem;
-      }
+//       strong {
+//         font-size: 18px;
+//         color: #000;
+//         margin-bottom: .5rem;
+//       }
 
-      span {
-        color: #646464;
+//       span {
+//         color: #646464;
 
-        &:nth-child(2) {
-          font-size: 10px;
-          margin-bottom: 1rem;
-        }
-        &:last-child {
-          font-size: 14px;
-        }
-      }
-    }
-  }
-}
+//         &:nth-child(2) {
+//           font-size: 10px;
+//           margin-bottom: 1rem;
+//         }
+
+//         &:last-child {
+//           font-size: 14px;
+//         }
+//       }
+//     }
+//   }
+// }
 
 .buttons {
   button {
@@ -338,7 +368,7 @@
 
     &:first-child {
       background-color: #4487ff;
-      color: #fff;
+      color: $clrWhite;
       margin-right: 1rem;
     }
 
@@ -352,11 +382,11 @@
 .franchise-details-block {
   padding: 1.5rem;
   border-radius: 4px;
-  background-color: #f1f6ff;
+  background-color: $clrLightBlue;
   position: relative;
 
   .child-blocks-wrapper {
-    > div {
+    >div {
       display: flex;
 
       .child-block {
@@ -384,27 +414,30 @@
     top: 1rem;
     right: 1rem;
 
-    button, button:focus {
+    button,
+    button:focus {
       border: none;
       outline: none;
       background-color: transparent;
     }
   }
 }
+
 .download-presentation {
   width: 250px;
   padding: 0 8px;
   margin-top: 20px;
 }
+
 .franchise-packages {
   .package {
     filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
 
     &-title {
       padding: 1.5rem;
-      background: #1653B4;
+      background: clrDarkBLue;
       font-size: 1.5rem;
-      color: #FFFFFF;
+      color: $clrWhite;
 
       h6 {
         margin-bottom: 0;
@@ -414,16 +447,16 @@
     &-description {
       filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
       height: 400px;
-      background-color: #fff;
+      background-color: $clrWhite;
       padding: 1rem;
     }
 
     &-offers {
       font-family: sans-serif;
       padding: 1rem;
-      background: #F1F6FF;
+      background-color: $clrLightBlue;
 
-      > div {
+      >div {
         display: flex;
         align-items: center;
 
@@ -452,58 +485,59 @@
 .franchise-video {
   flex-direction: row;
 
-.packs-item {
-  &.request {
-    width: 100%;
-    padding: 32px 24px;
-    border-radius: 4px;
-    box-shadow: $box-shadow-card;
-    background-color: white;
+  .packs-item {
+    &.request {
+      width: 100%;
+      padding: 32px 24px;
+      border-radius: 4px;
+      box-shadow: $box-shadow-card;
+      background-color: white;
 
 
-    > div {
-      display: flex;
-      flex-direction: column;
+      >div {
+        display: flex;
+        flex-direction: column;
 
-      &:not(:last-child) {
-        margin-bottom: 1rem;
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+
+        label {
+          font-size: 12px;
+          color: #646464;
+          margin-bottom: .5rem;
+        }
+
+        input {
+          width: 100%;
+          height: 69px;
+          padding: 1.5rem 1rem;
+          border-radius: 8px;
+          border: 1.5px solid #646464;
+          font-size: 18px;
+          color: #c1c1c1;
+        }
       }
 
-      label {
-        font-size: 12px;
-        color: #646464;
-        margin-bottom: .5rem;
-      }
+      .agreement-policy {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-      input {
-        width: 100%;
-        height: 69px;
-        padding: 1.5rem 1rem;
-        border-radius: 8px;
-        border: 1.5px solid #646464;
-        font-size: 18px;
-        color: #c1c1c1;
-      }
-    }
+        >div:first-child {
+          margin-right: 18px;
+        }
 
-    .agreement-policy {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      > div:first-child {
-        margin-right: 18px;
-      }
-
-      p {
-        font-size: 1rem;
-        text-align: left;
-        color: #646464;
+        p {
+          font-size: 1rem;
+          text-align: left;
+          color: #646464;
+        }
       }
     }
   }
 }
-}
+
 .logo-and-title {
   .franchise-logo {
     justify-content: flex-start;
@@ -513,12 +547,13 @@
       height: auto;
       align-items: flex-start;
 
-      > div:first-child {
+      >div:first-child {
         margin-bottom: 1rem;
       }
     }
   }
 }
+
 .main-info {
   .margin-bottom {
     @media (max-width: 992px) {
@@ -573,6 +608,7 @@
     }
   }
 }
+
 .packs {
   display: flex;
   gap: $gridGap;
@@ -589,6 +625,7 @@
     flex-wrap: nowrap;
     grid-gap: $gridGap / 2;
   }
+
   &-item {
     width: 100%;
     min-width: 325px;
@@ -656,7 +693,7 @@
       }
 
       @include tablet {
-        font-size: 17px;
+        font-size: calc(#{$gridGap} / 3 * 2);
       }
     }
 
@@ -688,6 +725,7 @@
       width: 56px;
       height: 56px;
     }
+
     &__tool {
       display: inline-block;
       font-size: 18px;
@@ -716,13 +754,12 @@
         line-height: 21px;
         color: $clrBlack;
         gap: $gridGap;
-        margin-bottom: 24px;
+        margin-bottom: $gridGap;
         display: flex;
         justify-content: space-between;
         width: 100%;
         border-bottom: 1px dashed $clrLightGray;
-        // padding-bottom: 24px;
-        gap:$gridGap;
+        gap: $gridGap;
 
         @include phone {
           display: flex;
@@ -738,8 +775,7 @@
       }
 
       &__text1 {
-        // margin-bottom: 24px;
-        gap:$gridGap;
+        gap: $gridGap;
         padding-bottom: 20px;
         border-bottom: 1px dashed $clrLightGray;
       }
@@ -749,7 +785,7 @@
         justify-content: space-between;
         font-size: 18px;
         line-height: 21px;
-        padding-bottom: 24px;
+        padding-bottom: $gridGap;
         border-bottom: 1px dashed $clrLightGray;
         font-weight: 400;
         color: $clrBlack;
@@ -758,17 +794,17 @@
       &__button {
         width: 100%;
         display: flex;
-        font-size: 24px;
+        font-size: $gridGap;
         font-weight: 400;
         color: $clrWhite;
         line-height: 21px;
         border: none;
         box-shadow: $box-shadow-card;
-        border-radius: 66px;
+        border-radius: 6px;
         padding: $gridGap;
         padding-left: 78px;
         margin: auto;
-        background-color: #1f75fe;
+        background-color: $clrBlue;
 
       }
     }

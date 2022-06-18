@@ -6,7 +6,6 @@
 @import 'design';
 
 strong {
-  font-family: "Roboto", sans-serif;
   font-size: 1.125rem;
   font-weight: 500;
   color: #2c2c2c;
@@ -46,7 +45,6 @@ strong {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Roboto", sans-serif;
   font-size: 1.125rem;
   margin-left: 8px;
   min-width: 125px;
@@ -76,49 +74,55 @@ strong {
   background-color: #f5f8fa;
   margin-top: 80px;
   margin-bottom: 16px;
+
   @include phone {
     max-width: 100%;
     flex-wrap: wrap-reverse;
     padding: 24px;
   }
+
   @include tablet-small {
     flex-wrap: nowrap;
     padding: 32px 0 32px 32px;
   }
-  
+
 
   &-content {
     width: 624px;
+
     // height: 368px;
     @include phone {
       width: 100%;
     }
+
     @include tablet-small {
       // width: 429px;
       position: absolute;
     }
+
     &__title {
-      font-family: "Roboto", sans-serif;
       font-size: 6rem;
       font-weight: 700;
       color: #2c2c2c;
       line-height: 113px;
       margin-bottom: 8px;
 
-      
+
       @include phone {
         width: 140px;
         margin: auto;
         font-weight: 700;
         font-size: 32px;
         line-height: 38px;
-        
+
       }
+
       @include tablet-small {
         font-weight: 700;
         font-size: 64px;
         line-height: 75px;
       }
+
       @include desktop {
         font-size: 96px;
         line-height: 112px;
@@ -126,7 +130,6 @@ strong {
     }
 
     &__subtitle {
-      font-family: "Roboto", sans-serif;
       font-size: 59px;
       font-weight: 700;
       color: #2c2c2c;
@@ -139,12 +142,15 @@ strong {
         font-size: 44px;
         line-height: 52px;
       }
+
       @include phone {
         font-weight: 700;
         font-size: 24px;
-        line-height: 28px;;
+        line-height: 28px;
+        ;
         text-align: center;
       }
+
       @include desktop {
         font-size: 64px;
         line-height: 75px
@@ -152,23 +158,24 @@ strong {
     }
 
     &__text {
-      font-family: "Roboto", sans-serif;
       font-size: 1.1rem;
       font-weight: 400;
       color: #7a7a7a;
       line-height: 28px;
       margin-bottom: 52px;
 
-      
+
       @include phone {
         font-weight: 700;
         font-size: 21px;
         line-height: 28px;
         text-align: center;
       }
+
       @include tablet-small {
         width: 300px;
       }
+
       @include desktop {
         width: 423px;
       }
@@ -178,7 +185,6 @@ strong {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "Roboto", sans-serif;
       font-size: 1.3rem;
       font-weight: 500;
       color: #ffffff;
@@ -190,6 +196,7 @@ strong {
       padding: 10px;
       margin: 0;
       background-color: #1f75fe;
+
       @include lg-md {
         width: 333px;
         font-size: 24px;
@@ -199,12 +206,14 @@ strong {
         width: 273px;
         padding: 8px 16px;
       }
+
       @include phone {
         height: 76px;
         width: 272px;
         border-radius: 4px;
-        
+
       }
+
       @include tablet-small {
         padding: 1px;
         width: 333px;
@@ -219,12 +228,15 @@ strong {
       overflow: hidden;
       margin: 2% 0px 52px 50%
     }
+
     @include desktop {
       margin: 2% 0 52px 52%;
     }
+
     &__deck {
       display: none;
       height: 100%;
+
       @include tablet-small {
         display: block;
       }
@@ -235,13 +247,14 @@ strong {
     display: none;
   }
 
-   &-image2 {
+  &-image2 {
     margin-bottom: 20px;
     height: 80px;
+
     @include tablet-small {
       display: none;
     }
-   }
+  }
 }
 
 .statistics {
@@ -249,10 +262,11 @@ strong {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 80px;
+
   @include tablet {
     grid-gap: 12px;
   }
- 
+
 
   &-item {
     display: flex;
@@ -267,16 +281,19 @@ strong {
     @include phone {
       width: 100%;
     }
+
     @include tablet-small {
       display: flex;
       flex-wrap: wrap;
       width: 49%;
     }
+
     @include tablet {
       width: 49%;
       margin-bottom: 4px;
       padding: 31px;
     }
+
     @include desktop {
       width: 24%;
     }
@@ -287,7 +304,6 @@ strong {
       justify-content: center;
       flex-wrap: wrap;
       align-items: center;
-      font-family: "Roboto", sans-serif;
       font-size: 4.4rem;
       font-weight: 700;
       color: #2c2c2c;
@@ -301,7 +317,6 @@ strong {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "Roboto", sans-serif;
       font-size: 1.5rem;
       font-weight: 400;
       color: #7a7a7a;
@@ -326,6 +341,7 @@ strong {
   padding: 64px 0 64px 64px;
   background-color: #1b1b1b;
   margin-top: 80px;
+
   // @include xl-lg {
   //   justify-content: space-between;
   //   padding: 64px 0 0px 37px;
@@ -335,37 +351,47 @@ strong {
     padding: 24px;
     min-height: 907px;
   }
+
   @include tablet-small {
     padding: 32px 0 0 32px;
   }
+
   &-image {
     width: 30%;
+
     @include tablet-small {
       transform: translate(-262px, 32px);
     }
+
     &__azamat {
       display: none;
     }
+
     &__azamat1 {
       // transform: translate(229px, 0); //хз как лучше так или череж марджин
       margin-left: 34%;
       height: 90%;
       margin-top: 31px;
+
       @include tablet {
         margin-left: 49%;
       }
+
       @include desktop {
         margin-left: 60%;
       }
     }
-    @include phone  {
+
+    @include phone {
       width: 100%;
-      &__azamat1  {
+
+      &__azamat1 {
         display: none;
       }
+
       &__azamat {
         display: block;
-        
+
       }
     }
   }
@@ -373,40 +399,46 @@ strong {
   &-content {
     width: 730px;
     height: 495px;
+
     @include phone {
       width: 100%;
       margin-bottom: 20px;
     }
+
     @include tablet-small {
       position: absolute;
       z-index: 22;
       width: 46%;
     }
+
     @include tablet {
       width: 55%;
     }
 
     &__title {
-      font-family: "Roboto", sans-serif;
       font-size: 96px;
       font-weight: 700;
       color: #ffffff;
       line-height: 113px;
       margin-bottom: 16px;
+
       @include phone {
         font-size: 32px;
         line-height: 38px;
       }
+
       @include tablet-small {
         font-size: 58px;
         line-height: 75px;
         margin-bottom: 2px;
       }
+
       @include tablet {
         font-size: 64px;
         line-height: 75px;
         margin-bottom: 16px;
       }
+
       @include desktop {
         font-size: 96px;
         line-height: 112px;
@@ -414,23 +446,26 @@ strong {
     }
 
     &__subtitle {
-      font-family: "Roboto", sans-serif;
       font-size: 64px;
       font-weight: 700;
       color: #ffffff;
       line-height: 75px;
       margin-bottom: 16px;
+
       @include phone {
         font-size: 24px;
         line-height: 28px;
       }
+
       @include tablet-small {
         font-size: 44px;
         line-height: 52px;
       }
+
       @include tablet {
         margin-bottom: 16px;
       }
+
       @include desktop {
         font-size: 64px;
         line-height: 75px
@@ -438,22 +473,24 @@ strong {
     }
 
     &__text {
-      font-family: "Roboto", sans-serif;
       font-size: 20px;
       font-weight: 400;
       color: #7a7a7a;
       max-width: 730px;
       line-height: 28px;
       margin-bottom: 48px;
+
       @include phone {
         font-size: 16px;
         line-height: 19px;
       }
+
       @include tablet-small {
         font-size: 24px;
         line-height: 28px;
         margin-bottom: 16px;
       }
+
       @include tablet {
         margin-bottom: 48px;
       }
@@ -463,21 +500,24 @@ strong {
       display: flex;
       gap: 16px;
       margin-bottom: 32px;
+
       @include phone {
         width: 100%;
         flex-wrap: wrap;
         margin-bottom: 24px;
       }
+
       @include tablet-small {
         flex-wrap: wrap;
       }
+
       @include tablet {
         margin-bottom: 54px;
       }
     }
-    ::ng-deep.p-inputtext{
+
+    ::ng-deep.p-inputtext {
       display: block;
-      font-family: "Roboto", sans-serif;
       font-size: 18px;
       font-weight: 400;
       color: #7a7a7a;
@@ -486,13 +526,14 @@ strong {
       border: 1.5px solid #dadada;
       border-radius: 8px;
       padding: 18px;
+
       @include phone {
         width: 270px;
       }
     }
+
     &__label {
       display: block;
-      font-family: "Roboto", sans-serif;
       font-size: 0.875rem;
       font-weight: 400;
       color: #dadada;
@@ -501,7 +542,6 @@ strong {
 
     &__input {
       display: block;
-      font-family: "Roboto", sans-serif;
       font-size: 18px;
       font-weight: 400;
       color: #7a7a7a;
@@ -510,6 +550,7 @@ strong {
       border: 1.5px solid #dadada;
       border-radius: 8px;
       padding: 18px 40px 18px 24px;
+
       @include phone {
         width: 100%;
         font-size: 18px;
@@ -520,7 +561,6 @@ strong {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "Roboto", sans-serif;
       font-size: 24px;
       font-weight: 400;
       color: #1F75FE;
@@ -532,38 +572,41 @@ strong {
       padding: 24px 28px;
       margin: 0;
       background: #ffffff;
+
       @include phone {
         width: 100%;
         font-size: 16px;
         padding: 24px 20px;
       }
+
       @include tablet-small {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         padding: 24px 9px;
-        gap: 10px;        
+        gap: 10px;
         width: 291px;
-        height: 70px;        
+        height: 70px;
         background: #FFFFFF;
-        font-family: 'Roboto';
         font-style: normal;
         font-weight: 500;
         font-size: 19px;
         line-height: 22px;
         color: #1F75FE;
       }
+
       @include tablet {
         background: #1F75FE;
         color: #ffffff;
       }
+
       @include desktop {
         width: 338px;
       }
     }
   }
-  
+
 }
 
 .bonuses {
@@ -572,18 +615,19 @@ strong {
   margin-bottom: 30px;
   justify-content: space-between;
   flex-wrap: wrap;
+
   @include phone {
     grid-row-gap: 10px;
   }
-  
+
 
   &-header {
-    font-family: "Roboto", sans-serif;
     font-size: 3rem;
     font-weight: 500;
     color: #000000;
     margin-top: 80px;
     margin-bottom: 32px;
+
     @include phone {
       font-size: 24px;
     }
@@ -594,18 +638,22 @@ strong {
     // height: 427px;
     padding: 24px;
     background-color: #f5f8fa;
+
     @include xl-lg {
       width: 49.2%;
       margin-bottom: 15px;
     }
+
     @include phone {
       width: 100%;
       padding: 16px;
     }
+
     @include tablet-small {
       width: 48.5%;
       margin-bottom: 18px;
     }
+
     @include desktop {
       width: 23%;
     }
@@ -620,24 +668,26 @@ strong {
     }
 
     &__title {
-      font-family: "Roboto", sans-serif;
-      font-size:23px;
+      font-size: 22px;
       font-weight: 500;
       color: #2c2c2c;
       margin-bottom: 4px;
+
       @include phone {
         width: 100%;
       }
+
       @include tablet-small {
-        font-size: 24px;
+        font-size: 22px;
       }
+
       @include tablet {
         width: 290px;
+        height: 52px;
       }
     }
 
     &__subtitle {
-      font-family: "Roboto", sans-serif;
       font-size: 12px;
       font-weight: 400;
       color: #646464;
@@ -650,12 +700,12 @@ strong {
     }
 
     &__text {
-      font-family: "Roboto", sans-serif;
       font-size: 16px;
       font-weight: 400;
       height: 78px;
       color: #2c2c2c;
       margin-bottom: 14px;
+
       @include phone {
         margin-top: 20px;
       }
@@ -666,20 +716,21 @@ strong {
       width: 100%;
       justify-content: center;
       align-items: center;
-      font-family: "Roboto", sans-serif;
       font-size: 1rem;
-      margin:auto;
+      margin: auto;
       height: 53px;
       padding: 5px;
       border: 0;
       border-radius: 4px;
       color: #ffffff;
       background-color: #1f1f1f;
+
       @include tablet {
         width: 59%;
         font-size: 18px;
         margin-left: 0;
       }
+
       @include desktop {
         width: 100%;
       }
@@ -688,7 +739,6 @@ strong {
 }
 
 .title-franchise {
-  font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
   color: #2c2c2c;
@@ -722,7 +772,6 @@ strong {
   }
 
   &-title {
-    font-family: "Roboto", sans-serif;
     font-size: 1.125rem;
     font-weight: 500;
     margin: 0;
@@ -732,7 +781,6 @@ strong {
   }
 
   &-subtitle {
-    font-family: "Roboto", sans-serif;
     font-size: 0.75rem;
     font-weight: 400;
     margin: 0;
@@ -743,7 +791,6 @@ strong {
   }
 
   &-content {
-    font-family: "Roboto", sans-serif;
     font-size: 1.125rem;
     font-weight: 400;
     margin: 0;
@@ -770,7 +817,6 @@ strong {
     position: relative;
     display: block;
     width: 1392px;
-    font-family: "Roboto", sans-serif;
     font-size: 1.125rem;
     font-weight: 400;
     height: 21px;
@@ -803,7 +849,6 @@ strong {
   }
 
   &-content {
-    font-family: "Roboto", sans-serif;
     font-size: 0.875rem;
     font-weight: 400;
     margin: 0;
@@ -833,21 +878,23 @@ strong {
   max-width: 1440px;
   flex-wrap: wrap;
   justify-content: space-between;
+
   @include phone {
     flex-wrap: wrap;
     margin-bottom: 25px;
   }
+
   @include tablet {
     flex-wrap: nowrap;
     grid-gap: 12px;
   }
 
   &-header {
-    font-family: "Roboto", sans-serif;
     font-size: 1.5rem;
     font-weight: 400;
     color: #2c2c2c;
-    @include phone{
+
+    @include phone {
       font-size: 19px;
     }
   }
@@ -856,22 +903,25 @@ strong {
     width: 30%;
     min-width: 325px;
     box-shadow: 0px 4px 44px rgba(0, 0, 0, 0.08);
+
     @include phone {
       width: 100%;
     }
+
     @include tablet-small {
       margin-bottom: 35px;
       width: 48%;
     }
+
     @include tablet {
       width: 31%;
     }
+
     &__image--pack {
       width: 100%;
     }
 
     &__title {
-      font-family: "Roboto", sans-serif;
       font-size: 1.25rem;
       border-radius: 8px 8px 0px 0px;
       width: 100%;
@@ -881,33 +931,38 @@ strong {
       background-color: #1653b4;
       margin-bottom: 16px;
       text-align: start;
+
       @include phone {
         font-size: 22px;
         padding: 17px;
       }
+
       @include tablet-small {
         font-size: 20px;
       }
+
       @include tablet {
         font-size: 18px;
       }
     }
 
     &__text {
-      font-family: "Roboto", sans-serif;
       font-size: 18px;
       max-width: 431px;
       padding: 10px;
       line-height: 21px;
       color: #2c2c2c;
       margin: 0 16px 32px 16px;
+
       @include phone {
         padding: 5px;
       }
+
       @include tablet-small {
         padding: 0;
         margin: 0 16px 32px 0;
       }
+
       @include tablet {
         font-size: 17px;
       }
@@ -917,9 +972,11 @@ strong {
       width: 463px;
       // height: 1730px;
       padding: 0;
+
       @include phone {
         width: 100%;
       }
+
       @include tablet-small {
         width: 100%;
       }
@@ -948,21 +1005,17 @@ strong {
       display: inline-block;
       width: 56px;
       height: 56px;
-      // background: url(../../../../assets/images/franchise-landing/no2.png)
-      //     center no-repeat,
-      //   url(../../../../assets/images/franchise-landing/no1.png) center
-      //     no-repeat;
     }
 
     &__tool {
       display: inline-block;
-      font-family: "Roboto", sans-serif;
       font-size: 18px;
       width: 349px;
       line-height: 21px;
       color: #000000;
       margin-left: 26px;
       margin-right: 16px;
+
       @include tablet-small {
         margin-left: 16px;
         max-width: 292px;
@@ -976,7 +1029,6 @@ strong {
       padding: 16px;
 
       &__title {
-        font-family: "Roboto", sans-serif;
         font-size: 1.125rem;
         line-height: 21px;
         color: #2C2C2C;
@@ -996,11 +1048,11 @@ strong {
       }
 
       &__text {
-        font-family: "Roboto", sans-serif;
         font-size: 18px;
         line-height: 21px;
-        color: #000000;         
+        color: #000000;
       }
+
       &__text1 {
         margin-bottom: 24px;
         padding-bottom: 20px;
@@ -1014,7 +1066,6 @@ strong {
         line-height: 21px;
         padding-bottom: 24px;
         border-bottom: 1px dashed #DADADA;
-        font-family: 'Roboto';
         font-style: normal;
         font-weight: 400;
         color: #2C2C2C;
@@ -1023,7 +1074,6 @@ strong {
       &__button {
         width: 100%;
         display: flex;
-        font-family: "Roboto", sans-serif;
         font-size: 24px;
         font-weight: 400;
         color: #ffffff;
@@ -1034,7 +1084,7 @@ strong {
         padding: 24px;
         margin: auto;
         background-color: #1f75fe;
-        
+
       }
     }
   }
@@ -1042,51 +1092,58 @@ strong {
 
 .special {
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   max-width: 1440px;
   border-radius: 24px;
   padding: 64px 117px 64px 64px;
   background-color: #1a1a1a;
+
   @include phone {
     width: 100%;
     padding: 24px 24px 0px;
     margin-bottom: 24px;
   }
+
   @include tablet-small {
     padding: 32px 0 0 32px;
     flex-wrap: nowrap;
   }
+
   @include tablet {
     padding: 32px 32px 0 32px;
   }
+
   @include desktop {
     padding: 64px 64px 0 64px;
   }
 
   &-content {
     max-width: 100%;
-    @include phone  {
+
+    @include phone {
       margin-bottom: 24px;
     }
 
 
     &__title {
-      font-family: "Roboto", sans-serif;
       font-size: 6rem;
       font-weight: 700;
       color: #ffffff;
       max-width: 650px;
       line-height: 112px;
       margin-bottom: 16px;
+
       @include phone {
         font-size: 32px;
         line-height: 38px;
       }
+
       @include tablet-small {
         font-weight: 700;
         font-size: 64px;
         line-height: 75px;
       }
+
       @include desktop {
         max-pwidth: 100%;
         font-size: 96px;
@@ -1095,22 +1152,24 @@ strong {
     }
 
     &__subtitle {
-      font-family: "Roboto", sans-serif;
       font-size: 4rem;
       font-weight: 700;
       color: #ffffff;
       max-width: 650px;
       line-height: 75px;
       margin-bottom: 16px;
+
       @include phone {
         font-size: 24px;
         line-height: 28px;
-        
+
       }
+
       @include tablet-small {
         font-size: 44px;
         line-height: 52px;
       }
+
       @include desktop {
         font-size: 64px;
         line-height: 75px
@@ -1118,13 +1177,13 @@ strong {
     }
 
     &__text {
-      font-family: "Roboto", sans-serif;
       font-size: 1.5rem;
       font-weight: 400;
       color: #dadada;
       max-width: 650px;
       line-height: 28px;
       margin-bottom: 48px;
+
       @include phone {
         font-size: 16px;
         display: flex;
@@ -1133,6 +1192,7 @@ strong {
         height: 76px;
         justify-content: space-between;
       }
+
       @include tablet-small {
         font-weight: 400;
         font-size: 24px;
@@ -1146,13 +1206,16 @@ strong {
       display: flex;
       gap: 16px;
       margin-bottom: 32px;
+
       @include phone {
         flex-wrap: wrap;
       }
+
       @include tablet-small {
         flex-direction: column;
         max-width: 291px;
       }
+
       @include tablet {
         max-width: 100%;
         flex-direction: row;
@@ -1161,15 +1224,16 @@ strong {
 
     &__label {
       display: block;
-      font-family: "Roboto", sans-serif;
       font-size: 0.875rem;
       font-weight: 400;
       color: #dadada;
       margin-bottom: 8px;
+
       @include phone {
         width: 100%;
         font-size: 12px;
       }
+
       @include desktop {
         width: 291px;
       }
@@ -1177,17 +1241,18 @@ strong {
 
     &__input {
       display: block;
-      font-family: "Roboto", sans-serif;
       font-size: 18px;
       font-weight: 400;
       color: #7a7a7a;
       border: 1.5px solid #dadada;
       border-radius: 8px;
       padding: 24px;
+
       @include phone {
         width: 100%;
         padding: 20px;
       }
+
       @include tablet-small {
         width: 100%;
       }
@@ -1197,7 +1262,6 @@ strong {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "Roboto", sans-serif;
       font-size: 24px;
       font-weight: 400;
       color: #ffffff;
@@ -1209,11 +1273,13 @@ strong {
       padding: 24px;
       margin: 0;
       background-color: #1f75fe;
+
       @include phone {
         min-width: 272px;
         font-size: 16px;
         padding: 11px;
       }
+
       @include tablet-small {
         margin-bottom: 40px;
         padding: 12px;
@@ -1221,44 +1287,53 @@ strong {
       }
     }
   }
+
   &-image {
     width: 100%;
     overflow: hidden;
+
     &__photo {
       width: 100%;
+
       @include tablet-small {
         transform: translate(10px, 92px);
       }
     }
+
     &__photo2 {
       margin-left: 51%;
       margin-top: 3%;
       height: 600px;
+
       @include phone {
-      height: 504px;
-      // transform: translate(-107px, 54px);}
+        height: 504px;
+        // transform: translate(-107px, 54px);}
       }
+
       @include phone {
         margin-left: 0;
 
       }
+
       @include tablet-small {
         height: 650px;
         position: absolute;
         margin-left: 42%;
         margin-top: 6%;
       }
+
       @include tablet {
-            height: 550px;
-            margin-left: 50%;
-            margin-top: 2.6%;
+        height: 550px;
+        margin-left: 50%;
+        margin-top: 2.6%;
       }
+
       @include desktop {
         height: 650px;
         margin-left: 50%;
         margin-top: 1.5%;
       }
-     
+
     }
   }
 }
@@ -1289,7 +1364,6 @@ strong {
   }
 
   &-title {
-    font-family: "Roboto", sans-serif;
     font-size: 1.5rem;
     font-weight: 400;
     color: #2c2c2c;
@@ -1299,7 +1373,6 @@ strong {
   }
 
   &-subtitle {
-    font-family: "Roboto", sans-serif;
     font-size: 1.125rem;
     font-weight: 400;
     margin: 0;
@@ -1312,7 +1385,6 @@ strong {
   }
 
   &-content {
-    font-family: "Roboto", sans-serif;
     font-size: 0.875rem;
     font-weight: 400;
     // width: 342.8px;
@@ -1370,7 +1442,6 @@ strong {
   }
 
   &-title {
-    font-family: "Roboto", sans-serif;
     font-size: 1.125rem;
     font-weight: 400;
     margin: 0;
@@ -1399,7 +1470,6 @@ strong {
   }
 
   &-title {
-    font-family: "Roboto", sans-serif;
     font-size: 1.125rem;
     font-weight: 400;
     margin: 0;
@@ -1410,7 +1480,6 @@ strong {
   }
 
   &-content {
-    font-family: "Roboto", sans-serif;
     font-size: 0.875rem;
     font-weight: 400;
     margin: 0;
@@ -1450,7 +1519,6 @@ strong {
   }
 
   &-bottom-line {
-    font-family: "Roboto", sans-serif;
     font-size: 0.75rem;
     font-weight: 400;
     color: #646464;
@@ -1459,7 +1527,6 @@ strong {
 }
 
 .category-text {
-  font-family: "Roboto", sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   color: #2c2c2c;

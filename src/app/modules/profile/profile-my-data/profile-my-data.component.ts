@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -7,6 +7,7 @@ import { ConfirmationService, MessageService } from "primeng/api";
 import { API_URL } from "src/app/core/core-urls/api-url";
 import { ProfileInput } from "src/app/models/profile/input/profile-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
+import {ManageAccountModule} from "../manage-account/manage-account.component";
 
 @Component({
     selector: "profile-my-data",
@@ -19,6 +20,8 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
  * Класс модуля профиля пользователя (мои данные).
  */
 export class ProfileMyDataModule implements OnInit {
+    @ViewChild(ManageAccountModule, { static: true })
+
     lastName: string = "";
     firstName: string = "";
     patr: string = "";
@@ -45,6 +48,7 @@ export class ProfileMyDataModule implements OnInit {
     availableBanks: any[] = [];
     defaultBankName: string = "";
     corrAccountNumber: number = 0;
+    shifted: boolean = true;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -129,18 +133,18 @@ export class ProfileMyDataModule implements OnInit {
         }
     };
 
-     /**
+    /**
      * Функция добавит файл документа.
      */
-      public uploadDocumentAsync(event: any) {
+    public uploadDocumentAsync(event: any) {
         console.log("uploadDocumentAsync");
         this.documentFile = event.target.files[0];
     };
 
-     /**
+    /**
      * Функция покажет сообщение об успешном сохранении .
      */
-      private showMessageAfterSuccessSaveProfileInfo() {
+    private showMessageAfterSuccessSaveProfileInfo() {
         this.messageService.add({
             severity: 'success',
             summary: 'Успешно!',
@@ -196,7 +200,7 @@ export class ProfileMyDataModule implements OnInit {
                         this.commonService.routeToStart(err);
                         throw new Error(err);
                     }
-                });               
+                });
         }
 
         catch (e: any) {
@@ -204,20 +208,20 @@ export class ProfileMyDataModule implements OnInit {
         }
     };
 
-  /**
+    /**
    * Функция найдет список банков по поисковому запросу.
    * @param e - Запрос для поиска.
    * @returns - Список найденных банков.
    */
-  public async onFilterSearchByBankNameAsync(e: any) {
-    try {        
+    public async onFilterSearchByBankNameAsync(e: any) {
+    try {
         console.log("onFilterSearchByBankNameAsync", e);
 
         if (!e.filter) {
             await this.getBankListAsync();
             return;
         }
-        
+
         await this.http.get(API_URL.apiUrl.concat(`/control/search-bank-name?searchText=${e.filter}`))
             .subscribe({
                 next: (response: any) => {
@@ -238,12 +242,12 @@ export class ProfileMyDataModule implements OnInit {
     }
   };
 
-  /**
+    /**
    * Функция получит списков банков.
    * @returns - Список банков.
    */
-  private async getBankListAsync() {
-    try {                        
+    private async getBankListAsync() {
+    try {
         await this.http.post(API_URL.apiUrl.concat("/control/get-bank-names-list"), {})
         .subscribe({
             next: (response: any) => {
@@ -261,4 +265,16 @@ export class ProfileMyDataModule implements OnInit {
         throw new Error(e);
     }
   };
+
+    removeShift() {
+      this.shifted = false;
+    }
+
+    addShift() {
+      this.shifted = true;
+    }
+
+    onMenuClick() {
+      this.addShift();
+    }
 }

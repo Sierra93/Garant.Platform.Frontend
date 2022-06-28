@@ -351,7 +351,7 @@ a {
     min-width: auto;
 
     @include tablet-small {
-      width: calc(50% - calc(#{$gridGap / 2}));
+      width: calc(50% - calc(#{$gridGap} / 2));
     }
 
     @include tablet {

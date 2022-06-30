@@ -64,6 +64,12 @@ export class ViewReadyBusinessModule implements OnInit {
   number: string = '';
   isHidePeculiarity: boolean = false;
   isUrlVideo: boolean = false;
+  //Диалог заявки
+  isDialogVisible: boolean = false;
+  requestUserName: string = "";
+  requestMail: string = "";
+  requestPhone: string = "";
+  isAgree: boolean = false;
   
   public readonly listAdvantagesBusiness$: Observable<{title: string; description: string; result: string}[]> = of([{
     title: 'Стоимость',
@@ -496,7 +502,8 @@ export class ViewReadyBusinessModule implements OnInit {
       requestBusinessInput.UserName = userName;
       requestBusinessInput.Phone = number;
       requestBusinessInput.BusinessId = businessId;
-
+      requestBusinessInput.Mail = this.requestMail;
+      this.isDialogVisible = false;
       await this.http
         .post(
           API_URL.apiUrl.concat('/request/create-request-business'),
@@ -505,7 +512,8 @@ export class ViewReadyBusinessModule implements OnInit {
         .subscribe({
           next: (response: any) => {
             console.log('Статус создания заявки: ', response);
-
+            
+            
             if (response.isSuccessCreatedRequest) {
               this.messageService.add({
                 severity: 'success',
@@ -527,5 +535,9 @@ export class ViewReadyBusinessModule implements OnInit {
   private scrollPageToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+  }
+
+  public showDialog() {
+    this.isDialogVisible = true;
   }
 }

@@ -9,7 +9,38 @@
       <div class="gar-row-item fit right">
         <span class="gar-row title page no-adaptive-row">{{businessData[0].price}} ₽</span>
       </div>
-      <gar-button class="right">Оставить заявку</gar-button>
+      <gar-button class="right" (click)="showDialog()">Оставить заявку</gar-button>
+      
+      <p-dialog header="Оставить заявку" [(visible)]="isDialogVisible" [modal]="true">
+    
+        <div class="form-group">
+          <label for="requestUserName">Имя</label>
+          <input type="text" class="form-control" id="requestUserName"
+                 required
+                 [(ngModel)]="requestUserName" name="requestUserName">
+        </div>
+        
+        <div class="form-group">
+          <label for="requestMail">Почта</label>
+          <input type="text"  class="form-control" id="requestMail"
+                 [(ngModel)]="requestMail" name="requestMail">
+        </div>
+        
+        <div class="form-group">
+          <label for="requestPhone">Телефон</label>
+          <input type="text"  class="form-control" id="requestPhone"
+                 [(ngModel)]="requestPhone" name="requestPhone">
+        </div>
+        
+        <div class="p-field-checkbox">
+          <p-checkbox [(ngModel)]="isAgree" value=isAgree inputId="requestAgree"></p-checkbox>
+          <label for="requestAgree">С пользовательским соглашением ознакомлен и согласен с политикой обработки данных</label>
+      </div>
+
+        <gar-button class="right" 
+        (click)="onCreateRequestBusinessAsync(requestUserName,requestPhone,businessData[0].businessId)">Оставить заявку</gar-button>
+          
+      </p-dialog>
     </div>
   </div>
 </section>

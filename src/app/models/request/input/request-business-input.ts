@@ -8,6 +8,9 @@
     // Телефон.
     Phone: string = "";
 
+    // Почта
+    Mail: string = "";
+
     // Id бизнеса.
     BusinessId: number = 0;
 }

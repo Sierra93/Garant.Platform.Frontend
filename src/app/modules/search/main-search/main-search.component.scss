@@ -1,15 +1,14 @@
-@import "/src/app/shared/styles/franchuse-styles.scss";
-@import "/src/app/app.component.scss";
-@import "/src/app/shared/styles/image-space.scss";
-@import "/src/app/shared/styles/media-quaries.scss";
-@import "/src/app/modules/main-page/main-page.component.scss";
-@import "/src/app/modules/franchise/catalog-franchise/catalog-franchise.component.scss";
+@import 'design';
 
-body {
-    overflow-x: hidden;
-}
+.search-count {
+  display: none;
 
-.popular-list {
-    flex-wrap: wrap;
-    width: 100%;
+  @include tablet-small {
+    @include typo('secondary');
+
+    align-self: center;
+    display: block;
+    color: $clrDarkGray;
+    white-space: nowrap;
   }
+}

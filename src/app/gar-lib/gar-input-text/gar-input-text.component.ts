@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@a
 import { GarBaseInputComponent } from "../gar-base-input/gar-base-input.component";
 import { NgControl } from "@angular/forms";
 
-export type InputType = 'search' | 'email' | 'tel' | 'url' | 'text';
+export type InputType = 'search' | 'email' | 'tel' | 'url' | 'text' | 'date';
 
 /**
  * Компонент ввода строчных значений
@@ -19,9 +19,9 @@ export type InputType = 'search' | 'email' | 'tel' | 'url' | 'text';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GarInputTextComponent extends GarBaseInputComponent<string> {
-	
+
 	private _type: InputType = 'text';
-	
+
 	/**
 	 * Тип для input
 	 *
@@ -33,11 +33,11 @@ export class GarInputTextComponent extends GarBaseInputComponent<string> {
 	set type(value: InputType) {
 		this._type = value ? value : 'text';
 	}
-	
+
 	get type(): InputType {
 		return this._type;
 	}
-	
+
 	constructor(
 		protected _cdRef: ChangeDetectorRef,
 		protected _control: NgControl

@@ -1,50 +1,43 @@
-<div style="margin-bottom: 5rem;">
-  <h2 class="profile-title">Управление аккаунтом</h2>
+<div class="profile-sidebar">
+  <h2 class="gar-row title">Управление аккаунтом</h2>
 
-  <div class="block-left">
-    <div class="d-flex align-items-center justify-content-between">
-      <div class="profile-img">
-        <p-avatar image="../../../assets/images/nophoto.jpg" styleClass="" shape="circle"></p-avatar>
+  <div class="profile-sidebar__main">
+    <div class="profile-sidebar__data">
+      <div class="profile-sidebar__data-label">ФИО</div>
+      <div class="profile-sidebar__data-value">{{profileData.firstName}} {{profileData.lastName}}</div>
+    </div>
+
+    <div class="profile-sidebar__data">
+      <div class="profile-sidebar__data-label">В качестве</div>
+      <div class="profile-sidebar__data-value">{{role}}</div>
+    </div>
+
+    <div class="profile-sidebar__info">
+      <div class="profile-sidebar__data">
+        <div class="profile-sidebar__data-label">Количество объявлений</div>
+        <div class="profile-sidebar__data-value">{{countAd}}</div>
       </div>
 
-      <div class="profile-fio">
-        <div class="d-flex flex-column mb-4">
-          <span class="label">ФИО</span>
-          <strong>{{profileData.firstName}} {{profileData.lastName}}</strong>
-        </div>
-
-        <div class="d-flex flex-column">
-          <span class="label">В качестве</span>
-          <strong>{{role}}</strong>
-        </div>
+      <div class="profile-sidebar__data">
+        <div class="profile-sidebar__data-label">На сайте</div>
+        <div class="profile-sidebar__data-value">{{countTimeSite}}</div>
       </div>
     </div>
 
-    <hr class="hr">
+    <nav class="profile-sidebar__menu">
+      <ng-container *ngFor="let item of aProfileMenu">
+        <a
+          routerLink="/{{item.navigationLink}}"
+          *ngIf="!item.isHide"
+          routerLinkActive="-active"
+          class="profile-sidebar__menu-link"
+          (click)="menuClick.emit();"
+        >
+          <span>{{item.navigationText}}</span>
 
-    <div class="profile-stats">
-      <div class="d-flex flex-column">
-        <span>Количество объявлений</span>
-        <strong>{{countAd}}</strong>
-      </div>
-
-      <div class="d-flex flex-column">
-        <span>На сайте</span>
-        <strong>{{countTimeSite}}</strong>
-      </div>
-    </div>
-
-    <hr class="hr">
-
-    <div class="profile-menu">
-      <ul *ngFor="let item of aProfileMenu" class="list-unstyled">
-        <li>
-          <a routerLink="/{{item.navigationLink}}" *ngIf="!item.isHide" routerLinkActive="active" class="d-flex justify-content-between">
-            <span>{{item.navigationText}}</span>
-            <img src="./../../../../assets/images/Arrow 1.png" alt="">
-          </a>
-        </li>
-      </ul>
-    </div>
+          <gar-icon name="arrow-right"></gar-icon>
+        </a>
+      </ng-container>
+    </nav>
   </div>
 </div>

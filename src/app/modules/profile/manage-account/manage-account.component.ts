@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -15,10 +15,12 @@ import { CommonDataService } from "src/app/services/common/common-data.service";
     providers: [ConfirmationService, MessageService]
 })
 
-/** 
+/**
  * Класс модуля профиля пользователя (мои данные).
  */
-export class ManageAccountModule implements OnInit {    
+export class ManageAccountModule implements OnInit {
+    @Output() menuClick = new EventEmitter<void>();
+
     lastName: string = "";
     firstName: string = "";
     patr: string = "";
@@ -40,20 +42,20 @@ export class ManageAccountModule implements OnInit {
     countAd: number = 0;
     aProfileMenu: any = [];
 
-    constructor(private route: ActivatedRoute, 
-        private router: Router, 
-        private http: HttpClient, 
+    constructor(private route: ActivatedRoute,
+        private router: Router,
+        private http: HttpClient,
         private titleService: Title,
         private messageService: MessageService,
         private commonService: CommonDataService) {
-        
+
     };
 
     public async ngOnInit() {
         this.titleService.setTitle("Gobizy: Профиль - мои данные");
         await this.getProfileInfoAsync();
         await this.getProfileMenuAsync();
-    };  
+    };
 
     /**
      * Функция сохранит данные формы профиля.
@@ -193,7 +195,7 @@ export class ManageAccountModule implements OnInit {
     private async getProfileMenuAsync() {
         try {
             await this.commonService.getProfileMenuAsync().then((data: any) => {
-                console.log("Список меню лк:", data);                
+                console.log("Список меню лк:", data);
                 this.aProfileMenu = data;
             });
         }
@@ -201,5 +203,5 @@ export class ManageAccountModule implements OnInit {
         catch (e: any) {
             throw new Error(e);
         }
-    };    
+    };
 }

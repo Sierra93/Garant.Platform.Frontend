@@ -83,21 +83,6 @@ const routes: Routes = [
     component: CreateAdModule
   },
 
-  // {
-  //   path: "profile/my-data",
-  //   component: ProfileMyDataModule
-  // },
-
-  // {
-  //   path: "profile/chat/dialogs",
-  //   component: ProfileMyMessagesModule
-  // },
-  //
-  // {
-  //   path: "profile/chat/dialogs/dialog",
-  //   component: ProfileDialogMessagesModule
-  // },
-
   {
     path: "manage-account",
     component: ManageAccountModule
@@ -146,11 +131,6 @@ const routes: Routes = [
     path: "deal/start",
     component: DealLandingModule
   },
-
-  // {
-  //   path: "profile/notifications",
-  //   component: NotificationsModule,
-  // },
 
   {
     path: "configurator/auth",

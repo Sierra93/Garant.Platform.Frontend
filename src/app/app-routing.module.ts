@@ -83,20 +83,20 @@ const routes: Routes = [
     component: CreateAdModule
   },
 
-  {
-    path: "profile/my-data",
-    component: ProfileMyDataModule
-  },
+  // {
+  //   path: "profile/my-data",
+  //   component: ProfileMyDataModule
+  // },
 
-  {
-    path: "profile/chat/dialogs",
-    component: ProfileMyMessagesModule
-  },
-
-  {
-    path: "profile/chat/dialogs/dialog",
-    component: ProfileDialogMessagesModule
-  },
+  // {
+  //   path: "profile/chat/dialogs",
+  //   component: ProfileMyMessagesModule
+  // },
+  //
+  // {
+  //   path: "profile/chat/dialogs/dialog",
+  //   component: ProfileDialogMessagesModule
+  // },
 
   {
     path: "manage-account",
@@ -147,10 +147,10 @@ const routes: Routes = [
     component: DealLandingModule
   },
 
-  {
-    path: "profile/notifications",
-    component: NotificationsModule,
-  },
+  // {
+  //   path: "profile/notifications",
+  //   component: NotificationsModule,
+  // },
 
   {
     path: "configurator/auth",
@@ -174,6 +174,9 @@ const routes: Routes = [
   }, {
     path: "news",
     loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule)
+  }, {
+    path: "profile",
+    loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
   }
 ];
 

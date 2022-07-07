@@ -23,14 +23,14 @@
   }
 
   &__main {
-    visibility: hidden;
+    //visibility: hidden;
   }
 
   &.-active {
-    transform: translate(calc(-100% - #{$gridGap}));
+    //transform: translate(calc(-100% - #{$gridGap}));
 
     .profile__sidebar {
-      visibility: hidden;
+      //visibility: hidden;
     }
 
     .profile__main {

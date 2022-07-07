@@ -48,7 +48,7 @@ export class ProfileMyDataModule implements OnInit {
     availableBanks: any[] = [];
     defaultBankName: string = "";
     corrAccountNumber: number = 0;
-    shifted: boolean = true;
+    shifted: boolean = false;
 
     constructor(private route: ActivatedRoute,
         private router: Router,

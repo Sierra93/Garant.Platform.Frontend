@@ -90,7 +90,7 @@ export class CommonDataService {
                 throw new Error(e);
             }
         }, 530000); // Каждые 9 мин.
-    };  
+    };
 
     /**
      * Функция получит поля хидера.
@@ -125,7 +125,7 @@ export class CommonDataService {
         if (err.status === 401) {
             this._sessionService.removeDataItem(SessionItems.token);
             sessionStorage.clear();
-            
+
             this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
         }
     };
@@ -210,7 +210,7 @@ export class CommonDataService {
             throw new Error(e);
         }
     };
-    
+
     /**
      * Функция получит список популярныз франшиз.
      * @returns Список франшиз.
@@ -253,8 +253,8 @@ export class CommonDataService {
 
             if (selectorPage == "/franchise/create") {
                 param = "create-franchise";
-            }   
-            
+            }
+
             inputBreadcrumb.SelectorPage = param;
 
             return new Promise(async resolve => {
@@ -317,7 +317,7 @@ export class CommonDataService {
      * @returns Данные перехода.
      */
      public async getTransitionAsync(currentRoute: any) {
-        try {                     
+        try {
             return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/user/get-transition"), {})
                     .subscribe({
@@ -329,11 +329,11 @@ export class CommonDataService {
                             console.log("currentRoute", currentRoute);
 
                             if (currentRoute.mode !== "view") {
-                                this.routeToStart(err);        
-                                throw new Error(err);                       
-                            }                          
-                            
-                           
+                                this.routeToStart(err);
+                                throw new Error(err);
+                            }
+
+
                         }
                     });
             })
@@ -428,7 +428,7 @@ export class CommonDataService {
      public async GetFranchiseSubCategoriesListAsync(categoryCode: string, categorySysName: string) {
         try {
             return new Promise(async resolve => {
-                await this.http.get(API_URL.apiUrl.concat("/franchise/subcategory-list?categoryCode=" 
+                await this.http.get(API_URL.apiUrl.concat("/franchise/subcategory-list?categoryCode="
                 + categoryCode
                 + "&categorySysName=" + categorySysName))
                     .subscribe({
@@ -618,7 +618,7 @@ export class CommonDataService {
     };
 
     public async onGetBlogsAsync() {
-        try {                                                        
+        try {
             return new Promise(async resolve => {
                 await this.http.post(API_URL.apiUrl.concat("/blog/get-blogs"), {})
                     .subscribe({
@@ -637,7 +637,7 @@ export class CommonDataService {
         catch (e: any) {
             throw new Error(e);
         }
-    };    
+    };
 
     /**
      * Функция уберет пробелы в числе, которое в строке.
@@ -655,7 +655,7 @@ export class CommonDataService {
     public getUserLocation(): string {
         return window.navigator.language.substr(0, 2).toLowerCase();
     };
-    
+
     public getNewBusiness(): Observable<any> {
         return this.http.post(API_URL.apiUrl.concat("/business/new-business"), {}).pipe(
             catchError(err => throwError(err))

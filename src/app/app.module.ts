@@ -30,7 +30,6 @@ import { SliderModule } from "primeng/slider";
 import { StepsModule } from 'primeng/steps';
 import { FooterModule } from "./modules/footer/footer.component";
 import { LoginModule } from "./modules/login/login.component";
-import { ProfileDataModule } from "./modules/profile/profile-data/profile-data.component";
 import { CheckboxModule } from "primeng/checkbox";
 import { CatalogFranchiseModule } from "./modules/franchise/catalog-franchise/catalog-franchise.component";
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -44,12 +43,8 @@ import { MessageService } from "primeng/api";
 import { CreateReadyBusinessModule } from "./modules/business/create-ready-business/create-ready-business.component";
 import { EditReadyBusinessModule } from "./modules/business/edit-ready-business/edit-ready-business.component";
 import { ViewReadyBusinessModule } from "./modules/business/view-ready-business/view-ready-business.component";
-import { ProfileMyDataModule } from "./modules/profile/profile-my-data/profile-my-data.component";
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
-import { ManageAccountModule } from "./modules/profile/manage-account/manage-account.component";
-import { ProfileDialogMessagesModule } from "./modules/profile/profile-dialog-messages/profile-dialog-messages.component";
-import { ProfileMyMessagesModule } from "./modules/profile/profile-my-dialogs/profile-my-dialogs.component";
 import { MainSearchModule } from "./modules/search/main-search/main-search.component";
 import { CatalogBusinessModule } from "./modules/business/catalog-business/catalog-business.component";
 import { GarantInitModule } from "./modules/garant/garant-init/garant-init.component";
@@ -62,7 +57,6 @@ import { FormatPriceGarantPipe } from "./core/pipes/formatPrice.pipe";
 import { FranchiseLandingModule } from './modules/landing/franchise-landing/franchise-landing.component';
 import { ConsultingLandingModule } from './modules/landing/consulting-landing/consulting-landing.component';
 import { DealLandingModule } from "./modules/landing/deal-landing/deal-landing.component";
-import { NotificationsModule } from "./modules/profile/profile-requests/notifications.component";
 import { ConfiguratorAuthModule } from "./modules/configurator/configurator-auth/configurator-auth.component";
 import { TabMenuModule } from 'primeng/tabmenu';
 import { DocumentService } from "./services/garant/document.service";
@@ -89,7 +83,6 @@ import { NgxMetrikaModule } from "@kolkov/ngx-metrika";
     MainPageModule,
     FooterModule,
     LoginModule,
-    ProfileDataModule,
     CatalogFranchiseModule,
     CreateFranchiseModule,
     ViewFranchiseModule,
@@ -97,10 +90,6 @@ import { NgxMetrikaModule } from "@kolkov/ngx-metrika";
     CreateReadyBusinessModule,
     EditReadyBusinessModule,
     ViewReadyBusinessModule,
-    ProfileMyDataModule,
-    ManageAccountModule,
-    ProfileDialogMessagesModule,
-    ProfileMyMessagesModule,
     MainSearchModule,
     CatalogBusinessModule,
     GarantInitModule,
@@ -111,13 +100,12 @@ import { NgxMetrikaModule } from "@kolkov/ngx-metrika";
     FranchiseLandingModule,
     ConsultingLandingModule,
     DealLandingModule,
-    NotificationsModule,
     ConfiguratorAuthModule,
     CreateAdModule
   ],
-  
+
   entryComponents: [],
-	
+
 	imports: [
 		BrowserModule,
 		FormsModule,
@@ -157,7 +145,7 @@ import { NgxMetrikaModule } from "@kolkov/ngx-metrika";
 		PromoModule,
 		NgxMetrikaModule.forRoot()
 	],
-  
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

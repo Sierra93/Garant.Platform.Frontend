@@ -20,13 +20,49 @@
   }
 
   .gar-card {
+    @include phone {
+      padding: 8px;
+    }
+
     &.hd {
       padding: 0;
     }
 
     &.presentation {
       align-self: flex-start;
-      background-color: aliceblue;
+      background-color: $clrLightBlue;
+    }
+
+    &.gray {
+      background-color: $clrLightMidGray;
+
+    }
+
+    &.packages {
+
+      @include phone {
+        width: 48%;
+      }
+
+      @include tablet-small {
+        width: 31%;
+      }
+    }
+
+    &.packages2 {
+      @include phone {
+        width: 48%;
+      }
+
+      @include tablet-small {
+        width: 22%;
+      }
+    }
+
+    &.packages3 {
+      @include tablet-small {
+        width: 47%;
+      }
     }
 
     &.promo {
@@ -39,18 +75,38 @@
       @include phone {
         width: 100%;
       }
+
+      @include tablet-small {
+        width: 100%;
+      }
+    }
+
+    &.difference {
+      @include phone {
+        padding: 8px;
+      }
+    }
+
+    &.basic {
+      @include phone {
+        padding: 0px;
+      }
     }
 
     &.example {
 
-      background-color: aliceblue;
+      background-color: $clrLightBlue;
+
+      @include phone {
+        padding: 16px;
+      }
     }
 
     &.service {
       flex-direction: row;
-      justify-content: space-between;
       font-size: 18px;
       grid-gap: calc(#{$gridGap} / 4);
+
 
       img {
         width: 75px;
@@ -60,7 +116,7 @@
       &.profile {
         justify-content: center;
         align-items: center;
-        background: $clrLightBlue;
+        background-color: $clrLightBlue;
 
         img {
           width: 56px;
@@ -82,9 +138,6 @@
 
     &.text {
       @include typo('regular');
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 21px;
       color: $clrBlack;
     }
 
@@ -99,12 +152,17 @@
         width: 100%;
       }
     }
+
+    &.fit {
+      @include phone {
+        display: none;
+      }
+    }
   }
 
   .gar-row {
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 21px;
+
+    @include typo('regular');
     color: $clrBlack;
 
     @include phone {
@@ -112,9 +170,37 @@
       flex-wrap: wrap;
     }
 
+    @include tablet-small {
+      flex-wrap: wrap;
+    }
+
+    @include tablet {
+      flex-wrap: nowrap;
+    }
+
+    &.advantages-business {
+      gap: 8px;
+    }
+
+    &.no-adaptive-row {
+      flex-wrap: nowrap;
+    }
 
     &.buttons {
       margin-top: auto;
+    }
+
+    &.eee {
+      width: 65%;
+    }
+
+    &.gar-property-value {
+      justify-content: space-between;
+
+    }
+
+    &.gar-property-value:not(:last-child) {
+      border-bottom: 1px dashed #dadada;
     }
 
     &.secondary {
@@ -122,10 +208,29 @@
       font-size: 14px;
       line-height: 14px;
       color: $clrDarkGray;
+
+      @include phone {
+        margin-bottom: 40px;
+        font-size: 12px;
+        min-height: 30px;
+        margin-bottom: 5px;
+      }
+    }
+
+    &.advantages {
+      justify-content: space-between;
     }
 
     &.lesson {
       width: 70%;
+
+      @include phone {
+        width: 100%;
+      }
+
+      @include tablet-small {
+        width: 100%;
+      }
     }
 
     &.title {
@@ -133,21 +238,41 @@
       line-height: 21px;
       color: $clrBlack;
 
+      @include phone {
+        font-size: 16px;
+      }
+
       &.item {
         margin-bottom: 40px;
 
+        @include phone {
+          font-weight: 600;
+          min-height: 60px;
+          padding: 8px;
+        }
+
+        &.break {
+          word-break: break-all;
+        }
+
         &-coffee {
           margin-bottom: 5px;
+
         }
       }
     }
 
     &.service {
       grid-gap: 23px;
+      flex-wrap: nowrap;
+      width: 100%;
+      overflow: hidden;
     }
+
+
   }
 
-  .picture {
+  .gar-row-item .picture {
     height: 140px;
     width: 140px;
 
@@ -251,7 +376,7 @@
     color: #646464;
 
     &:nth-child(2) {
-      font-size: 10px;
+      font-size: calc(#{$gridGap} / 2);
       margin-bottom: 1rem;
     }
 
@@ -427,6 +552,10 @@
   width: 250px;
   padding: 0 8px;
   margin-top: 20px;
+
+  @include phone {
+    width: 100%;
+  }
 }
 
 .franchise-packages {
@@ -435,7 +564,7 @@
 
     &-title {
       padding: 1.5rem;
-      background: clrDarkBLue;
+      background-color: clrDarkBLue;
       font-size: 1.5rem;
       color: $clrWhite;
 
@@ -492,6 +621,7 @@
       border-radius: 4px;
       box-shadow: $box-shadow-card;
       background-color: white;
+
 
 
       >div {
@@ -635,6 +765,7 @@
       width: 100%;
     }
 
+
     @include tablet-small {
       margin-bottom: 35px;
       width: 48%;
@@ -660,23 +791,23 @@
       text-align: start;
 
       @include phone {
-        font-size: 22px;
+        @include typo('regular');
         padding: calc(#{$gridGap} / 3 * 2);
       }
 
       @include tablet-small {
-        font-size: 20px;
+        @include typo('regular');
       }
 
       @include tablet {
-        font-size: 18px;
+        @include typo('regular');
       }
     }
 
     &__text {
-      font-size: 18px;
+      @include typo('regular');
       max-width: 431px;
-      padding: 10px;
+      padding: calc(#{$gridGap} / 2);
       line-height: 21px;
       color: $clrBlack;
       // margin: 0 16px 32px 16px;
@@ -728,11 +859,10 @@
 
     &__tool {
       display: inline-block;
-      font-size: 18px;
-      width: 349px;
+      @include typo('title-item');
+      max-width: 349px;
       line-height: 21px;
       color: $clrBlack;
-      // margin-left: 26px;
       gap: $gridGap;
       margin-right: 16px;
 
@@ -744,7 +874,7 @@
     }
 
     &-bottom {
-      max-width: 463px;
+      // max-width: 463px;
       background-color: $clrWhite;
       box-shadow: $box-shadow-card;
       padding: 16px;
@@ -765,6 +895,10 @@
           display: flex;
           justify-content: space-between;
           font-size: 18px;
+        }
+
+        @include tablet-small {
+          font-size: 16px;
         }
       }
 
@@ -793,6 +927,7 @@
 
       &__button {
         width: 100%;
+        max-width: 320px;
         display: flex;
         font-size: $gridGap;
         font-weight: 400;
@@ -800,7 +935,7 @@
         line-height: 21px;
         border: none;
         box-shadow: $box-shadow-card;
-        border-radius: 6px;
+        border-radius: 66px;
         padding: $gridGap;
         padding-left: 78px;
         margin: auto;

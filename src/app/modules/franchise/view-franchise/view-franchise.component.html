@@ -75,11 +75,11 @@
 
     <!-- <div class="row financial-data"> -->
     <div class="gar-row advantages advantages-business gar-grid">
-      <div class="gar-card ng-star-inserted">
+      <div class="gar-card gray packages ng-star-inserted">
         <p class="gar-row title item">Общие инвестиции</p>
         <p class="gar-row secondary">включая паушальный взнос</p>
         <p class="gar-row">
-          <span
+          <span style="font-size: 16px;"
             >{{
               franchiseData.lumpSumPayment
                 | priceFormat: franchiseData.lumpSumPayment
@@ -88,7 +88,7 @@
           >
         </p>
       </div>
-      <div class="gar-card">
+      <div class="gar-card gray packages ">
         <p class="gar-row title item">Паушальный взнос</p>
         <p class="gar-row secondary">зависит от выбранного пакета</p>
         <p class="gar-row">
@@ -101,7 +101,7 @@
           >
         </p>
       </div>
-      <div class="gar-card">
+      <div class="gar-card gray packages">
         <p class="gar-row title item">Роялти</p>
         <p class="gar-row secondary">от валовой выручки</p>
         <p class="gar-row">
@@ -114,7 +114,7 @@
           >
         </p>
       </div>
-      <div class="gar-card">
+      <div class="gar-card gray packages">
         <p class="gar-row title item">Окупаемость</p>
         <p class="gar-row secondary">средняя и планируемая</p>
         <p class="gar-row">
@@ -127,7 +127,7 @@
           >
         </p>
       </div>
-      <div class="gar-card">
+      <div class="gar-card gray packages">
         <p class="gar-row title item">Месячная прибыль</p>
         <p class="gar-row secondary">планируемая чистая прибыль</p>
         <p class="gar-row">
@@ -140,7 +140,7 @@
           >
         </p>
       </div>
-      <div class="gar-card">
+      <div class="gar-card gray packages">
         <p class="gar-row title item">Срок запуска</p>
         <p class="gar-row secondary">средний срок открытия</p>
         <p class="gar-row">
@@ -204,9 +204,28 @@
             годом,
           </p>
         </div>
-        <div class="gar-row advantages advantages-business gar-grid">
+
+      </div>
+      <div class="gar-row-item">
+        <div class="gar-row title">Входит в инвестиции</div>
+        <div class="gar-row advantages gar-grid">
+          <div class="gar-card gray">
+            <div
+              class="gar-row gar-property-value"
+              *ngFor="let item of propertyFranchises$ | async"
+            >
+              <span class="gar-row title item eee">{{ item.title }}</span>
+              <span>{{ item.result }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="gar-row advantages advantages-business gar-grid">
           <div
-            class="gar-card"
+    
+            class="gar-card gray packages2"
             *ngFor="let item of listAdvantagesCompany$ | async"
           >
             <p class="gar-row title item">{{ item.title }}</p>
@@ -214,22 +233,7 @@
             <p class="gar-row">{{ item.result }}</p>
           </div>
         </div>
-      </div>
-      <div class="gar-row-item">
-        <h2 class="gar-row title">Входит в инвестиции</h2>
-        <div class="gar-row advantages gar-grid">
-          <div class="gar-card">
-            <div
-              class="gar-row gar-property-value"
-              *ngFor="let item of propertyFranchises$ | async"
-            >
-              <span class="gar-row title item">{{ item.title }}</span>
-              <span>{{ item.result }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+ 
   </section>
 
   <!-- Описание особенности франшизы. -->
@@ -267,7 +271,7 @@
   <section class="section">
     <div class="gar-row title">Основная информация о франшизе</div>
     <div class="gar-row gar-grid">
-      <div class="gar-card difference-business">
+      <div class="gar-card difference">
         
         <p class="gar-row">
           Компания Coffee Like основана в 2013 году двумя молодыми
@@ -324,7 +328,7 @@
           </div>
           <p class="gar-row secondary">на конец 2 квартала 2020 года</p>
           <div class="gar-row advantages advantages-business gar-grid">
-            <div class="gar-card">
+            <div class="gar-card packages3">
               <p class="gar-row title item">Средний чек</p>
 
               <p class="gar-row">
@@ -337,7 +341,7 @@
                 >
               </p>
             </div>
-            <div class="gar-card">
+            <div class="gar-card packages3">
               <p class="gar-row title item">Товарная наценка</p>
 
               <p class="gar-row">
@@ -350,7 +354,7 @@
                 >
               </p>
             </div>
-            <div class="gar-card">
+            <div class="gar-card packages3">
               <p class="gar-row title item">Средняя выручка</p>
 
               <p class="gar-row">
@@ -363,8 +367,8 @@
                 >
               </p>
             </div>
-            <div class="gar-card">
-              <p class="gar-row title item">Рентабельность</p>
+            <div class="gar-card packages3">
+              <p class="gar-row title item break">Рентабельность</p>
 
               <p class="gar-row">
                 <span

@@ -126,7 +126,7 @@ export class CommonDataService {
             this._sessionService.removeDataItem(SessionItems.token);
             sessionStorage.clear();
 
-            this.router.navigate(["/login"], { queryParams: { loginType: "code" } });
+            this.router.navigate(["/login"], { queryParams: { loginType: "auth" } });
         }
     };
 

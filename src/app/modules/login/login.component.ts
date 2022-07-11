@@ -93,6 +93,32 @@ export class LoginModule implements OnInit {
   };
 
   /**
+   * Функция перехода на страницу регистрации.
+   */
+  public onSignUp() {
+    this.isAuth = false;
+    this.isCode = true;
+    this.isPass = false;
+    this.router.navigate(["/login"], {queryParams: {loginType: "code"}});
+  };
+
+  /**
+   * Функция чистит форму.
+   */
+  private clearForm() {
+    this.data = ''
+  };
+
+  /**
+   * Функция отправляет форму с кодом на проверку.
+   */
+  public sendCode(code: NgForm): void {
+    if(this.data.length === 4) {
+      this.onCheckCodeAsync(code)
+    }
+  };
+
+  /**
    * Функция авторизует пользователя.
    */
   public async onLoginAsync(getByPassForm: NgForm) {
@@ -131,6 +157,10 @@ export class LoginModule implements OnInit {
   public async onGetCodeAsync(form: NgForm) {
     console.log("data", form.value.data);
     try {
+      if(this.data.trim().length < 4) {
+        throw new Error('Input data is too short')
+      }
+
       let inputData = new CheckCodeInput();
       inputData.data = form.value.data;
       inputData.data = this.data;
@@ -147,6 +177,7 @@ export class LoginModule implements OnInit {
               this.type = response.typeMailing;
               this.type = response;
             }
+            this.clearForm()
           },
 
           error: (err) => {

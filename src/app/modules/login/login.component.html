@@ -9,7 +9,8 @@
 
           <input type="text" class="form-control input-auth" placeholder="Введите номер или почту" name="data"
             [(ngModel)]="data" *ngIf="!isGetCode" autocomplete="off">
-          <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите код"
+          <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" (keyup)="sendCode(getCodeForm)"
+                 placeholder="Введите код"
             name="code" [(ngModel)]="code" *ngIf="isGetCode">
         </div>
 
@@ -73,7 +74,8 @@
 
           <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data"
             placeholder="Введите номер или почту" *ngIf="!isGetCode">
-          <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите код"
+          <input type="text" class="form-control input-auth" name="data" (keyup)="sendCode(getCodeForm1)" [(ngModel)]="data"
+                 placeholder="Введите код"
             *ngIf="isGetCode">
         </div>
 
@@ -92,7 +94,8 @@
         </div>
 
         <div>
-          <button class="btn secondary text-center" (click)="onLoginByPass()">Войти с паролем</button>
+          <button class="btn secondary text-center mb-3" (click)="onLoginByPass()">Войти с паролем</button>
+          <button class="btn secondary text-center" (click)="onSignUp()">Регистрация</button>
         </div>
 
         <!-- иконка для закрытия -->

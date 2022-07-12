@@ -2,13 +2,23 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-profile.page',
-  templateUrl: './profile.page.component.html'
+  templateUrl: './profile.page.component.html',
+  styleUrls: ['./profile.page.component.scss'],
 })
-export class ProfilePageComponent implements OnInit {
-
+export class ProfilePageComponent {
   constructor() { }
 
-  ngOnInit(): void {
+  shifted: boolean = true;
+
+  public removeShift(): void {
+    this.shifted = false;
   }
 
+  public addShift(): void {
+    this.shifted = true;
+  }
+
+  public onMenuClick(): void {
+    this.addShift();
+  }
 }

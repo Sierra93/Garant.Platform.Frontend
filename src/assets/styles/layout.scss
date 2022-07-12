@@ -423,6 +423,11 @@ a {
   display: none;
 }
 
+/* Запрет переноса текста */
+.no-wrap {
+  white-space: nowrap;
+}
+
 /* Характеристика какой либо сущности (gar-property-value) */
 .gar-property-value {
   > *:first-child {

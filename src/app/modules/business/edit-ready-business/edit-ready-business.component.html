@@ -1,20 +1,19 @@
 <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
-<h5 class="title-name-logo">Название бизнеса*</h5>
-
 <!-- Блок с названием. -->
-<div class="d-flex">
+<div class="d-flex flex-column">
+  <h5 class="gar-row title">Название бизнеса*</h5>
   <div class="block-two business-name">
     <label class="business-name-label">Укажите полное название вашего бизнеса, без приставок ООО</label><br>
     <input type="text" class="control-big-input" pInputText placeholder="Название"
-      [(ngModel)]="businessData.businessName" name="businessName" />
+      [value]="businessData.businessName" name="businessName" />
   </div>
 </div>
 
 <hr class="hr">
 
-<div class="fotos">
-  <span class="title-strong">Фотографии*</span><br>
+<div class="photos">
+  <h5 class="gar-row title">Фотографии*</h5><br>
   <label class="file-label">
     <input type="file" class="file-input" (change)="uploadBusinessPhotosAsync($event)" multiple>
     Прикрепить</label>
@@ -29,7 +28,7 @@
 <div class="block-gallery">
   <div>
     <span *ngIf="!aNamesBusinessPhotos.length">Фотографии не загружены</span>
-    <p-galleria [(value)]="aNamesBusinessPhotos" [responsiveOptions]="responsiveOptions"
+    <p-galleria [value]="aNamesBusinessPhotos" [responsiveOptions]="responsiveOptions"
       [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
       <ng-template pTemplate="item" let-item>
         <img src="{{item}}" style="width: 700px; display: block;" />
@@ -44,13 +43,13 @@
   </div>
 
   <div>
-    <span class="title-strong">Ваша карточка для связи</span><br>
+    <h5 class="gar-row title">Ваша карточка для связи</h5><br>
     <span class="title-small">{{fio}}</span><br>
 
     <div>
       <label class="control-label-gallery">Пример: владелец</label><br>
       <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец"
-        [(ngModel)]="businessData.status" name="lead" />
+        [value]="businessData.status" name="lead" />
     </div>
 
     <!-- <button class="btn btn-link">Стать франчайзи онлайн через гарант</button><br>
@@ -59,48 +58,48 @@
 </div>
 
 <!-- Ключевые финансовые данные. -->
-<span class="title-strong">Ключевые финансовые данные*</span><br>
+<h5 class="gar-row title">Ключевые финансовые данные*</h5><br>
 <div class="block-invest">
   <div class="invest-item invest-item-first">
     <span class="title-small invest-item__title">Стоимость</span><br>
     <small class="invest-item__small">полная стоимость бизнеса</small><br>
     <input type="number" class="control-input-franch-price invest-item__input" pInputText
-      [(ngModel)]="businessData.price" name="price" /> ₽
+      [value]="businessData.price" name="price" min="0" /> ₽
   </div>
 
   <div class="invest-item">
     <span class="title-small">Оборот</span><br>
     <small class="invest-item__small">средняя выручка за месяц</small><br>
     <input type="number" class="control-input-franch-price invest-item__input" pInputText
-      [(ngModel)]="businessData.turnPrice" name="turnPrice" /> ₽
+      [value]="businessData.turnPrice" name="turnPrice" min="0" /> ₽
   </div>
 
   <div class="invest-item">
     <span class="title-small">Прибыль</span><br>
     <small class="invest-item__small">чистая прибыль за месяц</small><br>
     <input type="number" class="control-input-franch-price invest-item__input" pInputText
-      [(ngModel)]="businessData.profitPrice" name="profitPrice" /> ₽
+      [value]="businessData.profitPrice" name="profitPrice" min="0" /> ₽
   </div>
 
   <div class="invest-item">
     <span class="title-small">Окупаемость</span><br>
     <small class="invest-item__small">по настоящим данным</small><br>
     <input type="number" class="control-input-franch-price invest-item__input" pInputText
-      [(ngModel)]="businessData.payback" name="payback" /> мес.
+      [value]="businessData.payback" name="payback" min="0" min="0" /> мес.
   </div>
 
   <div class="invest-item">
     <span class="title-small">Рентабельность</span><br>
     <small class="invest-item__small">по настоящим данным</small><br>
     <input type="number" class="control-input-franch-price invest-item__input" pInputText
-      [(ngModel)]="businessData.profitability" name="profitability" /> ₽
+      [value]="businessData.profitability" name="profitability" min="0" /> ₽
   </div>
 
   <div class="invest-item invest-item-last">
     <span class="title-small invest-item__title">Возраст бизнеса</span><br>
     <small class="invest-item__small">с момента основания</small><br>
     <input type="number" class="control-input-franch-price invest-item__input" pInputText
-      [(ngModel)]="businessData.businessAge" name="businessAge" /> дн.
+      [value]="businessData.businessAge" name="businessAge" min="0" /> дн.
   </div>
 </div>
 
@@ -111,43 +110,43 @@
 
   <div class="business-info">
     <div>
-      <span class="title-strong">Основная информация о бизнесе*</span><br>
+      <h5 class="gar-row title">Основная информация о бизнесе*</h5><br>
       <span class="title-small business-info__small">Описание деятельности</span><br>
       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-        placeholder="Опишите деятельность" [(ngModel)]="businessData.activityDetail"></textarea>
+        placeholder="Опишите деятельность" [value]="businessData.activityDetail"></textarea>
     </div>
 
     <!-- Дополнительные факты. -->
     <div>
-      <span class="title-strong">Дополнительные факты*</span><br>
+      <h5 class="gar-row title">Дополнительные факты*</h5><br>
       <div class="d-flex">
         <div class="additional-info">
           <div class="invest-item invest-item-first">
             <span class="title-small">Сотрудников</span><br>
             <small class="invest-item__small">количество</small><br>
             <input type="number" class="control-input-franch-price invest-item__input" pInputText
-              [(ngModel)]="businessData.employeeCountYear" name="employeeYearCount" />
+              [value]="businessData.employeeCountYear" name="employeeYearCount" />
           </div>
 
           <div class="invest-item">
             <span class="title-small">Форма</span><br>
             <small class="invest-item__small">организационно-правовая</small><br>
             <input type="text" class="control-input-franch-price invest-item__input" pInputText
-              [(ngModel)]="businessData.form" name="form" />
+              [value]="businessData.form" name="form" />
           </div>
 
           <div class="invest-item">
             <span class="title-small">Доля</span><br>
             <small class="invest-item__small">к продаже</small><br>
             <input type="number" class="control-input-franch-price invest-item__input" pInputText
-              [(ngModel)]="businessData.share" name="share" />
+              [value]="businessData.share" name="share" />
           </div>
 
           <div class="invest-item">
             <span class="title-small">Сайт</span><br>
             <small class="invest-item__small">компании</small><br>
             <input type="text" class="control-input-franch-price invest-item__input" pInputText
-              [(ngModel)]="businessData.site" name="site" />
+              [value]="businessData.site" name="site" />
           </div>
         </div>
       </div>
@@ -157,7 +156,7 @@
 
 
   <div class="invest-in">
-    <span class="title-strong">Входит в стоимость*</span><br>
+    <h5 class="gar-row title">Входит в стоимость*</h5><br>
     <!-- <div class="invest-item-last" *ngFor="let item of aPriceIn"> -->
     <div class="invest-in-container" *ngFor="let item of aPriceIn">
       <small class="invest-in__title">Стоимость</small><br>
@@ -191,10 +190,10 @@
 <hr class="hr">
 
 <!-- Описание особенности бизнеса. -->
-<span class="title-strong">Описание особенности готового бизнеса</span><br>
+<h5 class="gar-row title">Описание особенности готового бизнеса</h5><br>
 <div class="block-details-franch">
   <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения" pInputText
-    [(ngModel)]="businessData.peculiarity" name="peculiarity" />
+    [value]="businessData.peculiarity" name="peculiarity" />
   <span class="text">Прикрепить финансовую модель .xlsx</span>
   <br>
 
@@ -219,11 +218,11 @@
 <!-- Деятельность бизнеса. -->
 <div class="d-flex">
   <div>
-    <span class="title-strong">Деятельность бизнеса*</span><br>
+    <h5 class="gar-row title">Деятельность бизнеса*</h5><br>
     <div>
       <span class="title-small block__description">Описание принципов и процессов работы вашего бизнеса</span><br>
       <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-        placeholder="Опишите бизнес" [(ngModel)]="businessData.text" name="text"></textarea>
+        placeholder="Опишите бизнес" [value]="businessData.text" name="text"></textarea>
       <br>
       <label class="file-label">
         <input type="file" class="file-input" (change)="uploadTextBusinessPhotosAsync($event)">
@@ -240,12 +239,12 @@
 
 <div class="d-flex">
   <div>
-    <span class="title-strong">Активы предприятия*</span><br>
+    <h5 class="gar-row title">Активы предприятия*</h5><br>
     <span class="title-small block__description">Опишите активы и их ценность чуть более подробно, чем в разделе
       “Входит в
       стоимость”</span><br>
     <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-      placeholder="Опишите активы" [(ngModel)]="businessData.assets" name="assets"></textarea>
+      placeholder="Опишите активы" [value]="businessData.assets" name="assets"></textarea>
     <br>
     <label class="file-label">
       <input type="file" class="file-input" (change)="uploadAssetsBusinessPhotosAsync($event)">
@@ -261,10 +260,10 @@
 <!-- Причины продажи. -->
 <div class="d-flex">
   <div>
-    <span class="title-strong">Причины продажи*</span><br>
+    <h5 class="gar-row title">Причины продажи*</h5><br>
     <span class="title-small block__description">Укажите реальные причины продажи</span><br>
     <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-      placeholder="Опишите причины" [(ngModel)]="businessData.reasonsSale" name="reasonsSale"></textarea><br>
+      placeholder="Опишите причины" [value]="businessData.reasonsSale" name="reasonsSale"></textarea><br>
     <label class="file-label">
       <input type="file" class="file-input" (change)="uploadReasonsSalePhotosAsync($event)">
       Прикрепить</label>
@@ -282,7 +281,7 @@
   <div class="address">
     <label class="address__label">Адрес</label><br>
     <!-- <input type="text" class="control-big-input" pInputText placeholder="Адрес" [(ngModel)]="address" -->
-    <input type="text" class="address__input" pInputText placeholder="Адрес" [(ngModel)]="businessData.address"
+    <input type="text" class="address__input" pInputText placeholder="Адрес" [value]="businessData.address"
       name="address" />
   </div>
 </div>
@@ -308,7 +307,7 @@
 <div>
   <span class="title-small">Ссылка на видео</span><br>
   <!-- <input type="text" class="control-big-input" placeholder="https://" pInputText [(ngModel)]="videoLink" -->
-  <input type="text" class="video__input" placeholder="https://" pInputText [(ngModel)]="businessData.urlVideo"
+  <input type="text" class="video__input" placeholder="https://" pInputText [value]="businessData.urlVideo"
     name="videoLink" />
 </div>
 
@@ -316,7 +315,7 @@
 
 <div class="switch-garant block-garant">
   <strong class="block-garant__title">Продажа через гарант</strong><br>
-  <p-inputSwitch [(ngModel)]="businessData.isGarant" class="flag-garant" (click)="onCheckedGarant()"></p-inputSwitch>
+  <p-inputSwitch [ngModel]="businessData.isGarant" class="flag-garant" (click)="onCheckedGarant()"></p-inputSwitch>
 </div>
 
 <div class="d-flex">

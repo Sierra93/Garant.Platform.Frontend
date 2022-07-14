@@ -21,6 +21,10 @@
   padding-bottom: 24px;
 }
 
+.gar-row.title {
+  font-weight: 500;
+}
+
 .business-name {
   margin-left: 0 !important;
 
@@ -52,7 +56,7 @@
 //     display: none;
 // }
 
-.fotos {
+.photos {
   margin-top: -10px;
 }
 
@@ -183,8 +187,9 @@
 .control-textarea-franch {
   font-family: "Roboto", sans-serif;
   font-size: 1.125rem;
-  width: 952px;
-  height: 210px;
+  max-width: 952px;
+  width: 100%;
+  max-height: 210px;
   padding: 24px 16px;
   border-radius: 8px;
   border: 1.5px solid #dadada;

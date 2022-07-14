@@ -18,7 +18,7 @@
   <div class="gar-row no-adaptive-row gar-grid">
     <div class="gar-card">
       <p-galleria
-              [(value)]="aNamesBusinessPhotos"
+              [value]="aNamesBusinessPhotos"
               [responsiveOptions]="responsiveOptions"
               thumbnailsPosition="left">
         <ng-template pTemplate="item" let-item>
@@ -110,7 +110,7 @@
 
 <section class="section">
   <app-promotion-card action="Получить консультацию" reject="Позднее" link="/deal/start">
-    <p class="gar-row title">Покупка бизнеса онлайн с гарантиями</p>
+    <p class="gar-row title promotion-title">Покупка бизнеса онлайн с гарантиями</p>
     <p class="gar-row secondary">Вам больше не нужно покупать бизнес онлайн! Все тренды сводятся к покупке бизнеса и управлению им из дома.
       Предлагаем получить консультацию по покупке бизнеса онлайн. </p>
   </app-promotion-card>
@@ -175,5 +175,9 @@
     </div>
     <gar-button role="primary" (click)="onCreateRequestBusinessAsync(userName, number, businessData[0].businessId)">Оставить заявку</gar-button>
   </div>
+<!--  <div class="buttons difference-business gar-grid">-->
+<!--    <gar-button>Написать владельцу</gar-button>-->
+<!--    <gar-button role="primary">Приобрести бизнес онлайн</gar-button>-->
+<!--  </div>-->
 </section>
 

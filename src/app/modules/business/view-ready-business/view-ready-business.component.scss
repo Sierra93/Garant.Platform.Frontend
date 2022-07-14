@@ -49,4 +49,19 @@
   .difference-business {
     max-width: 920px;
   }
+
+  .buttons {
+    width: 100%;
+    margin-top: 74px;
+    gar-button {
+      width: inherit;
+      &:first-child {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  .promotion-title {
+    font-weight: 700;
+  }
 }

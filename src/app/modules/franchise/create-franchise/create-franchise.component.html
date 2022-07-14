@@ -2,50 +2,43 @@
   <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
   <!-- Блок с названием. -->
-  <div class="row title-block">
-    <div class="col-12">
-      <h5 class="title">Название и логотип*</h5>
+  <div class="gar-card row title-block" > 
+    <div class="gar-row title">
+      Название*
     </div>
 
-    <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-5">
+    <!-- <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-5"> 
       <div class="file-input-wrapper">
         <label class="form-label">Логотип</label>
         <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" class="form-control d-none" />
         <label for="franchise-logo" style="height: 70px; font-size: 2.25rem; border-radius: 10px;" class="form-control d-flex align-items-center justify-content-center">
           <img src="./../../../../assets/images/plus.svg" alt="gobizy plus icon" />
         </label>
-        <!-- <div class="franchise-logo">
-          <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
-        </div> -->
-      </div>
-    </div>
+      </div>  
+    </div> -->
 
-    <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-8 col-sm-7">
+    <div class="gar-card">
       <div class="block-two">
-        <label class="form-label">Название</label><br>
-        <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="logoName"
-          name="logoName" />
+        <!-- <label class="form-label">Название</label><br> -->
+        <!-- <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="logoName"
+          name="logoName" />  -->
+        <gar-input-text [(ngModel)]="userName" title="Название франшизы"></gar-input-text> 
       </div>
-    </div>
-
-    <div class="col-12">
       <hr class="hr">
     </div>
+      
   </div>
 
   <!-- Блок с галереей. -->
-  <div class="row photos">
-    <div class="col-12">
-      <h5 class="title">Фотографии*</h5>
-    </div>
-
+  <div class="car-card row photos">
+ 
+    <div class="gar-row title">Фотографии</div>
     <gar-img-uploader (upload)="uploadImages($event)"></gar-img-uploader>
 
-    <div class="col-xxl-8 col-xl-9 col-lg-8 col-md-12">
-      <div class="block-gallery">
+    <div class="gar-card block-gallery">
         <div class="w-100">
-          <span *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</span>
-
+          <!-- <span *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</span> -->
+          <div class="gar-row" *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</div>
           <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
             [containerStyle]="{'max-width': '100%'}" [numVisible]="4" thumbnailsPosition="left">
             <ng-template pTemplate="item" let-item>
@@ -59,16 +52,15 @@
             </ng-template>
           </p-galleria>
         </div>
-      </div>
     </div>
 
-    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 photos-contact">
+     <!-- <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 photos-contact">
       <div>
         <h6>Ваша карточка для связи</h6>
         <strong>{{fio}}</strong>
 
         <div>
-          <label>Пример: владелец</label><br>
+          <label>Пример: владелец ННН</label><br>
           <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец" [(ngModel)]="lead"
             name="lead" />
         </div>
@@ -78,17 +70,15 @@
           <p-button label="Начать чат с представителем" styleClass="control-button-blue" [disabled]="true"></p-button>
         </div>
       </div>
-    </div>
+    </div>  -->
   </div>
 
   <!-- Ключевые финансовые данные. -->
-  <div class="row financial-data">
-    <div class="col-12">
-      <h5 class="title-strong">Ключевые финансовые данные*</h5>
-      <!-- <span>0 из 6</span> -->
-    </div>
-
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+  <div class="gar-grid_wrap">
+    <div class="gar-row title">Ключевые финансовые данные*</div>
+    <div class="gar-row financial">
+    <div class="gar-row box">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Общие инвестиции</strong>
         <span>включая паушальный взнос</span>
@@ -100,7 +90,7 @@
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Паушальный взнос</strong>
         <span>зависит от выбранного пакета</span>
@@ -112,7 +102,7 @@
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Роялти</strong>
         <span>от валовой выручки</span>
@@ -122,8 +112,9 @@
         </div>
       </div>
     </div>
-
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    </div>
+    <div class="gar-row box">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Окупаемость</strong>
         <span>средняя и планируемая</span>
@@ -134,7 +125,7 @@
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Месячная прибыль</strong>
         <span>планируемая чистая прибыль</span>
@@ -146,7 +137,7 @@
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Срок запуска</strong>
         <span>средний срок открытия бизнеса</span>
@@ -157,77 +148,81 @@
         </div>
       </div>
     </div>
-
-    <div class="col-12">
-      <hr class="hr">
     </div>
   </div>
 
-  <!-- Основная информация о компании. -->
-  <div class="row main-info">
-    <div class="col-xxl-8 col-xl-8">
-      <div class="textarea">
-        <h6>Основная информация о компании*</h6>
-        <span><strong>Описание деятельности</strong></span><br>
-        <textarea class="control-textarea-franch" pInputTextarea [autoResize]="true"
-          placeholder="Опишите деятельность" [(ngModel)]="activityDetail"></textarea>
-      </div>
+      <hr class="hr">
 
-      <!-- Дополнительные факты. -->
-      <div class="additional-facts">
-        <h6>Дополнительные факты*</h6>
+  </div>
+
+  <!-- Основная информация о компании. -->
+  <section class="section"> 
+    <div class="gar-grid main"> 
+  
+        <div class="gar-grid main-info">
+          <div class="gar-card textarea">
+        <div class="gar-row title">Краткая информация о франшизе*</div>
+        <div class="gar-row item">Описание деятельности</div>
+        <textarea class="control-textarea" pInputTextarea [autoResize]="true"
+          placeholder="Опишите деятельность" [(ngModel)]="activityDetail"></textarea>
+          </div>
+      
+          <!-- Дополнительные факты. -->
+          <div class="gar-card additional-facts">   
+        <div class="gar-row title-item additional-item">Дополнительные факты*</div>
         <span>0 из 4</span>
-        <div class="row">
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
-            <div class="additional-facts-block">
+        <div class="gar-grid additional">
+
+            <div class="gar-card additional-facts-block">
               <label>Год основания</label><br>
               <span>компании</span><br>
               <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="baseDate"
                 name="baseDate" />
             </div>
-          </div>
 
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
-            <div class="additional-facts-block">
+
+
+            <div class="gar-card additional-facts-block">
               <label>Год запуска</label><br>
               <span>франчайзинга</span><br>
               <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="yearStart"
                 name="yearStart" />
             </div>
-          </div>
 
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
-            <div class="additional-facts-block">
+
+
+            <div class="gar-card additional-facts-block">
               <label>Количество точек</label><br>
               <span>в России</span><br>
               <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="dotCount"
                 name="dotCount" />
             </div>
-          </div>
 
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
-            <div class="additional-facts-block">
+
+
+            <div class="gar-card additional-facts-block">
               <label>Собственных</label><br>
               <span>предприятий</span><br>
               <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="businessCount"
                 name="businessCount" />
             </div>
+
+        </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="col-xxl-4 col-xl-4">
-      <h6>Входит в инвестиции*</h6>
-      <span>1 из 10</span>
-      <div class="main-info-form" *ngFor="let item of ainvestIn">
-        <div>
-          <label>Стоимость</label><br>
-          <input type="number" class="control-input-franch-price" pInputText *ngIf="item.isHideInvest"
+          <div class="gar-card right">
+          <h6>Входит в инвестиции*</h6>
+          <span>1 из 10</span>
+          <div class="main-info-form" *ngFor="let item of ainvestIn">
+          <div>
+            <label>Стоимость</label><br>
+            <input type="number" class="control-input-franch-price" pInputText *ngIf="item.isHideInvest"
             [value]="item.Price" name="priceInvest" placeholder="- ₽" />
-          <input type="number" class="control-input-franch-price" pInputText *ngIf="!item.isHideInvest"
+            <input type="number" class="control-input-franch-price" pInputText *ngIf="!item.isHideInvest"
             [(ngModel)]="priceInvest" name="priceInvest" placeholder="- ₽" />
-        </div>
+          </div>
+
+            <!-- <gar-input-number mode="currency" title="" [(ngModel)]="priceInvest"></gar-input-number>  -->
 
         <div>
           <label>Название</label><br>
@@ -236,25 +231,24 @@
           <input type="text" class="control-input-name" placeholder="Пример: оборудование" pInputText
             *ngIf="!item.isHideInvest" [(ngModel)]="nameInvest" name="nameInvest" />
         </div>
-
-        <button class="control-button-blue-small" (click)="onAddInveest(priceInvest, nameInvest)">Добавить
-          пункт</button>
+        <div class="gar-card buttons">
+          <gar-button class="button" role="primary" (click)="onAddInveest(priceInvest, nameInvest)">Добавить
+            пункт</gar-button>
+          <gar-button class="button">Удалить пункт</gar-button>
+        </div>
       </div>
-      <p>Данный раздел обязателен для заполнения. Подойдите к заполнению данного раздела тщательно, так как при продаже
-        онлайн через сервис гарант данные разделы способствуют разбиению на этапы.</p>
-    </div>
+          </div>
+          <p>Данный раздел обязателен для заполнения. Подойдите к заполнению данного раздела тщательно, так как при продаже
+          онлайн через сервис гарант данные разделы способствуют разбиению на этапы.</p>
 
-    <div class="col-12">
-      <hr class="hr">
     </div>
-  </div>
+  <hr class="hr">
+  </section>
 
   <!-- Описание особенности франшизы. -->
-  <div class="row franchise-specifications">
-    <div class="col-12">
-      <h6>Описание особенности франшизы</h6>
-    </div>
-    <div class="col-12">
+  <div class="gar-card row franchise-specifications">
+    <div class="gar-row title page">Описание особенности франшизы</div>
+    <div class="gar-card">
       <div class="franchise-specifications-block">
         <div>
           <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения"
@@ -279,24 +273,35 @@
           презентацию, просто пропустите данный этап.</p>
       </div>
     </div>
-    <div class="col-12">
       <hr class="hr">
-    </div>
   </div>
 
   <!-- Основная информация о франшизе. -->
-  <div class="row main-franchise-info">
-    <div class="col-xxl-8 col-xl-8 col-lg-8">
+  <div class="gar-card row main-franchise-info">
+    <div class="gar-card franchise-info">
       <div>
         <h6>Основная информация о франшизе*</h6>
         <span>Описание франшизы</span>
+        <!-- Блок с 6 иконками -->
+        <div class="gar-row icons">
+          <div class="gar-card icon">&#x392;</div>
+          <div class="gar-card icon">&#x192;</div>
+          <div class="gar-card icon">&#x2261;</div>
+          <div class="gar-card icon">&#x2261;</div>
+          <div class="gar-card icon">&#x25C4;</div>
+          <div class="gar-card icon">&#x25BA;</div>
+        </div>
         <div>
           <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
             placeholder="Опишите франшизу" [(ngModel)]="defailsFranchise" name="defailsFranchise"></textarea>
         </div>
+        <!-- Блок загрузить фото -->
+        <div class="gar-card photo-upload">
+          <gar-button role="secondary" class="cross">&#x2716;</gar-button>
+        </div>
       </div>
     </div>
-    <div class="col-xxl-4 col-xl-4 col-lg-4">
+    <div class="gar-card present">
       <div class="form">
         <h6>Добавить презентацию</h6>
         <div class="block-details-franch d-flex flex-column">
@@ -311,15 +316,11 @@
           </label>
         </div>
       </div>
-      <div>
         <p>Загружать презентацию не обязательно. Однако, это способствует повышению конверсии и глубинной
           заинтересованности в проекте. Если вы не хотите загружать презентацию, просто пропустите данный этап.</p>
-      </div>
     </div>
 
-    <div class="col-12">
       <hr class="hr">
-    </div>
   </div>
 
   <!-- Пример расчета прибыли. -->

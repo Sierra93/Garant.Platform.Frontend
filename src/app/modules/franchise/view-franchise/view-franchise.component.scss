@@ -38,30 +38,49 @@
 
     }
 
-    &.packages {
-
+    &.advantages-business {
       @include phone {
-        width: 48%;
+        flex-direction: column;
+      }
+
+      flex-direction: row;
+      margin-top: 10px;
+    }
+
+    &.packages {
+      @include phone {
+        margin: 10px;
       }
 
       @include tablet-small {
-        width: 31%;
+        margin: 10px;
+      }
+
+      @include desktop {
+        width: 33.333%;
       }
     }
 
     &.packages2 {
       @include phone {
-        width: 48%;
+        width: 100%;
       }
 
       @include tablet-small {
-        width: 22%;
+        width: 25%;
       }
     }
 
     &.packages3 {
       @include tablet-small {
         width: 47%;
+      }
+    }
+
+    &.info-franchise {
+
+      @include desktop {
+        flex-direction: row;
       }
     }
 
@@ -178,10 +197,6 @@
       flex-wrap: nowrap;
     }
 
-    &.advantages-business {
-      gap: 8px;
-    }
-
     &.no-adaptive-row {
       flex-wrap: nowrap;
     }
@@ -192,6 +207,14 @@
 
     &.eee {
       width: 65%;
+    }
+
+    &.box {
+      flex-direction: row;
+
+      @include phone {
+        width: 100%;
+      }
     }
 
     &.gar-property-value {
@@ -215,10 +238,6 @@
         min-height: 30px;
         margin-bottom: 5px;
       }
-    }
-
-    &.advantages {
-      justify-content: space-between;
     }
 
     &.lesson {

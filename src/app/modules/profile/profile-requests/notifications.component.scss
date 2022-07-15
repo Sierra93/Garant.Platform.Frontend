@@ -1,78 +1,26 @@
-@use "./../manage-account/manage-account.component.scss";
+@import 'design';
 
-.button-detail-notify {
-    padding: 0px 5px 0px 0px;
-}
+.profile-notice {
+  background-color: $clrLightBlue;
+  border-radius: calc({#$border-radius} / 2);
+  padding: calc(#{$gridGap} / 3 * 2);
 
-.notification {
-  background-color: #F1F6FF;
-  font-family: 'Roboto', sans-serif;
-  padding: 1rem;
-  position: relative;
-
-  &-title {
-    font-size: 18px;
-    line-height: 21px;
-    color: #1F75FE;
-    margin-bottom: 1.25rem;
+  &:not(:first-child) {
+    margin-top: calc(#{$gridGap} / 3 * 2);
   }
 
-  &-description {
-    font-size: 14px;
-    line-height: 16px;
-    color: #646464;
+  &__title {
+    @include typo('regular');
+
+    color: $clrBlue;
   }
 
-  &-buttons {
-    > div {
-      &:first-child {
-        margin-right: 1rem;
-      }
-
-      button {
-        padding: 1rem;
-        height: 3rem;
-        border-radius: .25rem;
-        border: none;
-      }
-
-      &:first-child {
-        button {
-          &, &:focus {
-            background-color: #1F75FE;
-            color: #fff;
-          }
-        }
-      }
-
-      &:last-child {
-        button {
-          &, &:focus {
-            background-color: transparent;
-            border: 1px solid #2C2C2C;
-            color: #2C2C2C;
-          }
-        }
-      }
-    }
+  &__description {
+    color: $clrDarkGray;
+    margin-top: $gridGap;
   }
 
-  &-remove {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-
-    button {
-      &, &:focus {
-        border: none;
-        outline: none;
-        background-color: transparent;
-      }
-
-      img {
-        width: 1rem;
-        height: 1rem;
-      }
-    }
+  &__buttons {
+    margin-top: calc(#{$gridGap} / 3 * 2);
   }
 }

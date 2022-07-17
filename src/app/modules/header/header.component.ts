@@ -7,12 +7,23 @@ import { BehaviorSubject, combineLatest, Observable } from "rxjs";
 import {header} from "./header";
 import { SESSION_TOKEN } from "../../core/session/session.token";
 import { SessionService } from "../../core/session/session.service";
-import { filter, map } from "rxjs/operators";
+import {filter, map, shareReplay, takeUntil} from "rxjs/operators";
+import {GarDestroyService} from "../../gar-lib/gar-destroy.service";
+
+
+
+const CABINET_LINKS: header.IHeaderItem[] = [
+  { name: 'Продать', icon: 'cabinet-megaphone', link: '/' },
+  { name: 'Мои сделки', icon: 'cabinet-deal', link: '/' },
+  { name: 'Избранное', icon: 'cabinet-star', link: '/' },
+  { name: 'Уведомления', icon: 'cabinet-bell', link: '/' },
+]
 
 @Component({
     selector: 'header',
     templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss']
+    styleUrls: ['./header.component.scss'],
+    providers: [GarDestroyService]
 })
 
 /**
@@ -25,14 +36,14 @@ export class HeaderModule implements OnInit {
         filter(([isLogin, aHeader]) => !!aHeader?.length),
         map(([isLogin, aHeader]) => {
             return !isLogin ? aHeader : aHeader!.filter(h => h.name !== 'Вход или регистрация')
-        })
+        }),
+        shareReplay({refCount: true, bufferSize: 1}),
+        takeUntil(this._destroy$)
     )
 
     aBreadcrumbs: any[] = [];
     routeParam: any;
     searchText: string = "";
-    selectedValueFranchise: boolean = false;
-    selectedValueBusiness: boolean = false;
     searchOptions: header.ISearchOption[];
     selectedSearchOption: header.ISearchOption;
     isGarant: boolean = false;
@@ -46,13 +57,12 @@ export class HeaderModule implements OnInit {
       { name: 'Консалтинг', icon: 'category-consulting', link: '/consulting/start' },
       { name: 'Упаковка франшиз', icon: 'category-franchise-start', link: '/franchise/start' }
     ];
-    cabinetLinks: header.IHeaderItem[] = [
-      { name: 'Продать', icon: 'cabinet-megaphone', link: '/' },
-      { name: 'Мои сделки', icon: 'cabinet-deal', link: '/' },
-      { name: 'Избранное', icon: 'cabinet-star', link: '/' },
-      { name: 'Уведомления', icon: 'cabinet-bell', link: '/' },
-      { name: 'Аккаунт', icon: 'cabinet-profile', link: '/profile/my-data' },
-    ]
+
+    readonly cabinetLinks$: Observable<header.IHeaderItem[]> = this._sessionService.isLogin$.pipe(
+      map(isLogin => [...CABINET_LINKS, { name: isLogin ? 'Аккаунт' : 'Войти', icon: 'cabinet-profile', link: '/profile/my-data' }]),
+      shareReplay({refCount: true, bufferSize: 1}),
+      takeUntil(this._destroy$)
+    );
 
     constructor(
         private http: HttpClient,
@@ -60,7 +70,8 @@ export class HeaderModule implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         @Inject(SESSION_TOKEN)
-        private _sessionService: SessionService
+        private _sessionService: SessionService,
+        private _destroy$: GarDestroyService
     ) {
           this.searchOptions = [
             { name: 'франшиза', type: 'franchise' },

@@ -44,7 +44,10 @@
       </div>
     </div>
 
-    <gar-button role="primary" (click)="onSaveProfileFormAsync(form, 'MainData')">Сохранить</gar-button>
+    <p class="gar-row">
+      <gar-button role="primary" (click)="onSaveProfileFormAsync(form, 'MainData')">Сохранить</gar-button>
+      <gar-button (click)="logOut()">Выход (временно)</gar-button>
+    </p>
   </form>
 
   <!-- Таб сообщений. -->

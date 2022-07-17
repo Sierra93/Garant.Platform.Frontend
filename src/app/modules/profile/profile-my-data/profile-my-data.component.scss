@@ -1,44 +1,5 @@
 @import 'design';
 
-.profile-back {
-  @include inputReset;
-
-  height: auto;
-  padding: 0;
-  margin-bottom: $gridGap / 2;
-
-  gar-icon {
-    width: 36px;
-    height: 30px;
-    fill: $clrBlue;
-  }
-}
-
-.profile {
-  transition: transform $timeDefault;
-
-  &__inner {
-    flex-shrink: 0;
-    width: 100%;
-  }
-
-  &__main {
-    //visibility: hidden;
-  }
-
-  &.-active {
-    //transform: translate(calc(-100% - #{$gridGap}));
-
-    .profile__sidebar {
-      //visibility: hidden;
-    }
-
-    .profile__main {
-      visibility: visible;
-    }
-  }
-}
-
 .profile-main {
   background-color: $clrWhite;
   border-radius: $border-radius;

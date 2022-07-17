@@ -1,206 +1,194 @@
-<p-toast [style]="{ marginTop: '80px' }"></p-toast>
+<h2 class="gar-row title">Мои данные</h2>
 
-<div class="section profile gar-grid" [class.-active]="shifted">
-<!--  <manage-account class="profile__inner profile__sidebar" (menuClick)="onMenuClick()"></manage-account>-->
+<div class="profile-main">
+  <form #form="ngForm">
+    <div class="profile-main__section">
+      <h3 class="profile-main__title">Основные данные</h3>
 
-  <div class="profile__inner profile__main">
-    <button class="profile-back" (click)="removeShift()">
-      <gar-icon name="arrow-left-angle"></gar-icon>
-    </button>
-
-    <h2 class="gar-row title">Мои данные</h2>
-
-    <div class="profile-main">
-      <form #form="ngForm">
-        <div class="profile-main__section">
-          <h3 class="profile-main__title">Основные данные</h3>
-
-          <div class="gar-grid gar-grid_wrap">
-            <div class="profile-main__section-cell">
-              <label for="lastName">Фамилия</label>
-              <gar-input-text type="text" [(ngModel)]="lastName" name="lastName"></gar-input-text>
-            </div>
-
-            <div class="profile-main__section-cell">
-              <label for="firstName">Имя</label>
-              <gar-input-text type="text" [(ngModel)]="firstName" name="firstName"></gar-input-text>
-            </div>
-
-            <div class="profile-main__section-cell">
-              <label for="patr">Отчество</label>
-              <gar-input-text type="text" [(ngModel)]="patr" name="patr"></gar-input-text>
-            </div>
-
-            <div class="profile-main__section-cell">
-              <label for="dateYearBirth">Дата рождения</label>
-              <gar-input-text type="date" [(ngModel)]="dateYearBirth" name="dateYearBirth"></gar-input-text>
-            </div>
-          </div>
+      <div class="gar-grid gar-grid_wrap">
+        <div class="profile-main__section-cell">
+          <label for="lastName">Фамилия</label>
+          <gar-input-text type="text" [(ngModel)]="lastName" name="lastName"></gar-input-text>
         </div>
 
-        <div class="profile-main__section">
-          <h3 class="profile-main__title">Контактные данные</h3>
-
-          <div class="gar-grid gar-grid_wrap">
-            <div class="profile-main__section-cell">
-              <label for="email">E-mail</label>
-              <gar-input-text type="email" [(ngModel)]="email" name="email"></gar-input-text>
-            </div>
-
-            <div class="profile-main__section-cell">
-              <label for="phone">Номер телефона</label>
-              <gar-input-text type="tel" [(ngModel)]="phone" name="phone"></gar-input-text>
-            </div>
-          </div>
+        <div class="profile-main__section-cell">
+          <label for="firstName">Имя</label>
+          <gar-input-text type="text" [(ngModel)]="firstName" name="firstName"></gar-input-text>
         </div>
 
-        <p class="gar-row">
-          <gar-button role="primary" (click)="onSaveProfileFormAsync(form, 'MainData')">Сохранить</gar-button>
-          <gar-button (click)="logOut()">Выход (временно)</gar-button>
-        </p>
-      </form>
+        <div class="profile-main__section-cell">
+          <label for="patr">Отчество</label>
+          <gar-input-text type="text" [(ngModel)]="patr" name="patr"></gar-input-text>
+        </div>
 
-      <!-- Таб сообщений. -->
-      <div class="block-right" *ngIf="isMessageTab">
-        <profile-my-dialogs></profile-my-dialogs>
+        <div class="profile-main__section-cell">
+          <label for="dateYearBirth">Дата рождения</label>
+          <gar-input-text type="date" [(ngModel)]="dateYearBirth" name="dateYearBirth"></gar-input-text>
+        </div>
       </div>
-
-      <!-- Блок с реквизитами. -->
-      <!-- <div>
-        <h2 class="profile-title mb-2">Реквизиты</h2>
-        <span class="requisite-desc">Для осуществления сделок онлайн через сервис гарант</span>
-
-        <div class="block-right">
-          <form #formReq="ngForm" class="main-info-form">
-            <h3 class="profile-subtitle">Укажите свой статус</h3>
-            <p-tabView>
-              <p-tabPanel header="Физическо лицо" [selected]="true">
-                <h3 class="profile-subtitle">Реквизиты</h3>
-                <div class="row">
-                  <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5 mb-4">
-                    <div class="input-container">
-                      <label for="">ИНН</label>
-                      <input type="number" class="control-input-franch-price form-control form-control-lg"
-                        [(ngModel)]="inn" name="inn" placeholder="12 цифр" />
-                    </div>
-                  </div>
-
-                  <div class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 mb-4">
-                    <div class="input-container">
-                      <label for="">Р/С</label>
-                      <input type="number" class="control-input-franch-price form-control form-control-lg"
-                        [(ngModel)]="pc" name="pc" />
-                    </div>
-                  </div>
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5 mb-4">
-                    <div class="input-container">
-                      <label for="">Bik</label>
-                      <input type="number" class="control-input-franch-price form-control form-control-lg"
-                        [(ngModel)]="bik" name="bik" />
-                    </div>
-                  </div>
-
-                  <div class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 mb-4">
-                    <div class="input-container">
-                      <label for="">Kpp</label>
-                      <input type="number" class="control-input-franch-price form-control form-control-lg"
-                        [(ngModel)]="kpp" name="kpp" />
-                    </div>
-                  </div>
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5">
-                    <div class="input-container bank-name-select">
-                      <label for="">Выберите свой банк</label>
-                      <p-dropdown [options]="availableBanks" [(ngModel)]="defaultBankName" optionLabel="value"
-                        [filter]="true" placeholder="Выберите свой банк"
-                        (onFilter)="onFilterSearchByBankNameAsync($event)">
-                      </p-dropdown>
-                    </div>
-                  </div>
-
-                  <div class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 mb-4">
-                    <div class="input-container">
-                      <label for="">corrAccountNumber</label>
-                      <input type="number" class="control-input-franch-price form-control form-control-lg"
-                        [(ngModel)]="corrAccountNumber" name="corrAccountNumber" />
-                    </div>
-                  </div>
-                </div>
-
-
-                <h3 class="profile-subtitle">Паспортные данные</h3>
-                <div class="row">
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
-                    <div class="input-container">
-                      <label for="">Серия</label>
-                      <input type="number" class="control-input-franch-price form-control form-control-lg"
-                        [(ngModel)]="serial" name="serialPassport" />
-                    </div>
-                  </div>
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
-                    <div class="input-container">
-                      <label for="">Номер</label>
-                      <input type="number" class="control-input-franch-price form-control form-control-lg"
-                        [(ngModel)]="number" name="numberPassport" />
-                    </div>
-                  </div>
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-12 col-md-4 mb-4">
-                    <div class="input-container">
-                      <label for="">Дата выдачи</label>
-                      <input type="date" class="control-input-franch-price form-control form-control-lg"
-                        [(ngModel)]="dateGive" name="dateGive" />
-                    </div>
-                  </div>
-
-                  <div class="col-xxl-8 col-xl-8 col-lg-6 col-md-6 col-sm-6 mb-4">
-                    <div class="input-container">
-                      <label for="">Выдан</label>
-                      <input type="text" class="control-input-franch-price form-control form-control-lg"
-                        [(ngModel)]="whoGive" name="whoGive" />
-                    </div>
-                  </div>
-
-                  <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-4">
-                    <div class="input-container">
-                      <label for="">Код подразделения</label>
-                      <input type="text" class="control-input-franch-price form-control form-control-lg"
-                        [(ngModel)]="code" name="code" />
-                    </div>
-                  </div>
-
-                  <div class="col-12 mb-4">
-                    <div class="input-container">
-                      <label for="">Зарегистрирован по адресу</label>
-                      <input type="text" class="control-input-franch-price form-control form-control-lg"
-                        [(ngModel)]="registerAddress" name="registerAddress" />
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <div class="mb-3">
-                    <input type="file" class="mt-3 form-control" (change)="uploadDocumentAsync($event)">
-                  </div>
-                  <div>
-                    <button class="btn-save" (click)="onSaveProfileFormAsync(formReq, 'Requisites')">Сохранить</button>
-                  </div>
-                </div>
-              </p-tabPanel>
-
-              <p-tabPanel header="Юридическое лицо">
-                Пока не продумано
-              </p-tabPanel>
-
-              <p-tabPanel header="Индивидуальный предприниматель">
-                Пока не продумано
-              </p-tabPanel>
-            </p-tabView>
-          </form>
-        </div>
-      </div> -->
     </div>
+
+    <div class="profile-main__section">
+      <h3 class="profile-main__title">Контактные данные</h3>
+
+      <div class="gar-grid gar-grid_wrap">
+        <div class="profile-main__section-cell">
+          <label for="email">E-mail</label>
+          <gar-input-text type="email" [(ngModel)]="email" name="email"></gar-input-text>
+        </div>
+
+        <div class="profile-main__section-cell">
+          <label for="phone">Номер телефона</label>
+          <gar-input-text type="tel" [(ngModel)]="phone" name="phone"></gar-input-text>
+        </div>
+      </div>
+    </div>
+
+    <p class="gar-row">
+      <gar-button role="primary" (click)="onSaveProfileFormAsync(form, 'MainData')">Сохранить</gar-button>
+      <gar-button (click)="logOut()">Выход (временно)</gar-button>
+    </p>
+  </form>
+
+  <!-- Таб сообщений. -->
+  <div class="block-right" *ngIf="isMessageTab">
+    <profile-my-dialogs></profile-my-dialogs>
   </div>
+
+  <!-- Блок с реквизитами. -->
+  <!-- <div>
+    <h2 class="profile-title mb-2">Реквизиты</h2>
+    <span class="requisite-desc">Для осуществления сделок онлайн через сервис гарант</span>
+
+    <div class="block-right">
+      <form #formReq="ngForm" class="main-info-form">
+        <h3 class="profile-subtitle">Укажите свой статус</h3>
+        <p-tabView>
+          <p-tabPanel header="Физическо лицо" [selected]="true">
+            <h3 class="profile-subtitle">Реквизиты</h3>
+            <div class="row">
+              <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5 mb-4">
+                <div class="input-container">
+                  <label for="">ИНН</label>
+                  <input type="number" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="inn" name="inn" placeholder="12 цифр" />
+                </div>
+              </div>
+
+              <div class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 mb-4">
+                <div class="input-container">
+                  <label for="">Р/С</label>
+                  <input type="number" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="pc" name="pc" />
+                </div>
+              </div>
+
+              <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5 mb-4">
+                <div class="input-container">
+                  <label for="">Bik</label>
+                  <input type="number" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="bik" name="bik" />
+                </div>
+              </div>
+
+              <div class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 mb-4">
+                <div class="input-container">
+                  <label for="">Kpp</label>
+                  <input type="number" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="kpp" name="kpp" />
+                </div>
+              </div>
+
+              <div class="col-xxl-4 col-xl-4 col-lg-5 col-md-4 col-sm-5">
+                <div class="input-container bank-name-select">
+                  <label for="">Выберите свой банк</label>
+                  <p-dropdown [options]="availableBanks" [(ngModel)]="defaultBankName" optionLabel="value"
+                    [filter]="true" placeholder="Выберите свой банк"
+                    (onFilter)="onFilterSearchByBankNameAsync($event)">
+                  </p-dropdown>
+                </div>
+              </div>
+
+              <div class="col-xxl-8 col-xl-8 col-lg-7 col-md-8 col-sm-7 mb-4">
+                <div class="input-container">
+                  <label for="">corrAccountNumber</label>
+                  <input type="number" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="corrAccountNumber" name="corrAccountNumber" />
+                </div>
+              </div>
+            </div>
+
+
+            <h3 class="profile-subtitle">Паспортные данные</h3>
+            <div class="row">
+              <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
+                <div class="input-container">
+                  <label for="">Серия</label>
+                  <input type="number" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="serial" name="serialPassport" />
+                </div>
+              </div>
+
+              <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4">
+                <div class="input-container">
+                  <label for="">Номер</label>
+                  <input type="number" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="number" name="numberPassport" />
+                </div>
+              </div>
+
+              <div class="col-xxl-4 col-xl-4 col-lg-12 col-md-4 mb-4">
+                <div class="input-container">
+                  <label for="">Дата выдачи</label>
+                  <input type="date" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="dateGive" name="dateGive" />
+                </div>
+              </div>
+
+              <div class="col-xxl-8 col-xl-8 col-lg-6 col-md-6 col-sm-6 mb-4">
+                <div class="input-container">
+                  <label for="">Выдан</label>
+                  <input type="text" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="whoGive" name="whoGive" />
+                </div>
+              </div>
+
+              <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-4">
+                <div class="input-container">
+                  <label for="">Код подразделения</label>
+                  <input type="text" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="code" name="code" />
+                </div>
+              </div>
+
+              <div class="col-12 mb-4">
+                <div class="input-container">
+                  <label for="">Зарегистрирован по адресу</label>
+                  <input type="text" class="control-input-franch-price form-control form-control-lg"
+                    [(ngModel)]="registerAddress" name="registerAddress" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="mb-3">
+                <input type="file" class="mt-3 form-control" (change)="uploadDocumentAsync($event)">
+              </div>
+              <div>
+                <button class="btn-save" (click)="onSaveProfileFormAsync(formReq, 'Requisites')">Сохранить</button>
+              </div>
+            </div>
+          </p-tabPanel>
+
+          <p-tabPanel header="Юридическое лицо">
+            Пока не продумано
+          </p-tabPanel>
+
+          <p-tabPanel header="Индивидуальный предприниматель">
+            Пока не продумано
+          </p-tabPanel>
+        </p-tabView>
+      </form>
+    </div>
+  </div> -->
 </div>

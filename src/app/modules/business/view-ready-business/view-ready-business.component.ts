@@ -1,13 +1,13 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ConfirmationService, MessageService } from 'primeng/api';
-import { API_URL } from 'src/app/core/core-urls/api-url';
-import { CreateUpdateBusinessInput } from 'src/app/models/business/input/business-create-update-input';
-import { GetBusinessInput } from 'src/app/models/business/input/get-business-input';
-import { RequestBusinessInput } from 'src/app/models/request/input/request-business-input';
-import { CommonDataService } from 'src/app/services/common/common-data.service';
-import { Observable, of } from "rxjs";
+import {HttpClient} from '@angular/common/http';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {API_URL} from 'src/app/core/core-urls/api-url';
+import {CreateUpdateBusinessInput} from 'src/app/models/business/input/business-create-update-input';
+import {GetBusinessInput} from 'src/app/models/business/input/get-business-input';
+import {RequestBusinessInput} from 'src/app/models/request/input/request-business-input';
+import {CommonDataService} from 'src/app/services/common/common-data.service';
+import {Observable, of} from "rxjs";
 
 @Component({
   selector: 'view-ready-business',
@@ -64,7 +64,7 @@ export class ViewReadyBusinessModule implements OnInit {
   number: string = '';
   isHidePeculiarity: boolean = false;
   isUrlVideo: boolean = false;
-  
+
   public readonly listAdvantagesBusiness$: Observable<{title: string; description: string; result: string}[]> = of([{
     title: 'Стоимость',
     description: 'полная стоимость бизнеса',
@@ -90,7 +90,7 @@ export class ViewReadyBusinessModule implements OnInit {
     description: 'с момента основания',
     result: '4 года'
   }]);
-  
+
   public readonly listAdvantagesCompany$: Observable<{title: string; description: string; result: string}[]> = of([{
     title: 'Сотрудников',
     description: 'компании',
@@ -108,7 +108,7 @@ export class ViewReadyBusinessModule implements OnInit {
     description: 'Сайт',
     result: 'Ссылка'
   }]);
-  
+
   public readonly propertyBusiness$: Observable<{title: string; result: string}[]> = of([{
     title: 'Оборудование, мебель, оргтехника',
     result: '350 000 ₽'
@@ -136,7 +136,7 @@ export class ViewReadyBusinessModule implements OnInit {
     private http: HttpClient,
     private commonService: CommonDataService,
     private route: ActivatedRoute,
-    private messageService: MessageService
+    private messageService: MessageService,
   ) {
     this.responsiveOptions = [
       {
@@ -178,6 +178,10 @@ export class ViewReadyBusinessModule implements OnInit {
     console.log('aBusinessPhotos', this.aBusinessPhotos);
   }
 
+  // private updateComponent() {
+  //   this.changeDetector.detectChanges()
+  // }
+
   private async getTransitionAsync() {
     try {
       let businessId = 0;
@@ -206,34 +210,35 @@ export class ViewReadyBusinessModule implements OnInit {
   private async getViewBusinessAsync(businessId: number) {
     try {
       console.log('getViewBusinessAsync');
-      let getFranchiseInput = new GetBusinessInput();
-      getFranchiseInput.BusinessId = businessId;
-      getFranchiseInput.Mode = 'View';
+      let getBusinessInput = new GetBusinessInput();
+      getBusinessInput.BusinessId = businessId;
+      getBusinessInput.Mode = 'View';
 
       await this.http
         .post(
           API_URL.apiUrl.concat('/business/get-business'),
-          getFranchiseInput
+          getBusinessInput
         )
         .subscribe({
           next: (response: any) => {
-            this.businessData.push(response);
             this.aPriceIn = JSON.parse(response.investPrice);
 
             // Запишет пути изображений бизнеса.
             // this.businessData.forEach((item: any) => {
             //     this.aNamesBusinessPhotos = item.urlsBusiness;
             // });
-            this.aNamesBusinessPhotos = response.urlsBusiness.split(',');
 
-            if (!this.businessData[0].peculiarity) {
+            this.aNamesBusinessPhotos = response.urlsBusiness.split(',');
+            if (!this.businessData.peculiarity) {
               this.isHidePeculiarity = true;
             }
-
-            if (!this.businessData[0].urlVideo) {
+            if (!this.businessData.urlVideo) {
               this.isUrlVideo = true;
             }
 
+            this.businessData = response
+
+            console.log('BusinessData: ', this.businessData.price, this.businessData.turnPrice, this.businessData.profitPrice)
             console.log('Полученный бизнес:', response);
             console.log('businessData', this.businessData);
             console.log('aPriceIn', this.aPriceIn);
@@ -285,32 +290,13 @@ export class ViewReadyBusinessModule implements OnInit {
 
     try {
       let createUpdateBusinessInput = new CreateUpdateBusinessInput();
-      let newBusinessData = this.businessData[0];
-      let lead = newBusinessData.status;
-      let payback = newBusinessData.payback;
-      let profitability = newBusinessData.profitability;
-      let activityDetail = newBusinessData.activityDetail;
-      let defailsFranchise = newBusinessData.defailsFranchise;
-      let priceIn = newBusinessData.priceIn;
-      let videoLink = newBusinessData.urlVideo;
+      let newBusinessData = this.businessData;
       let isGarant = newBusinessData.isGarant || false;
-      let peculiarity = newBusinessData.peculiarity;
-      let businessName = newBusinessData.businessName;
       let price = +newBusinessData.price;
-      let turnPrice = newBusinessData.turnPrice;
-      let profitPrice = newBusinessData.profitPrice;
-      let businessAge = newBusinessData.businessAge;
-      let employeeYearCount = newBusinessData.employeeYearCount;
-      let form = newBusinessData.form;
-      let share = newBusinessData.share;
-      let site = newBusinessData.site;
-      let text = newBusinessData.text;
-      let assets = newBusinessData.assets;
-      let reasonsSale = newBusinessData.reasonsSale;
-      let address = newBusinessData.address;
       // let aPriceInData = JSON.parse(this.aPriceIn);
       let aNamesBusinessPhotos = this.aNamesBusinessPhotos;
 
+      let {status: lead, payback, profitability, activityDetail, defailsFranchise, priceIn, urlVideo: videoLink, peculiarity, businessName, turnPrice, profitPrice, businessAge, employeeYearCount, form, share, site, text, assets, reasonsSale, address} = newBusinessData
       // Уберет флаги видимости.
       let newPriceInJson = this.aPriceIn.map((item: any) => ({
         Price: item.Price,
@@ -523,7 +509,7 @@ export class ViewReadyBusinessModule implements OnInit {
       throw new Error(e);
     }
   }
-  
+
   private scrollPageToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;

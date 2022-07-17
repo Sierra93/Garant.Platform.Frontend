@@ -4,10 +4,10 @@
   <div class="gar-card">
     <div class="gar-row">
       <div class="gar-row-item">
-        <h2 class="gar-row title page">{{businessData[0].businessName}}</h2>
+        <h2 class="gar-row title page">{{businessData.businessName}}</h2>
       </div>
       <div class="gar-row-item fit right">
-        <span class="gar-row title page no-adaptive-row">{{businessData[0].price}} ₽</span>
+        <span class="gar-row title page no-adaptive-row">{{businessData.price}} ₽</span>
       </div>
       <gar-button class="right">Оставить заявку</gar-button>
     </div>
@@ -56,10 +56,35 @@
     </div>
   </div>
   <div class="gar-row advantages advantages-business gar-grid">
-    <div class="gar-card" *ngFor="let item of listAdvantagesBusiness$ | async">
-      <p class="gar-row title item">{{item.title}}</p>
-      <p class="gar-row secondary">{{item.description}}</p>
-      <p class="gar-row">{{item.result}}</p>
+    <div class="gar-card">
+      <p class="gar-row">Стоимость</p>
+      <p class="gar-row secondary">полная стоимость бизнеса</p>
+      <p class="gar-row">{{businessData.price}}</p>
+    </div>
+    <div class="gar-card">
+      <p class="gar-row">Оборот</p>
+      <p class="gar-row secondary">средняя выручка за месяц</p>
+      <p class="gar-row">{{businessData.turnPrice}}</p>
+    </div>
+    <div class="gar-card">
+      <p class="gar-row">Прибыль</p>
+      <p class="gar-row secondary">чистая прибыль за месяц</p>
+      <p class="gar-row">{{businessData.profitPrice}}</p>
+    </div>
+    <div class="gar-card">
+      <p class="gar-row">Окупаемость</p>
+      <p class="gar-row secondary">по настоящим данным</p>
+      <p class="gar-row">{{businessData.payback}}</p>
+    </div>
+    <div class="gar-card">
+      <p class="gar-row">Рентабельность</p>
+      <p class="gar-row secondary">по настоящим данным</p>
+      <p class="gar-row">{{businessData.profitability}}</p>
+    </div>
+    <div class="gar-card">
+      <p class="gar-row">Возраст бизнеса</p>
+      <p class="gar-row secondary">с момента основания</p>
+      <p class="gar-row">{{businessData.businessAge}}</p>
     </div>
   </div>
 </section>
@@ -69,28 +94,28 @@
     <div class="gar-row-item">
       <h2 class="gar-row title">Основная информация о компании</h2>
       <div class="gar-card">
-        <p>Прибыльный детский сад Монтессори в Москве по цене ниже стоимости активов, готовый бизнес</p>
-        <br>
-        <p>В связи с семейными обстоятельствами продаем любимое детище - действующий прибыльный детский сад с 8-ми
-          летней историей и оснащением на сумму более 7 млн. руб.</p>
-        <br>
-        <p>― Стоимость бизнеса 4,5 млн руб.,</p>
-        <p>― Чистая прибыль в среднем по году – 303 тыс. руб. в месяц,</p>
-        <p>― Окупаемость 15 мес.</p>
-        <br>
-        <p>В детском саду выполнен отличный ремонт, он полностью соответствует всем нормативным требованиям.</p>
-        <br>
-        <p>Детский сад укомплектован всем необходимым, в том числе огромным количеством высококачественных игрушек,
-          учебным, дидактическим, методическим материалом. Все в отличном состоянии будет передано покупателю. Новому
-          владельцу не придется ничего докупать в течение нескольких лет!</p>
-        <br>
-        <p>Детский открывали для своих детей и внуков, все сделано с большой любовью и теплотой!</p>
+        <p>{{businessData.activityDetail}}</p>
       </div>
       <div class="gar-row advantages advantages-business gar-grid">
-        <div class="gar-card" *ngFor="let item of listAdvantagesCompany$ | async">
-          <p class="gar-row title item">{{item.title}}</p>
-          <p class="gar-row secondary">{{item.description}}</p>
-          <p class="gar-row">{{item.result}}</p>
+        <div class="gar-card">
+          <p class="gar-row title item">Сотрудников</p>
+          <p class="gar-row secondary">количество</p>
+          <p class="gar-row">{{businessData.employeeCountYear}}</p>
+        </div>
+        <div class="gar-card">
+          <p class="gar-row title item">Форма</p>
+          <p class="gar-row secondary">организационно-правовая</p>
+          <p class="gar-row">{{businessData.form}}</p>
+        </div>
+        <div class="gar-card">
+          <p class="gar-row title item">Доля</p>
+          <p class="gar-row secondary">к продаже</p>
+          <p class="gar-row">{{businessData.share}}</p>
+        </div>
+        <div class="gar-card">
+          <p class="gar-row title item">Сайт</p>
+          <p class="gar-row secondary">компании</p>
+          <p class="gar-row">{{businessData.site}}</p>
         </div>
       </div>
     </div>
@@ -98,9 +123,9 @@
       <h2 class="gar-row title">Входит в стоимость бизнеса</h2>
       <div class="gar-row advantages gar-grid">
         <div class="gar-card">
-          <div class="gar-row gar-property-value" *ngFor="let item of propertyBusiness$ | async">
-            <span class="gar-row title item">{{item.title}}</span>
-            <span>{{item.result}}</span>
+          <div class="gar-row gar-property-value" *ngFor="let item of aPriceIn">
+            <span class="gar-row title item">{{item.Name}}</span>
+            <span>{{item.Price}}</span>
           </div>
         </div>
       </div>
@@ -119,7 +144,7 @@
 <section class="section">
   <div class="gar-row title">Деятельность бизнеса</div>
   <div class="gar-card difference-business">
-    <p class="gar-row">Образовательные услуги для детей дошкольного возраста</p>
+    <p class="gar-row">{{businessData.text}}</p>
     <img src="assets/images/franchise-pages/main-franchise-info.png" alt="">
   </div>
 </section>
@@ -128,10 +153,7 @@
   <div class="gar-row title">Активы предприятия</div>
   <div class="gar-card difference-business">
     <div class="gar-row-item">
-      <p>- Оснащение на 7 млн. руб.</p>
-      <p>- Огромное количество высококачественных игрушек, учебным, дидактическим, методическим материалом.</p>
-      <br>
-      <p>Все в отличном состоянии.</p>
+      <p>{{businessData.assets}}</p>
     </div>
     <img src="assets/images/franchise-pages/main-franchise-info.png" alt="">
   </div>
@@ -140,15 +162,14 @@
 <section class="section">
   <div class="gar-row title">Причины продажи</div>
   <div class="gar-card difference-business">
-    <span>На старте Вы получаете готовую, работающую бизнес-модель, опробованную сотнями франчайзи,
-      а также алгоритмы выполнения финансовых планов, базу знаний, сопровождение экспертов в течение всего времени становления Вашего бизнеса.</span>
+    <span>{{businessData.reasonsSale}}</span>
   </div>
 </section>
 
 <section class="section">
   <div class="gar-row title">Адрес</div>
   <div class="gar-card difference-business">
-    <p class="gar-row">Город Москва, улица Трёхгорный Вал 12, стр.5</p>
+    <p class="gar-row">{{businessData.address}}</p>
     <img src="assets/images/franchise-pages/map.png" alt="">
   </div>
 </section>

@@ -324,8 +324,10 @@
   </div>
 
   <!-- Пример расчета прибыли. -->
+<section class="section">
   <div class="row income-calculation">
-    <div class="col-12">
+  
+    <div class="gar-card">
       <div>
         <h6>Пример расчета прибыли*</h6>
         <span>Описание расчета</span>
@@ -335,22 +337,24 @@
     </div>
 
     <!-- Ключевые финансовые показатели. -->
-    <div class="col-12">
+    <div class="gar-card">
       <div class="block-details-franch">
-        <h6>Ключевые финансовые показатели</h6>
-        <div class="top-form d-flex flex-column">
+        <div class="gar-row">Ключевые финансовые показатели</div>
+        <div class="gar-card top-form">
           <label>Название</label>
-          <input type="text" placeholder="Пример: расчет прибыль 1 кофейни" pInputText [(ngModel)]="namesIndicators"
-            name="namesIndicators" />
+          <!-- <input type="text" placeholder="Пример: расчет прибыль 1 кофейни" pInputText [(ngModel)]="namesIndicators"
+            name="namesIndicators" /> -->
+            <gar-input-text title="Пример: расчет прибыль 1 кофейни" pInputText [(ngModel)]="namesIndicators"></gar-input-text>
         </div>
 
-        <div class="row">
-          <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
+        <div class="gar-row box-wrapper">
+          <div class="gar-card top-form-card">
             <div class="fin-indicator-first">
               <div>
                 <label>Например: средний чек</label>
                 <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
                   [(ngModel)]="finIndicator1" name="finIndicator1" />
+                  <!-- <gar-input-text class="input-price" title="Название" [(ngModel)]="finIndicator1"></gar-input-text> -->
               </div>
 
               <div>
@@ -361,7 +365,7 @@
             </div>
           </div>
 
-          <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
+          <div class="gar-card top-form-card">
             <div class="fin-indicator">
               <div>
                 <label>Например: рентабельность</label>
@@ -377,7 +381,7 @@
             </div>
           </div>
 
-          <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
+          <div class="gar-card top-form-card">
             <div class="fin-indicator">
               <div>
                 <label>Например: средняя выручка</label>
@@ -393,7 +397,7 @@
             </div>
           </div>
 
-          <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6">
+          <div class="gar-card top-form-card">
             <div class="fin-indicator">
               <div>
                 <label>Например: товарная наценка</label>
@@ -416,18 +420,29 @@
       </div>
     </div>
   </div>
-
+</section>
   <!-- Обучение и поддержка. -->
-  <div class="row education-and-support">
-    <div class="col-xxl-8 col-xl-8">
-      <h6>Обучение и поддержка*</h6>
+  <section>
+    <!-- <div class="row education-and-support"> -->
+    <div class="gar-card">
+      <div class="gar-row title">Обучение и поддержка*</div>
       <span>Описание обучения</span>
-      <div>
+      <div class="gar-card">
+        <!-- Блок с 6 иконками -->
+        <div class="gar-row icons">
+          <div class="gar-card icon">&#x392;</div>
+          <div class="gar-card icon">&#x192;</div>
+          <div class="gar-card icon">&#x2261;</div>
+          <div class="gar-card icon">&#x2261;</div>
+          <div class="gar-card icon">&#x25C4;</div>
+          <div class="gar-card icon">&#x25BA;</div>
+        </div>
         <textarea class="control-textarea-franch" pInputTextarea [autoResize]="true"
           placeholder="Опишите обучение" [(ngModel)]="educationDetails" name="educationDetails"></textarea>
       </div>
 
-      <div class="upload-file-education">
+      <!-- <div class="upload-file-education"> -->
+      <div class="gar-card">
         <label>Добавить фотографию</label>
         <input type="file" (change)="uploadEducationPhotosAsync($event)" id="upload-file-education" class="form-control" />
         <!-- <div>
@@ -435,20 +450,17 @@
         </div> -->
       </div>
     </div>
-
-    <div class="col-12">
       <hr class="hr">
-    </div>
-  </div>
-
+    <!-- </div> -->
+  </section>
   <!-- Пакеты франшизы. -->
   <div class="row franchise-packages">
-    <div class="col-12">
-      <div class="p-field-checkbox control-checkbox">
-        <div class="d-flex align-items-center">
+    <div class="gar-card">
+      <div class="gar-row icons">
+        <!-- <div class="align-items-center"> -->
           <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
           <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
-        </div>
+        <!-- </div> -->
       </div>
 
       <p>Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет пакетов вы можете отключить

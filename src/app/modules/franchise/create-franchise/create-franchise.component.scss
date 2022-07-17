@@ -427,6 +427,8 @@
 
   .block-details-franch {
     .top-form {
+      margin-bottom: 10px;
+
       label {
         font-family: 'Roboto', sans-serif;
         font-size: 18px;
@@ -994,9 +996,9 @@
     }
   }
 
-  .fin-indicator {
-    margin: .5rem 0;
-  }
+  // .fin-indicator {
+  //   margin: .5rem 0;
+  // }
 
   .main-info {
     >div {
@@ -1280,6 +1282,18 @@
         }
       }
     }
+
+    &.top-form-card {
+      @include tablet-small {
+        max-width: 325px;
+        margin: 5px;
+      }
+
+      @include tablet {
+        max-width: 450px;
+        margin: 5px;
+      }
+    }
   }
 
   .gar-grid {
@@ -1369,6 +1383,16 @@
 
     &.box {
       margin: 0;
+    }
+
+    &.box-wrapper {
+      @include tablet-small {
+        flex-wrap: wrap;
+      }
+
+      @include desktop {
+        flex-wrap: nowrap;
+      }
     }
   }
 }

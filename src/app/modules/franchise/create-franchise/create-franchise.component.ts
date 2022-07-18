@@ -23,9 +23,9 @@ import { FranchiseOutput } from "../../../models/franchise/output/franchise-outp
  * Класс модуля создания франшизы.
  */
 export class CreateFranchiseModule implements OnInit {
-    
+
     private _attachedFiles$ = new BehaviorSubject<string[]>([]);
-    
+
     logoName?: string;
     responsiveOptions: any;
     aNamesFranchisePhotos: any = [];
@@ -41,6 +41,7 @@ export class CreateFranchiseModule implements OnInit {
     priceInvest?: string;
     nameInvest?: string;
     baseDate?: number;
+    userName: string = '';
     yearStart?: number;
     dotCount?: number;
     businessCount?: number;
@@ -135,7 +136,7 @@ export class CreateFranchiseModule implements OnInit {
     public async ngOnInit() {
         await this.getUserFio();
     };
-    
+
     public uploadImages(files: string[]) {
         this._attachedFiles$.next(files);
     }
@@ -201,7 +202,7 @@ export class CreateFranchiseModule implements OnInit {
             ];
 
             // Если не добавляли записи и осталась лежать одна пустая.
-            if (!this.ainvestIn[0].Name || !this.ainvestIn[0].Price) {                  
+            if (!this.ainvestIn[0].Name || !this.ainvestIn[0].Price) {
                 this.ainvestIn[0].Name = this.nameInvest;
                 this.ainvestIn[0].Price = this.priceInvest;
             }
@@ -213,7 +214,7 @@ export class CreateFranchiseModule implements OnInit {
                 });
             }
 
-             // Уберет пустые записи.
+            // Уберет пустые записи.
             this.ainvestIn = this.ainvestIn.filter((item: any) => item.Name !== "" && item.Price !== "");
 
             if (!this.aPacks[0].Name
@@ -301,7 +302,7 @@ export class CreateFranchiseModule implements OnInit {
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("presentFile", this.presentFile);
             sendFormData.append("franchiseFile", this.presentFile);
-            
+
             of(true).pipe(
                 switchMap(_ => this._attachedFiles$),
                 map(res => {
@@ -311,10 +312,10 @@ export class CreateFranchiseModule implements OnInit {
                 }),
                 switchMap(data => this.http.post<FranchiseOutput>(API_URL.apiUrl.concat("/franchise/create-update-franchise"), data)),
                 takeUntil(this._destroy$)
-            ).subscribe( response => {
+            ).subscribe(response => {
                 console.log("Франшиза успешно создана:", response);
                 this.showMessageAfterSuccessCreateFranchise();
-    
+
                 setTimeout(() => {
                     this.router.navigate(["/franchise/view"], { queryParams: { franchiseId: response.franchiseId, mode: "view" } });
                 }, 2000);
@@ -381,6 +382,7 @@ export class CreateFranchiseModule implements OnInit {
 
     /**
      * Функция нарастит блоки с данными входит в инвестиции.
+     *  // !!! TO DO Нужно сделать функцию удаления блоков с данными входит в инвестиции.
      * @param priceInvest - цена.
      * @param nameInvest - название.
      */

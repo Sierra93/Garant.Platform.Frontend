@@ -6,6 +6,9 @@ import { API_URL } from 'src/app/core/core-urls/api-url';
 import { RequestFranchiseInput } from 'src/app/models/request/input/request-franchise-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { DocumentService } from 'src/app/services/garant/document.service';
+import { Observable, of } from "rxjs";
+
+
 
 @Component({
   selector: 'view-franchise',
@@ -23,6 +26,7 @@ export class ViewFranchiseModule implements OnInit {
   routeParam: any;
   aInvestInclude: any[] = [];
   aFinIndicators: any[] = [];
+  aPopularBusiness: any[] = [];//!!!!
   isHidePacks: boolean = false;
   aPacks: any = [];
   aFranchisePhotos: any[] = [];
@@ -36,13 +40,58 @@ export class ViewFranchiseModule implements OnInit {
   selectedValues: string[] = [];
   isHideIndicators: boolean = false;
 
+  
+  public readonly listAdvantagesCompany$: Observable<{title: string; description: string; result: string}[]> = of([{
+    title: 'Год основания',
+    description: 'компании',
+    result: '2009 год'
+  }, {
+    title: 'год запуска',
+    description: 'франчайзинга',
+    result: '2013'
+  }, {
+    title: 'Количество точек',
+    description: 'В России',
+    result: '160',
+  }, {
+    title: 'Собственных',
+    description: 'Предприятий',
+    result: '10',
+  }
+  ]);
+
+  public readonly propertyFranchises$: Observable<{title: string; result: string}[]> = of([{
+    title: 'Вступительный взнос',
+    result: '350 000 ₽'
+  }, {
+    title: 'Оборудование',
+    result: '300 000 ₽'
+  }, {
+    title: 'Изготовление стойки в ТЦ / Павильона / Ремонт помещения',
+    result: '120 000 ₽'
+  }, {
+    title: 'Закупка расходных средств',
+    result: '100 000 ₽'
+  }, {
+    title: 'Закупка расходных средств',
+    result: '35 000 ₽'
+  }, {
+    title: 'Фирма ООО',
+    result: '150 000 ₽'
+  }, {
+    title: 'Итого',
+    result: '4 685 000 ₽'
+  }]);
+
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,
     private route: ActivatedRoute,
     private router: Router,
     private messageService: MessageService,
-    private documentService: DocumentService
+    private documentService: DocumentService,
+
+    
   ) {
     this.routeParam = this.route.snapshot.queryParams;
     this.franchiseId = this.route.snapshot.queryParams.franchiseId;
@@ -82,6 +131,8 @@ export class ViewFranchiseModule implements OnInit {
       throw new Error(e);
     }
   }
+
+  
 
   /**
    * Функция получит данные франшизы, которую просматривают.

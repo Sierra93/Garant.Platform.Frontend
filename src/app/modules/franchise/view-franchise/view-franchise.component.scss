@@ -7,6 +7,10 @@
 
 /* Стили для определенного компонента определять внутри хоста */
 :host {
+  .section {
+    margin-bottom: 80px;
+  }
+
   .view-franchise {
     &.title-btn.p-button {
       width: initial;
@@ -14,16 +18,296 @@
       border-radius: initial;
     }
   }
+
+  .gar-card {
+    @include phone {
+      padding: 8px;
+    }
+
+    &.hd {
+      padding: 0;
+    }
+
+    &.presentation {
+      align-self: flex-start;
+      background-color: $clrLightBlue;
+    }
+
+    &.gray {
+      background-color: $clrLightMidGray;
+
+    }
+
+    &.packages {
+
+      @include phone {
+        width: 48%;
+      }
+
+      @include tablet-small {
+        width: 31%;
+      }
+    }
+
+    &.packages2 {
+      @include phone {
+        width: 48%;
+      }
+
+      @include tablet-small {
+        width: 22%;
+      }
+    }
+
+    &.packages3 {
+      @include tablet-small {
+        width: 47%;
+      }
+    }
+
+    &.promo {
+      display: none;
+    }
+
+    &.basic {
+      width: 70%;
+
+      @include phone {
+        width: 100%;
+      }
+
+      @include tablet-small {
+        width: 100%;
+      }
+    }
+
+    &.difference {
+      @include phone {
+        padding: 8px;
+      }
+    }
+
+    &.basic {
+      @include phone {
+        padding: 0px;
+      }
+    }
+
+    &.example {
+
+      background-color: $clrLightBlue;
+
+      @include phone {
+        padding: 16px;
+      }
+    }
+
+    &.service {
+      flex-direction: row;
+      font-size: 18px;
+      grid-gap: calc(#{$gridGap} / 4);
+
+
+      img {
+        width: 75px;
+        height: 116px;
+      }
+
+      &.profile {
+        justify-content: center;
+        align-items: center;
+        background-color: $clrLightBlue;
+
+        img {
+          width: 56px;
+          height: 56px;
+        }
+      }
+    }
+
+    &.reviews {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      padding: $gridGap;
+      gap: calc(#{$gridGap} / 2);
+      background-color: $clrLightBlue;
+      border-radius: $border-radius;
+    }
+
+    &.text {
+      @include typo('regular');
+      color: $clrBlack;
+    }
+
+    &.video {
+      width: 100%;
+    }
+
+    &.request {
+      width: 50%;
+
+      @include phone {
+        width: 100%;
+      }
+    }
+
+    &.fit {
+      @include phone {
+        display: none;
+      }
+    }
+  }
+
+  .gar-row {
+
+    @include typo('regular');
+    color: $clrBlack;
+
+    @include phone {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    @include tablet-small {
+      flex-wrap: wrap;
+    }
+
+    @include tablet {
+      flex-wrap: nowrap;
+    }
+
+    &.advantages-business {
+      gap: 8px;
+    }
+
+    &.no-adaptive-row {
+      flex-wrap: nowrap;
+    }
+
+    &.buttons {
+      margin-top: auto;
+    }
+
+    &.eee {
+      width: 65%;
+    }
+
+    &.gar-property-value {
+      justify-content: space-between;
+
+    }
+
+    &.gar-property-value:not(:last-child) {
+      border-bottom: 1px dashed #dadada;
+    }
+
+    &.secondary {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 14px;
+      color: $clrDarkGray;
+
+      @include phone {
+        margin-bottom: 40px;
+        font-size: 12px;
+        min-height: 30px;
+        margin-bottom: 5px;
+      }
+    }
+
+    &.advantages {
+      justify-content: space-between;
+    }
+
+    &.lesson {
+      width: 70%;
+
+      @include phone {
+        width: 100%;
+      }
+
+      @include tablet-small {
+        width: 100%;
+      }
+    }
+
+    &.title {
+      font-size: 18px;
+      line-height: 21px;
+      color: $clrBlack;
+
+      @include phone {
+        font-size: 16px;
+      }
+
+      &.item {
+        margin-bottom: 40px;
+
+        @include phone {
+          font-weight: 600;
+          min-height: 60px;
+          padding: 8px;
+        }
+
+        &.break {
+          word-break: break-all;
+        }
+
+        &-coffee {
+          margin-bottom: 5px;
+
+        }
+      }
+    }
+
+    &.service {
+      grid-gap: 23px;
+      flex-wrap: nowrap;
+      width: 100%;
+      overflow: hidden;
+    }
+
+
+  }
+
+  .gar-row-item .picture {
+    height: 140px;
+    width: 140px;
+
+    >img {
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
 }
 
 
+.reviews {
+  &__images {
+    padding-top: 4px;
+    width: 9%;
+  }
 
-.section-margin {
-  margin-bottom: 5rem;
+  &__text {
+    width: 88%;
+  }
 }
 
-.main-title, .section-title, .subsection-title {
-  font-family: 'Roboto', sans-serif;
+// .gar-property {
+//   &-value {
+//     width: 100%;
+//     margin-bottom: 40px;
+//   }
+// }
+
+
+.main-title,
+.section-title,
+.subsection-title {
+  font-family: sans-serif;
   line-height: normal;
   font-weight: 500;
 }
@@ -39,7 +323,7 @@
 
 .section-title {
   font-size: 1.5rem;
-  color: #2c2c2c;
+  color: $clrBlack;
   margin-bottom: 2rem;
 }
 
@@ -57,16 +341,16 @@
 }
 
 .description {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: normal;
-  color: #2c2c2c;
+  color: $clrBlack;
   margin-bottom: 2rem;
 }
 
 .content {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   font-size: 14px;
   font-weight: normal;
   color: #646464;
@@ -74,7 +358,7 @@
 }
 
 .fact-item {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
@@ -85,13 +369,14 @@
     font-weight: 500;
     color: #000;
     margin-bottom: .5rem;
+    min-height: 55px;
   }
 
   span {
     color: #646464;
 
     &:nth-child(2) {
-      font-size: 10px;
+      font-size: calc(#{$gridGap} / 2);
       margin-bottom: 1rem;
     }
 
@@ -102,7 +387,7 @@
 }
 
 .invest {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -111,11 +396,11 @@
     background-color: #f1f1f1;
     height: 100%;
 
-    > div {
+    >div {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px dashed #DADADA;
+      border-bottom: 1px dashed $clrLightGray;
       padding: 1.25rem;
 
       strong {
@@ -135,7 +420,7 @@
 }
 
 .photos {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
 
   .franchise-holder {
     padding: 1.5rem;
@@ -162,52 +447,53 @@
   }
 }
 
-.key-finance {
-  font-family: 'Roboto', sans-serif;
-  margin-top: 2rem;
+// .key-finance {
+//   font-family: sans-serif;
+//   margin-top: 2rem;
 
-  > div {
-    .key-finance-block {
-      padding: 1.5rem;
-      background-color: #f1f1f1;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
+//   >div {
+//     .key-finance-block {
+//       padding: 1.5rem;
+//       background-color: #f1f1f1;
+//       display: flex;
+//       flex-direction: column;
+//       height: 100%;
 
-      strong {
-        font-size: 18px;
-        color: #000;
-        margin-bottom: .5rem;
-      }
+//       strong {
+//         font-size: 18px;
+//         color: #000;
+//         margin-bottom: .5rem;
+//       }
 
-      span {
-        color: #646464;
+//       span {
+//         color: #646464;
 
-        &:nth-child(2) {
-          font-size: 10px;
-          margin-bottom: 1rem;
-        }
-        &:last-child {
-          font-size: 14px;
-        }
-      }
-    }
-  }
-}
+//         &:nth-child(2) {
+//           font-size: 10px;
+//           margin-bottom: 1rem;
+//         }
+
+//         &:last-child {
+//           font-size: 14px;
+//         }
+//       }
+//     }
+//   }
+// }
 
 .buttons {
   button {
     height: 53px;
     padding: 1rem;
     border-radius: 4px;
-    font-family: 'Roboto', sans-serif;
+    font-family: sans-serif;
     font-size: 18px;
     border: none;
     background-color: transparent;
 
     &:first-child {
       background-color: #4487ff;
-      color: #fff;
+      color: $clrWhite;
       margin-right: 1rem;
     }
 
@@ -221,17 +507,17 @@
 .franchise-details-block {
   padding: 1.5rem;
   border-radius: 4px;
-  background-color: #f1f6ff;
+  background-color: $clrLightBlue;
   position: relative;
 
   .child-blocks-wrapper {
-    > div {
+    >div {
       display: flex;
 
       .child-block {
         padding: 1.5rem;
         background-color: white;
-        font-family: 'Roboto', sans-serif;
+        font-family: sans-serif;
         height: 100%;
 
         strong {
@@ -253,7 +539,8 @@
     top: 1rem;
     right: 1rem;
 
-    button, button:focus {
+    button,
+    button:focus {
       border: none;
       outline: none;
       background-color: transparent;
@@ -261,17 +548,25 @@
   }
 }
 
-.franchise-packages {
-  font-family: 'Roboto', sans-serif;
+.download-presentation {
+  width: 250px;
+  padding: 0 8px;
+  margin-top: 20px;
 
+  @include phone {
+    width: 100%;
+  }
+}
+
+.franchise-packages {
   .package {
     filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
 
     &-title {
       padding: 1.5rem;
-      background: #1653B4;
+      background-color: clrDarkBLue;
       font-size: 1.5rem;
-      color: #FFFFFF;
+      color: $clrWhite;
 
       h6 {
         margin-bottom: 0;
@@ -281,16 +576,16 @@
     &-description {
       filter: drop-shadow(0px 4px 44px rgba(0, 0, 0, 0.08));
       height: 400px;
-      background-color: #fff;
+      background-color: $clrWhite;
       padding: 1rem;
     }
 
     &-offers {
-      font-family: 'Roboto', sans-serif;
+      font-family: sans-serif;
       padding: 1rem;
-      background: #F1F6FF;
+      background-color: $clrLightBlue;
 
-      > div {
+      >div {
         display: flex;
         align-items: center;
 
@@ -317,83 +612,58 @@
 }
 
 .franchise-video {
-  font-family: 'Roboto', sans-serif;
+  flex-direction: row;
 
-  .application-form {
-    padding: 2rem 1.5rem;
-    border-radius: 4px;
-    box-shadow: $box-shadow-card;
-    background-color: white;
-
-    > div {
-      display: flex;
-      flex-direction: column;
-
-      &:not(:last-child) {
-        margin-bottom: 1rem;
-      }
-
-      label {
-        font-size: 12px;
-        color: #646464;
-        margin-bottom: .5rem;
-      }
-
-      input {
-        width: 100%;
-        height: 69px;
-        padding: 1.5rem 1rem;
-        border-radius: 8px;
-        border: 1.5px solid #646464;
-        font-size: 18px;
-        color: #c1c1c1;
-      }
-    }
-
-    .agreement-policy {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      > div:first-child {
-        margin-right: 18px;
-      }
-
-      p {
-        font-family: 'Roboto', sans-serif;
-        font-size: 1rem;
-        text-align: left;
-        color: #646464;
-      }
-    }
-  }
-}
-
-@media (max-width: 650px) {
-  .buttons {
-    display: flex;
-    flex-direction: column;
-
-    button {
+  .packs-item {
+    &.request {
       width: 100%;
+      padding: 32px 24px;
+      border-radius: 4px;
+      box-shadow: $box-shadow-card;
+      background-color: white;
 
-      &:first-child {
-        margin-right: 0 !important;
+
+
+      >div {
+        display: flex;
+        flex-direction: column;
+
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+
+        label {
+          font-size: 12px;
+          color: #646464;
+          margin-bottom: .5rem;
+        }
+
+        input {
+          width: 100%;
+          height: 69px;
+          padding: 1.5rem 1rem;
+          border-radius: 8px;
+          border: 1.5px solid #646464;
+          font-size: 18px;
+          color: #c1c1c1;
+        }
       }
-    }
-  }
-}
 
-::ng-deep {
-  .agreement-policy {
-    .p-checkbox, .p-checkbox .p-checkbox-box {
-      width: 2rem;
-      height: 2rem;
-      background-color: #f7f7f7;
-    }
+      .agreement-policy {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-    .p-checkbox .p-checkbox-box .p-checkbox-icon {
-      font-size: 1.5rem;
+        >div:first-child {
+          margin-right: 18px;
+        }
+
+        p {
+          font-size: 1rem;
+          text-align: left;
+          color: #646464;
+        }
+      }
     }
   }
 }
@@ -407,44 +677,8 @@
       height: auto;
       align-items: flex-start;
 
-      > div:first-child {
+      >div:first-child {
         margin-bottom: 1rem;
-      }
-    }
-  }
-}
-
-.franchise-details {
-  .buttons {
-    button {
-      @media (max-width: 650px) {
-        &:first-child {
-          margin-bottom: .5rem;
-        }
-      }
-
-      @media (max-width: 425px) {
-        font-size: .75rem;
-      }
-    }
-  }
-}
-
-.income-calculation {
-  .franchise-details-block {
-    .subsection-title {
-      @media (max-width: 486px) {
-        margin-right: 1rem;
-      }
-    }
-
-    .child-blocks-wrapper {
-      .row {
-        [class^=col] {
-          @media (max-width: 576px) {
-            margin-bottom: 1rem !important;
-          }
-        }
       }
     }
   }
@@ -500,6 +734,213 @@
             display: none;
           }
         }
+      }
+    }
+  }
+}
+
+.packs {
+  display: flex;
+  gap: $gridGap;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include phone {
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+  }
+
+  @include tablet {
+    flex-wrap: nowrap;
+    grid-gap: $gridGap / 2;
+  }
+
+  &-item {
+    width: 100%;
+    min-width: 325px;
+    box-shadow: $box-shadow-card;
+
+    @include phone {
+      width: 100%;
+    }
+
+
+    @include tablet-small {
+      margin-bottom: 35px;
+      width: 48%;
+    }
+
+    @include tablet {
+      width: 31%;
+    }
+
+    &__image--pack {
+      width: 100%;
+    }
+
+    &__title {
+      font-size: 1.25rem;
+      border-radius: $border-radius;
+      width: 100%;
+      padding: $gridGap;
+      border: 0;
+      color: $clrWhite;
+      background-color: clrDarkBLue;
+      margin-bottom: 16px;
+      text-align: start;
+
+      @include phone {
+        @include typo('regular');
+        padding: calc(#{$gridGap} / 3 * 2);
+      }
+
+      @include tablet-small {
+        @include typo('regular');
+      }
+
+      @include tablet {
+        @include typo('regular');
+      }
+    }
+
+    &__text {
+      @include typo('regular');
+      max-width: 431px;
+      padding: calc(#{$gridGap} / 2);
+      line-height: 21px;
+      color: $clrBlack;
+      // margin: 0 16px 32px 16px;
+      gap: $gridGap;
+
+      @include phone {
+        padding: 5px;
+      }
+
+      @include tablet-small {
+        padding: 0;
+        // margin: 0 16px 32px 0;
+        gap: $gridGap;
+      }
+
+      @include tablet {
+        font-size: calc(#{$gridGap} / 3 * 2);
+      }
+    }
+
+    &__list {
+      width: 463px;
+      // height: 1730px;
+      padding: 0;
+
+      @include phone {
+        width: 100%;
+      }
+
+      @include tablet-small {
+        width: 100%;
+      }
+
+      li {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        list-style: none;
+        margin-left: 16px;
+        margin-bottom: 32px;
+      }
+    }
+
+    &__yes {
+      display: inline-block;
+      width: 56px;
+      height: 56px;
+    }
+
+    &__tool {
+      display: inline-block;
+      @include typo('title-item');
+      max-width: 349px;
+      line-height: 21px;
+      color: $clrBlack;
+      gap: $gridGap;
+      margin-right: 16px;
+
+      @include tablet-small {
+        // margin-left: 16px;
+        gap: $gridGap;
+        max-width: 292px;
+      }
+    }
+
+    &-bottom {
+      // max-width: 463px;
+      background-color: $clrWhite;
+      box-shadow: $box-shadow-card;
+      padding: 16px;
+
+      &__title {
+        font-size: 1.125rem;
+        line-height: 21px;
+        color: $clrBlack;
+        gap: $gridGap;
+        margin-bottom: $gridGap;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        border-bottom: 1px dashed $clrLightGray;
+        gap: $gridGap;
+
+        @include phone {
+          display: flex;
+          justify-content: space-between;
+          font-size: 18px;
+        }
+
+        @include tablet-small {
+          font-size: 16px;
+        }
+      }
+
+      &__text {
+        font-size: 18px;
+        line-height: 21px;
+        color: $clrBlack;
+      }
+
+      &__text1 {
+        gap: $gridGap;
+        padding-bottom: 20px;
+        border-bottom: 1px dashed $clrLightGray;
+      }
+
+      &__price {
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        line-height: 21px;
+        padding-bottom: $gridGap;
+        border-bottom: 1px dashed $clrLightGray;
+        font-weight: 400;
+        color: $clrBlack;
+      }
+
+      &__button {
+        width: 100%;
+        max-width: 320px;
+        display: flex;
+        font-size: $gridGap;
+        font-weight: 400;
+        color: $clrWhite;
+        line-height: 21px;
+        border: none;
+        box-shadow: $box-shadow-card;
+        border-radius: 66px;
+        padding: $gridGap;
+        padding-left: 78px;
+        margin: auto;
+        background-color: $clrBlue;
+
       }
     }
   }

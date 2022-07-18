@@ -16,10 +16,10 @@
 <!--        TODO: разобраться с действиями на этих кнопках-->
         <div class="gar-row">
             <div class="gar-row-item">
-                <gar-button>Подробнее</gar-button>
+                <gar-button (click)="doView()" [routerLink]="pathInfo">Подробнее</gar-button>
             </div>
             <div class="gar-row-item">
-                <gar-button role="primary">Купить онлайн</gar-button>
+                <gar-button (click)="doBuy()" role="primary">Купить онлайн</gar-button>
             </div>
         </div>
     </div>

@@ -39,7 +39,7 @@
               displayLabel="viewName"
             ></gar-select>
           </div>
-      
+
           <div class="gar-filter-section">
             <div class="gar-row title item">Выбор категории</div>
 
@@ -50,7 +50,7 @@
               displayLabel="categoryName"
             ></gar-select>
           </div>
-      
+
           <div class="gar-filter-section">
             <div class="gar-row title item">Инвестиции</div>
 
@@ -86,7 +86,7 @@
               <gar-button (click)="onFilterFranchisesWithPaginationAsync()" role="primary" class="full-width">
                 Применить фильтры
               </gar-button>
-            
+
               <gar-button role="secondary" (click)="onClearFilters()" class="full-width">
                 Очистить фильтры
               </gar-button>
@@ -100,6 +100,7 @@
           <app-catalog-simple-card
             *ngFor="let item of aFranchises"
             [item]="item"
+            pathInfo="franchise/view?franchiseId={{item.franchiseId}}"
           >
           </app-catalog-simple-card>
         </div>

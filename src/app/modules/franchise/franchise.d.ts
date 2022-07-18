@@ -13,11 +13,11 @@ export namespace franchise {
     city: string;
     /** Комментарий причины отклонения. */
     commentRejection?: string;
-    /** Что это??? */
+    /** Кол-во дней. */
     countDays: number;
     /** Дата создания франшизы */
     dateCreate: string;
-    /** Что это??? */
+    /** Склонение дней. */
     dayDeclination?: string;
     /** Кол-во точек.(каких точек???) */
     dotCount: number;
@@ -35,9 +35,9 @@ export namespace franchise {
      * TODO: перевести с JSON на массив!
      * */
     franchisePacks: string;
-    /** Полное имя чего??? */
+    /** Полное ФИО создавшего франшизу. */
     fullName: string;
-    /** Что это за текст??? */
+    /** Полная строка текста для вставки в одном поле. */
     fullText: string;
     /** Сумма общих инвестиций (включая паушальный взнос). */
     generalInvest: number;
@@ -57,7 +57,7 @@ export namespace franchise {
     launchDate: number;
     /** Паушальный взнос (зависит от выбранного пакета). */
     lumpSumPayment: number;
-    /** Что это??? */
+    /** Режим просмотр или редактирование франшизы. */
     mode: string;
     /**
      * Название финансовых показателей (json).
@@ -101,13 +101,13 @@ export namespace franchise {
     textDoPrice: string;
     /** Название (Заголовок) */
     title: string
-    /** ??? */
+    /** Сумма инвестиций. */
     totalInvest: string;
     /** Описание обучения. */
     trainingDetails: string;
     /** Название фото обучения. */
     trainingPhotoName: string;
-    /** Путь к изображению франшизы */
+    /** Путь к изображению франшизы (приходит в виде списка (в строке), разделенного запятой) */
     url: string;
     /** Путь к изображению логотипа франшизы */
     urlLogo: string;

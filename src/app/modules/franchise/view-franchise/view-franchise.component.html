@@ -1,4 +1,4 @@
-<section id="view-franchise">
+<section id="view-franchise" *ngIf="franchiseData$ | async as franchiseData">
   <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
   <!-- Блок с названием. -->

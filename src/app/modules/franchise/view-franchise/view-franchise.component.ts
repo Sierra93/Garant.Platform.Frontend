@@ -6,12 +6,16 @@ import { API_URL } from 'src/app/core/core-urls/api-url';
 import { RequestFranchiseInput } from 'src/app/models/request/input/request-franchise-input';
 import { CommonDataService } from 'src/app/services/common/common-data.service';
 import { DocumentService } from 'src/app/services/garant/document.service';
+import {franchise} from "../franchise";
+import {FranchiseService} from "../franchise.service";
+import {GarDestroyService} from "../../../gar-lib/gar-destroy.service";
+import {shareReplay, switchMap, takeUntil, tap} from "rxjs/operators";
 
 @Component({
   selector: 'view-franchise',
   templateUrl: './view-franchise.component.html',
   styleUrls: ['./view-franchise.component.scss'],
-  providers: [ConfirmationService, MessageService],
+  providers: [ConfirmationService, MessageService, GarDestroyService],
 })
 
 /**
@@ -19,7 +23,6 @@ import { DocumentService } from 'src/app/services/garant/document.service';
  */
 export class ViewFranchiseModule implements OnInit {
   franchiseId: number = 0;
-  franchiseData: any = [];
   routeParam: any;
   aInvestInclude: any[] = [];
   aFinIndicators: any[] = [];
@@ -36,16 +39,52 @@ export class ViewFranchiseModule implements OnInit {
   selectedValues: string[] = [];
   isHideIndicators: boolean = false;
 
+  readonly franchiseData$ = this._route.queryParams.pipe(
+    switchMap(params => this._service.getFranchise(+params.franchiseId)),
+    tap(response => {
+      console.log('Полученная франшиза:', response);
+      this.aNamesFranchisePhotos = response?.url.split(',');
+      this.aInvestInclude = JSON.parse(response.investInclude);
+
+      let checkFinIndicators = JSON.parse(response.finIndicators);
+
+      // Если массив индикаторов не пустой.
+      if (Object.keys(checkFinIndicators).length > 0) {
+        this.aFinIndicators = checkFinIndicators;
+        this.isHideIndicators = true;
+      }
+
+      let checkPacks = JSON.parse(response.franchisePacks);
+
+      // Если массив пакетов не пустой.
+      if (Object.keys(checkPacks).length > 0) {
+        this.aPacks = checkPacks;
+        this.isHidePacks = true;
+      }
+
+      this.fio = response.fullName;
+
+      console.log('aInvestInclude', this.aInvestInclude);
+      console.log('aFinIndicators', this.aFinIndicators);
+      console.log('aPacks', this.aPacks);
+      console.log('aNamesFranchisePhotos', this.aNamesFranchisePhotos);
+    }),
+    shareReplay(1),
+    takeUntil(this._destroy$)
+  );
+
   constructor(
     private http: HttpClient,
     private commonService: CommonDataService,
-    private route: ActivatedRoute,
+    private _route: ActivatedRoute,
     private router: Router,
     private messageService: MessageService,
-    private documentService: DocumentService
+    private documentService: DocumentService,
+    private _service: FranchiseService,
+    private _destroy$: GarDestroyService
   ) {
-    this.routeParam = this.route.snapshot.queryParams;
-    this.franchiseId = this.route.snapshot.queryParams.franchiseId;
+    this.routeParam = this._route.snapshot.queryParams;
+    this.franchiseId = this._route.snapshot.queryParams.franchiseId;
 
     this.responsiveOptions = [
       {
@@ -70,68 +109,15 @@ export class ViewFranchiseModule implements OnInit {
 
   private async getTransitionAsync() {
     try {
-      let franchiseId = this.franchiseId;
+      //TODO: разобраться
+
+      // let franchiseId = this.franchiseId;
 
       await this.commonService
         .getTransitionAsync(this.routeParam)
         .then((data: any) => {
           console.log('Переход получен:', data);
-          this.getViewFranchiseAsync(franchiseId);
-        });
-    } catch (e: any) {
-      throw new Error(e);
-    }
-  }
-
-  /**
-   * Функция получит данные франшизы, которую просматривают.
-   * @returns - данные франшизы.
-   */
-  private async getViewFranchiseAsync(franchiseId: number) {
-    try {
-      console.log('getViewFranchiseAsync');
-
-      await this.http
-        .get(
-          API_URL.apiUrl.concat(
-            '/franchise/get-franchise?franchiseId=' + franchiseId
-          )
-        )
-        .subscribe({
-          next: (response: any) => {
-            console.log('Полученная франшиза:', response);
-            this.franchiseData = response;
-            this.aNamesFranchisePhotos = this.franchiseData.url.split(',');
-            this.aInvestInclude = JSON.parse(response.investInclude);
-
-            let checkFinIndicators = JSON.parse(response.finIndicators);
-
-            // Если массив индикаторов не пустой.
-            if (Object.keys(checkFinIndicators).length > 0) {
-              this.aFinIndicators = checkFinIndicators;
-              this.isHideIndicators = true;
-            }
-
-            let checkPacks = JSON.parse(response.franchisePacks);
-
-            // Если массив пакетов не пустой.
-            if (Object.keys(checkPacks).length > 0) {
-              this.aPacks = checkPacks;
-              this.isHidePacks = true;
-            }
-
-            this.fio = response.fullName;
-
-            console.log('franchiseData', this.franchiseData);
-            console.log('aInvestInclude', this.aInvestInclude);
-            console.log('aFinIndicators', this.aFinIndicators);
-            console.log('aPacks', this.aPacks);
-            console.log('aNamesFranchisePhotos', this.aNamesFranchisePhotos);
-          },
-
-          error: (err) => {
-            throw new Error(err);
-          },
+          // this.getViewFranchiseAsync(franchiseId);
         });
     } catch (e: any) {
       throw new Error(e);
@@ -225,7 +211,7 @@ export class ViewFranchiseModule implements OnInit {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
-  
+
   /**
    * Функция добавит файл презентации.
    */

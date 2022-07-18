@@ -295,6 +295,10 @@
     &.advantages {
       flex-wrap: nowrap;
       margin-top: 24px;
+
+      @include phone {
+        flex-wrap: wrap;
+      }
     }
 
   }

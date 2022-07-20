@@ -1,0 +1,88 @@
+@import 'design';
+
+.profile-back {
+  @include inputReset;
+
+  height: auto;
+  padding: 0;
+  margin-bottom: $gridGap / 2;
+
+  @include tablet {
+    display: none;
+  }
+
+  gar-icon {
+    width: 36px;
+    height: 30px;
+    fill: $clrBlue;
+  }
+}
+
+.profile {
+  transition: transform $timeDefault;
+
+  &__inner {
+    flex-shrink: 0;
+    width: 100%;
+  }
+
+  &__sidebar {
+    @include tablet {
+        width: 325px;
+    }
+  }
+
+  &__main {
+    visibility: hidden;
+
+    @include tablet {
+      flex-shrink: 1;
+    }
+  }
+
+  &.-active {
+    transform: translate(calc(-100% - #{$gridGap}));
+
+    @include tablet {
+        transform: none;
+    }
+
+    .profile__sidebar {
+      visibility: hidden;
+
+      @include tablet {
+        visibility: visible;
+      }
+    }
+
+    .profile__main {
+      visibility: visible;
+    }
+  }
+}
+
+.profile-main {
+  background-color: $clrWhite;
+  border-radius: $border-radius;
+  padding: $gridGap / 3 * 2;
+  box-shadow: $box-shadow-card;
+
+  &__title {
+    @include typo('regular');
+
+    margin-bottom: $gridGap / 2;
+  }
+
+  &__section {
+    margin-bottom: $gridGap / 3 * 4;
+
+    &-cell {
+      label {
+        @include typo('description');
+
+        color: $clrDarkGray;
+        margin-bottom: $gridGap / 3;
+      }
+    }
+  }
+}

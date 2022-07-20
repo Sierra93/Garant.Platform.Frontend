@@ -100,7 +100,7 @@
             <gar-button (click)="onFilterBusinessesWithPaginationAsync()" role="primary" class="full-width">
               Применить фильтры
             </gar-button>
-          
+
             <gar-button role="secondary" (click)="onClearFilters()" class="full-width">
               Очистить фильтры
             </gar-button>
@@ -114,6 +114,7 @@
         <app-catalog-simple-card
           *ngFor="let item of aBusinessList"
           [item]="item"
+          pathInfo="/business/view?businessId={{item.businessId}}"
         >
         </app-catalog-simple-card>
       </div>

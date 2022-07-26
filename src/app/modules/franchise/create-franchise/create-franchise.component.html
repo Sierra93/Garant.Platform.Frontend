@@ -5,23 +5,10 @@
   <div class="gar-card row title-block" > 
     <div class="gar-row title">
       Название*
+
     </div>
-
-    <!-- <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-5"> 
-      <div class="file-input-wrapper">
-        <label class="form-label">Логотип</label>
-        <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" class="form-control d-none" />
-        <label for="franchise-logo" style="height: 70px; font-size: 2.25rem; border-radius: 10px;" class="form-control d-flex align-items-center justify-content-center">
-          <img src="./../../../../assets/images/plus.svg" alt="gobizy plus icon" />
-        </label>
-      </div>  
-    </div> -->
-
     <div class="gar-card">
       <div class="block-two">
-        <!-- <label class="form-label">Название</label><br> -->
-        <!-- <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="logoName"
-          name="logoName" />  -->
         <gar-input-text [(ngModel)]="userName" title="Название франшизы"></gar-input-text> 
       </div>
       <hr class="hr">
@@ -37,7 +24,6 @@
 
     <div class="gar-card block-gallery">
         <div class="w-100">
-          <!-- <span *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</span> -->
           <div class="gar-row" *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</div>
           <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
             [containerStyle]="{'max-width': '100%'}" [numVisible]="4" thumbnailsPosition="left">
@@ -53,24 +39,6 @@
           </p-galleria>
         </div>
     </div>
-
-     <!-- <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12 photos-contact">
-      <div>
-        <h6>Ваша карточка для связи</h6>
-        <strong>{{fio}}</strong>
-
-        <div>
-          <label>Пример: владелец ННН</label><br>
-          <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец" [(ngModel)]="lead"
-            name="lead" />
-        </div>
-
-        <div class="photos-buttons">
-          <p-button label="Стать франчайзи онлайн через гарант" styleClass="p-button-link" [disabled]="true"></p-button>
-          <p-button label="Начать чат с представителем" styleClass="control-button-blue" [disabled]="true"></p-button>
-        </div>
-      </div>
-    </div>  -->
   </div>
 
   <!-- Ключевые финансовые данные. -->
@@ -158,7 +126,7 @@
   <!-- Основная информация о компании. -->
   <section class="section"> 
     <div class="gar-grid main"> 
-  
+ 
         <div class="gar-grid main-info">
           <div class="gar-card textarea">
         <div class="gar-row title">Краткая информация о франшизе*</div>
@@ -167,7 +135,7 @@
           placeholder="Опишите деятельность" [(ngModel)]="activityDetail"></textarea>
           </div>
       
-          <!-- Дополнительные факты. -->
+       
           <div class="gar-card additional-facts">   
         <div class="gar-row title-item additional-item">Дополнительные факты*</div>
         <span>0 из 4</span>
@@ -454,13 +422,13 @@
     <!-- </div> -->
   </section>
   <!-- Пакеты франшизы. -->
-  <div class="row franchise-packages">
-    <div class="gar-card">
+  <div class="gar-card">
+    <div class="gar-card franchise-packages">
       <div class="gar-row icons">
-        <!-- <div class="align-items-center"> -->
+      
           <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
           <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
-        <!-- </div> -->
+        
       </div>
 
       <p>Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет пакетов вы можете отключить
@@ -529,13 +497,12 @@
       </div>
     </div>
 
-    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-      <div class="add-package">
-        <button class="add-package-button"
+      <div class="gar-card add-package">
+        <gar-button role="primary"
           (click)="onAddPack(packName, packDetails, packLumpSumPayment, royaltyPack, totalInvest)">Добавить
-          пакет</button>
+          пакет</gar-button>
       </div>
-    </div>
+
 
     <div class="col-12">
       <hr class="hr">

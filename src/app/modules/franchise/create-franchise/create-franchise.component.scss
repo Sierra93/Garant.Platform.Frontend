@@ -6,7 +6,6 @@
 
 // main styles
 .title {
-  font-family: 'Roboto', sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
   color: #2c2c2c;
@@ -27,7 +26,6 @@
 }
 
 .block-two input {
-  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 400;
   color: #7a7a7a;
@@ -36,7 +34,6 @@
 }
 
 .form-label {
-  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: 400;
   color: #2c2c2c;
@@ -48,21 +45,18 @@
 
   &-contact {
     h6 {
-      font-family: 'Roboto', sans-serif;
       font-size: 1.5rem;
       font-weight: 500;
       color: #2c2c2c;
     }
 
     strong {
-      font-family: 'Roboto', sans-serif;
       font-size: 18px;
       font-weight: normal;
       color: #000;
     }
 
     label {
-      font-family: 'Roboto', sans-serif;
       font-size: 14px;
       font-weight: normal;
       color: #646464;
@@ -92,7 +86,6 @@
     height: 100%;
 
     strong {
-      font-family: 'Roboto', sans-serif;
       font-size: 18px;
       font-weight: normal;
       color: #000;
@@ -100,7 +93,6 @@
     }
 
     >span {
-      font-family: 'Roboto', sans-serif;
       font-size: 10px;
       font-weight: normal;
       color: #646464;
@@ -159,13 +151,7 @@
       padding: 16px;
     }
 
-    // >div:first-child,
-    // label {
-    // margin-bottom: 1rem;
-    // }
-
     label {
-      font-family: 'Roboto', sans-serif;
       font-size: 14px;
       font-weight: normal;
       color: #646464;
@@ -177,7 +163,6 @@
       border-radius: 4px;
       background-color: white;
       width: 100%;
-      font-family: 'Roboto', sans-serif;
       font-size: 18px;
       font-weight: normal;
       line-height: normal;
@@ -186,7 +171,6 @@
   }
 
   p {
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: normal;
     line-height: normal;
@@ -200,7 +184,6 @@
       min-width: 214px;
 
       label {
-        font-family: 'Roboto', sans-serif;
         font-size: 18px;
         font-weight: 500;
         color: #000;
@@ -208,7 +191,6 @@
       }
 
       span {
-        font-family: 'Roboto', sans-serif;
         font-size: 10px;
         font-weight: 400;
         line-height: normal;
@@ -222,7 +204,6 @@
 
 .franchise-specifications {
   h6 {
-    font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: normal;
@@ -242,7 +223,6 @@
 
     >div:nth-child(2) {
       strong {
-        font-family: 'Roboto', sans-serif;
         font-size: 18px;
         font-weight: normal;
         line-height: normal;
@@ -251,7 +231,6 @@
       }
 
       span {
-        font-family: 'Roboto', sans-serif;
         font-size: 14px;
         font-weight: 400;
         line-height: normal;
@@ -277,7 +256,6 @@
         &,
         span {
           color: #fff;
-          font-family: 'Roboto', sans-serif;
           font-size: 18px;
           font-weight: 500;
           line-height: normal;
@@ -295,7 +273,6 @@
   }
 
   p {
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 500;
     line-height: normal;
@@ -305,7 +282,6 @@
 
 .main-franchise-info {
   h6 {
-    font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: normal;
@@ -314,7 +290,6 @@
   }
 
   h6+span {
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: normal;
@@ -327,7 +302,6 @@
     padding: 1.5rem 1rem;
     border-radius: 8px;
     border: 1.5px solid #dadada;
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: normal;
@@ -340,7 +314,6 @@
     margin-bottom: 1rem;
 
     strong {
-      font-family: 'Roboto', sans-serif;
       font-size: 18px;
       font-weight: 500;
       line-height: normal;
@@ -349,7 +322,6 @@
     }
 
     span {
-      font-family: 'Roboto', sans-serif;
       font-size: 14px;
       font-weight: 400;
       line-height: normal;
@@ -371,7 +343,6 @@
       &,
       span {
         color: #fff;
-        font-family: 'Roboto', sans-serif;
         font-size: 18px;
         font-weight: 500;
         line-height: normal;
@@ -384,7 +355,6 @@
   }
 
   p {
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 500;
     line-height: normal;
@@ -394,7 +364,6 @@
 
 .income-calculation {
   h6 {
-    font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: normal;
@@ -403,7 +372,6 @@
   }
 
   h6+span {
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: normal;
@@ -416,7 +384,6 @@
     padding: 1.5rem 1rem;
     border-radius: 8px;
     border: 1.5px solid #dadada;
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: normal;
@@ -430,7 +397,6 @@
       margin-bottom: 10px;
 
       label {
-        font-family: 'Roboto', sans-serif;
         font-size: 18px;
         font-weight: 500;
         line-height: normal;
@@ -444,7 +410,6 @@
         border-radius: 8px;
         border: 1.5px solid #dadada;
         background-color: white;
-        font-family: 'Roboto', sans-serif;
         font-size: 18px;
         font-weight: 400;
         line-height: normal;
@@ -466,7 +431,6 @@
         }
 
         label {
-          font-family: 'Roboto', sans-serif;
           font-size: .75rem;
           font-weight: 400;
           line-height: normal;
@@ -481,7 +445,6 @@
           border-radius: 4px;
           background-color: #f1f1f1;
           border: none;
-          font-family: 'Roboto', sans-serif;
           font-size: 18px;
           font-weight: 400;
           line-height: normal;
@@ -494,7 +457,6 @@
 
 .education-and-support {
   h6 {
-    font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: normal;
@@ -503,7 +465,6 @@
   }
 
   h6+span {
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: normal;
@@ -516,7 +477,6 @@
     padding: 1.5rem 1rem;
     border-radius: 8px;
     border: 1.5px solid #dadada;
-    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: normal;
@@ -528,7 +488,6 @@
 
   .upload-file-education {
     label {
-      font-family: 'Roboto', sans-serif;
       font-size: 18px;
       font-weight: 500;
       line-height: normal;
@@ -557,7 +516,6 @@
     margin-bottom: 8px;
 
     label {
-      font-family: 'Roboto', sans-serif;
       font-size: 1.5rem;
       font-weight: 500;
       line-height: normal;
@@ -566,7 +524,6 @@
   }
 
   .control-checkbox+p {
-    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: normal;
@@ -613,7 +570,6 @@
               padding: 16px;
               border-radius: 4px;
               background-color: #f1f1f1;
-              font-family: 'Roboto', sans-serif;
               font-size: 18px;
               font-weight: 400;
               line-height: normal;
@@ -639,7 +595,6 @@
             }
 
             label {
-              font-family: 'Roboto', sans-serif;
               font-size: 18px;
               font-weight: 500;
               line-height: normal;
@@ -666,7 +621,6 @@
       padding: 16px;
       border-radius: 8px;
       background-color: #1f75fe;
-      font-family: 'Roboto', sans-serif;
       font-size: 18px;
       font-weight: 400;
       line-height: normal;
@@ -681,7 +635,6 @@
     margin-bottom: 10px;
 
     label {
-      font-family: 'Roboto', sans-serif;
       font-size: 24px;
       font-weight: 500;
       line-height: normal;
@@ -690,7 +643,6 @@
   }
 
   p {
-    font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: normal;
@@ -700,7 +652,6 @@
 
   .video-link {
     label {
-      font-family: 'Roboto', sans-serif;
       font-size: 18px;
       font-weight: 500;
       line-height: normal;
@@ -713,7 +664,6 @@
       padding: 1.5rem 1rem;
       border-radius: 8px;
       border: 1.5px solid #dadada;
-      font-family: 'Roboto', sans-serif;
       font-size: 18px;
       font-weight: 400;
       line-height: normal;
@@ -735,7 +685,6 @@
       margin-right: 150px;
 
       strong {
-        font-family: 'Roboto', sans-serif;
         font-weight: 500;
         font-size: 18px;
         line-height: 21px;
@@ -752,7 +701,6 @@
         height: 28px;
         background: #F1F6FF;
         border-radius: 50%;
-        font-family: 'Roboto', sans-serif;
         font-weight: 400;
         font-size: 10px;
         line-height: 12px;
@@ -801,7 +749,6 @@
         border-radius: 8px;
 
         &-label {
-          font-family: 'Roboto', sans-serif;
           font-size: 18px;
           font-weight: 500;
         }
@@ -908,7 +855,7 @@
 
 .control-input-gallery {
   padding: 24px 16px;
-  width: 416px;
+  // width: 416px;
 }
 
 .invest-item {

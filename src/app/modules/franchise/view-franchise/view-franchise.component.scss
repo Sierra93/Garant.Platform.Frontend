@@ -43,6 +43,10 @@
         flex-direction: column;
       }
 
+      @include tablet-small {
+        flex-direction: row;
+      }
+
       flex-direction: row;
       margin-top: 10px;
     }
@@ -61,14 +65,25 @@
       }
     }
 
+    &.advantages-invest {
+      @include phone {
+        flex-direction: column;
+      }
+
+      flex-direction: row;
+      margin-top: 10px;
+      grid-gap: 24px;
+    }
+
     &.packages2 {
       @include phone {
-        width: 100%;
+        max-width: 100%;
         margin: 5px 0;
       }
 
       @include tablet-small {
-        width: 25%;
+        max-width: 345px;
+        margin: 0;
       }
     }
 
@@ -174,6 +189,10 @@
       @include phone {
         width: 100%;
       }
+
+      @include tablet-small {
+        width: 100%;
+      }
     }
 
     &.fit {
@@ -207,6 +226,26 @@
 
     &.buttons {
       margin-top: auto;
+    }
+
+    &.advantages-invest {
+      @include phone {
+        flex-wrap: wrap;
+      }
+
+      @include tablet-small {
+        flex-wrap: wrap;
+        grid-gap: 24px;
+        padding: 0;
+      }
+
+      @include tablet {
+        flex-wrap: nowrap;
+      }
+
+      @include desktop {
+        flex-wrap: nowrap;
+      }
     }
 
     &.eee {
@@ -298,6 +337,15 @@
 
       @include phone {
         flex-wrap: wrap;
+      }
+
+      @include tablet-small {
+        flex-wrap: wrap;
+      }
+
+      @include tablet {
+        flex-wrap: nowrap;
+        margin-top: 24px;
       }
     }
 

@@ -228,4 +228,8 @@ export class LoginModule implements OnInit {
       this.isAdsEmail = !this.isAdsEmail;
     }
   }
+
+  public remindPasswordAction(): void {
+    alert('Ну так вспомни');
+  }
 }

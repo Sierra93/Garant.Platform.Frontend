@@ -1,141 +1,124 @@
-<div class="row justify-content-center">
-  <!-- Форма входа по коду -->
-  <div class="col-5" *ngIf="isCode">
-    <div class="form-auth">
-      <form #getCodeForm="ngForm" novalidate>
-        <h5>Войдите или зарегистрируйтесь, чтобы продолжить</h5>
-        <div class="mb-3">
-          <label class="form-label">Email или телефон</label>
+<!-- Форма входа по коду -->
+<ng-container *ngIf="isCode">
+  <form #getCodeForm="ngForm" class="form-auth" novalidate>
+    <div class="gar-row title">Войдите или зарегистрируйтесь, чтобы продолжить</div>
+    
+    <div class="form-auth__section">
+      <div class="form-auth__label">Email или телефон</div>
 
-          <input type="text" class="form-control input-auth" placeholder="Введите номер или почту" name="data"
-            [(ngModel)]="data" *ngIf="!isGetCode" autocomplete="off">
-          <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите код"
-            name="code" [(ngModel)]="code" *ngIf="isGetCode">
-        </div>
+      <gar-input-text title="Введите номер или почту" name="data" [(ngModel)]="data" *ngIf="!isGetCode" autocomplete="off"></gar-input-text>
 
-        <div class="send-code" *ngIf="type?.isSuccessMailing">
-          <span class="message-box">Получить новый код можно через 00:{{time}}</span>
-          <br>
-          <button class="codeBtn" [disabled]="play" (click)="onGetCodeAsync(getCodeForm)">Отправить код повторно</button>
-        </div>
-
-        <div class="agreements mb-3" *ngIf="!type?.isSuccessMailing">
-          <div class="checkbox">
-            <input type="checkbox" id="policyAgreement" name="policyAgreement" [checked]="isPolicyAgreement"/>
-            <span (click)="onToggle('changePolicyAgreement')"></span>
-            <label for="policyAgreement">Согласен с условиями использования сервисов GoBizy и обработки персональных
-              данных</label>
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" id="getEmail" name="getEmail" [checked]="isAdsEmail" />
-            <span (click)="onToggle('changeAdsEmail')"></span>
-            <label for="getEmail">Хочу получать сообщения рекламного и информационного характера</label>
-          </div>
-
-        </div>
-        <div class="checkbox" *ngIf="type?.isSuccessMailing">
-          <small>Если код не пришел вам на почту </small>
-          <i  pTooltip="Рекомендуем проверить папку спама в вашем почтовом ящике" tooltipPosition="bottom"
-              class="pi pi-info-circle"
-              style="font-size: 16px;  margin-left: 5px; color: #c00b0b"
-          ></i>
-
-        </div>
-        <button class="btn btn-default btn-code-active main-btn" (click)="onGetCodeAsync(getCodeForm)"
-          *ngIf="!isHideBtnGetCode" [disabled]="!isPolicyAgreement">Получить код</button>
-        <button class="btn btn-default btn-code-active main-btn" (click)="onCheckCodeAsync(getCodeForm)"
-          *ngIf="isHideBtnGetCode">Проверить код</button>
-        <div class="text-center my-3">
-          <span>или</span>
-        </div>
-
-        <div class="text-center mt-3">
-          <span class="action-link" (click)="onLoginByAccount()">Уже есть аккаунт</span>
-        </div>
-
-        <!-- иконка для закрытия -->
-        <a class="close-form" routerLink="/">
-          <img src="../../../assets/images/close.svg" alt="close icon" />
-        </a>
-        <!-- иконка для закрытия -->
-      </form>
+      <gar-input-text name="data" [(ngModel)]="data" title="Введите код" name="code" [(ngModel)]="code" *ngIf="isGetCode"></gar-input-text>
     </div>
-  </div>
-  <!-- Форма входа по коду. -->
 
-  <!-- Форма наличия аккаунта -->
-  <div class="col-5" *ngIf="isAuth">
-    <div class="form-auth">
-      <form #getCodeForm1="ngForm" novalidate>
-        <h5>Войдите чтобы продолжить</h5>
-        <div class="mb-3">
-          <label class="form-label text-lbl">Email или телефон</label>
+    <div class="form-auth__section" *ngIf="type?.isSuccessMailing">
+      <span class="message-box">Получить новый код можно через 00:{{time}}</span>
+      <br>
+      <gar-button role="primary" class="full-width" [attr.disabled]="play" (click)="onGetCodeAsync(getCodeForm)">Отправить код повторно</gar-button>
+    </div>
 
-          <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data"
-            placeholder="Введите номер или почту" *ngIf="!isGetCode">
-          <input type="text" class="form-control input-auth" name="data" [(ngModel)]="data" placeholder="Введите код"
-            *ngIf="isGetCode">
-        </div>
-
-        <div class="send-code" *ngIf="play">
-          <small class="form-label text-lbl">Получить новый код можно через 00:{{time}}</small>
-          <br>
-          <button class="btn btn-link btn-sm">Отправить код повторно</button>
-        </div>
-
-        <button class="btn btn-default btn-code-active main-btn" (click)="onGetCodeAsync(getCodeForm1)"
-          *ngIf="!isHideBtnGetCode">Получить код</button>
-        <button class="btn btn-default btn-code-active" (click)="onCheckCodeAsync(getCodeForm1)"
-          *ngIf="isHideBtnGetCode">Проверить код</button>
-        <div class="text-center my-3">
-          или
-        </div>
-
+    <div class="form-auth__section" *ngIf="!type?.isSuccessMailing">
+      <div class="gar-grid gar-grid_small">
         <div>
-          <button class="btn secondary text-center" (click)="onLoginByPass()">Войти с паролем</button>
+          <input type="checkbox" id="policyAgreement" name="policyAgreement" [checked]="isPolicyAgreement">
         </div>
 
-        <!-- иконка для закрытия -->
-        <a class="close-form" routerLink="/">
-          <img src="../../../assets/images/close.svg" alt="close icon" />
-        </a>
-        <!-- иконка для закрытия -->
-      </form>
+        <label for="policyAgreement">Согласен с условиями использования сервисов GoBizy и обработки персональных данных</label>
+      </div>
     </div>
-  </div>
-  <!-- Форма наличия аккаунта -->
 
-  <!-- Форма по паролю. -->
-  <div class="form-auth" *ngIf="isPass">
-    <form class="block-form-auth" #getByPassForm="ngForm" novalidate>
-      <h5>Войдите чтобы продолжить</h5>
-      <div>
-        <label class="form-label text-lbl">Email или телефон</label>
+    <div class="form-auth__section" *ngIf="!type?.isSuccessMailing">
+      <div class="gar-grid gar-grid_small">
+        <div>
+          <input type="checkbox" id="getEmail" name="getEmail" [checked]="isAdsEmail">
 
-        <input type="text" class="form-control input-auth" placeholder="Введите номер или почту" name="numOrEmail"
-          [(ngModel)]="numOrEmail">
+        </div>
+
+        <label for="getEmail">Хочу получать сообщения рекламного и информационного характера</label>
       </div>
+    </div>
 
-      <div class="mb-3">
-        <label class="form-label text-lbl" name="pass" [(ngModel)]="pass">Пароль</label>
+    <div class="form-auth__section" *ngIf="type?.isSuccessMailing">
+      <small>Если код не пришел вам на почту </small>
+      <i pTooltip="Рекомендуем проверить папку спама в вашем почтовом ящике" tooltipPosition="bottom"
+          class="pi pi-info-circle"
+          style="font-size: 16px;  margin-left: 5px; color: #c00b0b"
+      ></i>
+    </div>
+    
+    <div class="form-auth__section">
+      <gar-button role="primary" class="full-width" (click)="onGetCodeAsync(getCodeForm)" *ngIf="!isHideBtnGetCode" [attr.disabled]="!isPolicyAgreement">Получить код</gar-button>
+      <gar-button role="primary" class="full-width" (click)="onCheckCodeAsync(getCodeForm)" *ngIf="isHideBtnGetCode">Проверить код</gar-button>
+    </div>
 
-        <input type="password" class="form-control input-auth" name="pass" [(ngModel)]="pass"
-          placeholder="Введите пароль">
-      </div>
+    <div class="form-auth__section text-center">
+      или
+    </div>
 
-      <div>
-        <button class="btn text-center btn-code-active main-btn" (click)="onLoginAsync(getByPassForm)">Войти</button>
-      </div>
+    <div class="form-auth__section text-center">
+      <gar-button role="secondary" class="full-width" (click)="onLoginByAccount()">Уже есть аккаунт</gar-button>
+    </div>
+  </form>
+</ng-container>
 
-      <div class="text-center mt-3">
-        <span class="action-link">Не помню пароль</span>
-      </div>
+<!-- Форма наличия аккаунта -->
+<ng-container *ngIf="isAuth">
+  <form #getCodeForm1="ngForm" class="form-auth" novalidate>
+    <div class="gar-row title">Войдите чтобы продолжить</div>
 
-      <!-- иконка для закрытия -->
-      <a class="close-form" routerLink="/">
-        <img src="../../../assets/images/close.svg" alt="close icon" />
-      </a>
-      <!-- иконка для закрытия -->
-    </form>
-  </div>
-</div>
+    <div class="form-auth__section">
+      <div class="form-auth__label">Email или телефон</div>
+
+      <gar-input-text name="data" [(ngModel)]="data" title="Введите номер или почту" *ngIf="!isGetCode"></gar-input-text>
+
+      <gar-input-text name="data" [(ngModel)]="data" title="Введите код" *ngIf="isGetCode"></gar-input-text>
+    </div>
+
+    <div class="form-auth__section" *ngIf="play">
+      <small class="form-auth__label">Получить новый код можно через 00:{{time}}</small>
+      <br>
+      <gar-button role="primary" class="full-width">Отправить код повторно</gar-button>
+    </div>
+
+    <div class="form-auth__section">
+      <gar-button role="primary" class="full-width" (click)="onGetCodeAsync(getCodeForm1)" *ngIf="!isHideBtnGetCode">Получить код</gar-button>
+      <gar-button role="primary" class="full-width" (click)="onCheckCodeAsync(getCodeForm1)" *ngIf="isHideBtnGetCode">Проверить код</gar-button>
+    </div>
+
+    <div class="form-auth__section text-center">
+      или
+    </div>
+
+    <div class="form-auth__section">
+      <gar-button role="secondary" class="full-width" (click)="onLoginByPass()">Войти с паролем</gar-button>
+    </div>
+  </form>
+</ng-container>
+<!-- Форма наличия аккаунта -->
+
+<!-- Форма по паролю. -->
+<ng-container *ngIf="isPass">
+  <form #getByPassForm="ngForm" class="form-auth" novalidate>
+    <div class="gar-row title">Войдите чтобы продолжить</div>
+
+    <div class="form-auth__section">
+      <div class="form-auth__label">Email или телефон</div>
+
+      <gar-input-text title="Введите номер или почту" name="numOrEmail" [(ngModel)]="numOrEmail"></gar-input-text>
+    </div>
+
+    <div class="form-auth__section">
+      <div class="form-auth__label">Пароль</div>
+
+      <gar-input-text name="pass" [(ngModel)]="pass" title="Введите пароль"></gar-input-text>
+    </div>
+
+    <div class="form-auth__section">
+      <gar-button role="primary" class="full-width" (click)="onLoginAsync(getByPassForm)">Войти</gar-button>
+    </div>
+
+    <div class="form-auth__section">
+      <gar-button role="secondary" class="full-width" (click)="remindPasswordAction()">Не помню пароль</gar-button>
+    </div>
+  </form>
+</ng-container>

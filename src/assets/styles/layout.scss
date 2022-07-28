@@ -395,6 +395,10 @@ a {
   }
 
   &__label {
+    @include typo('description');
+    color: $clrDarkGray;
+    margin-bottom: calc(#{$gridGap} / 3);
+
     &-checkbox {
       @include typo('description');
 

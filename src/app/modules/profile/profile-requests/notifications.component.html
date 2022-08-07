@@ -1,34 +1,18 @@
-<div class="row">
-<!--  <div class="col-xxl-3 col-xl-3 col-lg-4">-->
-<!--    <manage-account></manage-account>-->
-<!--  </div>-->
+<div class="gar-row title">Уведомления</div>
 
-  <div class="col-xxl-9 col-xl-9 col-lg-8">
-    <h2 class="profile-title">Уведомления</h2>
-
-    <div class="mt-3 notification" *ngFor="let item of aNotifyData">
+<div class="profile-notices">
+  <div class="profile-notice" *ngFor="let item of aNotifyData">
+    <div class="profile-notice__title">{{item.notifyTitle}}</div>
+  
+    <div class="profile-notice__description">{{item.notifyDescription}}</div>
+  
+    <div class="profile-notice__buttons gar-grid">
       <div>
-        <h5 class="notification-title">{{item.notifyTitle}}</h5>
+        <gar-button role="primary">Подробнее</gar-button>
       </div>
-
+  
       <div>
-        <p class="notification-description">{{item.notifyDescription}}</p>
-      </div>
-
-      <div class="notification-buttons d-flex">
-        <div>
-          <button pButton pRipple type="button" label="Подробнее"></button>
-        </div>
-
-        <div>
-          <button pButton pRipple type="button" label="Скрыть"></button>
-        </div>
-      </div>
-
-      <div class="notification-remove">
-        <button>
-          <img src="../../../../assets/images/close.svg" alt="close icon" />
-        </button>
+        <gar-button role="secondary">Скрыть</gar-button>
       </div>
     </div>
   </div>

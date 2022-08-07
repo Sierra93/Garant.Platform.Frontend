@@ -31,7 +31,7 @@
                 <gar-input-text
                     class="header-search-input gar-input-text"
                     title="Например: “Медицинский центр”"
-                    [ngModel]="searchText"
+                    [(ngModel)]="searchText"
                     (keydown.enter)="onRouteSearch(searchText)">
                 </gar-input-text>
 
@@ -54,7 +54,7 @@
             </div>
 
             <div class="header-options">
-                <a *ngFor="let item of cabinetLinks" routerLink="{{item.link}}" class="header-options-item">
+                <a *ngFor="let item of cabinetLinks$ | async" routerLink="{{item.link}}" class="header-options-item">
                     <gar-icon name="{{item.icon}}"></gar-icon>
 
                     <span>{{item.name}}</span>
@@ -111,7 +111,7 @@
         </nav>
 
         <nav class="burger-menu-nav">
-            <a *ngFor="let item of cabinetLinks" routerLink="{{item.link}}">
+            <a *ngFor="let item of cabinetLinks$ | async" routerLink="{{item.link}}">
                 {{item.name}}
 
                 <gar-icon name="arrow-right"></gar-icon>

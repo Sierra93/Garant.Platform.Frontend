@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -8,6 +8,8 @@ import { API_URL } from "src/app/core/core-urls/api-url";
 import { ProfileInput } from "src/app/models/profile/input/profile-input";
 import { CommonDataService } from "src/app/services/common/common-data.service";
 import {ManageAccountModule} from "../manage-account/manage-account.component";
+import {SESSION_TOKEN} from '../../../core/session/session.token';
+import {SessionService} from '../../../core/session/session.service';
 
 @Component({
     selector: "profile-my-data",
@@ -50,11 +52,14 @@ export class ProfileMyDataModule implements OnInit {
     corrAccountNumber: number = 0;
     shifted: boolean = false;
 
-    constructor(private route: ActivatedRoute,
+    constructor(
+      private route: ActivatedRoute,
         private router: Router,
         private http: HttpClient,
         private titleService: Title,
         private messageService: MessageService,
+        @Inject(SESSION_TOKEN)
+        private _sessionService: SessionService,
         private commonService: CommonDataService) {
     };
 
@@ -276,5 +281,9 @@ export class ProfileMyDataModule implements OnInit {
 
     onMenuClick() {
       this.addShift();
+    }
+
+    logOut() {
+      this._sessionService.endSession();
     }
 }

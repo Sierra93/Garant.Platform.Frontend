@@ -12,6 +12,10 @@
     display: flex;
     padding: $gridGap / 3 * 2;
 
+    @include tablet {
+      display: block;
+    }
+
     &-label {
       @include typo('secondary');
 

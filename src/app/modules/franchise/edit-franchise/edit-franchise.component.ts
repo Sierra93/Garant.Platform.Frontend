@@ -10,6 +10,7 @@ import { attachment } from "../../../gar-lib/attachment";
 import { catchError, map, switchMap, takeUntil, tap } from "rxjs/operators";
 import { FranchiseOutput } from "../../../models/franchise/output/franchise-output";
 import { GarDestroyService } from "../../../gar-lib/gar-destroy.service";
+import {franchise} from "../franchise";
 
 @Component({
     selector: "edit-franchise",
@@ -22,9 +23,9 @@ import { GarDestroyService } from "../../../gar-lib/gar-destroy.service";
  * Класс модуля изменения франшизы.
  */
 export class EditFranchiseModule implements OnInit {
-    
+
     private _attachedFiles$ = new BehaviorSubject<string[]>([]);
-    
+
     franchiseId: number = 0;
     logoName?: string;
     responsiveOptions: any;
@@ -71,14 +72,14 @@ export class EditFranchiseModule implements OnInit {
     videoLink?: string;
     modelFile: any;
     presentFile: any;
-    franchiseData: any = {};
+    franchiseData: franchise.IItem = {} as franchise.IItem;
     routeParam: any;
     aInvestInclude: any = [];
     aFinIndicators: any[] = [];
     aPacks: any[] = [];
     aFranchisePhotos: any[] = [];
     isHideIndicators: boolean = false;
-    
+
     constructor(
         private http: HttpClient,
         private commonService: CommonDataService,
@@ -139,14 +140,14 @@ export class EditFranchiseModule implements OnInit {
         try {
             console.log("getViewFranchiseAsync");
 
-            await this.http.get(API_URL.apiUrl.concat("/franchise/get-franchise?franchiseId=" + franchiseId))
+            await this.http.get<franchise.IItem>(API_URL.apiUrl.concat("/franchise/get-franchise?franchiseId=" + franchiseId))
                 .subscribe({
-                    next: (response: any) => {
+                    next: (response) => {
                         console.log("Полученная франшиза:", response);
                         this.franchiseData = response;
                         this.aFranchisePhotos = this.franchiseData.url.split(",");
                         console.log("franchiseData", this.franchiseData);
-                        
+
                         // let checkFinIndicators = JSON.parse(response.finIndicators);
 
                         // // Если массив индикаторов не пустой.
@@ -355,7 +356,7 @@ export class EditFranchiseModule implements OnInit {
             sendFormData.append("finModelFile", this.modelFile);
             sendFormData.append("presentFile", this.presentFile);
             sendFormData.append("franchiseFile", this.presentFile);
-    
+
             of(true).pipe(
                 switchMap(_ => this._attachedFiles$),
                 map((res: string[]) => {
@@ -389,7 +390,7 @@ export class EditFranchiseModule implements OnInit {
             detail: 'Франшиза успешно изменена'
         });
     };
-    
+
     uploadImages(files: string[]) {
         this._attachedFiles$.next(files);
     }

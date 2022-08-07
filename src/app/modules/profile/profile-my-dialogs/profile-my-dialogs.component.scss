@@ -1,88 +1,76 @@
-@import "/src/app/modules/profile/profile-my-data/profile-my-data.component.scss";
+@import 'design';
 
-.block-right {
-  .row {
-    @media (max-width: 768px) {
-      align-items: center !important;
-    }
-  }
-}
+.profile-dialog {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  grid-template-areas: "pic author date" "pic message message";
+  grid-gap: 8px;
 
-.dialog {
-  font-family: 'Roboto', sans-serif;
+  background-color: $clrWhite;
+  border-radius: calc(#{$border-radius} / 2);
+  padding: calc(#{$gridGap} / 4);
+  box-shadow: $box-shadow-card;
 
-  &-top {
-    margin-bottom: .75rem;
-
-    @media (max-width: 576px) {
-      flex-direction: column;
-
-      span {
-        font-size: .7rem;
-      }
-    }
+  @include tablet {
+    grid-gap: 16px;
+    border-radius: $border-radius;
+    padding: calc(#{$gridGap} / 3 * 2);
   }
 
-  &-photo {
+  &:not(:first-child) {
+    margin-top: calc(#{$gridGap} / 3 * 2);
+
+    @include tablet-small {
+      margin-top: $gridGap;
+    }
+  }
+
+  &__img {
+    grid-area: pic;
+
+    overflow: hidden;
+    width: 110px;
+    height: 100%;
+    border-radius: calc(#{$border-radius} / 2);
+
     img {
       width: 100%;
-
-      @media (max-width: 576px) {
-        min-height: 70px;
-      }
+      height: 100%;
+      object-fit: cover;
     }
   }
 
-  &-content {
-    > div {
-      &:first-child {
-        margin-right: 2.5rem;
-        width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
+  &__sender {
+    @include typo('secondary');
 
-        @media (max-width: 576px) {
-          margin-right: .5rem;
-        }
-      }
+    grid-area: author;
+  }
 
-      img {
-        cursor: pointer;
-      }
+  &__date {
+    @include typo('description');
+
+    grid-area: date;
+    color: $clrDarkGray;
+
+    @include tablet-small {
+      @include typo('secondary');
     }
   }
 
-  &-sender {
-    font-size: 14px;
-    color: #2c2c2c;
+  &__title {
+    @include typo('promo');
+
+    grid-area: title;
   }
 
-  &-date {
-    font-size: 14px;
-    color: #7a7a7a;
-  }
+  &__message {
+    @include typo('description');
 
-  &-title {
-    font-size: 14px;
-    color: #2c2c2c;
-    margin-bottom: .25rem;
+    grid-area: message;
+    color: $clrDarkGray;
 
-    @media (max-width: 576px) {
-      white-space: nowrap;
+    @include tablet-small {
+      @include typo('secondary');
     }
-
-    @media (max-width: 425px) {
-      font-size: .7rem;
-    }
-  }
-
-  &-message {
-    font-size: 14px;
-    color: #7a7a7a;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 0 !important;
-    white-space: nowrap;
   }
 }

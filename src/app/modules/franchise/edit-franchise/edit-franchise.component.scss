@@ -3,63 +3,121 @@
 @import "/src/app/shared/styles/media-quaries.scss";
 @import "/src/app/shared/styles/common.scss";
 @import "/src/app/modules/franchise/create-franchise/create-franchise.component.scss";
+@import "design";
 
-@media (max-width: 576px) {
-  .sale-through-garant {
-    .switch-garant {
-      > button {
+
+.title {
+  width: 100%;
+}
+
+.block-two {
+  max-width: 1000px;
+  border: 1px solid $clrMidGray;
+}
+
+:host {
+  .gar-grid_wrap {
+    &.photos-buttons {
+      margin-top: 50px;
+    }
+  }
+
+  .button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .gar-row {
+    &.title {
+      font-size: 16px;
+
+    }
+
+    &.page {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: normal;
+      color: $clrBlack;
+      margin-bottom: 1.5rem;
+    }
+
+    &.contact-button {
+      margin-top: 16px;
+    }
+  }
+
+  .gar-grid {
+    &.wrapper-logo {
+      background-color: $clrWhite;
+    }
+
+    &.wrapper-logo {
+      @include phone {
+        flex-direction: column;
+      }
+    }
+
+    &.photos-wrapper {
+      @include phone {
+        flex-wrap: wrap;
+      }
+
+      @include tablet-small {
+        flex-wrap: wrap;
+      }
+
+      @include tablet {
+        flex-wrap: nowrap;
+      }
+
+      @include desktop {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
+  .gar-card {
+
+    &.wrapper-label {
+      max-width: 325px;
+      box-shadow: none;
+
+      @include phone {
+        max-width: none;
+      }
+    }
+
+    &.wrapper-title {
+      box-shadow: none;
+    }
+
+    &.block-gallery {
+      @include desktop {
+        width: 70%;
+        margin: 0 20px 0 0;
+      }
+
+      @include tablet {
+        width: 60%;
+      }
+
+      @include tablet-small {
         width: 100%;
+        margin: 0;
       }
     }
-  }
-}
 
-::ng-deep {
-  .photos {
-    .block-gallery {
-      .p-galleria {
-        &-content {
-          align-items: stretch;
-
-          .p-galleria-thumbnails-left p-galleriaitem {
-            .p-galleria-item-container {
-              display: unset;
-              height: auto !important;
-
-              .p-galleria-item {
-                height: unset;
-
-                img {
-                  height: unset;
-                }
-              }
-            }
-          }
-
-          .p-galleria-thumbnail-container {
-            justify-content: space-between;
-
-            @media (max-width: 576px) {
-              padding: 0 .25rem;
-            }
-          }
-
-          .p-galleria-thumbnail-items-container {
-            display: none;
-          }
-        }
-      }
+    &.photos-contact {
+      max-width: 386px;
     }
-  }
-}
 
-.level-includes {
-  button {
-    &, &:focus {
-      border: none;
-      outline: none;
-      background-color: transparent;
+    &.franchise-packages {
+      margin: 0;
       padding: 0;
+    }
+
+    &.add-package {
+      max-width: 295px;
     }
   }
 }

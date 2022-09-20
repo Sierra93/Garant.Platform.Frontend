@@ -2,195 +2,270 @@
   <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
   <!-- Блок с названием. -->
-  <div class="row logo-and-title">
-    <div class="col-12">
-      <div class="franchise-logo">
-        <div class="d-flex flex-column me-3">
-          <img src="./../../../../assets/images/franchise-pages/franchise-view-header.png"
-            alt="gobizy franchise view header" />
-        </div>
-
-        <div class="d-flex flex-column">
-          <h1 class="main-title">{{franchiseData.title}}</h1>
-        </div>
-<!--        TODO: Навешен индивидуальный стиль для кнопки в заголовке карточки, так как перебиваются стили из других компонентов-->
-        <button routerLink="/franchise/edit" [queryParams]="{franchiseId: franchiseData.franchiseId}" class="view-franchise title-btn p-button-outlined mx-2" pButton type="button" label="Изменить"></button>
+  <div class="gar-card hd">
+    <div class="gar-row gar-row-hd">
+      <div class="gar-row-item fit right">
+        <!-- <img
+          src="./../../../../assets/images/franchise-pages/franchise-view-header.png"
+          alt="gobizy franchise view header"
+        />  -->
+      </div> 
+      <div class="gar-row-item">
+        <h2 class="gar-row title page">
+          {{ franchiseData.title }}
+        </h2>
       </div>
+      <!--TODO: Навешен индивидуальный стиль для кнопки в заголовке карточки, так как перебиваются стили из других компонентов-->
+      <gar-button role="primary"><a href="https://gobizy.ru/franchise/edit?franchiseId=6" 
+            style="color: #ffffff; text-decoration: none;"> 
+            Перейти к редактированию</a></gar-button>
     </div>
   </div>
 
   <!-- Блок с галереей. -->
-  <div class="row photos">
-    <div class="col-xxl-8 col-xl-8 col-lg-8">
-      <div class="block-gallery">
-        <div class="w-100">
-          <span *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</span>
-          <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
-            [containerStyle]="{'max-width': '660px'}" [numVisible]="4" thumbnailsPosition="left">
-            <ng-template pTemplate="item" let-item>
-              <img src="{{item}}" style="width: 700px; display: block;" />
-            </ng-template>
+  <section class="section">
+    <div class="gar-row no-adaptive-row gar-grid">
+      <div class="gar-card">
+        <!-- <span *ngIf="!aNamesFranchisePhotos.length"
+          >Фотографии не загружены</span
+        > -->
 
-            <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
-              <div class="p-grid p-nogutter p-justify-center dopni">
-                <img src="{{item}}" />
-              </div>
-            </ng-template>
-          </p-galleria>
+        <p-galleria
+          [(value)]="aNamesFranchisePhotos"
+          [responsiveOptions]="responsiveOptions"
+          thumbnailsPosition="left"
+        >
+          <ng-template pTemplate="item" let-item>
+            <img [src]="item" style="width: 100%; display: block" />
+          </ng-template>
+          <ng-template pTemplate="thumbnail" let-item>
+            <div class="">
+              <img [src]="item" style="display: block" />
+            </div>
+          </ng-template>
+        </p-galleria>
+      </div>
+
+      <div class="gar-card fit">
+        <h2 class="gar-row title">Представитель бизнеса</h2>
+        <div class="gar-row">
+          <div class="gar-row-item contact-info">
+            <p class="gar-row title item">Имя Фамилия Отчество</p>
+            <p class="gar-row secondary">Генеральный директор</p>
+            <p class="gar-row secondary">Был на сайте 13 минут назад</p>
+            <p class="gar-row secondary">
+              Готовый бизнес размещен 13 октября 2021 года
+            </p>
+            <!-- <a href="http://localhost:4200/franchise/create">перейти к редактированию франшиз</a>
+
+            <a href="http://localhost:4200/franchise/edit">другая карточка редактирования франшиз</a> -->
+            
+
+           
+          </div>
+          <div class="gar-row-item">
+            <div class="picture">
+              <!--  TODO: переделать потом на модель          -->
+              <img src="assets/images/portret-1.jpg" alt="portret" />
+            </div>
+          </div>
+        </div>
+        <div class="gar-row buttons">
+          <div class="gar-row-item">
+            <gar-button>Стать франчайзи онлайн через гарант</gar-button>
+            <gar-button role="primary">Начать чат с представителем</gar-button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="col-xxl-4 col-xl-4 col-lg-4 photos-contact">
-      <div class="franchise-holder">
-        <strong>{{fio}}</strong>
+    <!-- Ключевые финансовые данные. -->
 
-        <div>
-          <span>{{franchiseData.status}}</span>
+    <!-- <div class="row financial-data"> -->
+    <div class="gar-card advantages advantages-business ">
+      <div class="gar-row box">
+        <div class="gar-card gray packages">
+        <p class="gar-row title item">Общие инвестиции</p>
+        <p class="gar-row secondary">включая паушальный взнос</p>
+        <p class="gar-row">
+          <span style="font-size: 16px;"
+            >{{
+              franchiseData.lumpSumPayment
+                | priceFormat: franchiseData.lumpSumPayment
+            }}
+            2500000 ₽</span
+          >
+        </p>
         </div>
-
-        <button class="btn primary-button become-franchiser">Стать франчайзи онлайн через гарант</button>
-        <button class="primary-button"
-          (click)="onRouteFranchiseChatAsync(franchiseData.franchiseId, 'Franchise', franchiseData.userId)">Начать чат
-          с
-          представителем</button>
+        <div class="gar-card gray packages ">
+        <p class="gar-row title item">Паушальный взнос</p>
+        <p class="gar-row secondary">зависит от выбранного пакета</p>
+        <p class="gar-row">
+          <span
+            >{{
+              franchiseData.lumpSumPayment
+                | priceFormat: franchiseData.lumpSumPayment
+            }}
+            400000 ₽</span
+          >
+        </p>
+        </div>
+        <div class="gar-card gray packages">
+        <p class="gar-row title item">Роялти</p>
+        <p class="gar-row secondary">от валовой выручки</p>
+        <p class="gar-row">
+          <span
+            >{{
+              franchiseData.lumpSumPayment
+                | priceFormat: franchiseData.lumpSumPayment
+            }}
+            6.5 %</span
+          >
+        </p>
+        </div>
+      </div>
+      <div class="gar-row box">
+        <div class="gar-card gray packages">
+        <p class="gar-row title item">Окупаемость</p>
+        <p class="gar-row secondary">средняя и планируемая</p>
+        <p class="gar-row">
+          <span
+            >{{
+              franchiseData.lumpSumPayment
+                | priceFormat: franchiseData.lumpSumPayment
+            }}
+            10-12 месяцев</span
+          >
+        </p>
+        </div>
+        <div class="gar-card gray packages">
+        <p class="gar-row title item">Месячная прибыль</p>
+        <p class="gar-row secondary">планируемая чистая прибыль</p>
+        <p class="gar-row">
+          <span
+            >{{
+              franchiseData.lumpSumPayment
+                | priceFormat: franchiseData.lumpSumPayment
+            }}
+            240 000 ₽</span
+          >
+        </p>
+        </div>
+        <div class="gar-card gray packages">
+        <p class="gar-row title item">Срок запуска</p>
+        <p class="gar-row secondary">средний срок открытия</p>
+        <p class="gar-row">
+          <span
+            >{{
+              franchiseData.lumpSumPayment
+                | priceFormat: franchiseData.lumpSumPayment
+            }}
+            2-3 месяца</span
+          >
+        </p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Ключевые финансовые данные. -->
-  <div class="row financial-data">
-    <div class="col-12">
-      <h5 class="title-strong">Ключевые финансовые данные*</h5>
-      <!-- <span>0 из 6</span> -->
-    </div>
-
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
-      <div class="financial-data-block">
-        <strong>Общие инвестиции</strong>
-        <span>включая паушальный взнос</span>
-        <span>{{franchiseData.totalInvest | priceFormat:franchiseData.totalInvest}} ₽</span>
-      </div>
-    </div>
-
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
-      <div class="financial-data-block">
-        <strong>Паушальный взнос</strong>
-        <span>зависит от выбранного пакета</span>
-        <span>{{franchiseData.lumpSumPayment | priceFormat:franchiseData.lumpSumPayment}} ₽</span>
-      </div>
-    </div>
-
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
-      <div class="financial-data-block">
-        <strong>Роялти</strong>
-        <span>от валовой выручки</span>
-        <span>{{franchiseData.royalty | priceFormat:franchiseData.royalty}} ₽</span>
-      </div>
-    </div>
-
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
-      <div class="financial-data-block">
-        <strong>Окупаемость</strong>
-        <span>средняя и планируемая</span>
-        <span>{{franchiseData.payback}} мес.</span>
-      </div>
-    </div>
-
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
-      <div class="financial-data-block">
-        <strong>Месячная прибыль</strong>
-        <span>планируемая чистая прибыль</span>
-        <span>{{franchiseData.profitMonth | priceFormat:franchiseData.royalty}} ₽</span>
-      </div>
-    </div>
-
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
-      <div class="financial-data-block">
-        <strong>Срок запуска</strong>
-        <span>средний срок открытия бизнеса</span>
-        <span>{{franchiseData.launchDate}} дн. </span>
-      </div>
-    </div>
-  </div>
+  <section class="section">
+    <app-promotion-card
+      action="Получить консультацию"
+      reject="Позднее"
+      link="/deal/start"
+    >
+      <p class="gar-row title">Особенность франшизы</p>
+      <p class="gar-row secondary">
+        В рейтинге сетей ресторанов, специализирующихся на продаже кофе,
+        согласно авторитетному порталу Allegra World Coffee Portal в 2018 году
+        компания COFFEE LIKE получила 1 место в РФ и 12 место среди европейских
+        заведений. Основанием стали цифры динамики роста – показатель прироста
+        заведений за один год (203 заведения), что стало беспрецедентным
+        результатом.
+      </p>
+    </app-promotion-card>
+  </section>
 
   <!-- Основная информация о компании. -->
-  <div class="row main-info section-margin">
-    <div class="col-xxl-8 col-xl-8">
-      <div>
-        <h3 class="section-title">Основная информация о компании*</h3>
-        <p class="description">{{franchiseData.activityDetail}}</p>
+
+  <section class="section">
+    <div class="gar-row gar-grid">
+      <div class="gar-row-item">
+        <h2 class="gar-row title">Основная информация о компании</h2>
+        <div class="gar-card" style="height: 100%;">
+          <p>
+            COFFEE LIKE — это бренд, известный как в России, так и за ее
+            пределами. В настоящее время уютные кофе-бары встречают посетителей
+            в семи странах мира: в РФ, Казахстане, Беларуси, Киргизии, Армении,
+            Узбекистане и Коста-Рике.
+          </p>
+          <br />
+          <p>
+            Результаты деятельности нашей компании по состоянию на 2020 год:
+          </p>
+          <br />
+          <p>&spades; 306 заведений,</p>
+          <p>&spades; 142 города в РФ,</p>
+          <p>&spades; 738 кофе-баров,</p>
+          <br />
+          <p>
+            Успешная деятельность COFFEE LIKE начинается в 2013 году и все это
+            время компания не прекращает расти. На конец 2013 года сеть кофеен
+            состояла из 128 объектов и в течение двух лет увеличилась на 12-14%.
+            Доля COFFEE LIKE на рынке увеличилась на 46% по сравнению с 2019
+            годом,
+          </p>
+        </div>
+
       </div>
-
-      <!-- Дополнительные факты. -->
-      <div>
-        <h3 class="section-title">Дополнительные факты*</h3>
-        <div class="row">
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom">
-            <div class="fact-item">
-              <strong>Год основания</strong>
-              <span>компании</span>
-              <span>{{franchiseData.baseDate}}</span>
-            </div>
-          </div>
-
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom">
-            <div class="fact-item">
-              <strong>Год запуска</strong>
-              <span>франчайзинга</span>
-              <span>{{franchiseData.yearStart}}</span>
-            </div>
-          </div>
-
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom">
-            <div class="fact-item">
-              <strong>Количество точек</strong>
-              <span>в России</span>
-              <span>{{franchiseData.dotCount}}</span>
-            </div>
-          </div>
-
-          <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 margin-bottom">
-            <div class="fact-item">
-              <strong>Собственных</strong>
-              <span>предприятий</span>
-              <span>{{franchiseData.businessCount}}</span>
+      <div class="gar-row-item">
+        <div class="gar-row title">Входит в инвестиции</div>
+        <div class="gar-row advantages gar-grid">
+          <div class="gar-card gray">
+            <div
+              class="gar-row gar-property-value"
+              *ngFor="let item of propertyFranchises$ | async"
+            >
+              <span class="gar-row title item eee">{{ item.title }}</span>
+              <span>{{ item.result }}</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="col-xxl-4 col-xl-4">
-      <div class="invest">
-        <h3 class="section-title">Входит в инвестиции*</h3>
-        <div class="invest-block" *ngFor="let item of aInvestInclude">
-          <div *ngIf="item.Price > 0">
-            <strong class="">Стоимость</strong>
-            <span>{{item.Price | priceFormat:item.Price}} ₽</span>
+  
+    <div class="gar-card advantages-invest">
+      
+          <div
+            class="gar-card gray packages2"
+            *ngFor="let item of listAdvantagesCompany$ | async"
+          >
+            <p class="gar-row title item">{{ item.title }}</p>
+            <p class="gar-row secondary">{{ item.description }}</p>
+            <p class="gar-row">{{ item.result }}</p>
           </div>
-
-          <div>
-            <strong class="">Название</strong>
-            <span>{{item.Name}}</span>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+ 
+  </section>
 
   <!-- Описание особенности франшизы. -->
-  <div class="row franchise-details section-margin" *ngIf="franchiseData.peculiarity != null">
+  <div class="gar-row gar-grid" *ngIf="franchiseData.peculiarity != null">
     <div class="col-12">
       <div class="franchise-details-block">
         <h5 class="subsection-title">Описание особенности франшизы</h5>
 
-        <p class="content">{{franchiseData.peculiarity}}</p>
+        <p class="content">{{ franchiseData.peculiarity }}</p>
 
-        <p class="content">{{franchiseData.nameFinModelFile}}</p>
+        <p class="content">{{ franchiseData.nameFinModelFile }}</p>
 
         <div class="buttons">
-          <button (click)="onDownloadFinModelFileAsync(franchiseData.nameFinModelFile)">Получить финансовую модель</button>
+          <button
+            (click)="
+              onDownloadFinModelFileAsync(franchiseData.nameFinModelFile)
+            "
+          >
+            Получить финансовую модель
+          </button>
           <button>Позднее</button>
         </div>
 
@@ -204,96 +279,427 @@
   </div>
 
   <!-- Основная информация о франшизе. -->
-  <div class="row main-franchise-info">
-    <div class="col-xxl-8 col-xl-8 col-lg-8">
-      <div>
-        <h6>Основная информация о франшизе*</h6>
-        <div>
-          <p class="description">{{franchiseData.text}}</p>
-        </div>
+  <!-- <div class="gar-row"> -->
+  <section class="section">
+    <div class="gar-row title">Основная информация о франшизе</div>
+    <!-- <div class="gar-row gar-grid"> -->
+    <div class="gar-card info-franchise">
+      <div class="gar-card difference">
+        
+        <p class="gar-row">
+          Компания Coffee Like основана в 2013 году двумя молодыми
+          предпринимателями Зуфаром Гариповым и Аязом Шабутдиновым. С самого дня
+          основания она позиционировалась как международный бренд и к концу года
+          (всего через 2 месяца!) было продано уже 24 франшизы.
+        </p>
+        <p>
+         В следующем году предприниматели продолжили активно маштабировать
+          бизнес, увеличив сеть до 141 кофе-бара. Результаты нашей работы были 
+          отмечены на федеральном уровне: Coffee Like стал финалистом конкурса
+          «Школа молодого миллиардера», вошёл в 10 лучших стартапов малого
+          предпринимательства, по мнению Forbes.
+        </p>
+
+        <img
+          src="assets/images/franchise-pages/main-franchise-info.png"
+          alt=""
+        />
+      </div>
+
+      <div class="gar-card presentation">
+        <div class="gar-row title">Скачать презентацию</div>
+
+        <p class="gar-row secondary">
+          Немного более подробная информация в официальной презентации франшизы.
+        </p>
+
+        <gar-button role="primary" class="download-presentation"
+          >Скачать презентацию</gar-button
+        >
       </div>
     </div>
-
-    <div class="col-xxl-4 col-xl-4 col-lg-4">
-      <div class="form">
-        <h6>Добавить презентацию</h6>
-        <div class="block-details-franch d-flex flex-column">
-          <strong>Прикрепить документ .pdf</strong>
-          <span>до 20 мб</span>
-          <!-- <span class="content">{{presentFile ? presentFile.name : franchiseData.namePresentFile}}</span> -->
-          <input type="file" (change)="uploadPresentAsync($event)" id="upload-present-async" class="d-none" />
-          <label for="upload-present-async" class="d-flex align-items-center">
-            <span class="me-2">
-              <img src="../../../../assets/images/franchise-pages/attach.svg" alt="gobizy attach file icon" />
-            </span>
-            <span>Прикрепить</span>
-          </label>
-        </div>
-      </div>
-
-      <div>
-        <p>Загружать презентацию не обязательно. Однако, это способствует повышению конверсии и глубинной
-          заинтересованности в проекте. Если вы не хотите загружать презентацию, просто пропустите данный этап.</p>
-      </div>
-    </div>
-
-    <div class="col-12">
-      <hr class="hr">
-    </div>
-  </div>
+  </section>
+  <!-- </div> -->
   <!-- Пример расчета прибыли. -->
-  <div class="row income-calculation section-margin">
-    <div class="col-12">
-      <div>
-        <h3 class="section-title">Пример расчета прибыли*</h3>
-        <p class="description">{{franchiseData.paymentDetail}}</p>
+  <section class="section">
+    <div class="gar-row title">
+        Пример расчета прибыли одной точки Coffe Like
       </div>
-    </div>
+    <div class="gar-card difference-business basic">
+      
+      <div class="gar-card">
+        <p>
+          На старте Вы получаете готовую, работающую бизнес-модель, опробованную
+          сотнями франчайзи, а также алгоритмы выполнения финансовых планов,
+          базу знаний, сопровождение экспертов в течение всего времени
+          становления Вашего бизнеса.
+        </p>
 
-    <!-- Ключевые финансовые показатели. -->
-    <div class="col-12" *ngIf="isHideIndicators">
-      <div class="franchise-details-block">
-        <h5 class="subsection-title">Ключевые финансовые показатели</h5>
-        <div class="child-blocks-wrapper">
-          <div class="row" *ngFor="let item of aFinIndicators">
-            <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
-              <div class="child-block d-flex flex-column">
-                <strong>Средний чек</strong>
-                <span>{{item.Name}}</span>
-              </div>
+        <div class="gar-card example">
+          <div class="gar-row title item item-coffee">
+            Средние показатели кофейни по сети (на конец 2 квартала 2020 года)
+          </div>
+          <p class="gar-row secondary">на конец 2 квартала 2020 года</p>
+          <div class="gar-row advantages advantages-business gar-grid">
+            <div class="gar-card packages3">
+              <p class="gar-row title item">Средний чек</p>
+
+              <p class="gar-row">
+                <span
+                  >{{
+                    franchiseData.lumpSumPayment
+                      | priceFormat: franchiseData.lumpSumPayment
+                  }}
+                  185 ₽</span
+                >
+              </p>
             </div>
+            <div class="gar-card packages3">
+              <p class="gar-row title item">Товарная наценка</p>
 
-            <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
-              <div class="child-block d-flex flex-column">
-                <strong>Процент или финансы</strong>
-                <span>{{item.Price}}</span>
+              <p class="gar-row">
+                <span
+                  >{{
+                    franchiseData.lumpSumPayment
+                      | priceFormat: franchiseData.lumpSumPayment
+                  }}
+                  200 %</span
+                >
+              </p>
+            </div>
+            <div class="gar-card packages3">
+              <p class="gar-row title item">Средняя выручка</p>
+
+              <p class="gar-row">
+                <span
+                  >{{
+                    franchiseData.lumpSumPayment
+                      | priceFormat: franchiseData.lumpSumPayment
+                  }}
+                  395000 ₽</span
+                >
+              </p>
+            </div>
+            <div class="gar-card packages3">
+              <p class="gar-row title item break">Рентабельность</p>
+
+              <p class="gar-row">
+                <span
+                  >{{
+                    franchiseData.lumpSumPayment
+                      | priceFormat: franchiseData.lumpSumPayment
+                  }}
+                  23.5 %</span
+                >
+              </p>
+            </div>
+          </div>
+          <gar-button
+            role="primary"
+            class="download-presentation gar-btn primary primary-coffee"
+            >Получить консультацию</gar-button
+          >
+        </div>
+        <!-- <div> -->
+        <!-- <p class="description">{{ franchiseData.paymentDetail }}</p> -->
+        <!-- {{franchiseData?.paymentDetail ?: 'Напомнить бэку, чтоб присылали данные'}} -->
+        <!-- </div> -->
+      </div>
+
+      <!-- Ключевые финансовые показатели. -->
+      <div class="gar-card difference-business" *ngIf="isHideIndicators">
+        <h5 class="subsection-title">Ключевые финансовые показатели</h5>
+        <div class="franchise-details-block">
+          <div class="child-blocks-wrapper">
+            <div class="row" *ngFor="let item of aFinIndicators">
+              <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="child-block d-flex flex-column">
+                  <strong>Средний чек</strong>
+                  <span>{{ item.Name }}</span>
+                </div>
+              </div>
+
+              <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="child-block d-flex flex-column">
+                  <strong>Процент или финансы</strong>
+                  <span>{{ item.Price }}</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Обучение и поддержка. -->
-  <div class="row section-margin education-and-support">
-    <div class="col-xxl-8 col-xl-8">
+  <section class="section">
+    <h3 class="gar-row title">Обучение и поддержка*</h3>
+    <div class="gar-row gar-card lesson">
       <div>
-        <h3 class="section-title">Обучение и поддержка*</h3>
-        <p class="description">{{franchiseData.trainingDetails}}</p>
+        <!-- <p class="description">{{ franchiseData.trainingDetails }}</p> -->
+        <div class="gar-row-item">
+          <div class="gar-row title page">
+            4 ЭТАПА ОЦЕНКИ МЕСТА ДЛЯ КОФЕ-БАРА:
+          </div>
+          <p>Помощь в выборе места и формата кофе-бара</p>
+          <p>Выявление арендной ставки и подсчет трафика.</p>
+          <p>
+            Формирование бизнес-плана по развитию кофе-бара на первые 1,5 года.
+            Этот прогноз включает в себя данные по рентабельности, прибыли,
+            выручке, транзакциям, а также по основным переменным и постоянным
+            расходам. 
+          </p>
+          <p>Согласование места расположения</p>
+        </div>
+        <img src="../../../../assets/images/lesson.svg" alt="" />
       </div>
-    </div>
-    <div class="row photos">
-      <div class="col-xxl-8 col-xl-8 col-lg-8">
-        <div class="block-gallery">
-          <div class="w-100">
-            <span *ngIf="!franchiseData.trainingPhotoName">Фотографии не загружены</span>
-            <img src="{{franchiseData.trainingPhotoName}}" style="width: 700px; display: block;" />
+
+      <div class="row photos">
+        <div class="col-xxl-8 col-xl-8 col-lg-8">
+          <div class="block-gallery">
+            <div class="w-100">
+              <span *ngIf="!franchiseData.trainingPhotoName"
+                >Фотографии не загружены</span
+              >
+              <img
+                src="{{ franchiseData.trainingPhotoName }}"
+                style="width: 700px; display: block"
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+  <section class="section">
+    <div class="gar-row gar-grid">
+      <div class="packs">
+        <div class="packs-item">
+          <button class="packs-item__title">
+            Пакет “Автоматическая кофейня”
+          </button>
+          <ul class="packs-item__list">
+            <li>
+              <div class="packs-item__yes">
+                <img src="../../../../assets/images/yes.svg" alt="" />
+              </div>
+              <span class="packs-item__tool">Преимущество 1</span>
+            </li>
+            <li>
+              <div class="packs-item__yes">
+                <img src="../../../../assets/images/yes.svg" alt="" />
+              </div>
+              <span class="packs-item__tool">Преимущество 2</span>
+            </li>
+            <li>
+              <div class="packs-item__yes">
+                <img src="../../../../assets/images/yes.svg" alt="" />
+              </div>
+              <span class="packs-item__tool">преимущество 3</span>
+            </li>
+          </ul>
+          <div class="packs-item-bottom">
+            <p class="packs-item-bottom__title">
+              <span><b>Паушальный взнос</b></span> <span>35000 ₽</span>
+            </p>
+            <p class="packs-item-bottom__title">
+              <span><b>Роялти</b></span> <span>5 %</span>
+            </p>
+            <p class="packs-item-bottom__price">
+              <b>Всего инвестиций</b><span>150 000 ₽</span>
+            </p>
+            <button class="packs-item-bottom__button">Хочу этот пакет</button>
+          </div>
+        </div>
+
+        <div class="packs-item">
+          <button class="packs-item__title">
+            Пакет “Автоматическая кофейня”
+          </button>
+          <ul class="packs-item__list">
+            <li>
+              <div class="packs-item__yes">
+                <img src="../../../../assets/images/yes.svg" alt="" />
+              </div>
+              <span class="packs-item__tool">Преимущество 1</span>
+            </li>
+            <li>
+              <div class="packs-item__yes">
+                <img src="../../../../assets/images/yes.svg" alt="" />
+              </div>
+              <span class="packs-item__tool">Преимущество 2</span>
+            </li>
+            <li>
+              <div class="packs-item__yes">
+                <img src="../../../../assets/images/yes.svg" alt="" />
+              </div>
+              <span class="packs-item__tool">преимущество 3</span>
+            </li>
+          </ul>
+          <div class="packs-item-bottom">
+            <p class="packs-item-bottom__title">
+              <span><b>Паушальный взнос</b></span> <span>35000 ₽</span>
+            </p>
+            <p class="packs-item-bottom__title">
+              <span><b>Роялти</b></span> <span>5 %</span>
+            </p>
+            <p class="packs-item-bottom__price">
+              <b>Всего инвестиций</b><span>150 000 ₽</span>
+            </p>
+            <button class="packs-item-bottom__button">Хочу этот пакет</button>
+          </div>
+        </div>
+        <!-- </div> -->
+        <!-- <div class="packs"> -->
+        <div class="packs-item">
+          <button class="packs-item__title">
+            Пакет “Автоматическая кофейня”
+          </button>
+          <ul class="packs-item__list">
+            <li>
+              <div class="packs-item__yes">
+                <img src="../../../../assets/images/yes.svg" alt="" />
+              </div>
+              <span class="packs-item__tool">Преимущество 1</span>
+            </li>
+            <li>
+              <div class="packs-item__yes">
+                <img src="../../../../assets/images/yes.svg" alt="" />
+              </div>
+              <span class="packs-item__tool">Преимущество 2</span>
+            </li>
+            <li>
+              <div class="packs-item__yes">
+                <img src="../../../../assets/images/yes.svg" alt="" />
+              </div>
+              <span class="packs-item__tool">преимущество 3</span>
+            </li>
+          </ul>
+          <div class="packs-item-bottom">
+            <p class="packs-item-bottom__title">
+              <span><b>Паушальный взнос</b></span> <span>35000 ₽</span>
+            </p>
+            <p class="packs-item-bottom__title">
+              <span><b>Роялти</b></span> <span>5 %</span>
+            </p>
+            <p class="packs-item-bottom__price">
+              <b>Всего инвестиций</b><span>150 000 ₽</span>
+            </p>
+            <button class="packs-item-bottom__button">Хочу этот пакет</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="gar-row service">
+      <div class="gar-card service">
+        <div class="gar-row-item">
+          <p>Кофе с собой</p>
+          <p class="gar-row secondary">Идеальный вид бизнеса для новичков.</p>
+        </div>
+        <img src="../../../../assets/images/service (1).png" alt="" />
+      </div>
+      <div class="gar-card service">
+        <div class="gar-row-item">
+          <p>Для начинающих</p>
+          <p class="gar-row secondary">Собраны лучшие бизнесы для новичков.</p>
+        </div>
+        <img src="../../../../assets/images/service (3).png" alt="" />
+      </div>
+      <div class="gar-card service">
+        <div class="gar-row-item">
+          <p>Стритфуд и фастфуд</p>
+          <p class="gar-row secondary">
+            Универсальная сфера для любителей сферы общепита
+          </p>
+        </div>
+        <img src="../../../../assets/images/service (2).png" alt="" />
+      </div>
+      <div class="gar-card service">
+        <div class="gar-row-item">
+          <p>Для начинающих</p>
+          <p class="gar-row secondary">Собраны лучшие бизнесы для новичков.</p>
+        </div>
+        <img src="../../../../assets/images/service (3).png" alt="" />
+      </div>
+    </div>
+  </section>
+  <!-- ОТЗЫВЫ НЕ УДАЛЯТЬ !!! -->
+  <!-- <section class="section">
+    
+    <div class="gar-row title page">Отзывы о франшизе</div>
+    <div class="gard-row gar-grid">
+      <div class="gar-card reviews">
+        <div class="reviews__images">
+          <img class="quot" src="../../../../assets/images/quote.svg" alt="" />
+        </div>
+        <div class="reviews__text">
+          <h6>Текстовый отзыв</h6>
+          <p>Москва</p>
+          <div class="gar-card text">
+            К 2021 уже знала, что обязательно хочу окунуться в кофейный бизнес,
+            первым выбором конечно же были такие гранды, как One Price Coffee,
+            Cofix и Cofelike. Однако уже после первой встречи сомнений не
+            было...
+          </div>
+        </div>
+        <div class="gar-card service profile">
+          <img src="../../../../assets/images/ivanova.png" alt="ivanova" />
+          <p>Анастасия Иванова</p>
+        </div>
+      </div>
+      <div class="gar-card reviews">
+        <div class="reviews__images">
+          <img class="quot" src="../../../../assets/images/quote.svg" alt="" />
+        </div>
+        <div class="reviews__text">
+          <h6>Видео-отзыв</h6>
+          <p>Архангельск</p>
+          <div class="">
+            <iframe
+              width="100%"
+              height="158"
+              src="https://www.youtube.com/embed/tWveTz44FpE"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="gar-card service profile">
+          <img src="../../../../assets/images/jilin.png" alt="ivanova" />
+          <p>Петр Жилин и Александр Семаков</p>
+        </div>
+      </div>
+      <div class="gar-card reviews">
+        <div class="reviews__images">
+          <img class="quot" src="../../../../assets/images/quote.svg" alt="" />
+        </div>
+        <div class="reviews__text">
+          <h6>Текстовый отзыв</h6>
+          <p>Москва</p>
+          <div class="gar-card text">
+            К 2021 уже знала, что обязательно хочу окунуться в кофейный бизнес,
+            первым выбором конечно же были такие гранды, как One Price Coffee,
+            Cofix и Cofelike. Однако уже после первой встречи сомнений не
+            было...
+          </div>
+        </div>
+        <div class="gar-card service profile">
+          <img src="../../../../assets/images/ivanova.png" alt="ivanova" />
+          <p>Анастасия Иванова</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!--Компонент с представлением списка промо блоков 3 блока-->
+  <!--Вы можете приобрести бизнес с гарантиями-->
+  <section class="section">
+    <app-showcase></app-showcase>
+  </section>
 
   <!-- Пакеты франшизы. -->
   <div class="row franchise-packages section-margin" *ngIf="isHidePacks">
@@ -301,36 +707,48 @@
       <div class="d-flex">
         <!-- <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox> -->
         <h3 class="section-title mb-0">
-          <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
+          <label for="packs" class="control-label-checkbox"
+            >Пакеты франшизы</label
+          >
         </h3>
       </div>
     </div>
 
     <!-- Блок с пакетами франшизы. -->
-    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 package" *ngFor="let item of aPacks">
+    <div
+      class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 package"
+      *ngFor="let item of aPacks"
+    >
       <div class="franchise-packages-block">
         <div class="package-title">
-          <h6>{{item.Name}}</h6>
+          <h6>{{ item.Name }}</h6>
         </div>
 
         <div class="package-description">
-          <p class="content">{{item.Text}}</p>
+          <p class="content">{{ item.Text }}</p>
         </div>
 
         <div class="package-offers">
           <div>
             <strong>Паушальный взнос:</strong>
-            <span>{{item.LumpSumPayment | priceFormat:item.LumpSumPayment}} ₽</span>
+            <span
+              >{{
+                item.LumpSumPayment | priceFormat: item.LumpSumPayment
+              }}
+              ₽</span
+            >
           </div>
 
           <div>
             <strong>Роялти:</strong>
-            <span>{{item.Royalty}} %</span>
+            <span>{{ item.Royalty }} %</span>
           </div>
 
           <div>
             <strong>Всего инвестиций:</strong>
-            <span>{{item.TotalInvest | priceFormat:item.TotalInvest}} ₽</span>
+            <span
+              >{{ item.TotalInvest | priceFormat: item.TotalInvest }} ₽</span
+            >
           </div>
 
           <div class="add-package">
@@ -342,62 +760,102 @@
   </div>
 
   <!-- Видео о франшизе. -->
-  <div class="row franchise-video section-margin" *ngIf="franchiseData.urlVideo != null">
-    <div class="col-xxl-8 col-xl-8">
-      <div>
-        <div class="d-flex">
-          <!-- <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox> -->
-          <h3 class="section-title mb-0">
-            <label for="packs">Видео о франшизе</label>
-          </h3>
-        </div>
-
+  <section class="section">
+    <div
+      class="gar-row gar-card franchise-video"
+      *ngIf="franchiseData.urlVideo != null"
+    >
+      <div class="gar-card video">
         <div>
-          <p class="description">{{franchiseData.urlVideo}}</p>
+          <div class="d-flex">
+            <!-- <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox> -->
+            <h3 class="section-title mb-0">
+              <label for="packs">Видео о франшизе</label>
+            </h3>
+          </div>
+
+          <div>
+            <p class="description">{{ franchiseData.urlVideo }}</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-xxl-4 col-xl-4">
-      <!-- Форма заявки. -->
-      <h3 class="section-title">Оставьте заявку</h3>
+      <div class="gar-card request">
+        <!-- Форма заявки. -->
+        <h3 class="section-title">Оставьте заявку</h3>
 
-      <div class="application-form">
-        <div>
-          <label for="name" class="">Имя</label>
-          <input type="text" class="control-input-filter-price" pInputText placeholder="Имя" name="name"
-            [(ngModel)]="userName" />
-        </div>
-
-        <div>
-          <label for="number" class="">Телефон</label>
-          <input type="text" class="control-input-filter-price" pInputText placeholder="Телефон" name="number"
-            [(ngModel)]="number" />
-        </div>
-
-        <div>
-          <label for="city" class="">Город</label>
-          <input type="text" class="control-input-filter-price" pInputText placeholder="Город" name="city"
-            [(ngModel)]="city" />
-        </div>
-
-        <div class="agreement-policy">
+        <div class="packs-item request">
           <div>
-            <p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues"></p-checkbox>
+            <label for="name" class="">Имя</label>
+            <input
+              type="text"
+              class="control-input-filter-price"
+              pInputText
+              placeholder="Имя"
+              name="name"
+              [(ngModel)]="userName"
+            />
           </div>
-          <p class="mb-0">Согласен с условиями использования сервисов GoBizy и обработки персональных данных</p>
-        </div>
 
-        <div>
-          <button class="primary-button"
-            (click)="onCreateRequestFranchiseAsync(userName, number, city, franchiseData.franchiseId)">Оставить
-            заявку</button>
-        </div>
+          <div>
+            <label for="number" class="">Телефон</label>
+            <input
+              type="text"
+              class="control-input-filter-price"
+              pInputText
+              placeholder="Телефон"
+              name="number"
+              [(ngModel)]="number"
+            />
+          </div>
 
-        <!-- <div>
+          <div>
+            <label for="city" class="">Город</label>
+            <input
+              type="text"
+              class="control-input-filter-price"
+              pInputText
+              placeholder="Город"
+              name="city"
+              [(ngModel)]="city"
+            />
+          </div>
+
+          <div class="agreement-policy">
+            <div>
+              <p-checkbox
+                name="groupname"
+                value="val1"
+                [(ngModel)]="selectedValues"
+              ></p-checkbox>
+            </div>
+            <p class="mb-0">
+              Согласен с условиями использования сервисов GoBizy и обработки
+              персональных данных
+            </p>
+          </div>
+
+          <div>
+            <button
+              class="primary-button"
+              (click)="
+                onCreateRequestFranchiseAsync(
+                  userName,
+                  number,
+                  city,
+                  franchiseData.franchiseId
+                )
+              "
+            >
+              Оставить заявку
+            </button>
+          </div>
+
+          <!-- <div>
           <p class="description">Заявку оставляли 5 раз за последний месяц</p>
         </div> -->
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </section>

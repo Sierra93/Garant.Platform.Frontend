@@ -2,160 +2,151 @@
   <p-toast [style]="{ marginTop: '80px' }"></p-toast>
 
   <!-- Блок с названием. -->
-  <div class="row title-block">
-    <div class="col-12">
-      <h5 class="title">Название и логотип*</h5>
-    </div>
-
-    <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-5">
-      <div class="file-input-wrapper">
-        <label class="form-label">Логотип</label>
-        <input type="file" (change)="uploadFranchiseLogoAsync($event)" id="franchise-logo" class="d-none" />
-        <div class="franchise-logo">
+  <div class="gar-grid row title-block">
+      <p class="title">Название и логотип*</p>
+      <div class="gar-grid wrapper-logo">
+        <div class="gar-card wrapper-label">
+          <div class="gar-row title-item">Логотип</div>         
+          <div class="franchise-logo">
           <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
+          </div>
+
+        </div>
+        <div class="gar-card wrapper-title">
+        <div class="gar-row title-item">Название</div>
+        <gar-input-text class="block-two" title="Текстовое поле" [(ngModel)]="franchiseData.title">Название</gar-input-text>
         </div>
       </div>
-    </div>
 
-    <div class="col-xxl-9 col-xl-9 col-lg-8 col-md-8 col-sm-7">
-      <div class="block-two">
-        <label class="form-label">Название</label><br>
-        <input type="text" class="control-big-input" pInputText placeholder="Название" [(ngModel)]="franchiseData.title"
-          name="logoName" />
-      </div>
-    </div>
-
-    <div class="col-12">
+   
       <hr class="hr">
-    </div>
+    
   </div>
 
-  <div class="row photos">
-    <div class="col-12">
-      <h5 class="title">Фотографии*</h5>
-    </div>
+    <div class="car-card photos">
+      <p class="title">Фотографии</p>
+      <div class="gar-grid photos-wrapper">
+        <div class="gar-card block-gallery">
+        
+        <gar-img-uploader (upload)="uploadImages($event)"></gar-img-uploader>
 
-    <div class="col-xxl-8 col-xl-9 col-lg-8 col-md-12">
-      <div class="block-gallery">
+      
         <div class="w-100">
-          <span *ngIf="!aFranchisePhotos.length">Фотографии не загружены</span>
-
-          <p-galleria [value]="aFranchisePhotos"
-                      [responsiveOptions]="responsiveOptions"
-                      [containerStyle]="{'max-width': '660px'}"
-                      [numVisible]="4" thumbnailsPosition="left">
+          <div class="gar-row" *ngIf="!aNamesFranchisePhotos.length">Фотографии не загружены</div>
+          <p-galleria [(value)]="aNamesFranchisePhotos" [responsiveOptions]="responsiveOptions"
+            [containerStyle]="{'max-width': '100%'}" [numVisible]="4" thumbnailsPosition="left">
             <ng-template pTemplate="item" let-item>
-              <img src="{{item}}" style="width: 700px; display: block;" />
+              <img src="{{item}}" />
             </ng-template>
 
-            <ng-template pTemplate="thumbnail" let-item *ngIf="aFranchisePhotos.length > 1">
+            <ng-template pTemplate="thumbnail" let-item *ngIf="aNamesFranchisePhotos.length > 1">
               <div class="p-grid p-nogutter p-justify-center">
                 <img src="{{item}}" />
               </div>
             </ng-template>
           </p-galleria>
-          <gar-img-uploader
-                  (upload)="uploadImages($event)"
-                  [existing]="aFranchisePhotos"></gar-img-uploader>
         </div>
-      </div>
-    </div>
-
-    <div class="col-xxl-4 col-xl-3 col-lg-4 col-md-12 photos-contact">
+        </div>
+        <div class="gar-card photos-contact">
       <div>
-        <h6>Ваша карточка для связи</h6>
+        <div class="gar-row title-item">Ваша карточка для связи</div>
         <strong>Ваше Имя Фамилия Отчество</strong>
-
-        <div>
-          <label>Пример: владелец</label><br>
-          <input type="text" class="control-input-gallery" pInputText placeholder="Пример: владелец"
-            [(ngModel)]="franchiseData.status" name="lead" />
+        <div class="gar-row-title">Пример: Иванов Иван Иванович</div>
+        <div class="gar-row title item contact-button">
+            <gar-input-text title="Пример владелец" [(ngModel)]="franchiseData.status" class="control-input-gallery"></gar-input-text>
         </div>
-
-        <div class="photos-buttons">
-          <p-button label="Стать франчайзи онлайн через гарант" styleClass="p-button-link" [disabled]="true"></p-button>
-          <p-button label="Начать чат с представителем" styleClass="control-button-blue" [disabled]="true"></p-button>
+        
+          <div class="gar-grid_wrap photos-buttons">
+            <gar-button class="button" style="width: 100%; color: #FFFFFF;">Стать франчайзи онлайн через гарант</gar-button>
+            <gar-button role="primary"class="button">Начать чат с представителем</gar-button>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Ключевые финансовые данные. -->
-  <div class="row financial-data">
-    <div class="col-12">
-      <h5 class="title-strong">Ключевые финансовые данные*</h5>
-      <!-- <span>0 из 6</span> -->
+        </div>
+      </div>  
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+ <!-- ключевые финансовые данные -->
+  <div class="gar-grid_wrap">
+    <div class="gar-row title-item">Ключевые финансовые данные*</div> 
+    <div class="gar-row financial">
+    <div class="gar-row box">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Общие инвестиции</strong>
         <span>включая паушальный взнос</span>
         <div class="d-flex align-items-center">
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.generalInvest" name="generalInvest" />
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="generalInvest"
+            name="generalInvest" />
+            <!-- <gar-input-number title="" [(ngModel)]="generalInvest"></gar-input-number> -->
           <span class="ms-2">₽</span>
         </div>
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Паушальный взнос</strong>
         <span>зависит от выбранного пакета</span>
         <div class="d-flex align-items-center">
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.lumpSumPayment" name="lumpSumPayment" />
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="lumpSumPayment"
+            name="lumpSumPayment" />
+            <!-- <gar-input-text title="" [(ngModel)]="lumpSumPayment"></gar-input-text> -->
           <span class="ms-2">₽</span>
         </div>
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Роялти</strong>
         <span>от валовой выручки</span>
         <div class="d-flex align-items-center">
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.royalty" name="royalty" />
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="royalty" name="royalty" />
           <span class="ms-2">₽</span>
         </div>
       </div>
     </div>
-
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    </div>
+    <div class="gar-row box">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Окупаемость</strong>
         <span>средняя и планируемая</span>
         <div class="d-flex align-items-center">
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.payback" name="payback" />
-          <span class="ms-2">₽</span>
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="payback" name="payback" />
+          <span class="ms-2">мес.</span>
         </div>
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Месячная прибыль</strong>
         <span>планируемая чистая прибыль</span>
         <div class="d-flex align-items-center">
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.profitMonth" name="profitMonth" />
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="profitMonth"
+            name="profitMonth" />
           <span class="ms-2">₽</span>
         </div>
       </div>
     </div>
 
-    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 financial-data">
+    <div class="gar-card financial-data">
       <div class="financial-data-block">
         <strong>Срок запуска</strong>
         <span>средний срок открытия бизнеса</span>
         <div class="d-flex align-items-center">
-          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="franchiseData.launchDate" name="launchDate" />
-          <span class="ms-2">₽</span>
+          <input type="number" class="control-input-franch-price" pInputText [(ngModel)]="launchDate"
+            name="launchDate" />
+          <span class="ms-2">дн.</span>
         </div>
       </div>
     </div>
-
-    <div class="col-12">
-      <hr class="hr">
     </div>
+  </div>
+
+      <hr class="hr">
+
   </div>
 
   <!-- Основная информация о компании. -->
@@ -170,9 +161,9 @@
 
       <!-- Дополнительные факты. -->
       <div class="additional-facts">
-        <h6>Дополнительные факты*</h6>
+        <div class="gar-row title-item">Дополнительные факты*</div>
         <!-- <span>0 из 4</span> -->
-        <div class="row">
+        <div class="gar-card row">
           <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
             <div class="additional-facts-block">
               <label>Год основания</label><br>
@@ -209,8 +200,8 @@
       </div>
     </div>
 
-    <div class="col-xxl-4 col-xl-4">
-      <h6>Входит в инвестиции*</h6>
+    <div class="gar-card">
+      <div class="gar-row title-item">Входит в инвестиции*</div>
       <!-- <span>1 из 10</span> -->
       <div class="main-info-form" *ngFor="let item of aInvestInclude">
         <div>
@@ -255,21 +246,18 @@
   </div>
 
   <!-- Описание особенности франшизы. -->
-  <div class="row franchise-specifications">
-    <div class="col-12">
-      <h6>Описание особенности франшизы</h6>
-    </div>
-    <div class="col-12">
+    <div class="gar-card row franchise-specifications">
+    <div class="gar-row title page"><h6>Описание особенности франшизы</h6></div>
+    <div class="gar-card">
       <div class="franchise-specifications-block">
         <div>
           <input type="text" class="franch-details" placeholder="Укажите ключевую особенность в 1-2 предложения"
-            pInputText [(ngModel)]="franchiseData.peculiarity" name="featureFranchise" />
+            pInputText [(ngModel)]="featureFranchise" name="featureFranchise" />
         </div>
 
         <div class="d-flex flex-column">
           <strong>Прикрепить финансовую модель .xlsx</strong>
           <span class="size">до 5 мб</span>
-          <span class="content">{{ modelFile ? modelFile.name : franchiseData.nameFinModelFile}}</span>
           <input type="file" (change)="uploadFinModelAsync($event)" id="attach-file" class="d-none" />
           <label for="attach-file" class="d-flex align-items-center">
             <span class="me-2">
@@ -282,36 +270,44 @@
 
       <div>
         <p>Вы можете не загружать финансовую модель, однако это может повредить доверию. Если вы не хотите загружать
-          финансовую модель, просто пропустите данный этап.</p>
+          презентацию, просто пропустите данный этап.</p>
       </div>
     </div>
-
-    <div class="col-12">
       <hr class="hr">
-    </div>
   </div>
-
+  
   <!-- Основная информация о франшизе. -->
-  <div class="row main-franchise-info">
-    <div class="col-xxl-8 col-xl-8 col-lg-8">
+  <div class="gar-card row main-franchise-info">
+    <div class="gar-card franchise-info">
       <div>
-        <h6>Основная информация о франшизе*</h6>
+        <div class="gar-row title page">Основная информация о франшизе*</div>
         <span>Описание франшизы</span>
+        <!-- Блок с 6 иконками -->
+        <div class="gar-row icons">
+          <div class="gar-card icon">&#x392;</div>
+          <div class="gar-card icon">&#x192;</div>
+          <div class="gar-card icon">&#x2261;</div>
+          <div class="gar-card icon">&#x2261;</div>
+          <div class="gar-card icon">&#x25C4;</div>
+          <div class="gar-card icon">&#x25BA;</div>
+        </div>
         <div>
           <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-            placeholder="Опишите франшизу" [(ngModel)]="franchiseData.text" name="defailsFranchise"></textarea>
+            placeholder="Опишите франшизу" [(ngModel)]="defailsFranchise" name="defailsFranchise"></textarea>
+        </div>
+        <!-- Блок загрузить фото -->
+        <div class="gar-card photo-upload">
+          <gar-button role="secondary" class="cross">&#x2716;</gar-button>
         </div>
       </div>
     </div>
-
-    <div class="col-xxl-4 col-xl-4 col-lg-4">
+    <div class="gar-card present">
       <div class="form">
         <h6>Добавить презентацию</h6>
         <div class="block-details-franch d-flex flex-column">
           <strong>Прикрепить документ .pdf</strong>
           <span>до 20 мб</span>
-          <span class="content">{{presentFile ? presentFile.name : franchiseData.namePresentFile}}</span>
-          <input type="file" (change)="uploadPresentAsync($event)" id="upload-present-async" class="d-none" />
+          <input type="file" (change)="uploadPresentAsync($event)" id="upload-present-async" class="d-none">
           <label for="upload-present-async" class="d-flex align-items-center">
             <span class="me-2">
               <img src="../../../../assets/images/franchise-pages/attach.svg" alt="gobizy attach file icon" />
@@ -320,52 +316,99 @@
           </label>
         </div>
       </div>
-
-      <div>
         <p>Загружать презентацию не обязательно. Однако, это способствует повышению конверсии и глубинной
           заинтересованности в проекте. Если вы не хотите загружать презентацию, просто пропустите данный этап.</p>
-      </div>
     </div>
 
-    <div class="col-12">
       <hr class="hr">
-    </div>
   </div>
 
   <!-- Пример расчета прибыли. -->
+  <section class="section">
   <div class="row income-calculation">
-    <div class="col-12">
+  
+    <div class="gar-card">
       <div>
-        <h6>Пример расчета прибыли*</h6>
+        <div class="gar-row title page">Пример расчета прибыли*</div>
         <span>Описание расчета</span>
         <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-          placeholder="Опишите расчет" [(ngModel)]="franchiseData.paymentDetail" name="paymentDetails"></textarea>
+          placeholder="Опишите расчет" [(ngModel)]="paymentDetails" name="paymentDetails"></textarea>
       </div>
     </div>
 
     <!-- Ключевые финансовые показатели. -->
-    <div class="col-12">
-      <div class="block-details-franch">
-        <h6>Ключевые финансовые показатели</h6>
-        <div class="top-form d-flex flex-column">
+    <div class="gar-card">
+      <div class="gar-row title page">Ключевые финансовые показатели</div>
+      <div class="block-details-franch">       
+        <div class="gar-card top-form">
           <label>Название</label>
-          <input type="text" class="franch-details" placeholder="Пример: расчет прибыль 1 кофейни" pInputText
-            [(ngModel)]="franchiseData.peculiarity" name="" />
+          <!-- <input type="text" placeholder="Пример: расчет прибыль 1 кофейни" pInputText [(ngModel)]="namesIndicators"
+            name="namesIndicators" /> -->
+            <gar-input-text title="Пример: расчет прибыль 1 кофейни" pInputText [(ngModel)]="namesIndicators"></gar-input-text>
         </div>
 
-        <div class="row">
-          <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6" *ngFor="let item of aFinIndicators">
+        <div class="gar-row box-wrapper">
+          <div class="gar-card top-form-card">
             <div class="fin-indicator-first">
               <div>
-                <label>Например: средний чек</label>
+                <p>Например: средний чек</p>
                 <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
-                  [(ngModel)]="item.Name" name="finIndicator1" />
+                  [(ngModel)]="finIndicator1" name="finIndicator1" />
+                  <!-- <gar-input-text class="input-price" title="Название" [(ngModel)]="finIndicator1"></gar-input-text> -->
               </div>
 
               <div>
-                <label>Процент или финансы</label>
+                <p>Процент или финансы</p>
+                <input type="number" class="control-input-franch-price" placeholder="Процент или сумма" pInputText
+                  [(ngModel)]="percentFinancial1" name="" />
+              </div>
+            </div>
+          </div>
+
+          <div class="gar-card top-form-card">
+            <div class="fin-indicator">
+              <div>
+                <p>Например: рентабельность</p>
                 <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
-                  [(ngModel)]="item.Price" name="" />
+                  [(ngModel)]="finIndicator2" name="finIndicator2" />
+              </div>
+
+              <div>
+                <p>Процент или финансы</p>
+                <input type="number" class="control-input-franch-price" placeholder="Процент или сумма" pInputText
+                  [(ngModel)]="percentFinancial2" name="" />
+              </div>
+            </div>
+          </div>
+
+          <div class="gar-card top-form-card">
+            <div class="fin-indicator">
+              <div>
+                <p>Например: средняя выручка</p>
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
+                  [(ngModel)]="finIndicator3" name="finIndicator3" />
+              </div>
+
+              <div>
+                <p>Процент или финансы</p>
+                <input type="number" class="control-input-franch-price" placeholder="Процент или сумма" pInputText
+                  [(ngModel)]="percentFinancial3" name="" />
+              </div>
+            </div>
+          </div>
+
+          <div class="gar-card top-form-card">
+            <div class="fin-indicator">
+              <div>
+                <p>Например: товарная наценка</p>
+                <input type="text" class="control-input-franch-price" placeholder="Название" pInputText
+                  [(ngModel)]="finIndicator4" name="finIndicator4" />
+              </div>
+
+              <div>
+                <p>Процент или финансы</p>
+                <input type="number" class="control-input-franch-price" placeholder="Процент или сумма" pInputText
+                  [(ngModel)]="percentFinancial4" name="" />
               </div>
             </div>
           </div>
@@ -377,38 +420,47 @@
       </div>
     </div>
   </div>
+  </section>
 
   <!-- Обучение и поддержка. -->
-  <div class="row education-and-support">
-    <div class="col-xxl-8 col-xl-8">
-      <h6>Обучение и поддержка*</h6>
+  <section>
+    <!-- <div class="row education-and-support"> -->
+    <div class="gar-card">
+      <div class="gar-row title page">Обучение и поддержка*</div>
       <span>Описание обучения</span>
-      <div>
-        <textarea class="control-textarea-franch" rows="10" cols="30" pInputTextarea [autoResize]="true"
-          placeholder="Опишите обучение" [(ngModel)]="franchiseData.trainingDetails" name="educationDetails"></textarea>
-      </div>
-
-      <div class="upload-file-education">
-        <label>Добавить фотографию</label>
-        <input type="file" (change)="uploadEducationPhotosAsync($event)" class="d-none" />
-        <div>
-          <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
+      <div class="gar-card">
+        <!-- Блок с 6 иконками -->
+        <div class="gar-row icons">
+          <div class="gar-card icon">&#x392;</div>
+          <div class="gar-card icon">&#x192;</div>
+          <div class="gar-card icon">&#x2261;</div>
+          <div class="gar-card icon">&#x2261;</div>
+          <div class="gar-card icon">&#x25C4;</div>
+          <div class="gar-card icon">&#x25BA;</div>
         </div>
+        <textarea class="control-textarea-franch" pInputTextarea [autoResize]="true"
+          placeholder="Опишите обучение" [(ngModel)]="educationDetails" name="educationDetails"></textarea>
+      </div>
+
+      <!-- <div class="upload-file-education"> -->
+      <div class="gar-card">
+        <p>Добавить фотографию</p>
+        <input type="file" (change)="uploadEducationPhotosAsync($event)" id="upload-file-education" class="form-control" />
+        <!-- <div>
+          <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*"></p-fileUpload>
+        </div> -->
       </div>
     </div>
-
-    <div class="col-12">
       <hr class="hr">
-    </div>
-  </div>
-
+    <!-- </div> -->
+  </section>
   <!-- Пакеты франшизы. -->
   <div class="row franchise-packages">
     <div class="col-12">
       <div class="p-field-checkbox control-checkbox">
         <div class="d-flex align-items-center">
           <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
-          <label for="packs" class="control-label-checkbox">Пакеты франшизы</label>
+          <p for="packs" class="control-label-checkbox">Пакеты франшизы</p>
         </div>
       </div>
 
@@ -416,65 +468,11 @@
         данный раздел галочкой слева от названия.</p>
     </div>
 
-    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 package" *ngFor="let item of aPacks">
-      <!-- Блок с пакетами франшизы. -->
-      <div class="franchise-packages-block">
-        <div class="d-flex">
-          <div class="block-pack">
-            <div class="block-top-pack">
-              <div>
-                <input type="text" class="control-big-input" pInputText placeholder="Название пакета, например: “Базовый”"
-                [(ngModel)]="item.Name" name="packName" />
-              </div>
 
-              <div>
-                <div class="d-flex justify-content-between">
-                  <span>
-                    <img src="../../../../assets/images/franchise-pages/tick.svg" alt="gobizy tick icon" />
-                  </span>
-                  <input type="text" class="control-big-input pack-detail" pInputText placeholder="Описание"
-                  [(ngModel)]="item.Text" name="packDetails" />
-                </div>
-
-                <div class="mt-3 d-grid">
-                  <button class="btn btn-primary">Добавить пункт</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="block-bottom-pack">
-              <div>
-                <label class="title-small">Паушальный взнос:</label><br>
-                <div class="d-flex align-items-center">
-                  <input type="text" class="control-big-input" pInputText [(ngModel)]="item.LumpSumPayment"
-                  name="packLumpSumPayment" placeholder="₽" />
-                </div>
-              </div>
-
-              <div>
-                <label class="title-small">Роялти:</label><br>
-                <div class="d-flex align-items-center">
-                  <input type="text" class="control-big-input" pInputText [(ngModel)]="item.Royalty" name="royaltyPack" placeholder="%" />
-                </div>
-              </div>
-
-              <div>
-                <label class="title-small">Всего инвестиций:</label><br>
-                <div class="d-flex align-items-center">
-                  <input type="text" class="control-big-input" pInputText [(ngModel)]="item.TotalInvest"
-                  name="totalInvest" placeholder="₽" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-      <div class="add-package">
+    <div class="gar-card add-package">
+      
         <button class="add-package-button">Добавить пакет</button>
-      </div>
+     
     </div>
 
     <div class="col-12">
@@ -483,17 +481,17 @@
   </div>
 
   <!-- Видео о франшизе. -->
-  <div class="row franchise-video-section">
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12 title-section">
+  <div class="gar-card franchise-video-section">
+    <div class="gar-card title-section">
       <div class="p-field-checkbox control-checkbox">
         <div class="d-flex align-items-center">
           <p-checkbox name="group1" value="New York" [(ngModel)]="isHidePacks" inputId="packs"></p-checkbox>
-          <label for="packs" class="control-label-checkbox">Видео о франшизе</label>
+          <p for="packs" class="control-label-checkbox">Видео о франшизе</p>
         </div>
       </div>
     </div>
 
-    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12">
+    <div class="gar-card">
       <p>Данный раздел не является обязательным для заполнения. Если у вашей франшизы нет видео вы можете отключить данный
         раздел галочкой слева от названия. Однако видео положительно влияет на вовлеченность.</p>
     </div>
@@ -512,11 +510,12 @@
   </div>
 
   <!-- сохранить. -->
-  <div class="row sale-through-garant">
-    <div class="col-xxl-8 col-xl-8 col-lg-8">
+  <div class="gar-card">
+
       <div class="switch-garant">
-        <button class="control-button-blue" (click)="onEditFranchiseAsync()">Сохранить изменения</button>
+        <!-- <button class="control-button-blue" (click)="onEditFranchiseAsync()">Сохранить изменения</button> -->
+        <gar-button role="primary" (click)="onEditFranchiseAsync()">Сохранить изменения</gar-button>
       </div>
-    </div>
+
   </div>
 </section>
